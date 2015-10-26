@@ -1,5 +1,1 @@
-h1. Rails and Devise + bootstrap modal
-
-This application is build on !https://github.com/RailsApps/rails-devise! It is good for developers who wants to start your project with devise gem & bootstrap.
-
-And This project integrate this app with bootstrap modal.
+h1. Bangtiplite ver 1.0

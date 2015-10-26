@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 
   get 'register/delete'
 
-  get 'check/leavepage'
-  get 'check/needlogin'
   
   root to: 'visitors#index'
   devise_for :users
