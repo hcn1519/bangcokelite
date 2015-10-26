@@ -14,6 +14,11 @@
     </header>
     <main role="main">
        <%= render 'layouts/messages' %>
+       <%= render "welcome/login_modal" %>
+       <%= render "welcome/sign_up_modal" %>
+       <%= render "welcome/edit_modal" %>
+       <%= render "welcome/forgot_pass_modal" %>
+       
        <%= yield %>
     </main>
   </body>
