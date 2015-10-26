@@ -1,4 +1,23 @@
-<h3>Welcome</h3>
+<div class="col-md-12 col-sm-12 col-xs-12">
+      <br/><br/><br/>
+       <h2><strong>우리학교 근처 매물정보</strong></h2>
+         <form action="/map/mappage" method="POST">
+          <br/>
+           <p>
+             <div class="btn-group">
+                <select class="form-control" name="univ">
+                 <option selected>학교선택</option>
+                 <option value="서강">서강대학교</option>
+                 <option value="이화">이화여자대학교</option>
+                 <option value="연세">연세대학교</option>
+               </select>
+             </div>
+             <input class="btn btn-default" type="submit" value="검색" style="color:#fff; border-color:#262626; background-color:#262626">
+           </p>
+         </form>
+            <br/><br/>
+          </div>
+          
 <% if user_signed_in? %>
     <p><%= link_to 'User', users_path %> <%= User.count %> registered</p>
 <% else %>

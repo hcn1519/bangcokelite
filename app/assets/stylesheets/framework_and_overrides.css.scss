@@ -11,7 +11,9 @@ img {
 .navbar-brand {
   font-size: inherit;
   }
-
+html, body {
+  height: 95.5%; 
+}
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
@@ -35,10 +37,12 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #eee;
-  padding-bottom: 80px;
+  background-color: #fff;
+
   width: 100%;
   margin-top: 51px; // accommodate the navbar
+  height: 100%; 
+  padding: 0px;
   }
 section {
   @extend .row;

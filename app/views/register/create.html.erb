@@ -1,0 +1,1502 @@
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script type="text/javascript"
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdcrzqmVvJgOpIy23Dlw08MHrQN1C17Sg&libraries=geometry">
+</script>
+
+<script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
+
+<style type="text/css">
+  body {
+    font-family: 'Noto Sans', sans-serif;
+    margin-top:30px;
+  }
+  #map-canvas {
+    height:200px;
+    width:100%;
+    max-width:400px;
+  }
+  div.inline { 
+    float:left; 
+  }
+  .site-wrapper {
+    display: table;
+    width: 100%;
+  }
+  .site-wrapper-inner {
+    display: table-cell;
+    vertical-align: top;
+  }
+  .cover-container {
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .form-control {
+    margin-top:10px;
+    margin-bottom:10px;
+  }
+  .infobox {
+    padding-left:0px;
+  }
+
+  table td {
+    display:table-cell;
+    vertical-align:middle;
+  }
+  .table tbody tr td{
+   vertical-align:middle;
+  }
+  .table tbody tr{
+    vertical-align:middle;
+  }
+  .formap {
+   
+   max-width:348px;
+   
+  }
+  #column {
+    background-color:#f2f2f2;
+    font-size:0.8em;
+  }
+  div.form-inline label.radio-inline {
+     padding-left:5px; 
+  }
+  .image-upload > input {
+    display: none;
+  }
+
+
+#image-preview {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #ecf0f1;
+  
+  
+  input {
+    line-height: 200px;
+    font-size: 200px;
+    position: absolute;
+    opacity: 0;
+    z-index: 10;
+  }
+  label {
+    position: absolute;
+    z-index: 5;
+    opacity: 0.8;
+    cursor: pointer;
+    background-color: #bdc3c7;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-transform: uppercase;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+  }
+}
+
+.btn-shape {
+  background: #d9d9d9;
+  border: 2px solid #d9d9d9;
+  color: #fff;
+
+}
+.btn-shape:hover {
+  background: #99cc33;
+  color:#fff;
+  border-color: #99cc33;
+  
+}
+.sogang a:visited {
+  color:#fff;
+}
+.ewha a:visited {
+  color:#fff;
+}
+.yonsei a:visited {
+  color:#fff;
+}
+#form-left {
+  margin-right:0.5em;
+  margin-top:1.75em;
+  float:left;
+  font-size:0.7em;
+}
+#form-right {
+  margin-left:0.5em;
+  margin-top:1.75em;
+  float:left;
+  font-size:0.7em;
+}
+#form-middle {
+  float: left; 
+  margin-top: 1.75em; 
+  margin-left: 0.5em; 
+  margin-right: 0.5em;
+  font-size:0.7em;
+}
+#radio-right {
+  margin-top:1em;
+  margin-left:0.5em;
+  font-size:0.8em;
+}
+.fui-cross-circle:before {
+  background-color:#fff;
+  border-radius:10px;
+}
+#popup:hover {
+ background-color:#f2f2f2; 
+}
+#calculateBtn.btn.btn-warning {
+  color:#D35400;
+  background-color:#fff;
+  border:1px solid #D35400;
+}
+#calculateBtn.btn-warning:hover {
+      color:#fff;
+      background-color:#D35400;
+      border:1px solid #D35400;
+    }
+</style>
+
+<script type="text/javascript">
+
+  var map = null;
+  function initialize() {
+    var mapOptions = {
+      center: { lat: 37.551626, lng: 126.937641},
+      zoom: 17
+    }; 
+    
+    map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+  
+    var geocoder = new google.maps.Geocoder();
+
+    document.getElementById('mapfind').addEventListener('click', function() {
+      geocodeAddress(geocoder, map);
+    });
+        
+    function geocodeAddress(geocoder, resultsMap) {
+      var address = document.getElementById('address').value;
+      geocoder.geocode({'address': address}, function(results, status) {
+          
+        if (status === google.maps.GeocoderStatus.OK) {
+          resultsMap.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+            map: resultsMap,
+            position: results[0].geometry.location
+          });
+                //여기서 results[0].geometry.location에 위도 경도가 (위도, 경도) 형식으로 저장된다.
+                //results[0].geometry.location을 위도 경도 값에 각각 저장할 수 있도록 만들면 굿?
+                
+             
+          var latitude = results[0].geometry.location.lat();
+          var longitude = results[0].geometry.location.lng();
+          var latlngmer = results[0].geometry.location;           
+                  
+          $(document).ready(function(){
+            $("#mapfindcheck").click(function(){
+              $.ajax({
+                url: "/register/create",
+                data: { latitude, longitude },
+                success: function(data){
+                  $("#lat").val(latitude);
+                  $("#lng").val(longitude);
+                  alert("확인되었습니다.");
+                }
+              });
+            });
+            
+          });
+                    
+        } else {
+            alert('올바르지 않은 주소입니다');
+          }
+            
+      });
+    } //geocode function 종료
+
+  }//function 마무리
+  google.maps.event.addDomListener(window, 'load', initialize);
+  
+   
+</script>
+</head>
+
+
+<body>
+
+  <div class="container" style="margin-top:50px; max-width:900px">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="inline" style="width:15px; height:45px; background-color:#99cc33; margin-top:3px"></div>
+        <div class="page-header inline" style="margin-top:0px">
+          <h3 style="font-weight:bold; margin-top:0px; margin-left:10px">방 등록하기</h3>
+        </div>
+      </div><!--제목-->
+      
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="panel panel-default" style="background-color:#d4eaa8; border-color: #d4eaa8;margin-bottom: 40px;">
+          <div class="panel-body" style="padding-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-top: 10px;">
+            <ul>
+              <li style="font-size:15px">회원님의 연락처가 방 상세보기 페이지에 노출됩니다.</li>
+              <li style="font-size:15px">등록한 방은 별도의 갱신이 없을 경우 6개월 동안 노출됩니다.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div><!--설명 부분-->
+  
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="inline">
+        <img src="/house.png" style="height:40px; width:40px; margin-top:3px;"/>
+      </div>
+      <div class="inline" style="margin-top:0px">
+        <h4 style=" margin-top: 5px; margin-left: 5px;">하숙집</h4>
+      </div>
+    </div>
+  </div><!--하숙집 타이틀-->
+  
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <form action="/register/create_work" method="POST" enctype="multipart/form-data">
+  
+    <div class="table-responsive">
+      <table class="table" style="width:100%">
+      <!--하숙집 이름-->
+        <tr>
+          <td id="column"><center>하숙집 이름</center></td>
+          <td colspan="3">
+            <input type="text" name="hasuk_name" class="form-control">
+          </td>
+        </tr>
+      <!--하숙집 이름 끝-->
+      
+      <!--연락처 구간-->
+      
+      <tr>
+        <td id="column" rowspan="2"><center>연락처</center></td>
+        <td style="width:38%">
+          <input type="text" name="celPhone" class="form-control" placeholder="H.P">
+        </td>
+        <td colspan="2">
+          <input type="text" name="telPhone" class="form-control" placeholder="Tel">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+            <input type="text" name="memo" class="form-control" placeholder="메모 ex) 전화를 받지 않을 시 문자 남겨주시면 확인 후 연락드리겠습니다.">
+        </td>
+      </tr>
+      <!--연락처 구간 끝-->
+      
+      
+      <!--종류-->
+      <tr>
+        <td id="column">
+          <center>
+            <span>종류</span>
+            <a href="#" id="popup" data-toggle="popover" data-trigger="hover" data-placement="right" data-container="body" data-toggle="popover" data-placement="above">
+              <span class="fui-question-circle" style="font-size:1.3em; color:#27AE60" >
+              </span>
+            </a>
+            <div id="popover_content_wrapper" style="display: none">
+              <div style="font-size:0.9em">
+                <span style="font-weight:bold; font-size:1em">일반하숙(주택을 개조한 하숙)</span> - 가정주택을 개조한 것으로 화장실을 공동 사용한다.<br>
+              </div>
+              <div style="font-size:0.9em">
+                <span style="font-weight:bold; font-size:1em">잠만 자는 하숙</span> - 식사가 제공되지 않고 잠만 잘 수 있는 하숙이다.<br>
+              </div>
+              <div style="font-size:0.9em">
+                <span style="font-weight:bold; font-size:1em">원룸형 하숙</span> - 화장실을 방마다 두고, 취사시설이 없어 자취는 아니며 식사가 따로 제공된다.<br>
+              </div>
+              <div style="font-size:0.9em">
+                <span style="font-weight:bold; font-size:1em">고시원형 하숙</span> - 건물의 형태와 방의 넓이, 옵션은 고시원과 크게 다를 바 없으며, 화장실과 샤워실도 공용으로 사용한다. 다만 일반적인 고시원과 달리 식사가 제공된다.<br>
+              </div>  
+              <div style="float:right; margin-bottom:5px">
+                <span style="font-size:0.5em; color:#BDC3C7">출처 - 나무위키</span>
+              </div>
+            </div>
+            </div>
+          </center>
+        </td>
+        <td colspan="3">
+          <label>
+            <label class="radio-inline" style="margin-left:1em">
+              <input type="radio" name="hasuk_kind" id="hasuk_kind" value="일반하숙" style="margin-top:0.8em"> 일반하숙
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="hasuk_kind" id="hasuk_kind" value="잠만 자는 방" style="margin-top:0.8em"> 잠만 자는 방
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="hasuk_kind" id="hasuk_kind" value="원룸형" style="margin-top:0.8em"> 원룸형
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="hasuk_kind" id="hasuk_kind" value="고시원형" style="margin-top:0.8em"> 고시원형
+            </label>
+          </label>
+        </td>
+      </tr>
+      <!--종류 끝-->
+      
+      <!--성별-->
+      <tr>
+        <td id="column"><center>성별</center></td>
+        <td colspan="3">
+          <label>
+            <label class="radio-inline" style="margin-left:1em">
+              <input type="radio" name="gender" id="gender" value="남녀공용" style="margin-top:0.8em"> 남녀공용
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="gender" id="gender" value="남녀층 분리" style="margin-top:0.8em"> 남녀층 분리
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="gender" id="gender" value="여성전용" style="margin-top:0.8em"> 여성전용
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="gender" id="gender" value="남성전용" style="margin-top:0.8em"> 남성전용
+            </label>
+          </label>
+        </td>
+      </tr>
+      <!--성별 끝-->
+
+      
+
+      <tr>
+        <td id="column"><center>방크기</center></td>
+        <td>
+          <div class="col-md-12 col-xs-12 col-sm-12 form-inline" style="padding-right:0px">
+            <div class="col-md-4 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+              <input type="number" style="float: left; padding:5px; max-width:50px;" name="size_from" class="form-control">
+              <span id="form-middle">평 ~</span> 
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+              <input type="number" style="float: left; padding:5px; max-width:50px;" name="size_to" class="form-control">
+              <span id="form-right" style="padding-right:0px">평</span>
+            </div>
+          </div>
+        </td>
+        <td id="column" style="width:15%"><center>방층수</center></td>
+        <td>
+          <div class="col-md-12 col-xs-12 col-sm-12 form-inline">
+            <div class="col-md-5 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+              <input type="number"style="float: left; padding:5px; max-width:50px;" name="floor_from" class="form-control">
+              <span id="form-middle">층 ~</span> 
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+              <input type="number"style="float: left; padding:5px; max-width:50px;" name="floor_to" class="form-control">
+              <span id="form-right">층</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+      
+      <tr>
+        <td id="column"><center>준공연도</center></td>
+        <td>
+          <div class="col-md-12 col-xs-12 col-sm-12 form-inline">
+           <input type="number" style="float:left; max-width:80px;" name="building_age" class="form-control">
+           <span id="form-right">년</span>
+          </div>
+        </td>
+        <td id="column" style="width:15%"><center>리모델링</center></td>
+        <td>
+          <div class="col-md-12 col-xs-12 col-sm-12 form-inline">
+             <input type="number" style="float:left; max-width:80px;" id="remodelingbox" name="remodeling" class="form-control">
+             <span id="form-right">년</span>
+             
+             <label class="radio-inline" id="radio-right">
+                 <input type="checkbox" name="remodeling" id="remodeling" value="">해당없음
+             </label>
+         </div>
+        </td>
+      </tr>
+      
+    </table><!--table1 끝-->
+    
+  </div><!-- 하숙집 박스 row-->
+  
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px; ">
+      <div class="inline">
+        <img src="/price.png" style="height:40px; width:40px; margin-top:3px;"/>
+      </div>
+      <div class="inline" style="margin-top:0px">
+        <h4 style=" margin-top: 5px; margin-left: 5px;">가격</h4>
+      </div>
+    </div>
+  </div><!--가격 박스-->
+  
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="table-responsive">
+        <table class="table" style="width:100%">
+          
+          <tr>
+            <td id="column"><center>예치금</center></td>
+            <td>
+              <div class="form-inline">
+              <div class="col-md-5 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+                 <input type="number" style="float:left; max-width:80px;" id="small_depositbox" name="small_deposit" class="form-control">
+                 <span id="form-right">만 원</span>
+               </div>
+               <div class="col-md-4 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+                 <label class="radio-inline" id="radio-right">
+                     <input type="checkbox" name="small_deposit" id="small_deposit" value="">해당없음
+                 </label>
+               </div>
+              </div>
+            </td>
+            <td id="column"><center>보증금</center></td>
+            <td>
+              <div class="form-inline">
+                 <div class="col-md-6 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+                   <input type="number" style="float:left; max-width:80px;" id="big_depositbox" name="big_deposit" class="form-control">
+                   <span id="form-right">만 원</span>
+                 </div>
+                 <div class="col-md-4 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+                   <label class="radio-inline" id="radio-right">
+                       <input type="checkbox" name="big_deposit" id="big_deposit" value="">해당없음
+                   </label>
+                 </div>
+              </div>
+            </td>
+          </tr>
+          
+          
+          <tr>
+            <td id="column"><center>월세</center></td>
+            <td>
+            
+              <div class="form-inline">
+                <div class="col-md-6 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+                  <input type="number" style="float:left; max-width:70px;" name="price_from" id="price_from" class="form-control">
+                  <span id="form-middle">만 원 ~</span>
+                </div>
+                <div class="col-md-6 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+                  <input type="number" style="float:left; max-width:70px;" name="price_to" id="price_to" class="form-control">
+                  <span id="form-middle">만 원</span>
+                </div>
+              </div>
+            </td>
+            <td style="width:15%" id="column"><center>최소계약기간</center></td>
+            <td>
+              <div class="form-inline">
+              <div class="col-md-5 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+                <input type="number"  style="float:left; padding:5px; max-width:50px;" id="least_contractbox" name="least_contract" class="form-control">
+                <span id="form-right">개월 이상</span>
+              </div>
+              <div class="col-md-5 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+                <label class="radio-inline" id="radio-right">
+                     <input type="checkbox" name="least_contract" id="least_contract" value="">해당없음
+                 </label>
+              </div>
+              </div>
+            </td>          
+          </tr>
+          
+          <tr>
+            <td style="width:15%" id="column"><center>관리비 별도</center></td>
+            <td colspan="3">
+              <div class="checkbox" style="padding-left:20px;">
+                <label style="margin-right:5px"><input type="checkbox" name="extra_price[]" value="" style="margin-top:12px">없음</label>
+                <label style="margin-right:5px"><input type="checkbox" name="extra_price[]" value="전기세" style="margin-top:12px">전기세</label>
+                <label style="margin-right:5px"><input type="checkbox" name="extra_price[]" value="수도세" style="margin-top:12px">수도세</label>
+                <label style="margin-right:5px"><input type="checkbox" name="extra_price[]" value="가스비" style="margin-top:12px">가스비</label>
+                <label style="margin-right:5px"><input type="checkbox" name="extra_price[]" value="인터넷" style="margin-top:12px">인터넷</label>
+              </div>
+            </td>
+          </tr>
+        </table>             
+      </div>
+    </div>
+  </div><!-- table2 끝row-->
+    
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
+      <div class="inline">
+        <img src="/option.png" style="height:40px; width:40px; margin-top:3px;"/>
+      </div>
+      <div class="inline" style="margin-top:0px">
+        <h4 style=" margin-top: 5px; margin-left: 5px;">옵션</h4>
+      </div>
+      <div class="inline" style="margin-top:0px">
+        <p style="color:#ff9682; margin-top: 10px; margin-left: 5px;">*항목에 없는 옵션을 3개까지 직접 추가할 수 있습니다.</h3>
+      </div>
+    </div>
+  </div><!--옵션 타이틀-->
+  
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="table-responsive">
+        <table class="table" style="width:100%">
+          <tr>
+            <td id="column" rowspan="2"><center>식사</center></td>
+            <td>
+              <div class="checkbox" style="padding-left:20px;">
+                <label style="margin-right:5px"><input type="checkbox" name="meal[]" value="아침" style="margin-top:12px">아침</label>
+                <label style="margin-right:5px"><input type="checkbox" name="meal[]" value="점심" style="margin-top:12px">점심</label>
+                <label style="margin-right:5px"><input type="checkbox" name="meal[]" value="저녁" style="margin-top:12px">저녁</label>
+                <label style="margin-right:5px"><input type="checkbox" name="meal[]" value="제공 안 함" style="margin-top:12px">제공 안 함</label>
+              </div>  
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-bottom:0px"><input type="text" style="margin-bottom:5px" name="meal_memo" class="form-control" placeholder="메모 ex) 주말 식사는 제공하지 않습니다."><br></td>
+          </tr>
+          <tr>
+            <td style="width:15%" id="column"><center>개인물품/시설</center></td>
+            <td colspan="3">
+              <div class="checkbox" style="padding-left:20px;">
+                <label style="margin-right:5px"><input type="checkbox" name="personal_option[]" value="침대" style="margin-top:12px">침대</label>
+                <label style="margin-right:5px"><input type="checkbox" name="personal_option[]" value="책상" style="margin-top:12px">책상</label>
+                <label style="margin-right:5px"><input type="checkbox" name="personal_option[]" value="옷장" style="margin-top:12px">옷장</label>
+                <label style="margin-right:5px"><input type="checkbox" name="personal_option[]" value="행거" style="margin-top:12px">행거</label>
+                <label style="margin-right:5px"><input type="checkbox" name="personal_option[]" value="수납장" style="margin-top:12px">수납장</label>
+                <label style="margin-right:5px"><input type="checkbox" name="personal_option[]" value="에어컨" style="margin-top:12px">에어컨</label>
+                <label style="margin-right:5px"><input type="checkbox" name="personal_option[]" value="TV" style="margin-top:12px">TV</label>
+                <label style="margin-right:5px"><input type="checkbox" name="personal_option[]" value="화장실" style="margin-top:12px">화장실</label>
+                <label style="margin-right:5px"><input type="checkbox" name="personal_option[]" value="샤워기" style="margin-top:12px">샤워기</label>
+                <br>
+                <label style="margin-right:5px"><input type="checkbox" name="personal_option[]" value="세탁기" style="margin-top:12px">세탁기</label>
+                <label style="margin-right:5px"><input type="checkbox" name="personal_option[]" value="냉장고" style="margin-top:12px">냉장고</label>
+                <label style="margin-right:5px"><input type="checkbox" name="personal_option[]" value="전자레인지" style="margin-top:12px">전자레인지</label>
+                <label style="margin-right:5px"><input type="checkbox" name="personal_option[]" value="가스레인지" style="margin-top:12px">가스레인지</label>
+                <label style="margin-right:5px"><input type="checkbox" name="personal_option[]" value="인덕션" style="margin-top:12px">인덕션</label>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                  <input type="text" style="margin-bottom:5px;" name="personal_option[]" class="form-control" placeholder="추가옵션1">
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                  <input type="text" style="margin-bottom:5px;" name="personal_option[]" class="form-control" placeholder="추가옵션2">
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                  <input type="text" style="margin-bottom:5px;" name="personal_option[]" class="form-control" placeholder="추가옵션3">
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="width:15%" id="column"><center>공동물품/시설</center></td>
+            <td colspan="3">
+              <div class="checkbox" style="padding-left:20px;">
+                    <label style="margin-right:5px"><input type="checkbox" name="common_option[]" value="중앙난방" style="margin-top:12px">중앙난방</label>
+                    <label style="margin-right:5px"><input type="checkbox" name="common_option[]" value="화장실" style="margin-top:12px">화장실</label>
+                    <label style="margin-right:5px"><input type="checkbox" name="common_option[]" value="샤워실" style="margin-top:12px">샤워실</label>
+                    <label style="margin-right:5px"><input type="checkbox" name="common_option[]" value="세탁실" style="margin-top:12px">세탁실</label>
+                    <label style="margin-right:5px"><input type="checkbox" name="common_option[]" value="세제" style="margin-top:12px">세제</label>
+                    <label style="margin-right:5px"><input type="checkbox" name="common_option[]" value="냉장고" style="margin-top:12px">냉장고</label>
+                    <label style="margin-right:5px"><input type="checkbox" name="common_option[]" value="전자레인지" style="margin-top:12px">전자레인지</label>
+                    <br>
+                    <label style="margin-right:5px"><input type="checkbox" name="common_option[]" value="가스레인지" style="margin-top:12px">가스레인지</label>
+                    <label style="margin-right:5px"><input type="checkbox" name="common_option[]" value="인덕션" style="margin-top:12px">인덕션</label>
+                    <label style="margin-right:5px"><input type="checkbox" name="common_option[]" value="정수기" style="margin-top:12px">정수기</label>
+              </div> 
+              <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                  <input type="text" style="margin-bottom:5px" name="common_option[]" class="form-control" placeholder="추가옵션1">
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                  <input type="text" style="margin-bottom:5px" name="common_option[]" class="form-control" placeholder="추가옵션2">
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                  <input type="text" style="margin-bottom:5px" name="common_option[]" class="form-control" placeholder="추가옵션3">
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="width:15%" id="column"><center>인터넷</center></td>
+            <td colspan="3">
+              <label class="radio-inline" style="margin-left:1em">
+                <input type="radio" name="internet" id="internet" value="와이파이" style="margin-top:0.8em">와이파이
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="internet" id="internet" value="유선인터넷" style="margin-top:0.8em">유선 인터넷
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="internet" id="internet" value="" style="margin-top:0.8em">없음
+              </label>
+            </td>
+          </tr>
+        </table><!--table3 끝-->
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
+      <div class="inline">
+        <img src="/pen.png" style="height:40px; width:40px; margin-top:3px"/>
+      </div>
+      <div class="inline" style="margin-top:0px">
+        <h4 style=" margin-top: 5px; margin-left: 5px;">상세설명</h4>
+      </div>
+    </div>
+  </div><!--상세설명 타이틀-->
+  
+  <textarea name='post_description' class="form-control" rows="10" placeholder="추가 설명을 해주세요. (ex. 채광, 교통, 주변 시설, 분위기 등)"></textarea>
+  
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
+      <div class="inline">
+        <img src="/Flat-UI-2.2.2/dist/img/icons/png/Clipboard.png" style="height:40px; width:40px; margin-top:3px;"/>
+      </div>
+      <div class="inline" style="margin-top:0px">
+        <h4 style=" margin-top: 5px; margin-left: 5px;">위치</h4>
+      </div>
+    </div>
+  </div><!--위치 타이틀-->
+  
+  <div class="table-responsive">
+    <table class="table" style="width:100%">
+   <!--주소 구간 -->
+      <tr>
+        <td id="column" style="width:15%"><center>주소</center></td>
+        <td colspan="1" style="width:40%">
+        <div class="col-md-12 col-sm-8 col-xs-8" style="margin:0px; padding:0px;">
+            <input style="width:85%" id="address" type="text" placeholder="주소 입력" class="form-control" name="address">
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px;">
+            <input class="btn btn-success" id="mapfind" type="button" value="주소 검색하기" >
+            <input class="btn btn-info" id="mapfindcheck" type="button" value="확인">
+        </div>
+            <input id="lat" type="number" step="any" name="lat" class="form-control" placeholder="위도" style="display:none">
+            <input id="lng" type="number" step="any" name="lng" class="form-control" placeholder="경도" style="display:none">
+        </td>
+        <td class="formap" colspan="2">
+          <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px;">
+            <div id="map-canvas">
+            </div>
+          </div>
+        </td>
+      </tr>
+      <!--위치 구간 끝-->
+      
+      <tr>
+        <td id="column" rowspan="2" style="width:15%"><center>거리</center></td>
+        <td colspan="3">
+          <p style="font-size:0.8em">하숙집에서 가장 가까운 학교를 선택하고, 해당 학교의 교문과의 거리를 입력해주세요.</p>
+          <p style="font-size:0.8em">학교를 선택하고, 문 버튼을 누르면 길찾기 페이지가 나옵니다.</p>
+          <p style="font-size:0.8em">해당 페이지에서 하숙집 주소를 출발지에 입력하고, 도보로 길찾기를 선택하여 나오는 시간과 거리를 입력하면 됩니다.</p>
+          <p style="font-size:0.8em; color:#E74C3C; font-weight:bold">*거리 정보는 중요한 검색 기준으로 사용되오니, 정확한 수치 기재를 부탁드립니다.</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+        <% for i in 1..3 %>
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
+            <div class="btn-group">
+                <select class="form-control" id="univ<%= i%>" name="univ_distance<%= i%>">
+                 <option selected>학교선택</option>
+                 <option value="서강">서강대학교</option>
+                 <option value="이화">이화여자대학교</option>
+                 <option value="연세">연세대학교</option>
+               </select>
+             </div>
+          
+        
+             <div class="btn-group">
+                <select class="form-control" id="sogang_gate<%= i%>" name="sogang_gate<%= i%>" style="display:none">
+                 <option selected>교문선택</option>
+                 <option value="정문" href="http://map.daum.net/?eX=486230&eY=1125571&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8">정문</option>
+                 <option value="후문" href="http://map.daum.net/?eX=487609&eY=1125346&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%ED%9B%84%EB%AC%B8">후문</option> 
+                 <option value="남문" href="http://map.daum.net/?eX=486525&eY=1124966&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%EB%82%A8%EB%AC%B8">남문</option>
+                 
+               </select>
+             </div>
+            <div class="btn-group">
+                <select class="form-control" id="ewha_gate<%= i%>" name="ewha_gate<%= i%>" style="display:none">
+                 <option selected>교문선택</option>
+                 <option value="정문" href="http://map.daum.net/?eX=487981&eY=1127879&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8">정문</option>
+                 <option value="후문" href="http://map.daum.net/?eX=487769&eY=1128887&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%ED%9B%84%EB%AC%B8">후문</option>
+                 <option value="서문" href="http://map.daum.net/?eX=487500&eY=1128080&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8">서문</option>
+                 <option value="북문" href="http://map.daum.net/?eX=488948&eY=1130185&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EB%B6%81%EB%AC%B8">북문</option>
+               </select>
+             </div>
+           
+             <div class="btn-group">
+                <select class="form-control" id="yonsei_gate<%= i%>" name="yonsei_gate<%= i%>" style="display:none">
+                 <option selected>교문선택</option>
+                 <option value="정문" href="http://map.daum.net/?eX=486048&eY=1128012&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8">정문</option>
+                 <option value="후문" href="#">후문</option>
+                 <option value="동문" href="#">동문</option>
+                 <option value="서문" href="http://map.daum.net/?eX=485406&eY=1128891&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8">서문</option>
+                 <option value="남문" href="http://map.daum.net/?eX=485249&eY=1128258&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EB%82%A8%EB%AC%B8">남문</option>
+               </select>
+             </div>
+             </div>
+             <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
+               <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
+                 <div class="form-inline">
+                    <span id="form-left">시간 :</span> 
+                    <input type="number" style="float:left; padding:5px; width:40%;" name="distance_time<%= i%>" class="form-control">
+                    <span id="form-right">분</span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
+                  <div class="form-inline">
+                    <span id="form-left">거리 :</span>
+                    <input type="number" style="float:left; padding:5px; width:40%;" name="distance<%= i%>" class="form-control">
+                    <span id="form-right">m</span>
+                  </div>
+                </div>
+              </div>
+          </div>
+        <% end %>
+          
+        </td>
+      </tr>
+  </table>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px; margin-bottom:10px;">
+      <div class="inline">
+        <img src="/picture.png" style="height:40px; width:40px; margin-top:3px"/>
+      </div>
+      <div class="inline" style="margin-top:0px">
+        <h4 style=" margin-top: 5px; margin-left: 5px;">사진</h4>
+      </div>
+    </div>
+  </div><!--사진 타이틀-->    
+      
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:5px;">
+      <div class="inline" style="margin-top:2px; width:10px; height:30px; background-color:#d5eaaa"></div>
+      <div class="inline" style="margin-top:0px">
+          <h5 style="margin-top:0px; margin-left:5px">방</h5>
+        </div>
+    </div><!--소제목 방-->
+  </div>
+  
+  
+  <div class="row" style="padding:15px; background-color:#f2f2f2; border:1px solid #dbdbdb">
+    <% for i in 1..8 %>
+    <div class="col-md-3 col-sm-4 col-xs-12">
+      <div class="image-upload" style="height:7em">
+        <input type="file" name="room_img[]" id="file-input<%= i%>" class="file-input<%= i%>">
+        <div class="img-thumbnail" style="width: 100%; height: 7em;">
+          <span class="fui-cross-circle cross<%= i%>" style="display:none; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
+          <label for="file-input<%= i%>" id="labelinput<%= i%>" style="margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
+            <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
+          </label>
+          <img style="width:9.75em; height:6.4em; display:none; position: absolute; z-index:1" id="file-preview<%= i%>" src="#"/>
+        </div>
+      </div>  
+      <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px">
+        <div class="form-group form-inline">
+           <label style="float: left; margin-top: 1em; margin-right: 0.5em;">월세</label>
+           <input type="number" name="room_price[]" class="form-control" style="width: 40%;float: left;padding: 5px;">
+           <span style="font-size: 0.8em;float: left;margin-top: 1.4em;margin-left: 0.5em;">만 원</span>
+      </div>
+           <textarea row="2" name="room_description[]" class="form-control" placeholder="방 설명(선택)" style="width:100%"/></textarea>
+        </div>
+      
+    </div>
+    <% end %>
+    </div><!--방사진 끝-->
+      
+      
+      
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:20px; margin-bottom:5px;">
+      <div class="inline" style="margin-top:2px; width:10px; height:30px; background-color:#d5eaaa"></div>
+      <div class="inline" style="margin-top:0px">
+          <h5 style="margin-top:0px; margin-left:5px">공동시설</h5>
+        </div>
+      </div><!--소제목 공동시설-->
+  </div>
+    
+  <div class="row" style="padding:15px; background-color:#f2f2f2; border:1px solid #dbdbdb">
+  <!--배경색-->
+  <% for i  in 9..12 %>
+    <div class="col-md-3 col-sm-4 col-xs-12">
+      <div class="image-upload" style="height:7em">
+        <input type="file" name="common_img[]" id="file-input<%= i%>" class="file-input<%= i%>">
+        <div class="img-thumbnail" style="width: 100%; height: 7em;">
+          <span class="fui-cross-circle cross<%= i%>" style="display:none; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
+          <label for="file-input<%= i%>" id="labelinput<%= i%>" style="margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
+            <span class="fui-plus-circle" style="cursor:pointer; font-size:45px; color:#27AE60;" aria-hidden="true"></span>
+          </label>
+          <img style="width:9.75em; height:6.4em; display:none; position: absolute; z-index:1" id="file-preview<%= i%>" src="#"/>
+        </div>
+      </div>  
+    </div>
+  <% end %>
+  </div><!--공동사진 끝-->
+     
+
+      
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:20px; margin-bottom:5px;">
+      <div class="inline" style="margin-top:2px; width:10px; height:30px; background-color:#d5eaaa"></div>
+      <div class="inline" style="margin-top:0px">
+          <h5 style="margin-top:0px; margin-left:5px">식사<span style="color:#9C9C9C">(선택)</span></h5>
+        </div>
+    </div><!--소제목 식사-->
+  </div>
+  
+    <div class="row" style="padding:15px; background-color:#f2f2f2; border:1px solid #dbdbdb">
+    <!--배경색-->
+    <% for i in 13..16 %>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+      <div class="image-upload" style="height:7em">
+        <input type="file" name="meal_img[]" id="file-input<%= i%>" class="file-input<%= i%>">
+        <div class="img-thumbnail" style="width: 100%; height: 7em;">
+          <span class="fui-cross-circle cross<%= i%>" style="display:none; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
+          <label for="file-input<%= i%>" id="labelinput<%= i%>" style="margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
+            <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
+          </label>
+          <img style="width:9.75em; height:6.4em; display:none; position: absolute; z-index:1" id="file-preview<%= i%>" src="#"/>
+        </div>
+      </div>  
+    </div>
+    <% end %>
+    </div><!--식사 사진 끝-->
+    
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:20px; margin-bottom:5px;">
+      <div class="inline" style="margin-top:2px; width:10px; height:30px; background-color:#d5eaaa"></div>
+      <div class="inline" style="margin-top:0px">
+          <h5 style="margin-top:0px; margin-left:5px; color:#E74C3C;">첫 달 할인 제도<span style="color:#9C9C9C">(선택)</span></h5>
+        </div>
+    </div><!--소제목 할인 제도-->
+  </div>
+  <!--할인제도 내용-->
+  <div class="row" style="padding:15px; background-color:#f2f2f2; border:1px solid #dbdbdb">
+    <p style="font-size:0.9em; margin-bottom:5px">첫 번째 달에 할인을 선택하실 경우, 할인율에 따라 하숙집이 검색결과 상위에 노출되도록 하고 있습니다.</p>
+    <p style="font-size:0.8em; color:#9C9C9C">할인율은 최저가 방 가격과 최고가 방 가격의 평균을 기준으로  계산되고, 소수 첫 째 자리에서 반올림됩니다.</p>
+    <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+      <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
+      <div class="form-inline">
+        <span id="form-left" style="margin-top:1.5em">금액 :</span> 
+        <input type="number" style="float:left; padding:5px; width:40%;" id="discount_price" name="discount_price" class="form-control">
+        <span id="form-right" style="margin-top:1.5em">원</span>
+      </div>
+      <div style="float:left">
+      <input class="btn btn-warning" id="calculateBtn" type="button" value="할인율 계산하기" style="margin-left: 10px; margin-top: 10px;">
+      </div>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
+      <div class="form-inline">
+        <span id="form-left" style="margin-top:1.5em; margin-left:1em">할인율 :</span> 
+        <input type="number" style="float:left; padding:5px; width:40%;" id="discount_rate" name="discount_rate" class="form-control">
+        <span id="form-right" style="margin-top:1.5em">%</span>
+      </div>
+    
+      <label class="radio-inline" id="radio-right">
+         <input type="checkbox" name="discount_rate" id="discount_radio" value="">해당없음
+      </label>
+      </div>
+    </div>
+  </div> <!--할인제도 끝-->
+      <center style="margin-top:40px; margin-bottom:20px;"><input type="submit" value="등록하기" class="btn btn-success btn-lg"></center>
+    </form>
+  
+    </div>
+  </div>
+  </div>
+ 
+
+
+<script type="text/javascript">
+
+        
+$(document).ready(function(){
+$("#calculateBtn").click(function(){
+
+    var price_from =$("#price_from").val();
+    var price_to =$("#price_to").val();
+    price_from = price_from*10000;
+    price_to = price_to*10000;
+    price_avg = (price_from + price_to)/2
+    
+    var discount_price =$("#discount_price").val();
+    
+    if (price_avg != 0 && discount_price != 0) {
+      $.ajax({
+        url: "/register/create",
+        data: { price_avg, discount_price },
+        success: function(data){
+          var rate = (discount_price/price_avg)*100;
+          rate= Math.round(rate);
+          $("#discount_rate").val(rate);
+          
+          alert("확인되었습니다.");
+        }
+      });
+    } else {
+    alert('정보를 온전히 입력하지 않았습니다. 월세와 할인 금액을 확인해주세요.');
+    }
+  });
+});
+//툴팁 - 종류 설명
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover({
+      html : true,
+      content: function() {
+      return $('#popover_content_wrapper').html();
+      }
+    });
+});
+
+//이미지 1번
+function readURL1(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview1").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview1").css("display", "block");
+        $("#labelinput1").css("display", "none");
+        $(".cross1").css("display", "block");
+    }
+}
+$(".cross1").click(function() {
+  var $image = $('#file-preview1');
+  $('#file-preview1').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview1").css("display", "none");
+  $("#labelinput1").css("display", "block");
+  $("#labelinput1").css("z-index", "2");
+});
+
+
+
+//이미지 2번
+function readURL2(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview2").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview2").css("display", "block");
+        $("#labelinput2").css("display", "none");
+        $(".cross2").css("display", "block");
+    }
+}
+$(".cross2").click(function() {
+  var $image = $('#file-preview2');
+  $('#file-preview2').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview2").css("display", "none");
+  $("#labelinput2").css("display", "block");
+  $("#labelinput2").css("z-index", "2");
+});
+
+//이미지 3번
+function readURL3(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview3").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview3").css("display", "block");
+        $("#labelinput3").css("display", "none");
+        $(".cross3").css("display", "block");
+    }
+}
+$(".cross3").click(function() {
+  var $image = $('#file-preview3');
+  $('#file-preview3').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview3").css("display", "none");
+  $("#labelinput3").css("display", "block");
+  $("#labelinput3").css("z-index", "2");
+});
+//이미지 4번
+function readURL4(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview4").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview4").css("display", "block");
+        $("#labelinput4").css("display", "none");
+        $(".cross4").css("display", "block");
+    }
+}
+
+$(".cross4").click(function() {
+  var $image = $('#file-preview4');
+  $('#file-preview4').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview4").css("display", "none");
+  $("#labelinput4").css("display", "block");
+  $("#labelinput4").css("z-index", "2");
+});
+
+//이미지 5번
+function readURL5(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview5").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview5").css("display", "block");
+        $("#labelinput5").css("display", "none");
+        $(".cross5").css("display", "block");
+    }
+}
+$(".cross5").click(function() {
+  var $image = $('#file-preview5');
+  $('#file-preview5').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview5").css("display", "none");
+  $("#labelinput5").css("display", "block");
+  $("#labelinput5").css("z-index", "2");
+});
+//이미지 6번
+function readURL6(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview6").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview6").css("display", "block");
+        $("#labelinput6").css("display", "none");
+        $(".cross6").css("display", "block");
+    }
+}
+$(".cross6").click(function() {
+  var $image = $('#file-preview6');
+  $('#file-preview6').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview6").css("display", "none");
+  $("#labelinput6").css("display", "block");
+  $("#labelinput6").css("z-index", "2");
+});
+//이미지 7번
+function readURL7(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview7").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview7").css("display", "block");
+        $("#labelinput7").css("display", "none");
+        $(".cross7").css("display", "block");
+    }
+}
+$(".cross7").click(function() {
+  var $image = $('#file-preview7');
+  $('#file-preview7').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview7").css("display", "none");
+  $("#labelinput7").css("display", "block");
+  $("#labelinput7").css("z-index", "2");
+});
+//이미지 8번
+function readURL8(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview8").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview8").css("display", "block");
+        $("#labelinput8").css("display", "none");
+        $(".cross8").css("display", "block");
+    }
+}
+$(".cross8").click(function() {
+  var $image = $('#file-preview8');
+  $('#file-preview8').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview8").css("display", "none");
+  $("#labelinput8").css("display", "block");
+  $("#labelinput8").css("z-index", "2");
+});
+//이미지 9번
+function readURL9(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview9").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview9").css("display", "block");
+        $("#labelinput9").css("display", "none");
+        $(".cross9").css("display", "block");
+    }
+}
+$(".cross9").click(function() {
+  var $image = $('#file-preview9');
+  $('#file-preview9').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview9").css("display", "none");
+  $("#labelinput9").css("display", "block");
+  $("#labelinput9").css("z-index", "2");
+});
+//이미지 10번
+function readURL10(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview10").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview10").css("display", "block");
+        $("#labelinput10").css("display", "none");
+        $(".cross10").css("display", "block");
+    }
+}
+$(".cross10").click(function() {
+  var $image = $('#file-preview10');
+  $('#file-preview10').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview10").css("display", "none");
+  $("#labelinput10").css("display", "block");
+  $("#labelinput10").css("z-index", "2");
+});
+//이미지 11번
+function readURL11(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview11").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview11").css("display", "block");
+        $("#labelinput11").css("display", "none");
+        $(".cross11").css("display", "block");
+    }
+}
+$(".cross11").click(function() {
+  var $image = $('#file-preview11');
+  $('#file-preview11').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview11").css("display", "none");
+  $("#labelinput11").css("display", "block");
+  $("#labelinput11").css("z-index", "2");
+});
+//이미지 12번
+function readURL12(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview12").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview12").css("display", "block");
+        $("#labelinput12").css("display", "none");
+        $(".cross12").css("display", "block");
+    }
+}
+$(".cross12").click(function() {
+  var $image = $('#file-preview12');
+  $('#file-preview12').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview12").css("display", "none");
+  $("#labelinput12").css("display", "block");
+  $("#labelinput12").css("z-index", "2");
+});
+//이미지 13번
+function readURL13(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview13").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview13").css("display", "block");
+        $("#labelinput13").css("display", "none");
+        $(".cross13").css("display", "block");
+    }
+}
+$(".cross13").click(function() {
+  var $image = $('#file-preview13');
+  $('#file-preview13').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview13").css("display", "none");
+  $("#labelinput13").css("display", "block");
+  $("#labelinput13").css("z-index", "2");
+});
+//이미지 14번
+function readURL14(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview14").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview14").css("display", "block");
+        $("#labelinput14").css("display", "none");
+        $(".cross14").css("display", "block");
+    }
+}
+$(".cross14").click(function() {
+  var $image = $('#file-preview14');
+  $('#file-preview14').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview14").css("display", "none");
+  $("#labelinput14").css("display", "block");
+  $("#labelinput14").css("z-index", "2");
+});
+//이미지 15번
+function readURL15(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview15").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview15").css("display", "block");
+        $("#labelinput15").css("display", "none");
+        $(".cross15").css("display", "block");
+    }
+}
+$(".cross15").click(function() {
+  var $image = $('#file-preview15');
+  $('#file-preview15').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview15").css("display", "none");
+  $("#labelinput15").css("display", "block");
+  $("#labelinput15").css("z-index", "2");
+});
+//이미지 16번
+function readURL16(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $("#file-preview16").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        $("#file-preview16").css("display", "block");
+        $("#labelinput16").css("display", "none");
+        $(".cross16").css("display", "block");
+    }
+}
+$(".cross16").click(function() {
+  var $image = $('#file-preview16');
+  $('#file-preview16').removeAttr('src').replaceWith($image.clone());
+  $(this).css("display", "none");
+  $("#file-preview16").css("display", "none");
+  $("#labelinput16").css("display", "block");
+  $("#labelinput16").css("z-index", "2");
+});
+  
+  
+  $("#file-input1").change(function(){readURL1(this);});
+  $("#file-input2").change(function(){readURL2(this);});
+  $("#file-input3").change(function(){readURL3(this);});
+  $("#file-input4").change(function(){readURL4(this);});
+  $("#file-input5").change(function(){readURL5(this);});
+  $("#file-input6").change(function(){readURL6(this);});
+  $("#file-input7").change(function(){readURL7(this);});
+  $("#file-input8").change(function(){readURL8(this);});
+  $("#file-input9").change(function(){readURL9(this);});
+  $("#file-input10").change(function(){readURL10(this);});
+  $("#file-input11").change(function(){readURL11(this);});
+  $("#file-input12").change(function(){readURL12(this);});
+  $("#file-input13").change(function(){readURL13(this);});
+  $("#file-input14").change(function(){readURL14(this);});
+  $("#file-input15").change(function(){readURL15(this);});
+  $("#file-input16").change(function(){readURL16(this);});
+  
+  
+  
+  //학교 선택 지도 링크 나오기
+  $(document).ready(function(){
+    
+    $('#univ1').on('change', function (e) {
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+
+    if (valueSelected == "서강") {
+      $("#sogang_gate1").css("display", "block");
+      $("#yonsei_gate1").css("display", "none");
+      $("#ewha_gate1").css("display", "none");
+    } else if ( valueSelected == "이화") {
+      $("#ewha_gate1").css("display", "block");
+      $("#sogang_gate1").css("display", "none");
+      $("#yonsei_gate1").css("display", "none");
+    } else if ( valueSelected == "연세") {
+      $("#yonsei_gate1").css("display", "block");
+      $("#ewha_gate1").css("display", "none");
+      $("#sogang_gate1").css("display", "none");
+    }
+    });
+    $('#univ2').on('change', function (e) {
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+    
+    if (valueSelected == "서강") {
+      $("#sogang_gate2").css("display", "block");
+      $("#yonsei_gate2").css("display", "none");
+      $("#ewha_gate2").css("display", "none");
+    } else if ( valueSelected == "이화") {
+      $("#ewha_gate2").css("display", "block");
+      $("#sogang_gate2").css("display", "none");
+      $("#yonsei_gate2").css("display", "none");
+    } else if ( valueSelected == "연세") {
+      $("#yonsei_gate2").css("display", "block");
+      $("#ewha_gate2").css("display", "none");
+      $("#sogang_gate2").css("display", "none");
+    }
+    });
+    $('#univ3').on('change', function (e) {
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+    
+    if (valueSelected == "서강") {
+      $("#sogang_gate3").css("display", "block");
+      $("#yonsei_gate3").css("display", "none");
+      $("#ewha_gate3").css("display", "none");
+    } else if ( valueSelected == "이화") {
+      $("#ewha_gate3").css("display", "block");
+      $("#sogang_gate3").css("display", "none");
+      $("#yonsei_gate3").css("display", "none");
+    } else if ( valueSelected == "연세") {
+      $("#yonsei_gate3").css("display", "block");
+      $("#ewha_gate3").css("display", "none");
+      $("#sogang_gate3").css("display", "none");
+    }
+    });
+  });
+  
+
+  document.getElementById('sogang_gate1').onchange = function() {
+    window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
+  }
+  document.getElementById('sogang_gate2').onchange = function() {
+    window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
+  }
+  document.getElementById('sogang_gate3').onchange = function() {
+    window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
+  }
+  document.getElementById('ewha_gate1').onchange = function() {
+    window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
+  }
+  document.getElementById('ewha_gate2').onchange = function() {
+    window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
+  }
+  document.getElementById('ewha_gate3').onchange = function() {
+    window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
+  }
+  document.getElementById('yonsei_gate1').onchange = function() {
+    window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
+  }
+  document.getElementById('yonsei_gate2').onchange = function() {
+    window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank'); 
+  }
+  document.getElementById('yonsei_gate3').onchange = function() {
+    window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
+  }
+  
+
+  $(document).ready(function(){
+    
+    $(function() {
+          enable_cc();
+          $("#remodeling").click(enable_cc);
+        });
+        
+        function enable_cc() {
+          if (this.checked) {
+            $("#remodelingbox").prop("disabled", true);
+            
+          } else {
+            $("#remodelingbox").removeAttr("disabled");
+            
+          }
+        }
+    $(function() {
+          enable_cd();
+          $("#small_deposit").click(enable_cd);
+        });
+        
+        function enable_cd() {
+          if (this.checked) {
+            $("#small_depositbox").prop("disabled", true);
+            
+          } else {
+            $("#small_depositbox").removeAttr("disabled");
+            
+          }
+        }
+        
+    $(function() {
+          enable_ce();
+          $("#big_deposit").click(enable_ce);
+        });
+        
+        function enable_ce() {
+          if (this.checked) {
+            $("#big_depositbox").prop("disabled", true);
+            
+          } else {
+            $("#big_depositbox").removeAttr("disabled");
+            
+          }
+        }
+        
+    $(function() {
+          enable_cb();
+          $("#discount_radio").click(enable_cb);
+        });
+        
+        function enable_cb() {
+          if (this.checked) {
+            $("#discount_price").prop("disabled", true);
+            $("#discount_rate").prop("disabled", true);
+          } else {
+            $("#discount_price").removeAttr("disabled");
+            $("#discount_rate").removeAttr("disabled");
+          }
+        }
+     $(function() {
+          enable_ck();
+          $("#least_contract").click(enable_ck);
+        });
+        
+        function enable_ck() {
+          if (this.checked) {
+            $("#least_contractbox").prop("disabled", true);
+            
+          } else {
+            $("#least_contractbox").removeAttr("disabled");
+            
+          }
+        }    
+        
+        
+        $(".fui-plus-circle").mouseover(function() {
+          $(this).css("color", "#E67E22");
+        });
+        
+        $(".fui-plus-circle").mouseout(function() {
+          $(this).css("color", "#27AE60");
+        });
+        
+        $(".fui-question-circle").mouseover(function() {
+          $(this).css("color", "#E67E22");
+        });
+        
+        $(".fui-question-circle").mouseout(function() {
+          $(this).css("color", "#27AE60");
+        });
+  });
+</script>
+</body>
