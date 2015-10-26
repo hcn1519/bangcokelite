@@ -1,8 +1,7 @@
-Rails.application.routes.url_helpers
+ 
 class CustomFailure < Devise::FailureApp
-    
     def redirect_url
-       request.original_url
+        root_path    
     end
 
     # You need to override respond to eliminate recall
