@@ -10,4 +10,11 @@
   <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
 <% end %>
 
-<li><%= link_to "leavepage", "/check/leavepage", :class => 'btn btn-small' %></li>
+<li><%= link_to "LeavePage", "/check/leavepage", :class => 'btn btn-small' %></li>
+
+<!--How to pop up login modal-->
+<% if !user_signed_in? %>
+  <li><%= link_to "NeedLogin", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+<% else %>
+  <li><%= link_to "NeedLogin", "/check/needlogin", :class => 'btn btn-small', :id => 'needlogin' %></li>
+<% end %>
