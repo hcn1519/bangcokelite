@@ -1,0 +1,253 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Hasuk Houses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hasuk name</th>
+      <th>Celphone</th>
+      <th>Telphone</th>
+      <th>Memo</th>
+      <th>Hasuk kind</th>
+      <th>Gender</th>
+      <th>Size from</th>
+      <th>Size to</th>
+      <th>Floor from</th>
+      <th>Floor to</th>
+      <th>Building age</th>
+      <th>Remodeling</th>
+      <th>Small deposit</th>
+      <th>Big deposit</th>
+      <th>Price from</th>
+      <th>Price to</th>
+      <th>Least contract</th>
+      <th>Extra price1</th>
+      <th>Extra price2</th>
+      <th>Extra price3</th>
+      <th>Extra price4</th>
+      <th>Extra price5</th>
+      <th>Meal1</th>
+      <th>Meal2</th>
+      <th>Meal3</th>
+      <th>Meal4</th>
+      <th>Meal memo</th>
+      <th>Personal option1</th>
+      <th>Personal option2</th>
+      <th>Personal option3</th>
+      <th>Personal option4</th>
+      <th>Personal option5</th>
+      <th>Personal option6</th>
+      <th>Personal option7</th>
+      <th>Personal option8</th>
+      <th>Personal option9</th>
+      <th>Personal option10</th>
+      <th>Personal option11</th>
+      <th>Personal option12</th>
+      <th>Personal option13</th>
+      <th>Personal option14</th>
+      <th>Personal option15</th>
+      <th>Personal option16</th>
+      <th>Personal option17</th>
+      <th>Common option1</th>
+      <th>Common option2</th>
+      <th>Common option3</th>
+      <th>Common option4</th>
+      <th>Common option5</th>
+      <th>Common option6</th>
+      <th>Common option7</th>
+      <th>Common option8</th>
+      <th>Common option9</th>
+      <th>Common option10</th>
+      <th>Common option11</th>
+      <th>Common option12</th>
+      <th>Common option13</th>
+      <th>Internet</th>
+      <th>Post description</th>
+      <th>Address</th>
+      <th>Lat</th>
+      <th>Lng</th>
+      <th>Univ distance1</th>
+      <th>Univ distance2</th>
+      <th>Univ distance3</th>
+      <th>Sogang gate1</th>
+      <th>Sogang gate2</th>
+      <th>Sogang gate3</th>
+      <th>Ewha gate1</th>
+      <th>Ewha gate2</th>
+      <th>Ewha gate3</th>
+      <th>Yonsei gate1</th>
+      <th>Yonsei gate2</th>
+      <th>Yonsei gate3</th>
+      <th>Distance time1</th>
+      <th>Distance time2</th>
+      <th>Distance time3</th>
+      <th>Distance1</th>
+      <th>Distance2</th>
+      <th>Distance3</th>
+      <th>Room img1</th>
+      <th>Room img2</th>
+      <th>Room img3</th>
+      <th>Room img4</th>
+      <th>Room img5</th>
+      <th>Room img6</th>
+      <th>Room img7</th>
+      <th>Room img8</th>
+      <th>Room price1</th>
+      <th>Room price2</th>
+      <th>Room price3</th>
+      <th>Room price4</th>
+      <th>Room price5</th>
+      <th>Room price6</th>
+      <th>Room price7</th>
+      <th>Room price8</th>
+      <th>Room description1</th>
+      <th>Room description2</th>
+      <th>Room description3</th>
+      <th>Room description4</th>
+      <th>Room description5</th>
+      <th>Room description6</th>
+      <th>Room description7</th>
+      <th>Room description8</th>
+      <th>Common img1</th>
+      <th>Common img2</th>
+      <th>Common img3</th>
+      <th>Common img4</th>
+      <th>Meal img1</th>
+      <th>Meal img2</th>
+      <th>Meal img3</th>
+      <th>Meal img4</th>
+      <th>Discount price</th>
+      <th>Discount rate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hasuk_houses.each do |hasuk_house| %>
+      <tr>
+        <td><%= hasuk_house.hasuk_name %></td>
+        <td><%= hasuk_house.celPhone %></td>
+        <td><%= hasuk_house.telPhone %></td>
+        <td><%= hasuk_house.memo %></td>
+        <td><%= hasuk_house.hasuk_kind %></td>
+        <td><%= hasuk_house.gender %></td>
+        <td><%= hasuk_house.size_from %></td>
+        <td><%= hasuk_house.size_to %></td>
+        <td><%= hasuk_house.floor_from %></td>
+        <td><%= hasuk_house.floor_to %></td>
+        <td><%= hasuk_house.building_age %></td>
+        <td><%= hasuk_house.remodeling %></td>
+        <td><%= hasuk_house.small_deposit %></td>
+        <td><%= hasuk_house.big_deposit %></td>
+        <td><%= hasuk_house.price_from %></td>
+        <td><%= hasuk_house.price_to %></td>
+        <td><%= hasuk_house.least_contract %></td>
+        <td><%= hasuk_house.extra_price1 %></td>
+        <td><%= hasuk_house.extra_price2 %></td>
+        <td><%= hasuk_house.extra_price3 %></td>
+        <td><%= hasuk_house.extra_price4 %></td>
+        <td><%= hasuk_house.extra_price5 %></td>
+        <td><%= hasuk_house.meal1 %></td>
+        <td><%= hasuk_house.meal2 %></td>
+        <td><%= hasuk_house.meal3 %></td>
+        <td><%= hasuk_house.meal4 %></td>
+        <td><%= hasuk_house.meal_memo %></td>
+        <td><%= hasuk_house.personal_option1 %></td>
+        <td><%= hasuk_house.personal_option2 %></td>
+        <td><%= hasuk_house.personal_option3 %></td>
+        <td><%= hasuk_house.personal_option4 %></td>
+        <td><%= hasuk_house.personal_option5 %></td>
+        <td><%= hasuk_house.personal_option6 %></td>
+        <td><%= hasuk_house.personal_option7 %></td>
+        <td><%= hasuk_house.personal_option8 %></td>
+        <td><%= hasuk_house.personal_option9 %></td>
+        <td><%= hasuk_house.personal_option10 %></td>
+        <td><%= hasuk_house.personal_option11 %></td>
+        <td><%= hasuk_house.personal_option12 %></td>
+        <td><%= hasuk_house.personal_option13 %></td>
+        <td><%= hasuk_house.personal_option14 %></td>
+        <td><%= hasuk_house.personal_option15 %></td>
+        <td><%= hasuk_house.personal_option16 %></td>
+        <td><%= hasuk_house.personal_option17 %></td>
+        <td><%= hasuk_house.common_option1 %></td>
+        <td><%= hasuk_house.common_option2 %></td>
+        <td><%= hasuk_house.common_option3 %></td>
+        <td><%= hasuk_house.common_option4 %></td>
+        <td><%= hasuk_house.common_option5 %></td>
+        <td><%= hasuk_house.common_option6 %></td>
+        <td><%= hasuk_house.common_option7 %></td>
+        <td><%= hasuk_house.common_option8 %></td>
+        <td><%= hasuk_house.common_option9 %></td>
+        <td><%= hasuk_house.common_option10 %></td>
+        <td><%= hasuk_house.common_option11 %></td>
+        <td><%= hasuk_house.common_option12 %></td>
+        <td><%= hasuk_house.common_option13 %></td>
+        <td><%= hasuk_house.internet %></td>
+        <td><%= hasuk_house.post_description %></td>
+        <td><%= hasuk_house.address %></td>
+        <td><%= hasuk_house.lat %></td>
+        <td><%= hasuk_house.lng %></td>
+        <td><%= hasuk_house.univ_distance1 %></td>
+        <td><%= hasuk_house.univ_distance2 %></td>
+        <td><%= hasuk_house.univ_distance3 %></td>
+        <td><%= hasuk_house.sogang_gate1 %></td>
+        <td><%= hasuk_house.sogang_gate2 %></td>
+        <td><%= hasuk_house.sogang_gate3 %></td>
+        <td><%= hasuk_house.ewha_gate1 %></td>
+        <td><%= hasuk_house.ewha_gate2 %></td>
+        <td><%= hasuk_house.ewha_gate3 %></td>
+        <td><%= hasuk_house.yonsei_gate1 %></td>
+        <td><%= hasuk_house.yonsei_gate2 %></td>
+        <td><%= hasuk_house.yonsei_gate3 %></td>
+        <td><%= hasuk_house.distance_time1 %></td>
+        <td><%= hasuk_house.distance_time2 %></td>
+        <td><%= hasuk_house.distance_time3 %></td>
+        <td><%= hasuk_house.distance1 %></td>
+        <td><%= hasuk_house.distance2 %></td>
+        <td><%= hasuk_house.distance3 %></td>
+        <td><%= hasuk_house.room_img1 %></td>
+        <td><%= hasuk_house.room_img2 %></td>
+        <td><%= hasuk_house.room_img3 %></td>
+        <td><%= hasuk_house.room_img4 %></td>
+        <td><%= hasuk_house.room_img5 %></td>
+        <td><%= hasuk_house.room_img6 %></td>
+        <td><%= hasuk_house.room_img7 %></td>
+        <td><%= hasuk_house.room_img8 %></td>
+        <td><%= hasuk_house.room_price1 %></td>
+        <td><%= hasuk_house.room_price2 %></td>
+        <td><%= hasuk_house.room_price3 %></td>
+        <td><%= hasuk_house.room_price4 %></td>
+        <td><%= hasuk_house.room_price5 %></td>
+        <td><%= hasuk_house.room_price6 %></td>
+        <td><%= hasuk_house.room_price7 %></td>
+        <td><%= hasuk_house.room_price8 %></td>
+        <td><%= hasuk_house.room_description1 %></td>
+        <td><%= hasuk_house.room_description2 %></td>
+        <td><%= hasuk_house.room_description3 %></td>
+        <td><%= hasuk_house.room_description4 %></td>
+        <td><%= hasuk_house.room_description5 %></td>
+        <td><%= hasuk_house.room_description6 %></td>
+        <td><%= hasuk_house.room_description7 %></td>
+        <td><%= hasuk_house.room_description8 %></td>
+        <td><%= hasuk_house.common_img1 %></td>
+        <td><%= hasuk_house.common_img2 %></td>
+        <td><%= hasuk_house.common_img3 %></td>
+        <td><%= hasuk_house.common_img4 %></td>
+        <td><%= hasuk_house.meal_img1 %></td>
+        <td><%= hasuk_house.meal_img2 %></td>
+        <td><%= hasuk_house.meal_img3 %></td>
+        <td><%= hasuk_house.meal_img4 %></td>
+        <td><%= hasuk_house.discount_price %></td>
+        <td><%= hasuk_house.discount_rate %></td>
+        <td><%= link_to 'Show', hasuk_house %></td>
+        <td><%= link_to 'Edit', edit_hasuk_house_path(hasuk_house) %></td>
+        <td><%= link_to 'Destroy', hasuk_house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hasuk house', new_hasuk_house_path %>
