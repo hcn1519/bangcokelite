@@ -1,11 +1,13 @@
 <%# add navigation links to this file %>
 <% if user_signed_in? %>
-  <li><%= link_to '관리', users_path %></li>
+  <li><%= link_to "방 등록하기", "/hasuk_houses", :class => 'btn btn-small' %></li>
   <li><%= link_to '회원정보수정', "#edit", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+  <li><%= link_to '유저 관리', users_path %></li>
   <li><%= link_to '로그아웃', destroy_user_session_path, :method=>'delete' %></li>
 <% else %>
   <!--<li><%#= link_to '로그인', new_user_session_path %></li>
   <li><%#= link_to '회원가입', new_user_registration_path %></li>-->
+  <li><%= link_to "방 등록하기", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
   <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
   <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
 <% end %>
@@ -14,8 +16,8 @@
 <!--How to pop up login modal-->
 <% if !user_signed_in? %>
  <!--로그인 안 된 상태 -->
-  <li><%= link_to "방 등록하기", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+  
 <% else %>
 <!--로그인 한 상태 -->
-  <li><%= link_to "방 등록하기", "/hasuk_houses/new", :class => 'btn btn-small' %></li>
+  
 <% end %>
