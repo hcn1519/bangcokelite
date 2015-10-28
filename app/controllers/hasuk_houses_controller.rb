@@ -1,10 +1,11 @@
 class HasukHousesController < ApplicationController
   before_action :set_hasuk_house, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!
   # GET /hasuk_houses
   # GET /hasuk_houses.json
   def index
-    @hasuk_houses = HasukHouse.all
+    @hasuk_houses = current_user.hasuk_houses
+
   end
 
   # GET /hasuk_houses/1
@@ -14,7 +15,7 @@ class HasukHousesController < ApplicationController
 
   # GET /hasuk_houses/new
   def new
-    @hasuk_house = HasukHouse.new
+    @hasuk_house = current_user.hasuk_houses.build
   end
 
   # GET /hasuk_houses/1/edit
@@ -24,11 +25,12 @@ class HasukHousesController < ApplicationController
   # POST /hasuk_houses
   # POST /hasuk_houses.json
   def create
-    @hasuk_house = HasukHouse.new(hasuk_house_params)
+    @hasuk_house = current_user.hasuk_houses.build(hasuk_house_params)
+    @hasuk_house.user_id = current_user.id
 
     respond_to do |format|
       if @hasuk_house.save
-        format.html { redirect_to @hasuk_house, notice: 'Hasuk house was successfully created.' }
+        format.html { redirect_to @hasuk_house, notice: '성공적으로 등록되었습니다.' }
         format.json { render :show, status: :created, location: @hasuk_house }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class HasukHousesController < ApplicationController
   def update
     respond_to do |format|
       if @hasuk_house.update(hasuk_house_params)
-        format.html { redirect_to @hasuk_house, notice: 'Hasuk house was successfully updated.' }
+        format.html { redirect_to @hasuk_house, notice: '성공적으로 업데이트되었습니다.' }
         format.json { render :show, status: :ok, location: @hasuk_house }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class HasukHousesController < ApplicationController
   def destroy
     @hasuk_house.destroy
     respond_to do |format|
-      format.html { redirect_to hasuk_houses_url, notice: 'Hasuk house was successfully destroyed.' }
+      format.html { redirect_to hasuk_houses_url, notice: '삭제되었습니다.' }
       format.json { head :no_content }
     end
   end

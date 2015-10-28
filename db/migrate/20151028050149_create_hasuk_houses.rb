@@ -1,6 +1,7 @@
 class CreateHasukHouses < ActiveRecord::Migration
   def change
     create_table :hasuk_houses do |t|
+      t.integer :user_id
       t.string :hasuk_name
       t.string :celPhone
       t.string :telPhone

@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20151028050149) do
 
   create_table "hasuk_houses", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "hasuk_name"
     t.string   "celPhone"
     t.string   "telPhone"
