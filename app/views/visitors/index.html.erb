@@ -5,14 +5,9 @@
           <br/>
            <p>
              <div class="btn-group">
-                <select class="form-control" name="univ">
-                 <option selected>학교선택</option>
-                 <option value="서강">서강대학교</option>
-                 <option value="이화">이화여자대학교</option>
-                 <option value="연세">연세대학교</option>
-               </select>
+                <%= select_tag "univ", "<option selected>학교선택</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe,class:"form-control" %>
+                <%= submit_tag "검색", class:"btn btn-primary" %>
              </div>
-             <input class="btn btn-default" type="submit" value="검색" style="color:#fff; border-color:#262626; background-color:#262626">
            </p>
          </form>
             <br/><br/>
