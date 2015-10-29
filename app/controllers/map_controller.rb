@@ -11,6 +11,6 @@ class MapController < ApplicationController
   def from_hasuk
     @place = HasukHouse.all()
 
-    render json :@place
+    render json: @place
   end
 end

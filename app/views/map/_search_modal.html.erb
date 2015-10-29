@@ -1,0 +1,109 @@
+<div class="modal fade col-md-12 col-sm-12 col-xs-12" id="myModal2">
+  <div class="modal-dialog">
+    <div class="modal-content col-md-12 col-sm-12 col-xs-12" id="modal-size2" style="padding-left:0px; padding-right:0px">
+      
+      <div class="modal-body" style="padding:5px;">
+        <div class="panel panel-default col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;">
+          <div class="pandel-head" style="padding-left:15px;">
+            <h5 style="margin-bottom:0.2em">하숙방 검색</h5>
+          </div>
+          <div class="panel-body" style="padding:5px;">
+            <form action="/map/map_detail" method="POST">
+              
+              <input type="hidden" value="<%= @univ %>" name="univ">
+              <div class="col-md-12 col-sm-12 col-xs-12" style="padding-right:0px; margin-top:0.3em">
+                <span readonly style="font-size:15px; font-weight:bold; margin-right:10px">종류</span>
+                <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
+                  <label id="small-device" class="btn btn-success" style="margin-top:10px">
+                      <input type="radio" id="bt1" name="hasuk_kind" value="일반하숙" />일반하숙
+                  </label>
+                  <label id="small-device" class="btn btn-success" style="margin-top:10px">
+                      <input type="radio" id="bt2" name="hasuk_kind" value="잠만 자는 방" />잠만 자는 방
+                  </label>
+                  <label id="small-device"class="btn btn-success" style="margin-top:10px">
+                      <input type="radio" id="bt1" name="hasuk_kind" value="원룸형" />원룸형
+                  </label> 
+                  <label id="small-device" class="btn btn-success" style="margin-top:10px">
+                      <input type="radio" id="bt2" name="hasuk_kind" value="고시원형" />고시원형
+                  </label> 
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12" style="padding-right:0px;">
+                <span readonly style="font-size:15px; font-weight:bold; margin-right:10px">성별</span>
+                
+                <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
+                  
+                  <label id="small-device" class="btn btn-success" style="margin-top:10px">
+                      <input type="radio" name="gender" value="남녀공용" />남녀공용
+                  </label> 
+                  <label id="small-device" class="btn btn-success" style="margin-top:10px" >
+                      <input type="radio"  name="gender" value="남녀층 분리" />남녀층 분리
+                  </label>
+                  <label id="small-device" class="btn btn-success" style="margin-top:10px">
+                      <input type="radio"  name="gender" value="여성전용" />여성전용
+                  </label> 
+                  <label id="small-device" class="btn btn-success" style="margin-top:10px">
+                      <input type="radio" name="gender" value="남성전용" />남성전용
+                  </label> 
+                </div>
+              </div>
+              
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div style="margin-bottom:5px;">
+                  <span readonly style="font-size:15px; font-weight:bold;">월세 (단위 - 만 원)</span>
+                  <input type="text" id="amount" name="amount" readonly style="font-size:15px; border:0; color:#f6931f; font-weight:bold;">
+                </div>
+                <div id="slider3" style="margin-top: 15px;">
+                  <span class="ui-slider-value first"></span>
+                  <span class="ui-slider-value last"></span>
+                </div>
+              </div>
+              
+              <div class="col-md-12 col-sm-12 col-xs-12" style="padding-right:0px;">
+                <span readonly style="font-size:15px; font-weight:bold; margin-right:10px">구역</span>
+                <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
+                  
+                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                      <input type="radio" id="bt3"name="section" value="A" /> A구역
+                  </label> 
+                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                      <input type="radio" id="bt4" name="section" value="B" /> B구역
+                  </label> 
+                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                      <input type="radio" id="bt5" name="section" value="C" /> C구역
+                  </label> 
+                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                      <input type="radio" id="bt6" name="section" value="D" /> D구역
+                  </label> 
+                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                      <input type="radio" id="bt7" name="section" value="E" /> E구역
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12" style="padding-right:0px;">
+                <span readonly style="font-size:15px; font-weight:bold; margin-right:10px">거리</span>
+                <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px; padding-left:0px;padding-right: 0px;">
+                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                      <input class="btn btn-default" type="radio" id="bt8" name="distance" value="0분 거리" /> 5분 거리
+                   </label>
+                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                      <input type="radio" id="bt9" name="distance" value="10분 거리" /> 10분 거리
+                  </label> 
+                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                      <input type="radio" id="bt10" name="distance" value="15분 거리" /> 15분 거리
+                  </label>   
+                </div>
+              </div>
+              <div style="float:right">
+                <input id="search" type="submit" value="검색하기" class="btn btn-info">
+                <button id="out" type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+              </div>
+          </div>
+        </div>
+
+    </div> <!--검색 박스 끝 -->
+      
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal2 -->
