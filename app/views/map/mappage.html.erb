@@ -976,12 +976,22 @@ $(document).ready(function(){
 
     }
     
+    /*하숙방 이름 css */
     #nameOfhasuk { 
        position: absolute; 
        top: 10px;
        left: 10px; 
-       width: 30%%; 
     }
+    #nameOfhasuk p {
+        font-size: 0.65em;
+       color:#ECF0F1;
+       padding: 5%;
+       border-radius:5px;
+       background: rgb(0, 0, 0);
+       background: rgba(0, 0, 0, 0.7);
+       margin-bottom: 0px;
+    }
+    
     body.modal-open {
         overflow: hidden;
         position:fixed;
@@ -1134,7 +1144,7 @@ $(document).ready(function(){
                     <!--이미지 지정-->
                     <div class="image col-md-12 col-xs-12 col-sm-12" style="margin:0px; padding:0px">
                       <div id="nameOfhasuk">
-                        <p style="font-size: 0.65em; color:#ECF0F1; padding:4.5%; border-radius:5px; background: rgb(0, 0, 0); background: rgba(0, 0, 0, 0.7);">가나다라마</p>
+                        <p>가나다라마</p>
                       </div>
                       <img src="<%#= c.img%>" alt="이미지 없음" style="width:100%; height:8.3em; min-height:140px;">
                     </div>
