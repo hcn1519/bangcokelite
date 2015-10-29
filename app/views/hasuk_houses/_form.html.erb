@@ -671,8 +671,8 @@
             <input class="btn btn-success" id="mapfind" type="button" value="주소 검색하기" >
             <input class="btn btn-info" id="mapfindcheck" type="button" value="확인">
         </div>
-          <%= f.number_field :lat, class:"form-control", placeholder:"위도", style:"display:none" %>
-          <%= f.number_field :lng, class:"form-control", placeholder:"경도", style:"display:none" %>
+          <%= f.number_field :lat, class:"form-control", placeholder:"위도", :step => 'any', style:"display:none" %>
+          <%= f.number_field :lng, class:"form-control", placeholder:"경도", :step => 'any', style:"display:none" %>
         </td>
         <td class="formap" colspan="2">
           <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px;">

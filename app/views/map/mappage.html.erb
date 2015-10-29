@@ -128,7 +128,7 @@
         map: map,
         icon: image5
       });
-      
+      /*
       var a = {
         url: '/images/icons/a.jpg',
         size: new google.maps.Size(100, 50),
@@ -153,7 +153,7 @@
         url: '/images/icons/e.jpg',
         size: new google.maps.Size(100, 50),
         };
-
+*/
       
       
 //서강A(서강대 정문)
@@ -311,7 +311,7 @@
     var sogang_a_mark = new google.maps.Marker({
         position: {lat: 37.552330, lng:126.936627},
         map: map,
-        icon: a
+        //icon: a
       });
   <% end %>
   //공통B(서강-이화-연대)
@@ -327,7 +327,7 @@
   var sogang_b_mark = new google.maps.Marker({
         position: {lat:37.556045, lng:126.940645},
         map: map,
-        icon: b
+        //icon: b
       });
   
   //서강이화C(서강대 후문-이대역)
@@ -344,7 +344,7 @@
     var sogang_c_mark = new google.maps.Marker({
         position: {lat:37.554180, lng:126.946500},
         map: map,
-        icon: c
+        //icon: c
       });
 <% end %>
   //서강D(서강대 후문-대흥역)
@@ -361,7 +361,7 @@
   var sogang_d_mark = new google.maps.Marker({
         position: {lat:37.548951, lng:126.945549},
         map: map,
-        icon: d
+        //icon: d
       });
   <% end %>
   //서강E(서강대 남문)
@@ -378,7 +378,7 @@
   var sogang_e_mark = new google.maps.Marker({
         position: {lat:37.548084, lng:126.936736},
         map: map,
-        icon: e
+        //icon: e
       });
   <% end %>
   //이화A(이대 정문)
@@ -395,7 +395,7 @@
   var ewha_a_mark = new google.maps.Marker({
         position: {lat: 37.557620, lng:126.946500},
         map: map,
-        icon: a
+        //icon: a
       });
   <% end %>
   //이화-연세D(이대후문/연대동문)
@@ -412,7 +412,7 @@
   var ewha_d_mark = new google.maps.Marker({
         position: {lat: 37.567826, lng:126.947576},
         map: map,
-        icon: d
+        //icon: d
       });
 <% end %>
   //연세A(연대 정문)
@@ -429,7 +429,7 @@
   var yonsei_a_mark = new google.maps.Marker({
         position: {lat: 37.556029, lng:126.935924},
         map: map,
-        icon: a
+        //icon: a
       });
    <% end %>
   //연세C(연대 남문) 
@@ -446,7 +446,7 @@
   var yonsei_c_mark = new google.maps.Marker({
         position: {lat:37.559828, lng:126.931001},
         map: map,
-        icon: c
+        //icon: c
       });
   <% end %>
   //연세E(연대 서문) 
@@ -463,7 +463,7 @@
    var yonsei_e_mark = new google.maps.Marker({
         position: {lat: 37.565674, lng:126.933008},
         map: map,
-        icon: e
+        //icon: e
       });
  <% end %>    
     
@@ -476,7 +476,7 @@
               var univs = data[i].univ;
               var infowindow = null;
               var infoWindow = new google.maps.InfoWindow();
-              if (univs.indexOf("<%= @univ %>") !== -1) {
+              //if (univs.indexOf("<%= @univ %>") !== -1) {
                var contentString =
             '<div id="infoWindow" style="margin-bottom:5px">'+
                '<div class="row" style="max-width:240px">'+
@@ -609,7 +609,7 @@
                      })(str_id));
 
                  marker.setMap(map);
-                }
+                //}//indexOf 걸리는 괄호
              }
          }); //학교별 마커 띄우기 끝
 
@@ -1150,8 +1150,8 @@ $(document).ready(function(){
                     </div>
                     
                     <!--정보 표시-->
-                    <div class="caption" style="padding-top:5px; padding-left:10px; padding-right:0px;">
-                      <div class="row">
+                    <div class="caption" style="padding-top:5px; padding-left:0px; padding-right:0px;">
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; margin-left:5px;">
                           <div style="float:left">
                             <h4 style="color:#445d82; margin-bottom:0px; margin-top:2px; font-size:1.5em">50~60</h4>
@@ -1162,7 +1162,7 @@ $(document).ready(function(){
                             <p style="font-size:12px; margin-top:7px; margin-bottom:0px;">(예치금 100)</p>
                           </div>
                         </div>
-                        <div class="col-md-2 col-sm-2 col-xs-2" style="margin:0px; padding:0px; width:18.5%">
+                        <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; width:18.5%">
                           
                           <!--
                             <div class="has-error" style="margin-top:2px; margin-bottom:0px;">
@@ -1171,13 +1171,15 @@ $(document).ready(function(){
                             <div class="has-error" style="margin-top:2px; margin-bottom:0px;">
                               <p class="form-control" type="text" style="color:#2ECC71; border-color:#2ECC71; text-align:center; margin-top:6px; margin-left:3px; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
                             </div>
-                            
+                            -->
                             <div class="has-error" style="margin-top:2px; margin-bottom:0px;">
                               <p class="form-control" type="text" style="color:#9B59B6; border-color: #9B59B6; margin-top:6px; margin-left:3px; text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남녀층분리</p>
-                            </div>-->
+                            </div>
+                            <!--
                             <div class="has-error" style="margin-top:2px; margin-bottom:0px;">
                               <p class="form-control" type="text" style="color:#2980b9; border-color:#2980B9; margin-top:6px; margin-left:3px; text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
-                            </div>
+                            </div>-->
+                            
                             <!--<span style="padding:3px; margin-left:5px; color:#7030a0; font-size:11px; border:1px solid #7030a0; border-radius:10px;">남녀공용</span>
                             <span style="padding:3px; margin-left:5px; color:#7030a0; font-size:11px; border:1px solid #7030a0; border-radius:10px;">남녀층분리</span>
                             <span style="padding:3px; margin-left:5px; color:#2f5597; font-size:11px; border:1px solid #2f5597; border-radius:10px;">남성전용</span>-->
@@ -1193,7 +1195,7 @@ $(document).ready(function(){
                         </div>
                       </div><!--정보 첫번째 줄 끝-->
                       
-                      <div class="row">
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div class="col-md-2 col-sm-2 col-xs-2" style="margin:0px; padding:0px; margin-left:5px; width: 14%;">
                           <span style="font-size:12px; color:#27AE60">[원룸형]</span>
                         </div>
@@ -1207,7 +1209,7 @@ $(document).ready(function(){
                           <span style="font-size:12px;">| 3~8평</span>
                         </div>
                       </div><!--정보 두번째 줄 끝-->
-                      <div class="row">
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px; margin-left:5px;">
                           <span style="font-size:13px;">#침대</span>
                           <span style="font-size:13px;">#책상</span>
