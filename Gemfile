@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'fog'
+
 gem 'rails', '4.2.4'
 gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
