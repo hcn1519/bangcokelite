@@ -1162,13 +1162,13 @@ $(document).ready(function(){
               <!--개별 방 박스 1 시작-->
               
                 <div class="room col-md-6 col-sm-6 col-xs-12" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
-                  <a style="color:#7F8C8D" href="/map/detail" target="_blank">
+                  <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
                   <div class="img-responsive thumbnail">
                     
                     <!--이미지 지정-->
                     <div class="image col-md-12 col-xs-12 col-sm-12" style="margin:0px; padding:0px">
                       <div id="nameOfhasuk">
-                        <p>가나다라마</p>
+                        <p><%= c.hasuk_name %></p>
                       </div>
                       <img src="<%= c.room_img1.url %>" alt="이미지 없음" style="width:100%; height:9.75em; min-height:140px;">
                     </div>
@@ -1178,60 +1178,133 @@ $(document).ready(function(){
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; margin-left:5px;">
                           <div style="float:left">
-                            <h4 style="color:#445d82; margin-bottom:0px; margin-top:2px; font-size:1.5em">50~60</h4>
+                            <% unless c.price_from.nil? %>
+                            <h4 style="color:#445d82; margin-bottom:0px; margin-top:2px; font-size:1.5em">
+                              <%= c.price_from %>~<%= c.price_to %>
+                            </h4>
+                            <% else %>
+                            <h4 style="color:#445d82; margin-bottom:0px; margin-top:2px; font-size:1.5em">
+                              00~00
+                            </h4>
+                            <% end %>
                           </div>
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; margin-left:5px">
                           <div style="float:left">
-                            <p style="font-size:12px; margin-top:8px; margin-bottom:0px;">(예치금 100)</p>
+                            <% if c.small_deposit.nil? %>
+                              <% if c.big_deposit.nil? %>
+                                <p style="font-size:12px; margin-top:8px; margin-bottom:0px;">(예치금 없음)</p>
+                              <% else %>
+                                <p style="font-size:12px; margin-top:8px; margin-bottom:0px;">(보증금 <%= c.big_deposit %>)</p>
+                              <% end %>
+                            <% else %>
+                              <p style="font-size:12px; margin-top:8px; margin-bottom:0px;">(예치금 <%= c.small_deposit %>)</p>
+                            <% end %>
                           </div>
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; width:20%">
                           
-                          <!--
+                          <% if c.gender=="여성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
                               <p class="form-control" type="text" style="color:#E74C3C; border-color:#E74C3C; margin-top:6px; margin-left:3px;text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
                             </div>
+                          <% elsif c.gender =="남녀공용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
                               <p class="form-control" type="text" style="color:#2ECC71; border-color:#2ECC71; text-align:center; margin-top:6px; margin-left:3px; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
                             </div>
-                          -->
+                          <% elsif c.gender == "남녀층 분리" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
                               <p class="form-control" type="text" style="color:#9B59B6; border-color: #9B59B6; margin-top:6px; margin-left:3px; text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남녀층분리</p>
                             </div>
-                            
-                            <!--
+                          <% elsif c.gender == "남성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
                               <p class="form-control" type="text" style="color:#2980b9; border-color:#2980B9; margin-top:6px; margin-left:3px; text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
-                            </div>-->
-                            
-                            <!--<span style="padding:3px; margin-left:5px; color:#7030a0; font-size:11px; border:1px solid #7030a0; border-radius:10px;">남녀공용</span>
-                            <span style="padding:3px; margin-left:5px; color:#7030a0; font-size:11px; border:1px solid #7030a0; border-radius:10px;">남녀층분리</span>
-                            <span style="padding:3px; margin-left:5px; color:#2f5597; font-size:11px; border:1px solid #2f5597; border-radius:10px;">남성전용</span>-->
+                            </div>
+                          <% else %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#E74C3C; border-color:#E74C3C; margin-top:6px; margin-left:3px;text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">DB 없음</p>
+                            </div>
+                          <% end %>
                           
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; padding-left:8px; padding-top:8px">
-                          <img src="/images/icons/wifi.png" style="width:20px; height:20px; float:left; margin-right:2px;">
-                          <!--<img src="/images/icons/wifi2.png" style="width:20px; height:20px; float:left margin-right:2px;">
-                          <img src="/images/icons/toilet.png" style="width:20px; height:20px; float:left margin-right:4px;">-->
-                          <img src="/images/icons/toilet2.png" style="width:20px; height:20px; float:left; margin-right:4px;">
-                          <img src="/images/icons/air.png" style="width:20px; height:20px; float:left">
-                          <!--<img src="/images/icons/air2.png" style="width:20px; height:20px; float:left">-->
+                          <% if c.internet =="와이파이" || c.internet =="유선 인터넷" %>
+                            <img src="/images/icons/wifi.png" style="width:20px; height:20px; float:left; margin-right:2px;">
+                          <% elsif c.internet =="없음" %>  
+                            <img src="/images/icons/wifi2.png" style="width:20px; height:20px; float:left; margin-right:2px;">
+                          <% else %>
+                            <img src="/images/icons/wifi2.png" style="width:20px; height:20px; float:left; margin-right:2px;">
+                          <% end %>
+                          <% if c.personal_option8 =="화장실" %>
+                            <img src="/images/icons/toilet.png" style="width:20px; height:20px; float:left; margin-right:4px;">
+                          <% elsif c.personal_option8 == nil %>   
+                            <img src="/images/icons/toilet2.png" style="width:20px; height:20px; float:left; margin-right:4px;">
+                          <% else %>
+                            <img src="/images/icons/air2.png" style="width:20px; height:20px; float:left; margin-right:4px;">
+                          <% end %>
+                          <% if c.personal_option6 =="에어컨" %>
+                            <img src="/images/icons/air.png" style="width:20px; height:20px; float:left;">
+                          <% elsif c.personal_option6 == nil %>   
+                            <img src="/images/icons/air2.png" style="width:20px; height:20px; float:left;">
+                          <% else %>
+                            <img src="/images/icons/air2.png" style="width:20px; height:20px; float:left;">
+                          <% end %>
                         </div>
                       </div><!--정보 첫번째 줄 끝-->
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div class="col-md-2 col-sm-2 col-xs-2" style="width:20%; margin:0px; padding:0px; margin-left:5px;">
-                          <span style="font-size:12px; color:#27AE60">[고시원형]</span>
+                          <% if c.hasuk_kind == "일반하숙" %>
+                            <span style="font-size:12px; color:#27AE60">[일반하숙]</span>
+                          <% elsif c.hasuk_kind == "잠만 자는 방" %>
+                            <span style="font-size:12px; color:#27AE60">[잠만자는]</span>
+                          <% elsif c.hasuk_kind == "원룸형" %>
+                            <span style="font-size:12px; color:#27AE60">[원룸형]</span>
+                          <% elsif c.hasuk_kind == "고시원형" %>
+                            <span style="font-size:12px; color:#27AE60">[고시원형]</span>
+                          <% else %>
+                            <span style="font-size:12px; color:#27AE60">[형태없음]</span>
+                          <% end %>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-4" style="margin:0px; padding:0px; width: 30%;">
-                          <span style="font-size:12px;">| 아침, 점심, 저녁</span>
+                          
+                          <% if c.meal4 == "제공 안함" %>
+                            <span style="font-size:12px;">| 제공 안함</span>
+                          <% elsif c.meal1 == nil && c.meal2 == nil && c.meal3 == nil && c.meal4 == nil %>
+                            <span style="font-size:12px;">| 식사 DB 없음</span>
+                          <% else %>
+
+                              <% unless c.meal1.nil? %>
+                                  <span style="font-size:12px;"><%= c.meal1 %>,</span>
+                              <% end %>
+                              <% unless c.meal2.nil? %>
+                                  <span style="font-size:12px;"><%= c.meal2 %>,</span>
+                              <% end %>
+                              <% unless c.meal3.nil? %>
+                                  <span style="font-size:12px;"><%= c.meal3 %></span>
+                              <% end %>
+                          
+                          <% end %>
                         </div>
                         <div class="col-md-2 col-sm-2 col-xs-2" style="margin:0px; padding:0px; width: 13%;">
-                          <span style="font-size:12px;">| 3~8평</span>
+                          <% unless c.size_from.nil? %>
+                          <span style="font-size:12px;">| <%=c.size_from %>~<%= c.size_to %>평</span>
+                          <% else %>
+                            <span style="font-size:12px;">| 0~1평</span>
+                          <% end %>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px; margin-left:5px;">
-                          <span style="font-size:12px;">이화여대 정문 1064m(20분) | 대흥역 1103m(21분)</span>
+                          <% if c.univ_distance1 != "학교선택" %>
+                            <% if c.univ_distance1 == "이화" %>
+                              <span style="font-size:12px;"><%= c.univ_distance1 %>여대 <%= c.ewha_gate1 %> <%= c.distance1 %>m(<% c.distance_time1 %>분) | 대흥역 1103m(21분)</span>
+                            <% elsif c.univ_distance1 =="서강" %>
+                              <span style="font-size:12px;"><%= c.univ_distance1 %>대 <%= c.sogang_gate1 %> <%= c.distance1 %>m(<% c.distance_time1 %>분) | 대흥역 1103m(21분)</span>
+                            <% elsif c.univ_distance1 =="연세" %>
+                              <span style="font-size:12px;"><%= c.univ_distance1 %>대 <%= c.yonsei_gate1 %> <%= c.distance1 %>m(<% c.distance_time1 %>분) | 대흥역 1103m(21분)</span>
+                            <% end %>
+                          <% else %>
+                            <span style="font-size:12px;">example대 정문 1064m(20분) | example역 1103m(21분)</span>
+                          <% end %>
                         </div>
                         
                       </div><!--정보 두번째 줄 끝-->
