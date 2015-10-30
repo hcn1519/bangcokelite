@@ -1098,7 +1098,7 @@ $(document).ready(function(){
   </div>
   <!--박스 늘리기 버튼-->
   
-    <div class="listbox col-md-11 col-sm-12 col-xs-12" style="padding-left:0px; padding-right:0px; width:97%; border:1px solid #b4b4b4">
+    <div class="listbox col-md-11 col-sm-12 col-xs-12" style="padding-left:0px; padding-right:0px; width:97%;">
       <div class="panel panel-default">
         <div class="panel-heading col-md-12 col-xs-12 col-sm-12" style="background-color:#16A085; color:#fff"><strong>검색결과</strong></div>
         <div class="col-md-12 col-xs-12 col-sm-12 roomList panel-body" style="padding:0px; height:538px; overflow:auto;">
@@ -1108,7 +1108,7 @@ $(document).ready(function(){
         <% #if (c.univ || '').include? @univ %>
           
           <% cnt= cnt+1 %>
-          <% if cnt == 5 %>
+          <% if cnt == 6 %>
             <% break %>
           <% end %>
           <%# if c.kind == "자취" %>
@@ -1150,33 +1150,34 @@ $(document).ready(function(){
                     </div>
                     
                     <!--정보 표시-->
-                    <div class="caption" style="padding-top:5px; padding-left:0px; padding-right:0px;">
+                    <div class="caption" style="padding-top:5px; padding-left:0px; padding-right:0px; padding-bottom:5px">
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; margin-left:5px;">
                           <div style="float:left">
                             <h4 style="color:#445d82; margin-bottom:0px; margin-top:2px; font-size:1.5em">50~60</h4>
                           </div>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; width:75px">
+                        <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; margin-left:5px">
                           <div style="float:left">
-                            <p style="font-size:12px; margin-top:7px; margin-bottom:0px;">(예치금 100)</p>
+                            <p style="font-size:12px; margin-top:8px; margin-bottom:0px;">(예치금 100)</p>
                           </div>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; width:18.5%">
+                        <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; width:20%">
                           
                           <!--
-                            <div class="has-error" style="margin-top:2px; margin-bottom:0px;">
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
                               <p class="form-control" type="text" style="color:#E74C3C; border-color:#E74C3C; margin-top:6px; margin-left:3px;text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
                             </div>
-                            <div class="has-error" style="margin-top:2px; margin-bottom:0px;">
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
                               <p class="form-control" type="text" style="color:#2ECC71; border-color:#2ECC71; text-align:center; margin-top:6px; margin-left:3px; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
                             </div>
-                            -->
-                            <div class="has-error" style="margin-top:2px; margin-bottom:0px;">
+                          -->
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
                               <p class="form-control" type="text" style="color:#9B59B6; border-color: #9B59B6; margin-top:6px; margin-left:3px; text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남녀층분리</p>
                             </div>
+                            
                             <!--
-                            <div class="has-error" style="margin-top:2px; margin-bottom:0px;">
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
                               <p class="form-control" type="text" style="color:#2980b9; border-color:#2980B9; margin-top:6px; margin-left:3px; text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
                             </div>-->
                             
@@ -1185,22 +1186,19 @@ $(document).ready(function(){
                             <span style="padding:3px; margin-left:5px; color:#2f5597; font-size:11px; border:1px solid #2f5597; border-radius:10px;">남성전용</span>-->
                           
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; margin-left: 4%">
-                          <img src="/images/icons/wifi.png" style="width:20px; height:20px;">
-                          <!--<img src="/images/icons/wifi2.png" style="width:20px; height:20px;">
-                          <img src="/images/icons/toilet.png" style="width:20px; height:20px;">-->
-                          <img src="/images/icons/toilet2.png" style="width:20px; height:20px;">
-                          <img src="/images/icons/air.png" style="width:20px; height:20px;">
-                          <!--<img src="/images/icons/air2.png" style="width:20px; height:20px;">-->
+                        <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; padding-left:8px; padding-top:8px">
+                          <img src="/images/icons/wifi.png" style="width:20px; height:20px; float:left; margin-right:2px;">
+                          <!--<img src="/images/icons/wifi2.png" style="width:20px; height:20px; float:left margin-right:2px;">
+                          <img src="/images/icons/toilet.png" style="width:20px; height:20px; float:left margin-right:4px;">-->
+                          <img src="/images/icons/toilet2.png" style="width:20px; height:20px; float:left; margin-right:4px;">
+                          <img src="/images/icons/air.png" style="width:20px; height:20px; float:left">
+                          <!--<img src="/images/icons/air2.png" style="width:20px; height:20px; float:left">-->
                         </div>
                       </div><!--정보 첫번째 줄 끝-->
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div class="col-md-2 col-sm-2 col-xs-2" style="margin:0px; padding:0px; margin-left:5px; width: 14%;">
-                          <span style="font-size:12px; color:#27AE60">[원룸형]</span>
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-4" style="margin:0px; padding:0px; width: 34%;">
-                          <span style="font-size:12px;">| 정문 1,000m(10분)</span>
+                        <div class="col-md-2 col-sm-2 col-xs-2" style="width:20%; margin:0px; padding:0px; margin-left:5px;">
+                          <span style="font-size:12px; color:#27AE60">[고시원형]</span>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-4" style="margin:0px; padding:0px; width: 30%;">
                           <span style="font-size:12px;">| 아침, 점심, 저녁</span>
@@ -1208,15 +1206,19 @@ $(document).ready(function(){
                         <div class="col-md-2 col-sm-2 col-xs-2" style="margin:0px; padding:0px; width: 13%;">
                           <span style="font-size:12px;">| 3~8평</span>
                         </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px; margin-left:5px;">
+                          <span style="font-size:12px;">이화여대 정문 1064m(20분) | 대흥역 1103m(21분)</span>
+                        </div>
+                        
                       </div><!--정보 두번째 줄 끝-->
-                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                      <!--<div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px; margin-left:5px;">
                           <span style="font-size:13px;">#침대</span>
                           <span style="font-size:13px;">#책상</span>
                           <span style="font-size:13px;">#행거</span>
                           <span style="font-size:13px;">#CCTV</span>
                         </div>
-                      </div>
+                      </div>-->
                     </div><!--정보 표시 끝-->
                     
                   </div>
