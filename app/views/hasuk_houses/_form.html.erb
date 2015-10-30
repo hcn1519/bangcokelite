@@ -766,22 +766,36 @@
       <div class="inline" style="margin-top:0px">
           <h5 style="margin-top:0px; margin-left:5px">방</h5>
         </div>
+      <div class="inline" style="margin-top:0px">
+        <p style="color:#ff9682; margin-top: 5px; margin-left: 10px;">*대표사진이 검색시 나타납니다.</p>
+      </div>
     </div><!--소제목 방-->
   </div>
   
   
   <div class="row" style="padding:15px; background-color:#f2f2f2; border:1px solid #dbdbdb">
+    
     <% for i in 1..8 %>
     <div class="col-md-3 col-sm-4 col-xs-12">
       <div class="image-upload" style="height:7em">
         <%= file_field_tag "hasuk_house[room_img#{i}]", class:"file-input#{i}" %>
         <div class="img-thumbnail" style="width: 100%; height: 7em;">
           <span class="fui-cross-circle crossroom<%= i%>" style="display:none; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
-          <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
-            <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
-          </label>
-          <img style="width:9.75em; height:6.4em; display:none; position: absolute; z-index:1" id="room-file-preview<%= i%>" src="#"/>
+          <% if i ==1 %>
+                <span class="fui-star-2" style="font-size:0.8em; font-weight:bold; color:#F1C40F; float:left;"></span>
+                <span style="font-size:0.8em; color:#e74c3c; float:left; position: absolute">대표사진</span>
+                <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="margin-bottom: 0px; position: absolute; margin-top: 3%;margin-left: 22%;">
+                  <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
+                </label>
+            
+          <% else %>  
+            <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
+              <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
+            </label>
+          <% end %>
+            <img style="width:9.75em; height:6.4em; display:none; position: absolute; z-index:1" id="room-file-preview<%= i%>" src="#"/>
         </div>
+          
       </div>  
       <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px">
         <div class="form-group form-inline">
