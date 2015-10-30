@@ -1191,15 +1191,22 @@ $(document).ready(function(){
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; margin-left:5px">
                           <div style="float:left">
-                            <% if c.small_deposit.nil? %>
-                              <% if c.big_deposit.nil? %>
+                            <% if c.small_deposit == 0 %>
+                              
+                              <% if c.big_deposit == 0 %>
                                 <p style="font-size:12px; margin-top:8px; margin-bottom:0px;">(예치금 없음)</p>
                               <% else %>
                                 <p style="font-size:12px; margin-top:8px; margin-bottom:0px;">(보증금 <%= c.big_deposit %>)</p>
                               <% end %>
+                              
                             <% else %>
-                              <p style="font-size:12px; margin-top:8px; margin-bottom:0px;">(예치금 <%= c.small_deposit %>)</p>
+                              
+                              <% if c.small_deposit == nil && c.big_deposit == nil %>
+                                <p style="font-size:12px; margin-top:8px; margin-bottom:0px;">(DB 없음)</p>
+                              <% end %>
+                            
                             <% end %>
+                            
                           </div>
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; width:20%">
@@ -1296,11 +1303,11 @@ $(document).ready(function(){
                         <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px; margin-left:5px;">
                           <% if c.univ_distance1 != "학교선택" %>
                             <% if c.univ_distance1 == "이화" %>
-                              <span style="font-size:12px;"><%= c.univ_distance1 %>여대 <%= c.ewha_gate1 %> <%= c.distance1 %>m(<% c.distance_time1 %>분) | 대흥역 1103m(21분)</span>
+                              <span style="font-size:12px;"><%= c.univ_distance1 %>여대 <%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분) | <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
                             <% elsif c.univ_distance1 =="서강" %>
-                              <span style="font-size:12px;"><%= c.univ_distance1 %>대 <%= c.sogang_gate1 %> <%= c.distance1 %>m(<% c.distance_time1 %>분) | 대흥역 1103m(21분)</span>
+                              <span style="font-size:12px;"><%= c.univ_distance1 %>대 <%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분) | <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
                             <% elsif c.univ_distance1 =="연세" %>
-                              <span style="font-size:12px;"><%= c.univ_distance1 %>대 <%= c.yonsei_gate1 %> <%= c.distance1 %>m(<% c.distance_time1 %>분) | 대흥역 1103m(21분)</span>
+                              <span style="font-size:12px;"><%= c.univ_distance1 %>대 <%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분) | <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
                             <% end %>
                           <% else %>
                             <span style="font-size:12px;">example대 정문 1064m(20분) | example역 1103m(21분)</span>

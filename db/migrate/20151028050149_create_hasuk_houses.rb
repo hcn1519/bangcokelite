@@ -64,6 +64,8 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.string :address
       t.float :lat
       t.float :lng
+      
+      #교문까지 거리 및 시간
       t.string :univ_distance1
       t.string :univ_distance2
       t.string :univ_distance3
@@ -82,6 +84,15 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.integer :distance1
       t.integer :distance2
       t.integer :distance3
+      
+      #지하철까지 거리 및 시간
+      #t.string :subway1
+      #t.string :subway2
+      #t.integer :subway_distance_time1
+      #t.integer :subway_distance_time2
+      #t.integer :subway_distance1
+      #t.integer :subway_distance2
+      
       t.string :room_img1
       t.string :room_img2
       t.string :room_img3

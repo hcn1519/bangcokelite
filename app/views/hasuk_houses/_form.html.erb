@@ -684,7 +684,7 @@
       <!--위치 구간 끝-->
       
       <tr>
-        <td id="column" rowspan="2" style="width:15%"><center>거리</center></td>
+        <td id="column" rowspan="3" style="width:15%"><center>거리</center></td>
         <td colspan="3">
           <p style="font-size:1em">하숙집에서 가장 가까운 학교를 선택하고, 해당 학교의 교문과의 거리를 입력해주세요.</p>
           <p style="font-size:1em">학교를 선택하고, 문 버튼을 누르면 길찾기 페이지가 나옵니다.</p>
@@ -697,6 +697,9 @@
         <% for i in 1..3 %>
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="col-md-3 col-sm-3 col-xs-3">
+              <% if i == 1 %>
+                <span class="fui-star-2" style="font-size: 1.4em; font-weight:bold; color:#F1C40F; float:left;position: absolute;"></span>
+              <% end %>
               <%= select_tag "hasuk_house[univ_distance#{i}]", 
               "<option selected>학교선택</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe, class:"form-control" %>
             </div>
@@ -743,6 +746,43 @@
           </div>
         <% end %>
           
+        </td>
+      </tr>
+      <tr><!--지하철-->
+        <td colspan="3">
+          <% for i in 1..2 %>
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <% if i == 1 %>
+                <span class="fui-star-2" style="font-size: 1.4em; font-weight:bold; color:#F1C40F; float:left;position: absolute;"></span>
+              <% end %>
+              <%= select_tag "hasuk_house[subway#{i}]", 
+              "<option selected>지하철역</option>
+              <option value='신촌' href='http://map.daum.net/?eX=486056&eY=1126562&eName=%EC%8B%A0%EC%B4%8C%EC%97%AD'>신촌역</option>
+              <option value='이화' href='http://map.daum.net/?eX=488028&eY=1126999&eName=%EC%9D%B4%EB%8C%80%EC%97%AD'>이대역</option>
+              <option value='대흥' href='http://map.daum.net/?eX=487166&eY=1124541&eName=%EB%8C%80%ED%9D%A5%EC%97%AD'>대흥역</option>
+              <option value='서강대' href='http://map.daum.net/?eX=485823&eY=1125659&eName=%EC%84%9C%EA%B0%95%EB%8C%80%EC%97%AD'>서강대역</option>'
+              <option value='신촌기차' href='http://map.daum.net/?eX=487324&eY=1127844&eName=%EC%8B%A0%EC%B4%8C%EA%B8%B0%EC%B0%A8%EC%97%AD'>신촌기차역</option>'".html_safe, class:"form-control" %>
+            </div>
+            
+             <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
+               <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
+                 <div class="form-inline">
+                    <span id="form-left">시간 :</span>
+                      <%= number_field_tag "hasuk_house[subway_distance_time#{i}]", nil, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
+                    <span id="form-right">분</span>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
+                  <div class="form-inline">
+                    <span id="form-left">거리 :</span>
+                      <%= number_field_tag "hasuk_house[subway_distance#{i}]", nil, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
+                    <span id="form-right">m</span>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <% end %><!--지하철 for loop 끝 -->
         </td>
       </tr>
   </table><!--거리 구간 끝 -->
@@ -1381,7 +1421,7 @@ $(".crossmeal4").click(function() {
   });
   //학교 선택 지도 링크 나오기
   
-  //링크 타고 길찾기 페이지 넘어가기
+  //링크 타고 길찾기 페이지 넘어가기(학교)
   document.getElementById('hasuk_house_sogang_gate1').onchange = function() {
     window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
   }
@@ -1411,6 +1451,16 @@ $(".crossmeal4").click(function() {
   }
   //링크 타고 길찾기 페이지 넘어가기
 
+  //링크 타고 길찾기 페이지 넘어가기(지하철)
+  document.getElementById('hasuk_house_subway1').onchange = function() {
+    window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
+  }
+  document.getElementById('hasuk_house_subway2').onchange = function() {
+    window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
+  }
+  
+  //링크 타고 길찾기 페이지 넘어가기(지하철)
+  
   $(document).ready(function(){
     //해당 없음 누르면 글 못 쓰게 하기
     $(function() {

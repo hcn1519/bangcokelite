@@ -95,6 +95,12 @@ ActiveRecord::Schema.define(version: 20151028050149) do
     t.integer  "distance1"
     t.integer  "distance2"
     t.integer  "distance3"
+    t.string   "subway1"
+    t.string   "subway2"
+    t.integer  "subway_distance_time1"
+    t.integer  "subway_distance_time2"
+    t.integer  "subway_distance1"
+    t.integer  "subway_distance2"
     t.string   "room_img1"
     t.string   "room_img2"
     t.string   "room_img3"
@@ -129,8 +135,8 @@ ActiveRecord::Schema.define(version: 20151028050149) do
     t.string   "meal_img4"
     t.integer  "discount_price"
     t.integer  "discount_rate"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "users", force: :cascade do |t|
