@@ -1,7 +1,9 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--googlemap 넣기-->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdcrzqmVvJgOpIy23Dlw08MHrQN1C17Sg"></script>
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdcrzqmVvJgOpIy23Dlw08MHrQN1C17Sg">
+    </script>
     <!--jquery 넣기-->
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -307,12 +309,14 @@
     fillOpacity: 0.3
   });
   <% if @univ.include? "서강" %>
+  
     sogang_a.setMap(map);
+  /* 
     var sogang_a_mark = new google.maps.Marker({
         position: {lat: 37.552330, lng:126.936627},
         map: map,
         //icon: a
-      });
+      }); */
   <% end %>
   //공통B(서강-이화-연대)
   var sogang_ewha_yonsei_b = new google.maps.Polygon({
@@ -323,13 +327,15 @@
     fillColor: '#8017E8',
     fillOpacity: 0.25
   });
+ 
   sogang_ewha_yonsei_b.setMap(map);
-  var sogang_b_mark = new google.maps.Marker({
+   /*
+   var sogang_b_mark = new google.maps.Marker({
         position: {lat:37.556045, lng:126.940645},
         map: map,
         //icon: b
       });
-  
+  */
   //서강이화C(서강대 후문-이대역)
  var sogang_ewha_c = new google.maps.Polygon({
     paths: sogang_ewha_c,
@@ -341,11 +347,12 @@
   });
 <% unless @univ.include? "연세" %>
     sogang_ewha_c.setMap(map);
-    var sogang_c_mark = new google.maps.Marker({
+ /*   var sogang_c_mark = new google.maps.Marker({
         position: {lat:37.554180, lng:126.946500},
         map: map,
         //icon: c
       });
+      */
 <% end %>
   //서강D(서강대 후문-대흥역)
   var sogang_d = new google.maps.Polygon({
@@ -358,11 +365,13 @@
   });
   <% if @univ.include? "서강" %>
   sogang_d.setMap(map);
+  /*
   var sogang_d_mark = new google.maps.Marker({
         position: {lat:37.548951, lng:126.945549},
         map: map,
         //icon: d
       });
+      */
   <% end %>
   //서강E(서강대 남문)
   var sogang_e = new google.maps.Polygon({
@@ -375,11 +384,13 @@
   });
   <% if @univ.include? "서강" %>
   sogang_e.setMap(map);
+  /*
   var sogang_e_mark = new google.maps.Marker({
         position: {lat:37.548084, lng:126.936736},
         map: map,
         //icon: e
       });
+      */
   <% end %>
   //이화A(이대 정문)
    var ewha_a = new google.maps.Polygon({
@@ -392,11 +403,13 @@
   });
   <% if @univ.include? "이화" %>
   ewha_a.setMap(map);
+  /*
   var ewha_a_mark = new google.maps.Marker({
         position: {lat: 37.557620, lng:126.946500},
         map: map,
         //icon: a
       });
+      */
   <% end %>
   //이화-연세D(이대후문/연대동문)
   var ewha_yonsei_d = new google.maps.Polygon({
@@ -409,11 +422,13 @@
   });
 <% unless @univ.include? "서강" %>
   ewha_yonsei_d.setMap(map);
+  /*
   var ewha_d_mark = new google.maps.Marker({
         position: {lat: 37.567826, lng:126.947576},
         map: map,
         //icon: d
       });
+      */
 <% end %>
   //연세A(연대 정문)
    var yonsei_a = new google.maps.Polygon({
@@ -426,11 +441,13 @@
    });
 <% if @univ.include? "연세" %>
   yonsei_a.setMap(map);
+  /*
   var yonsei_a_mark = new google.maps.Marker({
         position: {lat: 37.556029, lng:126.935924},
         map: map,
         //icon: a
       });
+      */
    <% end %>
   //연세C(연대 남문) 
  var yonsei_c = new google.maps.Polygon({
@@ -443,11 +460,13 @@
   });
 <% if @univ.include? "연세" %>
   yonsei_c.setMap(map);
-  var yonsei_c_mark = new google.maps.Marker({
+ /*
+ var yonsei_c_mark = new google.maps.Marker({
         position: {lat:37.559828, lng:126.931001},
         map: map,
         //icon: c
       });
+      */
   <% end %>
   //연세E(연대 서문) 
  var yonsei_e = new google.maps.Polygon({
@@ -460,11 +479,13 @@
   });
   <% if @univ.include? "연세" %>
    yonsei_e.setMap(map); 
+  /*
    var yonsei_e_mark = new google.maps.Marker({
         position: {lat: 37.565674, lng:126.933008},
         map: map,
         //icon: e
       });
+      */
  <% end %>    
     
   
@@ -476,20 +497,20 @@
               var univs = data[i].univ;
               var infowindow = null;
               var infoWindow = new google.maps.InfoWindow();
-              //if (univs.indexOf("<%= @univ %>") !== -1) {
+              //if (univs.indexOf("<%#= @univ %>") !== -1) {
                var contentString =
             '<div id="infoWindow" style="margin-bottom:5px">'+
                '<div class="row" style="max-width:240px">'+
                '<div class="col-md-4 col-sm-4 col-xs-4" style=" width: 100px; padding-left: 5px; padding-right: 0px;">' +
-                   '<img src="'+ data[i].img + '" height="80px" width="100px">' +
+                   '<img src="'+ data[i].room_img1 + '" height="80px" width="100px">' +
                  '</div>'+
                '<div class="col-md-7 col-sm-7 col-xs-7" style="width: 140px;padding-right: 0px;">' +
                    '<div class="row" style="margin-left:1px; padding-left:0px; padding-right:0px">' +
                      '<div class="col-md-3 col-sm-3 col-xs-3" style="margin-right:-5px; padding-left:0px; padding-right:0px">' +
-                       '<p style="font-size: 20px; margin-top:5px">'+ data[i].price +'</p>' +
+                       '<p style="font-size: 20px; margin-top:5px">'+ data[i].price_from +'</p>' +
                      '</div>' +
                      '<div class="col-md-9 col-sm-9 col-xs-9" style="margin-top:6px; margin-bottom:5px; padding-left:0px; padding-right:0px">'+
-                      '(예치금:'+ data[i].deposit + '만원)&nbsp;'+
+                      '(예치금:'+ data[i].small_deposit + '만원)&nbsp;'+
                      '</div>'+
                   '</div>'+
                  '<p style="margin-bottom:5px; font-size:12px">거리 : 정문에서 10분</p>' +
@@ -497,12 +518,10 @@
                '</div>'+
                '</div>'+
              '</div>';
-                     
                     var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);
                     
                     var marker = new google.maps.Marker({
                          position: latlng,
-                         title:data[i].kind,
                          map: map
                      });
                     marker.setValues({type: "point", id: i});
@@ -1066,6 +1085,11 @@ $(document).ready(function(){
       margin-top:8px;
       float:left;
     }
+    .thumbnail {
+      line-height:1.2;
+      margin:5px; 
+      border-radius:0px;
+    }
     </style> 
 </head>
 <body>
@@ -1100,8 +1124,8 @@ $(document).ready(function(){
   
     <div class="listbox col-md-11 col-sm-12 col-xs-12" style="padding-left:0px; padding-right:0px; width:97%;">
       <div class="panel panel-default">
-        <div class="panel-heading col-md-12 col-xs-12 col-sm-12" style="background-color:#16A085; color:#fff"><strong>검색결과</strong></div>
-        <div class="col-md-12 col-xs-12 col-sm-12 roomList panel-body" style="padding:0px; height:538px; overflow:auto;">
+        <div class="panel-heading col-md-12 col-xs-12 col-sm-12" style="background-color:#16A085; color:#fff; padding:5px; padding-left:10px; font-size:0.8em">검색결과</div>
+        <div class="col-md-12 col-xs-12 col-sm-12 roomList panel-body" style="padding:0px; height:555px; overflow:auto;">
       
       <% cnt=0 %>
       <% @hasuk.each do |c| %>
@@ -1139,14 +1163,14 @@ $(document).ready(function(){
               
                 <div class="room col-md-6 col-sm-6 col-xs-12" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
                   <a style="color:#7F8C8D" href="/map/detail" target="_blank">
-                  <div class="img-responsive thumbnail" style="margin:5px; border-radius:0px;">
+                  <div class="img-responsive thumbnail">
                     
                     <!--이미지 지정-->
                     <div class="image col-md-12 col-xs-12 col-sm-12" style="margin:0px; padding:0px">
                       <div id="nameOfhasuk">
                         <p>가나다라마</p>
                       </div>
-                      <img src="<%#= c.img%>" alt="이미지 없음" style="width:100%; height:8.3em; min-height:140px;">
+                      <img src="<%#= c.img%>" alt="이미지 없음" style="width:100%; height:9.75em; min-height:140px;">
                     </div>
                     
                     <!--정보 표시-->
