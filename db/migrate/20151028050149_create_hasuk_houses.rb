@@ -86,12 +86,12 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.integer :distance3
       
       #지하철까지 거리 및 시간
-      #t.string :subway1
-      #t.string :subway2
-      #t.integer :subway_distance_time1
-      #t.integer :subway_distance_time2
-      #t.integer :subway_distance1
-      #t.integer :subway_distance2
+      t.string :subway1
+      t.string :subway2
+      t.integer :subway_distance_time1
+      t.integer :subway_distance_time2
+      t.integer :subway_distance1
+      t.integer :subway_distance2
       
       t.string :room_img1
       t.string :room_img2
