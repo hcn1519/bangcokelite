@@ -85,6 +85,13 @@
       <th>Distance1</th>
       <th>Distance2</th>
       <th>Distance3</th>
+      <!--지하철 추가 -->
+      <th>Subway1</th>
+      <th>Subway2</th>
+      <th>Subway_distance_time1</th>
+      <th>Subway_distance_time2</th>
+      <th>Subway_distance1</th>
+      <th>Subway_distance2</th>
       <th>Room img1</th>
       <th>Room img2</th>
       <th>Room img3</th>
@@ -206,6 +213,16 @@
         <td><%= hasuk_house.distance1 %></td>
         <td><%= hasuk_house.distance2 %></td>
         <td><%= hasuk_house.distance3 %></td>
+        
+        <!--지하철 추가 -->
+        <td><%= hasuk_house.subway1 %></td>
+        <td><%= hasuk_house.subway2 %></td>
+        <td><%= hasuk_house.subway_distance_time1 %></td>
+        <td><%= hasuk_house.subway_distance_time2 %></td>
+        <td><%= hasuk_house.subway_distance1 %></td>
+        <td><%= hasuk_house.subway_distance2 %></td>
+
+        
         <td><%= hasuk_house.room_img1 %></td>
         <td><%= hasuk_house.room_img2 %></td>
         <td><%= hasuk_house.room_img3 %></td>
@@ -251,5 +268,3 @@
 <br>
 
 <%= link_to 'New Hasuk house', new_hasuk_house_path %>
-
-<%= @hasuk_houses.inspect %>
