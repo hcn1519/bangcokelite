@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   
-  post 'map/mappage'
+  get 'map/mappage'
 
   post 'map/map_detail'
 
