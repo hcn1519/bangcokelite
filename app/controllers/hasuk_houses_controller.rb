@@ -1,6 +1,6 @@
 class HasukHousesController < ApplicationController
-  before_action :set_hasuk_house, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_action :set_hasuk_house, only: [:edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:index, :new, :edit, :update, :destory]
   # GET /hasuk_houses
   # GET /hasuk_houses.json
   def index
@@ -11,6 +11,7 @@ class HasukHousesController < ApplicationController
   # GET /hasuk_houses/1
   # GET /hasuk_houses/1.json
   def show
+    @hasuk_house = HasukHouse.find(params[:id])
   end
 
   # GET /hasuk_houses/new

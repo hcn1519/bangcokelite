@@ -11,8 +11,8 @@
             <form action="/map/map_detail" method="POST">
               
               <input type="hidden" value="<%= @univ %>" name="univ">
-              <div class="col-md-12 col-sm-12 col-xs-12" style="padding-right:0px; margin-top:0.3em">
-                <span readonly style="font-size:15px; font-weight:bold; margin-right:10px">종류</span>
+              <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <span id="select-title" readonly style="font-size:15px; font-weight:bold;">종류</span>
                 <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
                   <label id="small-device" class="btn btn-success" style="margin-top:10px">
                       <input type="radio" id="bt1" name="hasuk_kind" value="일반하숙" />일반하숙
@@ -28,8 +28,8 @@
                   </label> 
                 </div>
               </div>
-              <div class="col-md-12 col-sm-12 col-xs-12" style="padding-right:0px;">
-                <span readonly style="font-size:15px; font-weight:bold; margin-right:10px">성별</span>
+              <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <span id="select-title" readonly style="font-size:15px; font-weight:bold;">성별</span>
                 
                 <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
                   
@@ -48,9 +48,9 @@
                 </div>
               </div>
               
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div style="margin-bottom:5px;">
-                  <span readonly style="font-size:15px; font-weight:bold;">월세 (단위 - 만 원)</span>
+              <div id="sliderbox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div id="modal-price" style="margin-bottom:5px;">
+                  <span id="select-title" readonly style="font-size:15px; font-weight:bold;">월세 (단위 - 만 원)</span>
                   <input type="text" id="amount" name="amount" readonly style="font-size:15px; border:0; color:#f6931f; font-weight:bold;">
                 </div>
                 <div id="slider3" style="margin-top: 15px;">
@@ -59,8 +59,8 @@
                 </div>
               </div>
               
-              <div class="col-md-12 col-sm-12 col-xs-12" style="padding-right:0px;">
-                <span readonly style="font-size:15px; font-weight:bold; margin-right:10px">구역</span>
+              <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <span id="select-title" readonly style="font-size:15px; font-weight:bold;">구역</span>
                 <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
                   
                   <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
@@ -80,8 +80,8 @@
                   </label>
                 </div>
               </div>
-              <div class="col-md-12 col-sm-12 col-xs-12" style="padding-right:0px;">
-                <span readonly style="font-size:15px; font-weight:bold; margin-right:10px">거리</span>
+              <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <span id="select-title" readonly style="font-size:15px; font-weight:bold;">거리</span>
                 <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px; padding-left:0px;padding-right: 0px;">
                   <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
                       <input class="btn btn-default" type="radio" id="bt8" name="distance" value="0분 거리" /> 5분 거리
