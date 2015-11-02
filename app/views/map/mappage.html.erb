@@ -632,109 +632,7 @@
              }
          }); //학교별 마커 띄우기 끝
 
-      //검색 버튼 누르기 효과 시작
-      $(document).ready(function() {
-        
-        $("#bt1").click(function(){
-          $(this).addClass("active");
-          $("#bt2").removeClass("active");
-        });
-         $("#bt2").click(function(){
-          $(this).addClass("active");
-          $("#bt1").removeClass("active");
-        });
-        $("#bt3").click(function(){
-          $(this).addClass("active");
-          $("#bt4").removeClass("active");
-          $("#bt5").removeClass("active");
-          $("#bt6").removeClass("active");
-          $("#bt7").removeClass("active");
-        });
-        $("#bt4").click(function(){
-          $(this).addClass("active");
-          $("#bt3").removeClass("active");
-          $("#bt5").removeClass("active");
-          $("#bt6").removeClass("active");
-          $("#bt7").removeClass("active");
-        });
-        $("#bt5").click(function(){
-          $(this).addClass("active");
-          $("#bt3").removeClass("active");
-          $("#bt4").removeClass("active");
-          $("#bt6").removeClass("active");
-          $("#bt7").removeClass("active");
-        });
-        $("#bt6").click(function(){
-          $(this).addClass("active");
-          $("#bt3").removeClass("active");
-          $("#bt4").removeClass("active");
-          $("#bt5").removeClass("active");
-          $("#bt7").removeClass("active");
-        });
-        $("#bt7").click(function(){
-          $(this).addClass("active");
-          $("#bt3").removeClass("active");
-          $("#bt4").removeClass("active");
-          $("#bt5").removeClass("active");
-          $("#bt6").removeClass("active");
-        });
-        $("#bt8").click(function(){
-          $(this).addClass("active");
-          $("#bt9").removeClass("active");
-          $("#bt10").removeClass("active");
-        });
-        $("#bt9").click(function(){
-          $(this).addClass("active");
-          $("#bt8").removeClass("active");
-          $("#bt10").removeClass("active");
-        });
-        $("#bt10").click(function(){
-          $(this).addClass("active");
-          $("#bt8").removeClass("active");
-          $("#bt9").removeClass("active");
-        });  //검색버튼 누르기 효과 끝
-      
-        $("#fold").click(function(){
-          //$(".map_container").slideToggle("slow"); //접기
-          $(".roomList").css("width", "100%");
-          $(".map_container").css("width", "0%");
-          
-          if($("#menu-icon").hasClass("glyphicon-menu-left") == true){
-  
-            //지도 있는 상태-> 없는 상태
-            $("#menu-icon").removeClass("glyphicon-menu-left");
-            $("#menu-icon").addClass("glyphicon-menu-right");
-            $(".mainbox").removeClass("col-md-6");
-            $(".mainbox").addClass("col-md-12");
-            $(".room").removeClass("col-md-6");
-            $(".room").addClass("col-md-3");
-            $(".room").css("width","25%");
-            $(".foldButton").css( "width", "1.5%");
-            $(".listbox").css("width", "98.5%");
 
-          } else  {
-            //지도 없는 상태-> 있는 상태
-            $(".map_container").css("width", "50%");
-            $(".roomList").css("width", "100%");
-            $("#menu-icon").removeClass("glyphicon-menu-right");
-            $("#menu-icon").addClass("glyphicon-menu-left");
-            $(".mainbox").removeClass("col-md-12");
-            $(".mainbox").addClass("col-md-6");
-            $(".room").removeClass("col-md-3");
-            $(".room").addClass("col-md-6");
-            $(".room").css("width", "50%");
-            $(".foldButton").css( "width", "3%");
-            $(".listbox").css("width", "97%");
-          }
-        });
-
-        $(".room").mouseover(function(){
-          $(this).css("background-color", "#dddddd");
-        });
-        $(".room").mouseout(function() {
-          $(this).css("background-color", "#fff");
-        }); 
-      });
  
         
       } //구글맵 기본 설정 끝
@@ -743,71 +641,6 @@
       
     </script>
  
-
- <script>
-$(document).ready(function(){
-  $.fn.addSliderSegments = function (amount, orientation) {
-  return this.each(function () {
-    if (orientation == "vertical") {
-      var output = ''
-        , i;
-      for (i = 1; i <= amount - 2; i++) {
-        output += '<div class="ui-slider-segment" style="top:' + 100 / (amount - 1) * i + '%;"></div>';
-      };
-      $(this).prepend(output);
-    } else {
-      var segmentGap = 100 / (amount - 1) + "%"
-        , segment = '<div class="ui-slider-segment" style="margin-left: ' + segmentGap + ';"></div>';
-      $(this).prepend(segment.repeat(amount - 2));
-    }
-  });
-};
-   var $slider3 = $("#slider3")
-    , slider3ValueMultiplier = 1
-    , slider3Options;
-  
-  if ($slider3.length > 0) {
-    $slider3.slider({
-      min: 20,
-      max: 90,
-      step: 10,
-      animate: "fast",
-      values: [ 20, 90 ],
-      orientation: "horizontal",
-      range: true,
-      slide: function(event, ui) {
-        $slider3.find(".ui-slider-value:first")
-          .text(ui.values[0] * slider3ValueMultiplier)
-          .end()
-          .find(".ui-slider-value:last")
-          .text(ui.values[1] * slider3ValueMultiplier);
-      }
-    });
-  
-    slider3Options = $slider3.slider("option");
-    $slider3.addSliderSegments(slider3Options.max)
-      .find(".ui-slider-value:first")
-      .text(slider3Options.values[0] * slider3ValueMultiplier)
-      .end()
-      .find(".ui-slider-value:last")
-      .text(slider3Options.values[1] * slider3ValueMultiplier);
-  }
-}); 
-
-$(document).ready(function(){
-    $('#login').on('show.bs.modal', function () {
-       $(this).find('.modal-body').css({
-              width:'auto', //probably not needed
-              height:'auto', //probably not needed 
-              'max-height':'50%'
-       });
-    });
-});
-
-
-  </script>
-  
-  
    <style type="text/css">
  
     /*사이즈별 모달 조정 */
@@ -967,7 +800,7 @@ $(document).ready(function(){
     .map_container {
       padding-left:0px; 
       padding-right:0px;
-      height: 50%;
+      height: 46.5%;
       margin-top: 0.1em;
     }
     .listbox {
@@ -980,7 +813,7 @@ $(document).ready(function(){
        padding:0.7em;
      }
      .roomList{
-       height:870px;
+       height:468px;
        overflow:auto;
      }
      #price-size {
@@ -1155,6 +988,10 @@ $(document).ready(function(){
      .listbox {
         width:97%;
     }
+    .roomList{
+       height:550px;
+       overflow:auto;
+     }
      #small-device{
        padding:0.7em;
      }
@@ -1484,6 +1321,12 @@ $(document).ready(function(){
 
   </div><!--지도부분 끝-->
   
+  <!--박스 늘리기 for ipad 버튼-->
+  <div class="col-sm-12 hidden-xs hidden-md hidden-lg ipadButton" style="padding-right: 0px; padding-left: 0px; width:100%; height:30px; background-color:#95A5A6;">
+    <button id="ipadfold" style="border-color:#fff; background-color:#95A5A6; color:#fff; width:100%; height:100%; padding:0px;" type="button" class="btn btn-default" aria-label="Center">
+      <span id="menu-icon" class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><br/>
+    </button>
+  </div>
   
   <!--오른쪽 박스 시작-->
     
@@ -1500,21 +1343,21 @@ $(document).ready(function(){
       </div>
     </div>
   </div>
-  <!--박스 늘리기 버튼-->
+  
   
     <div class="listbox col-md-11 col-sm-12 col-xs-12" style="padding-left:0px; padding-right:0px;">
       <div class="panel panel-default">
         <div class="panel-heading col-md-12 col-xs-12 col-sm-12" style="background-color:#16A085; color:#fff; padding:5px; padding-left:10px; font-size:0.8em">검색결과</div>
         <div class="col-md-12 col-xs-12 col-sm-12 roomList panel-body" style="padding:0px;">
       
-      <% cnt=0 %>
+      <%# cnt=0 %>
       <% @hasuk.each do |c| %>
         <% #if (c.univ || '').include? @univ %>
           
-          <% cnt= cnt+1 %>
-          <% if cnt == 6 %>
-            <% break %>
-          <% end %>
+          <%# cnt= cnt+1 %>
+          <%# if cnt == 6 %>
+            <%# break %>
+          <%# end %>
           
               <!--개별 방 박스 1 시작-->
               
@@ -1701,5 +1544,198 @@ $(document).ready(function(){
   </div><!--방 리스트 박스 끝--> 
   
   </div><!--오른쪽 박스 끝 -->
+
+
+ <script>
+$(document).ready(function(){
+  $.fn.addSliderSegments = function (amount, orientation) {
+  return this.each(function () {
+    if (orientation == "vertical") {
+      var output = ''
+        , i;
+      for (i = 1; i <= amount - 2; i++) {
+        output += '<div class="ui-slider-segment" style="top:' + 100 / (amount - 1) * i + '%;"></div>';
+      };
+      $(this).prepend(output);
+    } else {
+      var segmentGap = 100 / (amount - 1) + "%"
+        , segment = '<div class="ui-slider-segment" style="margin-left: ' + segmentGap + ';"></div>';
+      $(this).prepend(segment.repeat(amount - 2));
+    }
+  });
+};
+   var $slider3 = $("#slider3")
+    , slider3ValueMultiplier = 1
+    , slider3Options;
+  
+  if ($slider3.length > 0) {
+    $slider3.slider({
+      min: 20,
+      max: 90,
+      step: 10,
+      animate: "fast",
+      values: [ 20, 90 ],
+      orientation: "horizontal",
+      range: true,
+      slide: function(event, ui) {
+        $slider3.find(".ui-slider-value:first")
+          .text(ui.values[0] * slider3ValueMultiplier)
+          .end()
+          .find(".ui-slider-value:last")
+          .text(ui.values[1] * slider3ValueMultiplier);
+      }
+    });
+  
+    slider3Options = $slider3.slider("option");
+    $slider3.addSliderSegments(slider3Options.max)
+      .find(".ui-slider-value:first")
+      .text(slider3Options.values[0] * slider3ValueMultiplier)
+      .end()
+      .find(".ui-slider-value:last")
+      .text(slider3Options.values[1] * slider3ValueMultiplier);
+  }
+}); 
+
+$(document).ready(function(){
+    $('#login').on('show.bs.modal', function () {
+       $(this).find('.modal-body').css({
+              width:'auto', //probably not needed
+              height:'auto', //probably not needed 
+              'max-height':'50%'
+       });
+    });
+});
+
+      //검색 버튼 누르기 효과 시작
+      $(document).ready(function() {
+        
+        $("#bt1").click(function(){
+          $(this).addClass("active");
+          $("#bt2").removeClass("active");
+        });
+         $("#bt2").click(function(){
+          $(this).addClass("active");
+          $("#bt1").removeClass("active");
+        });
+        $("#bt3").click(function(){
+          $(this).addClass("active");
+          $("#bt4").removeClass("active");
+          $("#bt5").removeClass("active");
+          $("#bt6").removeClass("active");
+          $("#bt7").removeClass("active");
+        });
+        $("#bt4").click(function(){
+          $(this).addClass("active");
+          $("#bt3").removeClass("active");
+          $("#bt5").removeClass("active");
+          $("#bt6").removeClass("active");
+          $("#bt7").removeClass("active");
+        });
+        $("#bt5").click(function(){
+          $(this).addClass("active");
+          $("#bt3").removeClass("active");
+          $("#bt4").removeClass("active");
+          $("#bt6").removeClass("active");
+          $("#bt7").removeClass("active");
+        });
+        $("#bt6").click(function(){
+          $(this).addClass("active");
+          $("#bt3").removeClass("active");
+          $("#bt4").removeClass("active");
+          $("#bt5").removeClass("active");
+          $("#bt7").removeClass("active");
+        });
+        $("#bt7").click(function(){
+          $(this).addClass("active");
+          $("#bt3").removeClass("active");
+          $("#bt4").removeClass("active");
+          $("#bt5").removeClass("active");
+          $("#bt6").removeClass("active");
+        });
+        $("#bt8").click(function(){
+          $(this).addClass("active");
+          $("#bt9").removeClass("active");
+          $("#bt10").removeClass("active");
+        });
+        $("#bt9").click(function(){
+          $(this).addClass("active");
+          $("#bt8").removeClass("active");
+          $("#bt10").removeClass("active");
+        });
+        $("#bt10").click(function(){
+          $(this).addClass("active");
+          $("#bt8").removeClass("active");
+          $("#bt9").removeClass("active");
+        });  //검색버튼 누르기 효과 끝
+      
+        $("#fold").click(function(){
+          //$(".map_container").slideToggle("slow"); //접기
+          $(".roomList").css("width", "100%");
+          $(".map_container").css("width", "0%");
+          
+          if($("#menu-icon").hasClass("glyphicon-menu-left") == true){
+  
+            //지도 있는 상태-> 없는 상태
+            $("#menu-icon").removeClass("glyphicon-menu-left");
+            $("#menu-icon").addClass("glyphicon-menu-right");
+            $(".mainbox").removeClass("col-md-6");
+            $(".mainbox").addClass("col-md-12");
+            $(".room").removeClass("col-md-6");
+            $(".room").addClass("col-md-3");
+            $(".room").css("width","25%");
+            $(".foldButton").css( "width", "1.5%");
+            $(".listbox").css("width", "98.5%");
+
+          } else  {
+            //지도 없는 상태-> 있는 상태
+            $(".map_container").css("width", "50%");
+            $(".roomList").css("width", "100%");
+            $("#menu-icon").removeClass("glyphicon-menu-right");
+            $("#menu-icon").addClass("glyphicon-menu-left");
+            $(".mainbox").removeClass("col-md-12");
+            $(".mainbox").addClass("col-md-6");
+            $(".room").removeClass("col-md-3");
+            $(".room").addClass("col-md-6");
+            $(".room").css("width", "50%");
+            $(".foldButton").css( "width", "3%");
+            $(".listbox").css("width", "97%");
+          }
+        });
+        
+        $("#ipadfold").click(function(){
+            if($("#menu-icon").hasClass("glyphicon-menu-up") == true){
+                //지도 있는 상태-> 없는 상태
+                $("#menu-icon").removeClass("glyphicon-menu-up");
+                $("#menu-icon").addClass("glyphicon-menu-down");
+                $(".map_container").animate({
+                    height: "0%"
+                    
+                    }, 700);
+                $(".roomList").css("height","904px");
+                
+            } else {
+                 //지도 없는 상태-> 있는 상태
+                $("#menu-icon").removeClass("glyphicon-menu-down");
+                $("#menu-icon").addClass("glyphicon-menu-up");
+                $(".map_container").animate({
+                    height: "46.5%"
+                    
+                    });
+                $(".roomList").css("height","468px");
+            }
+        });
+        
+        $(".room").mouseover(function(){
+          $(this).css("background-color", "#dddddd");
+        });
+        $(".room").mouseout(function() {
+          $(this).css("background-color", "#fff");
+        }); 
+      });
+
+
+  </script>
+  
+  
 
 </body>
