@@ -2003,6 +2003,7 @@ $(document).ready(function(){
             //지도 있는 상태-> 없는 상태
             $("#menu-icon").removeClass("glyphicon-menu-left");
             $("#menu-icon").addClass("glyphicon-menu-right");
+            
             $(".mainbox").removeClass("col-lg-6");
             $(".mainbox").addClass("col-lg-12");
             $(".room").removeClass("col-lg-6");
@@ -2017,10 +2018,12 @@ $(document).ready(function(){
 
           } else  {
             //지도 없는 상태-> 있는 상태
-            $(".map_container").css("width", "50%");
-            $(".roomList").css("width", "100%");
             $("#menu-icon").removeClass("glyphicon-menu-right");
             $("#menu-icon").addClass("glyphicon-menu-left");
+            
+            $(".map_container").css("width", "50%");
+            $(".roomList").css("width", "100%");
+            
             $(".mainbox").removeClass("col-lg-12");
             $(".mainbox").addClass("col-lg-6");
             $(".room").removeClass("col-lg-3");
