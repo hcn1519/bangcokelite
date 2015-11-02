@@ -794,6 +794,15 @@ $(document).ready(function(){
   }
 }); 
 
+$(document).ready(function(){
+    $('#login').on('show.bs.modal', function () {
+       $(this).find('.modal-body').css({
+              width:'auto', //probably not needed
+              height:'auto', //probably not needed 
+              'max-height':'50%'
+       });
+    });
+});
 
 
   </script>
@@ -813,295 +822,7 @@ $(document).ready(function(){
     @media only screen and (min-width:2000px){
         /* for sumo sized (mac) screens */
     }
-    
-    @media only screen and (device-width:768px){
-       /* default iPad screens */
-       .modal-content#modal-size1{
-
-       }
-       /*아이패드 */
-       .modal-content#modal-size2{
-
-     }
-     #small-device{
-       padding:0.7em;
-     }
-     .small-device{
-       padding:0.7em;
-     }
-     .roomList{
-       height:870px;
-       overflow:auto;
-     }
-     #price-size {
-       width:27%;
-       
-     }
-     #price-size h4 {
-      font-size:1.3em;
-     }
-     #deposit-size {
-       width:26%;
-       margin-left:0px;
-     }
-     #gender-size {
-     
-     }
-     #icon-size {
-       width:25%;
-       
-     }
-     #kind-size{
-       
-     }
-     #meal-size{
-       
-     }
-     #room-size{
-       
-     }
-     #distance-size{
-       
-     }
-    }
-
-    @media (min-width: 768px) {
-     .modal-content#modal-size1{
-
-     }
-     
-     #small-device{
-       padding:0.7em;
-     }
-     .small-device{
-       padding:0.7em;
-     }
-     /*아이패드보다 크고 832px 이하 */
-     #price-size {
-       
-     }
-     #deposit-size {
-       
-     }
-     #gender-size {
-     
-     }
-     #icon-size {
-       
-     }
-     #kind-size{
-       
-     }
-     #meal-size{
-       
-     }
-     #room-size{
-       
-     }
-     #distance-size{
-       
-     }
-    }
-     @media (min-width: 832px) {
-     
-     #small-device{
-       padding:0.7em;
-     }
-     .small-device{
-       padding:0.7em;
-     }
-     /*832px보다 크고 960px 이하 */
-     #price-size {
-       
-     }
-     #deposit-size {
-       
-     }
-     #gender-size {
-     
-     }
-     #icon-size {
-       
-     }
-     #kind-size{
-       
-     }
-     #meal-size{
-       
-     }
-     #room-size{
-       
-     }
-     #distance-size{
-       
-     }
-    }
-    @media (max-width: 768px) {
-     .modal-content#modal-size1{
-
-     }
-     
-     #small-device {
-       padding:0.7em;
-     }
-     .small-device{
-       padding:0.7em;
-     }
-     /*패블릿 스마트폰 */
-     #price-size {
-       
-     }
-     #deposit-size {
-       
-     }
-     #gender-size {
-     
-     }
-     #icon-size {
-       
-     }
-     #kind-size{
-       
-     }
-     #meal-size{
-       
-     }
-     #room-size{
-       
-     }
-     #distance-size{
-       
-     }
-    }
-   
-    @media (min-width: 960px) {
-      .modal-content#modal-size1{
-       width:400px;
-       left:0%;
-       padding:0px;
-     }
-      .modal-content#modal-size2{
-   
-     }
-     #small-device{
-       padding:0.7em;
-     }
-     .small-device{
-       padding:0.7em;
-     }
-     /*노트북 크기 */
-     #price-size {
-       
-     }
-     #deposit-size {
-       margin-left:4px;
-     }
-     #gender-size {
-     
-     }
-     #icon-size {
-       
-     }
-     #kind-size{
-       
-     }
-     #meal-size{
-       
-     }
-     #room-size{
-       
-     }
-     #distance-size{
-       
-     }
-    } 
-    @media (min-width: 1050px){
-     .modal-content#modal-size2{
-        width:500px;
-        left:55%;
-     }
-     #small-device{
-       padding:0.7em;
-     }
-     .small-device{
-       padding:0.7em;
-     }
-     #price-size {
-       
-     }
-     #deposit-size {
-
-     }
-     #gender-size {
-     
-     }
-     #icon-size {
-       
-     }
-     #kind-size{
-       
-     }
-     #meal-size{
-       
-     }
-     #room-size{
-       
-     }
-     #distance-size{
-       
-     }
-     /*노트북 크기 */
-    }
-    @media (min-width: 1135px){
-     
-     /*노트북 크기 */
-    }
-    
-    @media (max-width: 480px) {
-      .modal-content#modal-size1{
-       width:300px;
-       left:0%;
-       padding:0px;
-      }
-      #signbutton {
-        padding-left:0px;
-      }
-      /*조금 큰 스마트폰 크기 */
-     
-     #small-device{
-       padding:0.4em;
-       font-size:0.8em;
-     }
-     .small-device{
-       padding:0.4em;
-       font-size:0.8em;
-     }
-     #price-size {
-       
-     }
-     #deposit-size {
-       
-     }
-     #gender-size {
-     
-     }
-     #icon-size {
-       
-     }
-     #kind-size{
-       
-     }
-     #meal-size{
-       
-     }
-     #room-size{
-       
-     }
-     #distance-size{
-       
-     }
-    }
-    @media (max-width: 400px) {
+     @media (max-width: 400px) {
       .modal-content#modal-size1{
        width:300px;
        left:0%;
@@ -1147,6 +868,465 @@ $(document).ready(function(){
        
      }
     }
+     @media (max-width: 480px) {
+      .modal-content#modal-size1{
+       width:300px;
+       left:0%;
+       padding:0px;
+      }
+      #signbutton {
+        padding-left:0px;
+      }
+      /*조금 큰 스마트폰 크기 */
+     
+     #small-device{
+       padding:0.4em;
+       font-size:0.8em;
+     }
+     .small-device{
+       padding:0.4em;
+       font-size:0.8em;
+     }
+     #price-size {
+       
+     }
+     #deposit-size {
+       
+     }
+     #gender-size {
+     
+     }
+     #icon-size {
+       
+     }
+     #kind-size{
+       
+     }
+     #meal-size{
+       
+     }
+     #room-size{
+       
+     }
+     #distance-size{
+       
+     }
+     
+    }
+    @media (max-width: 768px) {
+     .modal-content#modal-size1{
+
+     }
+     
+     #small-device {
+       padding:0.7em;
+     }
+     .small-device{
+       padding:0.7em;
+     }
+     /*패블릿 스마트폰 */
+     #price-size {
+       
+     }
+     #deposit-size {
+       
+     }
+     #gender-size {
+     
+     }
+     #icon-size {
+       
+     }
+     #kind-size{
+       
+     }
+     #meal-size{
+       
+     }
+     #room-size{
+       
+     }
+     #distance-size{
+       
+     }
+    }
+    @media only screen and (device-width:768px){
+       /* default iPad screens */
+       .modal-content#modal-size1{
+
+       }
+       /*아이패드 */
+       .modal-content#modal-size2{
+
+     }
+     html, body { 
+      height: 97.5%; 
+      margin: 0; 
+      padding: 0; 
+    }
+    .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 50%;
+      margin-top: 0.1em;
+    }
+    .listbox {
+        width:100%;
+    }
+     #small-device{
+       padding:0.7em;
+     }
+     .small-device{
+       padding:0.7em;
+     }
+     .roomList{
+       height:870px;
+       overflow:auto;
+     }
+     #price-size {
+        width:20%;
+        margin-left:2px;
+     }
+     #price-size h4{
+      
+       font-size:1em;
+       margin-top:6px;
+     }
+     
+     #deposit-size {
+       width:27%;
+       margin-left:5px;
+     }
+     #deposit-size p{
+       font-size:0.5em;
+     }
+     #gender-size {
+         margin:0px;
+         padding:0px; 
+         width:20%;
+     }
+     #gender-size p {
+         margin-left:2px;
+     }
+     #icon-size {
+        width:30%;
+        padding-left:3px;
+        padding-top:6px;
+        padding-right:0px;
+       
+     }
+     #kind-size{
+       width:23%;
+       margin:0px;
+       padding:0px;
+       margin-left:2px;
+     }
+     #kind-size span{
+        font-size:0.6em; 
+     }
+     #meal-size{
+        font-size:0.6em;
+        margin-top:7px; 
+     }
+     #room-size{
+       margin:0px;
+       padding:0px;
+       width:17%;
+     }
+     #room-size span{
+        font-size:0.6em;
+     }
+     #distance-size{
+       margin:0px;
+        padding:0px;
+        margin-left:2px;
+     }
+     #distance-size span{
+         font-size:0.6em;
+     }
+     .image-size {
+        height:6.5em; 
+        min-height:100px;
+     }
+    }
+
+    @media (min-width: 768px) {
+     .modal-content#modal-size1{
+
+     }
+     
+     #small-device{
+       padding:0.7em;
+     }
+     .small-device{
+       padding:0.7em;
+     }
+     /*아이패드보다 크고 832px 이하 */
+     #price-size {
+       
+     }
+     #deposit-size {
+       
+     }
+     #gender-size {
+     
+     }
+     #icon-size {
+       margin:0px; 
+       padding-left:3px;
+     }
+     #kind-size{
+       
+     }
+     #kind-size span {
+        font-size:0.6em;
+     }
+     #meal-size{
+       margin-top:7px; 
+       padding:0px; 
+       width: 30%;
+     }
+     #meal-size span {
+        font-size:0.6em;
+     }
+     #room-size{
+       
+     }
+     #distance-size{
+       margin:0px;
+        padding:0px;
+        margin-left:2px;
+     }
+     #distance-size span{
+         font-size:0.6em;
+     }
+    }
+     @media (min-width: 832px) {
+     
+     #small-device{
+       padding:0.7em;
+     }
+     .small-device{
+       padding:0.7em;
+     }
+     /*832px보다 크고 960px 이하 */
+     #price-size {
+       
+     }
+     #deposit-size {
+       
+     }
+     #gender-size {
+     
+     }
+     #icon-size {
+       
+     }
+     #kind-size{
+       
+     }
+     #meal-size{
+       
+     }
+     #room-size{
+       
+     }
+     #distance-size{
+       
+     }
+    }
+   
+    @media (min-width: 960px) {
+      .modal-content#modal-size1{
+       width:400px;
+       left:0%;
+       padding:0px;
+     }
+      .modal-content#modal-size2{
+   
+     }
+   
+    .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+     .listbox {
+        width:97%;
+    }
+     #small-device{
+       padding:0.7em;
+     }
+     .small-device{
+       padding:0.7em;
+     }
+     /*노트북 크기 */
+     #price-size {
+        font-size:1.5em;
+        margin-left:5px;
+     }
+     #price-size h4 {
+        margin-top:2px;
+     }
+     #deposit-size {
+       margin-left:4px;
+         width:28%;
+     }
+     #deposit-size p{
+         font-size:0.7em;
+          margin-left:5px;
+     }
+     #gender-size {
+         margin:0px;
+         padding:0px; 
+         width:20%;
+         margin-top:3px;
+     }
+     #icon-size {
+       width:24%;
+        padding-left:5px;
+        padding-top:8px;
+        margin:0px; 
+        padding:0px;
+        margin-left: 5px;
+        margin-top: 8.5px;
+
+     }
+     #kind-size{
+       width:20%;
+       margin:0px;
+       padding:0px;
+       margin-left:5px;
+     }
+     #kind-size span{
+        font-size:12px; 
+     }
+     #meal-size{
+       margin:0px; 
+       padding:0px; 
+       width: 30%;
+     }
+     #meal-size span {
+        font-size:12px;
+     }
+     #room-size{
+       margin:0px;
+       padding:0px;
+       width: 17%;
+     }
+     #room-size span{
+        font-size:12px;
+     }
+     #distance-size{
+        margin:0px;
+        padding:0px;
+        margin-left:5px;
+     }
+     #distance-size span{
+        font-size:12px;
+     }
+     .image-size {
+        height:9.75em; 
+        min-height:140px;
+     }
+    } 
+    @media (min-width: 1050px){
+     .modal-content#modal-size2{
+        width:500px;
+        left:55%;
+     }
+    .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+    
+     .listbox {
+        width:97%;
+    }
+     #small-device{
+       padding:0.7em;
+     }
+     .small-device{
+       padding:0.7em;
+     }
+     #price-size {
+        font-size:1.5em;
+        margin-left:5px;
+     }
+     #price-size h4{
+      margin-top:2px;
+     }
+     #deposit-size {
+        width:28%;
+     }
+     #deposit-size p{
+         font-size:0.7em;
+         margin-left:5px;
+     }
+     #gender-size {
+         margin:0px;
+         padding:0px; 
+         width:20%;
+         margin-top:3px;
+     }
+     #icon-size {
+        width:24%;
+        padding-left:5px;
+        padding-top:8px;
+        margin:0px; 
+        padding:0px;
+        margin-left: 5px;
+        margin-top: 8.5px;
+     }
+     #kind-size{
+       width:20%;
+       margin:0px;
+       padding:0px;
+       margin-left:5px;
+     }
+     #kind-size span{
+        font-size:12px; 
+     }
+     #meal-size{
+       margin:0px; 
+       padding:0px; 
+       width: 30%;
+     }
+     #meal-size span {
+        font-size:12px;
+     }
+     #room-size{
+       margin:0px;
+       padding:0px;
+       width: 17%;
+     }
+     #room-size span{
+        font-size:12px;
+     }
+     #distance-size{
+        margin:0px;
+        padding:0px;
+        margin-left:5px;
+     }
+     #distance-size span{
+        font-size:12px;
+     }
+     .image-size {
+        height:9.75em; 
+        min-height:140px;
+     }
+     /*노트북 크기 */
+    }
+    @media (min-width: 1135px){
+     
+     /*노트북 크기 */
+    }
+    
+   
+   
     /*사이즈별 모달 조정 */
     
     
@@ -1256,19 +1436,13 @@ $(document).ready(function(){
     
     /*지도 레이아웃 설정 */
     html, body { 
-      height: 97.5%; 
+      height: 95.5%; 
       margin: 0; 
       padding: 0; 
     }
-    .map_container {
-      padding-left:0px; 
-      padding-right:0px;
-      height: 100%;
-      margin-top: 0.1em;
-    }
-    #map-canvas {
-      height:100%;
-      width:100%;
+    #map-canvas{
+        height:100%;
+        width:100%;
     }
     .mainbox {
       height:100%;
@@ -1303,7 +1477,7 @@ $(document).ready(function(){
 
   <!--지도부분 시작-->
   
-  <div class="col-md-6 col-sm-7 col-xs-12 map_container hidden-xs" style="padding-left:0px; padding-right:0px;">         
+  <div class="col-md-6 col-sm-12 col-xs-12 map_container hidden-xs" style="padding-left:0px; padding-right:0px;">         
     <!-- head에서 설정한 id로 map이 들어온다. -->
     <div id="map-canvas">
     </div>
@@ -1313,11 +1487,11 @@ $(document).ready(function(){
   
   <!--오른쪽 박스 시작-->
     
- <div class="col-md-6 col-sm-5 col-xs-12 mainbox" style="padding-left: 0px; padding-right: 0px;"> 
+ <div class="col-md-6 col-sm-12 col-xs-12 mainbox" style="padding-left: 0px; padding-right: 0px;"> 
 
    
     <!--방 리스트 박스-->
-  <div class="col-md-1 col-sm-1 col-xs-1 hidden-xs foldButton" style="padding-right: 0px; padding-left: 0px; width:3%; height:100%">
+  <div class="col-md-1 col-sm-1 col-xs-1 hidden-xs hidden-sm foldButton" style="padding-right: 0px; padding-left: 0px; width:3%; height:100%">
     <div style="padding-right: 0px;padding-left: 0px; height:100%">
       <div class="folderbox" style="height:100%">
         <button id="fold" style="border-color:#fff; background-color:#95A5A6; color:#fff; width:100%; height:100%; padding-left: 0px;padding-right: 0px;" type="button" class="btn btn-default" aria-label="Center">
@@ -1328,7 +1502,7 @@ $(document).ready(function(){
   </div>
   <!--박스 늘리기 버튼-->
   
-    <div class="listbox col-md-11 col-sm-12 col-xs-12" style="padding-left:0px; padding-right:0px; width:97%;">
+    <div class="listbox col-md-11 col-sm-12 col-xs-12" style="padding-left:0px; padding-right:0px;">
       <div class="panel panel-default">
         <div class="panel-heading col-md-12 col-xs-12 col-sm-12" style="background-color:#16A085; color:#fff; padding:5px; padding-left:10px; font-size:0.8em">검색결과</div>
         <div class="col-md-12 col-xs-12 col-sm-12 roomList panel-body" style="padding:0px;">
@@ -1341,33 +1515,10 @@ $(document).ready(function(){
           <% if cnt == 6 %>
             <% break %>
           <% end %>
-          <%# if c.kind == "자취" %>
-              <!--<div class='room' id='a<%#=c.id %>' style='margin-top:3px; margin-bottom:3px;'><!--개별 방 박스1 시작
-                <div class="row" style="margin-left: 0px; margin-right: 0px;">
-                <div class='col-md-4 col-xs-4 col-sm-4' style="width: 100px; padding-left:5px; padding-right:0px">
-                   <img src='<%#= c.img%>' height="80px"  width='100px'>
-                </div><!-- 왼쪽
-              
-               <div class='col-md-8 col-xs-8 col-sm-8' style="padding-right: 0px;">
-                   <div class="row" style="margin-left:1px; padding-left:0px; padding-right:0px">
-                     <div class="col-md-5 col-sm-5 col-xs-5" style="padding-left:0px; padding-right:0px width:95px">
-                       <p style="font-size: 24px; margin-top:5px"><%#= c.deposit %>/<%#= c.price %></p>
-                     </div>
-                     <div class="col-md-7 col-sm-7 col-xs-7" style="margin-top:3px; margin-bottom:5px; padding-left:0px; padding-right:0px">
-                       <button class="btn btn-default"  style="padding-left: 5px; padding-right: 5px; padding-top: 3px; padding-bottom: 3px;"><%#= c.room_floor %>층</button>&nbsp;&nbsp;<button class="btn btn-default"  style="padding-left: 5px; padding-right: 5px; padding-top: 3px; padding-bottom: 3px;"><%#= c.kind %></button>
-                    </div>
-                <p style='margin-bottom:5px; font-size:16px'>거리 : 정문에서 10분(500m)</p>
-                <p style='color:#eb9088; margin-bottom:5px; font-size:14px'>#<%#= c.univ %> #관리비: <%#= c.admin_fee %>만원 #<%#= c.size%>평</p>
-                  </div>
-              </div><!-- 오른쪽
-              </div>
-            </div> <!-- 개별 방 박스1 끝-->
-          <%# elsif c.kind == "하숙" %>
-            
-            
+          
               <!--개별 방 박스 1 시작-->
               
-                <div class="room col-md-6 col-sm-12 col-xs-12" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+                <div class="room col-md-6 col-sm-4 col-xs-12" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
                   <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
                   <div class="img-responsive thumbnail">
                     
@@ -1376,20 +1527,20 @@ $(document).ready(function(){
                       <div id="nameOfhasuk">
                         <p><%= c.hasuk_name %></p>
                       </div>
-                      <img src="<%= c.room_img1.url %>" alt="이미지 없음" style="width:100%; height:9.75em; min-height:140px;">
+                      <img src="<%= c.room_img1.url %>" alt="이미지 없음" class="image-size" style="width:100%;">
                     </div>
                     
                     <!--정보 표시-->
                     <div class="caption" style="padding-top:5px; padding-left:0px; padding-right:0px; padding-bottom:5px">
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="price-size" class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; margin-left:5px;">
+                        <div id="price-size" class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px;">
                           <div style="float:left">
                             <% unless c.price_from.nil? %>
-                            <h4 style="color:#445d82; margin-bottom:0px; margin-top:2px; font-size:1.5em">
+                            <h4 style="color:#445d82; margin-bottom:0px;">
                               <%= c.price_from %>~<%= c.price_to %>
                             </h4>
                             <% else %>
-                            <h4 style="color:#445d82; margin-bottom:0px; margin-top:2px; font-size:1.5em">
+                            <h4 style="color:#445d82; margin-bottom:0px;">
                               00~00
                             </h4>
                             <% end %>
@@ -1398,52 +1549,52 @@ $(document).ready(function(){
                         <div id="deposit-size" class="col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
                           <div style="float:left">
                             <% if c.small_deposit == nil && c.big_deposit == nil %>
-                              <p style="font-size:12px; margin-top:8px; margin-bottom:0px;">(DB 없음)</p>
+                              <p style="margin-top:8px; margin-bottom:0px;">(DB 없음)</p>
                               
                             <% else %>
                             
                               <% if c.small_deposit == 0 %>
                                 
                                 <% if c.big_deposit == 0 %>
-                                  <p style="font-size:12px; margin-top:8px; margin-bottom:0px;">(예치금 없음)</p>
+                                  <p style="margin-top:8px; margin-bottom:0px;">(예치금 없음)</p>
                                 <% else %>
-                                  <p style="font-size:12px; margin-top:8px; margin-bottom:0px;">(보증금 <%= c.big_deposit %>)</p>
+                                  <p style="margin-top:8px; margin-bottom:0px;">(보증금 <%= c.big_deposit %>)</p>
                                 <% end %>
                               
                               <% else %>
-                                 <p style="font-size:12px; margin-top:8px; margin-bottom:0px;">(예치금 <%= c.small_deposit %>)</p>
+                                 <p style="margin-top:8px; margin-bottom:0px;">(예치금 <%= c.small_deposit %>)</p>
                               <% end %>
                             
                             <% end %>
                               
                           </div>
                         </div>
-                        <div id="gender-size" class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; width:20%">
+                        <div id="gender-size" class="col-md-3 col-sm-3 col-xs-3">
                           
                           <% if c.gender=="여성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#E74C3C; border-color:#E74C3C; margin-top:6px; margin-left:3px;text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
+                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:3px;text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
                             </div>
                           <% elsif c.gender =="남녀공용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#2ECC71; border-color:#2ECC71; text-align:center; margin-top:6px; margin-left:3px; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
+                              <p class="form-control" type="text" style="color:#2ECC71; border:1px solid #2ECC71; text-align:center; margin-top:6px; margin-left:3px; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
                             </div>
                           <% elsif c.gender == "남녀층 분리" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#9B59B6; border-color: #9B59B6; margin-top:6px; margin-left:3px; text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남녀층분리</p>
+                              <p class="form-control" type="text" style="color:#9B59B6; border:1px solid #9B59B6; margin-top:6px; margin-left:3px; text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남녀층분리</p>
                             </div>
                           <% elsif c.gender == "남성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#2980b9; border-color:#2980B9; margin-top:6px; margin-left:3px; text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
+                              <p class="form-control" type="text" style="color:#2980b9; border:1px solid #2980B9; margin-top:6px; margin-left:3px; text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
                             </div>
                           <% else %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#E74C3C; border-color:#E74C3C; margin-top:6px; margin-left:3px;text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">DB 없음</p>
+                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:3px;text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">DB 없음</p>
                             </div>
                           <% end %>
                           
                         </div>
-                        <div id="icon-size" class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; padding-left:5px; padding-top:8px">
+                        <div id="icon-size" class="col-md-3 col-sm-3 col-xs-3">
                           <% if c.internet =="와이파이" || c.internet =="유선 인터넷" %>
                             <img src="/images/icons/wifi.png" style="width:20px; height:20px; float:left; margin-right:2px;">
                           <% elsif c.internet =="없음" %>  
@@ -1469,57 +1620,57 @@ $(document).ready(function(){
                       </div><!--정보 첫번째 줄 끝-->
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="kind-size" class="col-md-3 col-sm-3 col-xs-3" style="width:20%; margin:0px; padding:0px; margin-left:5px;">
+                        <div id="kind-size" class="col-md-3 col-sm-3 col-xs-3">
                           <% if c.hasuk_kind == "일반하숙" %>
-                            <span style="font-size:12px; color:#27AE60">[일반하숙]</span>
+                            <span style="color:#27AE60">[일반하숙]</span>
                           <% elsif c.hasuk_kind == "잠만 자는 방" %>
-                            <span style="font-size:12px; color:#27AE60">[잠만자는]</span>
+                            <span style="color:#27AE60">[잠만자는]</span>
                           <% elsif c.hasuk_kind == "원룸형" %>
                             <span style="font-size:12px; color:#27AE60">[원룸형]</span>
                           <% elsif c.hasuk_kind == "고시원형" %>
-                            <span style="font-size:12px; color:#27AE60">[고시원형]</span>
+                            <span style="color:#27AE60">[고시원형]</span>
                           <% else %>
-                            <span style="font-size:12px; color:#27AE60">[형태없음]</span>
+                            <span style="color:#27AE60">[형태없음]</span>
                           <% end %>
                         </div>
-                        <div id="meal-size" class="col-md-4 col-sm-4 col-xs-4" style="margin:0px; padding:0px; width: 30%;">
+                        <div id="meal-size" class="col-md-4 col-sm-4 col-xs-4">
                           
                           <% if c.meal4 == "제공 안함" %>
-                            <span style="font-size:12px;">| 제공 안함</span>
+                            <span>| 제공 안함</span>
                           <% elsif c.meal1 == nil && c.meal2 == nil && c.meal3 == nil && c.meal4 == nil %>
-                            <span style="font-size:12px;">| 식사 DB 없음</span>
+                            <span>| 식사 DB 없음</span>
                           <% else %>
 
                               <% unless c.meal1.nil? %>
-                                  <span style="font-size:12px;"><%= c.meal1 %>,</span>
+                                  <span><%= c.meal1 %>,</span>
                               <% end %>
                               <% unless c.meal2.nil? %>
-                                  <span style="font-size:12px;"><%= c.meal2 %>,</span>
+                                  <span><%= c.meal2 %>,</span>
                               <% end %>
                               <% unless c.meal3.nil? %>
-                                  <span style="font-size:12px;"><%= c.meal3 %></span>
+                                  <span><%= c.meal3 %></span>
                               <% end %>
                           
                           <% end %>
                         </div>
-                        <div id="room-size" class="col-md-3 col-sm-3 col-xs-3" style="margin:0px; padding:0px; width: 17%;">
+                        <div id="room-size" class="col-md-3 col-sm-3 col-xs-3">
                           <% unless c.size_from.nil? %>
-                          <span id="small-size" style="font-size:12px;">| <%=c.size_from %>~<%= c.size_to %>평</span>
+                          <span id="small-size">| <%=c.size_from %>~<%= c.size_to %>평</span>
                           <% else %>
-                            <span id="small-size" style="font-size:12px;">| 0~1평</span>
+                            <span id="small-size">| 0~1평</span>
                           <% end %>
                         </div>
-                        <div id="distance-size" class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px; margin-left:5px;">
+                        <div id="distance-size" class="col-md-12 col-sm-12 col-xs-12">
                           <% if c.univ_distance1 != "학교선택" %>
                             <% if c.univ_distance1 == "이화" %>
-                              <span style="font-size:12px;"><%= c.univ_distance1 %>여대 <%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분) | <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
+                              <span id="gate"><%= c.univ_distance1 %>여대 <%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span><br class="hidden-xs hidden-md hidden-lg"> <span id="subway"> <span class="hidden-sm">|</span> <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
                             <% elsif c.univ_distance1 =="서강" %>
-                              <span style="font-size:12px;"><%= c.univ_distance1 %>대 <%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분) | <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
+                              <span id="gate"><%= c.univ_distance1 %>대 <%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span><br class="hidden-xs hidden-md hidden-lg"> <span id="subway"> <span class="hidden-sm">|</span> <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
                             <% elsif c.univ_distance1 =="연세" %>
-                              <span style="font-size:12px;"><%= c.univ_distance1 %>대 <%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분) | <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
+                              <span id="gate"><%= c.univ_distance1 %>대 <%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span><br class="hidden-xs hidden-md hidden-lg"> <span id="subway"> <span class="hidden-sm">|</span> <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
                             <% end %>
                           <% else %>
-                            <span style="font-size:12px;">example대 정문 1064m(20분) | example역 1103m(21분)</span>
+                            <span id="gate">이화여대 정문 1064m(20분)</span><br class="hidden-xs hidden-md hidden-lg"> <span id="subway"> <span class="hidden-sm">|</span> 신촌기차역 1103m(21분)</span>
                           <% end %>
                         </div>
                         
