@@ -24,8 +24,22 @@
     min-width:120px;
   }
 </style>
-<% if user_signed_in? %>
-  <li>
+<% if current_page?('/') %>
+  <% if user_signed_in? %>
+    <li><%= link_to "방 등록하기", "/hasuk_houses", :class => 'btn btn-small' %></li>
+    <li><%= link_to '회원정보수정', "#edit", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+    <li><%= link_to '유저 관리', users_path %></li>
+    <li><%= link_to '로그아웃', destroy_user_session_path, :method=>'delete' %></li>
+  <% else %>
+    <li><%= link_to "방 등록하기", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+    <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+    <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+    
+  <% end %><!--인덱스 페이지 -->
+  
+<% elsif current_page?('/map/mappage') %>
+  <% if user_signed_in? %>
+    <li>
   <div class="dropdown">
     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       학교 변경하기
@@ -57,40 +71,54 @@
   <li><%= link_to '회원정보수정', "#edit", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
   <li><%= link_to '유저 관리', users_path %></li>
   <li><%= link_to '로그아웃', destroy_user_session_path, :method=>'delete' %></li>
+  <li><%= link_to "하숙방 검색", "#search", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+  
+  <% else %>
+    <li>
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        학교 변경하기
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="background-color:#34495e">
+        <li>
+        <form id="sogang" action="/map/mappage" method="GET">
+          <input type="hidden" value="서강" name="univ">
+          <input id="submitt" type="submit" value="서강대학교" class="btn btn-small" >
+        </form>
+      </li>
+      <li>
+        <form id="ewha" action="/map/mappage" method="GET">
+          <input type="hidden" value="이화" name="univ">
+          <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small">
+        </form>
+      </li>
+      <li>
+        <form id="sogang" action="/map/mappage" method="GET">
+          <input type="hidden" value="연세" name="univ">
+          <input id="submitt"  type="submit" value="연세대학교" class="btn btn-small">
+        </form>
+      </li>
+      </ul>
+    </div>
+    </li>
+    <li><%= link_to "방 등록하기", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+    <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+    <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+    <li><%= link_to "하숙방 검색", "#search", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+  <% end %>
+<% end %>
+<% if user_signed_in? %>
+  
+  
 <% else %>
   <li>
-  <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      학교 변경하기
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="background-color:#34495e">
-      <li>
-      <form id="sogang" action="/map/mappage" method="GET">
-        <input type="hidden" value="서강" name="univ">
-        <input id="submitt" type="submit" value="서강대학교" class="btn btn-small" >
-      </form>
-    </li>
-    <li>
-      <form id="ewha" action="/map/mappage" method="GET">
-        <input type="hidden" value="이화" name="univ">
-        <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small">
-      </form>
-    </li>
-    <li>
-      <form id="sogang" action="/map/mappage" method="GET">
-        <input type="hidden" value="연세" name="univ">
-        <input id="submitt"  type="submit" value="연세대학교" class="btn btn-small">
-      </form>
-    </li>
-    </ul>
+  
   </div>
   </li>
-  <li><%= link_to "방 등록하기", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-  <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-  <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+  
 <% end %>
-<li><%= link_to "하숙방 검색", "#search", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+
 
 <!--How to pop up login modal-->
 <% if !user_signed_in? %>
