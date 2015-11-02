@@ -1274,6 +1274,10 @@
      .listbox {
         width:97%;
     }
+    .roomList{
+       height:555px;
+       overflow:auto;
+     }
      #small-device{
        padding:0.7em;
      }
@@ -1877,6 +1881,10 @@ $(document).ready(function(){
             //지도 있는 상태-> 없는 상태
             $("#menu-icon").removeClass("glyphicon-menu-left");
             $("#menu-icon").addClass("glyphicon-menu-right");
+            $(".mainbox").removeClass("col-lg-6");
+            $(".mainbox").addClass("col-lg-12");
+            $(".room").removeClass("col-lg-6");
+            $(".room").addClass("col-lg-3");
             $(".mainbox").removeClass("col-md-6");
             $(".mainbox").addClass("col-md-12");
             $(".room").removeClass("col-md-6");
@@ -1891,10 +1899,14 @@ $(document).ready(function(){
             $(".roomList").css("width", "100%");
             $("#menu-icon").removeClass("glyphicon-menu-right");
             $("#menu-icon").addClass("glyphicon-menu-left");
+            $(".mainbox").removeClass("col-lg-12");
+            $(".mainbox").addClass("col-lg-6");
+            $(".room").removeClass("col-lg-3");
+            $(".room").addClass("col-lg-6");
             $(".mainbox").removeClass("col-md-12");
             $(".mainbox").addClass("col-md-6");
             $(".room").removeClass("col-md-3");
-            $(".room").addClass("col-md-6");
+            $(".room").addClass("col-md-6");            
             $(".room").css("width", "50%");
             $(".foldButton").css( "width", "3%");
             $(".listbox").css("width", "97%");
@@ -1908,7 +1920,6 @@ $(document).ready(function(){
                 $("#menu-icon").addClass("glyphicon-menu-down");
                 $(".map_container").animate({
                     height: "0%"
-                    
                     }, 700);
                 $(".roomList").css("height","904px");
                 
@@ -1918,7 +1929,6 @@ $(document).ready(function(){
                 $("#menu-icon").addClass("glyphicon-menu-up");
                 $(".map_container").animate({
                     height: "46.5%"
-                    
                     });
                 $(".roomList").css("height","468px");
             }
