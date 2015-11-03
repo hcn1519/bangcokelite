@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   get 'map/mappage'
 
-  post 'map/map_detail'
+  get 'map/map_detail'
 
   get 'map/from_hasuk'
 

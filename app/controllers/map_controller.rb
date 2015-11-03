@@ -6,6 +6,8 @@ class MapController < ApplicationController
   end
 
   def map_detail
+    @hasuk = HasukHouse.all()
+    
     @univ = params[:univ]
     @hasuk_kind = params[:hasuk_kind]
     @gender = params[:gender]
