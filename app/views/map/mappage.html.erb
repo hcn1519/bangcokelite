@@ -932,29 +932,107 @@
      }
      
      /*패블릿 스마트폰 */
+     
+     #select-title{
+         
+     }
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+     }
+     
+     
+     
+     .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+     .listbox {
+        width:100%;
+    }
+    .roomList{
+       height:871px;
+       overflow:auto;
+     }
+     
+     
      #price-size {
-       
+        font-size:1.5em;
+        margin-left:5px;
+     }
+     #price-size h4 {
+        margin-top:2px;
      }
      #deposit-size {
-       
+        margin:0px;
+        padding:0px;
+       margin-left:4px;
+        width:28%;
+     }
+     #deposit-size p{
+         font-size:0.7em;
+          margin-left:5px;
      }
      #gender-size {
-     
+         margin:0px;
+         padding:0px; 
+         width:20%;
+         margin-top:3px;
      }
      #icon-size {
-       
+       width:22.5%;
+        padding-left:5px;
+        padding-top:8px;
+        margin:0px; 
+        padding:0px;
+        margin-left: 4px;
+        margin-top: 8.5px;
+
+     }
+     #icon-size img {
+        width:20px; 
+        height:20px; 
+        float:left; 
      }
      #kind-size{
-       
+       width:20%;
+       margin:0px;
+       padding:0px;
+       margin-left:5px;
+     }
+     #kind-size span{
+        font-size:12px; 
      }
      #meal-size{
-       
+       margin:0px; 
+       padding:0px; 
+       width: 30%;
+     }
+     #meal-size span {
+        font-size:12px;
      }
      #room-size{
-       
+       margin:0px;
+       padding:0px;
+       width: 17%;
+     }
+     #room-size span{
+        font-size:12px;
      }
      #distance-size{
-       
+        margin:0px;
+        padding:0px;
+        margin-left:5px;
+     }
+     #distance-size span{
+        font-size:12px;
+     }
+     .image-size {
+        height:9.75em; 
+        min-height:140px;
      }
     }
     @media only screen and (device-width:768px){
@@ -1135,13 +1213,13 @@
      }
      #price-size h4{
       
-       font-size:1em;
+       font-size:0.7em;
        margin-top:6px;
      }
      
      #deposit-size {
-       width:27%;
-       margin-left:5px;
+       width:29%;
+       margin-left:3px;
      }
      #deposit-size p{
        font-size:0.5em;
@@ -1150,15 +1228,18 @@
          margin:0px;
          padding:0px; 
          width:20%;
+         margin-top:2px;
      }
      #gender-size p {
          margin-left:2px;
+         
      }
      #icon-size {
-        width:30%;
-        padding-left:3px;
-        padding-top:6px;
+        width:28.3%;
+        padding-left:0px;
+        margin-left:1px;
         padding-right:0px;
+        padding-top:0px;
        
      }
      #icon-size img {
@@ -1177,7 +1258,8 @@
      }
      #meal-size{
         font-size:0.6em;
-        margin-top:7px; 
+        margin-top:7px;
+        width:35%;
      }
      #room-size{
        margin:0px;
@@ -1672,7 +1754,7 @@
   
     <div class="listbox col-lg-11 col-md-11 col-sm-12 col-xs-12" style="padding-left:0px; padding-right:0px;">
       <div class="panel panel-default">
-        <div class="panel-heading col-lg-12 col-md-12 col-xs-12 col-sm-12" style="background-color:#16A085; color:#fff; padding:5px; padding-left:10px; font-size:0.8em">검색결과</div>
+        <div class="panel-heading col-lg-12 col-md-12 col-xs-12 col-sm-12" style="background-color:#2ecc71; color:#fff; padding:5px; padding-left:10px; font-size:0.8em">검색결과</div>
         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 roomList panel-body" style="padding:0px;">
       
       <%# cnt=0 %>
@@ -1741,23 +1823,23 @@
                           
                           <% if c.gender=="여성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:3px;text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
+                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px;text-align:center; font-size: 10px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
                             </div>
                           <% elsif c.gender =="남녀공용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#2ECC71; border:1px solid #2ECC71; text-align:center; margin-top:6px; margin-left:3px; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
+                              <p class="form-control" type="text" style="color:#2ECC71; border:1px solid #2ECC71; text-align:center; margin-top:6px; margin-left:1px; font-size: 10px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
                             </div>
                           <% elsif c.gender == "남녀층 분리" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#9B59B6; border:1px solid #9B59B6; margin-top:6px; margin-left:3px; text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남녀층분리</p>
+                              <p class="form-control" type="text" style="color:#9B59B6; border:1px solid #9B59B6; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀분리</p>
                             </div>
                           <% elsif c.gender == "남성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#2980b9; border:1px solid #2980B9; margin-top:6px; margin-left:3px; text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
+                              <p class="form-control" type="text" style="color:#2980b9; border:1px solid #2980B9; margin-top:6px; margin-left:1px; text-align:center; font-size: 10px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
                             </div>
                           <% else %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:3px;text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">DB 없음</p>
+                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px;text-align:center; font-size: 10px; padding: 2px; width: 100%; height:20%; margin-bottom:0px;">DB 없음</p>
                             </div>
                           <% end %>
                           
