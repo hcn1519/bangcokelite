@@ -3,6 +3,7 @@ class HasukHousesController < ApplicationController
   before_filter :authenticate_user!, only: [:index, :new, :edit, :update, :destory]
   # GET /hasuk_houses
   # GET /hasuk_houses.json
+  
   def index
     @hasuk_houses = current_user.hasuk_houses
 

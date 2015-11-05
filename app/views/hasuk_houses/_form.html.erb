@@ -398,7 +398,7 @@
       </tr>
       
       <tr>
-        <td id="column"><center><%= f.label :building_age, "건물나이" %></center></td>
+        <td id="column"><center><%= f.label :building_age, "건물나이(준공년도)" %></center></td>
         <td>
           <div class="col-md-12 col-xs-12 col-sm-12 form-inline">
            <%= f.number_field :building_age, class:"form-control", style:"float:left; max-width:80px;" %>
@@ -919,29 +919,30 @@
   </div>
   <!--할인제도 내용-->
   <div class="row" style="padding:15px; background-color:#f2f2f2; border:1px solid #dbdbdb">
-    <p style="font-size:0.9em; margin-bottom:5px">첫 번째 달에 할인을 선택하실 경우, 할인율에 따라 하숙집이 검색결과 상위에 노출되도록 하고 있습니다.</p>
-    <p style="font-size:0.8em; color:#9C9C9C">할인율은 최저가 방 가격과 최고가 방 가격의 평균을 기준으로  계산되고, 소수 첫 째 자리에서 반올림됩니다.</p>
+    <p style="font-size:0.9em; margin-bottom:5px">첫 번째 달에 할인을 선택하실 경우, 하숙집이 학생들에게 더 많이 노출 됩니다.</p>
     <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
       <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
       <div class="form-inline">
         <span style="margin-top:1em; margin-right:0.5em; float:left; font-size:0.9em">금액 -</span>
-        <%= f.text_field :discount_price, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
-        
+        <%= number_field_tag "hasuk_house[discount_price]", nil, class:"form-control discount_price", style:"float:left; padding:5px; width:40%;" %>
         <span style="margin-top:1em; margin-left:0.3em; margin-right:0.5em; float:left; font-size:0.9em">원</span>
       </div>
-      <div style="float:left">
+      <!--<div style="float:left">
       <input class="btn btn-warning" id="calculateBtn" type="button" value="할인율 계산하기" style="margin-left: 10px; margin-top: 10px;">
       </div>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
       <div class="form-inline">
         <span style="margin-top:1em; margin-right:0.5em; float:left; font-size:0.9em">할인율 -</span>
-        <%= f.text_field :discount_rate, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
+        <%#= f.text_field :discount_rate, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
+        <%#= number_field_tag "hasuk_house[discount_rate]", nil, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
         <span style="margin-top:1em; margin-left:0.3em; margin-right:0.5em; float:left; font-size:0.9em">%</span>
       </div>
-     <!--해당없음에 체크시 0을 저장한다-->            
+      
+     <!--해당없음에 체크시 0을 저장한다-->  
+     
          <label class="radio-inline" style="margin-top:0.8em; font-size:0.9em; margin-left:0.5em">
-             <%= check_box_tag "hasuk_house[discount_rate]", 0 %>해당없음
+             <%= check_box_tag "hasuk_house[discount_price]", 0 , false, class:"check_discount_price" %>해당없음
          </label>
       </div>
     </div>
@@ -1523,16 +1524,14 @@ $(".crossmeal4").click(function() {
         }    
     $(function() {
           enable_cb();
-          $("#discount_radio").click(enable_cb);
+          $(".check_discount_price").click(enable_cb);
         });
         
         function enable_cb() {
           if (this.checked) {
-            $("#discount_price").prop("disabled", true);
-            $("#discount_rate").prop("disabled", true);
+            $(".discount_price").prop("disabled", true);
           } else {
-            $("#discount_price").removeAttr("disabled");
-            $("#discount_rate").removeAttr("disabled");
+            $(".discount_price").removeAttr("disabled");
           }
         }
         //해당없음 누르면 글 못 쓰게 하기 설정
