@@ -1105,7 +1105,7 @@
      #meal-size{
         font-size:0.6em;
         margin-top:7px;
-        width:35%;
+        width:38%;
      }
      #room-size{
        margin:0px;
@@ -1758,14 +1758,50 @@
                         <div id="distance-size" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <% if c.univ_distance1 != "학교선택" %>
                             <% if c.univ_distance1 == "이화" %>
-                              <span id="gate"><span style="color:#16A085"><%= c.univ_distance1 %>여대</span> <%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm">|</span> <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
+                              <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.subway1 == "대흥" %>
+                                  <span id="subway" style="color:#9a4510"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "신촌" || c.subway1 == "이대" %>
+                                  <span id="subway" style="color:#009044"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "서강대" %>
+                                  <span id="subway" style="color:#41b9b9"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "신촌기차" %>
+                                  <span id="subway" style="color:#0063b1"><%= c.subway1 %>역</span>
+                              <% end %>
+                              
+                              <span> <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
                             <% elsif c.univ_distance1 =="서강" %>
-                              <span id="gate"><span style="color:#C0392B"><%= c.univ_distance1 %>대</span> <%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm">|</span> <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
+                              <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.subway1 == "대흥" %>
+                                  <span id="subway" style="color:#9a4510"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "신촌" || c.subway1 == "이대" %>
+                                  <span id="subway" style="color:#009044"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "서강대" %>
+                                  <span id="subway" style="color:#41b9b9"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "신촌기차" %>
+                                  <span id="subway" style="color:#0063b1"><%= c.subway1 %>역</span>
+                              <% end %>
+                              
+                              <span> <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
                             <% elsif c.univ_distance1 =="연세" %>
-                              <span id="gate"><span style="color:#1a4f73"><%= c.univ_distance1 %>대</span> <%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span><br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm">|</span> <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
+                              <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.subway1 == "대흥" %>
+                                  <span id="subway" style="color:#9a4510"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "신촌" || c.subway1 == "이대" %>
+                                  <span id="subway" style="color:#009044"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "서강대" %>
+                                  <span id="subway" style="color:#41b9b9"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "신촌기차" %>
+                                  <span id="subway" style="color:#0063b1"><%= c.subway1 %>역</span>
+                              <% end %>
+                              
+                              <span><%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
                             <% end %>
                           <% else %>
-                            <span id="gate"><span style="color:#16A085">이화여대</span> 정문 1064m(20분)</span><br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm hidden-md">|</span> 신촌기차역 1103m(21분)</span>
+                            <span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm hidden-md">|</span> 신촌기차역 1103m(21분)</span>
                           <% end %>
                         </div>
                         
