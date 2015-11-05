@@ -9,6 +9,7 @@ user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
 
 
+
 @extra_price = ["없음", "전기세", "수도세", "가스비", "인터넷"]
 @meal = ["아침", "점심", "저녁", "제공 안함"]
 @personal_option = ["침대", "책상", "옷장", "행거", "수납장", "에어컨", "TV", "화장실", "샤워기", "세탁기", "냉장고", "전자레인지", "가스레인지", "인덕션"]
@@ -18,10 +19,21 @@ puts 'CREATED ADMIN USER: ' << user.email
             "http://subwayfix-bigwindow.c9.io/images/bangs/ha7.jpg","http://subwayfix-bigwindow.c9.io/images/bangs/ha8.jpg","http://subwayfix-bigwindow.c9.io/images/bangs/ha9.jpg",
             "http://subwayfix-bigwindow.c9.io/images/bangs/ha10.jpg","http://subwayfix-bigwindow.c9.io/images/bangs/ha11.jpg"]
 
+
+user2 = User.new
+user2.id = 2
+user2.name="홍창남"
+user2.email = 'hcn1519@gmail.com'
+user2.password = 'power064'
+user2.password_confirmation ="power064"
+user2.save!
+
+
 #서강대 씨드
 
+
 HasukHouse.create(
-    id:1,
+    id:1, user_id:2,
     hasuk_name: "서강 하숙방1", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"일반하숙", gender:"남성전용",
     
@@ -29,7 +41,7 @@ HasukHouse.create(
     small_deposit:0, big_deposit:100, price_from:30, price_to:50, least_contract:6, 
     extra_price1:"#{@extra_price[0]}", extra_price2:"", extra_price3:"", extra_price4:"", extra_price5:"",
     
-    meal1:"", meal2:"점심", meal3:"저녁", meal4:"", meal_memo:"식사는 반찬이 준비되어 있습니다.",
+    meal2:"점심", meal3:"저녁", meal4:"", meal_memo:"식사는 반찬이 준비되어 있습니다.",
     
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
@@ -74,7 +86,7 @@ HasukHouse.create(
     )
 
 HasukHouse.create(
-    id:2,
+    id:2, user_id:2,
     hasuk_name: "서강 하숙방2", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"고시원형", gender:"남녀층 분리",
     
@@ -127,7 +139,7 @@ HasukHouse.create(
      )
     
 HasukHouse.create(
-    id:3,
+    id:3, user_id:2,
     hasuk_name: "서강 하숙방3", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"원룸형", gender:"남녀공용",
     
@@ -180,9 +192,9 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
-    id:4,
+    id:4, user_id:2,
     hasuk_name: "서강 하숙방4", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
-    hasuk_kind:"원룸형", gender:"남녀공용",
+    hasuk_kind:"잠만 자는 방", gender:"여성전용",
     
     size_from:4, size_to:8, floor_from:1, floor_to:3, building_age:1990, remodeling:2013,
     small_deposit:20, big_deposit:0, price_from:40, price_to:50, least_contract:6, 

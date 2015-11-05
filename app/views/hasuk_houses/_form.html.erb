@@ -701,7 +701,7 @@
                 <span class="fui-star-2" style="font-size: 1.4em; font-weight:bold; color:#F1C40F; float:left;position: absolute;"></span>
               <% end %>
               <%= select_tag "hasuk_house[univ_distance#{i}]", 
-              "<option selected>학교선택</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe, class:"form-control" %>
+              "<option>학교선택</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe, class:"form-control" %>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-3">
               <%= select_tag "hasuk_house[sogang_gate#{i}]", 
@@ -731,14 +731,14 @@
                <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                  <div class="form-inline">
                     <span id="form-left">시간 :</span>
-                      <%= number_field_tag "hasuk_house[distance_time#{i}]", "0", class:"form-control", style:"float:left; padding:5px; width:40%;" %>
+                      <%= number_field_tag "hasuk_house[distance_time#{i}]", nil, class:"form-control distance_time#{i}", style:"float:left; padding:5px; width:40%;" %>
                     <span id="form-right">분</span>
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                   <div class="form-inline">
                     <span id="form-left">거리 :</span>
-                      <%= number_field_tag "hasuk_house[distance#{i}]", "0", class:"form-control", style:"float:left; padding:5px; width:40%;" %>
+                      <%= number_field_tag "hasuk_house[distance#{i}]", nil, class:"form-control distance#{i}", style:"float:left; padding:5px; width:40%;" %>
                     <span id="form-right">m</span>
                   </div>
                 </div>
@@ -769,14 +769,14 @@
                <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                  <div class="form-inline">
                     <span id="form-left">시간 :</span>
-                      <%= number_field_tag "hasuk_house[subway_distance_time#{i}]", "0", class:"form-control", style:"float:left; padding:5px; width:40%;" %>
+                      <%= number_field_tag "hasuk_house[subway_distance_time#{i}]", nil, class:"form-control subway_distance_time#{i}", style:"float:left; padding:5px; width:40%;" %>
                     <span id="form-right">분</span>
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                   <div class="form-inline">
                     <span id="form-left">거리 :</span>
-                      <%= number_field_tag "hasuk_house[subway_distance#{i}]", "0", class:"form-control", style:"float:left; padding:5px; width:40%;" %>
+                      <%= number_field_tag "hasuk_house[subway_distance#{i}]", nil, class:"form-control subway_distance#{i}", style:"float:left; padding:5px; width:40%;" %>
                     <span id="form-right">m</span>
                   </div>
                 </div>
@@ -924,7 +924,7 @@
       <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
       <div class="form-inline">
         <span style="margin-top:1em; margin-right:0.5em; float:left; font-size:0.9em">금액 -</span>
-        <%= number_field_tag "hasuk_house[discount_price]","0", class:"form-control discount_price", style:"float:left; padding:5px; width:40%;" %>
+        <%= number_field_tag "hasuk_house[discount_price]",nil, class:"form-control discount_price", style:"float:left; padding:5px; width:40%;" %>
         <span style="margin-top:1em; margin-left:0.3em; margin-right:0.5em; float:left; font-size:0.9em">원</span>
       </div>
       <!--<div style="float:left">
@@ -947,7 +947,8 @@
       </div>
     </div>
   </div> <!--할인제도 끝-->
-      <center style="margin-top:40px; margin-bottom:20px;"><input type="submit" value="등록하기" class="btn btn-success btn-lg"></center>
+      <center style="margin-top:40px; margin-bottom:20px;"><input type="submit" value="등록하기" class="btn btn-success btn-lg ForValueZero"></center>
+    
     </form>
   
     </div>
@@ -961,6 +962,49 @@
 
         
 $(document).ready(function(){
+  
+  $(".ForValueZero").click(function(){
+     var zero = 0;
+     
+    <% for i in 1..3 %>
+      var distance_value<%= i %> = $(".distance<%= i %>").val();
+      var distance_time_value<%= i %> = $(".distance_time<%= i %>").val();
+    <% end %>
+    
+    <% for i in 1..3 %>
+      if (distance_value<%= i %> == "") {
+        $(".distance<%= i %>").val(zero);
+      }
+      if (distance_time_value<%= i %> == ""){
+        $(".distance_time<%= i %>").val(zero);
+      }
+    <% end %>
+    
+    <% for i in 1..2 %>
+      var subway_distance_value<%= i %> = $(".subway_distance<%= i %>").val();
+      var subway_distance_time_value<%= i %> = $(".subway_distance_time<%= i %>").val();
+    <% end %>
+    
+    <% for i in 1..2 %>
+      if (subway_distance_value<%= i %> == "") {
+        $(".subway_distance<%= i %>").val(zero);
+      }
+      if (subway_distance_time_value<%= i %> == "") {
+        $(".subway_distance_time<%= i %>").val(zero);
+      }
+    <% end %>
+    
+    var discount_price_value = $(".discount_price").val(); 
+    
+    if (discount_price_value == "") {
+      $(".discount_price").val(zero);
+    }
+   
+  });
+  //값 입력하지 않을 때 0 집어넣기
+  
+  
+  /*
 $("#calculateBtn").click(function(){
 
     var price_from =$("#price_from").val();
@@ -986,8 +1030,9 @@ $("#calculateBtn").click(function(){
     } else {
     alert('정보를 온전히 입력하지 않았습니다. 월세와 할인 금액을 확인해주세요.');
     }
-  });
+  });*/
 });
+
 //툴팁 - 종류 설명
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover({

@@ -6,7 +6,6 @@ class HasukHousesController < ApplicationController
   
   def index
     @hasuk_houses = current_user.hasuk_houses
-
   end
 
   # GET /hasuk_houses/1
