@@ -385,11 +385,11 @@
         <td id="column" style="width:15%"><center><%= f.label :floor_to, "방층수" %></center></td>
         <td>
           <div class="col-md-12 col-xs-12 col-sm-12 form-inline">
-            <div class="col-md-5 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+            <div class="col-md-6 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
               <%= f.number_field :floor_from, class: "form-control", style:"float: left; padding:5px; max-width:50px;" %>
               <span id="form-middle">층 ~</span> 
             </div>
-            <div class="col-md-4 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+            <div class="col-md-6 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
               <%= f.number_field :floor_to, class: "form-control", style:"float: left; padding:5px; max-width:50px;" %>
               <span id="form-right">층</span>
             </div>
@@ -731,14 +731,14 @@
                <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                  <div class="form-inline">
                     <span id="form-left">시간 :</span>
-                      <%= number_field_tag "hasuk_house[distance_time#{i}]", nil, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
+                      <%= number_field_tag "hasuk_house[distance_time#{i}]", "0", class:"form-control", style:"float:left; padding:5px; width:40%;" %>
                     <span id="form-right">분</span>
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                   <div class="form-inline">
                     <span id="form-left">거리 :</span>
-                      <%= number_field_tag "hasuk_house[distance#{i}]", nil, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
+                      <%= number_field_tag "hasuk_house[distance#{i}]", "0", class:"form-control", style:"float:left; padding:5px; width:40%;" %>
                     <span id="form-right">m</span>
                   </div>
                 </div>
@@ -769,14 +769,14 @@
                <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                  <div class="form-inline">
                     <span id="form-left">시간 :</span>
-                      <%= number_field_tag "hasuk_house[subway_distance_time#{i}]", nil, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
+                      <%= number_field_tag "hasuk_house[subway_distance_time#{i}]", "0", class:"form-control", style:"float:left; padding:5px; width:40%;" %>
                     <span id="form-right">분</span>
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                   <div class="form-inline">
                     <span id="form-left">거리 :</span>
-                      <%= number_field_tag "hasuk_house[subway_distance#{i}]", nil, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
+                      <%= number_field_tag "hasuk_house[subway_distance#{i}]", "0", class:"form-control", style:"float:left; padding:5px; width:40%;" %>
                     <span id="form-right">m</span>
                   </div>
                 </div>
@@ -924,7 +924,7 @@
       <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
       <div class="form-inline">
         <span style="margin-top:1em; margin-right:0.5em; float:left; font-size:0.9em">금액 -</span>
-        <%= number_field_tag "hasuk_house[discount_price]", nil, class:"form-control discount_price", style:"float:left; padding:5px; width:40%;" %>
+        <%= number_field_tag "hasuk_house[discount_price]","0", class:"form-control discount_price", style:"float:left; padding:5px; width:40%;" %>
         <span style="margin-top:1em; margin-left:0.3em; margin-right:0.5em; float:left; font-size:0.9em">원</span>
       </div>
       <!--<div style="float:left">
