@@ -366,27 +366,45 @@
             
             var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);
                     
-            
+            //공통 요소 - 여기까지만 따로 놓을 수 있음.
            
               
           if (univ1.indexOf("<%= @univ %>") !== -1 || univ2.indexOf("<%= @univ %>") !== -1 || univ3.indexOf("<%= @univ %>") !== -1 ) {    
-            if ("<%= @section %>" =="서강대남문") {
+            //학교까지의 거리를 입력한 부분에서 해당 학교 포함하고 있으면 ok조건
+            
+            if ("<%= @section %>" =="서강대남문" || "<%= @section %>" == "" ) {
+              //구역별 검색 조건, 아무 조건 안 누르면 다 뜨게
                 map.setCenter({lat: 37.548717, lng: 126.939051}, true);
                 map.setZoom(17);
+                //구역별 지도 중심 정하기
                 
-                if(google.maps.geometry.poly.containsLocation(latlng, sogang_a) == true){
-                    
+              if(google.maps.geometry.poly.containsLocation(latlng, sogang_a) == true){
+                    //해당 polygon에 마커가 있는가 조건
+              
+              if("<%= @hasuk_kind %>" == data[i].hasuk_kind || "<%= @hasuk_kind %>" == "" ) {
+                //하숙 종류별 검색 조건, 아무 조건 안 누르면 다 뜨게
+              
+              if("<%= @gender %>" == data[i].gender || "<%= @gender %>" == "" ) {
+                //성별 종류 검색 조건, 아무 조건 안 누르면 다 뜨게
                 
-                    var marker = new google.maps.Marker({
+              if( <%= @price_from %> <= data[i].price_from && <%= @price_to %>+ 10 > data[i].price_to ) {  
+                //가격 조건 - 최저가보다 크고, 최고가+9만원까지 표시
+              
+              <% if  @distance.nil? %>
+                <% @distance = 0 %>
+              <% end %>
+              if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) {  
+                var marker = new google.maps.Marker({
                  position: latlng,
                  map: map
-             });
-            marker.setValues({type: "point", id: i});
-            var data_id = data[i].id;
-            var str_id = data_id.toString();
-
-             var hash_id = "a" +str_id;
-             markerObj = document.getElementById(hash_id);      
+                });
+                
+              marker.setValues({type: "point", id: i});
+              var data_id = data[i].id;
+              var str_id = data_id.toString();
+  
+               var hash_id = "a" +str_id;
+               markerObj = document.getElementById(hash_id);      
                     //event 구간
 //말풍선 출력 
                     google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
@@ -479,7 +497,13 @@
 
                      })(str_id));
                     marker.setMap(map);
-                }
+              
+                
+              }//거리 범위 지정
+              }//가격 범위 지정
+              }//성별 종류 끝  
+              }//하숙 종류 끝
+              }//polygon true 끝
                      
              } else if ("<%= @section %>" =="연대정문"){
                 map.setCenter({lat: 37.557464, lng: 126.936306}, true);
@@ -823,7 +847,19 @@
                 
             } else if ('<%= @section %>'=="연대동문"){
                
-            }
+            } else if ('<%= @section %>' =="연대명물" || '<%= @section %>' =="이대명물"){
+            
+              
+            }  else if ('<%= @section %>' =="이대정문"){
+            
+              
+            } else if ('<%= @section %>' =="이대~"){
+            
+              
+            } else if ('<%= @section %>' =="이대~"){
+            
+              
+            } 
                else {
                    
                }
