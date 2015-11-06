@@ -372,7 +372,7 @@
           if (univ1.indexOf("<%= @univ %>") !== -1 || univ2.indexOf("<%= @univ %>") !== -1 || univ3.indexOf("<%= @univ %>") !== -1 ) {    
             //학교까지의 거리를 입력한 부분에서 해당 학교 포함하고 있으면 ok조건
             
-            if ("<%= @section %>" =="서강대남문" || "<%= @section %>" == "" ) {
+            if ("<%= @section %>" =="서강대남문" ) {
               //구역별 검색 조건, 아무 조건 안 누르면 다 뜨게
                 map.setCenter({lat: 37.548717, lng: 126.939051}, true);
                 map.setZoom(17);
@@ -505,14 +505,27 @@
               }//하숙 종류 끝
               }//polygon true 끝
                      
-             } else if ("<%= @section %>" =="연대정문"){
+             } else if ("<%= @section %>" =="연대정문" ){
                 map.setCenter({lat: 37.557464, lng: 126.936306}, true);
                 map.setZoom(17);
                 
-           
-             
                 if(google.maps.geometry.poly.containsLocation(latlng, yonsei_a) == true){
-             
+                 
+                    //해당 polygon에 마커가 있는가 조건
+              
+                if("<%= @hasuk_kind %>" == data[i].hasuk_kind || "<%= @hasuk_kind %>" == "" ) {
+                  //하숙 종류별 검색 조건, 아무 조건 안 누르면 다 뜨게
+                
+                if("<%= @gender %>" == data[i].gender || "<%= @gender %>" == "" ) {
+                  //성별 종류 검색 조건, 아무 조건 안 누르면 다 뜨게
+                  
+                if( <%= @price_from %> <= data[i].price_from && <%= @price_to %>+ 10 > data[i].price_to ) {  
+                  //가격 조건 - 최저가보다 크고, 최고가+9만원까지 표시
+                
+                <% if  @distance.nil? %>
+                  <% @distance = 0 %>
+                <% end %>
+                if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) { 
                   var marker = new google.maps.Marker({
                     position: latlng,
                     map: map
@@ -617,14 +630,35 @@
 
                      })(str_id));
                     marker.setMap(map);
+                }//거리 범위 지정
+                }//가격 범위 지정
+                }//성별 종류 끝  
+                }//하숙 종류 끝
+                }//polygon true 끝  
                 
-                }     
+                     
             
             } else if ('<%= @section %>' =="연대서문"){
                 map.setCenter({lat: 37.565672, lng: 126.932181}, true);
                 map.setZoom(17);
                 
                 if(google.maps.geometry.poly.containsLocation(latlng, yonsei_e) == true){
+                 
+                    //해당 polygon에 마커가 있는가 조건
+              
+                if("<%= @hasuk_kind %>" == data[i].hasuk_kind || "<%= @hasuk_kind %>" == "" ) {
+                  //하숙 종류별 검색 조건, 아무 조건 안 누르면 다 뜨게
+                
+                if("<%= @gender %>" == data[i].gender || "<%= @gender %>" == "" ) {
+                  //성별 종류 검색 조건, 아무 조건 안 누르면 다 뜨게
+                  
+                if( <%= @price_from %> <= data[i].price_from && <%= @price_to %>+ 10 > data[i].price_to ) {  
+                  //가격 조건 - 최저가보다 크고, 최고가+9만원까지 표시
+                
+                <% if  @distance.nil? %>
+                  <% @distance = 0 %>
+                <% end %>
+                if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) { 
                   var marker = new google.maps.Marker({
                     position: latlng,
                     map: map
@@ -729,15 +763,33 @@
 
                      })(str_id));
                     marker.setMap(map);
-                
-                }       
+                }//거리 범위 지정
+                }//가격 범위 지정
+                }//성별 종류 끝  
+                }//하숙 종류 끝
+                }//polygon true 끝  
+                       
                 
             } else if ('<%= @section %>' =="연대남문"){
                 map.setCenter({lat: 37.561214, lng: 126.930489}, true);
                 map.setZoom(17);
                 
                 if(google.maps.geometry.poly.containsLocation(latlng, yonsei_c) == true){
+                    //해당 polygon에 마커가 있는가 조건
+              
+                if("<%= @hasuk_kind %>" == data[i].hasuk_kind || "<%= @hasuk_kind %>" == "" ) {
+                  //하숙 종류별 검색 조건, 아무 조건 안 누르면 다 뜨게
+                
+                if("<%= @gender %>" == data[i].gender || "<%= @gender %>" == "" ) {
+                  //성별 종류 검색 조건, 아무 조건 안 누르면 다 뜨게
                   
+                if( <%= @price_from %> <= data[i].price_from && <%= @price_to %>+ 10 > data[i].price_to ) {  
+                  //가격 조건 - 최저가보다 크고, 최고가+9만원까지 표시
+                
+                <% if  @distance.nil? %>
+                  <% @distance = 0 %>
+                <% end %>
+                if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) { 
                   var marker = new google.maps.Marker({
                     position: latlng,
                     map: map
@@ -842,8 +894,11 @@
 
                      })(str_id));
                     marker.setMap(map);
-                
-                }  
+                }//거리 범위 지정
+                }//가격 범위 지정
+                }//성별 종류 끝  
+                }//하숙 종류 끝
+                }//polygon true 끝 
                 
             } else if ('<%= @section %>'=="연대동문"){
                
@@ -860,35 +915,412 @@
             
               
             } 
-               else {
+               else if( "<%= @section %>" == "") {
+                 //구역 검색 안 하는 경우
+                   if ("<%= @univ %>" == "서강" ) {
+                     map.setCenter({lat: 37.548717, lng: 126.939051}, true);
+                     map.setZoom(17);
+                    
+                    if(google.maps.geometry.poly.containsLocation(latlng, sogang_a) == true){
+                    //해당 polygon에 마커가 있는가 조건(서강대)
+              
+              if("<%= @hasuk_kind %>" == data[i].hasuk_kind || "<%= @hasuk_kind %>" == "" ) {
+                //하숙 종류별 검색 조건, 아무 조건 안 누르면 다 뜨게
+              
+              if("<%= @gender %>" == data[i].gender || "<%= @gender %>" == "" ) {
+                //성별 종류 검색 조건, 아무 조건 안 누르면 다 뜨게
+                
+              if( <%= @price_from %> <= data[i].price_from && <%= @price_to %>+ 10 > data[i].price_to ) {  
+                //가격 조건 - 최저가보다 크고, 최고가+9만원까지 표시
+              
+              <% if  @distance.nil? %>
+                <% @distance = 0 %>
+              <% end %>
+              if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) {  
+                var marker = new google.maps.Marker({
+                 position: latlng,
+                 map: map
+                });
+                
+              marker.setValues({type: "point", id: i});
+              var data_id = data[i].id;
+              var str_id = data_id.toString();
+  
+               var hash_id = "a" +str_id;
+               markerObj = document.getElementById(hash_id);      
+                    //event 구간
+//말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+//말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ //listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+ //listbox 색칠
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                         $(result_id).css("background-color","#cbefde");
+                         var list_height = $(".roomList").height();
+                         var item_offset = $(result_id).offset().top;
+                         var item_height = $(result_id).height();
+                         var place;
+
+                         if ( item_height < list_height) {
+                           place = item_offset - ((list_height / 2) - (item_height / 2));
+                         } else {
+                           place = item_offset;
+                         }
+
+                         $(".roomList").animate({scrollTop: place}, 700);
+                       });
+
+                      };
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","#a4e2c5");
+                        var list_top = $(".roomList").position().top;
+                        var list_bottom = $('.roomList').position().top+$('.roomList').outerHeight(true);
+                        var list_height = list_top + list_bottom;
+                        var place  = list_top - ( list_height - list_bottom ) / 2
+                      
+                        $(".roomList").animate({scrollTop: place}, 500);
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+// listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","#fff");
+                        });
+
+                      };
+
+                     })(str_id));
+                    marker.setMap(map);
+              
+                
+                  }//거리 범위 지정
+                  }//가격 범위 지정
+                  }//성별 종류 끝  
+                  }//하숙 종류 끝
+                  }//polygon true 끝
+                     
+                   } else if ("<%= @univ %>" == "연세") {
+                     map.setCenter({lat: 37.561257, lng: 126.936974}, true);
+                     map.setZoom(15);
+                     
+                     if(google.maps.geometry.poly.containsLocation(latlng, yonsei_a) == true ||
+                        google.maps.geometry.poly.containsLocation(latlng, yonsei_c) == true ||
+                        google.maps.geometry.poly.containsLocation(latlng, yonsei_e) == true ){
+                    //해당 polygon에 마커가 있는가 조건(연대 모두)
+              
+              if("<%= @hasuk_kind %>" == data[i].hasuk_kind || "<%= @hasuk_kind %>" == "" ) {
+                //하숙 종류별 검색 조건, 아무 조건 안 누르면 다 뜨게
+              
+              if("<%= @gender %>" == data[i].gender || "<%= @gender %>" == "" ) {
+                //성별 종류 검색 조건, 아무 조건 안 누르면 다 뜨게
+                
+              if( <%= @price_from %> <= data[i].price_from && <%= @price_to %>+ 10 > data[i].price_to ) {  
+                //가격 조건 - 최저가보다 크고, 최고가+9만원까지 표시
+              
+              <% if  @distance.nil? %>
+                <% @distance = 0 %>
+              <% end %>
+              if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) {  
+                var marker = new google.maps.Marker({
+                 position: latlng,
+                 map: map
+                });
+                
+              marker.setValues({type: "point", id: i});
+              var data_id = data[i].id;
+              var str_id = data_id.toString();
+  
+               var hash_id = "a" +str_id;
+               markerObj = document.getElementById(hash_id);      
+                    //event 구간
+//말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+//말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ //listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+ //listbox 색칠
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                         $(result_id).css("background-color","#cbefde");
+                         var list_height = $(".roomList").height();
+                         var item_offset = $(result_id).offset().top;
+                         var item_height = $(result_id).height();
+                         var place;
+
+                         if ( item_height < list_height) {
+                           place = item_offset - ((list_height / 2) - (item_height / 2));
+                         } else {
+                           place = item_offset;
+                         }
+
+                         $(".roomList").animate({scrollTop: place}, 700);
+                       });
+
+                      };
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","#a4e2c5");
+                        var list_top = $(".roomList").position().top;
+                        var list_bottom = $('.roomList').position().top+$('.roomList').outerHeight(true);
+                        var list_height = list_top + list_bottom;
+                        var place  = list_top - ( list_height - list_bottom ) / 2
+                      
+                        $(".roomList").animate({scrollTop: place}, 500);
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+// listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","#fff");
+                        });
+
+                      };
+
+                     })(str_id));
+                    marker.setMap(map);
+              
+                
+                  }//거리 범위 지정
+                  }//가격 범위 지정
+                  }//성별 종류 끝  
+                  }//하숙 종류 끝
+                  }//polygon true 끝
+                  
+                   } else if ("<%= @univ %>" == "이화") {
+                     map.setCenter({lat: 37.561803, lng:  126.946909}, true);
+                     map.setZoom(15);
+                     
+                     if(google.maps.geometry.poly.containsLocation(latlng, sogang_a) == true){
+                    //해당 polygon에 마커가 있는가 조건
+              
+              if("<%= @hasuk_kind %>" == data[i].hasuk_kind || "<%= @hasuk_kind %>" == "" ) {
+                //하숙 종류별 검색 조건, 아무 조건 안 누르면 다 뜨게
+              
+              if("<%= @gender %>" == data[i].gender || "<%= @gender %>" == "" ) {
+                //성별 종류 검색 조건, 아무 조건 안 누르면 다 뜨게
+                
+              if( <%= @price_from %> <= data[i].price_from && <%= @price_to %>+ 10 > data[i].price_to ) {  
+                //가격 조건 - 최저가보다 크고, 최고가+9만원까지 표시
+              
+              <% if  @distance.nil? %>
+                <% @distance = 0 %>
+              <% end %>
+              if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) {  
+                var marker = new google.maps.Marker({
+                 position: latlng,
+                 map: map
+                });
+                
+              marker.setValues({type: "point", id: i});
+              var data_id = data[i].id;
+              var str_id = data_id.toString();
+  
+               var hash_id = "a" +str_id;
+               markerObj = document.getElementById(hash_id);      
+                    //event 구간
+//말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+//말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ //listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+ //listbox 색칠
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                         $(result_id).css("background-color","#cbefde");
+                         var list_height = $(".roomList").height();
+                         var item_offset = $(result_id).offset().top;
+                         var item_height = $(result_id).height();
+                         var place;
+
+                         if ( item_height < list_height) {
+                           place = item_offset - ((list_height / 2) - (item_height / 2));
+                         } else {
+                           place = item_offset;
+                         }
+
+                         $(".roomList").animate({scrollTop: place}, 700);
+                       });
+
+                      };
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","#a4e2c5");
+                        var list_top = $(".roomList").position().top;
+                        var list_bottom = $('.roomList').position().top+$('.roomList').outerHeight(true);
+                        var list_height = list_top + list_bottom;
+                        var place  = list_top - ( list_height - list_bottom ) / 2
+                      
+                        $(".roomList").animate({scrollTop: place}, 500);
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+// listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","#fff");
+                        });
+
+                      };
+
+                     })(str_id));
+                    marker.setMap(map);
+              
+                
+                     }//거리 범위 지정
+                     }//가격 범위 지정
+                     }//성별 종류 끝  
+                     }//하숙 종류 끝
+                     }//polygon true 끝
+                     
+                   }//구역 없는 이대 검색
                    
-               }
+              
+                  } //구역 검색 없는 else if 걸리는 부분
 
 
-
-
-                 
                 }//indexOf 걸리는 괄호
              } //반복문
          }); //학교별 마커 띄우기 끝
- 
-  
-
-
-            
-
-           /* if (data[i].hasuk_kind == "<%#= @hasuk_kind%>" || <%#= @hasuk_kind%> == "") {
-                if (data[i].gender == "<%#= @gender%>" || <%#= @gender %> == "") {
-                    if (data[i].price_from >= <%#= @price_from%> || data[i].price_to <= <%#= @price_to%> ) {
-
-                            if (data[i].distance_time1 <= <%#= @distance %> || <%#= @distance %> == "") {    */
-                        
-   /*                                 } //거리
-                            } //가격
-                        } //성별
-                    } //하숙집 종류*/
- 
-
 
       } //구글맵 기본 설정 끝
       google.maps.event.addDomListener(window, 'load', initialize);
