@@ -63,35 +63,38 @@
               <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <span id="select-title" readonly style="font-size:15px; font-weight:bold;">구역</span>
                 <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
+                  <% if @univ == "서강" %>
+                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                      <input type="radio" id="bt3"name="section" value="서강대남문" /> 서강대 남문
+                  </label> 
                   
+                  <% elsif @univ == "연세" %>
                   <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt3"name="section" value="A" /> A구역
+                      <input type="radio" id="bt4" name="section" value="연대정문" /> 연대 정문
                   </label> 
                   <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt4" name="section" value="B" /> B구역
+                      <input type="radio" id="bt5" name="section" value="연대서문" /> 연대 서문
                   </label> 
                   <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt5" name="section" value="C" /> C구역
+                      <input type="radio" id="bt6" name="section" value="연대남문" /> 연대 남문
                   </label> 
                   <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt6" name="section" value="D" /> D구역
-                  </label> 
-                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt7" name="section" value="E" /> E구역
+                      <input type="radio" id="bt7" name="section" value="연대동문" /> 연대 동문
                   </label>
+                  <% end %>
                 </div>
               </div>
               <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <span id="select-title" readonly style="font-size:15px; font-weight:bold;">거리</span>
                 <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px; padding-left:0px;padding-right: 0px;">
                   <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input class="btn btn-default" type="radio" id="bt8" name="distance" value="5분 거리" /> 5분 거리
+                      <input class="btn btn-default" type="radio" id="bt8" name="distance" value=5 /> 5분 거리
                    </label>
                   <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt9" name="distance" value="10분 거리" /> 10분 거리
+                      <input type="radio" id="bt9" name="distance" value=10 /> 10분 거리
                   </label> 
                   <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt10" name="distance" value="15분 거리" /> 15분 거리
+                      <input type="radio" id="bt10" name="distance" value=15 /> 15분 거리
                   </label>   
                 </div>
               </div>

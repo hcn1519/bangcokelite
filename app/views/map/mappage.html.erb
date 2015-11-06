@@ -336,6 +336,7 @@
      
        $.get("/map/from_hasuk", function(data, status){
              for (var i = 0; i < data.length; i++){
+                 console.log(data[i]);
                //학교 찍히는 것 위도 경도로 찍는 것 생각
               var univ1 = data[i].univ_distance1;
               var univ2 = data[i].univ_distance2;

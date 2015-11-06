@@ -2,7 +2,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--googlemap 넣기-->
     <script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdcrzqmVvJgOpIy23Dlw08MHrQN1C17Sg">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdcrzqmVvJgOpIy23Dlw08MHrQN1C17Sg&libraries=geometry">
     </script>
     <!--jquery 넣기-->
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -17,8 +17,8 @@
         //학교별 지도 view 다르게 시작
         if("<%= @univ %>" == "서강"){
           var mapOptions = {
-            center: { lat: 37.551445, lng: 126.940793},
-            zoom: 16
+            center: { lat: 37.548717, lng: 126.939051},
+            zoom: 17
           };
         } else if ("<%= @univ %>" == "이화") {
           var mapOptions = {
@@ -130,117 +130,40 @@
         map: map,
         icon: image5
       });
-      /*
-      var a = {
-        url: '/images/icons/a.jpg',
-        size: new google.maps.Size(100, 50),
-        };
+
+      //연세대 문
       
-       var b = {
-        url: '/images/icons/b.jpg',
-        size: new google.maps.Size(100, 50),
-        };
-        
-        var c = {
-        url: '/images/icons/c.jpg',
-        size: new google.maps.Size(100, 50),
-        };
-        
-        var d = {
-        url: '/images/icons/d.jpg',
-        size: new google.maps.Size(100, 50),
-        };
-       
-        var e = {
-        url: '/images/icons/e.jpg',
-        size: new google.maps.Size(100, 50),
-        };
-*/
+      //정문
+      var doorMarker8 = new google.maps.Marker({
+        position: {lat: 37.560252, lng: 126.936760},
+        map: map,
+        icon: image1
+      });
+      
+      //동문
+      
+      //서문
+      var doorMarker10 = new google.maps.Marker({
+        position: {lat: 37.563726, lng: 126.933921},
+        map: map,
+        icon: image5
+      });
       
       
-//서강A(서강대 정문)
+      //남문
+      var doorMarker11 = new google.maps.Marker({
+        position: {lat: 37.561191, lng: 126.933139},
+        map: map,
+        icon: image3
+      });      
+      
+
+  //서강A(서강대 남문)
   var sogang_a = [
-    {lat:37.549929, lng:126.932928},{lat:37.549949, lng:126.933503},{lat:37.549758, lng:126.937520},
-    {lat:37.549929, lng:126.932928},{lat:37.549949, lng:126.933503},{lat:37.549758, lng:126.937520},
-    {lat:37.549687, lng:126.937893},{lat:37.549706, lng:126.938092},{lat:37.549815, lng:126.938444}, //얘까지 구역3랑 겹침
-    {lat:37.550728, lng:126.937935},{lat:37.551342, lng:126.937656},{lat:37.551869, lng:126.937468},
-    {lat:37.552006, lng:126.938068},{lat:37.552363, lng:126.938596},{lat:37.552938, lng:126.939108},
-    {lat:37.553320, lng:126.939313},{lat:37.553361, lng:126.939309},{lat:37.553426, lng:126.939262},
-    {lat:37.553464, lng:126.939243},{lat:37.553518, lng:126.939371},{lat:37.553583, lng:126.939349},
-    {lat:37.553571, lng:126.939320},{lat:37.553740, lng:126.939230},{lat:37.553773, lng:126.939190},
-    {lat:37.553925, lng:126.939104},{lat:37.553979, lng:126.939045},{lat:37.555019, lng:126.938481},
-    {lat:37.555117, lng:126.938367},{lat:37.555385, lng:126.938228},{lat:37.555070, lng:126.937191},
-    {lat:37.554747, lng:126.936397},{lat:37.553346, lng:126.934091},{lat:37.552870, lng:126.933512},
-    {lat:37.552570, lng:126.933265},{lat:37.552285, lng:126.933101}
-    ];
-  
-   //공통B(서강-이화-연대)  
-   var sogang_ewha_yonsei_b = [
-    {lat:37.553320, lng:126.939313},{lat:37.553361, lng:126.939309},{lat:37.553426, lng:126.939262},
-    {lat:37.553464, lng:126.939243},{lat:37.553518, lng:126.939371},{lat:37.553583, lng:126.939349},
-    {lat:37.553571, lng:126.939320},{lat:37.553740, lng:126.939230},{lat:37.553773, lng:126.939190},
-    {lat:37.553925, lng:126.939104},{lat:37.553979, lng:126.939045},{lat:37.555019, lng:126.938481},
-    {lat:37.555117, lng:126.938367},{lat:37.555385, lng:126.938228},{lat:37.555458, lng:126.937795},
-    {lat:37.555890, lng:126.937567},{lat:37.555941, lng:126.937473},{lat:37.556957, lng:126.937492},
-    {lat:37.557570, lng:126.937447},{lat:37.559014, lng:126.939414},//연대 정문(A)시작 지점
-    {lat:37.559068, lng:126.939704},{lat:37.559112, lng:126.942823},//신촌기차역. 이대정문구역이랑 겹침
-    {lat:37.558547, lng:126.942733},{lat:37.556472, lng:126.942865},//구역2랑 겹침
-    {lat:37.555711, lng:126.942913},{lat:37.555637, lng:126.942877},{lat:37.555605, lng:126.943034},
-    {lat:37.555507, lng:126.943362},{lat:37.555465, lng:126.943569},{lat:37.554984, lng:126.943408},
-    {lat:37.554887, lng:126.943363},{lat:37.554748, lng:126.943324},{lat:37.554643, lng:126.943317},
-    {lat:37.554641, lng:126.943270},{lat:37.553374, lng:126.940865},{lat:37.553320, lng:126.939313}
-    ];
-    
-  //서강이화C(서강대 후문-이대역)
-  var sogang_ewha_c = [
-    {lat:37.552311, lng:126.949407},{lat:37.552419, lng:126.948938},{lat:37.552292, lng:126.948584},
-    {lat:37.552190, lng:126.948195},{lat:37.552066, lng:126.947814},{lat:37.552027, lng:126.947469},
-    {lat:37.552087, lng:126.947246},{lat:37.552223, lng:126.947029},{lat:37.552233, lng:126.946906},
-    {lat:37.552162, lng:126.946747},{lat:37.552157, lng:126.945189},{lat:37.551982, lng:126.944938},
-    {lat:37.551490, lng:126.944473},{lat:37.550938, lng:126.944175},{lat:37.550999, lng:126.943973},
-    {lat:37.551120, lng:126.943949},{lat:37.551267, lng:126.943961},{lat:37.551605, lng:126.944146},
-    {lat:37.552392, lng:126.943489},{lat:37.552502, lng:126.943634},{lat:37.552589, lng:126.943696},
-    {lat:37.552689, lng:126.943714},{lat:37.552768, lng:126.943702},{lat:37.552839, lng:126.943612},
-    {lat:37.552858, lng:126.943540},{lat:37.552910, lng:126.943502},{lat:37.552943, lng:126.943435},
-    {lat:37.552940, lng:126.943348},{lat:37.552922, lng:126.943293},{lat:37.552957, lng:126.942964},
-    {lat:37.553000, lng:126.942938},{lat:37.553390, lng:126.943003},{lat:37.553426, lng:126.943032},
-    {lat:37.553482, lng:126.943106},{lat:37.553586, lng:126.943193},{lat:37.553689, lng:126.943262},
-    {lat:37.554045, lng:126.943355},{lat:37.554130, lng:126.943353},{lat:37.554151, lng:126.943276},
-    {lat:37.554172, lng:126.943225},{lat:37.554225, lng:126.943220},{lat:37.554339, lng:126.943282},
-    {lat:37.554485, lng:126.943298},{lat:37.554561, lng:126.943277},{lat:37.554641, lng:126.943270},//구역5랑 겹치는 부분
-    {lat:37.554643, lng:126.943317},{lat:37.554748, lng:126.943324},{lat:37.554887, lng:126.943363},
-    {lat:37.554984, lng:126.943408},{lat:37.555465, lng:126.943569},{lat:37.555507, lng:126.943362},
-    {lat:37.555605, lng:126.943034},{lat:37.555637, lng:126.942877},{lat:37.555711, lng:126.942913},
-    {lat:37.556472, lng:126.942865},{lat:37.556897, lng:126.949849},{lat:37.555082, lng:126.949936},
-    {lat:37.554214, lng:126.950315},{lat:37.552440, lng:126.950118},{lat:37.552294, lng:126.949606},
-    {lat:37.552311, lng:126.949407}
-    ];
-    
-  //서강D(서강대 후문-대흥역)
-  var sogang_d = [
-    {lat:37.550138, lng:126.943970},{lat:37.549508, lng:126.940748},{lat:37.548904, lng:126.940769},
-    {lat:37.548113, lng:126.942121},{lat:37.547858, lng:126.941900},{lat:37.547449, lng:126.942818},
-    {lat:37.547117, lng:126.942413},{lat:37.546652, lng:126.942075},{lat:37.546001, lng:126.944256},
-    {lat:37.546041, lng:126.946101},{lat:37.546552, lng:126.946646},{lat:37.546947, lng:126.947005},
-    {lat:37.547464, lng:126.947276},{lat:37.548125, lng:126.947346},{lat:37.548607, lng:126.947495},
-    {lat:37.548958, lng:126.947643},{lat:37.549887, lng:126.948203},{lat:37.549996, lng:126.948230},
-    {lat:37.550287, lng:126.948243},{lat:37.550372, lng:126.948262},{lat:37.550459, lng:126.948326},
-    {lat:37.550857, lng:126.948670},{lat:37.551469, lng:126.948703},{lat:37.552130, lng:126.949156}, 
-    {lat:37.552311, lng:126.949407},{lat:37.552419, lng:126.948938},{lat:37.552292, lng:126.948584},
-    {lat:37.552190, lng:126.948195},{lat:37.552066, lng:126.947814},{lat:37.552027, lng:126.947469},
-    {lat:37.552087, lng:126.947246},{lat:37.552223, lng:126.947029},{lat:37.552233, lng:126.946906},
-    {lat:37.552162, lng:126.946747},{lat:37.552157, lng:126.945189},{lat:37.551982, lng:126.944938},
-    {lat:37.551490, lng:126.944473},{lat:37.550938, lng:126.944175},{lat:37.550138, lng:126.943970}
-  ];
-  //서강E(서강대 남문)
-  var sogang_e = [
-    {lat:37.549508, lng:126.940748},{lat:37.548904, lng:126.940769},{lat:37.548113, lng:126.942121},
-    {lat:37.547858, lng:126.941900},{lat:37.547449, lng:126.942818},{lat:37.547117, lng:126.942413},
-    {lat:37.546652, lng:126.942075},{lat:37.546796, lng:126.940575},{lat:37.547223, lng:126.937988},
-    {lat:37.547384, lng:126.934301},{lat:37.548816, lng:126.932796},{lat:37.549929, lng:126.932928}, //구역3 독자영역 끝. 요 지점부터 정문구역 겹침) 
-    {lat:37.549949, lng:126.933503},{lat:37.549758, lng:126.937520},{lat:37.549687, lng:126.937893},
+    {lat:37.547856, lng:126.941885},{lat:37.546631, lng:126.940732},{lat:37.547222, lng:126.937739},
+    {lat:37.549774, lng:126.936365},{lat:37.549758, lng:126.937520},{lat:37.549687, lng:126.937893},
     {lat:37.549706, lng:126.938092},{lat:37.549815, lng:126.938444},{lat:37.549394, lng:126.938764},
-    {lat:37.549177, lng:126.939053},{lat:37.549508, lng:126.940748}
+    {lat:37.549177, lng:126.939053},{lat:37.547856, lng:126.941885}
     ];
     
   //이화A(이대 정문)
@@ -272,110 +195,36 @@
   //연세A(연대 정문) (B는 겹치는 구역)
   var yonsei_a = [  //명물길 예림고시원 앞에서 시작
     {lat:37.559068, lng:126.939704},{lat:37.559282, lng:126.939681},{lat:37.559358, lng:126.936327},
-    {lat:37.559218, lng:126.934372},{lat:37.558977, lng:126.933753},{lat:37.558419, lng:126.932926},
-    {lat:37.557389, lng:126.932107},{lat:37.556987, lng:126.931930},{lat:37.556154, lng:126.931892},
-    {lat:37.555437, lng:126.932023},{lat:37.555075, lng:126.932181},{lat:37.554292, lng:126.932674},
-    {lat:37.553346, lng:126.934091},{lat:37.554747, lng:126.936397},{lat:37.555070, lng:126.937191},
-    {lat:37.555385, lng:126.938228},{lat:37.555458, lng:126.937795},{lat:37.555890, lng:126.937567},
+    {lat:37.559218, lng:126.934372},{lat:37.558977, lng:126.933753},{lat:37.558377, lng:126.932946},
+    {lat:37.557389, lng:126.932107},{lat:37.556987, lng:126.931930},
+    {lat:37.555306, lng:126.936883},
+    {lat:37.555458, lng:126.937795},{lat:37.555890, lng:126.937567},
     {lat:37.555941, lng:126.937473},{lat:37.556957, lng:126.937492},{lat:37.557570, lng:126.937447},
     {lat:37.559014, lng:126.939414},{lat:37.559068, lng:126.939704}
     ];
      
   //연세C(연대 남문) 
   var yonsei_c = [ 
-    {lat:37.559218, lng:126.934372},{lat:37.559830, lng:126.934185},{lat:37.562716, lng:126.931055},{lat:37.564505, lng:126.929139},//연희교차로
+    {lat:37.559229, lng:126.934336},{lat:37.559830, lng:126.934185},{lat:37.562716, lng:126.931055},{lat:37.564505, lng:126.929139},//연희교차로
     {lat:37.560915, lng:126.926766},{lat:37.559668, lng:126.926766},{lat:37.559598, lng:126.927887},
     {lat:37.559265, lng:126.928693},{lat:37.559191, lng:126.929309},{lat:37.558960, lng:126.929542},
-    {lat:37.558817, lng:126.930105},{lat:37.557610, lng:126.931322},{lat:37.557389, lng:126.932107},//연대 정문구역과 만나는 지점  
-    {lat:37.558419, lng:126.932926},{lat:37.558977, lng:126.933753},{lat:37.559218, lng:126.934372}
+    {lat:37.558817, lng:126.930105},{lat:37.557610, lng:126.931322},{lat:37.557426, lng:126.932094},//연대 정문구역과 만나는 지점  
+    {lat:37.558419, lng:126.932926},{lat:37.559018, lng:126.933782},{lat:37.559229, lng:126.934336}
     ];
     
   //연세E(연대 서문)  
   var yonsei_e = [
-    {lat:37.564505, lng:126.929139},{lat:37.569866, lng:126.933306},{lat:37.569403, lng:126.934577},
-    {lat:37.569258, lng:126.934612},{lat:37.567914, lng:126.934999},{lat:37.567919, lng:126.935547},
+    {lat:37.564575, lng:126.929218},{lat:37.569033, lng:126.932693},
+    {lat:37.567914, lng:126.934999},{lat:37.567919, lng:126.935547},
     {lat:37.567540, lng:126.935828},{lat:37.566556, lng:126.935190},{lat:37.566350, lng:126.934866},
     {lat:37.566198, lng:126.934404},{lat:37.563799, lng:126.933859},{lat:37.563453, lng:126.933630},
-    {lat:37.563158, lng:126.932769},{lat:37.563256, lng:126.932042},{lat:37.562716, lng:126.931055},{lat:37.564505, lng:126.929139}
+    {lat:37.563158, lng:126.932769},{lat:37.563256, lng:126.932042},{lat:37.562751, lng:126.931375},{lat:37.564575, lng:126.929218}
     ];
     
-  //서강A(서강대 정문)
+
+  //서강E(서강대 남문)
   var sogang_a = new google.maps.Polygon({
     paths: sogang_a,
-    //strokeColor: '#594F4F',
-    strokeOpacity: 0.3,
-    strokeWeight: 1,
-    fillColor: '#7FE817',
-    fillOpacity: 0.3
-  });
-  <% if @univ.include? "서강" %>
-  
-    sogang_a.setMap(map);
-  /* 
-    var sogang_a_mark = new google.maps.Marker({
-        position: {lat: 37.552330, lng:126.936627},
-        map: map,
-        //icon: a
-      }); */
-  <% end %>
-  //공통B(서강-이화-연대)
-  var sogang_ewha_yonsei_b = new google.maps.Polygon({
-    paths: sogang_ewha_yonsei_b,
-    //strokeColor: '#594F4F',
-    strokeOpacity: 0.3,
-    strokeWeight: 1,
-    fillColor: '#8017E8',
-    fillOpacity: 0.25
-  });
- 
-  sogang_ewha_yonsei_b.setMap(map);
-   /*
-   var sogang_b_mark = new google.maps.Marker({
-        position: {lat:37.556045, lng:126.940645},
-        map: map,
-        //icon: b
-      });
-  */
-  //서강이화C(서강대 후문-이대역)
- var sogang_ewha_c = new google.maps.Polygon({
-    paths: sogang_ewha_c,
-    //strokeColor: '#594F4F',
-    strokeOpacity: 0.3,
-    strokeWeight: 1,
-    fillColor: '#69FAAA',
-    fillOpacity: 0.3
-  });
-<% unless @univ.include? "연세" %>
-    sogang_ewha_c.setMap(map);
- /*   var sogang_c_mark = new google.maps.Marker({
-        position: {lat:37.554180, lng:126.946500},
-        map: map,
-        //icon: c
-      });
-      */
-<% end %>
-  //서강D(서강대 후문-대흥역)
-  var sogang_d = new google.maps.Polygon({
-    paths: sogang_d,
-    //strokeColor: '#594F4F',
-    strokeOpacity: 0.3,
-    strokeWeight: 1,
-    fillColor: '#008080',
-    fillOpacity: 0.15
-  });
-  <% if @univ.include? "서강" %>
-  sogang_d.setMap(map);
-  /*
-  var sogang_d_mark = new google.maps.Marker({
-        position: {lat:37.548951, lng:126.945549},
-        map: map,
-        //icon: d
-      });
-      */
-  <% end %>
-  //서강E(서강대 남문)
-  var sogang_e = new google.maps.Polygon({
-    paths: sogang_e,
     //strokeColor: '#594F4F',
     strokeOpacity: 0.3,
     strokeWeight: 1,
@@ -383,14 +232,8 @@
     fillOpacity: 0.3
   });
   <% if @univ.include? "서강" %>
-  sogang_e.setMap(map);
-  /*
-  var sogang_e_mark = new google.maps.Marker({
-        position: {lat:37.548084, lng:126.936736},
-        map: map,
-        //icon: e
-      });
-      */
+  sogang_a.setMap(map);
+
   <% end %>
   //이화A(이대 정문)
    var ewha_a = new google.maps.Polygon({
@@ -487,53 +330,65 @@
       });
       */
  <% end %>    
-    
-  
-      //학교별 마커 띄우기 시작
+   
+         //학교별 마커 띄우기 시작
      
        $.get("/map/from_hasuk", function(data, status){
              for (var i = 0; i < data.length; i++){
-               //학교 찍히는 것 위도 경도로 찍는 것 생각
-              var univs = data[i].univ;
+                   
+              var univ1 = data[i].univ_distance1;
+              var univ2 = data[i].univ_distance2;
+              var univ3 = data[i].univ_distance3;
               var infowindow = null;
               var infoWindow = new google.maps.InfoWindow();
-              //if (univs.indexOf("<%#= @univ %>") !== -1) {
-               var contentString =
-            '<div id="infoWindow" style="margin-bottom:5px">'+
-               '<div class="row" style="max-width:240px">'+
-               '<div class="col-md-4 col-sm-4 col-xs-4" style=" width: 100px; padding-left: 5px; padding-right: 0px;">' +
-                   '<img src="'+ data[i].room_img1 + '" height="80px" width="100px">' +
-                 '</div>'+
-               '<div class="col-md-7 col-sm-7 col-xs-7" style="width: 140px;padding-right: 0px;">' +
-                   '<div class="row" style="margin-left:1px; padding-left:0px; padding-right:0px">' +
-                     '<div class="col-md-3 col-sm-3 col-xs-3" style="margin-right:-5px; padding-left:0px; padding-right:0px">' +
-                       '<p style="font-size: 20px; margin-top:5px">'+ data[i].price_from +'</p>' +
-                     '</div>' +
-                     '<div class="col-md-9 col-sm-9 col-xs-9" style="margin-top:6px; margin-bottom:5px; padding-left:0px; padding-right:0px">'+
-                      '(예치금:'+ data[i].small_deposit + '만원)&nbsp;'+
+        
+                  var contentString =
+                '<div id="infoWindow" style="margin-bottom:5px">'+
+                   '<div class="row" style="max-width:240px">'+
+                   '<div class="col-md-4 col-sm-4 col-xs-4" style=" width: 100px; padding-left: 5px; padding-right: 0px;">' +
+                       '<img src="'+ data[i].room_img1.url + '" height="80px" width="100px">' +
                      '</div>'+
-                  '</div>'+
-                 '<p style="margin-bottom:5px; font-size:12px">거리 : 정문에서 10분</p>' +
-                 '<p style="color:#eb9088; margin-bottom:5px; font-size:13px">'+ '#아침,저녁</p>' +
-               '</div>'+
-               '</div>'+
-             '</div>';
-                    var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);
+                   '<div class="col-md-7 col-sm-7 col-xs-7" style="width: 140px;padding-right: 0px;">' +
+                       '<div class="row" style="margin-left:1px; padding-left:0px; padding-right:0px">' +
+                         '<div class="col-md-3 col-sm-3 col-xs-3" style="margin-right:-5px; padding-left:0px; padding-right:0px">' +
+                           '<p style="font-size: 20px; margin-top:5px">'+ data[i].price_from +'</p>' +
+                         '</div>' +
+                         '<div class="col-md-9 col-sm-9 col-xs-9" style="margin-top:6px; margin-bottom:5px; padding-left:0px; padding-right:0px">'+
+                          '(예치금:'+ data[i].small_deposit + '만원)&nbsp;'+
+                         '</div>'+
+                      '</div>'+
+                     '<p style="margin-bottom:5px; font-size:12px">거리 : 정문에서 10분</p>' +
+                     '<p style="color:#eb9088; margin-bottom:5px; font-size:13px">'+ '#아침,저녁</p>' +
+                   '</div>'+
+                   '</div>'+
+                 '</div>';
+
+            
+            var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);
                     
+            
+           
+              
+          if (univ1.indexOf("<%= @univ %>") !== -1 || univ2.indexOf("<%= @univ %>") !== -1 || univ3.indexOf("<%= @univ %>") !== -1 ) {    
+            if ("<%= @section %>" =="서강대남문") {
+                map.setCenter({lat: 37.548717, lng: 126.939051}, true);
+                map.setZoom(17);
+                
+                if(google.maps.geometry.poly.containsLocation(latlng, sogang_a) == true){
+                    
+                
                     var marker = new google.maps.Marker({
-                         position: latlng,
-                         map: map
-                     });
-                    marker.setValues({type: "point", id: i});
-                    var data_id = data[i].id;
-                    var str_id = data_id.toString();
-                    //console.log(str_id);
-                     var hash_id = "a" +str_id;
-                     markerObj = document.getElementById(hash_id);
+                 position: latlng,
+                 map: map
+             });
+            marker.setValues({type: "point", id: i});
+            var data_id = data[i].id;
+            var str_id = data_id.toString();
 
-
-//event 구간
-//1.말풍선 출력 
+             var hash_id = "a" +str_id;
+             markerObj = document.getElementById(hash_id);      
+                    //event 구간
+//말풍선 출력 
                     google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
                           return function() {
                             infoWindow.setContent(contentString);
@@ -542,7 +397,7 @@
                            }; // function end
                       })(marker,contentString,infoWindow));
 
-//2.말풍선 지우기
+//말풍선 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
                        return function()  {
                         infoWindow.close();
@@ -557,7 +412,7 @@
                        }; // function end
                      })(marker,contentString,infoWindow));
 
- // listbox로 말풍선 띄운 것 지우기
+ //listbox로 말풍선 띄운 것 지우기
                       google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
                         return function() {
                           infoWindow.close();
@@ -590,10 +445,7 @@
 
                      })(str_id));
 
-
-
-
-//3. listbox 색 입히기
+// listbox 색 입히기
                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                      return function() { 
                         var result_id = "#" + "a" + str_id;
@@ -613,7 +465,7 @@
 
                     })(str_id));
 
-//4. listbox 색 지우기
+// listbox 색 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
@@ -626,15 +478,382 @@
                       };
 
                      })(str_id));
+                    marker.setMap(map);
+                }
+                     
+             } else if ("<%= @section %>" =="연대정문"){
+                map.setCenter({lat: 37.557464, lng: 126.936306}, true);
+                map.setZoom(17);
+                
+           
+             
+                if(google.maps.geometry.poly.containsLocation(latlng, yonsei_a) == true){
+             
+                  var marker = new google.maps.Marker({
+                    position: latlng,
+                    map: map
+                });
+                marker.setValues({type: "point", id: i});
+                
+                var data_id = data[i].id;
+                var str_id = data_id.toString();
+                var hash_id = "a" +str_id;
+                
+                markerObj = document.getElementById(hash_id);      
+                    
+            //event 구간
+//말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
 
-                 marker.setMap(map);
-                //}//indexOf 걸리는 괄호
-             }
-         }); //학교별 마커 띄우기 끝
+                           }; // function end
+                      })(marker,contentString,infoWindow));
 
+// 말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
 
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
  
-        
+ // listbox 색칠
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                         $(result_id).css("background-color","#cbefde");
+                         var list_height = $(".roomList").height();
+                         var item_offset = $(result_id).offset().top;
+                         var item_height = $(result_id).height();
+                         var place;
+
+                         if ( item_height < list_height) {
+                           place = item_offset - ((list_height / 2) - (item_height / 2));
+                         } else {
+                           place = item_offset;
+                         }
+
+                         $(".roomList").animate({scrollTop: place}, 700);
+                       });
+
+                      };
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","#a4e2c5");
+                        var list_top = $(".roomList").position().top;
+                        var list_bottom = $('.roomList').position().top+$('.roomList').outerHeight(true);
+                        var list_height = list_top + list_bottom;
+                        var place  = list_top - ( list_height - list_bottom ) / 2
+                      
+                        $(".roomList").animate({scrollTop: place}, 500);
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+// listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","#fff");
+                        });
+
+                      };
+
+                     })(str_id));
+                    marker.setMap(map);
+                
+                }     
+            
+            } else if ('<%= @section %>' =="연대서문"){
+                map.setCenter({lat: 37.565672, lng: 126.932181}, true);
+                map.setZoom(17);
+                
+                if(google.maps.geometry.poly.containsLocation(latlng, yonsei_e) == true){
+                  var marker = new google.maps.Marker({
+                    position: latlng,
+                    map: map
+                });
+                marker.setValues({type: "point", id: i});
+                
+                var data_id = data[i].id;
+                var str_id = data_id.toString();
+                var hash_id = "a" +str_id;
+                
+                markerObj = document.getElementById(hash_id);      
+                    
+            //event 구간
+//말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+// 말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+ // listbox 색칠
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                         $(result_id).css("background-color","#cbefde");
+                         var list_height = $(".roomList").height();
+                         var item_offset = $(result_id).offset().top;
+                         var item_height = $(result_id).height();
+                         var place;
+
+                         if ( item_height < list_height) {
+                           place = item_offset - ((list_height / 2) - (item_height / 2));
+                         } else {
+                           place = item_offset;
+                         }
+
+                         $(".roomList").animate({scrollTop: place}, 700);
+                       });
+
+                      };
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","#a4e2c5");
+                        var list_top = $(".roomList").position().top;
+                        var list_bottom = $('.roomList').position().top+$('.roomList').outerHeight(true);
+                        var list_height = list_top + list_bottom;
+                        var place  = list_top - ( list_height - list_bottom ) / 2
+                      
+                        $(".roomList").animate({scrollTop: place}, 500);
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+// listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","#fff");
+                        });
+
+                      };
+
+                     })(str_id));
+                    marker.setMap(map);
+                
+                }       
+                
+            } else if ('<%= @section %>' =="연대남문"){
+                map.setCenter({lat: 37.561214, lng: 126.930489}, true);
+                map.setZoom(17);
+                
+                if(google.maps.geometry.poly.containsLocation(latlng, yonsei_c) == true){
+                  
+                  var marker = new google.maps.Marker({
+                    position: latlng,
+                    map: map
+                });
+                marker.setValues({type: "point", id: i});
+                
+                var data_id = data[i].id;
+                var str_id = data_id.toString();
+                var hash_id = "a" +str_id;
+                
+                markerObj = document.getElementById(hash_id);      
+                    
+            //event 구간
+//말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+// 말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+ // listbox 색칠
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                         $(result_id).css("background-color","#cbefde");
+                         var list_height = $(".roomList").height();
+                         var item_offset = $(result_id).offset().top;
+                         var item_height = $(result_id).height();
+                         var place;
+
+                         if ( item_height < list_height) {
+                           place = item_offset - ((list_height / 2) - (item_height / 2));
+                         } else {
+                           place = item_offset;
+                         }
+
+                         $(".roomList").animate({scrollTop: place}, 700);
+                       });
+
+                      };
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","#a4e2c5");
+                        var list_top = $(".roomList").position().top;
+                        var list_bottom = $('.roomList').position().top+$('.roomList').outerHeight(true);
+                        var list_height = list_top + list_bottom;
+                        var place  = list_top - ( list_height - list_bottom ) / 2
+                      
+                        $(".roomList").animate({scrollTop: place}, 500);
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+// listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","#fff");
+                        });
+
+                      };
+
+                     })(str_id));
+                    marker.setMap(map);
+                
+                }  
+                
+            } else if ('<%= @section %>'=="연대동문"){
+               
+            }
+               else {
+                   
+               }
+
+
+
+
+                 
+                }//indexOf 걸리는 괄호
+             } //반복문
+         }); //학교별 마커 띄우기 끝
+ 
+  
+
+
+            
+
+           /* if (data[i].hasuk_kind == "<%#= @hasuk_kind%>" || <%#= @hasuk_kind%> == "") {
+                if (data[i].gender == "<%#= @gender%>" || <%#= @gender %> == "") {
+                    if (data[i].price_from >= <%#= @price_from%> || data[i].price_to <= <%#= @price_to%> ) {
+
+                            if (data[i].distance_time1 <= <%#= @distance %> || <%#= @distance %> == "") {    */
+                        
+   /*                                 } //거리
+                            } //가격
+                        } //성별
+                    } //하숙집 종류*/
+ 
+
+
       } //구글맵 기본 설정 끝
       google.maps.event.addDomListener(window, 'load', initialize);
       
@@ -1259,7 +1478,7 @@
      #meal-size{
         font-size:0.6em;
         margin-top:7px;
-        width:35%;
+        width:38%;
      }
      #room-size{
        margin:0px;
@@ -1633,7 +1852,7 @@
        left: 10px; 
     }
     #nameOfhasuk p {
-        font-size: 0.65em;
+       font-size: 0.6em;
        color:#ECF0F1;
        padding: 5%;
        border-radius:5px;
@@ -1718,13 +1937,7 @@
 </head>
 <body>
  <%= render "map/search_modal" %>
- 유니브:<%=@univ %><br>
- 종류:<%=@hasuk_kind%><br>
- 성별:<%=@gender %><br>
- 월세:<%=@price_from %>--
- <%= @price_to %><br>
- 구역:<%=@section %><br>
- 거리:<%=@distance %><br>
+
   <!--지도부분 시작-->
   
   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 map_container hidden-xs" style="padding-left:0px; padding-right:0px;">         
@@ -1765,8 +1978,7 @@
       
       <%# cnt=0 %>
       <% @hasuk.each do |c| %>
-        <% #if (c.univ || '').include? @univ %>
-          
+        <% if (c.univ_distance1 || c.univ_distance2 || c.univ_distance3 ).include? @univ %>
           <%# cnt= cnt+1 %>
           <%# if cnt == 6 %>
             <%# break %>
@@ -1829,23 +2041,23 @@
                           
                           <% if c.gender=="여성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
+                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
                             </div>
                           <% elsif c.gender =="남녀공용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#2ECC71; border:1px solid #2ECC71; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
+                              <p class="form-control" type="text" style="color:#2ECC71; border:1px solid #2ECC71; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
                             </div>
                           <% elsif c.gender == "남녀층 분리" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#9B59B6; border:1px solid #9B59B6; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀분리</p>
+                              <p class="form-control" type="text" style="color:#9B59B6; border:1px solid #9B59B6; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀분리</p>
                             </div>
                           <% elsif c.gender == "남성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#2980b9; border:1px solid #2980B9; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
+                              <p class="form-control" type="text" style="color:#2980b9; border:1px solid #2980B9; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
                             </div>
                           <% else %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">DB 없음</p>
+                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">DB 없음</p>
                             </div>
                           <% end %>
                           
@@ -1863,7 +2075,7 @@
                           <% elsif c.personal_option8 == nil %>   
                             <img src="/images/icons/toilet2.png" style="margin-right:4px;">
                           <% else %>
-                            <img src="/images/icons/air2.png" style="margin-right:4px;">
+                            <img src="/images/icons/toilet2.png" style="margin-right:4px;">
                           <% end %>
                           <% if c.personal_option6 =="에어컨" %>
                             <img src="/images/icons/air.png">
@@ -1877,7 +2089,7 @@
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div id="kind-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                          <% if c.hasuk_kind == "일반하숙" %>
+                         <% if c.hasuk_kind == "일반하숙" %>
                             <span style="color:#2ECC71">[일반하숙]</span>
                           <% elsif c.hasuk_kind == "잠만 자는 방" %>
                             <span style="color:#2ECC71">[잠만자는]</span>
@@ -1919,14 +2131,50 @@
                         <div id="distance-size" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <% if c.univ_distance1 != "학교선택" %>
                             <% if c.univ_distance1 == "이화" %>
-                              <span id="gate"><span style="color:#16A085"><%= c.univ_distance1 %>여대</span> <%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm">|</span> <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
+                              <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.subway1 == "대흥" %>
+                                  <span id="subway" style="color:#9a4510"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "신촌" || c.subway1 == "이대" %>
+                                  <span id="subway" style="color:#009044"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "서강대" %>
+                                  <span id="subway" style="color:#41b9b9"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "신촌기차" %>
+                                  <span id="subway" style="color:#0063b1"><%= c.subway1 %>역</span>
+                              <% end %>
+                              
+                              <span> <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
                             <% elsif c.univ_distance1 =="서강" %>
-                              <span id="gate"><span style="color:#C0392B"><%= c.univ_distance1 %>대</span> <%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm">|</span> <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
+                              <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.subway1 == "대흥" %>
+                                  <span id="subway" style="color:#9a4510"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "신촌" || c.subway1 == "이대" %>
+                                  <span id="subway" style="color:#009044"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "서강대" %>
+                                  <span id="subway" style="color:#41b9b9"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "신촌기차" %>
+                                  <span id="subway" style="color:#0063b1"><%= c.subway1 %>역</span>
+                              <% end %>
+                              
+                              <span> <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
                             <% elsif c.univ_distance1 =="연세" %>
-                              <span id="gate"><span style="color:#1a4f73"><%= c.univ_distance1 %>대</span> <%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span><br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm">|</span> <%= c.subway1 %>역 <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
+                              <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.subway1 == "대흥" %>
+                                  <span id="subway" style="color:#9a4510"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "신촌" || c.subway1 == "이대" %>
+                                  <span id="subway" style="color:#009044"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "서강대" %>
+                                  <span id="subway" style="color:#41b9b9"><%= c.subway1 %>역</span>
+                              <% elsif c.subway1 == "신촌기차" %>
+                                  <span id="subway" style="color:#0063b1"><%= c.subway1 %>역</span>
+                              <% end %>
+                              
+                              <span><%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
                             <% end %>
                           <% else %>
-                            <span id="gate"><span style="color:#16A085">이화여대</span> 정문 1064m(20분)</span><br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm hidden-md">|</span> 신촌기차역 1103m(21분)</span>
+                            <span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm hidden-md">|</span> 신촌기차역 1103m(21분)</span>
                           <% end %>
                         </div>
                         
@@ -1947,7 +2195,7 @@
           
                        
           
-        <%# end %>
+        <% end %>
           
       <% end %>
     <%# end %>
@@ -1960,6 +2208,7 @@
 
 
  <script>
+ 
 $(document).ready(function(){
   $.fn.addSliderSegments = function (amount, orientation) {
   return this.each(function () {
