@@ -505,7 +505,7 @@
               }//하숙 종류 끝
               }//polygon true 끝
                      
-             } else if ("<%= @section %>" =="연대정문" ){
+             } else if ("<%= @section %>" =="연세대정문" ){
                 map.setCenter({lat: 37.557464, lng: 126.936306}, true);
                 map.setZoom(17);
                 
@@ -638,7 +638,7 @@
                 
                      
             
-            } else if ('<%= @section %>' =="연대서문"){
+            } else if ('<%= @section %>' =="연세대서문"){
                 map.setCenter({lat: 37.565672, lng: 126.932181}, true);
                 map.setZoom(17);
                 
@@ -770,7 +770,7 @@
                 }//polygon true 끝  
                        
                 
-            } else if ('<%= @section %>' =="연대남문"){
+            } else if ('<%= @section %>' =="연세대남문"){
                 map.setCenter({lat: 37.561214, lng: 126.930489}, true);
                 map.setZoom(17);
                 
@@ -900,9 +900,9 @@
                 }//하숙 종류 끝
                 }//polygon true 끝 
                 
-            } else if ('<%= @section %>'=="연대동문"){
+            } else if ('<%= @section %>'=="연세대동문"){
                
-            } else if ('<%= @section %>' =="연대명물" || '<%= @section %>' =="이대명물"){
+            } else if ('<%= @section %>' =="연세대명물" || '<%= @section %>' =="이대명물"){
             
               
             }  else if ('<%= @section %>' =="이대정문"){
@@ -2443,7 +2443,17 @@
       <div class="panel panel-default">
         <div class="panel-heading col-lg-12 col-md-12 col-xs-12 col-sm-12" style="background-color:#2ecc71; color:#fff; padding:5px; padding-left:10px; font-size:0.8em">검색결과</div>
         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 roomList panel-body" style="padding:0px;">
-      
+ 
+  <!--      if (univ1.indexOf("<%#= @univ %>") !== -1 || univ2.indexOf("<%#= @univ %>") !== -1 || univ3.indexOf("<%#= @univ %>") !== -1 ) {    
+            //학교까지의 거리를 입력한 부분에서 해당 학교 포함하고 있으면 ok조건
+            
+            if ("<%#= @section %>" =="서강대남문" ) {
+              //구역별 검색 조건, 아무 조건 안 누르면 다 뜨게
+                map.setCenter({lat: 37.548717, lng: 126.939051}, true);
+                map.setZoom(17);
+                //구역별 지도 중심 정하기
+      -->
+              
       <%# cnt=0 %>
       <% @hasuk.each do |c| %>
         <% if (c.univ_distance1 || c.univ_distance2 || c.univ_distance3 ).include? @univ %>
@@ -2451,7 +2461,45 @@
           <%# if cnt == 6 %>
             <%# break %>
           <%# end %>
+        <% if @hasuk_kind == c.hasuk_kind || @hasuk_kind.nil? %>
           
+        <% if @gender == c.gender || @gender.nil? %>
+            
+            <% @price_from_i = @price_from.to_i %>
+            <% @price_to_i = @price_to.to_i %>
+            <!--왠지는 모르겠지만 @price_from이 스트링으로 찍힌다. -->
+            
+        <% if @price_from_i <= c.price_from && @price_to_i + 10 > c.price_to %>
+        
+          <% if @distance.nil? %>
+            <% @distance_i = 0 %>
+          <% end %>
+          <% @distance_i = @distance.to_i %>
+   
+        <% if @distance_i >= c.distance_time1 || @distance_i == 0 %>
+        
+
+          <% if c.sogang_gate1 != "교문선택" %>
+            <% @sogang_section = c.univ_distance1 + "대" + c.sogang_gate1 %>
+            <% else %>
+            <% @sogang_section = "없음"%>
+          <% end %>
+          <% if c.yonsei_gate1 != "교문선택" %>
+            <% @yonsei_section = c.univ_distance1 + "대" + c.yonsei_gate1 %>
+            <% else %>
+            <% @yonsei_section = "없음"%>
+          <% end %>
+          <% if c.ewha_gate1 != "교문선택" %>
+            <% @ewha_section = c.univ_distance1 + "여대" + c.ewha_gate1 %>
+            <% else %>
+            <% @ewha_section = "없음" %>
+          <% end %>
+          <% @all_section = [@sogang_section, @yonsei_section, @ewha_section] %>
+          <!--구역 나누기 트릭 -->
+          
+        <% for i in 1..3 %>
+          <% if @section.include? @all_section[i-1] %>
+        
               <!--개별 방 박스 1 시작-->
               
                 <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
@@ -2646,27 +2694,27 @@
                           <% end %>
                         </div>
                         
-                      </div><!--정보 두번째 줄 끝-->
-                      <!--<div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px; margin-left:5px;">
-                          <span style="font-size:13px;">#침대</span>
-                          <span style="font-size:13px;">#책상</span>
-                          <span style="font-size:13px;">#행거</span>
-                          <span style="font-size:13px;">#CCTV</span>
-                        </div>
-                      </div>-->
+                      </div>
                     </div><!--정보 표시 끝-->
                     
                   </div>
                   </a> 
                 </div>
+        
+        <% end %><!--구역 범위에 걸리는 end -->  
+        <% end %><!--for loop -->
+        <% end %><!--거리 범위에 걸리는 end -->  
+              
+        <% end %><!--가격 범위에 걸리는 end -->
+                
+        <% end %><!-- 성별 종류에 걸리는 end -->
+            
+        <% end %><!-- 하숙방 종류에 걸리는 end -->             
           
-                       
+        <% end %><!--@univ 걸리는 end -->
           
-        <% end %>
-          
-      <% end %>
-    <%# end %>
+      <% end %><!--@hasuk each end -->
+
     
     </div>
   </div>
