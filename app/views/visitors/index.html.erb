@@ -1,21 +1,615 @@
-<div class="col-md-12 col-sm-12 col-xs-12">
-      <br/><br/><br/>
-       <h2><strong>우리학교 근처 매물정보</strong></h2>
-         <form action="/map/mappage" method="GET">
-          <br/>
-           <p>
-             <div class="btn-group">
-                <%= select_tag "univ", "<option selected>학교선택</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe,class:"form-control" %>
-                <%= submit_tag "검색", class:"btn btn-primary" %>
-             </div>
-           </p>
-         </form>
-            <br/><br/>
-          </div>
-          
-<% if user_signed_in? %>
-    <p><%= link_to 'User', users_path %> <%= User.count %> registered</p>
-<% else %>
-    <p><%= link_to "User", "#login", "data-toggle" => "modal" %> <%= User.count %> registered</p>
-<% end %>
+<head>
+    <!-- Custom CSS -->
+    <link href="/css/grayscale.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/Flat-UI-2.2.2/dist/img/favicon.ico">
+    <!-- Custom Fonts -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
+<style type="text/css">
+
+main {
+    margin-top:0px;
+}
+.navbar-default {
+    background:none;
+    color:#e5e9ea;
+}
+ @media (max-width: 991px) {
+    .navbar-default {
+        background:#e5e9ea;
+        color:#2c3341;
+    }
+    .navbar-default .navbar-toggle:before {
+    color:#262626;
+    }
+    .navbar-default .navbar-nav > li > a {
+    color:#262626;
+    }
+    .navbar-default .navbar-brand {
+    color:#262626;
+    }
+ }
+ @media (min-width: 992px) {
+.navbar-default .navbar-nav > li > a {
+    color:#fff;
+}
+.navbar-default .navbar-brand {
+    color:#fff;
+}
+.navbar-default .navbar-toggle:before {
+    color:#fff;
+}
+}
+
+
+
+
+body {
+    background-color: #ffffff;
+    color: #666666;
+}
+
+.row {
+    margin: 0;
+    
+}
+    
+.intro {
+    background: url(/images/index-images/block_back_dark.png);
+
+}
+
+.content-section {
+    padding-top: 75px;
+    padding-bottom: 75px;
+}
+
+@media (max-width: 767px) {
+
+.navbar-custom {
+    background: none;
+}
+
+.btn-hg {
+    font-size: 15px;
+    
+}
+
+#main-img {
+    padding-bottom: 30px;
+    
+}
+
+.text-control {
+    text-align: center;
+}    
+
+.nav-container {
+    padding: 0;
+}
+
+
+.intro {
+    padding: 30px 0 0 0;
+}
+
+.intro .container {
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-top: 100px;
+    padding-bottom:10px;
+}
+
+.col-xs-8 {
+    margin-top: 50px;
+}
+.content-section {
+    padding: 60px 0;
+}
+    
+    h2 {
+        font-size: 34px;
+    }
+    
+    h5 {
+        font-size: 17px;
+    }
+    
+.inform-text {
+    font-size: 18px;  
+}
+
+.navbar-inverse .navbar-form {
+    border-color: #2f4154;
+    border-width: 2px 0;
+}
+
+.mob-hidden {
+    display: none;
+}
+
+.target-img {
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.detail-feature .col-lg-4 {
+    padding-top: 40px;
+    text-align: center;
+}
+
+.feature, .target-title {
+    font-size: 22px;
+}
+
+.feature {
+    margin: 0;
+}
+
+.feature-title {
+    font-size:18px; 
+}
+
+.feature-text {
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+.title-3 {
+    text-shadow: 1px 1px #000000; 
+    line-height: 1.3; 
+    font-size:22px; 
+    margin-top: 30px; 
+    margin-bottom: 30px;
+}
+
+.padding-add {
+    padding-bottom: 25px;
+}
+
+#darkblue-box .content-section{
+    padding: 30px 0;
+}
+
+}
+
+
+@media(min-width:767px) and (max-width: 1199px) {
+
+
+.text-control {
+    text-align: left;
+}    
+
+    h2 {
+        font-size: 40px;
+    }
+    
+    h5 {
+        font-size: 20px;
+    }
+    
+.nav-container {
+    padding-right: 30px;
+    padding-left: 15px;
+}
+
+    .content-section {
+        padding-top: 70px;
+    }
+
+    .download-section {
+        padding: 100px 0;
+    }
+    
+    
+    .intro-title, .intro-content {
+        margin-top: 0px;
+        margin-bottom: 35px;
+    }
+
+.inform-text {
+    font-size: 24px;  
+}
+    
+.col-sm-12 {
+    text-align: center;
+}
+
+.target-img {
+    height: 179px;
+    margin: auto;
+    padding-top: 3px;
+}
+
+.detail-feature .col-sm-4 {
+    padding-top: 30px;
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align: center;
+}
+
+.tab-hidden {
+    display: none;   
+}
+
+.feature {
+    font-size: 26px;
+}
+
+.feature-title {
+    font-size:20px;
+}
+
+
+.feature-text {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.title-3 {
+    text-shadow: 1px 1px #000000; 
+    line-height: 1.3; 
+    font-size:32px; 
+    margin-top: 30px; 
+    margin-bottom: 30px;
+}
+
+.target-title {
+    font-size: 26px;
+    margin: 0;
+}
+
+#main-img {
+    padding-left: 120px;
+    padding-right: 120px;
+    padding-bottom: 30px;
+    
+}
+
+    }
+
+
+@media(min-width: 992px) {
+
+.col-md-12{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#main-img {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 30px;
+}
+
+.target-img {
+    margin-right: 0px;
+    padding-right: 15px;
+}
+
+}
+
+@media(min-width: 1200px) {
+ 
+.text-control {
+    text-align: left;
+}    
+
+.nav-container {
+    padding-right: 30px;
+    padding-left: 15px;
+}
+
+.intro-body .container {
+    padding-top: 150px;
+    padding-bottom: 30px;
+}
+    
+.container {
+    width: 980px;
+}
+  
+    .intro {
+        height: 550px;
+    }
+
+.intro-title, .intro-content{
+    margin-top:0;
+    margin-bottom: 50px;
+}
+
+.detail-feature .col-lg-4 {
+    padding-top: 40px;
+    text-align: center;
+    padding: 0;
+}    
+
+.inform-text {
+    font-size: 24px;  
+}
+
+
+.feature {
+    font-size: 28px;
+    padding-bottom: 30px;
+}
+
+
+.pc-hidden {
+    display: none;
+}
+
+.target-img {
+    padding-top: 3px;
+}
+
+.feature-title {
+    font-size:20px; 
+}
+
+.feature-text {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.target-title {
+    font-size: 28px;
+    margin: 0;
+}
+
+.title-3 {
+    text-shadow: 1px 1px #000000; 
+    line-height: 1.3; 
+    font-size:32px; 
+    margin-top: 30px; 
+    margin-bottom: 30px;
+}
+
+#main-img {
+    padding-bottom: 30px;
+    
+}
+
+.target-img {
+    height: 179px;
+    margin-right: 0;
+    width: 300px;
+    
+}
+
+}
+
+footer {
+    background-color: #2c3341;
+    padding: 0;
+    padding-top: 10px;
+}
+
+#darkblue-box {
+    background-color: #2c3341;
+}
+
+
+#dark-box {
+    background-color: #000000;
+}
+
+.white-text {
+    color: #ffffff;
+}
+
+.btn-dain {
+    background: none;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ff8773;
+    color: #ff8773;
+    font-size: 16px;
+}
+
+.btn-dain:hover,
+.btn-dain.hover,
+.btn-dain:focus,
+.btn-dain:active,
+.btn-dain.active,
+.open > .dropdown-toggle.btn-dain {
+  color: #ffffff;
+  background-color: #ff8773;
+  border-color: #ff8773;
+}
+
+.pink {
+    color: #ff8773;
+}
+
+.darkblue-text {
+    color: #2c3341;
+}
+
+
+#info_button {
+    background: url(/images/index-images/background.png); 
+}
+
+.point2 {
+    color: #2ecc71; 
+}
+
+p {
+    display: block;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+
+.col-sm-7, .col-lg-7, .col-md-7 > .feature-title {
+    margin-bottom: 0;    
+}
+
+</style>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+
+    <!-- 1. 하숙집 찾으시나요? -->
+    <header class="intro">
+        <div class="intro-body" style="margin:0">
+            <div class="container text-center">
+                <div class="col-md-6 col-md-offset-3">
+                   	<img id="main-img" class="img-responsive" src="/images/index-images/title.png" alt="">
+                </div> 
+                <div class="row col-md-12">
+                    <form action="/map/mappage" method="GET">
+                        <%= select_tag "univ", "<option selected>학교를 선택해주세요</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe,class:"btn btn-default btn-hg dropdown-toggle", style: "background: #ffffff; color: #aeaeae; border: solid #666666;" %>
+                        <%= submit_tag "하숙집 찾기", class:"btn btn-success btn-hg" %>
+                    </form>
+				</div>
+				<div class="row">
+                    <div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 text-center">
+                        <a href="#info_button" class="btn btn-circle page-scroll">
+                            <!--<i class="fa fa-angle-double-down animated" style="font-size: 50px"></i>-->
+                             <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    
+    <!-- 2. 우리는 몇 개의 하숙집을 보유하고 있다. -->
+    <div id="darkblue-box">
+    <section class="container content-section text-center" style="margin-top:0px">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <p class="white-text inform-text" style="margin:0"><span class="mob-hidden">OOO은 251개의 하숙집 정보를 제공하고 있습니다.</span><span class="tab-hidden pc-hidden">251개의 하숙집 정보를 제공합니다.</span></p>
+            </div>
+        </div>
+    </section>
+    </div>
+    
+    <!-- 3.특징 -->
+    <section class="container content-section text-center">
+        <div class="row mt centered">
+			<div class="col-lg-10 col-lg-offset-1 col-xs-12 darkblue-text">
+				<p class="feature">위치부터 음식사진까지,<span class="pc-hidden tab-hidden"><br></span> 하숙집의 모든 정보를 무료로!</p>
+			</div>
+		</div><!-- /row -->
+		
+		<!--특징 3개-->
+		<div class="row mt detail-feature">
+			<div class="col-lg-4 col-md-4 col-sm-4">
+				<img src="/images/index-images/feature1.png" style="margin-bottom: 15px" alt="">
+			    <p class="feature-title darkblue-text">대학별 하숙집 지도</p>
+				<p class="feature-text">학교를 선택하면 학교근처 하숙집을<br>지도에서 모두 볼 수 있습니다.</p>
+			</div>
+			        <!--/col-lg-4 -->
+
+		    <div class="col-lg-4 col-md-4 col-sm-4">
+			    <img src="/images/index-images/feature2.png"  style="margin-bottom: 15px" alt="">
+			    <p class="feature-title darkblue-text">간편한 하숙집 검색</p>
+				<p class="feature-text">월세, 학교까지 거리 등 검색필터로<br>원하는 하숙집을 빠르게 찾으세요.</p>
+			</div><!--/col-lg-4 -->
+
+			<div class="col-lg-4 col-md-4 col-sm-4">
+			    <img src="/images/index-images/feature3.png" style="margin-bottom: 15px" alt="">
+				<p class="feature-title darkblue-text">한눈에 확인하는 옵션</p>
+				<p class="feature-text">와이파이, 냉난방, 식사제공 여부 등<br>핵심적인 옵션 먼저 확인!</p>
+			</div><!--/col-lg-4 -->
+		</div><!-- /row -->
+    </section>
+
+    <!-- 4. 주거정보 버튼 섹션 -->
+    <div id="dark-box">
+    <section id="info_button" class="content-section text-center" style="margin:0px">
+        <div class="row mt centered">
+			<div class="col-lg-8 col-lg-offset-2 col-xs-12">
+				<p><span class="pink">방만 마음에 들면 다 괜찮은 걸까요?</span></p>
+				<p class="white-text title-3">지역정보를 알아보고 방을 구하면<br> 
+						생활이 더욱 만족스러워집니다.</p>	
+                <p class="white-text feature-text" style="margin-bottom: 30px; line-height: 2;">정문지역과 후문지역의 월세 차이는?<br> 
+                    경영대 학생이 통학하기에 좋은 동네는?<br> 
+                    조용하면서 편의시설이 많은 구역은?</p>
+                 <a href="#" class="btn btn-default btn-lg white-text btn-dain">신촌지역 대학가 지역정보 보<span class="mob-hidden">러가</span>기 >></a>    
+        	</div>
+		</div><!-- /row -->
+    </section>
+    </div>
+
+    <!-- 5. 누구를 위한 서비스 섹션 -->
+    <section class="container content-section">
+      <div class="row text-center darkblue-text">
+        <p style="color: #656565">누구를 위한 서비스일까요?</p>
+        <p class="target-title" style="line-height: 1.3;">낯선 지역에서 빠르고 간편하게 <span class="pc-hidden tab-hidden"><br></span></span><span class="point2">살기 좋은 곳</span>을 찾고 싶은 분</p><span class="mob-hidden"><br></span>
+      </div>
+      <div class="row text-control"> 
+        <div class="col-lg-5 col-md-5 col-sm-4 target-img">
+	        <img class="img-responsive target-img" src="/images/index-images/pamplet.png" alt="">
+	    </div><!-- /col-lg-4 -->
+	    <div class="col-lg-7 col-md-7 col-sm-8">
+            <p class="feature-title darkblue-text">새로 하숙집을 구하는 대학생</p> 
+			<p class="padding-add feature-text">하숙집 검색으로 원하는 하숙집의<span class="pc-hidden tab-hidden"><br></span> 연락처와 위치를 편하게 알아보세요.</p><span class="mob-hidden"><br></span>
+			<p class="feature-title darkblue-text">자취방을 구하는데 정보가 부족한 대학생</p>
+			<p class="feature-text">지역정보 메뉴에서 학교 인근의 주거환경, 시세를 확인해보세요.<span class="mob-hidden"><br></span>
+			나중에 공인중개사를 이용할 때 조건이 좋은 방을 쉽게 알아볼 수 있습니다.</p>
+	    </div><!-- /col-lg-8 -->
+	</div><!-- row1-->
+        
+    </section>
+
+
+    <!-- 밑마닥 -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; Your Website 2014</p>
+        </div>
+    </footer>
+
+
+<!--스크롤바 부드럽게 내려가는 효과 -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+    <script src="/js/index_effect.js"></script>
+<!--스크롤바 부드럽게 내려가는 효과 -->
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/Flat-UI-2.2.2/dist/js/vendor/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
+   
+   <script>
+$(window).scroll(function() {
+    if ($(window).width() >= 768 & $(".navbar").offset().top > 50) {
+        
+        //내려가면서 바 생가는 효과
+        
+        $(".navbar-default").css("background", "#e5e9ea");
+        $(".navbar-default li a").css("color", "#2c3341");
+        $(".navbar-default .navbar-brand").css("color", "#2c3341");
+        $(".navbar-default .navbar-toggle:before").css("color", "#2c3341");
+    } else if ($(window).width() >= 768 & $(".navbar").offset().top <= 50) {
+        
+        //다시 돌아오면서 원래대로 바뀌는 효과
+        $(".navbar-default").css("background", "none");
+        $(".navbar-default li a").css("color", "#ffffff");
+        $(".navbar-default .navbar-brand").css("color", "#ffffff");
+        $(".navbar-default .navbar-toggle:before").css("color", "#fff");
+        
+    } else if ($(window).width() < 768 & $(".navbar").offset().top > 50) {
+        
+        $(".navbar-default .navbar-brand").css("color", "#2c3341");
+        $(".navbar-default").css("background", "#e5e9ea");
+        $(".navbar-default li a").css("color", "#2c3341");
+    } else {
+        $(".navbar-default li a").css("color", "#ffffff");
+        $(".navbar-default").css("background", "none");
+    }
+});
+
+
+</script>
+</body>
