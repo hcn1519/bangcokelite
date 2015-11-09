@@ -18,17 +18,16 @@ main {
 }
  @media (max-width: 991px) {
     .navbar-default {
-        background:#e5e9ea;
-        color:#2c3341;
+        background:none;
     }
     .navbar-default .navbar-toggle:before {
-    color:#262626;
+    color:#fff;
     }
     .navbar-default .navbar-nav > li > a {
-    color:#262626;
+    color:#fff;
     }
     .navbar-default .navbar-brand {
-    color:#262626;
+    color:#fff;
     }
  }
  @media (min-width: 992px) {
@@ -600,16 +599,35 @@ $(window).scroll(function() {
         $(".navbar-default .navbar-toggle:before").css("color", "#fff");
         
     } else if ($(window).width() < 768 & $(".navbar").offset().top > 50) {
-        
+        $(".navbar-default .navbar-toggle:before").css("color", "#2c3341");
         $(".navbar-default .navbar-brand").css("color", "#2c3341");
         $(".navbar-default").css("background", "#e5e9ea");
         $(".navbar-default li a").css("color", "#2c3341");
     } else {
         $(".navbar-default li a").css("color", "#ffffff");
         $(".navbar-default").css("background", "none");
+        $(".navbar-default .navbar-toggle:before").css("color", "#ffffff");
+        $(".navbar-default .navbar-brand").css("color", "#ffffff");
     }
 });
+    $(document).ready(function(){
+    
+        $(".navbar-default .navbar-toggle").click(function(){
+           $(".navbar-default .navbar-toggle:before").css("color", "#2c3341");
+           $(".navbar-default li a").css("color", "#2c3341");
+           $(".navbar-default .navbar-brand").css("color", "#2c3341");
+           $(".navbar-default").css("background", "#e5e9ea");
+        });
 
+                $(".navbar-nav li a.btn").click(function(event) {
+                    $(".navbar-default li a").css("color", "#ffffff");
+                    $(".navbar-default").css("background", "none");
+                    $(".navbar-default .navbar-toggle:before").css("color", "#ffffff");
+                    $(".navbar-default .navbar-brand").css("color", "#ffffff");
+                });
+            
+        
+    });
 
 </script>
 </body>
