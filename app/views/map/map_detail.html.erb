@@ -202,7 +202,7 @@
       });    
       
 
-  //서강A(서강대 남문)
+   //서강A(서강대 남문)
   var sogang_a = [
     {lat:37.547856, lng:126.941885},{lat:37.546631, lng:126.940732},{lat:37.547222, lng:126.937739},
     {lat:37.549774, lng:126.936365},{lat:37.549758, lng:126.937520},{lat:37.549687, lng:126.937893},
@@ -212,16 +212,22 @@
     
   //이화A(이대 정문)
   var ewha_a = [ //이대 정문 구역 //신촌기차역에서 시작. 이대정문구역이랑 겹침
-    {lat:37.559112, lng:126.942823},{lat:37.558547, lng:126.942733},{lat:37.556472, lng:126.942865},//구역5, 공통구역이랑 만나는 꼭지점
-    {lat:37.556897, lng:126.949849},//서강 구역2랑 겹침
-    {lat:37.557547, lng:126.949815},{lat:37.558178, lng:126.948429},{lat:37.558574, lng:126.947969},
-    {lat:37.558796, lng:126.947918},{lat:37.558752, lng:126.946537},{lat:37.559181, lng:126.946352},
+    {lat:37.559112, lng:126.942823},{lat:37.558547, lng:126.942733},//구역5, 공통구역이랑 만나는 꼭지점
+    {lat:37.556677, lng:126.942861},{lat:37.556880, lng:126.946686},
+    {lat:37.558752, lng:126.946537},{lat:37.559181, lng:126.946352},
     {lat:37.559162, lng:126.945679},{lat:37.559112, lng:126.942823}
     ];
+  
+  //이화B(신촌기차역)
+  var ewha_yonsei_b = [
+    {lat:37.558557, lng:126.942693},{lat:37.559081, lng:126.942178},{lat:37.559053, lng:126.939687},{lat:37.559004, lng:126.939428},
+    {lat:37.557559, lng:126.937469},{lat:37.556957, lng:126.937513},{lat:37.555946, lng:126.937495},{lat:37.555901, lng:126.937583},
+    {lat:37.555460, lng:126.937813},{lat:37.556551, lng:126.941061},{lat:37.556686, lng:126.942824}
+    ];
+    
     
   //이화-연세D(이대후문/연대동문) (B,C는 겹치는 구역)
   var ewha_yonsei_d = [             
-    {lat:37.562777, lng:126.943213},{lat:37.563996, lng:126.944737},{lat:37.564362, lng:126.945107},
     {lat:37.566943, lng:126.946975},{lat:37.566913, lng:126.947406},{lat:37.566832, lng:126.947586},
     {lat:37.567125, lng:126.947889},{lat:37.566981, lng:126.948396},{lat:37.567104, lng:126.948498},
     {lat:37.567276, lng:126.948916},{lat:37.567393, lng:126.948882},{lat:37.567601, lng:126.948954},
@@ -230,10 +236,7 @@
     {lat:37.569189, lng:126.946146},{lat:37.569062, lng:126.945272},{lat:37.569065, lng:126.944933},
     {lat:37.568970, lng:126.944677},{lat:37.568506, lng:126.944824},{lat:37.568007, lng:126.945011},
     {lat:37.567569, lng:126.945156},{lat:37.567115, lng:126.945471},{lat:37.566486, lng:126.945841},
-    {lat:37.566542, lng:126.946132},{lat:37.566193, lng:126.946113},{lat:37.565778, lng:126.945938},
-    {lat:37.565632, lng:126.945814},{lat:37.565513, lng:126.945041},{lat:37.564280, lng:126.943566},
-    {lat:37.564124, lng:126.943589},{lat:37.563741, lng:126.943811},{lat:37.563222, lng:126.943159},
-    {lat:37.563068, lng:126.942993},{lat:37.562968, lng:126.943001},{lat:37.562777, lng:126.943213}
+    {lat:37.566542, lng:126.946132}
     ];
     
   //연세A(연대 정문) (B는 겹치는 구역)
@@ -279,8 +282,7 @@
   sogang_a.setMap(map);
 
   <% end %>
-  //이화A(이대 정문)
-   var ewha_a = new google.maps.Polygon({
+  var ewha_a = new google.maps.Polygon({
     paths: ewha_a,
     //strokeColor: '#594F4F',
     strokeOpacity: 0.3,
@@ -290,17 +292,11 @@
   });
   <% if @univ.include? "이화" %>
   ewha_a.setMap(map);
-  /*
-  var ewha_a_mark = new google.maps.Marker({
-        position: {lat: 37.557620, lng:126.946500},
-        map: map,
-        //icon: a
-      });
-      */
   <% end %>
-  //이화-연세D(이대후문/연대동문)
-  var ewha_yonsei_d = new google.maps.Polygon({
-    paths: ewha_yonsei_d,
+  
+   //이화-연세B(신촌기차역)
+  var ewha_yonsei_b = new google.maps.Polygon({
+    paths: ewha_yonsei_b,
     //strokeColor: '#594F4F',
     strokeOpacity: 0.3,
     strokeWeight: 1,
@@ -308,15 +304,24 @@
     fillOpacity: 0.3
   });
 <% unless @univ.include? "서강" %>
+  ewha_yonsei_b.setMap(map);
+  <% end %>
+  
+  
+   var ewha_yonsei_d = new google.maps.Polygon({
+    paths: ewha_yonsei_d,
+    //strokeColor: '#594F4F',
+    strokeOpacity: 0.3,
+    strokeWeight: 1,
+    fillColor: '#4FD1D1',
+    fillOpacity: 0.3
+  });
+<% unless @univ.include? "서강" %>
   ewha_yonsei_d.setMap(map);
-  /*
-  var ewha_d_mark = new google.maps.Marker({
-        position: {lat: 37.567826, lng:126.947576},
-        map: map,
-        //icon: d
-      });
-      */
+
 <% end %>
+
+
   //연세A(연대 정문)
    var yonsei_a = new google.maps.Polygon({
     paths: yonsei_a,
@@ -328,14 +333,8 @@
    });
 <% if @univ.include? "연세" %>
   yonsei_a.setMap(map);
-  /*
-  var yonsei_a_mark = new google.maps.Marker({
-        position: {lat: 37.556029, lng:126.935924},
-        map: map,
-        //icon: a
-      });
-      */
    <% end %>
+   
   //연세C(연대 남문) 
  var yonsei_c = new google.maps.Polygon({
     paths: yonsei_c,
@@ -347,14 +346,8 @@
   });
 <% if @univ.include? "연세" %>
   yonsei_c.setMap(map);
- /*
- var yonsei_c_mark = new google.maps.Marker({
-        position: {lat:37.559828, lng:126.931001},
-        map: map,
-        //icon: c
-      });
-      */
   <% end %>
+  
   //연세E(연대 서문) 
  var yonsei_e = new google.maps.Polygon({
     paths: yonsei_e,
@@ -366,14 +359,8 @@
   });
   <% if @univ.include? "연세" %>
    yonsei_e.setMap(map); 
-  /*
-   var yonsei_e_mark = new google.maps.Marker({
-        position: {lat: 37.565674, lng:126.933008},
-        map: map,
-        //icon: e
-      });
-      */
- <% end %>    
+ <% end %>   
+ 
    
          //학교별 마커 띄우기 시작
      
