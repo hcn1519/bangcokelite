@@ -41,38 +41,75 @@
       map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
       
       //학교별 문 이미지 삽입
-      var image1 = {
-        url: '/images/icons/jung.png',
-        size: new google.maps.Size(40, 25),
+      //서강대 정문 이미지
+        var so_jung = {
+        url: '/images/icons/so_jung.png',
+        size: new google.maps.Size(50, 24),
+        
+        };
+      
+      //서강대 후문 이미지
+        var so_who = {
+        url: '/images/icons/so_who.png',
+        size: new google.maps.Size(50, 24),
         
         };
         
-        //후문 이미지
-        var image2 = {
-        url: '/images/icons/who.png',
-        size: new google.maps.Size(40, 25),
+        //서강대 남문 이미지
+        var so_nam = {
+        url: '/images/icons/so_nam.png',
+        size: new google.maps.Size(50, 24),
         
         };
         
-        //남문 이미지
-        var image3 = {
-        url: '/images/icons/nam.png',
-        size: new google.maps.Size(40, 25),
+        //이대 정문 이미지
+        var ew_jung = {
+        url: '/images/icons/ew_jung.png',
+        size: new google.maps.Size(50, 24),
         
         };
         
-        //북문 이미지
-        var image4 = {
-        url: '/images/icons/book.png',
-        size: new google.maps.Size(40, 25),
+        //이대 후문 이미지
+        var ew_who = {
+        url: '/images/icons/ew_who.png',
+        size: new google.maps.Size(50, 24),
+        };
+
+        //이대 서문 이미지
+        var ew_seo = {
+        url: '/images/icons/ew_seo.png',
+        size: new google.maps.Size(50, 24),
         
         };
         
-        //서문 이미지
-        var image5 = {
-        url: '/images/icons/seo.png',
-        size: new google.maps.Size(40, 25),
+        //이대 북문 이미지
+        var ew_book = {
+        url: '/images/icons/ew_book.png',
+        size: new google.maps.Size(50, 24),
+        };        
         
+        //연대 정문 이미지
+        var yo_jung = {
+        url: '/images/icons/yo_jung.png',
+        size: new google.maps.Size(50, 24),
+        };
+        
+        //연대 서문 이미지
+        var yo_seo = {
+        url: '/images/icons/yo_seo.png',
+        size: new google.maps.Size(50, 24),
+        };
+        
+        //연대 남문 이미지
+        var yo_nam = {
+        url: '/images/icons/yo_nam.png',
+        size: new google.maps.Size(50, 24),
+        };
+        
+        //연대 동문 이미지
+        var yo_dong = {
+        url: '/images/icons/yo_dong.png',
+        size: new google.maps.Size(50, 24),
         };
         
         //서강대 문
@@ -80,7 +117,7 @@
       var doorMarker1 = new google.maps.Marker({
         position: {lat: 37.551405, lng: 126.937727},
         map: map,
-        icon: image1
+        icon: so_jung
       });
           
           
@@ -88,14 +125,14 @@
       var doorMarker3 = new google.maps.Marker({
         position: {lat: 37.550660, lng: 126.943936},
         map: map,
-        icon: image2
+        icon: so_who
       }); 
       
         //남문
       var doorMarker2 = new google.maps.Marker({
         position: {lat: 37.549376, lng: 126.938918},
         map: map,
-        icon: image3
+        icon: so_nam
       });
       
       
@@ -106,14 +143,14 @@
       var doorMarker4 = new google.maps.Marker({
         position: {lat: 37.559727, lng: 126.945536},
         map: map,
-        icon: image1
+        icon: ew_jung
       });
       
       //후문
       var doorMarker5 = new google.maps.Marker({
         position: {lat: 37.563548, lng: 126.944605},
         map: map,
-        icon: image2
+        icon: ew_who
       });
       
 
@@ -121,7 +158,7 @@
       var doorMarker6 = new google.maps.Marker({
         position: {lat: 37.568269, lng: 126.949951},
         map: map,
-        icon: image4
+        icon: ew_book
       });
       
       
@@ -129,8 +166,8 @@
       var doorMarker7 = new google.maps.Marker({
         position: {lat: 37.560564, lng: 126.943427},
         map: map,
-        icon: image5
-      });
+        icon: ew_seo
+      }); 
 
       //연세대 문
       
@@ -138,7 +175,7 @@
       var doorMarker8 = new google.maps.Marker({
         position: {lat: 37.560252, lng: 126.936760},
         map: map,
-        icon: image1
+        icon: yo_jung
       });
       
       //동문
@@ -147,7 +184,7 @@
       var doorMarker10 = new google.maps.Marker({
         position: {lat: 37.563726, lng: 126.933921},
         map: map,
-        icon: image5
+        icon: yo_seo
       });
       
       
@@ -155,8 +192,15 @@
       var doorMarker11 = new google.maps.Marker({
         position: {lat: 37.561191, lng: 126.933139},
         map: map,
-        icon: image3
-      });      
+        icon: yo_nam
+      });   
+     
+      //동문 
+      var doorMarker12 = new google.maps.Marker({
+        position: {lat: 37.56635, lng: 126.94585},
+        map: map,
+        icon: yo_dong
+      }); 
       
 
   //서강A(서강대 남문)
