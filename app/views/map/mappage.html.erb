@@ -10,6 +10,7 @@
   <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">-->
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
  <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
+ <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"></script>
     <script type="text/javascript">
     var map = null; 
     //구글맵 기본 설정 시작
@@ -410,6 +411,7 @@
                         }; // function end
                       })(infoWindow));
  
+
  //listbox 색칠
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
@@ -418,28 +420,15 @@
 
                        $(document).ready(function() {
                          $(result_id).css("background-color","#cbefde");
-                         var list_height = $(".roomList").height();
-                         var item_offset = $(result_id).offset().top;
-                         var item_height = $(result_id).height();
-                         var place;
-
-                         if ( item_height < list_height) {
-                           place = item_offset - ((list_height / 2) - (item_height / 2));
-                         } else {
-                           place = item_offset;
-                         }
-
-                         $(".roomList").animate({scrollTop: place}, 700);
+                       
+                        $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
                        });
 
                       };
 
                      })(str_id));
 
-
-
-
-//3. listbox 색 입히기
+// listbox 색 입히기
                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                      return function() { 
                         var result_id = "#" + "a" + str_id;
@@ -447,18 +436,14 @@
 
                       $(document).ready(function() {
                         $(result_id).css("background-color","#a4e2c5");
-                        var list_top = $(".roomList").position().top;
-                        var list_bottom = $('.roomList').position().top+$('.roomList').outerHeight(true);
-                        var list_height = list_top + list_bottom;
-                        var place  = list_top - ( list_height - list_bottom ) / 2
-                      
-                        $(".roomList").animate({scrollTop: place}, 500);
+                        
                       });
  
                      };
 
                     })(str_id));
 
+                     
 //4. listbox 색 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
                       return function() {
