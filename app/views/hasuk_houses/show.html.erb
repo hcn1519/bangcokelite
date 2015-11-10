@@ -5,31 +5,7 @@
   <script src="/js/jquery.bxslider.min.js"></script>
   <!-- bxSlider CSS file -->
   <link href="/css/jquery.bxslider.css" rel="stylesheet" />
-<script>
-$(document).ready(function(){
-  $('.bxslider').bxSlider({
-    mode: 'fade',
-    captions: true,
-    minSlides: 1,
-    maxSlides: 1,
-    slideWidth:500,
-    maxHeight:200,
-    slideMargin: 10,
-  
-    buildPager: function(slideIndex){
-    switch(slideIndex){
-      case 0:
-        return '<img style="width:80px; height:45px" src="/images/bangs/bang1.jpg">';
-      case 1:
-        return '<img style="width:80px; height:45px" src="/images/bangs/bang2.jpg">';
-      case 2:
-        return '<img style="width:80px; height:45px" src="/images/bangs/bang3.jpg">';
-    }
-  }
-  });
-  
-});  
-</script>
+  <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=db900969ca97b093efb0ddf86d45f9e5"></script>
 
 <style>
 
@@ -57,7 +33,7 @@ $(document).ready(function(){
 }
 
 .tip {
-  font-size: 12px;
+  font-size: 0.7em;
   color: #ee8176;
   margin: 0;
 }
@@ -148,14 +124,10 @@ $(document).ready(function(){
   padding-bottom: 15px;
 }
 
-.section1 {
-    padding-right: 0;
-}
 
 .tip {
-  font-size: 14px;
+  font-size: 0.7em;
   color: #ee8176;
-  margin-top:25px;
   float: right;
 }
 
@@ -305,65 +277,129 @@ a img {
   float:left;
 }
 
+.tab-content > .tab-pane {
+    display: block;
+    height:0;
+    overflow:hidden;
+}
 
+.tab-content > .active {
+    display: block;
+    height:auto;
+}
 
 </style>
+
 </head>
 
 <body>
   <div class="container">
-  <div class="row">
-    
-    <div class="col-md-6 col-sm-6">
-       <h4><%= @hasuk_house.hasuk_name %></h4>
-    </div>
-    <div class="col-md-6 col-sm-6">
-        <p class="tip"><span class="label tip-label">Tip</span>‘구역 정보’에서 구역 평균월세, 지역정보도 확인해보세요!</a>
-    </div>
-  </div>
   
-  
+
   <div class="row" style="margin-top:10px">
       <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="title">사진정보</div>
           <div class="photo-zone"> 
               <ul id="myTabs" class="btn-group nav nav-tabs nav-pills nav-justified" role="tablist">
-                  <li role="presentation" class="active"><a href="#photo" aria-controls="photo" role="tab" data-toggle="tab">사진</a></li>
-                  <li role="presentation"><a href="#roadview" aria-controls="roadview" role="tab" data-toggle="tab">로드뷰</a></li>
+                  <li id="pictab1" role="presentation" class="active"><a href="#photo" aria-controls="photo" role="tab" data-toggle="tab">사진</a></li>
+                  <li id="pictab2" role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab">교통지도보기</a></li>
+                  <li id="pictab3" role="presentation"><a href="#roadviewcon" aria-controls="roadviewcon" role="tab" data-toggle="tab">로드뷰</a></li>
               </ul>
             
           <!-- Tab panes -->
           <div class="tab-content">
             <div id="photo" role="tabpanel" class="tab-pane active">
+              <ul id="bxslider">
+                <!--
+                <%# for i in 1..8 %>
+                  <%# unless @hasuk_house.room_img1.nil? %>
+                    <li>
+                      <img src="<%#= @hasuk_house.room_img1 %>" alt="" title="
+                      <%# unless @hasuk_house.room_price1.nil? %>월세 <%#= @hasuk_house.room_price1 %>만 원<%# end %>
+                      <%# unless @hasuk_house.room_description1.nil? %> <%#= @hasuk_house.room_description1 %><%# end %>">
+                    </li>
+                  <%# end %>
+                <%# end %>
+                -->
+                <li><img src="/images/bangs/ha1.jpg" alt="" title="" /> </li>
+                <li><img src="/images/bangs/ha2.jpg" alt="" title="" /> </li>
+                <li><img src="/images/bangs/ha3.jpg" alt="" title="" /> </li>
+                <li><img src="/images/bangs/ha4.jpg" alt="" title="" /> </li>
+                <li><img src="/images/bangs/ha5.jpg" alt="" title="" /> </li>
+                <li><img src="/images/bangs/ha6.jpg" alt="" title="" /> </li>
+              </ul>
+
+    <!-- The thumbnails -->
+    
+              <ul id="bxslider-pager">
+                <li data-slideIndex="0"><a href=""><img style="max-height:55px" src="/images/bangs/ha1.jpg" ></a></li>
+                <li data-slideIndex="1"><a href=""><img style="max-height:55px" src="/images/bangs/ha2.jpg" ></a></li>
+                <li data-slideIndex="2"><a href=""><img style="max-height:55px" src="/images/bangs/ha3.jpg" ></a></li>
+                <li data-slideIndex="3"><a href=""><img style="max-height:55px" src="/images/bangs/ha4.jpg" ></a></li>
+                <li data-slideIndex="4"><a href=""><img style="max-height:55px" src="/images/bangs/ha5.jpg" ></a></li>
+                <li data-slideIndex="5"><a href=""><img style="max-height:55px" src="/images/bangs/ha6.jpg" ></a></li>
+              </ul>
+          
+            </div>
+            <div id="address" style="width:100%;" role="tanpanel" class="tab-pane">
+                  <div id="map" style="width:100%; height:445px; max-height:500px"></div>
+                  <script>
+                    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
               
-              <!--실험-->
-             <ul class="bxslider">
-               <li><img src="/images/bangs/bang1.jpg" title="Funky roots"/></li>
-               <li><img src="/images/bangs/bang2.jpg" title="Funky roots"/></li>
-               <li><img src="/images/bangs/bang3.jpg" title="Funky roots" /></li>
-             </ul>
-            <a href="#" class="pager-prev"><i class="icon-chevron-left"></i></a>
+                    var LatLng = new daum.maps.LatLng(<%= @hasuk_house.lat %>, <%= @hasuk_house.lng %>);
+                    var options = { //지도를 생성할 때 필요한 기본 옵션
+                    	center: LatLng, //지도의 중심좌표.
+                    	level: 3 //지도의 레벨(확대, 축소 정도)
+                    };
+                  
+                    var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+                    var markerPosition  = LatLng;
 
-            <a href="#" class="pager-next"><i class="icon-chevron-right"></i></a>
-
+                    var marker = new daum.maps.Marker({
+                        position: markerPosition
+                    });
+                    
+                    marker.setMap(map);
+                  </script>
+                  
             </div>
-            <div id="roadview" role="tanpanel" class="tab-pane">
-                  로드뷰
+            <div id="roadviewcon" style="width:100%;" role="tanpanel" class="tab-pane">
+              <div id="roadview" style="width:100%; height:445px; max-height:500px"></div>
+                  <script>
+                    
+                    var roadviewContainer = document.getElementById('roadview'); //로드뷰를 표시할 div
+                    var roadview = new daum.maps.Roadview(roadviewContainer); //로드뷰 객체
+                    var roadviewClient = new daum.maps.RoadviewClient(); //좌표로부터 로드뷰 파노ID를 가져올 로드뷰 helper객체
+                    
+                    var LatLng = new daum.maps.LatLng(<%= @hasuk_house.lat %>, <%= @hasuk_house.lng %>);
+                    var position = LatLng;
+                    
+                    // 특정 위치의 좌표와 가까운 로드뷰의 panoId를 추출하여 로드뷰를 띄운다.
+                    roadviewClient.getNearestPanoId(position, 50, function(panoId) {
+                        roadview.setPanoId(panoId, position); //panoId와 중심좌표를 통해 로드뷰 실행
+                    });
+                  </script>
             </div>
+            
           </div> 
         </div> 
       </div>
 
       
-      <div class="col-md-6 col-sm-6">
+      <div class="col-md-6 col-sm-6 col-xs-12">
           <div class="row" style="margin:0; padding:0;" >
-            <div class="title col-md-3">하숙집 정보</div>
+            <div class="title col-lg-3 col-md-3 col-xs-3 col-sm-3">하숙집 정보</div>
+            <div class="col-lg-9 col-md-9 hidden-xs hidden-sm"><p class="tip"><span class="label tip-label">Tip</span>‘구역 정보’에서 구역 평균월세, 지역정보도 확인해보세요!</a></div>
           </div>
         <div class="info-zone">
           <div class="row col-xs-12">
             <p class="info"><span class="label">월세</span></p>
                <h5 style="margin-top:0px; margin-bottom:0px; float:left"><%= @hasuk_house.price_from %> ~ <%= @hasuk_house.price_to %></h5></span>
                <span style="float:left; margin-top: 5px;margin-left: 5px; font-size:0.9em">만원</span>
+               <% unless @hasuk_house.discount_price.nil? %>
+                 <span class="fui-alert-circle" style="margin-left:10px; color:#E74C3C"></span>
+                 첫 달 월세 <span style="color:#E74C3C; font-weight:bold"><%= number_with_delimiter(@hasuk_house.discount_price, :delimiter => ',') %></span> 할인
+               <% end %>
           </div><!--월세 정보 끝-->
           
           <div class="row col-xs-12">
@@ -400,40 +436,130 @@ a img {
               </div>
           </div>
           <div class="row col-xs-12">
-            <p class="info"><span class="label">관리비</span>어쩌구</p>
+            <p class="info"><span class="label">관리비</span></p>
+            <% unless @hasuk_house.extra_price1.nil? || @hasuk_house.extra_price1 =="" %>
+              <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.extra_price1 %></span>
+            <% else %>
+              <% unless @hasuk_house.extra_price2.nil? %>
+                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.extra_price2 %></span>
+              <% end %>
+              <% unless @hasuk_house.extra_price3.nil? %>
+                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.extra_price3 %></span>
+              <% end %>
+              <% unless @hasuk_house.extra_price4.nil? %>
+                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.extra_price4 %></span>
+              <% end %>
+              <% unless @hasuk_house.extra_price5.nil? %>
+                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.extra_price5 %></span>
+              <% end %>
+            <% end %>
+            
+            
           </div>
           <div class="row col-xs-12">
-            <p class="info"><span class="label">종류</span>어쩌구</p>
+            <p class="info"><span class="label">종류</span></p>
+            <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.hasuk_kind %></span>
           </div>
           <div class="row">
-            <p class="info"><span class="label">위치</span>어쩌구</p>
+            <p class="info"><span class="label">위치</span></p>
+            <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.address %></span>
           </div>
           <hr>
           <div class="row">
             <div class="col-md-6 col-xs-6" style="padding-left:0">
-              <p class="info"><span class="label">방크기</span>어쩌구</p>
+              <p class="info"><span class="label">방크기</span></p>
+              <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.size_from %> ~ <%= @hasuk_house.size_to %>평</span>
             </div>
             <div class="col-md-6 col-xs-6" style="padding-left:0">
-              <p class="info"><span class="label">사용층</span>어쩌구</p>
+              <p class="info"><span class="label">사용층</span></p>
+              <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.floor_from %> ~ <%= @hasuk_house.floor_to %>층</span>
             </div>
           </div>
           <div class="row">
-            <p class="info"><span class="label">식사</span>어쩌구</p>
+            <p class="info"><span class="label">식사</span></p>
+            <% unless @hasuk_house.meal4.nil? || @hasuk_house.meal4 =="" %>
+              <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.meal1 %></span>
+            <% else %>
+              <% unless @hasuk_house.meal1.nil? %>
+                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.meal1 %>,&nbsp;</span>
+              <% end %>
+              <% unless @hasuk_house.meal2.nil? %>
+                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.meal2 %>,&nbsp;</span>
+              <% end %>
+              <% unless @hasuk_house.meal3.nil? %>
+                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.meal3 %></span>
+              <% end %>
+
+            <% end %>
+            <% unless @hasuk_house.meal_memo.nil? %>
+                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.meal_memo %></span>
+              <% end %>
           </div>
           <div class="row">
-            <p class="info"><span class="label">옵션</span>어쩌구</p>
+            <p class="info"><span class="label">옵션</span></p>
+            <% unless @hasuk_house.personal_option1.nil? || @hasuk_house.personal_option1 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option1 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option2.nil? || @hasuk_house.personal_option2 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option2 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option3.nil? || @hasuk_house.personal_option3 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option3 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option4.nil? || @hasuk_house.personal_option4 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option4 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option5.nil? || @hasuk_house.personal_option5 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option5 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option6.nil? || @hasuk_house.personal_option6 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option6 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option7.nil? || @hasuk_house.personal_option7 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option7 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option8.nil? || @hasuk_house.personal_option8 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option8 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option9.nil? || @hasuk_house.personal_option9 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option9 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option10.nil? || @hasuk_house.personal_option10 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option10 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option11.nil? || @hasuk_house.personal_option11 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option11 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option12.nil? || @hasuk_house.personal_option12 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option12 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option13.nil? || @hasuk_house.personal_option13 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option13 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option14.nil? || @hasuk_house.personal_option14 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option14 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option15.nil? || @hasuk_house.personal_option15 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option15 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option16.nil? || @hasuk_house.personal_option16 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option16 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option17.nil? || @hasuk_house.personal_option17 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option17 %>,&nbsp;</span><% end %>
           </div>
           <div class="row">
-            <p class="info"><span class="label">공동시설</span>어쩌구</p>
+            <p class="info"><span class="label">공동시설</span></p>
+            <% unless @hasuk_house.common_option1.nil? || @hasuk_house.common_option1 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option1 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option2.nil? || @hasuk_house.common_option2 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option2 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option3.nil? || @hasuk_house.common_option3 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option3 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option4.nil? || @hasuk_house.common_option4 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option4 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option5.nil? || @hasuk_house.common_option5 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option5 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option6.nil? || @hasuk_house.common_option6 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option6 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option7.nil? || @hasuk_house.common_option7 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option7 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option8.nil? || @hasuk_house.common_option8 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option8 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option9.nil? || @hasuk_house.common_option9 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option9 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option10.nil? || @hasuk_house.common_option10 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option10 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option11.nil? || @hasuk_house.common_option11 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option11 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option12.nil? || @hasuk_house.common_option12 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option12 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option13.nil? || @hasuk_house.common_option13 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option13 %>,&nbsp;</span><% end %>
           </div>
           <hr>
-          <div class="row col-xs-12">
-            <p class="info"><span class="label">설명</span>어쩌구</p>
+          <div class="row">
+            <p class="info"><span class="label">설명</span></p>
+            <div class="col-md-10" style="padding:0px">
+            <span style="float:left; font-size:0.8em; margin-top:3px">
+              <% if @hasuk_house.post_description.size > 30 %>
+              <%= @hasuk_house.post_description.split(//).first(30).join %>...&nbsp;&nbsp;
+            </span>
+            <button style="float:left;padding: 5px;font-size: 0.6em; margin-top:3px" type="button" class="btn btn-success" data-toggle="modal" data-target="#descript">
+                더보기
+              </button>
+              <% else %>
+                <%= @hasuk_house.post_description %>
+              <% end %>
+            </div>
+              
+              
           </div>
           <div>
+            <% if user_signed_in? %>
               <center><button type="button" class="btn btn-primary btn-lg" style="background-color:#ee8176;">찜하기</button>
-              <button type="button" class="btn btn-primary btn-lg" style="background-color:#71b7e6;">연락처보기</button>
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#contact" style="background-color:#71b7e6;">연락처보기</button>
               </center>
+            <% else %>
+              <center><button type="button" class="btn btn-primary btn-lg" style="background-color:#ee8176;">찜하기</button>
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login" style="background-color:#71b7e6;">연락처보기</button>
+              </center>
+            <% end %>
+              
           </div>
         
       </div>
@@ -454,9 +580,144 @@ a img {
 </div> 
 
 
+
+<div class="modal fade " id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h5 class="modal-title" id="myModalLabel">연락처보기</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4 col-sm-4 col-xs-4">
+            <span class="fui-user" style="font-size:2em"></span>
+          </div>
+          <div class="col-md-8 col-sm-8 col-xs-8" style="padding-left:0px">
+            <p style="font-size:0.7em"><strong>하숙집 이름 : <%= @hasuk_house.hasuk_name %></strong></p>
+            <p style="font-size:0.7em">전화번호 : <%= @hasuk_house.telPhone %></p>
+            <p style="font-size:0.7em">휴대폰 : <%= @hasuk_house.celPhone %></p>
+          </div>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="descript" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">상세 설명</h4>
+      </div>
+      <div class="modal-body">
+        <p><%= @hasuk_house.post_description %></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= link_to 'Edit', edit_hasuk_house_path(@hasuk_house) %> |
 <%= link_to 'Back', hasuk_houses_path %>
 
+
+<script>
+var $j = jQuery.noConflict();
+
+var realSlider= $j("ul#bxslider").bxSlider({
+      speed:1000,
+      pager:false,
+      controls: true,
+      nextText:'<span></span>',
+      prevText:'<span></span>',
+      infiniteLoop:true,
+      captions: true,
+      onSlideBefore:function($slideElement, oldIndex, newIndex){
+        changeRealThumb(realThumbSlider,newIndex);
+        
+      }
+      
+    });
+    
+    var realThumbSlider=$j("ul#bxslider-pager").bxSlider({
+      minSlides: 8,
+      maxSlides: 8,
+      slideWidth: 100,
+      slideMargin: 12,
+      moveSlides: 1,
+      pager:false,
+      speed:1000,
+      controls: true,
+      infiniteLoop:false,
+      hideControlOnEnd:true,
+      nextText:'<span></span>',
+      prevText:'<span></span>',
+      onSlideBefore:function($slideElement, oldIndex, newIndex){
+        /*$j("#sliderThumbReal ul .active").removeClass("active");
+        $slideElement.addClass("active"); */
+
+      }
+    });
+    
+    linkRealSliders(realSlider,realThumbSlider);
+    
+    if($j("#bxslider-pager li").length<5){
+      $j("#bxslider-pager .bx-next").hide();
+    }
+
+// sincronizza sliders realizzazioni
+function linkRealSliders(bigS,thumbS){
+  
+  $j("ul#bxslider-pager").on("click","a",function(event){
+    event.preventDefault();
+    var newIndex=$j(this).parent().attr("data-slideIndex");
+        bigS.goToSlide(newIndex);
+  });
+}
+
+//slider!=$thumbSlider. slider is the realslider
+function changeRealThumb(slider,newIndex){
+  
+  var $thumbS=$j("#bxslider-pager");
+  $thumbS.find('.active').removeClass("active");
+  $thumbS.find('li[data-slideIndex="'+newIndex+'"]').addClass("active");
+  
+  if(slider.getSlideCount()-newIndex>=4)slider.goToSlide(newIndex);
+  else slider.goToSlide(slider.getSlideCount()-4);
+
+}
+
+
+$(document).ready(function(){
+  $("#pictab1").click(function(){
+    
+    $(this).addClass("active");
+    $("#pictab2").removeClass("active");
+    $("#pictab3").removeClass("active");
+  });
+  $("#pictab2").click(function(){
+    
+    $(this).addClass("active");
+    $("#pictab1").removeClass("active");
+    $("#pictab3").removeClass("active");
+  });
+  $("#pictab3").click(function(){
+    
+    $(this).addClass("active");
+    $("#pictab1").removeClass("active");
+    $("#pictab2").removeClass("active");
+  });
+  
+});
+</script>
 
 </body>
 

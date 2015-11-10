@@ -101,9 +101,6 @@ body {
     padding-bottom:10px;
 }
 
-.col-xs-8 {
-    margin-top: 50px;
-}
 .content-section {
     padding: 60px 0;
 }
@@ -469,10 +466,9 @@ p {
                     </form>
 				</div>
 				<div class="row">
-                    <div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 text-center">
-                        <a href="#info_button" class="btn btn-circle page-scroll">
-                            <!--<i class="fa fa-angle-double-down animated" style="font-size: 50px"></i>-->
-                             <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                    <div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 text-center" style="margin-top:15px">
+                        <a href="#info_button" class="btn btn-circle page-scroll" style="margin-top:0px; border:transparent; padding-top:12px">
+                            <i class="fa fa-angle-double-down animated" style="font-size: 50px"></i>
                         </a>
                     </div>
                 </div>
@@ -582,32 +578,32 @@ p {
    
    <script>
 $(window).scroll(function() {
-    if ($(window).width() >= 768 & $(".navbar").offset().top > 50) {
+    if ($(window).width() >= 991 & $(".navbar").offset().top > 50) {
         
         //내려가면서 바 생가는 효과
         
         $(".navbar-default").css("background", "#e5e9ea");
         $(".navbar-default li a").css("color", "#2c3341");
         $(".navbar-default .navbar-brand").css("color", "#2c3341");
-        $(".navbar-default .navbar-toggle:before").css("color", "#2c3341");
-    } else if ($(window).width() >= 768 & $(".navbar").offset().top <= 50) {
+        
+    } else if ($(window).width() >= 991 & $(".navbar").offset().top <= 50) {
         
         //다시 돌아오면서 원래대로 바뀌는 효과
         $(".navbar-default").css("background", "none");
         $(".navbar-default li a").css("color", "#ffffff");
         $(".navbar-default .navbar-brand").css("color", "#ffffff");
-        $(".navbar-default .navbar-toggle:before").css("color", "#fff");
         
-    } else if ($(window).width() < 768 & $(".navbar").offset().top > 50) {
+    } else if ($(window).width() < 991 & $(".navbar").offset().top > 50) {
         $(".navbar-default .navbar-toggle:before").css("color", "#2c3341");
         $(".navbar-default .navbar-brand").css("color", "#2c3341");
         $(".navbar-default").css("background", "#e5e9ea");
         $(".navbar-default li a").css("color", "#2c3341");
+        
     } else {
-        $(".navbar-default li a").css("color", "#ffffff");
+        $(".navbar-default li a").css("color", "#fff");
         $(".navbar-default").css("background", "none");
-        $(".navbar-default .navbar-toggle:before").css("color", "#ffffff");
-        $(".navbar-default .navbar-brand").css("color", "#ffffff");
+        $(".navbar-default .navbar-toggle:before").css("color", "#fff");
+        $(".navbar-default .navbar-brand").css("color", "#fff");
     }
 });
     $(document).ready(function(){
@@ -619,12 +615,12 @@ $(window).scroll(function() {
            $(".navbar-default").css("background", "#e5e9ea");
         });
 
-                $(".navbar-nav li a.btn").click(function(event) {
-                    $(".navbar-default li a").css("color", "#ffffff");
-                    $(".navbar-default").css("background", "none");
-                    $(".navbar-default .navbar-toggle:before").css("color", "#ffffff");
-                    $(".navbar-default .navbar-brand").css("color", "#ffffff");
-                });
+        $(".navbar-nav li a.btn").click(function() {
+            $(".navbar-default li a").css("color", "#ffffff");
+            $(".navbar-default").css("background", "none");
+            $(".navbar-default .navbar-toggle:before").css("color", "#ffffff");
+            $(".navbar-default .navbar-brand").css("color", "#ffffff");
+        });
             
         
     });
