@@ -882,7 +882,7 @@
             } else if ('<%= @section %>'=="연세대동문"){
                 
                
-            } else if ('<%= @section %>' =="연세대명물" || '<%= @section %>' =="이화여대명물"){
+            } else if ('<%= @section %>' =="신촌기차역"){
             
               
             }  else if ('<%= @section %>' =="이화여대정문"){
@@ -891,12 +891,11 @@
             } else if ('<%= @section %>' =="이화여대후문"){
             
               
-            } else if ('<%= @section %>' =="이화여대서문"){
-            
-              
             } 
+            
+            //구역 검색 안 하는 경우
                else if( "<%= @section %>" == "") {
-                 //구역 검색 안 하는 경우
+
                    if ("<%= @univ %>" == "서강" ) {
                      map.setCenter({lat: 37.548717, lng: 126.939051}, true);
                      map.setZoom(17);
