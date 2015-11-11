@@ -22,11 +22,9 @@
       <th>Price from</th>
       <th>Price to</th>
       <th>Least contract</th>
-      <th>Extra price1</th>
-      <th>Extra price2</th>
-      <th>Extra price3</th>
-      <th>Extra price4</th>
-      <th>Extra price5</th>
+
+      <th>Extra price</th>
+
       <th>Meal1</th>
       <th>Meal2</th>
       <th>Meal3</th>
@@ -63,35 +61,41 @@
       <th>Common option12</th>
       <th>Common option13</th>
       <th>Internet</th>
+      
+      <th>Personal_trash</th>
+      
       <th>Post description</th>
       <th>Address</th>
       <th>Lat</th>
       <th>Lng</th>
+      
       <th>Univ distance1</th>
       <th>Univ distance2</th>
-      <th>Univ distance3</th>
+
       <th>Sogang gate1</th>
       <th>Sogang gate2</th>
-      <th>Sogang gate3</th>
+
       <th>Ewha gate1</th>
       <th>Ewha gate2</th>
-      <th>Ewha gate3</th>
+
       <th>Yonsei gate1</th>
       <th>Yonsei gate2</th>
-      <th>Yonsei gate3</th>
+
       <th>Distance time1</th>
       <th>Distance time2</th>
-      <th>Distance time3</th>
+
       <th>Distance1</th>
       <th>Distance2</th>
-      <th>Distance3</th>
+      
+      
       <!--지하철 추가 -->
-      <th>Subway1</th>
-      <th>Subway2</th>
-      <th>Subway_distance_time1</th>
-      <th>Subway_distance_time2</th>
-      <th>Subway_distance1</th>
-      <th>Subway_distance2</th>
+      <th>transportation_kind</th>
+      <th>transportation_subway</th>
+      <th>transportation_bus</th>
+      <th>transportation_distance_time</th>
+      <th>transportation_distance</th>
+      <th>transportation_memo</th>
+
       <th>Room img1</th>
       <th>Room img2</th>
       <th>Room img3</th>
@@ -125,7 +129,6 @@
       <th>Meal img3</th>
       <th>Meal img4</th>
       <th>Discount price</th>
-      <th>Discount rate</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -150,11 +153,10 @@
         <td><%= hasuk_house.price_from %></td>
         <td><%= hasuk_house.price_to %></td>
         <td><%= hasuk_house.least_contract %></td>
-        <td><%= hasuk_house.extra_price1 %></td>
-        <td><%= hasuk_house.extra_price2 %></td>
-        <td><%= hasuk_house.extra_price3 %></td>
-        <td><%= hasuk_house.extra_price4 %></td>
-        <td><%= hasuk_house.extra_price5 %></td>
+        
+        <td><%= hasuk_house.extra_price %></td>
+ 
+ 
         <td><%= hasuk_house.meal1 %></td>
         <td><%= hasuk_house.meal2 %></td>
         <td><%= hasuk_house.meal3 %></td>
@@ -191,36 +193,37 @@
         <td><%= hasuk_house.common_option12 %></td>
         <td><%= hasuk_house.common_option13 %></td>
         <td><%= hasuk_house.internet %></td>
+        
+        <td><%= hasuk_house.personal_trash %></td>
+        
         <td><%= hasuk_house.post_description %></td>
         <td><%= hasuk_house.address %></td>
         <td><%= hasuk_house.lat %></td>
         <td><%= hasuk_house.lng %></td>
+        
+        
+        
         <td><%= hasuk_house.univ_distance1 %></td>
         <td><%= hasuk_house.univ_distance2 %></td>
-        <td><%= hasuk_house.univ_distance3 %></td>
         <td><%= hasuk_house.sogang_gate1 %></td>
         <td><%= hasuk_house.sogang_gate2 %></td>
-        <td><%= hasuk_house.sogang_gate3 %></td>
         <td><%= hasuk_house.ewha_gate1 %></td>
         <td><%= hasuk_house.ewha_gate2 %></td>
-        <td><%= hasuk_house.ewha_gate3 %></td>
         <td><%= hasuk_house.yonsei_gate1 %></td>
         <td><%= hasuk_house.yonsei_gate2 %></td>
-        <td><%= hasuk_house.yonsei_gate3 %></td>
         <td><%= hasuk_house.distance_time1 %></td>
         <td><%= hasuk_house.distance_time2 %></td>
-        <td><%= hasuk_house.distance_time3 %></td>
         <td><%= hasuk_house.distance1 %></td>
         <td><%= hasuk_house.distance2 %></td>
-        <td><%= hasuk_house.distance3 %></td>
+
         
-        <!--지하철 추가 -->
-        <td><%= hasuk_house.subway1 %></td>
-        <td><%= hasuk_house.subway2 %></td>
-        <td><%= hasuk_house.subway_distance_time1 %></td>
-        <td><%= hasuk_house.subway_distance_time2 %></td>
-        <td><%= hasuk_house.subway_distance1 %></td>
-        <td><%= hasuk_house.subway_distance2 %></td>
+        <!--교통수단 추가 -->
+        <td><%= hasuk_house.transportation_kind %></td>
+        <td><%= hasuk_house.transportation_subway %></td>
+        <td><%= hasuk_house.transportation_bus %></td>
+        <td><%= hasuk_house.transportation_distance_time %></td>
+        <td><%= hasuk_house.transportation_distance %></td>
+        <td><%= hasuk_house.transportation_memo %></td>
 
         
         <td><%= hasuk_house.room_img1 %></td>
@@ -256,7 +259,6 @@
         <td><%= hasuk_house.meal_img3 %></td>
         <td><%= hasuk_house.meal_img4 %></td>
         <td><%= hasuk_house.discount_price %></td>
-        <td><%= hasuk_house.discount_rate %></td>
 
         <td><%= link_to 'Edit', edit_hasuk_house_path(hasuk_house) %></td>
         <td><%= link_to 'Destroy', hasuk_house, method: :delete, data: { confirm: 'Are you sure?' } %></td>

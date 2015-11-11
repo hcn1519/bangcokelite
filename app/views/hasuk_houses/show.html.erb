@@ -437,7 +437,7 @@ a img {
           </div>
           <div class="row col-xs-12">
             <p class="info"><span class="label">관리비</span></p>
-            <% unless @hasuk_house.extra_price1.nil? || @hasuk_house.extra_price1 =="" %>
+            <% unless @hasuk_house.extra_price.nil? || @hasuk_house.extra_price =="" %>
               <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.extra_price1 %></span>
             <% else %>
               <% unless @hasuk_house.extra_price2.nil? %>

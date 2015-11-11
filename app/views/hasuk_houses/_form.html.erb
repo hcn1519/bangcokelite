@@ -1,11 +1,7 @@
 <head>
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-<script type="text/javascript"
-     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJH73o0NByZaaslmz9wnJHHExqkDCf2TY&libraries=geometry">
-</script>
 <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
 <style type="text/css">
   body {
@@ -169,68 +165,6 @@
     }
 </style>
 
-<script type="text/javascript">
-
-  var map = null;
-  function initialize() {
-    var mapOptions = {
-      center: { lat: 37.551626, lng: 126.937641},
-      zoom: 17
-    }; 
-    
-    map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
-  
-    var geocoder = new google.maps.Geocoder();
-
-    document.getElementById('mapfind').addEventListener('click', function() {
-      geocodeAddress(geocoder, map);
-    });
-        
-    function geocodeAddress(geocoder, resultsMap) {
-      var address = document.getElementById('hasuk_house_address').value;
-      geocoder.geocode({'address': address}, function(results, status) {
-          
-        if (status === google.maps.GeocoderStatus.OK) {
-          resultsMap.setCenter(results[0].geometry.location);
-          var marker = new google.maps.Marker({
-            map: resultsMap,
-            position: results[0].geometry.location
-          });
-                //여기서 results[0].geometry.location에 위도 경도가 (위도, 경도) 형식으로 저장된다.
-                //results[0].geometry.location을 위도 경도 값에 각각 저장할 수 있도록 만들면 굿?
-                
-             
-          var latitude = results[0].geometry.location.lat();
-          var longitude = results[0].geometry.location.lng();
-          var latlngmer = results[0].geometry.location;           
-                  
-          $(document).ready(function(){
-            $("#mapfindcheck").click(function(){
-              $.ajax({
-                url: "/hasuk_houses/new",
-                data: { latitude, longitude },
-                success: function(data){
-                  $("#hasuk_house_lat").val(latitude);
-                  $("#hasuk_house_lng").val(longitude);
-                  alert("확인되었습니다.");
-                }
-              });
-            });
-            
-          });
-                    
-        } else {
-            alert('올바르지 않은 주소입니다');
-          }
-            
-      });
-    } //geocode function 종료
-
-  }//function 마무리
-  google.maps.event.addDomListener(window, 'load', initialize);
-  
-   
-</script>
 
 </head>
 <body>
@@ -507,17 +441,20 @@
           </tr>
  
         <tr>
-            <td style="width:15%" id="column"><center>관리비 별도</center></td>
+            <td style="width:15%" id="column"><center>별도 관리비</center></td>
             <td colspan="3" id="checktd">
-          
-              <% @extra_price = ["없음", "전기세", "수도세", "가스비", "인터넷"] %>
-          
-              <% 5.times do |i| %>
-                <label class="radio-inline" id="check-right">
-                <%= check_box_tag "hasuk_house[extra_price#{i+1}]", "#{@extra_price[i]}" %>
-                <%= "#{@extra_price[i]}" %>
-                </label>
-              <% end %>
+              <div class="form-inline">
+                 <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+                   <%= f.number_field :extra_price, class:"form-control extra_price", style:"float:left; max-width:80px;" %>
+                   <span id="form-right">만 원</span>
+
+    <!--해당없음에 체크시 0을 저장한다-->
+                   <label class="radio-inline" id="radio-right" style="margin-left:7px">
+                       <%= check_box_tag "hasuk_house[extra_price]", 0, false, class:"check_extra_price" %>해당없음
+                   </label>
+                 </div>
+              </div>
+              
             </td>
           </tr>
         </table>             
@@ -545,7 +482,7 @@
         <table class="table" style="width:100%">
           <tr>
             <td id="column" rowspan="2"><center>식사</center></td>
-            <td id="checktd">
+            <td id="checktd" colspan="3">
             <% @meal = ["아침", "점심", "저녁", "제공 안함"] %>
           
               <% 4.times do |i| %>
@@ -557,8 +494,8 @@
             </td>
           </tr>
           <tr>
-            <td style="padding-bottom:0px">
-              <%= f.text_field :meal_memo, class:"form-control", style:"margin-bottom:5px", placeholder:"메모 ex) 주말 식사는 제공하지 않습니다." %>
+            <td style="padding-bottom:0px" colspan="3">
+              <%= f.text_field :meal_memo, class:"form-control", style:"margin-bottom:5px", placeholder:"메모, 아침 식사시간 - 07:00 ~ 09:00, 저녁 식사시간 - 17:00 ~ 19:00, 주말 식사는 제공하지 않습니다." %>
               <br>
             </td>
           </tr>
@@ -616,7 +553,7 @@
           </tr>
           <tr>
             <td style="width:15%" id="column"><center>인터넷</center></td>
-            <td colspan="3" id="checktd">
+            <td id="checktd">
               <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '와이파이') %>
                 <span>와이파이</span>
               </label>
@@ -627,6 +564,19 @@
                 <span>없음</span>
               </label>  
             </td>
+            
+            <td id="column"><center><%= f.label :personal_trash, "쓰레기 처리" %></center></td>
+            
+            <td id="checktd">
+              <label style="margin-right:10px;"><%= radio_button("hasuk_house","personal_trash", '본인이 알아서') %>
+                <span>본인이 알아서</span>
+              </label>
+              
+              <label style="margin-right:10px;"><%= radio_button("hasuk_house","personal_trash", '없음') %>
+                <span>처리해줌</span>
+              </label>  
+            </td>
+            
           </tr>
         </table><!--table3 끝-->
       </div>
@@ -656,7 +606,10 @@
       </div>
     </div>
   </div><!--위치 타이틀-->
+
+
   
+
   <div class="table-responsive">
     <table class="table" style="width:100%">
    <!--주소 구간 -->
@@ -684,7 +637,7 @@
       <!--위치 구간 끝-->
       
       <tr>
-        <td id="column" rowspan="3" style="width:15%"><center>거리</center></td>
+        <td id="column" rowspan="4" style="width:15%"><center>거리</center></td>
         <td colspan="3">
           <p style="font-size:1em">하숙집에서 가장 가까운 학교를 선택하고, 해당 학교의 교문과의 거리를 입력해주세요.</p>
           <p style="font-size:1em">학교를 선택하고, 문 버튼을 누르면 길찾기 페이지가 나옵니다.</p>
@@ -694,14 +647,14 @@
       </tr>
       <tr>
         <td colspan="3">
-        <% for i in 1..3 %>
+        <% for i in 1..2 %>
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="col-md-3 col-sm-3 col-xs-3">
+            <div class="col-md-3 col-sm-3 col-xs-3" style="padding-left:0px;">
               <% if i == 1 %>
                 <span class="fui-star-2" style="font-size: 1.4em; font-weight:bold; color:#F1C40F; float:left;position: absolute;"></span>
               <% end %>
               <%= select_tag "hasuk_house[univ_distance#{i}]", 
-              "<option>학교선택</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe, class:"form-control" %>
+              "<option>인근 학교선택</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe, class:"form-control" %>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-3">
               <%= select_tag "hasuk_house[sogang_gate#{i}]", 
@@ -721,7 +674,6 @@
               <%= select_tag "hasuk_house[yonsei_gate#{i}]", 
               "<option selected>교문선택</option>
               <option value='정문' href='http://map.daum.net/?eX=486048&eY=1128012&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
-              <option value='후문' href='#'>후문</option>
               <option value='동문' href='#'>동문</option>
               <option value='서문' href='http://map.daum.net/?eX=485406&eY=1128891&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>서문</option>
               <option value='남문' href='http://map.daum.net/?eX=485249&eY=1128258&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EB%82%A8%EB%AC%B8'>남문</option>".html_safe, class:"form-control", style:"display:none" %> 
@@ -748,43 +700,61 @@
           
         </td>
       </tr>
-      <tr><!--지하철-->
+      <tr><!--교통수단-->
+      
         <td colspan="3">
-          <% for i in 1..2 %>
-          <div class="col-md-12 col-sm-12 col-xs-12">
+          
             <div class="col-md-3 col-sm-3 col-xs-3">
-              <% if i == 1 %>
                 <span class="fui-star-2" style="font-size: 1.4em; font-weight:bold; color:#F1C40F; float:left;position: absolute;"></span>
-              <% end %>
-              <%= select_tag "hasuk_house[subway#{i}]", 
+                <%= select_tag "hasuk_house[transportation_kind]", 
+              "<option>인근 교통수단</option><option value='지하철'>지하철</option><option value='버스'>버스</option>".html_safe, class:"form-control" %>
+            </div>
+            
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <%= select_tag "hasuk_house[transportation_subway]", 
               "<option selected>지하철역</option>
               <option value='신촌' href='http://map.daum.net/?eX=486056&eY=1126562&eName=%EC%8B%A0%EC%B4%8C%EC%97%AD'>신촌역</option>
               <option value='이대' href='http://map.daum.net/?eX=488028&eY=1126999&eName=%EC%9D%B4%EB%8C%80%EC%97%AD'>이대역</option>
               <option value='대흥' href='http://map.daum.net/?eX=487166&eY=1124541&eName=%EB%8C%80%ED%9D%A5%EC%97%AD'>대흥역</option>
               <option value='서강대' href='http://map.daum.net/?eX=485823&eY=1125659&eName=%EC%84%9C%EA%B0%95%EB%8C%80%EC%97%AD'>서강대역</option>'
-              <option value='신촌기차' href='http://map.daum.net/?eX=487324&eY=1127844&eName=%EC%8B%A0%EC%B4%8C%EA%B8%B0%EC%B0%A8%EC%97%AD'>신촌기차역</option>'".html_safe, class:"form-control" %>
+              <option value='신촌기차' href='http://map.daum.net/?eX=487324&eY=1127844&eName=%EC%8B%A0%EC%B4%8C%EA%B8%B0%EC%B0%A8%EC%97%AD'>신촌기차역</option>'".html_safe, class:"form-control", style:"display:none" %>
+              
+              <%= select_tag "hasuk_house[transportation_bus]", 
+              "<option selected>버스정류장</option>
+              <option value='신촌' href='http://map.daum.net/?eX=486056&eY=1126562&eName=%EC%8B%A0%EC%B4%8C%EC%97%AD'>신촌역</option>
+              <option value='이대' href='http://map.daum.net/?eX=488028&eY=1126999&eName=%EC%9D%B4%EB%8C%80%EC%97%AD'>이대역</option>
+              <option value='대흥' href='http://map.daum.net/?eX=487166&eY=1124541&eName=%EB%8C%80%ED%9D%A5%EC%97%AD'>대흥역</option>
+              <option value='서강대' href='http://map.daum.net/?eX=485823&eY=1125659&eName=%EC%84%9C%EA%B0%95%EB%8C%80%EC%97%AD'>서강대역</option>'
+              <option value='신촌기차' href='http://map.daum.net/?eX=487324&eY=1127844&eName=%EC%8B%A0%EC%B4%8C%EA%B8%B0%EC%B0%A8%EC%97%AD'>신촌기차역</option>'".html_safe, class:"form-control", style:"display:none" %>
+              
             </div>
             
              <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                  <div class="form-inline">
                     <span id="form-left">시간 :</span>
-                      <%= number_field_tag "hasuk_house[subway_distance_time#{i}]", nil, class:"form-control subway_distance_time#{i}", style:"float:left; padding:5px; width:40%;" %>
+                      <%= number_field_tag "hasuk_house[transportation_distance_time]", nil, class:"form-control transportation_distance_time", style:"float:left; padding:5px; width:40%;" %>
                     <span id="form-right">분</span>
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                   <div class="form-inline">
                     <span id="form-left">거리 :</span>
-                      <%= number_field_tag "hasuk_house[subway_distance#{i}]", nil, class:"form-control subway_distance#{i}", style:"float:left; padding:5px; width:40%;" %>
+                      <%= number_field_tag "hasuk_house[transportation_distance]", nil, class:"form-control transportation_distance", style:"float:left; padding:5px; width:40%;" %>
                     <span id="form-right">m</span>
                   </div>
                 </div>
               </div>
           </div>
-          <% end %><!--지하철 for loop 끝 -->
+          
         </td>
       </tr>
+      <tr>
+            <td style="padding-bottom:0px" colspan="3">
+              <%= f.text_field :transportation_memo, class:"form-control", style:"margin-bottom:5px", placeholder:"상세한 교통수단을 설명해주세요." %>
+            </td>
+        </div>
+          </tr>
   </table><!--거리 구간 끝 -->
   
   
@@ -966,12 +936,14 @@ $(document).ready(function(){
   $(".ForValueZero").click(function(){
      var zero = 0;
      
-    <% for i in 1..3 %>
+     
+     
+    <% for i in 1..2 %>
       var distance_value<%= i %> = $(".distance<%= i %>").val();
       var distance_time_value<%= i %> = $(".distance_time<%= i %>").val();
     <% end %>
     
-    <% for i in 1..3 %>
+    <% for i in 1..2 %>
       if (distance_value<%= i %> == "") {
         $(".distance<%= i %>").val(zero);
       }
@@ -980,25 +952,17 @@ $(document).ready(function(){
       }
     <% end %>
     
-    <% for i in 1..2 %>
-      var subway_distance_value<%= i %> = $(".subway_distance<%= i %>").val();
-      var subway_distance_time_value<%= i %> = $(".subway_distance_time<%= i %>").val();
-    <% end %>
     
-    <% for i in 1..2 %>
-      if (subway_distance_value<%= i %> == "") {
-        $(".subway_distance<%= i %>").val(zero);
-      }
-      if (subway_distance_time_value<%= i %> == "") {
-        $(".subway_distance_time<%= i %>").val(zero);
-      }
-    <% end %>
+      var transportation_distance_value = $(".transportation_distance").val();
+      var transportation_distance_time_value = $(".transportaion_distance_time").val();
+    
+      if (transportation_distance_value == "") { $(".transportation_distance").val(zero); }
+      if (transportation_distance_time_value == "") { $(".transportaion_distance_time").val(zero); }
+    
     
     var discount_price_value = $(".discount_price").val(); 
     
-    if (discount_price_value == "") {
-      $(".discount_price").val(zero);
-    }
+    if (discount_price_value == "") { $(".discount_price").val(zero); }
    
   });
   //값 입력하지 않을 때 0 집어넣기
@@ -1446,24 +1410,20 @@ $(".crossmeal4").click(function() {
       $("#hasuk_house_sogang_gate2").css("display", "none");
     }
     });
-    $('#hasuk_house_univ_distance3').on('change', function (e) {
+    
+    $('#hasuk_house_transportation_kind').on('change', function (e) {
     var optionSelected = $("option:selected", this);
     var valueSelected = this.value;
-    
-    if (valueSelected == "서강") {
-      $("#hasuk_house_sogang_gate3").css("display", "block");
-      $("#hasuk_house_yonsei_gate3").css("display", "none");
-      $("#hasuk_house_ewha_gate3").css("display", "none");
-    } else if ( valueSelected == "이화") {
-      $("#hasuk_house_ewha_gate3").css("display", "block");
-      $("#hasuk_house_sogang_gate3").css("display", "none");
-      $("#hasuk_house_yonsei_gate3").css("display", "none");
-    } else if ( valueSelected == "연세") {
-      $("#hasuk_house_yonsei_gate3").css("display", "block");
-      $("#hasuk_house_ewha_gate3").css("display", "none");
-      $("#hasuk_house_sogang_gate3").css("display", "none");
-    }
+
+    if (valueSelected == "지하철") {
+      $("#hasuk_house_transportation_subway").css("display", "block");
+      $("#hasuk_house_transportation_bus").css("display", "none");
+    } else if ( valueSelected == "버스") {
+      $("#hasuk_house_transportation_bus").css("display", "block");
+      $("#hasuk_house_transportation_subway").css("display", "none");
+    } 
     });
+    
   });
   //학교 선택 지도 링크 나오기
   
@@ -1474,34 +1434,28 @@ $(".crossmeal4").click(function() {
   document.getElementById('hasuk_house_sogang_gate2').onchange = function() {
     window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
   }
-  document.getElementById('hasuk_house_sogang_gate3').onchange = function() {
-    window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
-  }
+ 
   document.getElementById('hasuk_house_ewha_gate1').onchange = function() {
     window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
   }
   document.getElementById('hasuk_house_ewha_gate2').onchange = function() {
     window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
   }
-  document.getElementById('hasuk_house_ewha_gate3').onchange = function() {
-    window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
-  }
+ 
   document.getElementById('hasuk_house_yonsei_gate1').onchange = function() {
     window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
   }
   document.getElementById('hasuk_house_yonsei_gate2').onchange = function() {
     window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank'); 
   }
-  document.getElementById('hasuk_house_yonsei_gate3').onchange = function() {
-    window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
-  }
+  
   //링크 타고 길찾기 페이지 넘어가기
 
   //링크 타고 길찾기 페이지 넘어가기(지하철)
-  document.getElementById('hasuk_house_subway1').onchange = function() {
+  document.getElementById('hasuk_house_transportation_subway').onchange = function() {
     window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
   }
-  document.getElementById('hasuk_house_subway2').onchange = function() {
+  document.getElementById('hasuk_house_transportation_bus').onchange = function() {
     window.open(this.children[this.selectedIndex].getAttribute('href'),'_blank');
   }
   
@@ -1566,7 +1520,20 @@ $(".crossmeal4").click(function() {
             $(".least_contract").removeAttr("disabled");
             
           }
-        }    
+        }
+    $(function() {
+          enable_cx();
+          $(".check_extra_price").click(enable_cx);
+        });
+        
+        function enable_cx() {
+          if (this.checked) {
+            $(".extra_price").prop("disabled", true);
+          } else {
+            $(".extra_price").removeAttr("disabled");
+          }
+        }
+        
     $(function() {
           enable_cb();
           $(".check_discount_price").click(enable_cb);

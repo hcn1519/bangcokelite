@@ -19,11 +19,9 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.integer :price_from
       t.integer :price_to
       t.integer :least_contract
-      t.string :extra_price1
-      t.string :extra_price2
-      t.string :extra_price3
-      t.string :extra_price4
-      t.string :extra_price5
+      
+      t.integer :extra_price
+      
       t.string :meal1
       t.string :meal2
       t.string :meal3
@@ -60,6 +58,9 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.string :common_option12
       t.string :common_option13
       t.string :internet
+      
+      t.string :personal_trash
+      
       t.string :post_description
       t.string :address
       t.float :lat
@@ -68,30 +69,33 @@ class CreateHasukHouses < ActiveRecord::Migration
       #교문까지 거리 및 시간
       t.string :univ_distance1
       t.string :univ_distance2
-      t.string :univ_distance3
+      
       t.string :sogang_gate1
       t.string :sogang_gate2
-      t.string :sogang_gate3
+      
       t.string :ewha_gate1
       t.string :ewha_gate2
-      t.string :ewha_gate3
+
       t.string :yonsei_gate1
       t.string :yonsei_gate2
-      t.string :yonsei_gate3
+
       t.integer :distance_time1
       t.integer :distance_time2
-      t.integer :distance_time3
+      
       t.integer :distance1
       t.integer :distance2
-      t.integer :distance3
       
-      #지하철까지 거리 및 시간
-      t.string :subway1
-      t.string :subway2
-      t.integer :subway_distance_time1
-      t.integer :subway_distance_time2
-      t.integer :subway_distance1
-      t.integer :subway_distance2
+      
+      #교통수단까지 거리 및 시간 + 메모
+      t.string :transportation_kind
+      
+      t.string :transportation_subway
+      t.string :transportation_bus
+      
+      t.integer :transportation_distance_time
+      t.integer :transportation_distance
+      t.string :transportation_memo
+      
       
       t.string :room_img1
       t.string :room_img2
@@ -126,7 +130,6 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.string :meal_img3
       t.string :meal_img4
       t.integer :discount_price
-      t.integer :discount_rate
 
       t.timestamps null: false
     end

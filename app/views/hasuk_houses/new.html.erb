@@ -1,2 +1,68 @@
+<script type="text/javascript"
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJH73o0NByZaaslmz9wnJHHExqkDCf2TY&libraries=geometry">
+  </script>
+  
+  <script type="text/javascript">
+
+  var map = null;
+  function initialize() {
+    var mapOptions = {
+      center: { lat: 37.551626, lng: 126.937641},
+      zoom: 17
+    }; 
+    
+    map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+  
+    var geocoder = new google.maps.Geocoder();
+
+    document.getElementById('mapfind').addEventListener('click', function() {
+      geocodeAddress(geocoder, map);
+    });
+        
+    function geocodeAddress(geocoder, resultsMap) {
+      var address = document.getElementById('hasuk_house_address').value;
+      geocoder.geocode({'address': address}, function(results, status) {
+          
+        if (status === google.maps.GeocoderStatus.OK) {
+          resultsMap.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+            map: resultsMap,
+            position: results[0].geometry.location
+          });
+                //여기서 results[0].geometry.location에 위도 경도가 (위도, 경도) 형식으로 저장된다.
+                //results[0].geometry.location을 위도 경도 값에 각각 저장할 수 있도록 만들면 굿?
+                
+             
+          var latitude = results[0].geometry.location.lat();
+          var longitude = results[0].geometry.location.lng();
+          var latlngmer = results[0].geometry.location;           
+                  
+          $(document).ready(function(){
+            $("#mapfindcheck").click(function(){
+              $.ajax({
+                url: "/hasuk_houses/new",
+                data: { latitude, longitude },
+                success: function(data){
+                  $("#hasuk_house_lat").val(latitude);
+                  $("#hasuk_house_lng").val(longitude);
+                  alert("확인되었습니다.");
+                }
+              });
+            });
+            
+          });
+                    
+        } else {
+            alert('올바르지 않은 주소입니다');
+          }
+            
+      });
+    } //geocode function 종료
+
+  }//function 마무리
+  google.maps.event.addDomListener(window, 'load', initialize);
+  
+   
+</script>
 <%= render 'form' %>
 

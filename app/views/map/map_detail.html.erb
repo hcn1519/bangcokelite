@@ -269,7 +269,7 @@
     ];
     
 
-  //서강E(서강대 남문)
+  //서강a(서강대 남문)
   var sogang_a = new google.maps.Polygon({
     paths: sogang_a,
     //strokeColor: '#594F4F',
@@ -307,7 +307,7 @@
   ewha_yonsei_b.setMap(map);
   <% end %>
   
-  
+  //이대 후문, 연대 동문
    var ewha_yonsei_d = new google.maps.Polygon({
     paths: ewha_yonsei_d,
     //strokeColor: '#594F4F',
@@ -477,7 +477,7 @@
                        $(document).ready(function() {
                          $(result_id).css("background-color","#cbefde");
                        
-                        $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
+                        $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 1000);
                        });
 
                       };
@@ -553,8 +553,8 @@
                 
                 markerObj = document.getElementById(hash_id);      
                     
-            //event 구간
-//말풍선 출력 
+//event 구간
+//1.말풍선 출력 
                     google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
                           return function() {
                             infoWindow.setContent(contentString);
@@ -563,7 +563,7 @@
                            }; // function end
                       })(marker,contentString,infoWindow));
 
-// 말풍선 지우기
+//2.말풍선 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
                        return function()  {
                         infoWindow.close();
@@ -585,6 +585,7 @@
                         }; // function end
                       })(infoWindow));
  
+
  //listbox 색칠
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
@@ -616,7 +617,8 @@
 
                     })(str_id));
 
-// listbox 색 지우기
+                     
+//4. listbox 색 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
@@ -629,7 +631,8 @@
                       };
 
                      })(str_id));
-                    marker.setMap(map);
+
+                 marker.setMap(map);
                 }//거리 범위 지정
                 }//가격 범위 지정
                 }//성별 종류 끝  
@@ -671,8 +674,8 @@
                 
                 markerObj = document.getElementById(hash_id);      
                     
-            //event 구간
-//말풍선 출력 
+ //event 구간
+//1.말풍선 출력 
                     google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
                           return function() {
                             infoWindow.setContent(contentString);
@@ -681,7 +684,7 @@
                            }; // function end
                       })(marker,contentString,infoWindow));
 
-// 말풍선 지우기
+//2.말풍선 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
                        return function()  {
                         infoWindow.close();
@@ -703,7 +706,8 @@
                         }; // function end
                       })(infoWindow));
  
-  //listbox 색칠
+
+ //listbox 색칠
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
@@ -734,7 +738,8 @@
 
                     })(str_id));
 
-// listbox 색 지우기
+                     
+//4. listbox 색 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
@@ -747,7 +752,8 @@
                       };
 
                      })(str_id));
-                    marker.setMap(map);
+
+                 marker.setMap(map);
                 }//거리 범위 지정
                 }//가격 범위 지정
                 }//성별 종류 끝  
@@ -787,8 +793,8 @@
                 
                 markerObj = document.getElementById(hash_id);      
                     
-            //event 구간
-//말풍선 출력 
+//event 구간
+//1.말풍선 출력 
                     google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
                           return function() {
                             infoWindow.setContent(contentString);
@@ -797,7 +803,7 @@
                            }; // function end
                       })(marker,contentString,infoWindow));
 
-// 말풍선 지우기
+//2.말풍선 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
                        return function()  {
                         infoWindow.close();
@@ -819,7 +825,8 @@
                         }; // function end
                       })(infoWindow));
  
-  //listbox 색칠
+
+ //listbox 색칠
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
@@ -850,7 +857,8 @@
 
                     })(str_id));
 
-// listbox 색 지우기
+                     
+//4. listbox 색 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
@@ -863,7 +871,8 @@
                       };
 
                      })(str_id));
-                    marker.setMap(map);
+
+                 marker.setMap(map);
                 }//거리 범위 지정
                 }//가격 범위 지정
                 }//성별 종류 끝  
@@ -871,6 +880,7 @@
                 }//polygon true 끝 
                 
             } else if ('<%= @section %>'=="연세대동문"){
+                
                
             } else if ('<%= @section %>' =="연세대명물" || '<%= @section %>' =="이화여대명물"){
             
@@ -878,10 +888,10 @@
             }  else if ('<%= @section %>' =="이화여대정문"){
             
               
-            } else if ('<%= @section %>' =="이화여대~"){
+            } else if ('<%= @section %>' =="이화여대후문"){
             
               
-            } else if ('<%= @section %>' =="이화여대~"){
+            } else if ('<%= @section %>' =="이화여대서문"){
             
               
             } 
@@ -918,8 +928,8 @@
   
                var hash_id = "a" +str_id;
                markerObj = document.getElementById(hash_id);      
-                    //event 구간
-//말풍선 출력 
+//event 구간
+//1.말풍선 출력 
                     google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
                           return function() {
                             infoWindow.setContent(contentString);
@@ -928,7 +938,7 @@
                            }; // function end
                       })(marker,contentString,infoWindow));
 
-//말풍선 지우기
+//2.말풍선 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
                        return function()  {
                         infoWindow.close();
@@ -943,14 +953,15 @@
                        }; // function end
                      })(marker,contentString,infoWindow));
 
- //listbox로 말풍선 띄운 것 지우기
+ // listbox로 말풍선 띄운 것 지우기
                       google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
                         return function() {
                           infoWindow.close();
                         }; // function end
                       })(infoWindow));
  
-  //listbox 색칠
+
+ //listbox 색칠
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
@@ -980,8 +991,9 @@
                      };
 
                     })(str_id));
-                    
-// listbox 색 지우기
+
+                     
+//4. listbox 색 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
@@ -994,8 +1006,8 @@
                       };
 
                      })(str_id));
-                    marker.setMap(map);
-              
+
+                 marker.setMap(map);
                 
                   }//거리 범위 지정
                   }//가격 범위 지정
@@ -1036,8 +1048,8 @@
   
                var hash_id = "a" +str_id;
                markerObj = document.getElementById(hash_id);      
-                    //event 구간
-//말풍선 출력 
+//event 구간
+//1.말풍선 출력 
                     google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
                           return function() {
                             infoWindow.setContent(contentString);
@@ -1046,7 +1058,7 @@
                            }; // function end
                       })(marker,contentString,infoWindow));
 
-//말풍선 지우기
+//2.말풍선 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
                        return function()  {
                         infoWindow.close();
@@ -1061,13 +1073,14 @@
                        }; // function end
                      })(marker,contentString,infoWindow));
 
- //listbox로 말풍선 띄운 것 지우기
+ // listbox로 말풍선 띄운 것 지우기
                       google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
                         return function() {
                           infoWindow.close();
                         }; // function end
                       })(infoWindow));
  
+
  //listbox 색칠
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
@@ -1099,7 +1112,8 @@
 
                     })(str_id));
 
-// listbox 색 지우기
+                     
+//4. listbox 색 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
@@ -1112,9 +1126,8 @@
                       };
 
                      })(str_id));
-                    marker.setMap(map);
-              
-                
+
+                 marker.setMap(map);
                   }//거리 범위 지정
                   }//가격 범위 지정
                   }//성별 종류 끝  
@@ -1152,8 +1165,8 @@
   
                var hash_id = "a" +str_id;
                markerObj = document.getElementById(hash_id);      
-                    //event 구간
-//말풍선 출력 
+//event 구간
+//1.말풍선 출력 
                     google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
                           return function() {
                             infoWindow.setContent(contentString);
@@ -1162,7 +1175,7 @@
                            }; // function end
                       })(marker,contentString,infoWindow));
 
-//말풍선 지우기
+//2.말풍선 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
                        return function()  {
                         infoWindow.close();
@@ -1177,13 +1190,14 @@
                        }; // function end
                      })(marker,contentString,infoWindow));
 
- //listbox로 말풍선 띄운 것 지우기
+ // listbox로 말풍선 띄운 것 지우기
                       google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
                         return function() {
                           infoWindow.close();
                         }; // function end
                       })(infoWindow));
  
+
  //listbox 색칠
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
@@ -1215,7 +1229,8 @@
 
                     })(str_id));
 
-// listbox 색 지우기
+                     
+//4. listbox 색 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
@@ -1228,8 +1243,8 @@
                       };
 
                      })(str_id));
-                    marker.setMap(map);
-              
+
+                 marker.setMap(map);
                 
                      }//거리 범위 지정
                      }//가격 범위 지정
