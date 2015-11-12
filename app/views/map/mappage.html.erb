@@ -374,34 +374,35 @@
        $.get("/map/from_hasuk", function(data, status){
              for (var i = 0; i < data.length; i++){
 
-         console.log("<%= @univ %>1");
+               var infowindow = null;
+                    var infoWindow = new google.maps.InfoWindow();
+                    var contentString =
+                    '<div id="infoWindow" style="margin-bottom:5px">'+
+                       '<div class="row" style="max-width:240px">'+
+                       '<div class="col-md-4 col-sm-4 col-xs-4" style=" width: 100px; padding-left: 5px; padding-right: 0px;">' +
+                           '<img src="'+ data[i].room_img1.url + '" height="80px" width="100px">' +
+                         '</div>'+
+                       '<div class="col-md-7 col-sm-7 col-xs-7" style="width: 140px;padding-right: 0px;">' +
+                           '<div class="row" style="margin-left:1px; padding-left:0px; padding-right:0px">' +
+                             '<div class="col-md-3 col-sm-3 col-xs-3" style="margin-right:-5px; padding-left:0px; padding-right:0px">' +
+                               '<p style="font-size: 20px; margin-top:5px">'+ data[i].price_from +'</p>' +
+                             '</div>' +
+                             '<div class="col-md-9 col-sm-9 col-xs-9" style="margin-top:6px; margin-bottom:5px; padding-left:0px; padding-right:0px">'+
+                              '(예치금:'+ data[i].small_deposit + '만원)&nbsp;'+
+                             '</div>'+
+                          '</div>'+
+                         '<p style="margin-bottom:5px; font-size:12px">거리 : 정문에서 10분</p>' +
+                         '<p style="color:#eb9088; margin-bottom:5px; font-size:13px">'+ '#아침,저녁</p>' +
+                       '</div>'+
+                       '</div>'+
+                     '</div>';
+                    
+
+                 var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);  
+
         <% if @univ == "서강" %>
             if (data[i].division == "남문(대흥역)"){
-            var infowindow = null;
-            var infoWindow = new google.maps.InfoWindow();
-            var contentString =
-            '<div id="infoWindow" style="margin-bottom:5px">'+
-               '<div class="row" style="max-width:240px">'+
-               '<div class="col-md-4 col-sm-4 col-xs-4" style=" width: 100px; padding-left: 5px; padding-right: 0px;">' +
-                   '<img src="'+ data[i].room_img1.url + '" height="80px" width="100px">' +
-                 '</div>'+
-               '<div class="col-md-7 col-sm-7 col-xs-7" style="width: 140px;padding-right: 0px;">' +
-                   '<div class="row" style="margin-left:1px; padding-left:0px; padding-right:0px">' +
-                     '<div class="col-md-3 col-sm-3 col-xs-3" style="margin-right:-5px; padding-left:0px; padding-right:0px">' +
-                       '<p style="font-size: 20px; margin-top:5px">'+ data[i].price_from +'</p>' +
-                     '</div>' +
-                     '<div class="col-md-9 col-sm-9 col-xs-9" style="margin-top:6px; margin-bottom:5px; padding-left:0px; padding-right:0px">'+
-                      '(예치금:'+ data[i].small_deposit + '만원)&nbsp;'+
-                     '</div>'+
-                  '</div>'+
-                 '<p style="margin-bottom:5px; font-size:12px">거리 : 정문에서 10분</p>' +
-                 '<p style="color:#eb9088; margin-bottom:5px; font-size:13px">'+ '#아침,저녁</p>' +
-               '</div>'+
-               '</div>'+
-             '</div>';
             
-        console.log("<%= @univ %>");
-         var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);  
                     var marker = new google.maps.Marker({
                          position: latlng,
                          map: map
@@ -499,31 +500,7 @@
           
               <% elsif @univ == "연세" %>
                 if (data[i].division == "정문(신촌역)" || data[i].division == "연대서문" || data[i].division == "연대남문" || data[i].division == "신촌기차역" || data[i].division == "이대후문"){
-                    var infowindow = null;
-                    var infoWindow = new google.maps.InfoWindow();
-                    var contentString =
-                    '<div id="infoWindow" style="margin-bottom:5px">'+
-                       '<div class="row" style="max-width:240px">'+
-                       '<div class="col-md-4 col-sm-4 col-xs-4" style=" width: 100px; padding-left: 5px; padding-right: 0px;">' +
-                           '<img src="'+ data[i].room_img1.url + '" height="80px" width="100px">' +
-                         '</div>'+
-                       '<div class="col-md-7 col-sm-7 col-xs-7" style="width: 140px;padding-right: 0px;">' +
-                           '<div class="row" style="margin-left:1px; padding-left:0px; padding-right:0px">' +
-                             '<div class="col-md-3 col-sm-3 col-xs-3" style="margin-right:-5px; padding-left:0px; padding-right:0px">' +
-                               '<p style="font-size: 20px; margin-top:5px">'+ data[i].price_from +'</p>' +
-                             '</div>' +
-                             '<div class="col-md-9 col-sm-9 col-xs-9" style="margin-top:6px; margin-bottom:5px; padding-left:0px; padding-right:0px">'+
-                              '(예치금:'+ data[i].small_deposit + '만원)&nbsp;'+
-                             '</div>'+
-                          '</div>'+
-                         '<p style="margin-bottom:5px; font-size:12px">거리 : 정문에서 10분</p>' +
-                         '<p style="color:#eb9088; margin-bottom:5px; font-size:13px">'+ '#아침,저녁</p>' +
-                       '</div>'+
-                       '</div>'+
-                     '</div>';
-                    
-                console.log("<%= @univ %>");
-                 var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);      
+               
                  
                      var marker = new google.maps.Marker({
                          position: latlng,
@@ -625,31 +602,7 @@
              <% elsif @univ == "이화" %>
                if (data[i].division == "정문(이대역)" || data[i].division == "신촌기차역" || data[i].division == "이대후문"){
                   
-                      var infowindow = null;
-                      var infoWindow = new google.maps.InfoWindow();
-                      var contentString =
-                      '<div id="infoWindow" style="margin-bottom:5px">'+
-                         '<div class="row" style="max-width:240px">'+
-                         '<div class="col-md-4 col-sm-4 col-xs-4" style=" width: 100px; padding-left: 5px; padding-right: 0px;">' +
-                             '<img src="'+ data[i].room_img1.url + '" height="80px" width="100px">' +
-                           '</div>'+
-                         '<div class="col-md-7 col-sm-7 col-xs-7" style="width: 140px;padding-right: 0px;">' +
-                             '<div class="row" style="margin-left:1px; padding-left:0px; padding-right:0px">' +
-                               '<div class="col-md-3 col-sm-3 col-xs-3" style="margin-right:-5px; padding-left:0px; padding-right:0px">' +
-                                 '<p style="font-size: 20px; margin-top:5px">'+ data[i].price_from +'</p>' +
-                               '</div>' +
-                               '<div class="col-md-9 col-sm-9 col-xs-9" style="margin-top:6px; margin-bottom:5px; padding-left:0px; padding-right:0px">'+
-                                '(예치금:'+ data[i].small_deposit + '만원)&nbsp;'+
-                               '</div>'+
-                            '</div>'+
-                           '<p style="margin-bottom:5px; font-size:12px">거리 : 정문에서 10분</p>' +
-                           '<p style="color:#eb9088; margin-bottom:5px; font-size:13px">'+ '#아침,저녁</p>' +
-                         '</div>'+
-                         '</div>'+
-                       '</div>';
-                      
-                  console.log("<%= @univ %>");
-                   var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);    
+                       
                     var marker = new google.maps.Marker({
                          position: latlng,
                          map: map
@@ -747,31 +700,7 @@
             
              
              <% else  %> 
-                  var infowindow = null;
-                  var infoWindow = new google.maps.InfoWindow();
-                  var contentString =
-                  '<div id="infoWindow" style="margin-bottom:5px">'+
-                     '<div class="row" style="max-width:240px">'+
-                     '<div class="col-md-4 col-sm-4 col-xs-4" style=" width: 100px; padding-left: 5px; padding-right: 0px;">' +
-                         '<img src="'+ data[i].room_img1.url + '" height="80px" width="100px">' +
-                       '</div>'+
-                     '<div class="col-md-7 col-sm-7 col-xs-7" style="width: 140px;padding-right: 0px;">' +
-                         '<div class="row" style="margin-left:1px; padding-left:0px; padding-right:0px">' +
-                           '<div class="col-md-3 col-sm-3 col-xs-3" style="margin-right:-5px; padding-left:0px; padding-right:0px">' +
-                             '<p style="font-size: 20px; margin-top:5px">'+ data[i].price_from +'</p>' +
-                           '</div>' +
-                           '<div class="col-md-9 col-sm-9 col-xs-9" style="margin-top:6px; margin-bottom:5px; padding-left:0px; padding-right:0px">'+
-                            '(예치금:'+ data[i].small_deposit + '만원)&nbsp;'+
-                           '</div>'+
-                        '</div>'+
-                       '<p style="margin-bottom:5px; font-size:12px">거리 : 정문에서 10분</p>' +
-                       '<p style="color:#eb9088; margin-bottom:5px; font-size:13px">'+ '#아침,저녁</p>' +
-                     '</div>'+
-                     '</div>'+
-                   '</div>';
-                  
-              console.log("<%= @univ %>");
-               var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);  
+           
                       var marker = new google.maps.Marker({
                            position: latlng,
                            map: map
