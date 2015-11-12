@@ -1,8 +1,8 @@
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <!--googlemap 넣기-->
     <script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdcrzqmVvJgOpIy23Dlw08MHrQN1C17Sg">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdcrzqmVvJgOpIy23Dlw08MHrQN1C17Sg&libraries=geometry">
     </script>
     <!--jquery 넣기-->
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -11,6 +11,7 @@
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
  <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
  <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"></script>
+ 
     <script type="text/javascript">
     var map = null; 
     //구글맵 기본 설정 시작
@@ -223,11 +224,11 @@
   var ewha_yonsei_b = [
     {lat:37.558557, lng:126.942693},{lat:37.559081, lng:126.942178},{lat:37.559053, lng:126.939687},{lat:37.559004, lng:126.939428},
     {lat:37.557559, lng:126.937469},{lat:37.556957, lng:126.937513},{lat:37.555946, lng:126.937495},{lat:37.555901, lng:126.937583},
-    {lat:37.555460, lng:126.937813},{lat:37.556551, lng:126.941061},{lat:37.556686, lng:126.942824}
+    {lat:37.555460, lng:126.937813},{lat:37.556551, lng:126.941061},{lat:37.556686, lng:126.942824},{lat:37.558557, lng:126.942693}
     ];
     
     
-  //이화-연세D(이대후문/연대동문) (B,C는 겹치는 구역)
+  //이화-연세D(이대후문/연대동문)
   var ewha_yonsei_d = [             
     {lat:37.566943, lng:126.946975},{lat:37.566913, lng:126.947406},{lat:37.566832, lng:126.947586},
     {lat:37.567125, lng:126.947889},{lat:37.566981, lng:126.948396},{lat:37.567104, lng:126.948498},
@@ -237,18 +238,17 @@
     {lat:37.569189, lng:126.946146},{lat:37.569062, lng:126.945272},{lat:37.569065, lng:126.944933},
     {lat:37.568970, lng:126.944677},{lat:37.568506, lng:126.944824},{lat:37.568007, lng:126.945011},
     {lat:37.567569, lng:126.945156},{lat:37.567115, lng:126.945471},{lat:37.566486, lng:126.945841},
-    {lat:37.566542, lng:126.946132}
+    {lat:37.566542, lng:126.946132},{lat:37.566943, lng:126.946975}
     ];
     
   //연세A(연대 정문) (B는 겹치는 구역)
   var yonsei_a = [  //명물길 예림고시원 앞에서 시작
     {lat:37.559068, lng:126.939704},{lat:37.559282, lng:126.939681},{lat:37.559358, lng:126.936327},
     {lat:37.559218, lng:126.934372},{lat:37.558977, lng:126.933753},{lat:37.558377, lng:126.932946},
-    {lat:37.557389, lng:126.932107},{lat:37.556987, lng:126.931930},
-    {lat:37.555306, lng:126.936883},
-    {lat:37.555458, lng:126.937795},{lat:37.555890, lng:126.937567},
-    {lat:37.555941, lng:126.937473},{lat:37.556957, lng:126.937492},{lat:37.557570, lng:126.937447},
-    {lat:37.559014, lng:126.939414},{lat:37.559068, lng:126.939704}
+    {lat:37.557389, lng:126.932107},{lat:37.556987, lng:126.931930},{lat:37.555306, lng:126.936883},
+    {lat:37.555458, lng:126.937795},{lat:37.555890, lng:126.937567},{lat:37.555941, lng:126.937473},
+    {lat:37.556957, lng:126.937492},{lat:37.557570, lng:126.937447},{lat:37.559014, lng:126.939414},
+    {lat:37.559068, lng:126.939704}
     ];
      
   //연세C(연대 남문) 
@@ -262,15 +262,15 @@
     
   //연세E(연대 서문)  
   var yonsei_e = [
-    {lat:37.564575, lng:126.929218},{lat:37.569033, lng:126.932693},
-    {lat:37.567914, lng:126.934999},{lat:37.567919, lng:126.935547},
-    {lat:37.567540, lng:126.935828},{lat:37.566556, lng:126.935190},{lat:37.566350, lng:126.934866},
-    {lat:37.566198, lng:126.934404},{lat:37.563799, lng:126.933859},{lat:37.563453, lng:126.933630},
-    {lat:37.563158, lng:126.932769},{lat:37.563256, lng:126.932042},{lat:37.562751, lng:126.931375},{lat:37.564575, lng:126.929218}
+    {lat:37.564575, lng:126.929218},{lat:37.569033, lng:126.932693},{lat:37.567914, lng:126.934999},
+    {lat:37.567919, lng:126.935547},{lat:37.567540, lng:126.935828},{lat:37.566556, lng:126.935190},
+    {lat:37.566350, lng:126.934866},{lat:37.566198, lng:126.934404},{lat:37.563799, lng:126.933859},
+    {lat:37.563453, lng:126.933630},{lat:37.563158, lng:126.932769},{lat:37.563256, lng:126.932042},
+    {lat:37.562751, lng:126.931375},{lat:37.564575, lng:126.929218}
     ];
     
 
-  //서강E(서강대 남문)
+  //서강a(서강대 남문)
   var sogang_a = new google.maps.Polygon({
     paths: sogang_a,
     //strokeColor: '#594F4F',
@@ -279,10 +279,8 @@
     fillColor: '#F75D59',
     fillOpacity: 0.3
   });
-  <% if @univ.include? "서강" %>
-  sogang_a.setMap(map);
 
-  <% end %>
+  //이화a(이대 정문)
   var ewha_a = new google.maps.Polygon({
     paths: ewha_a,
     //strokeColor: '#594F4F',
@@ -291,10 +289,7 @@
     fillColor: '#F87217',
     fillOpacity: 0.3
   });
-  <% if @univ.include? "이화" %>
-  ewha_a.setMap(map);
-  <% end %>
-  
+
    //이화-연세B(신촌기차역)
   var ewha_yonsei_b = new google.maps.Polygon({
     paths: ewha_yonsei_b,
@@ -304,11 +299,8 @@
     fillColor: '#7FE817',
     fillOpacity: 0.3
   });
-<% unless @univ.include? "서강" %>
-  ewha_yonsei_b.setMap(map);
-  <% end %>
-  
-  
+
+  //이화-연세D(이대 후문)
    var ewha_yonsei_d = new google.maps.Polygon({
     paths: ewha_yonsei_d,
     //strokeColor: '#594F4F',
@@ -317,11 +309,6 @@
     fillColor: '#4FD1D1',
     fillOpacity: 0.3
   });
-<% unless @univ.include? "서강" %>
-  ewha_yonsei_d.setMap(map);
-
-<% end %>
-
 
   //연세A(연대 정문)
    var yonsei_a = new google.maps.Polygon({
@@ -332,10 +319,7 @@
     fillColor: '#B51414',
     fillOpacity: 0.2
    });
-<% if @univ.include? "연세" %>
-  yonsei_a.setMap(map);
-   <% end %>
-   
+
   //연세C(연대 남문) 
  var yonsei_c = new google.maps.Polygon({
     paths: yonsei_c,
@@ -345,10 +329,7 @@
     fillColor: '#FFFF00',
     fillOpacity: 0.2
   });
-<% if @univ.include? "연세" %>
-  yonsei_c.setMap(map);
-  <% end %>
-  
+
   //연세E(연대 서문) 
  var yonsei_e = new google.maps.Polygon({
     paths: yonsei_e,
@@ -358,24 +339,47 @@
     fillColor: '#1414B4',
     fillOpacity: 0.2
   });
-  <% if @univ.include? "연세" %>
-   yonsei_e.setMap(map); 
- <% end %>    
-    
+
+  <% if @univ.include? "서강" %>
+      sogang_a.setMap(map);
+      
+  <% elsif @univ.include? "이화" %>
+      ewha_a.setMap(map);
+      ewha_yonsei_b.setMap(map); 
+      ewha_yonsei_d.setMap(map);
+      
+  <% elsif @univ.include? "연세" %>
+      yonsei_a.setMap(map);
+      yonsei_c.setMap(map); 
+      yonsei_e.setMap(map);
+      ewha_yonsei_b.setMap(map); 
+      ewha_yonsei_d.setMap(map);
+      
+  <% else %>
+      sogang_a.setMap(map);
+      
+      yonsei_a.setMap(map);
+      yonsei_c.setMap(map); 
+      yonsei_e.setMap(map); 
+      ewha_yonsei_b.setMap(map); 
+      ewha_yonsei_d.setMap(map);
+      
+      ewha_a.setMap(map);
   
+  <% end %>
+
+      
       //학교별 마커 띄우기 시작
      
        $.get("/map/from_hasuk", function(data, status){
              for (var i = 0; i < data.length; i++){
-               //학교 찍히는 것 위도 경도로 찍는 것 생각
-              var univ1 = data[i].univ_distance1;
-              var univ2 = data[i].univ_distance2;
-              var univ3 = data[i].univ_distance3;
-              var infowindow = null;
-              var infoWindow = new google.maps.InfoWindow();
-        
-        if (univ1.indexOf("<%= @univ %>") !== -1 || univ2.indexOf("<%= @univ %>") !== -1 || univ3.indexOf("<%= @univ %>") !== -1 ) {
-               var contentString =
+
+         console.log("<%= @univ %>1");
+        <% if @univ == "서강" %>
+            if (data[i].division == "남문(대흥역)"){
+            var infowindow = null;
+            var infoWindow = new google.maps.InfoWindow();
+            var contentString =
             '<div id="infoWindow" style="margin-bottom:5px">'+
                '<div class="row" style="max-width:240px">'+
                '<div class="col-md-4 col-sm-4 col-xs-4" style=" width: 100px; padding-left: 5px; padding-right: 0px;">' +
@@ -395,8 +399,9 @@
                '</div>'+
                '</div>'+
              '</div>';
-                    var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);
-                    
+            
+        console.log("<%= @univ %>");
+         var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);  
                     var marker = new google.maps.Marker({
                          position: latlng,
                          map: map
@@ -489,13 +494,382 @@
                      })(str_id));
 
                  marker.setMap(map);
-                }//indexOf 걸리는 괄호
-             }
+                } //division 괄호
+             //univ 서강 걸리는 괄호
+          
+              <% elsif @univ == "연세" %>
+                if (data[i].division == "정문(신촌역)" || data[i].division == "연대서문" || data[i].division == "연대남문" || data[i].division == "신촌기차역" || data[i].division == "이대후문"){
+                    var infowindow = null;
+                    var infoWindow = new google.maps.InfoWindow();
+                    var contentString =
+                    '<div id="infoWindow" style="margin-bottom:5px">'+
+                       '<div class="row" style="max-width:240px">'+
+                       '<div class="col-md-4 col-sm-4 col-xs-4" style=" width: 100px; padding-left: 5px; padding-right: 0px;">' +
+                           '<img src="'+ data[i].room_img1.url + '" height="80px" width="100px">' +
+                         '</div>'+
+                       '<div class="col-md-7 col-sm-7 col-xs-7" style="width: 140px;padding-right: 0px;">' +
+                           '<div class="row" style="margin-left:1px; padding-left:0px; padding-right:0px">' +
+                             '<div class="col-md-3 col-sm-3 col-xs-3" style="margin-right:-5px; padding-left:0px; padding-right:0px">' +
+                               '<p style="font-size: 20px; margin-top:5px">'+ data[i].price_from +'</p>' +
+                             '</div>' +
+                             '<div class="col-md-9 col-sm-9 col-xs-9" style="margin-top:6px; margin-bottom:5px; padding-left:0px; padding-right:0px">'+
+                              '(예치금:'+ data[i].small_deposit + '만원)&nbsp;'+
+                             '</div>'+
+                          '</div>'+
+                         '<p style="margin-bottom:5px; font-size:12px">거리 : 정문에서 10분</p>' +
+                         '<p style="color:#eb9088; margin-bottom:5px; font-size:13px">'+ '#아침,저녁</p>' +
+                       '</div>'+
+                       '</div>'+
+                     '</div>';
+                    
+                console.log("<%= @univ %>");
+                 var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);      
+                 
+                     var marker = new google.maps.Marker({
+                         position: latlng,
+                         map: map
+                     });
+                    marker.setValues({type: "point", id: i});
+                    var data_id = data[i].id;
+                    var str_id = data_id.toString();
+                    //console.log(str_id);
+                     var hash_id = "a" +str_id;
+                     markerObj = document.getElementById(hash_id);
+
+
+//event 구간
+//1.말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+//2.말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+
+ //listbox 색칠
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                         $(result_id).css("background-color","#cbefde");
+                       
+                        $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
+                       });
+
+                      };
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","#a4e2c5");
+                        
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+                     
+//4. listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","#fff");
+                        });
+
+                      };
+
+                     })(str_id));
+
+                 marker.setMap(map);
+               }//division 괄호
+
+             //univ 연세 걸리는 괄호
+             
+             
+             <% elsif @univ == "이화" %>
+               if (data[i].division == "정문(이대역)" || data[i].division == "신촌기차역" || data[i].division == "이대후문"){
+                  
+                      var infowindow = null;
+                      var infoWindow = new google.maps.InfoWindow();
+                      var contentString =
+                      '<div id="infoWindow" style="margin-bottom:5px">'+
+                         '<div class="row" style="max-width:240px">'+
+                         '<div class="col-md-4 col-sm-4 col-xs-4" style=" width: 100px; padding-left: 5px; padding-right: 0px;">' +
+                             '<img src="'+ data[i].room_img1.url + '" height="80px" width="100px">' +
+                           '</div>'+
+                         '<div class="col-md-7 col-sm-7 col-xs-7" style="width: 140px;padding-right: 0px;">' +
+                             '<div class="row" style="margin-left:1px; padding-left:0px; padding-right:0px">' +
+                               '<div class="col-md-3 col-sm-3 col-xs-3" style="margin-right:-5px; padding-left:0px; padding-right:0px">' +
+                                 '<p style="font-size: 20px; margin-top:5px">'+ data[i].price_from +'</p>' +
+                               '</div>' +
+                               '<div class="col-md-9 col-sm-9 col-xs-9" style="margin-top:6px; margin-bottom:5px; padding-left:0px; padding-right:0px">'+
+                                '(예치금:'+ data[i].small_deposit + '만원)&nbsp;'+
+                               '</div>'+
+                            '</div>'+
+                           '<p style="margin-bottom:5px; font-size:12px">거리 : 정문에서 10분</p>' +
+                           '<p style="color:#eb9088; margin-bottom:5px; font-size:13px">'+ '#아침,저녁</p>' +
+                         '</div>'+
+                         '</div>'+
+                       '</div>';
+                      
+                  console.log("<%= @univ %>");
+                   var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);    
+                    var marker = new google.maps.Marker({
+                         position: latlng,
+                         map: map
+                     });
+                    marker.setValues({type: "point", id: i});
+                    var data_id = data[i].id;
+                    var str_id = data_id.toString();
+                    //console.log(str_id);
+                     var hash_id = "a" +str_id;
+                     markerObj = document.getElementById(hash_id);
+
+
+//event 구간
+//1.말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+//2.말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+
+ //listbox 색칠
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                         $(result_id).css("background-color","#cbefde");
+                       
+                        $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
+                       });
+
+                      };
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","#a4e2c5");
+                        
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+                     
+//4. listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","#fff");
+                        });
+
+                      };
+
+                     })(str_id));
+
+                 marker.setMap(map);
+                }//univ 이화 걸리는 괄호
+              
+            
+             
+             <% else  %> 
+                  var infowindow = null;
+                  var infoWindow = new google.maps.InfoWindow();
+                  var contentString =
+                  '<div id="infoWindow" style="margin-bottom:5px">'+
+                     '<div class="row" style="max-width:240px">'+
+                     '<div class="col-md-4 col-sm-4 col-xs-4" style=" width: 100px; padding-left: 5px; padding-right: 0px;">' +
+                         '<img src="'+ data[i].room_img1.url + '" height="80px" width="100px">' +
+                       '</div>'+
+                     '<div class="col-md-7 col-sm-7 col-xs-7" style="width: 140px;padding-right: 0px;">' +
+                         '<div class="row" style="margin-left:1px; padding-left:0px; padding-right:0px">' +
+                           '<div class="col-md-3 col-sm-3 col-xs-3" style="margin-right:-5px; padding-left:0px; padding-right:0px">' +
+                             '<p style="font-size: 20px; margin-top:5px">'+ data[i].price_from +'</p>' +
+                           '</div>' +
+                           '<div class="col-md-9 col-sm-9 col-xs-9" style="margin-top:6px; margin-bottom:5px; padding-left:0px; padding-right:0px">'+
+                            '(예치금:'+ data[i].small_deposit + '만원)&nbsp;'+
+                           '</div>'+
+                        '</div>'+
+                       '<p style="margin-bottom:5px; font-size:12px">거리 : 정문에서 10분</p>' +
+                       '<p style="color:#eb9088; margin-bottom:5px; font-size:13px">'+ '#아침,저녁</p>' +
+                     '</div>'+
+                     '</div>'+
+                   '</div>';
+                  
+              console.log("<%= @univ %>");
+               var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);  
+                      var marker = new google.maps.Marker({
+                           position: latlng,
+                           map: map
+                       });
+                      marker.setValues({type: "point", id: i});
+                      var data_id = data[i].id;
+                      var str_id = data_id.toString();
+                      //console.log(str_id);
+                       var hash_id = "a" +str_id;
+                       markerObj = document.getElementById(hash_id);
+      
+      
+      //event 구간
+      //1.말풍선 출력 
+                          google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                                return function() {
+                                  infoWindow.setContent(contentString);
+                                  infoWindow.open(map,marker);
+      
+                                 }; // function end
+                            })(marker,contentString,infoWindow));
+      
+      //2.말풍선 지우기
+                           google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                             return function()  {
+                              infoWindow.close();
+                              };
+                           })(infoWindow));
+      
+       // listbox로 말풍선 띄우기
+                           google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                             return function() {
+                               infoWindow.setContent(contentString);
+                               infoWindow.open(map,marker);
+                             }; // function end
+                           })(marker,contentString,infoWindow));
+      
+       // listbox로 말풍선 띄운 것 지우기
+                            google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                              return function() {
+                                infoWindow.close();
+                              }; // function end
+                            })(infoWindow));
+       
+      
+       //listbox 색칠
+                           google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                            return function() {
+                               var result_id = "#" + "a" + str_id;
+                             //console.log(result_id);
+      
+                             $(document).ready(function() {
+                               $(result_id).css("background-color","#cbefde");
+                             
+                              $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
+                             });
+      
+                            };
+      
+                           })(str_id));
+      
+      // listbox 색 입히기
+                          google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                           return function() { 
+                              var result_id = "#" + "a" + str_id;
+                            //console.log(result_id); 
+      
+                            $(document).ready(function() {
+                              $(result_id).css("background-color","#a4e2c5");
+                              
+                            });
+       
+                           };
+      
+                          })(str_id));
+      
+                           
+      //4. listbox 색 지우기
+                           google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                            return function() {
+                               var result_id = "#" + "a" + str_id;
+                             //console.log(result_id);
+      
+                             $(document).ready(function() {
+                              $(result_id).css("background-color","#fff");
+                              });
+      
+                            };
+      
+                           })(str_id));
+
+                 marker.setMap(map);
+             <% end %>
+             
+           }//for loop
+             
          }); //학교별 마커 띄우기 끝
 
-
- 
-        
       } //구글맵 기본 설정 끝
       google.maps.event.addDomListener(window, 'load', initialize);
       
@@ -1618,14 +1992,11 @@
         <div class="panel-heading col-lg-12 col-md-12 col-xs-12 col-sm-12" style="background-color:#2ecc71; color:#fff; padding:5px; padding-left:10px; font-size:0.8em">검색결과</div>
         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 roomList panel-body" style="padding:0px;">
       
-      <%# cnt=0 %>
-      <% @hasuk.each do |c| %>
-        <% if (c.univ_distance1 || c.univ_distance2 || c.univ_distance3 ).include? @univ %>
-          <%# cnt= cnt+1 %>
-          <%# if cnt == 6 %>
-            <%# break %>
-          <%# end %>
+
+    <% @hasuk.each do |c| %>
+      <% if @univ == "서강" %>
           
+          <% if c.division =="남문(대흥역)" %>
               <!--개별 방 박스 1 시작-->
               
                 <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
@@ -1775,45 +2146,63 @@
                             <% if c.univ_distance1 == "이화" %>
                               <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
                               
-                              <% if c.subway1 == "대흥" %>
-                                  <span id="subway" style="color:#9a4510"><%= c.subway1 %>역</span>
-                              <% elsif c.subway1 == "신촌" || c.subway1 == "이대" %>
-                                  <span id="subway" style="color:#009044"><%= c.subway1 %>역</span>
-                              <% elsif c.subway1 == "서강대" %>
-                                  <span id="subway" style="color:#41b9b9"><%= c.subway1 %>역</span>
-                              <% elsif c.subway1 == "신촌기차" %>
-                                  <span id="subway" style="color:#0063b1"><%= c.subway1 %>역</span>
+                              <% if c.transportation_kind == "지하철" %>
+                                  <% if c.transportation_subway == "대흥" %>
+                                      <span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
+                                      <span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "서강대" %>
+                                      <span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌기차" %>
+                                      <span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                  <% end %>
+                              
+                              <% elsif c.transportation_kind == "버스" %>
+                                  
+                              
                               <% end %>
                               
-                              <span> <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
+                              <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                             <% elsif c.univ_distance1 =="서강" %>
                               <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
                               
-                              <% if c.subway1 == "대흥" %>
-                                  <span id="subway" style="color:#9a4510"><%= c.subway1 %>역</span>
-                              <% elsif c.subway1 == "신촌" || c.subway1 == "이대" %>
-                                  <span id="subway" style="color:#009044"><%= c.subway1 %>역</span>
-                              <% elsif c.subway1 == "서강대" %>
-                                  <span id="subway" style="color:#41b9b9"><%= c.subway1 %>역</span>
-                              <% elsif c.subway1 == "신촌기차" %>
-                                  <span id="subway" style="color:#0063b1"><%= c.subway1 %>역</span>
+                              <% if c.transportation_kind == "지하철" %>
+                                  <% if c.transportation_subway == "대흥" %>
+                                      <span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
+                                      <span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "서강대" %>
+                                      <span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌기차" %>
+                                      <span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                  <% end %>
+                              
+                              <% elsif c.transportation_kind == "버스" %>
+                                  
+                              
                               <% end %>
                               
-                              <span> <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
+                              <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                             <% elsif c.univ_distance1 =="연세" %>
                               <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
                               
-                              <% if c.subway1 == "대흥" %>
-                                  <span id="subway" style="color:#9a4510"><%= c.subway1 %>역</span>
-                              <% elsif c.subway1 == "신촌" || c.subway1 == "이대" %>
-                                  <span id="subway" style="color:#009044"><%= c.subway1 %>역</span>
-                              <% elsif c.subway1 == "서강대" %>
-                                  <span id="subway" style="color:#41b9b9"><%= c.subway1 %>역</span>
-                              <% elsif c.subway1 == "신촌기차" %>
-                                  <span id="subway" style="color:#0063b1"><%= c.subway1 %>역</span>
+                              <% if c.transportation_kind == "지하철" %>
+                                  <% if c.transportation_subway == "대흥" %>
+                                      <span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
+                                      <span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "서강대" %>
+                                      <span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌기차" %>
+                                      <span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                  <% end %>
+                              
+                              <% elsif c.transportation_kind == "버스" %>
+                                  
+                              
                               <% end %>
                               
-                              <span><%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
+                              <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                             <% end %>
                           <% else %>
                             <span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm hidden-md">|</span> 신촌기차역 1103m(21분)</span>
@@ -1828,12 +2217,678 @@
                   </a> 
                 </div>
           
-                       
+          <% end %>
           
-        <% end %>
+      <% elsif @univ == "연세" %>
           
-      <% end %>
-    <%# end %>
+          <% if c.division == "정문(신촌역)" || c.division == "연대서문" || c.division == "연대남문" || c.division == "신촌기차역" || c.division == "이대후문" %>
+
+                <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+                  <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
+                  <div class="img-responsive thumbnail">
+                    
+                    <!--이미지 지정-->
+                    <div class="image col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin:0px; padding:0px">
+                      <div id="nameOfhasuk">
+                        <p><%= c.hasuk_name %></p>
+                      </div>
+                      <img src="<%= c.room_img1.url %>" alt="이미지 없음" class="image-size" style="width:100%;">
+                    </div>
+                    
+                    <!--정보 표시-->
+                    <div class="caption" style="padding-top:5px; padding-left:0px; padding-right:0px; padding-bottom:5px">
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                        <div id="price-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                          <div style="float:left">
+                            <% unless c.price_from.nil? %>
+                            <h4 style="color:#445d82; margin-bottom:0px;">
+                              <%= c.price_from %>~<%= c.price_to %>
+                            </h4>
+                            <% else %>
+                            <h4 style="color:#445d82; margin-bottom:0px;">
+                              00~00
+                            </h4>
+                            <% end %>
+                          </div>
+                        </div>
+                        <div id="deposit-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                          <div style="float:left">
+                            <% if c.small_deposit == nil && c.big_deposit == nil %>
+                              <p style="margin-top:8px; margin-bottom:0px;">(DB 없음)</p>
+                              
+                            <% else %>
+                            
+                              <% if c.small_deposit == 0 %>
+                                
+                                <% if c.big_deposit == 0 %>
+                                  <p style="margin-top:8px; margin-bottom:0px;">(예치금 없음)</p>
+                                <% else %>
+                                  <p style="margin-top:8px; margin-bottom:0px;">(보증금 <%= c.big_deposit %>)</p>
+                                <% end %>
+                              
+                              <% else %>
+                                 <p style="margin-top:8px; margin-bottom:0px;">(예치금 <%= c.small_deposit %>)</p>
+                              <% end %>
+                            
+                            <% end %>
+                              
+                          </div>
+                        </div>
+                        <div id="gender-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                          
+                          <% if c.gender=="여성전용" %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
+                            </div>
+                          <% elsif c.gender =="남녀공용" %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#2ECC71; border:1px solid #2ECC71; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
+                            </div>
+                          <% elsif c.gender == "남녀층 분리" %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#9B59B6; border:1px solid #9B59B6; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀분리</p>
+                            </div>
+                          <% elsif c.gender == "남성전용" %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#2980b9; border:1px solid #2980B9; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
+                            </div>
+                          <% else %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">DB 없음</p>
+                            </div>
+                          <% end %>
+                          
+                        </div>
+                        <div id="icon-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                          <% if c.internet =="와이파이" || c.internet =="유선 인터넷" %>
+                            <img src="/images/icons/wifi.png" style="margin-right:2px;">
+                          <% elsif c.internet =="없음" %>  
+                            <img src="/images/icons/wifi2.png" style="margin-right:2px;">
+                          <% else %>
+                            <img src="/images/icons/wifi2.png" style="margin-right:2px;">
+                          <% end %>
+                          <% if c.personal_option8 =="화장실" %>
+                            <img src="/images/icons/toilet.png" style="margin-right:4px;">
+                          <% elsif c.personal_option8 == nil %>   
+                            <img src="/images/icons/toilet2.png" style="margin-right:4px;">
+                          <% else %>
+                            <img src="/images/icons/toilet2.png" style="margin-right:4px;">
+                          <% end %>
+                          <% if c.personal_option6 =="에어컨" %>
+                            <img src="/images/icons/air.png">
+                          <% elsif c.personal_option6 == nil %>   
+                            <img src="/images/icons/air2.png">
+                          <% else %>
+                            <img src="/images/icons/air2.png">
+                          <% end %>
+                        </div>
+                      </div><!--정보 첫번째 줄 끝-->
+                      
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                        <div id="kind-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                         <% if c.hasuk_kind == "일반하숙" %>
+                            <span style="color:#2ECC71">[일반하숙]</span>
+                          <% elsif c.hasuk_kind == "잠만 자는 방" %>
+                            <span style="color:#2ECC71">[잠만자는]</span>
+                          <% elsif c.hasuk_kind == "원룸형" %>
+                            <span style="color:#2ECC71">[원룸형]</span>
+                          <% elsif c.hasuk_kind == "고시원형" %>
+                            <span style="color:#2ECC71">[고시원형]</span>
+                          <% else %>
+                            <span style="color:#3498DB">[형태없음]</span>
+                          <% end %>
+                        </div>
+                        <div id="meal-size" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                          
+                          <% if c.meal4 == "제공 안함" %>
+                            <span>| 식사제공 안함</span>
+                          <% elsif c.meal1 == nil && c.meal2 == nil && c.meal3 == nil && c.meal4 == nil %>
+                            <span>| 식사 DB 없음</span>
+                          <% else %>
+                              <span>|</span>
+                              <% unless c.meal1.nil? %>
+                                  <span><%= c.meal1 %>,</span>
+                              <% end %>
+                              <% unless c.meal2.nil? %>
+                                  <span><%= c.meal2 %>,</span>
+                              <% end %>
+                              <% unless c.meal3.nil? %>
+                                  <span><%= c.meal3 %></span>
+                              <% end %>
+                          
+                          <% end %>
+                        </div>
+                        <div id="room-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                          <% unless c.size_from.nil? %>
+                          <span id="small-size">&nbsp;| <%=c.size_from %>~<%= c.size_to %>평</span>
+                          <% else %>
+                            <span id="small-size">&nbsp;| 0~1평</span>
+                          <% end %>
+                        </div>
+                        <div id="distance-size" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <% if c.univ_distance1 != "학교선택" %>
+                            <% if c.univ_distance1 == "이화" %>
+                              <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.transportation_kind == "지하철" %>
+                                  <% if c.transportation_subway == "대흥" %>
+                                      <span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
+                                      <span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "서강대" %>
+                                      <span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌기차" %>
+                                      <span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                  <% end %>
+                              
+                              <% elsif c.transportation_kind == "버스" %>
+                                  
+                              
+                              <% end %>
+                              
+                              <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
+                            <% elsif c.univ_distance1 =="서강" %>
+                              <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.transportation_kind == "지하철" %>
+                                  <% if c.transportation_subway == "대흥" %>
+                                      <span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
+                                      <span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "서강대" %>
+                                      <span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌기차" %>
+                                      <span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                  <% end %>
+                              
+                              <% elsif c.transportation_kind == "버스" %>
+                                  
+                              
+                              <% end %>
+                              
+                              <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
+                            <% elsif c.univ_distance1 =="연세" %>
+                              <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.transportation_kind == "지하철" %>
+                                  <% if c.transportation_subway == "대흥" %>
+                                      <span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
+                                      <span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "서강대" %>
+                                      <span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌기차" %>
+                                      <span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                  <% end %>
+                              
+                              <% elsif c.transportation_kind == "버스" %>
+                                  
+                              
+                              <% end %>
+                              
+                              <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
+                            <% end %>
+                          <% else %>
+                            <span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm hidden-md">|</span> 신촌기차역 1103m(21분)</span>
+                          <% end %>
+                        </div>
+                        
+                      </div><!--정보 두번째 줄 끝-->
+                      
+                    </div><!--정보 표시 끝-->
+                    
+                  </div>
+                  </a> 
+                </div>
+          
+          <% end %>
+          
+      <% elsif @univ == "이화" %>
+          
+          <% if c.division == "정문(이대역)" || c.division == "신촌기차역" || c.division == "이대후문" %>
+
+                <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+                  <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
+                  <div class="img-responsive thumbnail">
+                    
+                    <!--이미지 지정-->
+                    <div class="image col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin:0px; padding:0px">
+                      <div id="nameOfhasuk">
+                        <p><%= c.hasuk_name %></p>
+                      </div>
+                      <img src="<%= c.room_img1.url %>" alt="이미지 없음" class="image-size" style="width:100%;">
+                    </div>
+                    
+                    <!--정보 표시-->
+                    <div class="caption" style="padding-top:5px; padding-left:0px; padding-right:0px; padding-bottom:5px">
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                        <div id="price-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                          <div style="float:left">
+                            <% unless c.price_from.nil? %>
+                            <h4 style="color:#445d82; margin-bottom:0px;">
+                              <%= c.price_from %>~<%= c.price_to %>
+                            </h4>
+                            <% else %>
+                            <h4 style="color:#445d82; margin-bottom:0px;">
+                              00~00
+                            </h4>
+                            <% end %>
+                          </div>
+                        </div>
+                        <div id="deposit-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                          <div style="float:left">
+                            <% if c.small_deposit == nil && c.big_deposit == nil %>
+                              <p style="margin-top:8px; margin-bottom:0px;">(DB 없음)</p>
+                              
+                            <% else %>
+                            
+                              <% if c.small_deposit == 0 %>
+                                
+                                <% if c.big_deposit == 0 %>
+                                  <p style="margin-top:8px; margin-bottom:0px;">(예치금 없음)</p>
+                                <% else %>
+                                  <p style="margin-top:8px; margin-bottom:0px;">(보증금 <%= c.big_deposit %>)</p>
+                                <% end %>
+                              
+                              <% else %>
+                                 <p style="margin-top:8px; margin-bottom:0px;">(예치금 <%= c.small_deposit %>)</p>
+                              <% end %>
+                            
+                            <% end %>
+                              
+                          </div>
+                        </div>
+                        <div id="gender-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                          
+                          <% if c.gender=="여성전용" %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
+                            </div>
+                          <% elsif c.gender =="남녀공용" %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#2ECC71; border:1px solid #2ECC71; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
+                            </div>
+                          <% elsif c.gender == "남녀층 분리" %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#9B59B6; border:1px solid #9B59B6; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀분리</p>
+                            </div>
+                          <% elsif c.gender == "남성전용" %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#2980b9; border:1px solid #2980B9; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
+                            </div>
+                          <% else %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">DB 없음</p>
+                            </div>
+                          <% end %>
+                          
+                        </div>
+                        <div id="icon-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                          <% if c.internet =="와이파이" || c.internet =="유선 인터넷" %>
+                            <img src="/images/icons/wifi.png" style="margin-right:2px;">
+                          <% elsif c.internet =="없음" %>  
+                            <img src="/images/icons/wifi2.png" style="margin-right:2px;">
+                          <% else %>
+                            <img src="/images/icons/wifi2.png" style="margin-right:2px;">
+                          <% end %>
+                          <% if c.personal_option8 =="화장실" %>
+                            <img src="/images/icons/toilet.png" style="margin-right:4px;">
+                          <% elsif c.personal_option8 == nil %>   
+                            <img src="/images/icons/toilet2.png" style="margin-right:4px;">
+                          <% else %>
+                            <img src="/images/icons/toilet2.png" style="margin-right:4px;">
+                          <% end %>
+                          <% if c.personal_option6 =="에어컨" %>
+                            <img src="/images/icons/air.png">
+                          <% elsif c.personal_option6 == nil %>   
+                            <img src="/images/icons/air2.png">
+                          <% else %>
+                            <img src="/images/icons/air2.png">
+                          <% end %>
+                        </div>
+                      </div><!--정보 첫번째 줄 끝-->
+                      
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                        <div id="kind-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                         <% if c.hasuk_kind == "일반하숙" %>
+                            <span style="color:#2ECC71">[일반하숙]</span>
+                          <% elsif c.hasuk_kind == "잠만 자는 방" %>
+                            <span style="color:#2ECC71">[잠만자는]</span>
+                          <% elsif c.hasuk_kind == "원룸형" %>
+                            <span style="color:#2ECC71">[원룸형]</span>
+                          <% elsif c.hasuk_kind == "고시원형" %>
+                            <span style="color:#2ECC71">[고시원형]</span>
+                          <% else %>
+                            <span style="color:#3498DB">[형태없음]</span>
+                          <% end %>
+                        </div>
+                        <div id="meal-size" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                          
+                          <% if c.meal4 == "제공 안함" %>
+                            <span>| 식사제공 안함</span>
+                          <% elsif c.meal1 == nil && c.meal2 == nil && c.meal3 == nil && c.meal4 == nil %>
+                            <span>| 식사 DB 없음</span>
+                          <% else %>
+                              <span>|</span>
+                              <% unless c.meal1.nil? %>
+                                  <span><%= c.meal1 %>,</span>
+                              <% end %>
+                              <% unless c.meal2.nil? %>
+                                  <span><%= c.meal2 %>,</span>
+                              <% end %>
+                              <% unless c.meal3.nil? %>
+                                  <span><%= c.meal3 %></span>
+                              <% end %>
+                          
+                          <% end %>
+                        </div>
+                        <div id="room-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                          <% unless c.size_from.nil? %>
+                          <span id="small-size">&nbsp;| <%=c.size_from %>~<%= c.size_to %>평</span>
+                          <% else %>
+                            <span id="small-size">&nbsp;| 0~1평</span>
+                          <% end %>
+                        </div>
+                        <div id="distance-size" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <% if c.univ_distance1 != "학교선택" %>
+                            <% if c.univ_distance1 == "이화" %>
+                              <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.transportation_kind == "지하철" %>
+                                  <% if c.transportation_subway == "대흥" %>
+                                      <span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
+                                      <span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "서강대" %>
+                                      <span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌기차" %>
+                                      <span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                  <% end %>
+                              
+                              <% elsif c.transportation_kind == "버스" %>
+                                  
+                              
+                              <% end %>
+                              
+                              <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
+                            <% elsif c.univ_distance1 =="서강" %>
+                              <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.transportation_kind == "지하철" %>
+                                  <% if c.transportation_subway == "대흥" %>
+                                      <span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
+                                      <span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "서강대" %>
+                                      <span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌기차" %>
+                                      <span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                  <% end %>
+                              
+                              <% elsif c.transportation_kind == "버스" %>
+                                  
+                              
+                              <% end %>
+                              
+                              <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
+                            <% elsif c.univ_distance1 =="연세" %>
+                              <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.transportation_kind == "지하철" %>
+                                  <% if c.transportation_subway == "대흥" %>
+                                      <span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
+                                      <span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "서강대" %>
+                                      <span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌기차" %>
+                                      <span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                  <% end %>
+                              
+                              <% elsif c.transportation_kind == "버스" %>
+                                  
+                              
+                              <% end %>
+                              
+                              <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
+                            <% end %>
+                          <% else %>
+                            <span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm hidden-md">|</span> 신촌기차역 1103m(21분)</span>
+                          <% end %>
+                        </div>
+                        
+                      </div><!--정보 두번째 줄 끝-->
+                      
+                    </div><!--정보 표시 끝-->
+                    
+                  </div>
+                  </a> 
+                </div>        
+        
+          <% end %><!-- division-->
+          
+      <% elsif @univ !="서강" && @univ !="연세" && @univ !="이화" %>
+
+                <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+                  <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
+                  <div class="img-responsive thumbnail">
+                    
+                    <!--이미지 지정-->
+                    <div class="image col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin:0px; padding:0px">
+                      <div id="nameOfhasuk">
+                        <p><%= c.hasuk_name %></p>
+                      </div>
+                      <img src="<%= c.room_img1.url %>" alt="이미지 없음" class="image-size" style="width:100%;">
+                    </div>
+                    
+                    <!--정보 표시-->
+                    <div class="caption" style="padding-top:5px; padding-left:0px; padding-right:0px; padding-bottom:5px">
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                        <div id="price-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                          <div style="float:left">
+                            <% unless c.price_from.nil? %>
+                            <h4 style="color:#445d82; margin-bottom:0px;">
+                              <%= c.price_from %>~<%= c.price_to %>
+                            </h4>
+                            <% else %>
+                            <h4 style="color:#445d82; margin-bottom:0px;">
+                              00~00
+                            </h4>
+                            <% end %>
+                          </div>
+                        </div>
+                        <div id="deposit-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                          <div style="float:left">
+                            <% if c.small_deposit == nil && c.big_deposit == nil %>
+                              <p style="margin-top:8px; margin-bottom:0px;">(DB 없음)</p>
+                              
+                            <% else %>
+                            
+                              <% if c.small_deposit == 0 %>
+                                
+                                <% if c.big_deposit == 0 %>
+                                  <p style="margin-top:8px; margin-bottom:0px;">(예치금 없음)</p>
+                                <% else %>
+                                  <p style="margin-top:8px; margin-bottom:0px;">(보증금 <%= c.big_deposit %>)</p>
+                                <% end %>
+                              
+                              <% else %>
+                                 <p style="margin-top:8px; margin-bottom:0px;">(예치금 <%= c.small_deposit %>)</p>
+                              <% end %>
+                            
+                            <% end %>
+                              
+                          </div>
+                        </div>
+                        <div id="gender-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                          
+                          <% if c.gender=="여성전용" %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
+                            </div>
+                          <% elsif c.gender =="남녀공용" %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#2ECC71; border:1px solid #2ECC71; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
+                            </div>
+                          <% elsif c.gender == "남녀층 분리" %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#9B59B6; border:1px solid #9B59B6; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀분리</p>
+                            </div>
+                          <% elsif c.gender == "남성전용" %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#2980b9; border:1px solid #2980B9; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
+                            </div>
+                          <% else %>
+                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
+                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">DB 없음</p>
+                            </div>
+                          <% end %>
+                          
+                        </div>
+                        <div id="icon-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                          <% if c.internet =="와이파이" || c.internet =="유선 인터넷" %>
+                            <img src="/images/icons/wifi.png" style="margin-right:2px;">
+                          <% elsif c.internet =="없음" %>  
+                            <img src="/images/icons/wifi2.png" style="margin-right:2px;">
+                          <% else %>
+                            <img src="/images/icons/wifi2.png" style="margin-right:2px;">
+                          <% end %>
+                          <% if c.personal_option8 =="화장실" %>
+                            <img src="/images/icons/toilet.png" style="margin-right:4px;">
+                          <% elsif c.personal_option8 == nil %>   
+                            <img src="/images/icons/toilet2.png" style="margin-right:4px;">
+                          <% else %>
+                            <img src="/images/icons/toilet2.png" style="margin-right:4px;">
+                          <% end %>
+                          <% if c.personal_option6 =="에어컨" %>
+                            <img src="/images/icons/air.png">
+                          <% elsif c.personal_option6 == nil %>   
+                            <img src="/images/icons/air2.png">
+                          <% else %>
+                            <img src="/images/icons/air2.png">
+                          <% end %>
+                        </div>
+                      </div><!--정보 첫번째 줄 끝-->
+                      
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                        <div id="kind-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                         <% if c.hasuk_kind == "일반하숙" %>
+                            <span style="color:#2ECC71">[일반하숙]</span>
+                          <% elsif c.hasuk_kind == "잠만 자는 방" %>
+                            <span style="color:#2ECC71">[잠만자는]</span>
+                          <% elsif c.hasuk_kind == "원룸형" %>
+                            <span style="color:#2ECC71">[원룸형]</span>
+                          <% elsif c.hasuk_kind == "고시원형" %>
+                            <span style="color:#2ECC71">[고시원형]</span>
+                          <% else %>
+                            <span style="color:#3498DB">[형태없음]</span>
+                          <% end %>
+                        </div>
+                        <div id="meal-size" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                          
+                          <% if c.meal4 == "제공 안함" %>
+                            <span>| 식사제공 안함</span>
+                          <% elsif c.meal1 == nil && c.meal2 == nil && c.meal3 == nil && c.meal4 == nil %>
+                            <span>| 식사 DB 없음</span>
+                          <% else %>
+                              <span>|</span>
+                              <% unless c.meal1.nil? %>
+                                  <span><%= c.meal1 %>,</span>
+                              <% end %>
+                              <% unless c.meal2.nil? %>
+                                  <span><%= c.meal2 %>,</span>
+                              <% end %>
+                              <% unless c.meal3.nil? %>
+                                  <span><%= c.meal3 %></span>
+                              <% end %>
+                          
+                          <% end %>
+                        </div>
+                        <div id="room-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                          <% unless c.size_from.nil? %>
+                          <span id="small-size">&nbsp;| <%=c.size_from %>~<%= c.size_to %>평</span>
+                          <% else %>
+                            <span id="small-size">&nbsp;| 0~1평</span>
+                          <% end %>
+                        </div>
+                        <div id="distance-size" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <% if c.univ_distance1 != "학교선택" %>
+                            <% if c.univ_distance1 == "이화" %>
+                              <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.transportation_kind == "지하철" %>
+                                  <% if c.transportation_subway == "대흥" %>
+                                      <span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
+                                      <span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "서강대" %>
+                                      <span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌기차" %>
+                                      <span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                  <% end %>
+                              
+                              <% elsif c.transportation_kind == "버스" %>
+                                  
+                              
+                              <% end %>
+                              
+                              <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
+                            <% elsif c.univ_distance1 =="서강" %>
+                              <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.transportation_kind == "지하철" %>
+                                  <% if c.transportation_subway == "대흥" %>
+                                      <span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
+                                      <span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "서강대" %>
+                                      <span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌기차" %>
+                                      <span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                  <% end %>
+                              
+                              <% elsif c.transportation_kind == "버스" %>
+                                  
+                              
+                              <% end %>
+                              
+                              <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
+                            <% elsif c.univ_distance1 =="연세" %>
+                              <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              
+                              <% if c.transportation_kind == "지하철" %>
+                                  <% if c.transportation_subway == "대흥" %>
+                                      <span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
+                                      <span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "서강대" %>
+                                      <span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                  <% elsif c.transportation_subway == "신촌기차" %>
+                                      <span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                  <% end %>
+                              
+                              <% elsif c.transportation_kind == "버스" %>
+                                  
+                              
+                              <% end %>
+                              
+                              <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
+                            <% end %>
+                          <% else %>
+                            <span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm hidden-md">|</span> 신촌기차역 1103m(21분)</span>
+                          <% end %>
+                        </div>
+                        
+                      </div><!--정보 두번째 줄 끝-->
+                      
+                    </div><!--정보 표시 끝-->
+                    
+                  </div>
+                  </a> 
+                </div>                  
+      <% end %><!-- univ 필터-->
+      
+    <% end %><!--반복문 -->
     
     </div>
   </div>

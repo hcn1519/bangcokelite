@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20151028050149) do
     t.string   "address"
     t.float    "lat"
     t.float    "lng"
+    t.string   "division"
     t.string   "univ_distance1"
     t.string   "univ_distance2"
     t.string   "sogang_gate1"

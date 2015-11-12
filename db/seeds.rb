@@ -33,6 +33,7 @@ user2.save!
 
 
 HasukHouse.create(
+    division:"남문(대흥역)",
     id:1, user_id:2,
     hasuk_name: "서강 하숙방1", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"일반하숙", gender:"남성전용",
@@ -86,6 +87,7 @@ HasukHouse.create(
     )
 
 HasukHouse.create(
+    division:"남문(대흥역)",
     id:2, user_id:2,
     hasuk_name: "서강 하숙방2", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"고시원형", gender:"남녀층 분리",
@@ -139,6 +141,7 @@ HasukHouse.create(
      )
     
 HasukHouse.create(
+    division:"남문(대흥역)",
     id:3, user_id:2,
     hasuk_name: "서강 하숙방3", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"원룸형", gender:"남녀공용",
@@ -192,6 +195,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"남문(대흥역)",
     id:4, user_id:2,
     hasuk_name: "서강 하숙방4", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"잠만 자는 방", gender:"여성전용",
@@ -245,6 +249,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"남문(대흥역)",
     id:5, user_id:2,
     hasuk_name: "서강 하숙방5", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"일반하숙", gender:"남성전용",
@@ -298,6 +303,7 @@ HasukHouse.create(
     )
 
 HasukHouse.create(
+    division:"남문(대흥역)",
     id:6, user_id:2,
     hasuk_name: "서강 하숙방6", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"고시원형", gender:"남녀층 분리",
@@ -351,6 +357,7 @@ HasukHouse.create(
      )
     
 HasukHouse.create(
+    division:"남문(대흥역)",
     id:7, user_id:2,
     hasuk_name: "서강 하숙방7", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"원룸형", gender:"남녀공용",
@@ -404,6 +411,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"남문(대흥역)",
     id:8, user_id:2,
     hasuk_name: "서강 하숙방8", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"잠만 자는 방", gender:"여성전용",
@@ -457,6 +465,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"남문(대흥역)",
     id:9, user_id:2,
     hasuk_name: "서강 하숙방9", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"원룸형", gender:"남녀공용",
@@ -510,6 +519,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"남문(대흥역)",
     id:10, user_id:2,
     hasuk_name: "서강 하숙방10", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"잠만 자는 방", gender:"여성전용",
@@ -564,6 +574,7 @@ HasukHouse.create(
 #연세대 씨드
 
 HasukHouse.create(
+    division:"연대서문",
     id:11, user_id:2,
     hasuk_name: "연세 하숙방1", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"일반하숙", gender:"남성전용",
@@ -617,6 +628,7 @@ HasukHouse.create(
     )
 
 HasukHouse.create(
+    division:"연대서문",
     id:12, user_id:2,
     hasuk_name: "연세 하숙방2", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"고시원형", gender:"남녀층 분리",
@@ -670,6 +682,7 @@ HasukHouse.create(
      )
     
 HasukHouse.create(
+    division:"연대서문",
     id:13, user_id:2,
     hasuk_name: "연세 하숙방3", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"원룸형", gender:"남녀공용",
@@ -723,6 +736,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"연대서문",
     id:14, user_id:2,
     hasuk_name: "연세 하숙방4", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"잠만 자는 방", gender:"여성전용",
@@ -776,6 +790,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"연대서문",
     id:15, user_id:2,
     hasuk_name: "연세 하숙방5", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"일반하숙", gender:"남성전용",
@@ -829,6 +844,7 @@ HasukHouse.create(
     )
 
 HasukHouse.create(
+    division:"연대남문",
     id:16, user_id:2,
     hasuk_name: "연세 하숙방6", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"고시원형", gender:"남녀층 분리",
@@ -882,6 +898,7 @@ HasukHouse.create(
      )
     
 HasukHouse.create(
+    division:"연대남문",
     id:17, user_id:2,
     hasuk_name: "연세 하숙방7", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"원룸형", gender:"남녀공용",
@@ -935,6 +952,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"연대남문",
     id:18, user_id:2,
     hasuk_name: "연세 하숙방8", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"잠만 자는 방", gender:"여성전용",
@@ -988,6 +1006,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"연대남문",
     id:19, user_id:2,
     hasuk_name: "연세 하숙방9", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"원룸형", gender:"남녀공용",
@@ -1041,6 +1060,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"연대남문",
     id:20, user_id:2,
     hasuk_name: "연세 하숙방10", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"잠만 자는 방", gender:"여성전용",
@@ -1094,6 +1114,7 @@ HasukHouse.create(
      )     
 
 HasukHouse.create(
+    division:"정문(신촌역)",
     id:21, user_id:2,
     hasuk_name: "연세 하숙방11", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"잠만 자는 방", gender:"여성전용",
@@ -1146,6 +1167,7 @@ HasukHouse.create(
      discount_price:0
      )     
 HasukHouse.create(
+    division:"정문(신촌역)",
     id:22, user_id:2,
     hasuk_name: "연세 하숙방12", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"잠만 자는 방", gender:"여성전용",
@@ -1199,6 +1221,7 @@ HasukHouse.create(
      )     
 
 HasukHouse.create(
+    division:"정문(신촌역)",
     id:23, user_id:2,
     hasuk_name: "연세 하숙방13", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"잠만 자는 방", gender:"여성전용",
@@ -1252,6 +1275,7 @@ HasukHouse.create(
      )     
      
 HasukHouse.create(
+    division:"정문(신촌역)",
     id:24, user_id:2,
     hasuk_name: "연세 하숙방14", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"잠만 자는 방", gender:"여성전용",
@@ -1306,6 +1330,7 @@ HasukHouse.create(
      
      
 HasukHouse.create(
+    division:"정문(신촌역)",
     id:25, user_id:2,
     hasuk_name: "연세 하숙방15", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"잠만 자는 방", gender:"여성전용",
@@ -1363,6 +1388,7 @@ HasukHouse.create(
 #이화여대 씨드
 
 HasukHouse.create(
+    division:"정문(이대역)",
     id:26, user_id:2,
     hasuk_name: "이화 하숙방1", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"일반하숙", gender:"남성전용",
@@ -1416,6 +1442,7 @@ HasukHouse.create(
     )
 
 HasukHouse.create(
+    division:"정문(이대역)",
     id:27, user_id:2,
     hasuk_name: "이화 하숙방2", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"고시원형", gender:"남녀층 분리",
@@ -1469,6 +1496,7 @@ HasukHouse.create(
      )
     
 HasukHouse.create(
+    division:"정문(이대역)",
     id:28, user_id:2,
     hasuk_name: "이화 하숙방3", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"원룸형", gender:"남녀공용",
@@ -1522,6 +1550,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"정문(이대역)",
     id:29, user_id:2,
     hasuk_name: "이화 하숙방4", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"잠만 자는 방", gender:"여성전용",
@@ -1575,6 +1604,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"정문(이대역)",
     id:30, user_id:2,
     hasuk_name: "이화 하숙방5", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"일반하숙", gender:"남녀공용",
@@ -1630,6 +1660,7 @@ HasukHouse.create(
 
 #이대 연대 겹치는 구역, 신촌기차역
 HasukHouse.create(
+    division:"신촌기차역",
     id:31, user_id:2,
     hasuk_name: "이화연대 하숙방1", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"일반하숙", gender:"남성전용",
@@ -1683,6 +1714,7 @@ HasukHouse.create(
     )
 
 HasukHouse.create(
+    division:"신촌기차역",
     id:32, user_id:2,
     hasuk_name: "이화연대 하숙방2", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"고시원형", gender:"남녀층 분리",
@@ -1736,6 +1768,7 @@ HasukHouse.create(
      )
     
 HasukHouse.create(
+    division:"신촌기차역",
     id:33, user_id:2,
     hasuk_name: "이화연대 하숙방3", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"원룸형", gender:"남녀공용",
@@ -1789,6 +1822,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"신촌기차역",
     id:34, user_id:2,
     hasuk_name: "이화연대 하숙방4", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"잠만 자는 방", gender:"여성전용",
@@ -1842,6 +1876,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"신촌기차역",
     id:35, user_id:2,
     hasuk_name: "이화연대 하숙방5", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"일반하숙", gender:"남녀공용",
@@ -1897,6 +1932,7 @@ HasukHouse.create(
 
 #이대 연대 겹치는 구역, 이대후문, 연대 동문
 HasukHouse.create(
+    division:"이대후문",
     id:36, user_id:2,
     hasuk_name: "이화연대 하숙방6", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"일반하숙", gender:"남성전용",
@@ -1950,6 +1986,7 @@ HasukHouse.create(
     )
 
 HasukHouse.create(
+    division:"이대후문",
     id:37, user_id:2,
     hasuk_name: "이화연대 하숙방7", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"고시원형", gender:"남녀층 분리",
@@ -2003,6 +2040,7 @@ HasukHouse.create(
      )
     
 HasukHouse.create(
+    division:"이대후문",
     id:38, user_id:2,
     hasuk_name: "이화연대 하숙방8", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"원룸형", gender:"남녀공용",
@@ -2056,6 +2094,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"이대후문",
     id:39, user_id:2,
     hasuk_name: "이화연대 하숙방9", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"잠만 자는 방", gender:"여성전용",
@@ -2109,6 +2148,7 @@ HasukHouse.create(
      )
 
 HasukHouse.create(
+    division:"이대후문",
     id:40, user_id:2,
     hasuk_name: "이화연대 하숙방10", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"일반하숙", gender:"남녀공용",

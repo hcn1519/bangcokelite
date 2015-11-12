@@ -2841,13 +2841,11 @@
                 //구역별 지도 중심 정하기
       -->
               
-      <%# cnt=0 %>
+      
       <% @hasuk.each do |c| %>
-        <% if (c.univ_distance1 || c.univ_distance2 || c.univ_distance3 ).include? @univ %>
-          <%# cnt= cnt+1 %>
-          <%# if cnt == 6 %>
-            <%# break %>
-          <%# end %>
+        
+        <%# if (c.univ_distance1 || c.univ_distance2 ).include? @univ %>
+
         <% if @hasuk_kind == c.hasuk_kind || @hasuk_kind.nil? %>
           
         <% if @gender == c.gender || @gender.nil? %>
@@ -2867,36 +2865,7 @@
    
         <% if @distance_i >= c.distance_time1 || @distance_i == 0 %>
         
-          <% if c.sogang_gate1 != "교문선택" %>
-            <% @sogang_section = c.univ_distance1 + "대" + "남문" %>
-            <% else %>
-            <% @sogang_section = "없음"%>
-          <% end %>
-
-          <!-- @학교_section은 '서강대정문' 추출 or 없으면 '없음' 추출-->  
-          <% if c.yonsei_gate1 != "교문선택" %>
-            <% @yonsei_section = c.univ_distance1 + "대" + c.yonsei_gate1 %>
-            <% else %>
-            <% @yonsei_section = "없음"%>
-          <% end %>
-          
-          <% if c.ewha_gate1 != "교문선택" %>
-            <% @ewha_section = c.univ_distance1 + "여대" + c.ewha_gate1 %>
-            <% else %>
-            <% @ewha_section = "없음" %>
-          <% end %>
-          
-          <%# if @section.include? "정문2" %>
-          <!-- 명물거리 구역 생각-->
-          <%# end %>
-          
-          <% @all_section = [@sogang_section, @yonsei_section, @ewha_section] %>
-          <!--구역 나누기 트릭 -->
-          <% if @section.nil? %>
-            <% @section = "구역없음" %>
-          <% end %>
-        <% 0.upto(1) do |i| %>
-          <% if @section.include? @all_section[i] %>
+          <% if @section == c.division %>
               <!--개별 방 박스 1 시작-->
               
                 <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
@@ -3043,6 +3012,7 @@
                         </div>
                         <div id="distance-size" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <% if c.univ_distance1 != "학교선택" %>
+                          
                             <% if c.univ_distance1 == "이화" %>
                               <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
                               <% if c.transportation_kind == "지하철" %>
@@ -3063,7 +3033,7 @@
                               
                               
                               
-                              <span> <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
+                              <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                             <% elsif c.univ_distance1 =="서강" %>
                               <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
                               
@@ -3083,7 +3053,7 @@
                               
                               <% end %>
                               
-                              <span> <%= c.subway_distance1 %>m(<%= c.subway_distance_time1 %>분)</span>
+                              <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                             <% elsif c.univ_distance1 =="연세" %>
                               <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
                               
@@ -3103,11 +3073,10 @@
                               
                               <% end %>
                                   <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
-
-                            <% end %>
+                            <% end %><!-- univ 구분 end -->
                           <% else %>
                             <span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-xs hidden-lg"> <span id="subway"> <span class="hidden-sm hidden-md">|</span> 신촌기차역 1103m(21분)</span>
-                          <% end %>
+                          <% end %><!-- 학교 선택 구분 end-->
                         </div>
                         
                       </div>
@@ -3118,7 +3087,7 @@
                 </div>
         
         <% end %><!--구역 범위에 걸리는 end -->  
-        <% end %><!--for loop -->
+
         <% end %><!--거리 범위에 걸리는 end -->  
               
         <% end %><!--가격 범위에 걸리는 end -->
@@ -3127,7 +3096,7 @@
             
         <% end %><!-- 하숙방 종류에 걸리는 end -->             
           
-        <% end %><!--@univ 걸리는 end -->
+        <%# end %><!--@univ 걸리는 end -->
           
       <% end %><!--@hasuk each end -->
 
@@ -3338,7 +3307,5 @@ $(document).ready(function(){
 
 
   </script>
-  
-  
 
 </body>

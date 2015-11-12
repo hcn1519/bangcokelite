@@ -65,6 +65,7 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.string :address
       t.float :lat
       t.float :lng
+      t.string :division
       
       #교문까지 거리 및 시간
       t.string :univ_distance1
