@@ -14,10 +14,12 @@ puts 'CREATED ADMIN USER: ' << user.email
 @meal = ["아침", "점심", "저녁", "제공 안함"]
 @personal_option = ["침대", "책상", "옷장", "행거", "수납장", "에어컨", "TV", "화장실", "샤워기", "세탁기", "냉장고", "전자레인지", "가스레인지", "인덕션"]
 @common_option = ["중앙난방", "화장실", "샤워실", "세탁실", "세제", "냉장고", "전자레인지", "가스레인지", "인덕션", "정수기"]
-@room_img = ["http://subwayfix-bigwindow.c9.io/images/bangs/ha1.jpg","http://subwayfix-bigwindow.c9.io/images/bangs/ha2.jpg","http://subwayfix-bigwindow.c9.io/images/bangs/ha3.jpg",
-            "http://subwayfix-bigwindow.c9.io/images/bangs/ha4.jpg","http://subwayfix-bigwindow.c9.io/images/bangs/ha5.jpg","http://subwayfix-bigwindow.c9.io/images/bangs/ha6.jpg",
-            "http://subwayfix-bigwindow.c9.io/images/bangs/ha7.jpg","http://subwayfix-bigwindow.c9.io/images/bangs/ha8.jpg","http://subwayfix-bigwindow.c9.io/images/bangs/ha9.jpg",
-            "http://subwayfix-bigwindow.c9.io/images/bangs/ha10.jpg","http://subwayfix-bigwindow.c9.io/images/bangs/ha11.jpg"]
+
+for i in 1..20 do
+   @room_img = Array.new
+   @room_img[i-1] = ["images/bangs/ha#{i}.jpg"] 
+end
+
 
 
 user2 = User.new
@@ -59,14 +61,14 @@ HasukHouse.create(
      ewha_gate1:"교문선택", ewha_gate2:"교문선택",
      yonsei_gate1:"교문선택", yonsei_gate2:"교문선택",
      distance_time1: 5, distance1: 282,
-      
+     
       #교통수단까지 거리 및 시간
      transportation_kind:"지하철", transportation_subway:"대흥",  transportation_distance_time: 7,
      transportation_distance: 460,
-      
-     room_img1:"/images/bangs/ha1.jpg",
-     room_img2:"#{@room_img[7]}",
-     room_img3:"#{@room_img[8]}",
+
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha1.jpg")),
+     room_img2:"",
+     room_img3:"",
      room_img4:"",
      room_img5:"",
      room_img6:"",
@@ -118,7 +120,7 @@ HasukHouse.create(
      transportation_kind:"지하철", transportation_subway:"대흥",  transportation_distance_time:11,
      transportation_distance:723,
       
-     room_img1:"/images/bangs/ha2.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha2.jpg")),
      room_img2:"#{@room_img[1]}",
      room_img3:"#{@room_img[2]}",
      room_img4:"",
@@ -172,7 +174,7 @@ HasukHouse.create(
      transportation_kind:"지하철", transportation_subway:"대흥",  transportation_distance_time:8,
      transportation_distance:482,
       
-     room_img1:"/images/bangs/ha3.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha3.jpg")),
      room_img2:"#{@room_img[0]}",
      room_img3:"#{@room_img[1]}",
      room_img4:"",
@@ -226,7 +228,7 @@ HasukHouse.create(
      transportation_kind:"지하철", transportation_subway:"서강대",  transportation_distance_time:4,
      transportation_distance:246,
       
-     room_img1:"/images/bangs/ha4.jpg",
+    :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha4.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -280,7 +282,7 @@ HasukHouse.create(
      transportation_kind:"지하철", transportation_subway:"서강대",  transportation_distance_time: 7,
      transportation_distance: 465,
       
-     room_img1:"/images/bangs/ha1.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha5.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -334,7 +336,7 @@ HasukHouse.create(
      transportation_kind:"지하철", transportation_subway:"서강대",  transportation_distance_time:12,
      transportation_distance:760,
       
-     room_img1:"/images/bangs/ha2.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha6.jpg")),
      room_img2:"#{@room_img[1]}",
      room_img3:"#{@room_img[2]}",
      room_img4:"",
@@ -388,7 +390,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"광성중고등학교",  transportation_distance_time:9,
      transportation_distance:500,
       
-     room_img1:"/images/bangs/ha3.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha7.jpg")),
      room_img2:"#{@room_img[0]}",
      room_img3:"#{@room_img[1]}",
      room_img4:"",
@@ -442,7 +444,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"광성중고등학교",  transportation_distance_time:4,
      transportation_distance:250,
       
-     room_img1:"/images/bangs/ha4.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha8.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -496,7 +498,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"광성중고등학교",  transportation_distance_time:8,
      transportation_distance:483,
       
-     room_img1:"/images/bangs/ha3.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha9.jpg")),
      room_img2:"#{@room_img[0]}",
      room_img3:"#{@room_img[1]}",
      room_img4:"",
@@ -550,7 +552,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"광성중고등학교",  transportation_distance_time:4,
      transportation_distance:246,
       
-     room_img1:"/images/bangs/ha4.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha10.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -605,7 +607,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"서대문우체국",  transportation_distance_time: 15,
      transportation_distance: 860,
       
-     room_img1:"/images/bangs/ha1.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha11.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -659,7 +661,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"서대문우체국",  transportation_distance_time:14,
      transportation_distance:850,
       
-     room_img1:"/images/bangs/ha2.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha12.jpg")),
      room_img2:"#{@room_img[1]}",
      room_img3:"#{@room_img[2]}",
      room_img4:"",
@@ -713,7 +715,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"서대문우체국",  transportation_distance_time:15,
      transportation_distance:900,
       
-     room_img1:"/images/bangs/ha3.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha13.jpg")),
      room_img2:"#{@room_img[0]}",
      room_img3:"#{@room_img[1]}",
      room_img4:"",
@@ -767,7 +769,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"서대문우체국",  transportation_distance_time:4,
      transportation_distance:246,
       
-     room_img1:"/images/bangs/ha4.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha14.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -821,7 +823,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"서대문우체국",  transportation_distance_time: 7,
      transportation_distance: 850,
       
-     room_img1:"/images/bangs/ha1.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha15.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -875,7 +877,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"서대문우체국",  transportation_distance_time:12,
      transportation_distance:765,
       
-     room_img1:"/images/bangs/ha2.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha16.jpg")),
      room_img2:"#{@room_img[1]}",
      room_img3:"#{@room_img[2]}",
      room_img4:"",
@@ -929,7 +931,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"서대문우체국",  transportation_distance_time:10,
      transportation_distance:880,
       
-     room_img1:"/images/bangs/ha3.jpg",
+    :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha17.jpg")),
      room_img2:"#{@room_img[0]}",
      room_img3:"#{@room_img[1]}",
      room_img4:"",
@@ -983,7 +985,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"서대문우체국",  transportation_distance_time:14,
      transportation_distance:800,
       
-     room_img1:"/images/bangs/ha4.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha18.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -1037,7 +1039,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"서대문우체국",  transportation_distance_time:14,
      transportation_distance:705,
       
-     room_img1:"/images/bangs/ha3.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha19.jpg")),
      room_img2:"#{@room_img[0]}",
      room_img3:"#{@room_img[1]}",
      room_img4:"",
@@ -1091,7 +1093,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"서대문우체국",  transportation_distance_time:10,
      transportation_distance:500,
       
-     room_img1:"/images/bangs/ha4.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha20.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -1145,7 +1147,7 @@ HasukHouse.create(
     transportation_kind:"버스", transportation_bus:"연세대앞",   transportation_distance_time:14,
      transportation_distance:720,
       
-     room_img1:"/images/bangs/ha4.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha21.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -1198,7 +1200,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"연세대앞",  transportation_distance_time:10,
      transportation_distance:520,
       
-     room_img1:"/images/bangs/ha4.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha22.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -1252,7 +1254,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"연세대앞",  transportation_distance_time:14,
      transportation_distance:475,
       
-     room_img1:"/images/bangs/ha4.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha23.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -1306,7 +1308,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"연세대앞",  transportation_distance_time:9,
      transportation_distance:460,
       
-     room_img1:"/images/bangs/ha4.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha24.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -1361,7 +1363,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"연세대앞",  transportation_distance_time:8,
      transportation_distance:370,
       
-     room_img1:"/images/bangs/ha4.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha25.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -1419,7 +1421,7 @@ HasukHouse.create(
      transportation_kind:"지하철", transportation_subway:"이대",  transportation_distance_time: 7,
      transportation_distance: 460,
       
-     room_img1:"/images/bangs/ha1.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha26.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -1473,7 +1475,7 @@ HasukHouse.create(
      transportation_kind:"지하철", transportation_subway:"이대",  transportation_distance_time:11,
      transportation_distance:723,
       
-     room_img1:"/images/bangs/ha2.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha27.jpg")),
      room_img2:"#{@room_img[1]}",
      room_img3:"#{@room_img[2]}",
      room_img4:"",
@@ -1527,7 +1529,7 @@ HasukHouse.create(
      transportation_kind:"지하철", transportation_subway:"이대",  transportation_distance_time:8,
      transportation_distance:482,
       
-     room_img1:"/images/bangs/ha3.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha28.jpg")),
      room_img2:"#{@room_img[0]}",
      room_img3:"#{@room_img[1]}",
      room_img4:"",
@@ -1581,7 +1583,7 @@ HasukHouse.create(
      transportation_kind:"지하철", transportation_subway:"이대",  transportation_distance_time:4,
      transportation_distance:246,
       
-     room_img1:"/images/bangs/ha4.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha29.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -1635,7 +1637,7 @@ HasukHouse.create(
      transportation_kind:"지하철", transportation_subway:"이대",  transportation_distance_time: 7,
      transportation_distance: 465,
       
-     room_img1:"/images/bangs/ha1.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha30.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -1691,7 +1693,7 @@ HasukHouse.create(
      transportation_kind:"지하철", transportation_subway:"신촌",  transportation_distance_time: 7,
      transportation_distance: 460,
       
-     room_img1:"/images/bangs/ha1.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha31.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -1745,7 +1747,7 @@ HasukHouse.create(
      transportation_kind:"지하철", transportation_subway:"신촌",  transportation_distance_time:11,
      transportation_distance:723,
       
-     room_img1:"/images/bangs/ha2.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha32.jpg")),
      room_img2:"#{@room_img[1]}",
      room_img3:"#{@room_img[2]}",
      room_img4:"",
@@ -1799,7 +1801,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"신촌오거리",  transportation_distance_time:8,
      transportation_distance:482,
       
-     room_img1:"/images/bangs/ha3.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha33.jpg")),
      room_img2:"#{@room_img[0]}",
      room_img3:"#{@room_img[1]}",
      room_img4:"",
@@ -1853,7 +1855,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"신촌오거리",  transportation_distance_time:4,
      transportation_distance:246,
       
-     room_img1:"/images/bangs/ha4.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha34.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -1907,7 +1909,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"신촌오거리",  transportation_distance_time: 7,
      transportation_distance: 465,
       
-     room_img1:"/images/bangs/ha1.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha35.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -1963,7 +1965,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"이대후문",  transportation_distance_time: 7,
      transportation_distance: 460,
       
-     room_img1:"/images/bangs/ha1.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha36.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -2017,7 +2019,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"이대후문",  transportation_distance_time:11,
      transportation_distance:723,
       
-     room_img1:"/images/bangs/ha2.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha37.jpg")),
      room_img2:"#{@room_img[1]}",
      room_img3:"#{@room_img[2]}",
      room_img4:"",
@@ -2071,7 +2073,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"이대후문",  transportation_distance_time:8,
      transportation_distance:482,
       
-     room_img1:"/images/bangs/ha3.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha38.jpg")),
      room_img2:"#{@room_img[0]}",
      room_img3:"#{@room_img[1]}",
      room_img4:"",
@@ -2125,7 +2127,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"이대후문",  transportation_distance_time:4,
      transportation_distance:246,
       
-     room_img1:"/images/bangs/ha4.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha39.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",
@@ -2179,7 +2181,7 @@ HasukHouse.create(
      transportation_kind:"버스", transportation_bus:"이대후문",  transportation_distance_time: 7,
      transportation_distance: 465,
       
-     room_img1:"/images/bangs/ha1.jpg",
+     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha40.jpg")),
      room_img2:"#{@room_img[7]}",
      room_img3:"#{@room_img[8]}",
      room_img4:"",

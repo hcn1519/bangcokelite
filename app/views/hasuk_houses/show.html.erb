@@ -85,8 +85,12 @@
 
 @media (max-width: 767px) {
 
+.col-xs-12 {
+  margin-bottom: 50px;
+}
+
 .container {
-  
+  padding-left: 0;
 }
 
 .house-title {
@@ -110,16 +114,12 @@
     padding: 0;
 }
 
-.section1, .section2, .section3 {
-  margin-top: 30px;
-}
-
 .btn-md{
   margin-top: 5px; 
-  width: 130px;
+  width: 120px;
   margin-left: 2px;
   margin-right: 2px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 }
@@ -154,16 +154,7 @@
   margin-top: 25px;
 }
 
-.section1 {
-  padding-right: 0;
-}
-
-.section3 {
-  margin-top: 30px;
-  margin-bottom: 70px;
-}
-
-.btn-lg{
+.btn-md{
   margin-top: 15px; 
   width: 150px;
   margin-left: 5px;
@@ -194,12 +185,7 @@
   float: right;
 }
 
-.section3 {
-  margin-top: 30px;
-  margin-bottom: 70px;
-}
-
-.btn-lg{
+.btn-md{
   margin-top: 15px; 
   width: 180px;
   margin-left: 5px;
@@ -247,12 +233,7 @@ hr{
   border-color: #999999;
 }
 
-.btn-md{
-  margin-top: 5px; 
-  width: 180px;
-  margin-left: 5px;
-  margin-right: 5px;
-}
+
 .row{
 }
 
@@ -357,6 +338,7 @@ a img {
 }
 
 </style>
+
 
 </head>
 
@@ -649,7 +631,7 @@ a img {
           
           
           <div class="row">
-            <p class="info" style=" margin-top:5px;"><span class="label">교통</span>
+            <p class="info" ><span class="label" style="margin-right:3px" >교통</span>
               <% if @hasuk_house.transportation_kind == "지하철" %>
                 <% if @hasuk_house.transportation_subway == "대흥" %>
                     <span class="sub_circle line_number_6">6호선</span>&nbsp;<span id="inner-content" style="color:#9a4510; float:none"><%= @hasuk_house.transportation_subway %>역</span>
