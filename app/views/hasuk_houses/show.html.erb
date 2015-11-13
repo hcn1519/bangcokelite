@@ -14,9 +14,64 @@
   margin-top:0px;
 }
 .container {
-  margin-top:10px;
+  margin-top:5px;
   background-color: #ffffff;
 } 
+
+#inner-content {
+  font-size:14px;
+  float:left;
+}
+
+   .sub_circle {
+    border-radius: 20%;
+    padding-left: 3px;
+    padding-right: 3px;
+    color: #ffffff;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+}
+    .line_number_2 {
+        background: #29c531;
+    }
+    
+    .line_number_6 {
+        background: #cd7c2b;
+    }
+    
+    .line_number_kj {
+        background: #7bc2a3;
+        border-radius: 15%;
+        padding-left: 2px;
+        padding-right: 2px;
+        color: #ffffff;
+        text-align: center;
+        font-size: 8px;
+        display: inline-block;
+    }
+    
+    .bus_circle {
+        border-radius: 20%;
+        padding-left: 2px;
+        padding-right: 2px;
+        color: #ffffff;
+        text-align: center;
+        display: inline-block;
+        
+    }
+    
+    .bus_green {
+        background: #59ba23;
+    }
+    
+    .bus_blue {
+         background: #3859ad;
+    }
+    
+    .bus_red {
+        background: #f00e0b;
+    }
 
 
 @media (max-width: 767px) {
@@ -50,14 +105,13 @@
   margin-top: 30px;
 }
 
-.btn-lg{
-  margin-top: 15px; 
+.btn-md{
+  margin-top: 5px; 
   width: 130px;
   margin-left: 2px;
   margin-right: 2px;
   font-size: 16px;
 }
-
 
 }
 
@@ -180,11 +234,16 @@
 }
 
 hr{
-  margin: 10px;
+  margin: 7px;
   border-color: #999999;
 }
 
-
+.btn-md{
+  margin-top: 5px; 
+  width: 180px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
 .row{
 }
 
@@ -206,8 +265,8 @@ p {
 }
 
 .info-zone {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
@@ -273,7 +332,7 @@ a img {
 }
 
 .info {
-  font-size: 16px;
+  font-size: 14px;
   float:left;
 }
 
@@ -395,168 +454,240 @@ a img {
           <div class="row col-xs-12">
             <p class="info"><span class="label">월세</span></p>
                <h5 style="margin-top:0px; margin-bottom:0px; float:left"><%= @hasuk_house.price_from %> ~ <%= @hasuk_house.price_to %></h5></span>
-               <span style="float:left; margin-top: 5px;margin-left: 5px; font-size:0.9em">만원</span>
+               <span style="float:left; margin-top: 5px;margin-left: 5px; font-size:14px">만원</span>
                <% if @hasuk_house.discount_price != 0 %>
                  <span class="fui-alert-circle" style="margin-left:10px; color:#E74C3C"></span>
                  첫 달 월세 <span style="color:#E74C3C; font-weight:bold"><%= number_with_delimiter(@hasuk_house.discount_price, :delimiter => ',') %></span> 할인
                <% end %>
           </div><!--월세 정보 끝-->
+          <div class="row col-xs-12"> <!--종류 & 계약기간-->
+            <div class="col-md-6 col-xs-6" style="padding-left:0">
+              <p class="info"><span class="label">유형</span><%= @hasuk_house.hasuk_kind%>
+              <% if @hasuk_house.gender != "남녀공용" %>
+                / <%= @hasuk_house.gender %>
+              <% end %>
+              </p>
+            </div>
+            <div class="col-md-6 col-xs-6" style="padding-left:0px">
+              <p class="info"><span class="label">계약기간</span>최소 <%= @hasuk_house.least_contract %>개월</p>    
+            </div>
+          </div>
           
           <div class="row col-xs-12">
-              <div class="col-md-6 col-xs-6" style="padding-left:0">
+              <div class="col-md-6 col-xs-6" style="padding-left:0px">
                 <% if @hasuk_house.small_deposit == nil && @hasuk_house.big_deposit == nil %>
-                  <p class="info"><span class="label">DB</span>
-                    <span style="float:left; margin-top: 4px;margin-left: 5px; font-size:0.9em">없음</span>
+                  <p class="info"><span class="label" style="margin-right: 0px;">DB</span>
+                    없음
                   </p>
                 <% else %>
                    <% if @hasuk_house.small_deposit == 0 %>
                      <% if @hasuk_house.big_deposit == 0 %>
-                       <p class="info"><span class="label">예치금</span>
-                         <span style="float:left; margin-top: 4px;margin-left: 5px; font-size:0.9em">없음</span>
+                       <p class="info">
+                         <span class="label" style="margin-right: 0px;">예치금</span>
+                         없음
                        </p>
                      <% else %>
-                       <p class="info"><span class="label">보증금</span>
-                         <h6 style="margin-top:3px; margin-bottom:0px; float:left"><%= @hasuk_house.big_deposit %></h6>
-                         <span style="float:left; margin-top: 4px;margin-left: 5px; font-size:0.9em">만 원</span>
+                       <p class="info">
+                         <span class="label" style="margin-right: 0px;">보증금</span>
+                         <%= @hasuk_house.big_deposit %>만 원
                        </p>
                      <% end %>
                    <% else %>
-                     <p class="info"><span class="label">예치금</span>
-                       <h6 style="margin-top:3px; margin-bottom:0px; float:left"><%= @hasuk_house.small_deposit %></h6>
-                       <span style="float:left; margin-top: 4px;margin-left: 5px; font-size:0.9em">만 원</span>
+                     <p class="info">
+                       <span class="label" style="margin-right: 0px;">예치금</span>
+                       <%= @hasuk_house.small_deposit %>만 원
                      </p>
                    <% end %>
                 <% end %>
               </div>
               <div class="col-md-6 col-xs-6" style="padding-left:0">
-                <p class="info"><span class="label">계약기간</span>
-                  <p style="margin-top:2px; margin-bottom:0px; float:left"><%= @hasuk_house.least_contract %></p>
-                  <span style="margin-top:2px; float:left">개월 이상</span>
-                </p>    
+                <p class="info"><span class="label">관리비</span></p>
+                <% if @hasuk_house.extra_price != 0 %>
+                  <span id="inner-content"><%= @hasuk_house.extra_price %>만 원</span>
+                <% elsif @hasuk_house.extra_price == 0  %>
+                  <span id="inner-content">없음</span>
+                <% else %>
+                  <span id="inner-content">없음</span>
+                <% end %>
               </div>
           </div>
           <div class="row col-xs-12">
-            <p class="info"><span class="label">관리비</span></p>
-            <% unless @hasuk_house.extra_price.nil? || @hasuk_house.extra_price =="" %>
-              <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.extra_price1 %></span>
-            <% else %>
-              <% unless @hasuk_house.extra_price2.nil? %>
-                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.extra_price2 %></span>
-              <% end %>
-              <% unless @hasuk_house.extra_price3.nil? %>
-                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.extra_price3 %></span>
-              <% end %>
-              <% unless @hasuk_house.extra_price4.nil? %>
-                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.extra_price4 %></span>
-              <% end %>
-              <% unless @hasuk_house.extra_price5.nil? %>
-                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.extra_price5 %></span>
-              <% end %>
+            <div class="row" style="padding-left:0px">
+            
+            <% if @hasuk_house.building_age != nil %>
+                 <p class="info"><span class="label" style="margin-right:0px">준공연도</span>
+                   <%= @hasuk_house.building_age %>년
+                   <% if @hasuk_house.building_age != nil %>
+                     (<%= @hasuk_house.remodeling %>년 리모델링)
+                   <% end %>   
+                 </p>
             <% end %>
-            
-            
-          </div>
-          <div class="row col-xs-12">
-            <p class="info"><span class="label">종류</span></p>
-            <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.hasuk_kind %></span>
-          </div>
-          <div class="row">
-            <p class="info"><span class="label">위치</span></p>
-            <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.address %></span>
-          </div>
+            </div>
           <hr>
+          </div>
+          <!--옵션 -->
+          
+                    
           <div class="row">
             <div class="col-md-6 col-xs-6" style="padding-left:0">
               <p class="info"><span class="label">방크기</span></p>
-              <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.size_from %> ~ <%= @hasuk_house.size_to %>평</span>
+              <span id="inner-content"><%= @hasuk_house.size_from %> ~ <%= @hasuk_house.size_to %>평</span>
             </div>
             <div class="col-md-6 col-xs-6" style="padding-left:0">
               <p class="info"><span class="label">사용층</span></p>
-              <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.floor_from %> ~ <%= @hasuk_house.floor_to %>층</span>
+              <span id="inner-content"><%= @hasuk_house.floor_from %> ~ <%= @hasuk_house.floor_to %>층</span>
             </div>
           </div>
           <div class="row">
             <p class="info"><span class="label">식사</span></p>
             <% unless @hasuk_house.meal4.nil? || @hasuk_house.meal4 =="" %>
-              <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.meal1 %></span>
+              <span id="inner-content"><%= @hasuk_house.meal1 %></span>
             <% else %>
               <% unless @hasuk_house.meal1.nil? %>
-                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.meal1 %>,&nbsp;</span>
+                <span id="inner-content"><%= @hasuk_house.meal1 %>,&nbsp;</span>
               <% end %>
               <% unless @hasuk_house.meal2.nil? %>
-                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.meal2 %>,&nbsp;</span>
+                <span id="inner-content"><%= @hasuk_house.meal2 %>,&nbsp;</span>
               <% end %>
               <% unless @hasuk_house.meal3.nil? %>
-                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.meal3 %></span>
+                <span id="inner-content"><%= @hasuk_house.meal3 %>&nbsp;</span>
               <% end %>
 
             <% end %>
             <% unless @hasuk_house.meal_memo.nil? %>
-                <span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.meal_memo %></span>
+                <span id="inner-content">|&nbsp;<%= @hasuk_house.meal_memo %></span>
               <% end %>
           </div>
           <div class="row">
             <p class="info"><span class="label">옵션</span></p>
-            <% unless @hasuk_house.personal_option1.nil? || @hasuk_house.personal_option1 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option1 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option2.nil? || @hasuk_house.personal_option2 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option2 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option3.nil? || @hasuk_house.personal_option3 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option3 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option4.nil? || @hasuk_house.personal_option4 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option4 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option5.nil? || @hasuk_house.personal_option5 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option5 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option6.nil? || @hasuk_house.personal_option6 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option6 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option7.nil? || @hasuk_house.personal_option7 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option7 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option8.nil? || @hasuk_house.personal_option8 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option8 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option9.nil? || @hasuk_house.personal_option9 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option9 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option10.nil? || @hasuk_house.personal_option10 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option10 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option11.nil? || @hasuk_house.personal_option11 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option11 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option12.nil? || @hasuk_house.personal_option12 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option12 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option13.nil? || @hasuk_house.personal_option13 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option13 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option14.nil? || @hasuk_house.personal_option14 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option14 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option15.nil? || @hasuk_house.personal_option15 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option15 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option16.nil? || @hasuk_house.personal_option16 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option16 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.personal_option17.nil? || @hasuk_house.personal_option17 == ""%><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.personal_option17 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option1.nil? || @hasuk_house.personal_option1 == "" %><span id="inner-content"><%= @hasuk_house.personal_option1 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option2.nil? || @hasuk_house.personal_option2 == "" %><span id="inner-content"><%= @hasuk_house.personal_option2 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option3.nil? || @hasuk_house.personal_option3 == "" %><span id="inner-content"><%= @hasuk_house.personal_option3 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option4.nil? || @hasuk_house.personal_option4 == "" %><span id="inner-content"><%= @hasuk_house.personal_option4 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option5.nil? || @hasuk_house.personal_option5 == "" %><span id="inner-content"><%= @hasuk_house.personal_option5 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option6.nil? || @hasuk_house.personal_option6 == ""%><span id="inner-content"><%= @hasuk_house.personal_option6 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option7.nil? || @hasuk_house.personal_option7 == ""%><span id="inner-content"><%= @hasuk_house.personal_option7 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option8.nil? || @hasuk_house.personal_option8 == ""%><span id="inner-content"><%= @hasuk_house.personal_option8 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option9.nil? || @hasuk_house.personal_option9 == ""%><span id="inner-content"><%= @hasuk_house.personal_option9 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option10.nil? || @hasuk_house.personal_option10 == ""%><span id="inner-content"><%= @hasuk_house.personal_option10 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option11.nil? || @hasuk_house.personal_option11 == ""%><span id="inner-content"><%= @hasuk_house.personal_option11 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option12.nil? || @hasuk_house.personal_option12 == ""%><span id="inner-content"><%= @hasuk_house.personal_option12 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option13.nil? || @hasuk_house.personal_option13 == ""%><span id="inner-content"><%= @hasuk_house.personal_option13 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option14.nil? || @hasuk_house.personal_option14 == ""%><span id="inner-content"><%= @hasuk_house.personal_option14 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option15.nil? || @hasuk_house.personal_option15 == ""%><span id="inner-content"><%= @hasuk_house.personal_option15 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option16.nil? || @hasuk_house.personal_option16 == ""%><span id="inner-content"><%= @hasuk_house.personal_option16 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.personal_option17.nil? || @hasuk_house.personal_option17 == ""%><span id="inner-content"><%= @hasuk_house.personal_option17 %>,&nbsp;</span><% end %>
           </div>
           <div class="row">
             <p class="info"><span class="label">공동시설</span></p>
-            <% unless @hasuk_house.common_option1.nil? || @hasuk_house.common_option1 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option1 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.common_option2.nil? || @hasuk_house.common_option2 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option2 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.common_option3.nil? || @hasuk_house.common_option3 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option3 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.common_option4.nil? || @hasuk_house.common_option4 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option4 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.common_option5.nil? || @hasuk_house.common_option5 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option5 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.common_option6.nil? || @hasuk_house.common_option6 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option6 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.common_option7.nil? || @hasuk_house.common_option7 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option7 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.common_option8.nil? || @hasuk_house.common_option8 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option8 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.common_option9.nil? || @hasuk_house.common_option9 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option9 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.common_option10.nil? || @hasuk_house.common_option10 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option10 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.common_option11.nil? || @hasuk_house.common_option11 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option11 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.common_option12.nil? || @hasuk_house.common_option12 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option12 %>,&nbsp;</span><% end %>
-            <% unless @hasuk_house.common_option13.nil? || @hasuk_house.common_option13 == "" %><span style="float:left; font-size:0.9em; margin-top:3px"><%= @hasuk_house.common_option13 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option1.nil? || @hasuk_house.common_option1 == "" %><span id="inner-content"><%= @hasuk_house.common_option1 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option2.nil? || @hasuk_house.common_option2 == "" %><span id="inner-content"><%= @hasuk_house.common_option2 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option3.nil? || @hasuk_house.common_option3 == "" %><span id="inner-content"><%= @hasuk_house.common_option3 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option4.nil? || @hasuk_house.common_option4 == "" %><span id="inner-content"><%= @hasuk_house.common_option4 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option5.nil? || @hasuk_house.common_option5 == "" %><span id="inner-content"><%= @hasuk_house.common_option5 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option6.nil? || @hasuk_house.common_option6 == "" %><span id="inner-content"><%= @hasuk_house.common_option6 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option7.nil? || @hasuk_house.common_option7 == "" %><span id="inner-content"><%= @hasuk_house.common_option7 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option8.nil? || @hasuk_house.common_option8 == "" %><span id="inner-content"><%= @hasuk_house.common_option8 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option9.nil? || @hasuk_house.common_option9 == "" %><span id="inner-content"><%= @hasuk_house.common_option9 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option10.nil? || @hasuk_house.common_option10 == "" %><span id="inner-content"><%= @hasuk_house.common_option10 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option11.nil? || @hasuk_house.common_option11 == "" %><span id="inner-content"><%= @hasuk_house.common_option11 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option12.nil? || @hasuk_house.common_option12 == "" %><span id="inner-content"><%= @hasuk_house.common_option12 %>,&nbsp;</span><% end %>
+            <% unless @hasuk_house.common_option13.nil? || @hasuk_house.common_option13 == "" %><span id="inner-content"><%= @hasuk_house.common_option13 %>,&nbsp;</span><% end %>
           </div>
-          <hr>
           <div class="row">
+            <div class="col-md-6 col-xs-6" style="padding-left:0">
+              <p class="info"><span class="label">인터넷</span><%= @hasuk_house.internet %></p>
+            </div>
+            <div class="col-md-6 col-xs-6" style="padding-left:0">
+              <p class="info"><span class="label">쓰레기 처리</span><%= @hasuk_house.personal_trash %></p>
+            </div>
+          </div>
+          
+          <!--위치정보-->
+         
+          <div class="row">
+            <hr>
+            <p class="info"><span class="label">주소</span><%= @hasuk_house.address %></p>
+          </div>
+          <div class="row">
+            <p class="info"><span class="label">거리</span>
+               <% if @hasuk_house.univ_distance1 != "학교선택" %>
+                  <% if @hasuk_house.univ_distance1 == "이화" %>
+                    <span style="color:#0c6f40"><%= @hasuk_house.univ_distance1 %>여대&nbsp;</span><%= @hasuk_house.ewha_gate1 %>
+                  <% elsif @hasuk_house.univ_distance1 == "연세" %>
+                    <span style="color:#202d61"><%= @hasuk_house.univ_distance1 %>대&nbsp;</span><%= @hasuk_house.yonsei_gate1 %>
+                  <% else %>
+                    <span style="color:#b20000"><%= @hasuk_house.univ_distance1 %>대&nbsp;</span><%= @hasuk_house.sogang_gate1 %>
+                  <% end %>
+                  <%= @hasuk_house.distance1 %>m(<%= @hasuk_house.distance_time1 %>분)
+               <% end %>
+               
+               <% if @hasuk_house.univ_distance2 != "학교선택" %>
+                  <% if @hasuk_house.univ_distance2 == "이화" %>
+                    <span style="color:#0c6f40"><%= @hasuk_house.univ_distance2 %>여대&nbsp;</span><%= @hasuk_house.ewha_gate2 %>
+                  <% elsif @hasuk_house.univ_distance2 == "연세" %>
+                    <span style="color:#202d61"><%= @hasuk_house.univ_distance2 %>대&nbsp;</span><%= @hasuk_house.yonsei_gate2 %>
+                  <% else %>
+                    <span style="color:#b20000"><%= @hasuk_house.univ_distance2 %>대&nbsp;</span><%= @hasuk_house.sogang_gate2 %>
+                  <% end %>
+                  <%= @hasuk_house.distance2 %>m(<%= @hasuk_house.distance_time2 %>분)
+               <% end %>
+               
+              </p>
+              
+          </div>
+          
+          
+          
+          <div class="row">
+            <p class="info"><span class="label">교통</span>
+              <% if @hasuk_house.transportation_kind == "지하철" %>
+                <% if @hasuk_house.transportation_subway == "대흥" %>
+                    <span class="sub_circle line_number_6">6호선</span>&nbsp;<span id="subway" style="color:#9a4510"><%= @hasuk_house.transportation_subway %>역</span>
+                <% elsif @hasuk_house.transportation_subway == "신촌" || @hasuk_house.transportation_subway == "이대" %>
+                    <span class="sub_circle line_number_2">2호선</span>&nbsp;<span id="subway" style="color:#009044"><%= @hasuk_house.transportation_subway %>역</span>
+                <% elsif @hasuk_house.transportation_subway == "서강대" %>
+                    <div class="line_number_kj">경의중앙선</div>&nbsp;<span id="subway" style="color:#41b9b9"><%= @hasuk_house.transportation_subway %>역</span>
+                <% elsif @hasuk_house.transportation_subway == "신촌기차" %>
+                    <div class="line_number_kj">경의중앙선</div>&nbsp;<span id="subway" style="color:#0063b1"><%= @hasuk_house.transportation_subway %>역</span>
+                <% end %>
+                
+              <% elsif @hasuk_house.transportation_kind == "버스" %>
+              
+              <% end %>
+              <%= @hasuk_house.transportation_distance %>m(<%= @hasuk_house.transportation_distance_time %>분)
+              <% unless @hasuk_house.transportation_memo.nil? %>
+                <span class="info-memo">|&nbsp;<%= @hasuk_house.transportation_memo %></span></p>
+              <% end %>
+          </div>
+          
+          
+          <div class="row">
+            <hr>
             <p class="info"><span class="label">설명</span></p>
             <div class="col-md-10" style="padding:0px">
-            <span style="float:left; font-size:0.8em; margin-top:3px">
+            <span id="inner-content">
               <% if @hasuk_house.post_description.size > 30 %>
               <%= @hasuk_house.post_description.split(//).first(30).join %>...&nbsp;&nbsp;
             </span>
-            <button style="float:left;padding: 5px;font-size: 0.6em; margin-top:3px" type="button" class="btn btn-success" data-toggle="modal" data-target="#descript">
+            <button style="float:left;padding: 4px;font-size: 0.6em;" type="button" class="btn btn-success" data-toggle="modal" data-target="#descript">
                 더보기
               </button>
               <% else %>
                 <%= @hasuk_house.post_description %>
               <% end %>
             </div>
-              
-              
+  
           </div>
+          
           <div>
             <% if user_signed_in? %>
-              <center><button type="button" class="btn btn-primary btn-lg" style="background-color:#ee8176;">찜하기</button>
-              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#contact" style="background-color:#71b7e6;">연락처보기</button>
+              <center><button type="button" class="btn btn-primary btn-md" style="background-color:#ee8176;">찜하기</button>
+              <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#contact" style="background-color:#71b7e6;">연락처보기</button>
               </center>
             <% else %>
-              <center><button type="button" class="btn btn-primary btn-lg" style="background-color:#ee8176;">찜하기</button>
-              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login" style="background-color:#71b7e6;">연락처보기</button>
+              <center><button type="button" class="btn btn-primary btn-md" style="background-color:#ee8176;">찜하기</button>
+              <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#login" style="background-color:#71b7e6;">연락처보기</button>
               </center>
             <% end %>
               

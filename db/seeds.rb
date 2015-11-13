@@ -1796,7 +1796,7 @@ HasukHouse.create(
      distance_time1:5, distance1:285,
       
       #교통수단까지 거리 및 시간
-     transportation_kind:"버스", transportation_subway:"신촌오거리",  transportation_distance_time:8,
+     transportation_kind:"버스", transportation_bus:"신촌오거리",  transportation_distance_time:8,
      transportation_distance:482,
       
      room_img1:"/images/bangs/ha3.jpg",
@@ -1850,7 +1850,7 @@ HasukHouse.create(
      distance_time1:4, distance1:174,
       
       #교통수단까지 거리 및 시간
-     transportation_kind:"버스", transportation_subway:"신촌오거리",  transportation_distance_time:4,
+     transportation_kind:"버스", transportation_bus:"신촌오거리",  transportation_distance_time:4,
      transportation_distance:246,
       
      room_img1:"/images/bangs/ha4.jpg",
@@ -1904,7 +1904,7 @@ HasukHouse.create(
      distance_time1: 5, distance1: 280,
       
       #교통수단까지 거리 및 시간
-     transportation_kind:"버스", transportation_subway:"신촌오거리",  transportation_distance_time: 7,
+     transportation_kind:"버스", transportation_bus:"신촌오거리",  transportation_distance_time: 7,
      transportation_distance: 465,
       
      room_img1:"/images/bangs/ha1.jpg",
