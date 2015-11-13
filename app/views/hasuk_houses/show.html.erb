@@ -47,10 +47,19 @@
         padding-right: 2px;
         color: #ffffff;
         text-align: center;
-        font-size: 8px;
         display: inline-block;
+        font-size:12px;
     }
-    
+    .line_number_bus {
+        background: #3498DB;
+        border-radius: 15%;
+        padding-left: 2px;
+        padding-right: 2px;
+        color: #ffffff;
+        text-align: center;
+        display: inline-block;
+        font-size:12px;
+    }
     .bus_circle {
         border-radius: 20%;
         padding-left: 2px;
@@ -452,8 +461,8 @@ a img {
           </div>
         <div class="info-zone">
           <div class="row col-xs-12">
-            <p class="info"><span class="label">월세</span></p>
-               <h5 style="margin-top:0px; margin-bottom:0px; float:left"><%= @hasuk_house.price_from %> ~ <%= @hasuk_house.price_to %></h5></span>
+            <p class="info" style="margin-top:3px"><span class="label">월세</span></p>
+               <h5 style="color: #2980B9; margin-top:0px; margin-bottom:0px; float:left"><%= @hasuk_house.price_from %> ~ <%= @hasuk_house.price_to %></h5></span>
                <span style="float:left; margin-top: 5px;margin-left: 5px; font-size:14px">만원</span>
                <% if @hasuk_house.discount_price != 0 %>
                  <span class="fui-alert-circle" style="margin-left:10px; color:#E74C3C"></span>
@@ -610,7 +619,7 @@ a img {
             <p class="info"><span class="label">주소</span><%= @hasuk_house.address %></p>
           </div>
           <div class="row">
-            <p class="info"><span class="label">거리</span>
+            <p class="info"><span class="label" style="margin-right:0px">거리</span>
                <% if @hasuk_house.univ_distance1 != "학교선택" %>
                   <% if @hasuk_house.univ_distance1 == "이화" %>
                     <span style="color:#0c6f40"><%= @hasuk_house.univ_distance1 %>여대&nbsp;</span><%= @hasuk_house.ewha_gate1 %>
@@ -640,25 +649,28 @@ a img {
           
           
           <div class="row">
-            <p class="info"><span class="label">교통</span>
+            <p class="info" style=" margin-top:5px;"><span class="label">교통</span>
               <% if @hasuk_house.transportation_kind == "지하철" %>
                 <% if @hasuk_house.transportation_subway == "대흥" %>
-                    <span class="sub_circle line_number_6">6호선</span>&nbsp;<span id="subway" style="color:#9a4510"><%= @hasuk_house.transportation_subway %>역</span>
+                    <span class="sub_circle line_number_6">6호선</span>&nbsp;<span id="inner-content" style="color:#9a4510; float:none"><%= @hasuk_house.transportation_subway %>역</span>
                 <% elsif @hasuk_house.transportation_subway == "신촌" || @hasuk_house.transportation_subway == "이대" %>
-                    <span class="sub_circle line_number_2">2호선</span>&nbsp;<span id="subway" style="color:#009044"><%= @hasuk_house.transportation_subway %>역</span>
+                    <span class="sub_circle line_number_2">2호선</span>&nbsp;<span id="inner-content" style="color:#009044; float:none"><%= @hasuk_house.transportation_subway %>역</span>
                 <% elsif @hasuk_house.transportation_subway == "서강대" %>
-                    <div class="line_number_kj">경의중앙선</div>&nbsp;<span id="subway" style="color:#41b9b9"><%= @hasuk_house.transportation_subway %>역</span>
+                    <div class="line_number_kj">경의중앙선</div>&nbsp;<span id="inner-content" style="color:#41b9b9; float:none"><%= @hasuk_house.transportation_subway %>역</span>
                 <% elsif @hasuk_house.transportation_subway == "신촌기차" %>
-                    <div class="line_number_kj">경의중앙선</div>&nbsp;<span id="subway" style="color:#0063b1"><%= @hasuk_house.transportation_subway %>역</span>
+                    <div class="line_number_kj">경의중앙선</div>&nbsp;<span id="inner-content" style="color:#0063b1; float:none"><%= @hasuk_house.transportation_subway %>역</span>
                 <% end %>
                 
               <% elsif @hasuk_house.transportation_kind == "버스" %>
+                  <div class="line_number_bus">버스</div>
+                  <span id="inner-content" style="color:#0063b1; float:none"><%= @hasuk_house.transportation_bus %></span>
+              <% end %>
+              <span id="inner-content" style="float:none"><%= @hasuk_house.transportation_distance %>m(<%= @hasuk_house.transportation_distance_time %>분)</span>
               
-              <% end %>
-              <%= @hasuk_house.transportation_distance %>m(<%= @hasuk_house.transportation_distance_time %>분)
               <% unless @hasuk_house.transportation_memo.nil? %>
-                <span class="info-memo">|&nbsp;<%= @hasuk_house.transportation_memo %></span></p>
+                <span class="info-memo">|&nbsp;<%= @hasuk_house.transportation_memo %></span>
               <% end %>
+              </p>
           </div>
           
           

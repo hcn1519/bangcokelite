@@ -2209,8 +2209,9 @@
                                   <% end %>
                                   <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                               <% elsif c.transportation_kind == "버스" %>
-                                  
-                                  <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
+                                  <div class="line_number_bus">버스</div>
+                                  <span id="bus" style="color:#0063b1"><%= c.transportation_bus %></span>
+                                  <span><%= c.transportation_distance %>m</span>
                               
                               <% else %>
                               
@@ -2401,8 +2402,9 @@
                                   <% end %>
                                   <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                               <% elsif c.transportation_kind == "버스" %>
-                                  
-                                  <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
+                                  <div class="line_number_bus">버스</div>
+                                  <span id="bus" style="color:#0063b1"><%= c.transportation_bus %></span>
+                                  <span><%= c.transportation_distance %>m</span>
                               
                               <% else %>
                               
@@ -2593,8 +2595,9 @@
                                   <% end %>
                                   <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                               <% elsif c.transportation_kind == "버스" %>
-                                  
-                                  <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
+                                  <div class="line_number_bus">버스</div>
+                                  <span id="bus" style="color:#0063b1"><%= c.transportation_bus %></span>
+                                  <span><%= c.transportation_distance %>m</span>
                               
                               <% else %>
                               
