@@ -381,11 +381,43 @@
 
            var infowindow = null;
            var infoWindow = new google.maps.InfoWindow();
-           var contentString =
+           
+           if (data[i].univ_distance1 == "서강") {
+              var university = '<span style="color:#b20000">'+"서강대"+'</span>';
+              var entrance = data[i].sogang_gate1;
+           } else if (data[i].univ_distance1 == "연세") {
+              var university = '<span style="color:#202d61">'+"연세대"+'</span>';
+              var entrance = data[i].yonsei_gate1;
+           } else if (data[i].univ_distance1 == "이화") {
+              var university = '<span style="color:#0c6f40">'+"이화여대"+'</span>';
+              var entrance = data[i].ewha_gate1;
+           } else {
+             var entrance = "교문";
+           }
+           if (data[i].meal4 == "제공 안함") {
+             var infoMeal = "식사없음";
+           } else {
+             var infoMeal = "식사있음";
+           }
+           
+ 
+           if (data[i].transportation_kind == "지하철") {
+             var vehicle = data[i].transportation_subway;
+             if (vehicle == "대흥"){
+               subway = '<span class="sub_circle line_number_6" style="border-radius:30%">6호선</span>'+ '&nbsp;' + '<span style="color#9a4510">'+vehicle + '역'+'</span>' ;
+             } else if (vehicle == "신촌" || vehicle == "이대" ) {
+               subway = '<span class="sub_circle line_number_2" style="border-radius:30%">2호선</span>'+ '&nbsp;' + '<span style="color:#00904">'+vehicle + '역'+'</span>';
+             } else if (vehicle == "서강대") {
+               subway = '<div class="line_number_kj">경의</div>' + '&nbsp;' + '<span style="color:#41b9b9">'+vehicle+ '역' +'</span>';
+             } else if (vehicle == "신촌기차") {
+               subway = '<div class="line_number_kj">경의</div>' + '&nbsp;' + '<span style="color:#0063b1">'+vehicle + '역' +'</span>';
+             }
+             
+             var contentString =
             '<div id="infoWindow" style="width: 280px; margin-bottom:0px;">'+
                '<div class="row" style="margin:0;">'+
                '<div class="col-md-4 col-sm-4 col-xs-4" style="padding: 0px;">' +
-                   '<img src="'+ data[i].room_img1.url + '">' +
+                   '<img src="'+ data[i].room_img1.url + '" style="width:90px; height:75px;" >' +
                  '</div>'+
                '<div class="col-md-8 col-sm-8 col-xs-8" style="padding: 0px;">' +
                   '<div class="row" style="margin:0px; padding:0px">' +
@@ -396,14 +428,41 @@
                   '</div>'+
                   //학교별로 색깔 다르게? 학교, 교문, 시간 데이터 넣기
                   '<div class="row" style="margin:0; font-size:13px">' + 
-                  '<span style="color:#0c6f40">' + data[i].univ_distance1 + '대&nbsp;' + '교문' + '</span>' + '&nbsp;' + data[i].distance_time1 +'분</div>'+
+                  university + '&nbsp;' + entrance + '&nbsp;' + data[i].distance_time1 +'분</div>'+
                   //교통수단별로 색깔 다르게? 정류장, 분 데이터 넣기
-                  '<div class="row" style="margin:0; font-size:13px">' + '<span style="color:#000000">' + '[Bus]' + '버스정류장이름' + '</span>' + '&nbsp;' + '땡땡' +'분</div>' +
+                  '<div class="row" style="margin:0; font-size:13px">' + subway + '&nbsp;' + data[i].transportation_distance_time +'분</div>' +
                   //해당되는 데이터만 뜨도록
-                  '<div class="row" style="color:#777777; margin:0; margin-top:2px; font-size:12px">'+ '#' + data[i].hasuk_kind + '&nbsp;#' + '식사' + '&nbsp;#' + data[i].gender + '</div>' +
+                  '<div class="row" style="color:#777777; margin:0; margin-top:2px; font-size:12px">'+ '#' + data[i].hasuk_kind + '&nbsp;#' + infoMeal + '&nbsp;#' + data[i].gender + '</div>' +
                '</div>'+
                '</div>'+
              '</div>';
+           } else {
+             var vehicle = data[i].transportation_bus;
+             var contentString =
+            '<div id="infoWindow" style="width: 280px; margin-bottom:0px;">'+
+               '<div class="row" style="margin:0;">'+
+               '<div class="col-md-4 col-sm-4 col-xs-4" style="padding: 0px;">' +
+                   '<img src="'+ data[i].room_img1.url + '" style="width:90px; height:75px;" >' +
+                 '</div>'+
+               '<div class="col-md-8 col-sm-8 col-xs-8" style="padding: 0px;">' +
+                  '<div class="row" style="margin:0px; padding:0px">' +
+                  //월세가 같을 때 price_to 안보여주도록
+                     '<div style="font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
+                       '(예치금&nbsp'+ data[i].small_deposit + ',&nbsp;관리비별도' + ')&nbsp;'+
+                     '</div>'+
+                  '</div>'+
+                  //학교별로 색깔 다르게? 학교, 교문, 시간 데이터 넣기
+                  '<div class="row" style="margin:0; font-size:13px">' + 
+                  university + '&nbsp;' + entrance  + '&nbsp;' + data[i].distance_time1 +'분</div>'+
+                  //교통수단별로 색깔 다르게? 정류장, 분 데이터 넣기
+                  '<div class="row" style="margin:0; font-size:13px">' + '<span style="color:#0063b1">' + '<div class="line_number_bus">버스</div>' + vehicle + '</span>' + '&nbsp;' + data[i].transportation_distance_time +'분</div>' +
+                  //해당되는 데이터만 뜨도록
+                  '<div class="row" style="color:#777777; margin:0; margin-top:2px; font-size:12px">'+ '#' + data[i].hasuk_kind + '&nbsp;#' + infoMeal + '&nbsp;#' + data[i].gender + '</div>' +
+               '</div>'+
+               '</div>'+
+             '</div>';
+           }
+
                     
 
                  var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);  

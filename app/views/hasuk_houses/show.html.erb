@@ -447,6 +447,7 @@ a img {
                <h5 style="color: #2980B9; margin-top:0px; margin-bottom:0px; float:left"><%= @hasuk_house.price_from %> ~ <%= @hasuk_house.price_to %></h5></span>
                <span style="float:left; margin-top: 5px;margin-left: 5px; font-size:14px">만원</span>
                <% if @hasuk_house.discount_price != 0 %>
+                 
                  <span class="fui-alert-circle" style="margin-left:10px; color:#E74C3C"></span>
                  첫 달 월세 <span style="color:#E74C3C; font-weight:bold"><%= number_with_delimiter(@hasuk_house.discount_price, :delimiter => ',') %></span> 할인
                <% end %>
