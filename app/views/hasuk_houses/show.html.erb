@@ -91,6 +91,8 @@
 #pictab3{
   display:table-cell;
 }
+
+
 @media (max-width: 767px) {
 
 .col-xs-12 {
@@ -179,12 +181,31 @@
   margin-left: 5px;
   margin-right: 5px;
 }
-
+#price{
+  margin-top:3px; 
+  margin-bottom:0px;
+  font-size:24px;
+}
+#price_sale{
+  font-size:14px;
+  margin-top:3px;
+  padding:0;
+}
 }
 
 
 @media(min-width: 1200px) {
 
+#price{
+  margin-top:0px; 
+  margin-bottom:0px;
+  font-size:28px;
+}
+#price_sale{
+  font-size:18px;
+  margin-top:0px;
+  padding:0;
+}
 .nav-container {
     padding-right: 30px;
     padding-left: 15px;
@@ -579,10 +600,10 @@ p {
           <div class="row col-xs-12">
             <div class="col-md-6 col-sm-6 col-xs-12" style="margin:0; padding:0;">
             <p class="info" style="margin-top:3px"><span class="label">월세</span></p>
-               <h5 style="color: #2980B9; margin-top:0px; margin-bottom:0px; float:left"><%= @hasuk_house.price_from %> ~ <%= @hasuk_house.price_to %></h5></span>
+               <h5 id="price" style="color: #2980B9;  float:left"><%= @hasuk_house.price_from %> ~ <%= @hasuk_house.price_to %></h5></span>
                <span style="float:left; margin-top: 5px;margin-left: 5px; font-size:14px">만원</span>
             </div>
-            <div class="col-md-6 col-sm-6 col-xs-12" style="margin:0; padding:0;">
+            <div id="price_sale" class="col-md-6 col-sm-6 col-xs-12">
                <% if @hasuk_house.discount_price != 0 %>
                  <span class="fui-alert-circle" style="color:#E74C3C"></span>
                  첫 달 월세 <span style="color:#E74C3C; font-weight:bold"><%= number_with_delimiter(@hasuk_house.discount_price, :delimiter => ',') %></span> 할인
@@ -799,8 +820,8 @@ p {
             <p class="info"><span class="label">설명</span></p>
             <div class="col-md-10" style="padding:0px">
             <span id="inner-content">
-              <% if @hasuk_house.post_description.size > 30 %>
-              <%= @hasuk_house.post_description.split(//).first(30).join %>...&nbsp;&nbsp;
+              <% if @hasuk_house.post_description.size > 24 %>
+              <%= @hasuk_house.post_description.split(//).first(24).join %>...&nbsp;&nbsp;
             </span>
             <button style="float:left;padding: 4px;font-size: 0.6em;" type="button" class="btn btn-success" data-toggle="modal" data-target="#descript">
                 더보기
