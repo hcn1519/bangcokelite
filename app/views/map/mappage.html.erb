@@ -400,6 +400,18 @@
              var infoMeal = "식사있음";
            }
            
+           if (data[i].small_deposit != 0) {
+             var deposit= '예치금'+ "&nbsp;"+ data[i].small_deposit;
+           } else if (data[i].small_deposit == 0 && data[i].big_deposit != 0) {
+             var deposit = '보증금'+ "&nbsp;"+ data[i].big_deposit;
+           } else if (data[i].small_deposit == 0 && data[i].big_deposit == 0) {
+             var deposit= '예치금'+ "&nbsp;"+ "없음";
+           }
+           if (data[i].extra_price != 0 ) {
+             var extra_price = '관리비' + '별도';
+           } else {
+             var extra_price = '관리비' + "없음";
+           }
  
            if (data[i].transportation_kind == "지하철") {
              var vehicle = data[i].transportation_subway;
@@ -423,7 +435,7 @@
                   '<div class="row" style="margin:0px; padding:0px">' +
                   //월세가 같을 때 price_to 안보여주도록
                      '<div style="font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
-                       '(예치금&nbsp'+ data[i].small_deposit + ',&nbsp;관리비별도' + ')&nbsp;'+
+                       '('+ deposit + ',&nbsp;'+ extra_price + ')&nbsp;'+
                      '</div>'+
                   '</div>'+
                   //학교별로 색깔 다르게? 학교, 교문, 시간 데이터 넣기

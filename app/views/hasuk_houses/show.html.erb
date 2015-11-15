@@ -82,7 +82,15 @@
         background: #f00e0b;
     }
 
-
+#pictab1{
+  display:table-cell;
+}
+#pictab2{
+  display:table-cell;
+}
+#pictab3{
+  display:table-cell;
+}
 @media (max-width: 767px) {
 
 .col-xs-12 {
@@ -92,7 +100,18 @@
 .container {
   padding-left: 0;
 }
-
+#pictab1{
+  display:inline-block;
+  width:32%;
+}
+#pictab2{
+  display:inline-block;
+  width:32%;
+}
+#pictab3{
+  display:inline-block;
+  width:32%;
+}
 .house-title {
   padding-top: 15px;
   padding-bottom: 10px;
@@ -148,7 +167,7 @@
 }
   
 .tip {
-  font-size: 14px;
+  font-size: 10px;
   color: #ee8176;
   float: right;
   margin-top: 25px;
@@ -233,10 +252,6 @@ hr{
   border-color: #999999;
 }
 
-
-.row{
-}
-
 p {
   margin:0;
 }
@@ -305,9 +320,6 @@ p {
 }
 
 
-.img-slider-container a img {
-   
-}
 .img-slider-container a.active img {
     border: 2px solid #fcb514;
 }
@@ -317,9 +329,6 @@ p {
   padding-right: 10px;
 }
 
-a img {
-
-}
 
 .info {
   font-size: 14px;
@@ -337,6 +346,12 @@ a img {
     height:auto;
 }
 
+.bxslider-inner {
+	display: table-cell;
+  vertical-align: middle;
+	float: none !important;
+}
+
 </style>
 
 
@@ -349,50 +364,169 @@ a img {
   <div class="row" style="margin-top:10px">
       <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="title">사진정보</div>
-          <div class="photo-zone"> 
+          <div class="photo-zone">
               <ul id="myTabs" class="btn-group nav nav-tabs nav-pills nav-justified" role="tablist">
                   <li id="pictab1" role="presentation" class="active"><a href="#photo" aria-controls="photo" role="tab" data-toggle="tab">사진</a></li>
                   <li id="pictab2" role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab">교통지도보기</a></li>
                   <li id="pictab3" role="presentation"><a href="#roadviewcon" aria-controls="roadviewcon" role="tab" data-toggle="tab">로드뷰</a></li>
               </ul>
-            
           <!-- Tab panes -->
           <div class="tab-content">
             <div id="photo" role="tabpanel" class="tab-pane active">
-              <ul id="bxslider">
-                <!--
-                <%# for i in 1..8 %>
-                  <%# unless @hasuk_house.room_img1.nil? %>
-                    <li>
-                      <img src="<%#= @hasuk_house.room_img1 %>" alt="" title="
-                      <%# unless @hasuk_house.room_price1.nil? %>월세 <%#= @hasuk_house.room_price1 %>만 원<%# end %>
-                      <%# unless @hasuk_house.room_description1.nil? %> <%#= @hasuk_house.room_description1 %><%# end %>">
-                    </li>
-                  <%# end %>
-                <%# end %>
-                -->
-                <li><img src="/images/bangs/ha1.jpg" alt="" title="" /> </li>
-                <li><img src="/images/bangs/ha2.jpg" alt="" title="" /> </li>
-                <li><img src="/images/bangs/ha3.jpg" alt="" title="" /> </li>
-                <li><img src="/images/bangs/ha4.jpg" alt="" title="" /> </li>
-                <li><img src="/images/bangs/ha5.jpg" alt="" title="" /> </li>
-                <li><img src="/images/bangs/ha6.jpg" alt="" title="" /> </li>
+             <ul id="bxslider">
+      <!--          
+              <%# if @hasuk_house.room_img1 != "" || @hasuk_house.room_img1 != nil %>
+                <li><img src="<%#= @hasuk_house.room_img1 %>" alt="" title="<%# unless @hasuk_house.room_price1.nil? %>월세 <%#= @hasuk_house.room_price1 %>만 원<%# end %>
+                  <%# unless @hasuk_house.room_description1.nil? %> <%#= @hasuk_house.room_description1 %><%# end %>">
+                </li>
+              <%# end %>
+              <%# if @hasuk_house.room_img2 != "" || @hasuk_house.room_img2 != nil %>
+                <li><img src="<%#= @hasuk_house.room_img2 %>" alt="" title="<%# unless @hasuk_house.room_price2.nil? %>월세 <%#= @hasuk_house.room_price2 %>만 원<%# end %>
+                  <%# unless @hasuk_house.room_description2.nil? %> <%#= @hasuk_house.room_description2 %><%# end %>">
+                </li>
+              <%# end %>
+              <%# if @hasuk_house.room_img3 != "" || @hasuk_house.room_img3 != nil %>
+                <li><img src="<%#= @hasuk_house.room_img3 %>" alt="" title="<%# unless @hasuk_house.room_price3.nil? %>월세 <%#= @hasuk_house.room_price3 %>만 원<%# end %>
+                  <%# unless @hasuk_house.room_description3.nil? %> <%#= @hasuk_house.room_description3 %><%# end %>">
+                </li>
+              <%# end %>
+              <%# if @hasuk_house.room_img4 != "" || @hasuk_house.room_img4 != nil %>
+                <li><img src="<%#= @hasuk_house.room_img4 %>" alt="" title="<%# unless @hasuk_house.room_price4.nil? %>월세 <%#= @hasuk_house.room_price4 %>만 원<%# end %>
+                  <%# unless @hasuk_house.room_description4.nil? %> <%#= @hasuk_house.room_description4 %><%# end %>">
+                </li>
+              <%# end %>
+              <%# if @hasuk_house.room_img5 != "" || @hasuk_house.room_img5 != nil %>
+                <li><img src="<%#= @hasuk_house.room_img5 %>" alt="" title="<%# unless @hasuk_house.room_price5.nil? %>월세 <%#= @hasuk_house.room_price5 %>만 원<%# end %>
+                  <%# unless @hasuk_house.room_description5.nil? %> <%#= @hasuk_house.room_description5 %><%# end %>">
+                </li>
+              <%# end %>
+              <%# if @hasuk_house.room_img6 != "" || @hasuk_house.room_img6 != nil %>
+                <li><img src="<%#= @hasuk_house.room_img6 %>" alt="" title="<%# unless @hasuk_house.room_price6.nil? %>월세 <%#= @hasuk_house.room_price6 %>만 원<%# end %>
+                  <%# unless @hasuk_house.room_description6.nil? %> <%#= @hasuk_house.room_description6 %><%# end %>">
+                </li>
+              <%# end %>
+              <%# if @hasuk_house.room_img7 != "" || @hasuk_house.room_img7 != nil %>
+                <li><img src="<%#= @hasuk_house.room_img7 %>" alt="" title="<%# unless @hasuk_house.room_price7.nil? %>월세 <%#= @hasuk_house.room_price7 %>만 원<%# end %>
+                  <%# unless @hasuk_house.room_description7.nil? %> <%#= @hasuk_house.room_description7 %><%# end %>">
+                </li>
+              <%# end %>
+              <%# if @hasuk_house.room_img8 != "" || @hasuk_house.room_img8 != nil %>
+                <li><img src="<%#= @hasuk_house.room_img8 %>" alt="" title="<%# unless @hasuk_house.room_price8.nil? %>월세 <%#= @hasuk_house.room_price8 %>만 원<%# end %>
+                  <%# unless @hasuk_house.room_description8.nil? %> <%#= @hasuk_house.room_description8 %><%# end %>">
+                </li>
+              <%# end %>
+              <%# if @hasuk_house.common_img1 != "" || @hasuk_house.common_img1 != nil %><li><img src="<%#= @hasuk_house.common_img1 %>" alt="" title="공동시설"></li><%# end %>
+              <%# if @hasuk_house.common_img2 != "" || @hasuk_house.common_img2 != nil %><li><img src="<%#= @hasuk_house.common_img2 %>" alt="" title="공동시설"></li><%# end %>
+              <%# if @hasuk_house.common_img3 != "" || @hasuk_house.common_img3 != nil %><li><img src="<%#= @hasuk_house.common_img3 %>" alt="" title="공동시설"></li><%# end %>
+              <%# if @hasuk_house.common_img4 != "" || @hasuk_house.common_img4 != nil %><li><img src="<%#= @hasuk_house.common_img4 %>" alt="" title="공동시설"></li><%# end %>
+              <%# if @hasuk_house.meal_img1 != "" || @hasuk_house.meal_img1 != nil %><li><img src="<%#= @hasuk_house.meal_img1 %>" alt="" title="식사사진"></li><%# end %>
+              <%# if @hasuk_house.meal_img2 != "" || @hasuk_house.meal_img2 != nil %><li><img src="<%#= @hasuk_house.meal_img2 %>" alt="" title="식사사진"></li><%# end %>
+              <%# if @hasuk_house.meal_img3 != "" || @hasuk_house.meal_img3 != nil %><li><img src="<%#= @hasuk_house.meal_img3 %>" alt="" title="식사사진"></li><%# end %>
+              <%# if @hasuk_house.meal_img4 != "" || @hasuk_house.meal_img4 != nil %><li><img src="<%#= @hasuk_house.meal_img4 %>" alt="" title="식사사진"></li><%# end %>
+           -->   
+           <% for i in 1..8 %>
+                <li><img align="middle" src="/images/bangs/ha<%= i %>.jpg" alt="" title="방사진<%= i %>" /> </li>
+            <% end %>  
+            <% for i in 1..4 %>
+                <li><img align="middle" src="/images/bangs/ha<%= i+8 %>.jpg" alt="" title="공동시설사진<%= i %>" /> </li>
+            <% end %>
+            <% for i in 1..4 %>
+                <li><img align="middle" src="/images/bangs/meal<%= i %>.jpg" alt="" title="음식사진<%= i %>" /> </li>
+            <% end %>
               </ul>
 
     <!-- The thumbnails -->
-    
-              <ul id="bxslider-pager">
-                <li data-slideIndex="0"><a href=""><img style="max-height:55px" src="/images/bangs/ha1.jpg" ></a></li>
-                <li data-slideIndex="1"><a href=""><img style="max-height:55px" src="/images/bangs/ha2.jpg" ></a></li>
-                <li data-slideIndex="2"><a href=""><img style="max-height:55px" src="/images/bangs/ha3.jpg" ></a></li>
-                <li data-slideIndex="3"><a href=""><img style="max-height:55px" src="/images/bangs/ha4.jpg" ></a></li>
-                <li data-slideIndex="4"><a href=""><img style="max-height:55px" src="/images/bangs/ha5.jpg" ></a></li>
-                <li data-slideIndex="5"><a href=""><img style="max-height:55px" src="/images/bangs/ha6.jpg" ></a></li>
-              </ul>
-          
+
+  <ul id="bxslider-pager">
+<!--
+    <%# if @hasuk_house.room_img1 != "" || @hasuk_house.room_img1 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="0"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.room_img1 %>" ></a></li>
+
+    <%# end %>
+    <%# if @hasuk_house.room_img2 != "" || @hasuk_house.room_img2 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="1"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.room_img2 %>" ></a></li>
+      
+    <%# end %>
+    <%# if @hasuk_house.room_img3 != "" || @hasuk_house.room_img3 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="2"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.room_img3 %>" ></a></li>
+      
+    <%# end %>
+    <%# if @hasuk_house.room_img4 != "" || @hasuk_house.room_img4 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="3"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.room_img4 %>" ></a></li>
+      
+    <%# end %>
+    <%# if @hasuk_house.room_img5 != "" || @hasuk_house.room_img5 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="4"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.room_img5 %>" ></a></li>
+      
+    <%# end %>
+    <%# if @hasuk_house.room_img6 != "" || @hasuk_house.room_img6 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="5"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.room_img6 %>" ></a></li>
+      
+    <%# end %>
+    <%# if @hasuk_house.room_img7 != "" || @hasuk_house.room_img7 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="6"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.room_img7 %>" ></a></li>
+      
+    <%# end %>
+    <%# if @hasuk_house.room_img8 != "" || @hasuk_house.room_img8 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="7"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.room_img8 %>" ></a></li>
+      
+    <%# end %>
+     <%# if @hasuk_house.common_img1 != "" || @hasuk_house.common_img1 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="8"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.common_img1 %>" ></a></li>
+      
+    <%# end %>
+     <%# if @hasuk_house.common_img2 != "" || @hasuk_house.common_img2 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="9"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.common_img2 %>" ></a></li>
+      
+    <%# end %>
+     <%# if @hasuk_house.common_img3 != "" || @hasuk_house.common_img3 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="10"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.common_img3 %>" ></a></li>
+      
+    <%# end %>
+     <%# if @hasuk_house.common_img4 != "" || @hasuk_house.common_img4 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="11"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.common_img4 %>" ></a></li>
+      
+    <%# end %>
+   <%# if @hasuk_house.meal_img1 != "" || @hasuk_house.meal_img1 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="12"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.meal_img1 %>" ></a></li>
+      
+    <%# end %>
+    <%# if @hasuk_house.meal_img2 != "" || @hasuk_house.meal_img2 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="13"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.meal_img2 %>" ></a></li>
+      
+    <%# end %>
+    <%# if @hasuk_house.meal_img3 != "" || @hasuk_house.meal_img3 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="14"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.meal_img3 %>" ></a></li>
+      
+    <%# end %>
+    <%# if @hasuk_house.meal_img4 != "" || @hasuk_house.meal_img4 != nil %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="15"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.meal_img4 %>" ></a></li>
+      
+    <%# end %>
+  -->  
+  <% for i in 1..8 %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="<%= i-1 %>"><a href=""><img style="max-height:55px" src="/images/bangs/ha<%=i %>.jpg" ></a></li>
+  <% end %>  
+  <% for i in 1..4 %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="<%= i+7 %>"><a href=""><img style="max-height:55px" src="/images/bangs/ha<%=i+8 %>.jpg" ></a></li>
+  <% end %>
+  <% for i in 1..4 %>
+      <li class="bxslider-inner" style="float:none" data-slideIndex="<%= i+11 %>"><a href=""><img style="max-height:55px" src="/images/bangs/meal<%=i %>.jpg" ></a></li>
+  <% end %>
+   <!--
+    <li class="bxslider-inner" style="float:none" data-slideIndex="0"><a href=""><img style="max-height:55px" src="/images/bangs/ha1.jpg" ></a></li>
+    <li class="bxslider-inner" style="float:none" data-slideIndex="1"><a href=""><img style="max-height:55px" src="/images/bangs/ha2.jpg" ></a></li>
+    <li class="bxslider-inner" style="float:none" data-slideIndex="2"><a href=""><img style="max-height:55px" src="/images/bangs/ha3.jpg" ></a></li>
+    <li class="bxslider-inner" style="float:none" data-slideIndex="3"><a href=""><img style="max-height:55px" src="/images/bangs/ha4.jpg" ></a></li>
+    <li class="bxslider-inner" style="float:none" data-slideIndex="4"><a href=""><img style="max-height:55px" src="/images/bangs/ha5.jpg" ></a></li>
+    <li class="bxslider-inner" style="float:none" data-slideIndex="5"><a href=""><img style="max-height:55px" src="/images/bangs/ha6.jpg" ></a></li>
+  -->
+  </ul>
+
+
             </div>
             <div id="address" style="width:100%;" role="tanpanel" class="tab-pane">
-                  <div id="map" style="width:100%; height:445px; max-height:500px"></div>
+                  <div id="map" style="width:100%; height:490px; max-height:500px"></div>
                   <script>
                     var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
               
@@ -414,7 +548,7 @@ a img {
                   
             </div>
             <div id="roadviewcon" style="width:100%;" role="tanpanel" class="tab-pane">
-              <div id="roadview" style="width:100%; height:445px; max-height:500px"></div>
+              <div id="roadview" style="width:100%; height:490px; max-height:500px"></div>
                   <script>
                     
                     var roadviewContainer = document.getElementById('roadview'); //로드뷰를 표시할 div
@@ -439,18 +573,21 @@ a img {
       <div class="col-md-6 col-sm-6 col-xs-12">
           <div class="row" style="margin:0; padding:0;" >
             <div class="title col-lg-3 col-md-3 col-xs-3 col-sm-3">하숙집 정보</div>
-            <div class="col-lg-9 col-md-9 hidden-xs hidden-sm"><p class="tip"><span class="label tip-label">Tip</span>‘구역 정보’에서 구역 평균월세, 지역정보도 확인해보세요!</a></div>
+            <div class="col-lg-9 col-md-9 hidden-xs hidden-sm hidden-md"><p class="tip"><span class="label tip-label">Tip</span>‘구역 정보’에서 구역 평균월세, 지역정보도 확인해보세요!</a></div>
           </div>
         <div class="info-zone">
           <div class="row col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12" style="margin:0; padding:0;">
             <p class="info" style="margin-top:3px"><span class="label">월세</span></p>
                <h5 style="color: #2980B9; margin-top:0px; margin-bottom:0px; float:left"><%= @hasuk_house.price_from %> ~ <%= @hasuk_house.price_to %></h5></span>
                <span style="float:left; margin-top: 5px;margin-left: 5px; font-size:14px">만원</span>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12" style="margin:0; padding:0;">
                <% if @hasuk_house.discount_price != 0 %>
-                 
-                 <span class="fui-alert-circle" style="margin-left:10px; color:#E74C3C"></span>
+                 <span class="fui-alert-circle" style="color:#E74C3C"></span>
                  첫 달 월세 <span style="color:#E74C3C; font-weight:bold"><%= number_with_delimiter(@hasuk_house.discount_price, :delimiter => ',') %></span> 할인
                <% end %>
+            </div>
           </div><!--월세 정보 끝-->
           <div class="row col-xs-12"> <!--종류 & 계약기간-->
             <div class="col-md-6 col-xs-6" style="padding-left:0">
@@ -587,10 +724,10 @@ a img {
             <% unless @hasuk_house.common_option13.nil? || @hasuk_house.common_option13 == "" %><span id="inner-content"><%= @hasuk_house.common_option13 %>,&nbsp;</span><% end %>
           </div>
           <div class="row">
-            <div class="col-md-6 col-xs-6" style="padding-left:0">
+            <div class="col-md-6 col-xs-5" style="padding-left:0">
               <p class="info"><span class="label">인터넷</span><%= @hasuk_house.internet %></p>
             </div>
-            <div class="col-md-6 col-xs-6" style="padding-left:0">
+            <div class="col-md-6 col-xs-7" style="padding-left:0">
               <p class="info"><span class="label">쓰레기 처리</span><%= @hasuk_house.personal_trash %></p>
             </div>
           </div>
@@ -632,7 +769,7 @@ a img {
           
           
           <div class="row">
-            <p class="info" ><span class="label" style="margin-right:3px" >교통</span>
+            <p class="info" style="margin-top:4px"><span class="label" style="margin-right:3px" >교통</span>
               <% if @hasuk_house.transportation_kind == "지하철" %>
                 <% if @hasuk_house.transportation_subway == "대흥" %>
                     <span class="sub_circle line_number_6">6호선</span>&nbsp;<span id="inner-content" style="color:#9a4510; float:none"><%= @hasuk_house.transportation_subway %>역</span>
@@ -677,11 +814,11 @@ a img {
           
           <div>
             <% if user_signed_in? %>
-              <center><button type="button" class="btn btn-primary btn-md" style="background-color:#ee8176;">찜하기</button>
+              <center><button type="button" id="like" class="btn btn-primary btn-md" style="background-color:#ee8176;">찜하기</button>
               <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#contact" style="background-color:#71b7e6;">연락처보기</button>
               </center>
             <% else %>
-              <center><button type="button" class="btn btn-primary btn-md" style="background-color:#ee8176;">찜하기</button>
+              <center><button type="button" id="like" class="btn btn-primary btn-md" style="background-color:#ee8176;">찜하기</button>
               <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#login" style="background-color:#71b7e6;">연락처보기</button>
               </center>
             <% end %>
@@ -751,10 +888,6 @@ a img {
   </div>
 </div>
 
-<%= link_to 'Edit', edit_hasuk_house_path(@hasuk_house) %> |
-<%= link_to 'Back', hasuk_houses_path %>
-
-
 <script>
 var $j = jQuery.noConflict();
 
@@ -774,15 +907,15 @@ var realSlider= $j("ul#bxslider").bxSlider({
     });
     
     var realThumbSlider=$j("ul#bxslider-pager").bxSlider({
-      minSlides: 8,
-      maxSlides: 8,
+      minSlides: 1,
+      maxSlides: 16,
       slideWidth: 100,
       slideMargin: 12,
       moveSlides: 1,
       pager:false,
       speed:1000,
       controls: true,
-      infiniteLoop:false,
+      infiniteLoop: false,
       hideControlOnEnd:true,
       nextText:'<span></span>',
       prevText:'<span></span>',
@@ -842,6 +975,9 @@ $(document).ready(function(){
     $("#pictab2").removeClass("active");
   });
   
+  $("#like").click(function(){
+    alert("준비중입니다");
+  });
 });
 </script>
 

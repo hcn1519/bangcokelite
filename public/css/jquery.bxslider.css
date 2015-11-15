@@ -11,6 +11,7 @@
  */
 
 
+
 /** RESET AND LAYOUT
 ===================================*/
 
@@ -22,7 +23,7 @@
 	left:0;
 	padding: 5px;
 	*zoom: 1;
-	background-color: #555555;
+	background-color:#333;
 	margin-left:0px;
 	margin-right:0px;
 
@@ -30,17 +31,24 @@
 
 .bx-wrapper img {
 	max-width: 100%;
-	max-height: 370px;
+	max-height: 400px;
 	display:block;
 	background-color: #555555;
- 	margin: 0 auto;
+ 	margin-left:0;
+ 	margin-right:0;
+ 	margin:auto;
+ 	float: none !important;
 }
 
 /** THEME
 ===================================*/
-
+#bxslider li {
+	display: table-cell;
+    vertical-align: middle;
+	float: none !important;
+}
 .bx-wrapper .bx-viewport {
-	background: #555555;
+	background:#333;
 	margin-left:0px;
 	margin-right:0px;
 	/*fix other elements on the page moving (on Chrome)*/
@@ -80,6 +88,7 @@
 	font-weight: bold;
 	color: #666;
 	padding-top: 20px;
+
 }
 
 .bx-wrapper .bx-pager .bx-pager-item,
