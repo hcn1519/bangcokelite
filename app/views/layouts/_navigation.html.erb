@@ -36,6 +36,9 @@
         overflow: hidden!important;
     }
 }
+.navbar-collapse .navbar-nav.navbar-right:last-child {
+    margin-right:0px;
+}
 </style>
 <%# navigation styled for Bootstrap 3.0 %>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -53,8 +56,15 @@
       <ul class="nav navbar-nav">
         
         <%= render 'layouts/navigation_links' %>
-     
+      
       </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+                
+            <%= render 'layouts/navigation_links2' %>
+            
+          </ul>
+
     </div>
 
 </nav>

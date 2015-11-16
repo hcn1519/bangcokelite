@@ -504,7 +504,7 @@
           <tr>
             <td style="width:15%" id="column"><center>개인물품/시설</center></td>
             <td colspan="3" id="checktd">
-            <% @personal_option = ["침대", "책상", "옷장", "행거", "수납장", "에어컨", "TV", "화장실", "샤워기", "세탁기", "냉장고", "전자레인지", "가스레인지", "인덕션"] %>
+            <% @personal_option = ["침대", "책상", "옷장", "행거", "수납장", "에어컨", "TV", "화장실", "샤워실", "세탁기", "냉장고", "전자레인지", "가스레인지", "인덕션"] %>
           
               <% 14.times do |i| %>
                 <label  class="radio-inline" id="check-right">
@@ -514,24 +514,24 @@
               <% end %>
               
                 
-              <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+              <!--<div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
                 <div class="col-md-4 col-sm-4 col-xs-4">
-                  <%= f.text_field :personal_option15, class:"form-control", style:"margin-bottom:5px", placeholder:"추가옵션1" %> 
+                  <%#= f.text_field :personal_option15, class:"form-control", style:"margin-bottom:5px", placeholder:"추가옵션1" %> 
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4">
-                  <%= f.text_field :personal_option16, class:"form-control", style:"margin-bottom:5px", placeholder:"추가옵션2" %>
+                  <%#= f.text_field :personal_option16, class:"form-control", style:"margin-bottom:5px", placeholder:"추가옵션2" %>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4">
-                  <%= f.text_field :personal_option17, class:"form-control", style:"margin-bottom:5px", placeholder:"추가옵션3" %>
+                  <%#= f.text_field :personal_option17, class:"form-control", style:"margin-bottom:5px", placeholder:"추가옵션3" %>
                 </div>
-              </div>
+              </div>-->
             </td>
           </tr>
           <tr>
             <td style="width:15%" id="column"><center>공동물품/시설</center></td>
             <td colspan="3" id="checktd">
             
-             <% @common_option = ["중앙난방", "화장실", "샤워실", "세탁실", "세제", "냉장고", "전자레인지", "가스레인지", "인덕션", "정수기"] %>
+             <% @common_option = ["중앙난방", "화장실", "샤워실", "세탁실", "CCTV", "냉장고", "전자레인지", "가스레인지", "인덕션", "정수기"] %>
              
              <% 10.times do |i| %>
                 <label  class="radio-inline" id="check-right">
@@ -540,17 +540,6 @@
                 </label>
               <% end %>
             
-              <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                  <%= f.text_field :common_option11, class:"form-control", style:"margin-bottom:5px", placeholder:"추가옵션1" %>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                  <%= f.text_field :common_option12, class:"form-control", style:"margin-bottom:5px", placeholder:"추가옵션2" %>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                  <%= f.text_field :common_option13, class:"form-control", style:"margin-bottom:5px", placeholder:"추가옵션3" %>
-                </div>
-              </div>
             </td>
           </tr>
           <tr>

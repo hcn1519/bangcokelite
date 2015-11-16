@@ -2854,8 +2854,7 @@
     .line_number_bus {
         background: #3498DB;
         border-radius: 15%;
-        padding-left: 2px;
-        padding-right: 2px;
+        padding:1.5px;
         color: #ffffff;
         text-align: center;
         font-size: 8px;
@@ -3108,13 +3107,13 @@
  
                               <% if c.transportation_kind == "지하철" %>
                                   <% if c.transportation_subway == "대흥" %>
-                                      <span class="sub_circle line_number_6">6</span><span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_6">6</span>&nbsp;<span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
-                                      <span class="sub_circle line_number_2">2</span><span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_2">2</span>&nbsp;<span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "서강대" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌기차" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
                                   <% end %>
                                   <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                               <% elsif c.transportation_kind == "버스" %>
@@ -3296,13 +3295,13 @@
  
                               <% if c.transportation_kind == "지하철" %>
                                   <% if c.transportation_subway == "대흥" %>
-                                      <span class="sub_circle line_number_6">6</span><span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_6">6</span>&nbsp;<span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
-                                      <span class="sub_circle line_number_2">2</span><span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_2">2</span>&nbsp;<span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "서강대" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌기차" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
                                   <% end %>
                                   <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                               <% elsif c.transportation_kind == "버스" %>
@@ -3482,13 +3481,13 @@
  
                               <% if c.transportation_kind == "지하철" %>
                                   <% if c.transportation_subway == "대흥" %>
-                                      <span class="sub_circle line_number_6">6</span><span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_6">6</span>&nbsp;<span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
-                                      <span class="sub_circle line_number_2">2</span><span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_2">2</span>&nbsp;<span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "서강대" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌기차" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
                                   <% end %>
                                   <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                               <% elsif c.transportation_kind == "버스" %>
@@ -3668,13 +3667,13 @@
  
                               <% if c.transportation_kind == "지하철" %>
                                   <% if c.transportation_subway == "대흥" %>
-                                      <span class="sub_circle line_number_6">6</span><span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_6">6</span>&nbsp;<span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
-                                      <span class="sub_circle line_number_2">2</span><span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_2">2</span>&nbsp;<span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "서강대" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌기차" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
                                   <% end %>
                                   <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                               <% elsif c.transportation_kind == "버스" %>

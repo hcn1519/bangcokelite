@@ -12,8 +12,8 @@ puts 'CREATED ADMIN USER: ' << user.email
 
 
 @meal = ["아침", "점심", "저녁", "제공 안함"]
-@personal_option = ["침대", "책상", "옷장", "행거", "수납장", "에어컨", "TV", "화장실", "샤워기", "세탁기", "냉장고", "전자레인지", "가스레인지", "인덕션"]
-@common_option = ["중앙난방", "화장실", "샤워실", "세탁실", "세제", "냉장고", "전자레인지", "가스레인지", "인덕션", "정수기"]
+@personal_option = ["침대", "책상", "옷장", "행거", "수납장", "에어컨", "TV", "화장실", "샤워실", "세탁기", "냉장고", "전자레인지", "가스레인지", "인덕션"]
+@common_option = ["중앙난방", "화장실", "샤워실", "세탁실", "CCTV", "냉장고", "전자레인지", "가스레인지", "인덕션", "정수기"]
 
 for i in 1..20 do
    @room_img = Array.new
@@ -49,11 +49,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"와이파이", personal_trash:"해줌", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.547867 , lng:126.9377533 ,
         #교문까지 거리 및 시간
      univ_distance1:"서강", univ_distance2:"학교선택",
@@ -103,11 +103,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.549090 , lng:126.937480,
         #교문까지 거리 및 시간
      univ_distance1:"서강", univ_distance2:"학교선택", 
@@ -157,11 +157,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 신수동 89-80", lat:37.548791 , lng:126.937312,
         #교문까지 거리 및 시간
      univ_distance1:"서강", univ_distance2:"학교선택", 
@@ -211,11 +211,11 @@ HasukHouse.create(
     personal_option1:"", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"", personal_option7:"#{@personal_option[6]}", personal_option8:"", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"", common_option2:"#{@common_option[1]}", common_option3:"", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 백범로 10길 24", lat:37.548290 , lng:126.939664,
         #교문까지 거리 및 시간
      univ_distance1:"서강", univ_distance2:"학교선택", 
@@ -265,11 +265,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"와이파이", personal_trash:"해줌",  post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 광성로6안길 14", lat:37.548715 , lng: 126.937881 ,
         #교문까지 거리 및 시간
      univ_distance1:"서강", univ_distance2:"학교선택", 
@@ -319,11 +319,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서",  post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 신수동 89-91", lat:37.548600 , lng:126.937538,
         #교문까지 거리 및 시간
      univ_distance1:"서강", univ_distance2:"학교선택", 
@@ -373,11 +373,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서",  post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 신수동 89-89", lat:37.548498 , lng:126.937372,
         #교문까지 거리 및 시간
      univ_distance1:"서강", univ_distance2:"학교선택", 
@@ -427,11 +427,11 @@ HasukHouse.create(
     personal_option1:"", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"", personal_option7:"#{@personal_option[6]}", personal_option8:"", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"", common_option2:"#{@common_option[1]}", common_option3:"", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서",  post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 광성로 34-14", lat:37.549127, lng:126.937206,
         #교문까지 거리 및 시간
      univ_distance1:"서강", univ_distance2:"학교선택", 
@@ -481,11 +481,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서",  post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 신수동 89-66", lat:37.548940 , lng:126.937147,
         #교문까지 거리 및 시간
      univ_distance1:"서강", univ_distance2:"학교선택", 
@@ -535,11 +535,11 @@ HasukHouse.create(
     personal_option1:"", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"", personal_option7:"#{@personal_option[6]}", personal_option8:"", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"", common_option2:"#{@common_option[1]}", common_option3:"", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서",  post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 신수동 89-86", lat:37.548638 , lng:126.937388,
         #교문까지 거리 및 시간
      univ_distance1:"서강", univ_distance2:"학교선택", 
@@ -590,11 +590,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"와이파이",  personal_trash:"해줌", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 연희동 339-6", lat:37.563879 , lng:126.933127 ,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
@@ -644,11 +644,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 연희동 339-96", lat:37.563743 , lng:126.932757,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
@@ -698,11 +698,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 연희동 339-23", lat:37.565023 , lng:126.931673,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
@@ -752,11 +752,11 @@ HasukHouse.create(
     personal_option1:"", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"", personal_option7:"#{@personal_option[6]}", personal_option8:"", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"", common_option2:"#{@common_option[1]}", common_option3:"", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 연희동 309-25", lat:37.565299 , lng:126.931979,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
@@ -806,11 +806,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"와이파이", personal_trash:"해줌", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 연희동 340-40", lat:37.564725 , lng: 126.931271 ,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
@@ -860,12 +860,12 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
-    internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 성산동", lat:37.562964, lng:126.930199,
+    
+    internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건���은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 성산동", lat:37.562964, lng:126.930199,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
      sogang_gate1:"교문선택", sogang_gate2:"교문선택", 
@@ -914,11 +914,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 성산동", lat:37.563190 , lng:126.930134,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
@@ -968,11 +968,11 @@ HasukHouse.create(
     personal_option1:"", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"", personal_option7:"#{@personal_option[6]}", personal_option8:"", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"", common_option2:"#{@common_option[1]}", common_option3:"", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 성산동", lat:37.562709, lng:126.930038,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
@@ -1022,11 +1022,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 성산동", lat:37.562752 , lng:126.930215,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
@@ -1076,11 +1076,11 @@ HasukHouse.create(
     personal_option1:"", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"", personal_option7:"#{@personal_option[6]}", personal_option8:"", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"", common_option2:"#{@common_option[1]}", common_option3:"", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 성산동", lat:37.562688 , lng:126.929598,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
@@ -1130,11 +1130,11 @@ HasukHouse.create(
     personal_option1:"", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"", personal_option7:"#{@personal_option[6]}", personal_option8:"", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"", common_option2:"#{@common_option[1]}", common_option3:"", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 창천동", lat:37.558810 , lng:126.935077,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
@@ -1183,11 +1183,11 @@ HasukHouse.create(
     personal_option1:"", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"", personal_option7:"#{@personal_option[6]}", personal_option8:"", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"", common_option2:"#{@common_option[1]}", common_option3:"", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 창천동", lat:37.559006 , lng:126.935790,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
@@ -1237,11 +1237,11 @@ HasukHouse.create(
     personal_option1:"", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"", personal_option7:"#{@personal_option[6]}", personal_option8:"", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"", common_option2:"#{@common_option[1]}", common_option3:"", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 창천동", lat:37.558547 , lng:126.935044,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
@@ -1291,11 +1291,11 @@ HasukHouse.create(
     personal_option1:"", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"", personal_option7:"#{@personal_option[6]}", personal_option8:"", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"", common_option2:"#{@common_option[1]}", common_option3:"", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 창천동", lat:37.559011, lng:126.934797,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
@@ -1346,11 +1346,11 @@ HasukHouse.create(
     personal_option1:"", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"", personal_option7:"#{@personal_option[6]}", personal_option8:"", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"", common_option2:"#{@common_option[1]}", common_option3:"", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 창천동", lat:37.558828 , lng:126.934266,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
@@ -1404,11 +1404,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"와이파이", personal_trash:"해줌", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.558215, lng:126.945186 ,
         #교문까지 거리 및 시간
      univ_distance1:"이화", univ_distance2:"학교선택", 
@@ -1458,11 +1458,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.558513 , lng:126.944703,
         #교문까지 거리 및 시간
      univ_distance1:"이화", univ_distance2:"학교선택", 
@@ -1512,11 +1512,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 신수동 89-80", lat:37.557845 , lng:126.944188,
         #교문까지 거리 및 시간
      univ_distance1:"이화", univ_distance2:"학교선택", 
@@ -1566,11 +1566,11 @@ HasukHouse.create(
     personal_option1:"", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"", personal_option7:"#{@personal_option[6]}", personal_option8:"", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"", common_option2:"#{@common_option[1]}", common_option3:"", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 백범로 10길 24", lat:37.557505 , lng:126.943888,
         #교문까지 거리 및 시간
      univ_distance1:"이화", univ_distance2:"학교선택", 
@@ -1620,11 +1620,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"와이파이", personal_trash:"해줌", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 광성로6안길 14", lat:37.558572 , lng:126.944290 ,
         #교문까지 거리 및 시간
      univ_distance1:"이화", univ_distance2:"학교선택", 
@@ -1676,11 +1676,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"와이파이", personal_trash:"해줌", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.557413 , lng:126.940074 ,
         #교문까지 거리 및 시간
      univ_distance1:"이화", univ_distance2:"연세", 
@@ -1730,11 +1730,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.557451 , lng:126.941453,
         #교문까지 거리 및 시간
      univ_distance1:"이화", univ_distance2:"연세", 
@@ -1784,11 +1784,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 신수동 89-80", lat:37.558182 , lng:126.941501,
         #교문까지 거리 및 시간
      univ_distance1:"이화", univ_distance2:"연세", 
@@ -1838,11 +1838,11 @@ HasukHouse.create(
     personal_option1:"", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"", personal_option7:"#{@personal_option[6]}", personal_option8:"", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"", common_option2:"#{@common_option[1]}", common_option3:"", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 백범로 10길 24", lat:37.558365 , lng:126.940788,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"이화", 
@@ -1892,11 +1892,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"와이파이", personal_trash:"해줌", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 광성로6안길 14", lat:37.557157 , lng: 126.939345,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"이화", 
@@ -1948,11 +1948,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"와이파이", personal_trash:"해줌", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.567185 , lng:126.946372 ,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"이화", 
@@ -2002,11 +2002,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.567580 , lng:126.945884,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"이화", 
@@ -2056,11 +2056,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 신수동 89-80", lat:37.567916 , lng:126.947123,
         #교문까지 거리 및 시간
      univ_distance1:"이화", univ_distance2:"연세", 
@@ -2110,11 +2110,11 @@ HasukHouse.create(
     personal_option1:"", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"", personal_option7:"#{@personal_option[6]}", personal_option8:"", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"", common_option2:"#{@common_option[1]}", common_option3:"", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 백범로 10길 24", lat:37.567091 , lng:126.946732,
         #교문까지 거리 및 시간
      univ_distance1:"이화", univ_distance2:"연세", 
@@ -2164,11 +2164,11 @@ HasukHouse.create(
     personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
     personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
     personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
-    personal_option15:"", personal_option16:"", personal_option17:"",
+    
     
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
-    common_option11:"", common_option12:"", common_option13:"",
+    
     internet:"와이파이", personal_trash:"해줌",  post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 광성로6안길 14", lat:37.568180 , lng: 126.945954,
         #교문까지 거리 및 시간
      univ_distance1:"이화", univ_distance2:"연세", 

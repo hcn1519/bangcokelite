@@ -21,22 +21,18 @@
  
 
 </style>
-<% if current_page?('/') %>
-  <% if user_signed_in? %>
-    <li><%= link_to "방 등록하기", "/hasuk_houses", :class => 'btn btn-small' %></li>
-    <li><%= link_to '회원정보수정', "#edit", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-    <li><%= link_to '유저 관리', users_path, :class => 'btn btn-small navbar-text' %></li>
-    <li><%= link_to '로그아웃', destroy_user_session_path, :method=>'delete', :class => 'btn btn-small' %></li>
-  <% else %>
-    <li><%= link_to "방 등록하기", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-    <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-    <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-    
-  <% end %><!--인덱스 페이지 -->
+
   
-<% elsif current_page?('/map/mappage') || current_page?('/map/map_detail') %>
+<% if current_page?('/map/mappage') || current_page?('/map/map_detail') %>
 
   <% if user_signed_in? %>
+    <% if @univ == "이화" %>
+        <li><%= link_to "#{@univ}대학교", "#", :class => 'btn btn-small', style:"color:#0c6f40" %></li>
+    <% elsif @univ == "서강" %>
+        <li><%= link_to "#{@univ}대학교", "#", :class => 'btn btn-small', style:"color:#b20000" %></li>
+    <% elsif @univ == "연세" %>
+        <li><%= link_to "#{@univ}대학교", "#", :class => 'btn btn-small', style:"color:#202d61" %></li>
+    <% end %>
       <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-align:center">학교 변경하기<b class="caret"></b></a>
         <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
             <li>
@@ -59,12 +55,15 @@
             </li>  
         </ul>
       </li>
-      <li><%= link_to "방 등록하기", "/hasuk_houses", :class => 'btn btn-small' %></li>
-      <li><%= link_to '회원정보수정', "#edit", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-      <li><%= link_to '유저 관리', users_path, :class => 'btn btn-small' %></li>
-      <li><%= link_to '로그아웃', destroy_user_session_path, :method=>'delete', :class => 'btn btn-small' %></li>
-      <li><%= link_to "하숙방 검색", "#search", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+      
   <% else %>
+    <% if @univ == "이화" %>
+        <li><%= link_to "#{@univ}대학교", "#", :class => 'btn btn-small', style:"color:#0c6f40" %></li>
+    <% elsif @univ == "서강" %>
+        <li><%= link_to "#{@univ}대학교", "#", :class => 'btn btn-small', style:"color:#b20000" %></li>
+    <% elsif @univ == "연세" %>
+        <li><%= link_to "#{@univ}대학교", "#", :class => 'btn btn-small', style:"color:#202d61" %></li>
+    <% end %>
     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-align:center">학교 변경하기<b class="caret"></b></a>
       <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
           <li>
@@ -87,25 +86,10 @@
           </li>  
       </ul>
     </li>
-    <li><%= link_to "방 등록하기", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-    <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-    <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-    <li><%= link_to "하숙방 검색", "#search", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-  <% end %><!--로그인별 분류-->
-  
-
-<% else %>
-  <% if user_signed_in? %>
-    <li><%= link_to "방 등록하기", "/hasuk_houses", :class => 'btn btn-small' %></li>
-    <li><%= link_to '회원정보수정', "#edit", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-    <li><%= link_to '유저 관리', users_path, :class => 'btn btn-small' %></li>
-    <li><%= link_to '로그아웃', destroy_user_session_path, :method=>'delete', :class => 'btn btn-small' %></li>
-  <% else %>
-    <li><%= link_to "방 등록하기", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-    <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-    <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
     
-  <% end %>
+  <% end %><!--로그인별 분류-->
+
+
   
 <% end %><!--페이지별 분류-->
 

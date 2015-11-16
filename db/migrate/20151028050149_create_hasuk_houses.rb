@@ -41,9 +41,7 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.string :personal_option12
       t.string :personal_option13
       t.string :personal_option14
-      t.string :personal_option15
-      t.string :personal_option16
-      t.string :personal_option17
+
       t.string :common_option1
       t.string :common_option2
       t.string :common_option3
@@ -54,9 +52,7 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.string :common_option8
       t.string :common_option9
       t.string :common_option10
-      t.string :common_option11
-      t.string :common_option12
-      t.string :common_option13
+
       t.string :internet
       
       t.string :personal_trash

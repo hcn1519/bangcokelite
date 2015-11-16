@@ -460,14 +460,14 @@
                   '<div class="row" style="margin:0px; padding:0px">' +
                   //월세가 같을 때 price_to 안보여주도록
                      '<div style="font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
-                       '(예치금&nbsp'+ data[i].small_deposit + ',&nbsp;관리비별도' + ')&nbsp;'+
+                       '('+ deposit + ',&nbsp;'+ extra_price + ')&nbsp;'+
                      '</div>'+
                   '</div>'+
                   //학교별로 색깔 다르게? 학교, 교문, 시간 데이터 넣기
                   '<div class="row" style="margin:0; font-size:13px">' + 
                   university + '&nbsp;' + entrance  + '&nbsp;' + data[i].distance_time1 +'분</div>'+
                   //교통수단별로 색깔 다르게? 정류장, 분 데이터 넣기
-                  '<div class="row" style="margin:0; font-size:13px">' + '<span style="color:#0063b1">' + '<div class="line_number_bus">버스</div>' + vehicle + '</span>' + '&nbsp;' + data[i].transportation_distance_time +'분</div>' +
+                  '<div class="row" style="margin:0; font-size:13px">' + '<span style="color:#0063b1">' + '<div class="line_number_bus" style="padding:0px; padding-left:2px; padding-right:2px">버스</div>' + vehicle + '</span>' + '&nbsp;' + data[i].transportation_distance_time +'분</div>' +
                   //해당되는 데이터만 뜨도록
                   '<div class="row" style="color:#777777; margin:0; margin-top:2px; font-size:12px">'+ '#' + data[i].hasuk_kind + '&nbsp;#' + infoMeal + '&nbsp;#' + data[i].gender + '</div>' +
                '</div>'+
@@ -581,6 +581,25 @@
 
                      })(str_id));
 
+
+google.maps.event.addListener(infowindow, 'domready', function() {
+
+   // Reference to the DIV which receives the contents of the infowindow using jQuery
+   var iwOuter = $('.gm-style-iw');
+
+   /* The DIV we want to change is above the .gm-style-iw DIV.
+    * So, we use jQuery and create a iwBackground variable,
+    * and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
+    */
+   var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+});
                  marker.setMap(map);
                 } //division 괄호
              //univ 서강 걸리는 괄호
@@ -917,10 +936,24 @@
     </script>
  
    <style type="text/css">
- 
+  #infoWindow {
+    left: 0 !important;
+    right: 0 !important;
+  }
+  .gm-style-iw {
+  width: 280px !important;
+   top: 0 !important;
+   left: 0 !important;
+   right: 0 !important;
+   background-color: #fff;
+   box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+   border: 1px solid rgba(72, 181, 233, 0.6);
+   border-radius: 2px 2px 0 0;
+}
+
     /*사이즈별 모달 조정 */
     @media only screen and (min-width:960px){
-        /* styles for browsers larger than 960px; */
+       /* styles for browsers larger than 960px; */
      
     }
     @media only screen and (min-width:1440px){
@@ -1888,9 +1921,7 @@
       border:1px solid #2ECC71;
     }
     
-   #infoWindow {
-        width:280px;
-    }
+
     a:hover{
       background-color:#dddddd;
       color:blue;
@@ -2033,8 +2064,7 @@
     .line_number_bus {
         background: #3498DB;
         border-radius: 15%;
-        padding-left: 2px;
-        padding-right: 2px;
+        padding:1.5px;
         color: #ffffff;
         text-align: center;
         font-size: 8px;
@@ -2270,13 +2300,13 @@
  
                               <% if c.transportation_kind == "지하철" %>
                                   <% if c.transportation_subway == "대흥" %>
-                                      <span class="sub_circle line_number_6">6</span><span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_6">6</span>&nbsp;<span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
-                                      <span class="sub_circle line_number_2">2</span><span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_2">2</span>&nbsp;<span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "서강대" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌기차" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
                                   <% end %>
                                   <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                               <% elsif c.transportation_kind == "버스" %>
@@ -2463,13 +2493,13 @@
  
                               <% if c.transportation_kind == "지하철" %>
                                   <% if c.transportation_subway == "대흥" %>
-                                      <span class="sub_circle line_number_6">6</span><span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_6">6</span>&nbsp;<span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
-                                      <span class="sub_circle line_number_2">2</span><span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_2">2</span>&nbsp;<span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "서강대" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌기차" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
                                   <% end %>
                                   <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                               <% elsif c.transportation_kind == "버스" %>
@@ -2656,13 +2686,13 @@
  
                               <% if c.transportation_kind == "지하철" %>
                                   <% if c.transportation_subway == "대흥" %>
-                                      <span class="sub_circle line_number_6">6</span><span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_6">6</span>&nbsp;<span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
-                                      <span class="sub_circle line_number_2">2</span><span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_2">2</span>&nbsp;<span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "서강대" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌기차" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
                                   <% end %>
                                   <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                               <% elsif c.transportation_kind == "버스" %>
@@ -2848,13 +2878,13 @@
  
                               <% if c.transportation_kind == "지하철" %>
                                   <% if c.transportation_subway == "대흥" %>
-                                      <span class="sub_circle line_number_6">6</span><span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_6">6</span>&nbsp;<span id="subway" style="color:#9a4510"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌" || c.transportation_subway == "이대" %>
-                                      <span class="sub_circle line_number_2">2</span><span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
+                                      <span class="sub_circle line_number_2">2</span>&nbsp;<span id="subway" style="color:#009044"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "서강대" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#41b9b9"><%= c.transportation_subway %>역</span>
                                   <% elsif c.transportation_subway == "신촌기차" %>
-                                      <div class="line_number_kj">경의</div><span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#0063b1"><%= c.transportation_subway %>역</span>
                                   <% end %>
                                   <span><%= c.transportation_distance %>m(<%= c.transportation_distance_time %>분)</span>
                               <% elsif c.transportation_kind == "버스" %>
@@ -3087,7 +3117,7 @@ $(document).ready(function(){
 
 
   </script>
-  
+  <script src="/js/infowindowStyle.js"></script>
   
 
 </body>
