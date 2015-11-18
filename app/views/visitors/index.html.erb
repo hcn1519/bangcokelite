@@ -665,21 +665,7 @@ $(window).scroll(function() {
         });
     }
        
-    if( $("navbar-collapse collapse").hasClass("in") !=true ) {
-      $(".navbar-default .navbar-toggle").click(function(){
-         $(".navbar-default .navbar-toggle").css("color", "#3e5771");
-         $(".navbar-default .navbar-toggle:before").css("color", "#3e5771");
-         $(".navbar-default li a").css("color", "#3e5771");
-         $(".navbar-default .navbar-brand").css("color", "#3e5771");
-         $(".navbar-default").css("background", "#fff");
-         $(".navbar-default").css("border-bottom", "1px solid #BDC3C7");
-         $(".navbar-collapse.collapse").css("background", "#fff");
-      });
-    } else {
-      $(".navbar-default .navbar-toggle").click(function(){
-          $(".navbar-collapse").removeClass("in");
-      });
-    }
+    
 
     });
 

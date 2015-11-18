@@ -380,7 +380,7 @@
               var infowindow = null;
               var infoWindow = new google.maps.InfoWindow();
         
-             if (data[i].univ_distance1 == "서강") {
+           if (data[i].univ_distance1 == "서강") {
               var university = '<span style="color:#b20000">'+"서강대"+'</span>';
               var entrance = data[i].sogang_gate1;
            } else if (data[i].univ_distance1 == "연세") {
@@ -392,73 +392,130 @@
            } else {
              var entrance = "교문";
            }
-           if (data[i].meal4 == "제공 안함") {
-             var infoMeal = "식사없음";
-           } else {
-             var infoMeal = "식사있음";
+           
+           if (data[i].meal4 == "제공 안함") { 
+             var infoMeal = "식사없음"; 
+             
+           } else { 
+             if (data[i].meal1 != null) {
+               var meal1 = data[i].meal1 + ",";
+             } else {
+               var meal1 = "";
+             } 
+             if (data[i].meal2 != null) {
+               var meal2 = data[i].meal2 + ",";
+             } else {
+               var meal2 = "";
+             }
+             if (data[i].meal3 != null) {
+               var meal3 = data[i].meal3;
+             } else {
+               var meal3 = "";
+             }
+             
+             var infoMeal = meal1 + meal2 + meal3;
            }
            
+           
+           if (data[i].small_deposit != 0) {
+             var deposit= '예치금'+ "&nbsp;"+ data[i].small_deposit;
+           } else if (data[i].small_deposit == 0 && data[i].big_deposit != 0) {
+             var deposit = '보증금'+ "&nbsp;"+ data[i].big_deposit;
+           } else if (data[i].small_deposit == 0 && data[i].big_deposit == 0) {
+             var deposit= '예치금'+ "&nbsp;"+ "없음";
+           }
+           
+           if (data[i].extra_price != 0 ) { var extra_price = '관리비' + '별도'; } else { var extra_price = '관리비' + "없음"; }
  
            if (data[i].transportation_kind == "지하철") {
              var vehicle = data[i].transportation_subway;
              if (vehicle == "대흥"){
-               subway = '<span class="sub_circle line_number_6" style="border-radius:30%">6호선</span>'+ '&nbsp;' + '<span style="color#9a4510">'+vehicle + '역'+'</span>' ;
+               subway = '<span class="sub_circle line_number_6" style="border-radius:5px; font-size:12px; padding:2px">6호선</span>'+ '&nbsp;' + '<span style="color#9a4510">'+vehicle + '역'+'</span>' ;
              } else if (vehicle == "신촌" || vehicle == "이대" ) {
-               subway = '<span class="sub_circle line_number_2" style="border-radius:30%">2호선</span>'+ '&nbsp;' + '<span style="color:#00904">'+vehicle + '역'+'</span>';
+               subway = '<span class="sub_circle line_number_2" style="border-radius:5px; font-size:12px; padding:2px">2호선</span>'+ '&nbsp;' + '<span style="color:#00904">'+vehicle + '역'+'</span>';
              } else if (vehicle == "서강대") {
-               subway = '<div class="line_number_kj">경의</div>' + '&nbsp;' + '<span style="color:#41b9b9">'+vehicle+ '역' +'</span>';
+               subway = '<div class="line_number_kj" style="font-size:12px; padding-left:1px; padding-right:1px;">경의</div>' + '&nbsp;' + '<span style="color:#41b9b9">'+vehicle+ '역' +'</span>';
              } else if (vehicle == "신촌기차") {
-               subway = '<div class="line_number_kj">경의</div>' + '&nbsp;' + '<span style="color:#0063b1">'+vehicle + '역' +'</span>';
+               subway = '<div class="line_number_kj" style="font-size:12px; padding-left:1px; padding-right:1px;">경의</div>' + '&nbsp;' + '<span style="color:#0063b1">'+vehicle + '역' +'</span>';
              }
              
              var contentString =
-            '<div id="infoWindow" style="width: 280px; margin-bottom:0px;">'+
-               '<div class="row" style="margin:0;">'+
-               '<div class="col-md-4 col-sm-4 col-xs-4" style="padding: 0px;">' +
-                   '<img src="'+ data[i].room_img1.url + '" style="width:90px; height:75px;" >' +
-                 '</div>'+
-               '<div class="col-md-8 col-sm-8 col-xs-8" style="padding: 0px;">' +
-                  '<div class="row" style="margin:0px; padding:0px">' +
-                  //월세가 같을 때 price_to 안보여주도록
-                     '<div style="font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
-                       '(예치금&nbsp'+ data[i].small_deposit + ',&nbsp;관리비별도' + ')&nbsp;'+
-                     '</div>'+
+             '<div id="iw-container">' + '<div class="iw-content">' +
+             
+             
+               '<div class="row" style="margin:0px">'+
+               
+               
+                 '<div class="col-md-4 col-sm-4 col-lg-4" style="padding:5px;">' +
+                     '<img src="'+ data[i].room_img1.url + '"style="width:100px; height:75px;" >' +
+                   '</div>'+
+                   
+                   
+                 '<div class="col-md-8 col-sm-8 col-lg-8" style="padding-left:7px; padding-top:5px;">' +
+                    '<div class="row" style="margin:0px; padding:0px">' +
+                    //월세가 같을 때 price_to 안보여주도록
+                       '<div style="font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
+                         '('+ deposit + ',&nbsp;'+ extra_price + ')&nbsp;'+
+                       '</div>'+
+                    '</div>'+
+  
+                    //학교별로 색깔 다르게? 학교, 교문, 시간 데이터 넣기
+                    '<div class="row" style="margin:0; font-size:13px">' + 
+                      university + '&nbsp;' + entrance + '&nbsp;'+ '<span>' + data[i].distance1 +'m'+ '(' +data[i].distance_time1 +'분)' + '</span>' + '</div>'+
+                      //교통수단별로 색깔 다르게? 정류장, 분 데이터 넣기
+                      '<div class="row" style="margin:0; font-size:13px">' + subway + '&nbsp;'+ '<span>' + data[i].transportation_distance + 'm' +'('+ data[i].transportation_distance_time +'분)' + '</span>' + '</div>'+
+                      //해당되는 데이터만 뜨도록
+                      
+                  '</div>'+ 
+                  
+                  '<div class="row" style="margin:0px">'+
+                      '<div class="col-md-12 col-lg-12" style="color:#777777; margin:0; padding:0; padding-left:5px; margin-top:2px; font-size:12px">'+ '#' + data[i].hasuk_kind + '&nbsp;' + '&nbsp;'+'#' + infoMeal + '&nbsp;' +'&nbsp;#' + data[i].gender + '</div>' +
                   '</div>'+
-                  //학교별로 색깔 다르게? 학교, 교문, 시간 데이터 넣기
-                  '<div class="row" style="margin:0; font-size:13px">' + 
-                  university + '&nbsp;' + entrance + '&nbsp;' + data[i].distance_time1 +'분</div>'+
-                  //교통수단별로 색깔 다르게? 정류장, 분 데이터 넣기
-                  '<div class="row" style="margin:0; font-size:13px">' + subway + '&nbsp;' + data[i].transportation_distance_time +'분</div>' +
-                  //해당되는 데이터만 뜨도록
-                  '<div class="row" style="color:#777777; margin:0; margin-top:2px; font-size:12px">'+ '#' + data[i].hasuk_kind + '&nbsp;#' + infoMeal + '&nbsp;#' + data[i].gender + '</div>' +
+               
+               
                '</div>'+
-               '</div>'+
-             '</div>';
+               
+               
+             '</div>'+ '</div>';
            } else {
              var vehicle = data[i].transportation_bus;
              var contentString =
-            '<div id="infoWindow" style="width: 280px; margin-bottom:0px;">'+
-               '<div class="row" style="margin:0;">'+
-               '<div class="col-md-4 col-sm-4 col-xs-4" style="padding: 0px;">' +
-                   '<img src="'+ data[i].room_img1.url + '" style="width:90px; height:75px;" >' +
-                 '</div>'+
-               '<div class="col-md-8 col-sm-8 col-xs-8" style="padding: 0px;">' +
-                  '<div class="row" style="margin:0px; padding:0px">' +
-                  //월세가 같을 때 price_to 안보여주도록
-                     '<div style="font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
-                       '(예치금&nbsp'+ data[i].small_deposit + ',&nbsp;관리비별도' + ')&nbsp;'+
-                     '</div>'+
+            '<div id="iw-container">' + '<div class="iw-content">' +
+            
+               '<div class="row" style="margin:0px">'+
+               
+               
+                 '<div class="col-md-4 col-sm-4 col-xs-4" style="padding: 5px;">' +
+                     '<img src="'+ data[i].room_img1.url + '"style="width:100px; height:75px;" >' +
+                   '</div>'+
+                   
+                   
+                 '<div class="col-md-8 col-sm-8 col-xs-8" style="padding-left:7px; padding-top:5px;">' +
+                    '<div class="row" style="margin:0px; padding:0px">' +
+                    //월세가 같을 때 price_to 안보여주도록
+                       '<div style="font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
+                         '('+ deposit + ',&nbsp;'+ extra_price + ')&nbsp;'+
+                       '</div>'+
+                    '</div>'+
+                    
+                    
+                    //학교별로 색깔 다르게? 학교, 교문, 시간 데이터 넣기
+                    '<div class="row" style="margin:0; font-size:13px">' + 
+                    university + '&nbsp;' + entrance  + '&nbsp;'+ '<span>' + data[i].distance1 +'m'+ '(' +data[i].distance_time1 +'분)' + '</span>' + '</div>'+
+                    //교통수단별로 색깔 다르게? 정류장, 분 데이터 넣기
+                    '<div class="row" style="margin:0; font-size:13px">' + '<span style="color:#0063b1">' + '<div class="line_number_bus" style="font-size:11px; padding-left:1px; padding-right:1px;">버스</div>' + '&nbsp;' + vehicle + '</span>' + '&nbsp;'+ '<span style="font-size:14px">' + data[i].transportation_distance + 'm' +'('+ data[i].transportation_distance_time +'분)' + '</span>' + '</div>'+
+                    //해당되는 데이터만 뜨도록
+                    
                   '</div>'+
-                  //학교별로 색깔 다르게? 학교, 교문, 시간 데이터 넣기
-                  '<div class="row" style="margin:0; font-size:13px">' + 
-                  university + '&nbsp;' + entrance  + '&nbsp;' + data[i].distance_time1 +'분</div>'+
-                  //교통수단별로 색깔 다르게? 정류장, 분 데이터 넣기
-                  '<div class="row" style="margin:0; font-size:13px">' + '<span style="color:#0063b1">' + '<div class="line_number_bus">버스</div>' + vehicle + '</span>' + '&nbsp;' + data[i].transportation_distance_time +'분</div>' +
-                  //해당되는 데이터만 뜨도록
-                  '<div class="row" style="color:#777777; margin:0; margin-top:2px; font-size:12px">'+ '#' + data[i].hasuk_kind + '&nbsp;#' + infoMeal + '&nbsp;#' + data[i].gender + '</div>' +
+                  
+                  '<div class="row" style="margin:0px">'+
+                    '<div class="col-md-12 col-lg-12" style="color:#777777; margin:0; padding:0; padding-left:5px; margin-top:2px; font-size:12px">'+ '#' + data[i].hasuk_kind + '&nbsp;'+ '&nbsp;#' + infoMeal + '&nbsp;#' + '&nbsp;'+ data[i].gender + '</div>' +
+                 '</div>'+
+               
                '</div>'+
-               '</div>'+
-             '</div>';
+               
+               
+              '</div>'+ '</div>';
            }
             
             var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);
@@ -582,6 +639,34 @@
                       };
 
                      })(str_id));
+                     
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
                     marker.setMap(map);
               
                 
@@ -710,6 +795,34 @@
                       };
 
                      })(str_id));
+
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
 
                  marker.setMap(map);
                 }//거리 범위 지정
@@ -840,6 +953,34 @@
 
                      })(str_id));
 
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
+
                  marker.setMap(map);
                 }//거리 범위 지정
                 }//가격 범위 지정
@@ -967,6 +1108,34 @@
 
                      })(str_id));
 
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
+
                  marker.setMap(map);
                 }//거리 범위 지정
                 }//가격 범위 지정
@@ -1085,6 +1254,34 @@
                         });
 
                       };
+
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
 
                      })(str_id));
                     marker.setMap(map);
@@ -1211,6 +1408,34 @@
 
                      })(str_id));
                     marker.setMap(map);
+
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
               
                 
               }//거리 범위 지정
@@ -1330,10 +1555,39 @@
                         $(result_id).css("background-color","#fff");
                         });
 
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
+
                       };
 
                      })(str_id));
                     marker.setMap(map);
+
               
                 
               }//거리 범위 지정
@@ -1465,6 +1719,34 @@
 
                      })(str_id));
 
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
+
                  marker.setMap(map);
                 
                   }//거리 범위 지정
@@ -1591,6 +1873,34 @@
 
                      })(str_id));
 
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
+
                  marker.setMap(map);
                   }//거리 범위 지정
                   }//가격 범위 지정
@@ -1716,6 +2026,34 @@
 
                      })(str_id));
 
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
+
                  marker.setMap(map);
                 
                      }//거리 범위 지정
@@ -1739,8 +2077,18 @@
     </script>
  
    <style type="text/css">
- 
+ .gm-style-iw {
+  width: 320px !important;
+   top: 15px !important;
+   left: 30px !important;
+   right: 0 !important;
+   background-color: #fff;
+   border: 1px solid #ECF0F1;
+   border-radius: 5px;
+}
     /*사이즈별 모달 조정 */
+    
+
     @media only screen and (min-width:960px){
         /* styles for browsers larger than 960px; */
      
@@ -1753,6 +2101,15 @@
         /* for sumo sized (mac) screens */
     }
     
+    
+     @media (max-width: 359px) {
+         .thumbnail .caption {
+    border-bottom: 1px solid #ededed;
+    font-size: 13px
+    line-height: 1.5;
+    }
+     }
+     
      @media (max-width: 400px) {
       .modal-content#modal-size1{
        width:300px;
@@ -1823,7 +2180,7 @@
          margin:0px;
          padding:0px; 
          width:20%;
-         margin-top:3px;
+         
      }
      #icon-size {
        width:22.5%;
@@ -1841,33 +2198,25 @@
        padding:0px;
        margin-left:5px;
      }
-     #kind-size span{
-        font-size:12px; 
-     }
+
      #meal-size{
        margin:0px; 
        padding:0px; 
        width: 30%;
      }
-     #meal-size span {
-        font-size:12px;
-     }
+
      #room-size{
        margin:0px;
        padding:0px;
        width: 17%;
      }
-     #room-size span{
-        font-size:12px;
-     }
+
      #distance-size{
         margin:0px;
         padding:0px;
         margin-left:5px;
      }
-     #distance-size span{
-        font-size:12px;
-     }
+
      .image-size {
         height:9.75em; 
         min-height:140px;
@@ -1951,7 +2300,7 @@
          margin:0px;
          padding:0px; 
          width:20%;
-         margin-top:3px;
+        
      }
      #icon-size {
        width:22.5%;
@@ -1974,39 +2323,49 @@
        padding:0px;
        margin-left:5px;
      }
-     #kind-size span{
-        font-size:12px; 
-     }
+
      #meal-size{
        margin:0px; 
        padding:0px; 
        width: 30%;
      }
-     #meal-size span {
-        font-size:12px;
-     }
+
      #room-size{
        margin:0px;
        padding:0px;
        width: 17%;
      }
-     #room-size span{
-        font-size:12px;
-     }
+
      #distance-size{
         margin:0px;
         padding:0px;
         margin-left:5px;
      }
-     #distance-size span{
-        font-size:12px;
-     }
+
      .image-size {
         height:9.75em; 
         min-height:140px;
      }
     }
     @media (max-width: 768px) {
+      
+    .thumbnail {
+    padding: 0px;
+    margin-bottom: 0px;
+    line-height: 1.2;
+    border: none;
+    border-bottom: 15px solid #f5f5f5;
+    }
+    
+    .thumbnail .caption {
+    border-bottom: 1px solid #ededed;
+    font-size: 14px
+    line-height: 1.5;
+    }
+    
+    .panel {
+      border: none;
+    }
      .modal-content#modal-size1{
 
      }
@@ -2077,7 +2436,7 @@
          margin:0px;
          padding:0px; 
          width:20%;
-         margin-top:3px;
+         
      }
      #icon-size {
        width:22.5%;
@@ -2100,33 +2459,25 @@
        padding:0px;
        margin-left:5px;
      }
-     #kind-size span{
-        font-size:12px; 
-     }
+
      #meal-size{
        margin:0px; 
        padding:0px; 
        width: 30%;
      }
-     #meal-size span {
-        font-size:12px;
-     }
+ 
      #room-size{
        margin:0px;
        padding:0px;
        width: 17%;
      }
-     #room-size span{
-        font-size:12px;
-     }
+
      #distance-size{
         margin:0px;
         padding:0px;
         margin-left:5px;
      }
-     #distance-size span{
-        font-size:12px;
-     }
+
      .image-size {
         height:9.75em; 
         min-height:140px;
@@ -2226,9 +2577,7 @@
        padding:0px;
        margin-left:2px;
      }
-     #kind-size span{
-        font-size:0.6em; 
-     }
+
      #meal-size{
         font-size:0.6em;
         margin-top:7px;
@@ -2239,17 +2588,13 @@
        padding:0px;
        width:17%;
      }
-     #room-size span{
-        font-size:0.6em;
-     }
+
      #distance-size{
        margin:0px;
         padding:0px;
         margin-left:2px;
      }
-     #distance-size span{
-         font-size:0.6em;
-     }
+ 
      .image-size {
         height:6.5em; 
         min-height:100px;
@@ -2545,6 +2890,13 @@
      }
     } 
     @media (min-width: 1050px){
+      
+    .thumbnail {
+      line-height:1.2;
+      margin:5px; 
+      border-radius:0px;
+    }
+    
      .modal-content#modal-size2{
         width:500px;
         left:55%;
@@ -2606,7 +2958,6 @@
          margin:0px;
          padding:0px; 
          width:20%;
-         margin-top:3px;
      }
      #icon-size {
         width:24%;
@@ -2782,11 +3133,6 @@
       margin-top:8px;
       float:left;
     }
-    .thumbnail {
-      line-height:1.2;
-      margin:5px; 
-      border-radius:0px;
-    }
     
     
 /*마커 디자인 */
@@ -2808,6 +3154,7 @@
     color: #ffffff;
     text-align: center;
     display: inline-block;
+    line-height: 1;
 }
     .line_number_2 {
         background: #29c531;
@@ -2847,17 +3194,16 @@
         
     }
     
-    .bus_green {
-        background: #59ba23;
+    .gender_border {
+      font-size: 11px;
+      line-height: 1;
+      padding: 1px 5px; 
+      margin-bottom:0px;
+      border-radius: 5px;
+      text-align: center;
+      display: inline;
     }
     
-    .bus_blue {
-         background: #3859ad;
-    }
-    
-    .bus_red {
-        background: #f00e0b;
-    }
     </style> 
 </head>
 <body>
@@ -2981,23 +3327,23 @@
                           
                           <% if c.gender=="여성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
+                              <p class="gender_border"  style="color:#ff93b0; border:1px solid #ff93b0; ">여성전용</p>
                             </div>
                           <% elsif c.gender =="남녀공용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#2ECC71; border:1px solid #2ECC71; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
+                              <p class="gender_border"  style="color:#999998; border:1px solid #999998; ">남녀공용</p>
                             </div>
                           <% elsif c.gender == "남녀층 분리" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#9B59B6; border:1px solid #9B59B6; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀분리</p>
+                              <p class="gender_border"  style="color:#9B59B6; border:1px solid #9B59B6; ">남녀분리</p>
                             </div>
                           <% elsif c.gender == "남성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#2980b9; border:1px solid #2980B9; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
+                              <p class="gender_border"  style="color:#80a3ff; border:1px solid #80a3ff; ">남성전용</p>
                             </div>
                           <% else %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">DB 없음</p>
+                              <p class="gender_border"  style="color:#ff93b0; border:1px solid #ff93b0; ">DB 없음</p>
                             </div>
                           <% end %>
                           
@@ -3071,11 +3417,11 @@
                         <div id="distance-size" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                          <% if c.univ_distance1 != "학교선택" %>
                             <% if c.univ_distance1 == "이화" %>
-                              <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">&nbsp|</span> 
                             <% elsif c.univ_distance1 =="서강" %>
-                              <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span>   
+                              <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">&nbsp|</span>   
                              <% elsif c.univ_distance1 =="연세" %>
-                              <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span>   
+                              <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">&nbsp|</span>   
                              <% else %>
                               <span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-xs hidden-lg"> 
                              <% end %> 
@@ -3098,7 +3444,7 @@
                                   <span><%= c.transportation_distance %>m</span>
                               <% else %>
                               
-                                <span id="subway"> <span class="hidden-sm hidden-md">|</span> 신촌기차역 1103m(21분)</span>
+                                <span id="subway"> <span class="hidden-sm hidden-md">&nbsp|&nbsp</span> 신촌기차역 1103m(21분)</span>
                               
                               <% end %>
                         </div>
@@ -3167,25 +3513,25 @@
                         </div>
                         <div id="gender-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                           
-                          <% if c.gender=="여성전용" %>
+                         <% if c.gender=="여성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
+                              <p class="gender_border"  style="color:#ff93b0; border:1px solid #ff93b0; ">여성전용</p>
                             </div>
                           <% elsif c.gender =="남녀공용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#2ECC71; border:1px solid #2ECC71; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
+                              <p class="gender_border"  style="color:#999998; border:1px solid #999998; ">남녀공용</p>
                             </div>
                           <% elsif c.gender == "남녀층 분리" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#9B59B6; border:1px solid #9B59B6; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀분리</p>
+                              <p class="gender_border"  style="color:#9B59B6; border:1px solid #9B59B6; ">남녀분리</p>
                             </div>
                           <% elsif c.gender == "남성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#2980b9; border:1px solid #2980B9; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
+                              <p class="gender_border"  style="color:#80a3ff; border:1px solid #80a3ff; ">남성전용</p>
                             </div>
                           <% else %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">DB 없음</p>
+                              <p class="gender_border"  style="color:#ff93b0; border:1px solid #ff93b0; ">DB 없음</p>
                             </div>
                           <% end %>
                           
@@ -3259,11 +3605,11 @@
                         <div id="distance-size" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                          <% if c.univ_distance1 != "학교선택" %>
                             <% if c.univ_distance1 == "이화" %>
-                              <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">&nbsp|</span> 
                             <% elsif c.univ_distance1 =="서강" %>
-                              <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span>   
+                              <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">&nbsp|</span>   
                              <% elsif c.univ_distance1 =="연세" %>
-                              <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span>   
+                              <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">&nbsp|</span>   
                              <% else %>
                               <span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-xs hidden-lg"> 
                              <% end %> 
@@ -3286,7 +3632,7 @@
                                   <span><%= c.transportation_distance %>m</span>
                               <% else %>
                               
-                                <span id="subway"> <span class="hidden-sm hidden-md">|</span> 신촌기차역 1103m(21분)</span>
+                                <span id="subway"> <span class="hidden-sm hidden-md">&nbsp|&nbsp</span> 신촌기차역 1103m(21분)</span>
                               
                               <% end %>
                         </div>
@@ -3355,23 +3701,23 @@
                           
                           <% if c.gender=="여성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
+                              <p class="gender_border"  style="color:#ff93b0; border:1px solid #ff93b0; ">여성전용</p>
                             </div>
                           <% elsif c.gender =="남녀공용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#2ECC71; border:1px solid #2ECC71; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
+                              <p class="gender_border"  style="color:#999998; border:1px solid #999998; ">남녀공용</p>
                             </div>
                           <% elsif c.gender == "남녀층 분리" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#9B59B6; border:1px solid #9B59B6; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀분리</p>
+                              <p class="gender_border"  style="color:#9B59B6; border:1px solid #9B59B6; ">남녀분리</p>
                             </div>
                           <% elsif c.gender == "남성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#2980b9; border:1px solid #2980B9; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
+                              <p class="gender_border"  style="color:#80a3ff; border:1px solid #80a3ff; ">남성전용</p>
                             </div>
                           <% else %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">DB 없음</p>
+                              <p class="gender_border"  style="color:#ff93b0; border:1px solid #ff93b0; ">DB 없음</p>
                             </div>
                           <% end %>
                           
@@ -3445,11 +3791,11 @@
                         <div id="distance-size" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                          <% if c.univ_distance1 != "학교선택" %>
                             <% if c.univ_distance1 == "이화" %>
-                              <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">&nbsp|</span> 
                             <% elsif c.univ_distance1 =="서강" %>
-                              <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span>   
+                              <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">&nbsp|</span>   
                              <% elsif c.univ_distance1 =="연세" %>
-                              <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span>   
+                              <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">&nbsp|</span>   
                              <% else %>
                               <span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-xs hidden-lg"> 
                              <% end %> 
@@ -3472,7 +3818,7 @@
                                   <span><%= c.transportation_distance %>m</span>
                               <% else %>
                               
-                                <span id="subway"> <span class="hidden-sm hidden-md">|</span> 신촌기차역 1103m(21분)</span>
+                                <span id="subway"> <span class="hidden-sm hidden-md">&nbsp|&nbsp</span> 신촌기차역 1103m(21분)</span>
                               
                               <% end %>
                         </div>
@@ -3541,23 +3887,23 @@
                           
                           <% if c.gender=="여성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">여성전용</p>
+                              <p class="gender_border"  style="color:#ff93b0; border:1px solid #ff93b0; ">여성전용</p>
                             </div>
                           <% elsif c.gender =="남녀공용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#2ECC71; border:1px solid #2ECC71; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀공용</p>
+                              <p class="gender_border"  style="color:#999998; border:1px solid #999998; ">남녀공용</p>
                             </div>
                           <% elsif c.gender == "남녀층 분리" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#9B59B6; border:1px solid #9B59B6; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남녀분리</p>
+                              <p class="gender_border"  style="color:#9B59B6; border:1px solid #9B59B6; ">남녀분리</p>
                             </div>
                           <% elsif c.gender == "남성전용" %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#2980b9; border:1px solid #2980B9; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">남성전용</p>
+                              <p class="gender_border"  style="color:#80a3ff; border:1px solid #80a3ff; ">남성전용</p>
                             </div>
                           <% else %>
                             <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="form-control" type="text" style="color:#E74C3C; border:1px solid #E74C3C; margin-top:6px; margin-left:1px; text-align:center; font-size: 8px; padding: 1px; width: 100%; height:20%; margin-bottom:0px;">DB 없음</p>
+                              <p class="gender_border"  style="color:#ff93b0; border:1px solid #ff93b0; ">DB 없음</p>
                             </div>
                           <% end %>
                           
@@ -3631,11 +3977,11 @@
                         <div id="distance-size" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                          <% if c.univ_distance1 != "학교선택" %>
                             <% if c.univ_distance1 == "이화" %>
-                              <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span> 
+                              <span style="color:#0c6f40"><%= c.univ_distance1 %>여대</span> <span><%= c.ewha_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">&nbsp|</span> 
                             <% elsif c.univ_distance1 =="서강" %>
-                              <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span>   
+                              <span style="color:#b20000"><%= c.univ_distance1 %>대</span> <span><%= c.sogang_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">&nbsp|</span>   
                              <% elsif c.univ_distance1 =="연세" %>
-                              <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">|</span>   
+                              <span style="color:#202d61"><%= c.univ_distance1 %>대</span> <span><%= c.yonsei_gate1 %> <%= c.distance1 %>m(<%= c.distance_time1 %>분)</span> <br class="hidden-xs hidden-lg">  <span class="hidden-sm">&nbsp|</span>   
                              <% else %>
                               <span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-xs hidden-lg"> 
                              <% end %> 
@@ -3658,7 +4004,7 @@
                                   <span><%= c.transportation_distance %>m</span>
                               <% else %>
                               
-                                <span id="subway"> <span class="hidden-sm hidden-md">|</span> 신촌기차역 1103m(21분)</span>
+                                <span id="subway"> <span class="hidden-sm hidden-md">&nbsp|&nbsp</span> 신촌기차역 1103m(21분)</span>
                               
                               <% end %>
                         </div>
