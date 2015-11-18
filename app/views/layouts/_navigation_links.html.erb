@@ -27,7 +27,7 @@
 
   <% if user_signed_in? %>
     <% if @univ == "이화" %>
-        <li><%= link_to "#{@univ}대학교", "#", :class => 'btn btn-small', style:"color:#0c6f40" %></li>
+        <li><%= link_to "#{@univ}여자대학교", "#", :class => 'btn btn-small', style:"color:#0c6f40" %></li>
     <% elsif @univ == "서강" %>
         <li><%= link_to "#{@univ}대학교", "#", :class => 'btn btn-small', style:"color:#b20000" %></li>
     <% elsif @univ == "연세" %>
@@ -58,7 +58,7 @@
       
   <% else %>
     <% if @univ == "이화" %>
-        <li><%= link_to "#{@univ}대학교", "#", :class => 'btn btn-small', style:"color:#0c6f40" %></li>
+        <li><%= link_to "#{@univ}여자대학교", "#", :class => 'btn btn-small', style:"color:#0c6f40" %></li>
     <% elsif @univ == "서강" %>
         <li><%= link_to "#{@univ}대학교", "#", :class => 'btn btn-small', style:"color:#b20000" %></li>
     <% elsif @univ == "연세" %>
@@ -93,13 +93,3 @@
   
 <% end %><!--페이지별 분류-->
 
-<script>
-$('.dropdown-toggle').dropdown();
-
-$(document).ready(function() {
-  $(".navbar-nav li a.btn").click(function(event) {
-    $(".navbar-collapse").collapse('hide');
-  });
-  
-});
-</script>

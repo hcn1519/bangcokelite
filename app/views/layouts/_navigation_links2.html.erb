@@ -2,14 +2,74 @@
     .popover#popover_content_wrapper{
     max-width: 100%; /* Max Width of the popover (depending on the container!) */
 }
+     #edit-account.btn-info{
+      color:#3498db;
+      background-color:#fff;
+      border:1px solid #3498db;
+    }
+    #edit-account.btn-info:hover {
+      color:#fff;
+      background-color:#31b0d5;
+      border:1px solid #31b0d5;
+    }
+    #out.btn-danger {
+      color:#e74c3c;
+      background-color:#fff;
+      border:1px solid #e74c3c;
+    }
+    #out.btn-danger:hover {
+      color:#fff;
+      background-color:#e74c3c;
+      border:1px solid #e74c3c;
+    }
+    #myroom.btn-warning {
+      color:#f1c40f;
+      background-color:#fff;
+      border:1px solid #f1c40f;
+    }
+    #myroom.btn-warning:hover {
+      color:#fff;
+      background-color:#f1c40f;
+      border:1px solid #f1c40f;
+    }
 </style>
 <% if current_page?('/') %>
   <% if user_signed_in? %>
     <li><%= link_to "하숙집 등록", "/hasuk_houses/new", :class => 'btn btn-small' %></li>
     <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small' %></li>
-    <li><%= link_to '회원정보수정', "#edit", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-    <li><%= link_to '유저 관리', users_path, :class => 'btn btn-small navbar-text' %></li>
-    <li><%= link_to '로그아웃', destroy_user_session_path, :method=>'delete', :class => 'btn btn-small' %></li>
+    <li><%= link_to "#popup","data-toggle" => "popover", "data-trigger" =>"click", "data-placement" =>"bottom",  "data-container" => "body", :class => 'btn btn-small myaccount' do %>
+     <%= current_user.name %>님<span style="top:3px" class="fui-triangle-down-small"></span>
+    <% end %>
+    </li>
+        
+
+<!-- 계정 정보 보여주는 용-->
+<div id="popover_content_wrapper" style="display: none">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-3" style="padding-right: 5px; padding-top:3px; padding-left:5px">
+            <span class="fui-user" style="font-size:2em"></span>
+          </div>
+          <div class="col-md-9 col-sm-9 col-xs-9" style="padding-left:0px; padding-right: 5px;">
+            <div class="col-md-6" style="padding:0; padding-top:2px">
+                <span><%= current_user.name %>님</span>
+            </div>
+            <div class="col-md-6" style="padding:0;">
+            <%= link_to '로그아웃', destroy_user_session_path, :method=>'delete', :class => 'btn btn-small', style:"font-size: 12px; padding: 5px;" %>
+            </div>
+            <span style="font-size:12px"><%= current_user.email %></span>
+          </div>
+    </div>
+    <div class="row" style="padding:15px">
+        <%= link_to "찜 목록", "#", :class => 'btn btn-danger', :id =>"out", style:"width:100%" %>
+    </div>
+    <div class="row" style="padding:15px; padding-top:0px">
+        <%= link_to "정보수정", "#edit", "data-toggle" => "modal", :class => 'btn btn-info', :id =>"edit-account", style:"width:100%" %>
+    </div>
+    <div class="row" style="padding:15px; padding-top:0px">
+        <%= link_to "내가 등록한 방", "#", :class => 'btn btn-warning', :id =>"myroom", style:"width:100%" %>
+    </div>
+</div>
+
   <% else %>
     <li><%= link_to "하숙집 등록", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
     <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small' %></li>
@@ -22,8 +82,10 @@
 <% elsif current_page?('/map/mappage') || current_page?('/map/map_detail') %>
     <% if user_signed_in? %>
         <li>
-            <%= link_to "#search", "data-toggle" => "modal", :class => 'btn btn-small'  do %>
-                <span class="fui-search" style="top:2px"></span>하숙집 찾기
+            <%= link_to "#search", "data-toggle" => "modal", :class => 'btn btn-small', style:"padding-top: 10px; padding-right: 15px;"  do %>
+                <div style="border-radius:10px; border:1px solid #2ECC71; padding:5px">
+                    <span class="fui-search" style="top:2px"></span>하숙집 찾기
+                </div>
             <% end %>
         </li>
         <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small' %></li>
@@ -33,15 +95,7 @@
              <%= current_user.name %>님<span style="top:3px" class="fui-triangle-down-small"></span>
             <% end %>
         </li>
-    <% else %>
-        <li><%= link_to "하숙집 찾기", "#search", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-        <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small' %></li>
-        <li><%= link_to "하숙집 등록", "/hasuk_houses/new", :class => 'btn btn-small' %></li>
-        <li><%= link_to "하숙방 이름검색", "#popup","data-toggle" => "popover", "data-trigger" =>"click", "data-placement" =>"bottom",  "data-container" => "body", :class => 'btn btn-small' %></li>
-        <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-        <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-    <% end %>
-<% end %>
+        
 
 <!-- 계정 정보 보여주는 용-->
 <div id="popover_content_wrapper" style="display: none">
@@ -60,12 +114,79 @@
           </div>
     </div>
     <div class="row" style="padding:15px">
-        <%= link_to "찜 목록", "#", :class => 'btn btn-danger', style:"width:100%" %>
+        <%= link_to "찜 목록", "#", :class => 'btn btn-danger', :id =>"out", style:"width:100%" %>
     </div>
     <div class="row" style="padding:15px; padding-top:0px">
-        <%= link_to "내 계정", "#", :class => 'btn btn-warning', style:"width:100%" %>
+        <%= link_to "정보수정", "#edit", "data-toggle" => "modal", :class => 'btn btn-info', :id =>"edit-account", style:"width:100%" %>
+    </div>
+    <div class="row" style="padding:15px; padding-top:0px">
+        <%= link_to "내가 등록한 방", "#", :class => 'btn btn-warning', :id =>"myroom", style:"width:100%" %>
     </div>
 </div>
+
+    <% else %><!--로그인 하지 않은 경우 -->
+        <li>
+            <%= link_to "#search", "data-toggle" => "modal", :class => 'btn btn-small', style:"padding-top: 10px; padding-right: 15px;"  do %>
+                <div style="border-radius:10px; border:1px solid #2ECC71; padding:5px">
+                    <span class="fui-search" style="top:2px"></span>하숙집 찾기
+                </div>
+            <% end %>
+        </li>
+        <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small' %></li>
+        <li><%= link_to "하숙집 등록", "/hasuk_houses/new", :class => 'btn btn-small' %></li>
+        <li><%= link_to "하숙집 이름검색", "#popup", "data-toggle" => "popover", "data-trigger" =>"click", "data-placement" =>"bottom",  "data-container" => "body", :class => 'btn btn-small namesearch' %></li>
+        <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+        <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+    <% end %>
+
+<% else %>
+    <% if user_signed_in? %>
+        <li><%= link_to "하숙집 등록", "/hasuk_houses/new", :class => 'btn btn-small' %></li>
+        <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small' %></li>
+        <li><%= link_to "#popup","data-toggle" => "popover", "data-trigger" =>"click", "data-placement" =>"bottom",  "data-container" => "body", :class => 'btn btn-small myaccount' do %>
+         <%= current_user.name %>님<span style="top:3px" class="fui-triangle-down-small"></span>
+        <% end %>
+        </li>
+            
+    
+    <!-- 계정 정보 보여주는 용-->
+    <div id="popover_content_wrapper" style="display: none">
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-3" style="padding-right: 5px; padding-top:3px">
+                <span class="fui-user" style="font-size:2em"></span>
+              </div>
+              <div class="col-md-9 col-sm-9 col-xs-9" style="padding-left:0px; padding-right: 5px;">
+                <div class="col-md-6" style="padding:0; padding-top:2px">
+                    <span><%= current_user.name %>님</span>
+                </div>
+                <div class="col-md-6" style="padding:0;">
+                <%= link_to '로그아웃', destroy_user_session_path, :method=>'delete', :class => 'btn btn-small', style:"font-size: 12px; padding: 5px;" %>
+                </div>
+                <span style="font-size:12px"><%= current_user.email %></span>
+              </div>
+        </div>
+        <div class="row" style="padding:15px">
+            <%= link_to "찜 목록", "#", :class => 'btn btn-danger', :id =>"out", style:"width:100%" %>
+        </div>
+        <div class="row" style="padding:15px; padding-top:0px">
+            <%= link_to "정보수정", "#edit", "data-toggle" => "modal", :class => 'btn btn-info', :id =>"edit-account", style:"width:100%" %>
+        </div>
+        <div class="row" style="padding:15px; padding-top:0px">
+            <%= link_to "내가 등록한 방", "#", :class => 'btn btn-warning', :id =>"myroom", style:"width:100%" %>
+        </div>
+    </div>
+    
+      <% else %>
+        <li><%= link_to "하숙집 등록", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+        <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small' %></li>
+        <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+        <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+        
+      <% end %><!--나머지 페이지 -->
+
+<% end %>
+
+
 
 <!-- 하숙방 이름 검색용-->
 <div id="popover_content_wrapper2" style="display: none">
@@ -86,6 +207,7 @@
       <li><%#= link_to '로그아웃', destroy_user_session_path, :method=>'delete', :class => 'btn btn-small' %></li>
       -->
 <script>
+//popover 관련 
 $(document).ready(function(){
     $(".myaccount").popover({
       html : true,
@@ -111,4 +233,5 @@ $(document).ready(function(){
     });
 });
 });          
+//popover 관련
 </script>

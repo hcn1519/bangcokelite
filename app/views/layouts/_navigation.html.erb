@@ -39,10 +39,21 @@
 .navbar-collapse .navbar-nav.navbar-right:last-child {
     margin-right:0px;
 }
+.navbar-default .navbar-nav > li > a {
+    color:#3e5771;
+}
+.navbar-nav > li > a {
+    font-size:15px;
+}
+
 </style>
 <%# navigation styled for Bootstrap 3.0 %>
-<nav class="navbar navbar-default navbar-fixed-top">
 
+<% if current_page?('/') %>
+    <nav class="navbar navbar-default navbar-fixed-top" style="height:50px; background-color:transparent; border-bottom:transparent">
+<% else %>
+    <nav class="navbar navbar-default navbar-fixed-top" style="height:50px; background-color:#fff; border-bottom:1px solid #BDC3C7">
+<% end %>
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -68,3 +79,10 @@
     </div>
 
 </nav>
+<script>
+$(document).ready(function () {
+  $(".navbar-nav li a").click(function(event) {
+    $(".navbar-collapse").collapse('hide');
+  });
+});
+</script>

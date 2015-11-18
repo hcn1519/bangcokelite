@@ -475,8 +475,6 @@
              '</div>';
            }
 
-                    
-
                  var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);  
 
         <% if @univ == "서강" %>
@@ -542,7 +540,7 @@
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#cbefde");
+                         $(result_id).css("background-color","#E74C3C");
                        
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
                        });
@@ -558,7 +556,7 @@
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#a4e2c5");
+                        $(result_id).css("background-color","#E74C3C");
                         
                       });
  
@@ -574,32 +572,13 @@
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#fff");
+                        $(result_id).css("background-color","#999999");
                         });
 
                       };
 
                      })(str_id));
 
-
-google.maps.event.addListener(infowindow, 'domready', function() {
-
-   // Reference to the DIV which receives the contents of the infowindow using jQuery
-   var iwOuter = $('.gm-style-iw');
-
-   /* The DIV we want to change is above the .gm-style-iw DIV.
-    * So, we use jQuery and create a iwBackground variable,
-    * and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
-    */
-   var iwBackground = iwOuter.prev();
-
-   // Remove the background shadow DIV
-   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
-
-   // Remove the white background DIV
-   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
-
-});
                  marker.setMap(map);
                 } //division 괄호
              //univ 서강 걸리는 괄호
@@ -777,7 +756,7 @@ google.maps.event.addListener(infowindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#cbefde");
+                         $(result_id).css("background-color","#E74C3C");
                        
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
                        });
@@ -793,7 +772,7 @@ google.maps.event.addListener(infowindow, 'domready', function() {
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#a4e2c5");
+                        $(result_id).css("background-color","#E74C3C");
                         
                       });
  
@@ -809,7 +788,7 @@ google.maps.event.addListener(infowindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#fff");
+                        $(result_id).css("background-color","#999999");
                         });
 
                       };
@@ -915,7 +894,7 @@ google.maps.event.addListener(infowindow, 'domready', function() {
                              //console.log(result_id);
       
                              $(document).ready(function() {
-                              $(result_id).css("background-color","#fff");
+                              $(result_id).css("background-color","#999999");
                               });
       
                             };
@@ -937,8 +916,9 @@ google.maps.event.addListener(infowindow, 'domready', function() {
  
    <style type="text/css">
   #infoWindow {
-    left: 0 !important;
-    right: 0 !important;
+    left: 5 !important;
+    right: 5 !important;
+    top: 5 !important;
   }
   .gm-style-iw {
   width: 280px !important;
@@ -1904,6 +1884,16 @@ google.maps.event.addListener(infowindow, 'domready', function() {
       color:#fff;
       background-color:#e74c3c;
       border:1px solid #e74c3c;
+    }
+    #myroom.btn-warning {
+      color:#f1c40f;
+      background-color:#fff;
+      border:1px solid #f1c40f;
+    }
+    #myroom.btn-warning:hover {
+      color:#fff;
+      background-color:#f1c40f;
+      border:1px solid #f1c40f;
     }
     .reverse.btn-success {
       color:#2ECC71;
