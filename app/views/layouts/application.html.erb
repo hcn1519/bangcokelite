@@ -10,6 +10,24 @@
     <link href="/Flat-UI-2.2.2/dist/css/flat-ui.css" rel="stylesheet">
     <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
     
+    <style type="text/css">
+      html, body {
+        font-family:source-han-sans-korean;
+      }
+      p, span, a{
+        font-family:source-han-sans-korean;
+      }
+      .btn {
+        font-family:source-han-sans-korean;
+      }
+      .btn-default {
+        font-family:source-han-sans-korean;
+      }
+      @font-face {
+        font-family: 'BMJUA';
+        src: url('/fonts/BMJUA_ttf.ttf');
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -24,6 +42,9 @@
        
        <%= yield %>
     </main>
+    
+    <script src="https://use.typekit.net/qpk6hcg.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
   </body>
   
 </html>

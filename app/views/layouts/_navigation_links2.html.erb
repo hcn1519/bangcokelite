@@ -141,11 +141,11 @@
               
             <% end %>
         </li>
-        <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small' %></li>
-        <li><%= link_to "하숙집 등록", "/hasuk_houses/new", :class => 'btn btn-small' %></li>
+        <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small', :id => "close" %></li>
+        <li><%= link_to "하숙집 등록", "/hasuk_houses/new", :class => 'btn btn-small', :id => "close" %></li>
         <li><%= link_to "하숙집 이름검색", "#popup", "data-toggle" => "popover", "data-trigger" =>"click", "data-placement" =>"bottom",  "data-container" => "body", :class => 'btn btn-small namesearch' %></li>
-        <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-        <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
+        <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small', :id => "close" %></li>
+        <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small', :id => "close" %></li>
     <% end %>
 
 <% else %>
@@ -200,15 +200,19 @@
 <!-- 하숙방 이름 검색용-->
 <div id="popover_content_wrapper2" style="display: none">
       <form action="#" role="search">
-        <div class="form-group">
-          <div class="input-group">
-            <input class="form-control" id="navbarInput-01" type="search" placeholder="하숙집 이름">
-            <span class="input-group-btn">
-              <button type="submit" class="btn"><span class="fui-search"></span></button>
-            </span>
-          </div>
+
+        <div class="input-group input-group-rounded">
+          <input type="text" class="form-control" placeholder="하숙집 검색" id="search-query-3" style="border-color:#2ECC71;">
+          <span class="input-group-btn">
+            <button id="hasuk_name_find"class="btn" style="border-color:#2ECC71; color:#2ECC71"><span class="fui-search"></span></button>
+          </span>
         </div>
+        
       </form>
+      
+      <div id="name_search_result">
+
+      </div>
 </div>
 <!--
       <li><%#= link_to '회원정보수정', "#edit", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
@@ -244,4 +248,29 @@ $(document).ready(function(){
 
 });          
 //popover 관련
+
+
+          $(document).ready(function(){
+            
+            $("#hasuk_name_find").click(function(){
+            
+              var hasuk_name = $("#search-query-3").val();
+              var ajax_univ = "<%= @univ %>";
+
+                  $.ajax({
+                    url: "/map/mappage",
+                    type: 'GET',
+                    data:{ 'univ' : ajax_univ } ,
+                    success: function(data){
+                        
+                        $("#name_search_result").append("성공");
+                    }
+                  });
+                  
+               
+            
+                
+            });
+            
+          });
 </script>

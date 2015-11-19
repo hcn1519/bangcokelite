@@ -1848,7 +1848,7 @@ HasukHouse.create(
      univ_distance1:"연세", univ_distance2:"이화", 
      sogang_gate1:"교문선택", sogang_gate2:"교문선택", 
      ewha_gate1:"교문선택", ewha_gate2:"정문", 
-     yonsei_gate1:"교문선택", yonsei_gate2:"교문선택", 
+     yonsei_gate1:"정문", yonsei_gate2:"교문선택", 
      distance_time1:4, distance1:174,
       
       #교통수단까지 거리 및 시간

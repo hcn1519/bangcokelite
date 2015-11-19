@@ -1059,19 +1059,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
    border-radius: 5px;
 }
 
-    /*사이즈별 모달 조정 */
-    @media only screen and (min-width:960px){
-       /* styles for browsers larger than 960px; */
-     
-    }
-    @media only screen and (min-width:1440px){
-        /* styles for browsers larger than 1440px; */
-      
-    }
-    @media only screen and (min-width:2000px){
-        /* for sumo sized (mac) screens */
-    }
-         @media (max-width: 359px) {
+    /*사이즈별 화면 조정 */
+   
+    @media (max-width: 359px) {
          .thumbnail .caption {
     border-bottom: 1px solid #ededed;
     font-size: 13px
@@ -1121,6 +1111,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
      .listbox {
         width:100%;
+        background-image: url("/images/mappage-images/siment.jpg");
     }
     .roomList{
        height:550px;
@@ -1138,11 +1129,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      }
      #deposit-size {
        margin-left:4px;
-         width:28%;
      }
      #deposit-size p{
-         font-size:13px;
-          margin-left:5px;
+        font-size:13px;
+        margin-left:5px;
      }
      #gender-size {
          margin:0px;
@@ -1156,25 +1146,17 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         padding:0px;
         margin-left: 4px;
         margin-top: 8.5px;
-
      }
      #kind-size{
-       width:20%;
+
        margin:0px;
        padding:0px;
-       margin-left:5px;
      }
 
-     #meal-size{
+     #option{
        margin:0px; 
        padding:0px; 
        /*width: 30%;*/
-     }
-
-     #room-size{
-       margin:0px;
-       padding:0px;
-       width: 17%;
      }
 
      #distance-size{
@@ -1185,7 +1167,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
      .image-size {
         height:9.75em; 
-        min-height:140px;
+        min-height:200px;
      }
     }
      @media (max-width: 480px) {
@@ -1238,6 +1220,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
      .listbox {
         width:100%;
+        background-image: url("/images/mappage-images/siment.jpg");
     }
     .roomList{
        height:550px;
@@ -1256,7 +1239,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         margin:0px;
         padding:0px;
        margin-left:4px;
-        width:28%;
      }
      #deposit-size p{
          font-size:13px;
@@ -1284,23 +1266,17 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         float:left; 
      }
      #kind-size{
-       width:20%;
+
        margin:0px;
        padding:0px;
-       margin-left:5px;
      }
 
-     #meal-size{
+     #option{
        margin:0px; 
        padding:0px; 
           /*width: 30%;*/
      }
 
-     #room-size{
-       margin:0px;
-       padding:0px;
-       width: 17%;
-     }
 
      #distance-size{
         margin:0px;
@@ -1310,18 +1286,18 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
      .image-size {
         height:9.75em; 
-        min-height:140px;
+        min-height:200px;
      }
     }
     @media (max-width: 768px) {
       
-    .thumbnail {
+.thumbnail {
     padding: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 15px;
     line-height: 1.2;
     border: none;
-    border-bottom: 15px solid #f5f5f5;
-    }
+    border-bottom: 1px solid #f5f5f5;
+}
     
     .thumbnail .caption {
     border-bottom: 1px solid #ededed;
@@ -1374,6 +1350,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
      .listbox {
         width:100%;
+        background-image: url("/images/mappage-images/siment.jpg");
     }
     .roomList{
        height:871px;
@@ -1392,7 +1369,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         margin:0px;
         padding:0px;
        margin-left:4px;
-        width:28%;
+
      }
      #deposit-size p{
          font-size:13px;
@@ -1420,23 +1397,17 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         float:left; 
      }
      #kind-size{
-       width:20%;
+
        margin:0px;
        padding:0px;
-       margin-left:5px;
      }
 
-     #meal-size{
+     #option{
        margin:0px; 
        padding:0px; 
           /*width: 30%;*/
      }
    
-     #room-size{
-       margin:0px;
-       padding:0px;
-       width: 17%;
-     }
 
      #distance-size{
         margin:0px;
@@ -1446,7 +1417,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     
      .image-size {
         height:9.75em; 
-        min-height:140px;
+        min-height:200px;
      }
     }
     @media only screen and (device-width:768px){
@@ -1499,6 +1470,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
     .listbox {
         width:100%;
+        background-image: url("/images/mappage-images/siment.jpg");
     }
     
      .roomList{
@@ -1508,7 +1480,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      #price-size {
          margin:0px;
          padding:0px;
-        width:20%;
         margin-left:2px;
      }
      #price-size h4{
@@ -1518,7 +1489,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      }
      
      #deposit-size {
-       width:27%;
+
        margin-left:5px;
      }
      #deposit-size p{
@@ -1545,22 +1516,17 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         float:left; 
      }
      #kind-size{
-       width:23%;
+
        margin:0px;
        padding:0px;
-       margin-left:2px;
      }
    
-     #meal-size{
+     #option{
         font-size:0.6em;
         margin-top:7px;
         padding:0px;
      }
-     #room-size{
-       margin:0px;
-       padding:0px;
-       width:17%;
-     }
+
    
      #distance-size{
        margin:0px;
@@ -1621,6 +1587,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
     .listbox {
         width:100%;
+        background-image: url("/images/mappage-images/siment.jpg");
     }
      
      .roomList{
@@ -1630,7 +1597,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      #price-size {
          margin:0px;
          padding:0px;
-        width:20%;
         margin-left:2px;
      }
      #price-size h4{
@@ -1640,7 +1606,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      }
      
      #deposit-size {
-       width:29%;
+
        margin-left:3px;
      }
      #deposit-size p{
@@ -1670,27 +1636,19 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         float:left; 
      }
      #kind-size{
-       width:23%;
+
        margin:0px;
        padding:0px;
-       margin-left:2px;
      }
      #kind-size span{
         font-size:0.6em; 
+        float:right;
      }
-     #meal-size{
+     #option{
         font-size:0.6em;
         margin-top:7px;
-        width:38%;
      }
-     #room-size{
-       margin:0px;
-       padding:0px;
-       width:17%;
-     }
-     #room-size span{
-        font-size:0.6em;
-     }
+
      #distance-size{
        margin:0px;
         padding:0px;
@@ -1746,12 +1704,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      #kind-size{
        
      }
-     #meal-size{
+     #option{
        
      }
-     #room-size{
-       
-     }
+
      #distance-size{
        
      }
@@ -1804,6 +1760,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
      .listbox {
         width:97%;
+        background-image: url("/images/mappage-images/siment.jpg");
     }
     .roomList{
        height:666px;
@@ -1812,7 +1769,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      #price-size {
          margin:0px;
          padding:0px;
-        width:17.42%;
         margin-left:2px;
      }
      #price-size h4{
@@ -1822,7 +1778,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      }
      
      #deposit-size {
-       width:27.6%;
+
        margin-left:9px;
      }
      #deposit-size p{
@@ -1848,27 +1804,21 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         float:left; 
      }
      #kind-size{
-       width:23%;
+
        margin:0px;
        padding:0px;
-       margin-left:2px;
+       margin-top:7px;
      }
      #kind-size span{
         font-size:0.6em; 
+        float:right;
      }
-     #meal-size{
+     #option{
          padding:0px;
         font-size:0.6em;
         margin-top:7px; 
      }
-     #room-size{
-       margin:0px;
-       padding:0px;
-       width:17%;
-     }
-     #room-size span{
-        font-size:0.6em;
-     }
+
      #distance-size{
        margin:0px;
         padding:0px;
@@ -1888,6 +1838,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
       line-height:1.2;
       margin:5px; 
       border-radius:0px;
+      border: 1px solid #bdc3c7;
     }
     
      .modal-content#modal-size2{
@@ -1918,7 +1869,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     
      .listbox {
         width:97%;
+        background-image: url("/images/mappage-images/siment.jpg");
     }
+    
     .roomList{
        height:555px;
        overflow:auto;
@@ -1940,8 +1893,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
       margin-top:2px;
      }
      #deposit-size {
-        width:27%;
-        margin-left:24px;
+      margin-left:3px;
+
      }
      #deposit-size p{
          font-size:0.7em;
@@ -1967,37 +1920,31 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         float:left; 
      }
      #kind-size{
-       width:20%;
        margin:0px;
        padding:0px;
-       margin-left:5px;
+       margin-top:7px;
      }
      #kind-size span{
-        font-size:12px; 
+        font-size:13px;
+        float:right;
      }
-     #meal-size{
+     #option{
        margin-top:6px; 
+       margin-left:5px;
        padding:0px; 
           /*width: 30%;*/
      }
-     #meal-size span {
-        font-size:12px;
+     #option span {
+        font-size:13px;
      }
-     #room-size{
-       margin:0px;
-       padding:0px;
-       width: 17%;
-     }
-     #room-size span{
-        font-size:12px;
-     }
+    
      #distance-size{
         margin:0px;
         padding:0px;
         margin-left:5px;
      }
      #distance-size span{
-        font-size:12px;
+        font-size:13px;
      }
      .image-size {
         height:9.75em; 
@@ -2012,7 +1959,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     
    
    
-    /*사이즈별 모달 조정 */
+    /*사이즈별 모달 조정 끝*/
     
     
     
@@ -2048,22 +1995,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
       background-color:#f1c40f;
       border:1px solid #f1c40f;
     }
-    .reverse.btn-success {
-      color:#2ECC71;
-      background-color:#fff;
-      border:1px solid #2ECC71;
-    }
-    .reverse.btn-success:hover {
-      color:#fff;
-      background-color:#2ECC71;
-      border:1px solid #2ECC71;
-    }
-    .reverse.btn-success.active {
-      color:#fff;
-      background-color:#2ECC71;
-      border:1px solid #2ECC71;
-    }
-    
 
     a:hover{
       background-color:#dddddd;
@@ -2071,8 +2002,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
     
     .image { 
-     position: relative; 
-
+     position: relative;
     }
     
     /*하숙방 이름 css */
@@ -2090,6 +2020,32 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
        background: rgba(0, 0, 0, 0.7);
        margin-bottom: 0px;
     }
+     /*하숙방 이름 css */
+     /*할인 마크 css */
+    #sale {
+      position: absolute;
+    }
+    #sale span {
+      font-family:BMJUA;
+      color:#fff;
+    }
+    /*하숙 종류 css */
+    #hasuk_kind_color1 {
+    color:#27AE60; border:1px solid #27AE60; padding:2px; border-radius:5px;
+    }/*일반 */
+    
+    #hasuk_kind_color2 {
+    color:#D35400; border:1px solid #D35400; padding:2px; border-radius:5px;
+    }/*잠만 자는 */
+    
+    #hasuk_kind_color3 {
+    color:#2980B9; border:1px solid #2980B9; padding:2px; border-radius:5px;
+    }/*원룸형 */
+    
+    #hasuk_kind_color4 {
+    color:#2C3E50; border:1px solid #2C3E50; padding:2px; border-radius:5px;
+    }/*고시원형 */
+    
     
     body.modal-open {
         overflow: hidden;
@@ -2173,7 +2129,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
    }
    
    .sub_circle {
-    border-radius: 50%;
+    border-radius: 40%;
     padding-left: 3px;
     padding-right: 3px;
     color: #ffffff;
@@ -2232,10 +2188,32 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     
     }
     
+    .panel-default > .panel-heading {
+    color: #666666;
+    font-weight: 600;
+    border: none;
+    background-color: transparent;
+    }
+   
+    .thumbnail {
+      border-radius: 0;
+    }
+    #circle {
+      position:absolute;
+    	width: 60px;
+    	height: 60px;
+    	background: #E74C3C;
+    	opacity:0.8;
+    	-moz-border-radius: 50px;
+    	-webkit-border-radius: 50px;
+    	border-radius: 50px;
+    	top:5px;
+    	left:235px;
+    }
     </style> 
 </head>
 <body>
- <%= render "map/search_modal" %>
+<%= render "map/search_modal" %>
 
   <!--지도부분 시작-->
   
@@ -2262,7 +2240,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
   <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 hidden-xs hidden-sm foldButton" style="padding-right: 0px; padding-left: 0px; width:3%; height:100%">
     <div style="padding-right: 0px;padding-left: 0px; height:100%">
       <div class="folderbox" style="height:100%">
-        <button id="fold" style="border-color:#fff; background-color:#95A5A6; color:#fff; width:100%; height:100%; padding-left: 0px;padding-right: 0px;" type="button" class="btn btn-default" aria-label="Center">
+        <button id="fold" style="border-color:#fff; background-color:#e9e7e9; color:#383f52; width:100%; height:100%; padding-left: 0px;padding-right: 0px; border-left: solid 1px #999999;" type="button" class="btn btn-default" aria-label="Center">
           <span id="menu-icon" class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><br/>
         </button>
       </div>
@@ -2270,9 +2248,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
   </div>
   
   
-    <div class="listbox col-lg-11 col-md-11 col-sm-12 col-xs-12" style="background-color:#f5f5f5; padding-left:0px; padding-right:0px;">
+    <div class="listbox col-lg-11 col-md-11 col-sm-12 col-xs-12" style="padding-left:0px; padding-right:0px;">
       <div class="panel panel-default">
-        <div class="panel-heading col-lg-12 col-md-12 col-xs-12 col-sm-12" style="background-color:#2ecc71; color:#fff; padding:5px; padding-left:10px; font-size:0.8em">검색결과</div>
+        <div class="panel-heading col-lg-12 col-md-12 col-xs-12 col-sm-12" style="padding:5px; padding-left:10px; font-size:0.8em">검색결과</div>
         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 roomList panel-body" style="padding:0px;">
       
 
@@ -2285,14 +2263,27 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
                   <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
                   <div class="img-responsive thumbnail">
-                    
                     <!--이미지 지정-->
                     <div class="image col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin:0px; padding:0px">
                       <div id="nameOfhasuk">
                         <p><%= c.hasuk_name %></p>
                       </div>
+                      <% unless c.discount_price.nil? || c.discount_price == 0 %>
+                        <div id="circle">
+                          <div id="sale">
+                            
+                            <div class="row" style="margin:0px; padding:0px;margin-top: 5px;margin-left: 3px;">
+                              <span style="font-size:13px">첫 달<img style="width:20px; margin:0px; float:right; margin-left: 3px;margin-top: 3px;" src="/images//icons/discount1.png"/></span>
+                              
+                            </div>
+                            <span style="font-size:23px; margin-left:5px"><%= number_with_precision(c.discount_price/10000.0, precision: 1) %></span>
+                            <span style="font-size:13px">만</span>
+                          </div>
+                        </div>
+                      <% end %>
                       <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size" style="width:100%;">
                     </div>
+
                     
                     <!--정보 표시-->
                     <div class="caption" style="padding-top:5px; padding-left:0px; padding-right:0px; padding-bottom:5px">
@@ -2333,98 +2324,33 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                               
                           </div>
                         </div>
-                        <div id="gender-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                          
-                          <% if c.gender=="여성전용" %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#ff93b0; border:1px solid #ff93b0; ">여성전용</p>
-                            </div>
-                          <% elsif c.gender =="남녀공용" %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#999998; border:1px solid #999998; ">남녀공용</p>
-                            </div>
-                          <% elsif c.gender == "남녀층 분리" %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#9B59B6; border:1px solid #9B59B6; ">남녀분리</p>
-                            </div>
-                          <% elsif c.gender == "남성전용" %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#80a3ff; border:1px solid #80a3ff; ">남성전용</p>
-                            </div>
+                        
+                        <div id="kind-size" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                         <% if c.hasuk_kind == "일반하숙" %>
+ 
+                              <span id="hasuk_kind_color1">일반하숙</span>
+                            
+                          <% elsif c.hasuk_kind == "잠만 자는 방" %>
+                            
+                            <span id="hasuk_kind_color2">잠만자는</span>
+                            
+                          <% elsif c.hasuk_kind == "원룸형" %>
+                            
+                            <span id="hasuk_kind_color3">원룸형</span>
+                            
+                          <% elsif c.hasuk_kind == "고시원형" %>
+                            
+                            <span id="hasuk_kind_color4">고시원형</span>
+                            
                           <% else %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#ff93b0; border:1px solid #ff93b0; ">DB 없음</p>
-                            </div>
-                          <% end %>
-                          
-                        </div>
-                        <div id="icon-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                          <% if c.internet =="와이파이" || c.internet =="유선 인터넷" %>
-                            <img src="/images/icons/wifi.png" style="margin-right:2px;">
-                          <% elsif c.internet =="없음" %>  
-                            <img src="/images/icons/wifi2.png" style="margin-right:2px;">
-                          <% else %>
-                            <img src="/images/icons/wifi2.png" style="margin-right:2px;">
-                          <% end %>
-                          <% if c.personal_option8 =="화장실" %>
-                            <img src="/images/icons/toilet.png" style="margin-right:4px;">
-                          <% elsif c.personal_option8 == nil %>   
-                            <img src="/images/icons/toilet2.png" style="margin-right:4px;">
-                          <% else %>
-                            <img src="/images/icons/toilet2.png" style="margin-right:4px;">
-                          <% end %>
-                          <% if c.personal_option6 =="에어컨" %>
-                            <img src="/images/icons/air.png">
-                          <% elsif c.personal_option6 == nil %>   
-                            <img src="/images/icons/air2.png">
-                          <% else %>
-                            <img src="/images/icons/air2.png">
+                            
+                              <span  id="hasuk_kind_color4">형태없음</span>
+                            
                           <% end %>
                         </div>
                       </div><!--정보 첫번째 줄 끝-->
-                   
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="kind-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                         <% if c.hasuk_kind == "일반하숙" %>
-                            <span style="color:#2ECC71">[일반하숙]</span>
-                          <% elsif c.hasuk_kind == "잠만 자는 방" %>
-                            <span style="color:#2ECC71">[잠만자는]</span>
-                          <% elsif c.hasuk_kind == "원룸형" %>
-                            <span style="color:#2ECC71">[원룸형]</span>
-                          <% elsif c.hasuk_kind == "고시원형" %>
-                            <span style="color:#2ECC71">[고시원형]</span>
-                          <% else %>
-                            <span style="color:#3498DB">[형태없음]</span>
-                          <% end %>
-                        </div>
-                        <div id="meal-size" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                          
-                          <% if c.meal4 == "제공 안함" %>
-                            <span>| 식사제공 안함</span>
-                          <% elsif c.meal1 == nil && c.meal2 == nil && c.meal3 == nil && c.meal4 == nil %>
-                            <span>| 식사 DB 없음</span>
-                          <% else %>
-                              <span>|</span>
-                              <% unless c.meal1.nil? %>
-                                  <span><%= c.meal1 %>,</span>
-                              <% end %>
-                              <% unless c.meal2.nil? %>
-                                  <span><%= c.meal2 %>,</span>
-                              <% end %>
-                              <% unless c.meal3.nil? %>
-                                  <span><%= c.meal3 %></span>
-                              <% end %>
-                          
-                          <% end %>
-                        </div>
-                        <div id="room-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                          <% unless c.size_from.nil? %>
-                          <span id="small-size">&nbsp;| <%=c.size_from %>~<%= c.size_to %>평</span>
-                          <% else %>
-                            <span id="small-size">&nbsp;| 0~1평</span>
-                          <% end %>
-                        </div>
                         <div id="distance-size" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <% if c.univ_distance1 != "학교선택" %>
                             <% if c.univ_distance1 == "이화" %>
@@ -2461,8 +2387,44 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                               <% end %>
  
                         </div>
-                        
-                      </div><!--정보 두번째 줄 끝-->
+                    </div><!--정보 두번째 줄 끝-->
+                    <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                        <div id="option" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          
+                          <% if c.meal4 == "제공 안함" %>
+                            <span># 식사제공 안함</span>
+                          <% elsif c.meal1 == nil && c.meal2 == nil && c.meal3 == nil && c.meal4 == nil %>
+                            <span># 식사 DB 없음</span>
+                          <% else %>
+                              <span>#</span>
+                              <% unless c.meal1.nil? %>
+                                  <span><%= c.meal1 %>,</span>
+                              <% end %>
+                              <% unless c.meal2.nil? %>
+                                  <span><%= c.meal2 %>,</span>
+                              <% end %>
+                              <% unless c.meal3.nil? %>
+                                  <span><%= c.meal3 %></span>
+                              <% end %>
+                          
+                          <% end %>
+                          
+                          <% if c.gender=="여성전용" %>
+                            <span>#여성전용</span>
+                          <% elsif c.gender =="남녀공용" %>
+                            <span>#남녀공용</span>
+                          <% elsif c.gender == "남녀층 분리" %>
+                            <span>#남녀층 분리</span>
+                          <% elsif c.gender == "남성전용" %>
+                            <span>#남성전용</span>
+                          <% else %>
+                            <span>#DB없음</span>
+                          <% end %>
+                          
+                        </div>
+                      </div><!--정보 세번째 줄 끝-->
+                      
+
                       
                     </div><!--정보 표시 끝-->
                     
@@ -2479,14 +2441,27 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
                   <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
                   <div class="img-responsive thumbnail">
-                    
                     <!--이미지 지정-->
                     <div class="image col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin:0px; padding:0px">
                       <div id="nameOfhasuk">
                         <p><%= c.hasuk_name %></p>
                       </div>
+                      <% unless c.discount_price.nil? || c.discount_price == 0 %>
+                        <div id="circle">
+                          <div id="sale">
+                            
+                            <div class="row" style="margin:0px; padding:0px;margin-top: 5px;margin-left: 3px;">
+                              <span style="font-size:13px">첫 달<img style="width:20px; margin:0px; float:right; margin-left: 3px;margin-top: 3px;" src="/images//icons/discount1.png"/></span>
+                              
+                            </div>
+                            <span style="font-size:23px; margin-left:5px"><%= number_with_precision(c.discount_price/10000.0, precision: 1) %></span>
+                            <span style="font-size:13px">만</span>
+                          </div>
+                        </div>
+                      <% end %>
                       <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size" style="width:100%;">
                     </div>
+
                     
                     <!--정보 표시-->
                     <div class="caption" style="padding-top:5px; padding-left:0px; padding-right:0px; padding-bottom:5px">
@@ -2527,97 +2502,33 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                               
                           </div>
                         </div>
-                        <div id="gender-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                          
-                          <% if c.gender=="여성전용" %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#ff93b0; border:1px solid #ff93b0; ">여성전용</p>
-                            </div>
-                          <% elsif c.gender =="남녀공용" %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#999998; border:1px solid #999998; ">남녀공용</p>
-                            </div>
-                          <% elsif c.gender == "남녀층 분리" %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#9B59B6; border:1px solid #9B59B6; ">남녀분리</p>
-                            </div>
-                          <% elsif c.gender == "남성전용" %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#80a3ff; border:1px solid #80a3ff; ">남성전용</p>
-                            </div>
+                        
+                        <div id="kind-size" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                         <% if c.hasuk_kind == "일반하숙" %>
+ 
+                              <span id="hasuk_kind_color1">일반하숙</span>
+                            
+                          <% elsif c.hasuk_kind == "잠만 자는 방" %>
+                            
+                            <span id="hasuk_kind_color2">잠만자는</span>
+                            
+                          <% elsif c.hasuk_kind == "원룸형" %>
+                            
+                            <span id="hasuk_kind_color3">원룸형</span>
+                            
+                          <% elsif c.hasuk_kind == "고시원형" %>
+                            
+                            <span id="hasuk_kind_color4">고시원형</span>
+                            
                           <% else %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#ff93b0; border:1px solid #ff93b0; ">DB 없음</p>
-                            </div>
-                          <% end %>
-                          
-                        </div>
-                        <div id="icon-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                          <% if c.internet =="와이파이" || c.internet =="유선 인터넷" %>
-                            <img src="/images/icons/wifi.png" style="margin-right:2px;">
-                          <% elsif c.internet =="없음" %>  
-                            <img src="/images/icons/wifi2.png" style="margin-right:2px;">
-                          <% else %>
-                            <img src="/images/icons/wifi2.png" style="margin-right:2px;">
-                          <% end %>
-                          <% if c.personal_option8 =="화장실" %>
-                            <img src="/images/icons/toilet.png" style="margin-right:4px;">
-                          <% elsif c.personal_option8 == nil %>   
-                            <img src="/images/icons/toilet2.png" style="margin-right:4px;">
-                          <% else %>
-                            <img src="/images/icons/toilet2.png" style="margin-right:4px;">
-                          <% end %>
-                          <% if c.personal_option6 =="에어컨" %>
-                            <img src="/images/icons/air.png">
-                          <% elsif c.personal_option6 == nil %>   
-                            <img src="/images/icons/air2.png">
-                          <% else %>
-                            <img src="/images/icons/air2.png">
+                            
+                              <span  id="hasuk_kind_color4">형태없음</span>
+                            
                           <% end %>
                         </div>
                       </div><!--정보 첫번째 줄 끝-->
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="kind-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                         <% if c.hasuk_kind == "일반하숙" %>
-                            <span style="color:#2ECC71">[일반하숙]</span>
-                          <% elsif c.hasuk_kind == "잠만 자는 방" %>
-                            <span style="color:#2ECC71">[잠만자는]</span>
-                          <% elsif c.hasuk_kind == "원룸형" %>
-                            <span style="color:#2ECC71">[원룸형]</span>
-                          <% elsif c.hasuk_kind == "고시원형" %>
-                            <span style="color:#2ECC71">[고시원형]</span>
-                          <% else %>
-                            <span style="color:#3498DB">[형태없음]</span>
-                          <% end %>
-                        </div>
-                        <div id="meal-size" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                          
-                          <% if c.meal4 == "제공 안함" %>
-                            <span>| 식사제공 안함</span>
-                          <% elsif c.meal1 == nil && c.meal2 == nil && c.meal3 == nil && c.meal4 == nil %>
-                            <span>| 식사 DB 없음</span>
-                          <% else %>
-                              <span>|</span>
-                              <% unless c.meal1.nil? %>
-                                  <span><%= c.meal1 %>,</span>
-                              <% end %>
-                              <% unless c.meal2.nil? %>
-                                  <span><%= c.meal2 %>,</span>
-                              <% end %>
-                              <% unless c.meal3.nil? %>
-                                  <span><%= c.meal3 %></span>
-                              <% end %>
-                          
-                          <% end %>
-                        </div>
-                        <div id="room-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                          <% unless c.size_from.nil? %>
-                          <span id="small-size">&nbsp;| <%=c.size_from %>~<%= c.size_to %>평</span>
-                          <% else %>
-                            <span id="small-size">&nbsp;| 0~1평</span>
-                          <% end %>
-                        </div>
                         <div id="distance-size" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <% if c.univ_distance1 != "학교선택" %>
                             <% if c.univ_distance1 == "이화" %>
@@ -2654,8 +2565,44 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                               <% end %>
  
                         </div>
-                        
-                      </div><!--정보 두번째 줄 끝-->
+                    </div><!--정보 두번째 줄 끝-->
+                    <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                        <div id="option" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          
+                          <% if c.meal4 == "제공 안함" %>
+                            <span># 식사제공 안함</span>
+                          <% elsif c.meal1 == nil && c.meal2 == nil && c.meal3 == nil && c.meal4 == nil %>
+                            <span># 식사 DB 없음</span>
+                          <% else %>
+                              <span>#</span>
+                              <% unless c.meal1.nil? %>
+                                  <span><%= c.meal1 %>,</span>
+                              <% end %>
+                              <% unless c.meal2.nil? %>
+                                  <span><%= c.meal2 %>,</span>
+                              <% end %>
+                              <% unless c.meal3.nil? %>
+                                  <span><%= c.meal3 %></span>
+                              <% end %>
+                          
+                          <% end %>
+                          
+                          <% if c.gender=="여성전용" %>
+                            <span>#여성전용</span>
+                          <% elsif c.gender =="남녀공용" %>
+                            <span>#남녀공용</span>
+                          <% elsif c.gender == "남녀층 분리" %>
+                            <span>#남녀층 분리</span>
+                          <% elsif c.gender == "남성전용" %>
+                            <span>#남성전용</span>
+                          <% else %>
+                            <span>#DB없음</span>
+                          <% end %>
+                          
+                        </div>
+                      </div><!--정보 세번째 줄 끝-->
+                      
+
                       
                     </div><!--정보 표시 끝-->
                     
@@ -2672,14 +2619,27 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
                   <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
                   <div class="img-responsive thumbnail">
-                    
                     <!--이미지 지정-->
                     <div class="image col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin:0px; padding:0px">
                       <div id="nameOfhasuk">
                         <p><%= c.hasuk_name %></p>
                       </div>
+                      <% unless c.discount_price.nil? || c.discount_price == 0 %>
+                        <div id="circle">
+                          <div id="sale">
+                            
+                            <div class="row" style="margin:0px; padding:0px;margin-top: 5px;margin-left: 3px;">
+                              <span style="font-size:13px">첫 달<img style="width:20px; margin:0px; float:right; margin-left: 3px;margin-top: 3px;" src="/images//icons/discount1.png"/></span>
+                              
+                            </div>
+                            <span style="font-size:23px; margin-left:5px"><%= number_with_precision(c.discount_price/10000.0, precision: 1) %></span>
+                            <span style="font-size:13px">만</span>
+                          </div>
+                        </div>
+                      <% end %>
                       <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size" style="width:100%;">
                     </div>
+
                     
                     <!--정보 표시-->
                     <div class="caption" style="padding-top:5px; padding-left:0px; padding-right:0px; padding-bottom:5px">
@@ -2720,97 +2680,33 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                               
                           </div>
                         </div>
-                        <div id="gender-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                          
-                          <% if c.gender=="여성전용" %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#ff93b0; border:1px solid #ff93b0; ">여성전용</p>
-                            </div>
-                          <% elsif c.gender =="남녀공용" %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#999998; border:1px solid #999998; ">남녀공용</p>
-                            </div>
-                          <% elsif c.gender == "남녀층 분리" %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#9B59B6; border:1px solid #9B59B6; ">남녀분리</p>
-                            </div>
-                          <% elsif c.gender == "남성전용" %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#80a3ff; border:1px solid #80a3ff; ">남성전용</p>
-                            </div>
+                        
+                        <div id="kind-size" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                         <% if c.hasuk_kind == "일반하숙" %>
+ 
+                              <span id="hasuk_kind_color1">일반하숙</span>
+                            
+                          <% elsif c.hasuk_kind == "잠만 자는 방" %>
+                            
+                            <span id="hasuk_kind_color2">잠만자는</span>
+                            
+                          <% elsif c.hasuk_kind == "원룸형" %>
+                            
+                            <span id="hasuk_kind_color3">원룸형</span>
+                            
+                          <% elsif c.hasuk_kind == "고시원형" %>
+                            
+                            <span id="hasuk_kind_color4">고시원형</span>
+                            
                           <% else %>
-                            <div class="has-error" style="margin-top:7px; margin-bottom:0px;">
-                              <p class="gender_border"  style="color:#ff93b0; border:1px solid #ff93b0; ">DB 없음</p>
-                            </div>
-                          <% end %>
-                          
-                        </div>
-                        <div id="icon-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                          <% if c.internet =="와이파이" || c.internet =="유선 인터넷" %>
-                            <img src="/images/icons/wifi.png" style="margin-right:2px;">
-                          <% elsif c.internet =="없음" %>  
-                            <img src="/images/icons/wifi2.png" style="margin-right:2px;">
-                          <% else %>
-                            <img src="/images/icons/wifi2.png" style="margin-right:2px;">
-                          <% end %>
-                          <% if c.personal_option8 =="화장실" %>
-                            <img src="/images/icons/toilet.png" style="margin-right:4px;">
-                          <% elsif c.personal_option8 == nil %>   
-                            <img src="/images/icons/toilet2.png" style="margin-right:4px;">
-                          <% else %>
-                            <img src="/images/icons/toilet2.png" style="margin-right:4px;">
-                          <% end %>
-                          <% if c.personal_option6 =="에어컨" %>
-                            <img src="/images/icons/air.png">
-                          <% elsif c.personal_option6 == nil %>   
-                            <img src="/images/icons/air2.png">
-                          <% else %>
-                            <img src="/images/icons/air2.png">
+                            
+                              <span  id="hasuk_kind_color4">형태없음</span>
+                            
                           <% end %>
                         </div>
                       </div><!--정보 첫번째 줄 끝-->
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="kind-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                         <% if c.hasuk_kind == "일반하숙" %>
-                            <span style="color:#2ECC71">[일반하숙]</span>
-                          <% elsif c.hasuk_kind == "잠만 자는 방" %>
-                            <span style="color:#2ECC71">[잠만자는]</span>
-                          <% elsif c.hasuk_kind == "원룸형" %>
-                            <span style="color:#2ECC71">[원룸형]</span>
-                          <% elsif c.hasuk_kind == "고시원형" %>
-                            <span style="color:#2ECC71">[고시원형]</span>
-                          <% else %>
-                            <span style="color:#3498DB">[형태없음]</span>
-                          <% end %>
-                        </div>
-                        <div id="meal-size" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                          
-                          <% if c.meal4 == "제공 안함" %>
-                            <span>| 식사제공 안함</span>
-                          <% elsif c.meal1 == nil && c.meal2 == nil && c.meal3 == nil && c.meal4 == nil %>
-                            <span>| 식사 DB 없음</span>
-                          <% else %>
-                              <span>|</span>
-                              <% unless c.meal1.nil? %>
-                                  <span><%= c.meal1 %>,</span>
-                              <% end %>
-                              <% unless c.meal2.nil? %>
-                                  <span><%= c.meal2 %>,</span>
-                              <% end %>
-                              <% unless c.meal3.nil? %>
-                                  <span><%= c.meal3 %></span>
-                              <% end %>
-                          
-                          <% end %>
-                        </div>
-                        <div id="room-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                          <% unless c.size_from.nil? %>
-                          <span id="small-size">&nbsp;| <%=c.size_from %>~<%= c.size_to %>평</span>
-                          <% else %>
-                            <span id="small-size">&nbsp;| 0~1평</span>
-                          <% end %>
-                        </div>
                         <div id="distance-size" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <% if c.univ_distance1 != "학교선택" %>
                             <% if c.univ_distance1 == "이화" %>
@@ -2847,8 +2743,44 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                               <% end %>
  
                         </div>
-                        
-                      </div><!--정보 두번째 줄 끝-->
+                    </div><!--정보 두번째 줄 끝-->
+                    <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                        <div id="option" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          
+                          <% if c.meal4 == "제공 안함" %>
+                            <span># 식사제공 안함</span>
+                          <% elsif c.meal1 == nil && c.meal2 == nil && c.meal3 == nil && c.meal4 == nil %>
+                            <span># 식사 DB 없음</span>
+                          <% else %>
+                              <span>#</span>
+                              <% unless c.meal1.nil? %>
+                                  <span><%= c.meal1 %>,</span>
+                              <% end %>
+                              <% unless c.meal2.nil? %>
+                                  <span><%= c.meal2 %>,</span>
+                              <% end %>
+                              <% unless c.meal3.nil? %>
+                                  <span><%= c.meal3 %></span>
+                              <% end %>
+                          
+                          <% end %>
+                          
+                          <% if c.gender=="여성전용" %>
+                            <span>#여성전용</span>
+                          <% elsif c.gender =="남녀공용" %>
+                            <span>#남녀공용</span>
+                          <% elsif c.gender == "남녀층 분리" %>
+                            <span>#남녀층 분리</span>
+                          <% elsif c.gender == "남성전용" %>
+                            <span>#남성전용</span>
+                          <% else %>
+                            <span>#DB없음</span>
+                          <% end %>
+                          
+                        </div>
+                      </div><!--정보 세번째 줄 끝-->
+                      
+
                       
                     </div><!--정보 표시 끝-->
                     
@@ -2976,7 +2908,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                           <% end %>
 
                         </div>
-                        <div id="meal-size" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="option" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                           
                           <% if c.meal4 == "제공 안함" %>
                             <span>| 식사제공 안함</span>
@@ -2996,13 +2928,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                           
                           <% end %>
                         </div>
-                        <div id="room-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                          <% unless c.size_from.nil? %>
-                          <span id="small-size">&nbsp;| <%=c.size_from %>~<%= c.size_to %>평</span>
-                          <% else %>
-                            <span id="small-size">&nbsp;| 0~1평</span>
-                          <% end %>
-                        </div>
+                        
                         <div id="distance-size" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <% if c.univ_distance1 != "학교선택" %>
                             <% if c.univ_distance1 == "이화" %>
@@ -3248,10 +3174,10 @@ $(document).ready(function(){
         });
         
         $(".room").mouseover(function(){
-          $(this).css("background-color", "#dddddd");
+          $(this).css("background-color", "rgba(45, 205, 113, 0.5)");
         });
         $(".room").mouseout(function() {
-          $(this).css("background-color", "#f5f5f5");
+          $(this).css("background-color", "transparent");
         }); 
       });
 

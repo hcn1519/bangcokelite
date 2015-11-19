@@ -27,14 +27,12 @@
 
   <% if user_signed_in? %>
     <% if @univ == "이화" %>
-        <li><%= link_to "#{@univ}여자대학교", "#", :class => 'btn btn-small', style:"color:#0c6f40" %></li>
-    <% elsif @univ == "서강" %>
-        <li><%= link_to "#{@univ}대학교", "#", :class => 'btn btn-small', style:"color:#b20000" %></li>
-    <% elsif @univ == "연세" %>
-        <li><%= link_to "#{@univ}대학교", "#", :class => 'btn btn-small', style:"color:#202d61" %></li>
-    <% end %>
-      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-align:center">학교 변경하기<b class="caret"></b></a>
-        <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
+        <li class="dropdown">
+          <%= link_to "#", :class => 'dropdown-toggle', "data-toggle":"dropdown", style:"color:#0c6f40" do %>
+            <%= @univ %>여자대학교
+            <b class="caret"></b>
+          <% end %>
+          <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
             <li>
               <form id="sogang" action="/map/mappage" method="GET">
                 <input type="hidden" value="서강" name="univ">
@@ -42,9 +40,71 @@
               </form>
             </li>
             <li>
-              <form id="ewha" action="/map/mappage" method="GET">
-                <input type="hidden" value="이화" name="univ">
-                <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small btn-success">
+              <form id="yonsei" action="/map/mappage" method="GET">
+                <input type="hidden" value="연세" name="univ">
+                <input id="submitt"  type="submit" value="연세대학교" class="btn btn-small btn-success">
+              </form>
+            </li>  
+          </ul>
+        </li>
+    <% elsif @univ == "서강" %>
+        <li class="dropdown">
+          <%= link_to "#", :class => 'dropdown-toggle', "data-toggle":"dropdown", style:"color:#b20000" do %>
+            <%= @univ %>대학교
+            <b class="caret"></b>
+          <% end %>
+          <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
+            <li>
+              <form id="yonsei" action="/map/mappage" method="GET">
+                <input type="hidden" value="연세" name="univ">
+                <input id="submitt"  type="submit" value="연세대학교" class="btn btn-small btn-success">
+              </form>
+            </li>
+            <li>
+            <form id="ewha" action="/map/mappage" method="GET">
+              <input type="hidden" value="이화" name="univ">
+              <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small btn-success">
+            </form>
+          </li>
+          </ul>
+        </li>
+    <% elsif @univ == "연세" %>
+        <li class="dropdown">
+          <%= link_to "#", :class => 'dropdown-toggle', "data-toggle":"dropdown", style:"color:#202d61" do %>
+            <%= @univ %>대학교
+            <b class="caret"></b>
+          <% end %>
+          <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
+            <li>
+              <form id="sogang" action="/map/mappage" method="GET">
+                <input type="hidden" value="서강" name="univ">
+                <input id="submitt" type="submit" value="서강대학교" class="btn btn-small btn-success" >
+              </form>
+            </li>
+            <li>
+            <form id="ewha" action="/map/mappage" method="GET">
+              <input type="hidden" value="이화" name="univ">
+              <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small btn-success">
+            </form>
+          </li>
+          </ul>
+        </li>
+    <% end %>
+      
+        
+      
+  <% else %>
+    <% if @univ == "이화" %>
+        <li class="dropdown">
+          <%= link_to "#", :class => 'dropdown-toggle', "data-toggle":"dropdown", style:"color:#0c6f40" do %>
+            <%= @univ %>여자대학교
+            <b class="caret"></b>
+          <% end %>
+          <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
+            <li>
+              <form id="sogang" action="/map/mappage" method="GET">
+                <input type="hidden" value="서강" name="univ">
+                <input id="submitt" type="submit" value="서강대학교" class="btn btn-small btn-success" >
               </form>
             </li>
             <li>
@@ -54,38 +114,51 @@
               </form>
             </li>  
         </ul>
-      </li>
-      
-  <% else %>
-    <% if @univ == "이화" %>
-        <li><%= link_to "#{@univ}여자대학교", "#", :class => 'btn btn-small', style:"color:#0c6f40" %></li>
+        </li>
     <% elsif @univ == "서강" %>
-        <li><%= link_to "#{@univ}대학교", "#", :class => 'btn btn-small', style:"color:#b20000" %></li>
-    <% elsif @univ == "연세" %>
-        <li><%= link_to "#{@univ}대학교", "#", :class => 'btn btn-small', style:"color:#202d61" %></li>
-    <% end %>
-    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="text-align:center">학교 변경하기<b class="caret"></b></a>
-      <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
-          <li>
-            <form id="sogang" action="/map/mappage" method="GET">
-              <input type="hidden" value="서강" name="univ">
-              <input id="submitt" type="submit" value="서강대학교" class="btn btn-small btn-success" >
-            </form>
-          </li>
-          <li>
+        <li class="dropdown">
+          <%= link_to "#", :class => 'dropdown-toggle', "data-toggle":"dropdown", style:"color:#b20000" do %>
+            <%= @univ %>대학교
+            <b class="caret"></b>
+          <% end %>
+          <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
+            <li>
+              <form id="yonsei" action="/map/mappage" method="GET">
+                <input type="hidden" value="연세" name="univ">
+                <input id="submitt"  type="submit" value="연세대학교" class="btn btn-small btn-success">
+              </form>
+            </li>
+            <li>
             <form id="ewha" action="/map/mappage" method="GET">
               <input type="hidden" value="이화" name="univ">
               <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small btn-success">
             </form>
           </li>
-          <li>
-            <form id="yonsei" action="/map/mappage" method="GET">
-              <input type="hidden" value="연세" name="univ">
-              <input id="submitt"  type="submit" value="연세대학교" class="btn btn-small btn-success">
+          </ul>
+        </li>  
+    <% elsif @univ == "연세" %>
+        <li class="dropdown">
+          <%= link_to "#", :class => 'dropdown-toggle', "data-toggle":"dropdown", style:"color:#202d61" do %>
+            <%= @univ %>대학교
+            <b class="caret"></b>
+          <% end %>
+          <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
+            <li>
+              <form id="sogang" action="/map/mappage" method="GET">
+                <input type="hidden" value="서강" name="univ">
+                <input id="submitt" type="submit" value="서강대학교" class="btn btn-small btn-success" >
+              </form>
+            </li>
+            <li>
+            <form id="ewha" action="/map/mappage" method="GET">
+              <input type="hidden" value="이화" name="univ">
+              <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small btn-success">
             </form>
-          </li>  
-      </ul>
-    </li>
+          </li>
+          </ul>
+        </li>
+    <% end %>
+    
     
   <% end %><!--로그인별 분류-->
 
