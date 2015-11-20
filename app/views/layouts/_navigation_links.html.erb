@@ -27,7 +27,7 @@
 
   <% if user_signed_in? %>
     <% if @univ == "이화" %>
-        <li class="dropdown">
+        <li class="dropdown" style="text-align:center">
           <%= link_to "#", :class => 'dropdown-toggle', "data-toggle":"dropdown", style:"color:#0c6f40" do %>
             <%= @univ %>여자대학교
             <b class="caret"></b>
@@ -48,7 +48,7 @@
           </ul>
         </li>
     <% elsif @univ == "서강" %>
-        <li class="dropdown">
+        <li class="dropdown" style="text-align:center">
           <%= link_to "#", :class => 'dropdown-toggle', "data-toggle":"dropdown", style:"color:#b20000" do %>
             <%= @univ %>대학교
             <b class="caret"></b>
@@ -69,7 +69,7 @@
           </ul>
         </li>
     <% elsif @univ == "연세" %>
-        <li class="dropdown">
+        <li class="dropdown" style="text-align:center">
           <%= link_to "#", :class => 'dropdown-toggle', "data-toggle":"dropdown", style:"color:#202d61" do %>
             <%= @univ %>대학교
             <b class="caret"></b>
@@ -95,7 +95,7 @@
       
   <% else %>
     <% if @univ == "이화" %>
-        <li class="dropdown">
+        <li class="dropdown" style="text-align:center">
           <%= link_to "#", :class => 'dropdown-toggle', "data-toggle":"dropdown", style:"color:#0c6f40" do %>
             <%= @univ %>여자대학교
             <b class="caret"></b>
@@ -116,7 +116,7 @@
         </ul>
         </li>
     <% elsif @univ == "서강" %>
-        <li class="dropdown">
+        <li class="dropdown" style="text-align:center">
           <%= link_to "#", :class => 'dropdown-toggle', "data-toggle":"dropdown", style:"color:#b20000" do %>
             <%= @univ %>대학교
             <b class="caret"></b>
@@ -137,7 +137,7 @@
           </ul>
         </li>  
     <% elsif @univ == "연세" %>
-        <li class="dropdown">
+        <li class="dropdown" style="text-align:center">
           <%= link_to "#", :class => 'dropdown-toggle', "data-toggle":"dropdown", style:"color:#202d61" do %>
             <%= @univ %>대학교
             <b class="caret"></b>

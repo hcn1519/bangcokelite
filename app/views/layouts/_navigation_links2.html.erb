@@ -94,7 +94,7 @@
     <% if user_signed_in? %>
         <li>
             <%= link_to "#search", "data-toggle" => "modal", :class => 'btn btn-small', style:"padding-right: 15px;", :id => "close"  do %>
-                    <span class="search_menu"><span class="fui-search" style="top:2px"></span>하숙집 찾기</span>
+                    <span class="search_menu"><span class="fui-search" style="top:2px"></span>하숙집 검색</span>
             <% end %>
         </li>
         <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small', :id => "close" %></li>
@@ -137,12 +137,12 @@
         <li>
             <%= link_to "#search", "data-toggle" => "modal", :class => 'btn btn-small', style:"padding-right: 15px;"  do %>
                 
-                    <span class="search_menu"><span class="fui-search" style="top:2px"></span>하숙집 찾기</span>
+                    <span class="search_menu"><span class="fui-search" style="top:2px"></span>하숙집 검색</span>
               
             <% end %>
         </li>
         <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small', :id => "close" %></li>
-        <li><%= link_to "하숙집 등록", "/hasuk_houses/new", :class => 'btn btn-small', :id => "close" %></li>
+        <li><%= link_to "하숙집 등록", "#login", "data-toggle" => "modal", :class => 'btn btn-small', :id => "close" %></li>
         <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small', :id => "close" %></li>
         <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small', :id => "close" %></li>
     <% end %>
