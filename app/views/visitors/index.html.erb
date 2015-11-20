@@ -59,10 +59,6 @@ body {
     
 }
     
-.intro {
-    background: url(/images/index-images/block_back_dark.png);
-
-}
 
 .content-section {
     padding-top: 75px;
@@ -73,8 +69,22 @@ body {
 
 #main-img {
     padding-bottom: 30px;
-    width: 80%;
+    width: 75%;
     margin: auto;
+}
+
+#univ_btn {
+  width: 65%;
+}
+
+#submit_btn {
+  width: 25%;
+}
+.btn-group {
+  width: 100%;
+   border-top: 17px solid #333f50; border-bottom: 17px solid #333f50; 
+   border-radius: 15px;
+   background-color: #333f50;
 }
 
 .text-control {
@@ -88,6 +98,7 @@ body {
 
 .intro {
     padding: 30px 0 0 0;
+    height:100%;
 }
 
 .intro .container {
@@ -165,11 +176,33 @@ body {
   display: none;
 }
 
+.intro {
+    background: url(/images/index-images/block_back_mb.png);
+}
+
 }
 
 
 @media(min-width:767px) and (max-width: 1199px) {
 
+.intro {
+    background: url(/images/index-images/block_back_dark.png);
+}
+
+.btn-group {
+   border-top: 17px solid #333f50; border-bottom: 17px solid #333f50; 
+   border-radius: 20px;
+   background-color: #333f50;
+   width: 470px;
+}
+
+#univ_btn {
+  width: 300px;
+}
+
+#submit_btn {
+  width: 120px;
+}
 
 .text-control {
     text-align: left;
@@ -255,15 +288,21 @@ body {
 }
 
 #main-img {
-    padding-left: 120px;
-    padding-right: 120px;
-    padding-bottom: 30px;
-    
+    width: 350px;
+    padding-bottom: 60px;
 }
 
 }
 
 @media(min-width: 992px) {
+
+#univ_btn {
+  width: 300px;
+}
+
+#submit_btn {
+  width: 120px;
+}
 
 .col-md-12{
     padding-left: 0;
@@ -271,9 +310,8 @@ body {
 }
 
 #main-img {
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-bottom: 30px;
+    width: 350px;
+    padding-bottom: 60px;
 }
 
 .target-img {
@@ -284,7 +322,28 @@ body {
 }
 
 @media(min-width: 1200px) {
- 
+
+.btn-group {
+   border-top: 17px solid #333f50; border-bottom: 17px solid #333f50; 
+   border-radius: 20px;
+   background-color: #333f50;
+   width: 470px;
+}
+
+.intro {
+    background: url(/images/index-images/block_back_dark.png);
+
+}
+
+#univ_btn {
+  width: 300px;
+}
+
+#submit_btn {
+  width: 120px;
+}
+
+
 .text-control {
     text-align: left;
 }    
@@ -360,8 +419,8 @@ body {
 }
 
 #main-img {
-    padding-bottom: 30px;
-    
+    width: 350px;
+    padding-bottom: 60px;
 }
 
 .target-img {
@@ -440,12 +499,11 @@ p {
     margin-bottom: 0;    
 }
 
-.btn-group {
-   border-top: 17px solid #333f50; border-bottom: 17px solid #333f50; 
-   border-left: 20px solid #333f50; border-right: 20px solid #333f50;
-   border-radius: 15px;
-   background-color: #333f50;
+.btn-group > .btn, .btn-group > .submit, .authform .btn-group > .button, .btn-group > .button-xs, .btn-group-vertical > .btn, .btn-group-vertical > .submit, .authform .btn-group-vertical > .button, .btn-group-vertical > .button-xs {
+    position: relative;
+    float: none;
 }
+
 
 </style>
 
@@ -465,13 +523,13 @@ p {
                     <form action="/map/mappage" method="GET">
                       <div class="btn-group" role="group">
                         
-                        <%= select_tag "univ", "<option selected>학교 선택</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe,class:"btn btn-default btn-lg dropdown-toggle", style: "font-family:source-han-sans-korean; border-radius:8px; background: #ffffff; color: #999999; border: 2px solid #999999;" %>
-                        <%= button_tag(type: "submit", class:"btn btn-success btn-lg", style: "border: 2px solid #2ecc71; border-radius: 8px; margin-left: 7px; font-family:source-han-sans-korean;") do %>
+                        <%= select_tag "univ", "<option selected>학교 선택</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe,class:"btn btn-default btn-lg dropdown-toggle", id:"univ_btn", style: "font-family:source-han-sans-korean; border-radius:8px; background: #ffffff; color: #999999; border: 2px solid #999999;" %>
+                        <%= button_tag(type: "submit", class:"btn btn-success btn-lg", id:"submit_btn", style: "border: 2px solid #2ecc71; border-radius: 8px; margin-left: 5px; font-family:source-han-sans-korean;") do %>
                           <span class="fui-search"></span>
                         <% end %>
                       </div>
                     </form>
-                  
+                    
 				        </div>
 				<div class="row">
                     <div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 text-center" style="margin-top:15px">

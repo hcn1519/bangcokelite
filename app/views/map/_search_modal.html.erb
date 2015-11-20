@@ -1,9 +1,24 @@
 <style type="text/css">
-  @media (max-width: px) {
-   
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+    color:#27AE60;
+    border:1px solid #fff;
+    background-color:#ECF0F1;
+    border-radius:5px;
+  }
+  .nav-tabs > li > a:hover{
+    border:1px solid #2ECC71;
+    background:#2ECC71;
+    color:#fff;
+    border-radius:5px;
+  }
+  
+  .nav-tabs {
+    border:transparent;
+  }
+  .ui-slider-horizontal .ui-slider-handle{
+    left:2%;
+  }
 </style>
-
-
 <div class="modal fade col-md-12 col-sm-12 col-xs-12" id="search">
   <div class="modal-dialog">
     <div class="modal-content col-md-12 col-sm-12 col-xs-12" id="modal-size2" style="padding-left:0px; padding-right:0px">
@@ -11,130 +26,161 @@
       <div class="modal-body" style="padding:5px;">
         <div class="panel panel-default col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px;">
           <div class="pandel-head" style="padding-left:15px;">
-            <h5 style="margin-bottom:0.2em">하숙집 찾기</h5>
+            <ul class="nav nav-tabs" id="tabContent">
+              <li class="active"><a href="#FindByCondition" data-toggle="tab" class="btn btn-small">하숙집 조건 검색</a></li>
+              <li><a href="#FindByName" data-toggle="tab" class="btn btn-small">하숙집 이름 검색</a></li>
+            </ul>    
           </div>
-          <div class="panel-body" style="padding:5px;">
-            <form action="/map/map_detail" method="GET">
-              
-              <input type="hidden" value="<%= @univ %>" name="univ">
-              <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <span id="select-title" readonly style="font-size:15px; font-weight:bold;">종류</span>
-                <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
-                  <label id="small-device" class="btn btn-success" style="margin-top:10px">
-                      <input type="radio" id="bt1" name="hasuk_kind" value="일반하숙" />일반하숙
-                  </label>
-                  <label id="small-device" class="btn btn-success" style="margin-top:10px">
-                      <input type="radio" id="bt2" name="hasuk_kind" value="잠만 자는 방" />잠만 자는 방
-                  </label>
-                  <label id="small-device"class="btn btn-success" style="margin-top:10px">
-                      <input type="radio" id="bt1" name="hasuk_kind" value="원룸형" />원룸형
-                  </label> 
-                  <label id="small-device" class="btn btn-success" style="margin-top:10px">
-                      <input type="radio" id="bt2" name="hasuk_kind" value="고시원형" />고시원형
-                  </label> 
-                </div>
-              </div>
-              <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <span id="select-title" readonly style="font-size:15px; font-weight:bold;">성별</span>
-                
-                <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
-                  
-                  <label id="small-device" class="btn btn-success" style="margin-top:10px">
-                      <input type="radio" name="gender" value="남녀공용" />남녀공용
-                  </label> 
-                  <label id="small-device" class="btn btn-success" style="margin-top:10px" >
-                      <input type="radio"  name="gender" value="남녀층 분리" />남녀층 분리
-                  </label>
-                  <label id="small-device" class="btn btn-success" style="margin-top:10px">
-                      <input type="radio"  name="gender" value="여성전용" />여성전용
-                  </label> 
-                  <label id="small-device" class="btn btn-success" style="margin-top:10px">
-                      <input type="radio" name="gender" value="남성전용" />남성전용
-                  </label> 
-                </div>
-              </div>
-              
-              <div id="sliderbox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div id="modal-price" style="margin-bottom:5px;">
-                  <span id="select-title" readonly style="font-size:15px; font-weight:bold;">월세 (단위 - 만 원)</span>
-                </div>
-                <div id="slider3" style="margin-top: 15px;">
-                  <span class="ui-slider-value first"></span>
-                  <span class="ui-slider-value last"></span>
-                  <input type="hidden" name="price_from"  id="price_from">
-                  <input type="hidden" name="price_to" id="price_to">
-                </div>
-              </div>
-              
-              <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <span id="select-title" readonly style="font-size:15px; font-weight:bold;">구역</span>
-                <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
-                  <% if @univ == "서강" %>
-                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt3"name="section" value="남문(대흥역)" /> 남문(대흥역)
-                  </label> 
-                  
-                  <% elsif @univ == "연세" %>
-                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt4" name="section" value="정문(신촌역)" /> 정문(신촌역)
-                  </label> 
-                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt5" name="section" value="연대서문" /> 서문
-                  </label> 
-                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt6" name="section" value="연대남문" /> 남문
-                  </label> 
-                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt7" name="section" value="이대후문" /> 동문
-                  </label>
-                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt8" name="section" value="신촌기차역" /> 신촌기차역
-                  </label>
-    
-                  <% elsif @univ == "이화" %>
-                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt4" name="section" value="정문(이대역)" /> 정문(이대역)
-                  </label> 
-                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt5" name="section" value="신촌기차역" /> 신촌기차역
-                  </label> 
-                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt6" name="section" value="이대후문" /> 후문
-                  </label> 
-                  
-                  <% end %>
-                </div>
-              </div>
-              <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <span id="select-title" readonly style="font-size:15px; font-weight:bold;">도보 거리</span>
-                <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px; padding-left:0px;padding-right: 0px;">
-                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input class="btn btn-default" type="radio" id="bt8" name="distance" value=5 /> 5분 이내
-                   </label>
-                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt8" name="distance" value=10 /> 10분 이내
-                  </label> 
-                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt9" name="distance" value=15 /> 15분 이내
-                  </label>   
-                  <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                      <input type="radio" id="bt10" name="distance" value=20 /> 20분 이내
-                  </label>   
-                </div>
-              </div>
-              <div style="float:right">
-                <input id="search" type="submit" value="검색하기" class="btn btn-info small-device">
-                <button id="out" type="button" class="btn btn-danger small-device" data-dismiss="modal">취소</button>
-              </div>
-          </div>
-        </div>
 
-    </div> <!--검색 박스 끝 -->
-      
-      </form>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal2 -->
+
+          <div class="panel-body" style="padding:5px;">
+            
+            
+            <div class="tab-content">
+              <div class="tab-pane active" id="FindByCondition">
+                <form action="/map/map_detail" method="GET">
+                            
+                      <input type="hidden" value="<%= @univ %>" name="univ">
+                      <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <span id="select-title" readonly style="font-size:15px; font-weight:bold;">종류</span>
+                        <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
+                          <label id="small-device" class="btn btn-success" style="margin-top:10px">
+                              <input type="radio" id="bt1" name="hasuk_kind" value="일반하숙" />일반하숙
+                          </label>
+                          <label id="small-device" class="btn btn-success" style="margin-top:10px">
+                              <input type="radio" id="bt2" name="hasuk_kind" value="잠만 자는 방" />잠만 자는 방
+                          </label>
+                          <label id="small-device"class="btn btn-success" style="margin-top:10px">
+                              <input type="radio" id="bt1" name="hasuk_kind" value="원룸형" />원룸형
+                          </label> 
+                          <label id="small-device" class="btn btn-success" style="margin-top:10px">
+                              <input type="radio" id="bt2" name="hasuk_kind" value="고시원형" />고시원형
+                          </label> 
+                        </div>
+                      </div>
+                      <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <span id="select-title" readonly style="font-size:15px; font-weight:bold;">성별</span>
+                        
+                        <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
+                          
+                          <label id="small-device" class="btn btn-success" style="margin-top:10px">
+                              <input type="radio" name="gender" value="남녀공용" />남녀공용
+                          </label> 
+                          <label id="small-device" class="btn btn-success" style="margin-top:10px" >
+                              <input type="radio"  name="gender" value="남녀층 분리" />남녀층 분리
+                          </label>
+                          <label id="small-device" class="btn btn-success" style="margin-top:10px">
+                              <input type="radio"  name="gender" value="여성전용" />여성전용
+                          </label> 
+                          <label id="small-device" class="btn btn-success" style="margin-top:10px">
+                              <input type="radio" name="gender" value="남성전용" />남성전용
+                          </label> 
+                        </div>
+                      </div>
+                      
+                      <div id="sliderbox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-left:5px">
+                        <div id="modal-price" style="margin-bottom:5px;">
+                          <span id="select-title" readonly style="font-size:15px; font-weight:bold;">월세 (단위 - 만 원)</span>
+                        </div>
+                        <div id="slider3" style="margin-top: 15px;">
+                          <span class="ui-slider-value first"></span>
+                          <span class="ui-slider-value last"></span>
+                          <input type="hidden" name="price_from"  id="price_from">
+                          <input type="hidden" name="price_to" id="price_to">
+                        </div>
+                      </div>
+                      
+                      <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <span id="select-title" readonly style="font-size:15px; font-weight:bold;">구역</span>
+                        <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
+                          <% if @univ == "서강" %>
+                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                              <input type="radio" id="bt3"name="section" value="남문(대흥역)" /> 남문(대흥역)
+                          </label> 
+                          
+                          <% elsif @univ == "연세" %>
+                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                              <input type="radio" id="bt4" name="section" value="정문(신촌역)" /> 정문(신촌역)
+                          </label> 
+                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                              <input type="radio" id="bt5" name="section" value="연대서문" /> 서문
+                          </label> 
+                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                              <input type="radio" id="bt6" name="section" value="연대남문" /> 남문
+                          </label> 
+                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                              <input type="radio" id="bt7" name="section" value="이대후문" /> 동문
+                          </label>
+                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                              <input type="radio" id="bt8" name="section" value="신촌기차역" /> 신촌기차역
+                          </label>
+            
+                          <% elsif @univ == "이화" %>
+                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                              <input type="radio" id="bt4" name="section" value="정문(이대역)" /> 정문(이대역)
+                          </label> 
+                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                              <input type="radio" id="bt5" name="section" value="신촌기차역" /> 신촌기차역
+                          </label> 
+                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                              <input type="radio" id="bt6" name="section" value="이대후문" /> 후문
+                          </label> 
+                          
+                          <% end %>
+                        </div>
+                      </div>
+                      <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <span id="select-title" readonly style="font-size:15px; font-weight:bold;">도보 거리</span>
+                        <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px; padding-left:0px;padding-right: 0px;">
+                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                              <input class="btn btn-default" type="radio" id="bt8" name="distance" value=5 /> 5분 이내
+                           </label>
+                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                              <input type="radio" id="bt8" name="distance" value=10 /> 10분 이내
+                          </label> 
+                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                              <input type="radio" id="bt9" name="distance" value=15 /> 15분 이내
+                          </label>   
+                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                              <input type="radio" id="bt10" name="distance" value=20 /> 20분 이내
+                          </label>   
+                        </div>
+                      </div>
+                      <div style="float:right">
+                        <input id="search" type="submit" value="검색하기" class="btn btn-info small-device">
+                        <button id="out" type="button" class="btn btn-danger small-device" data-dismiss="modal">취소</button>
+                      </div>
+              
+        
+                    </form>
+                  </div> <!--검색 박스 끝 -->
+                    
+              <div class="tab-pane" id="FindByName">
+                <form action="#" role="search">
+          
+                  <div class="input-group input-group-rounded" style="margin-top:20px; margin-bottom:20px">
+                    <input type="text" class="form-control" placeholder="하숙집 검색" id="search-query-3" style="border-color:#2ECC71;">
+                    <span class="input-group-btn">
+                      <button id="hasuk_name_find"class="btn" style="border-color:#2ECC71; color:#2ECC71"><span class="fui-search"></span></button>
+                    </span>
+                  </div>
+                  
+                </form>
+              </div><!--이름 검색 끝 -->
+        
+            </div>
+            
+        </div><!--panel-body-->
+
+
+      </div><!--panel-->            
+    </div><!--modal-body -->
+  </div><!-- /.modal-content -->
+</div><!--modal-dialog -->
+</div>
+
+
+
 <script>
   $(document).ready(function(){
     $("#search").click(function(){

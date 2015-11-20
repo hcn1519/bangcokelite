@@ -9,6 +9,14 @@
 
 <style>
 
+ul {
+  font-size: 14px;
+}
+.nav-justified > li > a, .nav-tabs.nav-justified > li > a {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
 .row {
   margin-left:0px;
   margin-top:0px;
@@ -111,6 +119,20 @@ body {
 
 @media (max-width: 767px) {
   
+.table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+    padding: 2px;
+}
+
+.info-zone {
+    padding-top: 0px;
+    padding-bottom: 15px;
+}
+
+.nav-tabs.nav-justified {
+    border-bottom: 0;
+    border-top: 1px solid #aeaeae;
+}
+  
 .photo-zone, .info-zone  {
   background-color: #ffffff;
 }
@@ -180,12 +202,12 @@ body {
 }
 
 .btn-md{
-  margin-top: 5px; 
-  width: 120px;
-  margin-left: 2px;
-  margin-right: 2px;
+  margin-top: 10px; 
+  width: 48%;
   font-size: 14px;
+  border-radius: 0;
 }
+
 #price{
   margin-top:3px; 
   margin-bottom:0px;
@@ -205,7 +227,10 @@ body {
 }
 
 .table-responsive {
-  padding:0px; padding-left:0px; padding-right:10px; margin-top:5px;
+  padding:0px;
+  border-right: none;
+  border-left: none;
+  border-top: none;
 }
 }
 
@@ -253,8 +278,8 @@ body {
 .btn-md{
   margin-top: 15px; 
   width: 150px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left:5px;
+  margin-right:5px;
 }
 #price{
   margin-top:3px; 
@@ -285,6 +310,11 @@ margin-top:10px;
 
 .table-responsive {
   padding:0px; padding-left:5px; padding-right:5px; margin-top:5px;
+}
+
+.info-zone {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 }
 
@@ -337,8 +367,8 @@ margin-top:10px;
 .btn-md{
   margin-top: 15px; 
   width: 180px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left:5px;
+  margin-right:5px;
 }
 
 .photo-zone, .info-zone{
@@ -352,6 +382,11 @@ margin-top:10px;
 
 .table-responsive {
   padding:0px; padding-left:5px; padding-right:5px; margin-top:5px;
+}
+
+.info-zone {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 }
 
@@ -396,12 +431,6 @@ p {
   border-top-color: #555555;
 }
 
-
-.info-zone {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
     color: #fff;
     background-color: #58d68d;
@@ -410,6 +439,7 @@ p {
 .info-zone .row {
     margin: 0;
     padding-left: 10px;
+    padding-right: 10px;
     padding-bottom: 5px;
 }
 
@@ -488,7 +518,10 @@ main {
     padding: 0px;
 }
 
-
+.dain_table {
+  padding:0px; 
+  margin-top:5px; 
+}
 </style>
 
 
@@ -850,8 +883,8 @@ main {
          
           <div class="row">
             <hr>
-            <p class="info"><span class="label">옵션</span></p>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="">
+            <p class="info"><span class="label">옵션</span> ( <span class="fui-checkbox-checked" style="color:#2ECC71"></span> : 있음, <span class="fui-checkbox-unchecked" style="color:#95A5A6"></span> : 없음)</p>
+            <div class="dain_table col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="table-responsive">
                 <table class="table" style="width:100%">
                   <tr>
@@ -953,7 +986,7 @@ main {
                       <% else %>
                         <span class="fui-checkbox-unchecked" id="check-option" style="color:#95A5A6"></span>
                       <% end %>
-                      <span id="check-content">&nbsp;전자레인지</span>
+                      <span id="check-content">&nbsp;전자렌지</span>
                     </td>
                     <td style="width:20%; padding-right:0;">
                       <% unless @hasuk_house.personal_option13.nil? || @hasuk_house.personal_option13 == "" %>
@@ -961,7 +994,7 @@ main {
                       <% else %>
                         <span class="fui-checkbox-unchecked" id="check-option" style="color:#95A5A6"></span>
                       <% end %>
-                      <span id="check-content">&nbsp;가스레인지</span>
+                      <span id="check-content">&nbsp;가스렌지</span>
                     </td>
                     <td style="width:20%; padding-right:0;">
                       <% unless @hasuk_house.personal_option14.nil? || @hasuk_house.personal_option14 == "" %>
@@ -984,7 +1017,8 @@ main {
           </div>
           <div class="row">
             <p class="info"><span class="label">공동시설</span></p>
-            <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; padding-left:5px; padding-right:5px; margin-top:5px">
+            <div class="dain_table col-md-12 col-sm-12 col-xs-12">
+              <div class="table-responsive">
             <table class="table" style="width:100%">
               <tr>
                 <td style="width:20%; padding-right:0;">
@@ -1043,7 +1077,7 @@ main {
                   <% else %>
                     <span class="fui-checkbox-unchecked" id="check-option" style="color:#95A5A6"></span>
                   <% end %>
-                  <span id="check-content">&nbsp;전자레인지</span>
+                  <span id="check-content">&nbsp;전자렌지</span>
                 </td>
                 <td style="width:20%; padding-right:0;">
                   <% unless @hasuk_house.common_option8.nil? || @hasuk_house.common_option8 == "" %>
@@ -1051,7 +1085,7 @@ main {
                   <% else %>
                     <span class="fui-checkbox-unchecked" id="check-option" style="color:#95A5A6"></span>
                   <% end %>
-                  <span id="check-content">&nbsp;가스레인지</span>
+                  <span id="check-content">&nbsp;가스렌지</span>
                 </td>
                 <td style="width:20%; padding-right:0;">
                   <% unless @hasuk_house.common_option9.nil? || @hasuk_house.common_option9 == "" %>
@@ -1072,6 +1106,7 @@ main {
               </tr>
             </table>
             </div>
+          </div>
          
           </div>
            
@@ -1135,19 +1170,16 @@ main {
             </div>
   
           </div> 
+    
           <div>
             <% if user_signed_in? %>
-              <center><button type="button" id="like" class="btn btn-primary btn-md" style="background-color:#ee8176;">찜하기</button>
-              <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#contact" style="background-color:#71b7e6;">연락처보기</button>
-              </center>
+              <center><button type="button" id="like" class="btn btn-primary btn-md" style="background-color:#ee8176;">찜하기
+              <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#contact" style="background-color:#71b7e6;">연락처보기</button></center>
             <% else %>
               <center><button type="button" id="like" class="btn btn-primary btn-md" style="background-color:#ee8176;">찜하기</button>
-              <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#login" style="background-color:#71b7e6;">연락처보기</button>
-              </center>
+              <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#login" style="background-color:#71b7e6;">연락처보기</button></center>
             <% end %>
-              
-          </div>
-        
+        </div>
       </div>
     </div>
     </div><!--row end-->
