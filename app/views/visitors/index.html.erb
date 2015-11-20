@@ -39,7 +39,7 @@ main {
     color:#fff;
 }
 .navbar-nav .navbar-right > li > a {
-        color:#fff;
+    color:#fff;
 }
 .navbar-default .navbar-brand {
     color:#fff;
@@ -71,18 +71,10 @@ body {
 
 @media (max-width: 767px) {
 
-.navbar-custom {
-    background: none;
-}
-
-.btn-hg {
-    font-size: 15px;
-    
-}
-
 #main-img {
     padding-bottom: 30px;
-    
+    width: 80%;
+    margin: auto;
 }
 
 .text-control {
@@ -121,10 +113,6 @@ body {
     font-size: 18px;  
 }
 
-.navbar-inverse .navbar-form {
-    border-color: #2f4154;
-    border-width: 2px 0;
-}
 
 .mob-hidden {
     display: none;
@@ -171,6 +159,10 @@ body {
 
 #darkblue-box .content-section{
     padding: 30px 0;
+}
+
+.mob-hidden {
+  display: none;
 }
 
 }
@@ -448,6 +440,13 @@ p {
     margin-bottom: 0;    
 }
 
+.btn-group {
+   border-top: 17px solid #333f50; border-bottom: 17px solid #333f50; 
+   border-left: 20px solid #333f50; border-right: 20px solid #333f50;
+   border-radius: 15px;
+   background-color: #333f50;
+}
+
 </style>
 
 </head>
@@ -464,9 +463,15 @@ p {
                 </div> 
                 <div class="row col-md-12 col-xs-12 col-sm-12">
                     <form action="/map/mappage" method="GET">
-                        <%= select_tag "univ", "<option selected>학교를 선택해주세요</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe,class:"btn btn-default btn-lg dropdown-toggle", style: "font-family:source-han-sans-korean; background: #ffffff; color: #999999; border: 1px solid #999999;" %>
-                        <%= submit_tag "찾기", class:"btn btn-success btn-lg", style: "font-family:source-han-sans-korean;" %>
+                      <div class="btn-group" role="group">
+                        
+                        <%= select_tag "univ", "<option selected>학교 선택</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe,class:"btn btn-default btn-lg dropdown-toggle", style: "font-family:source-han-sans-korean; border-radius:8px; background: #ffffff; color: #999999; border: 2px solid #999999;" %>
+                        <%= button_tag(type: "submit", class:"btn btn-success btn-lg", style: "border: 2px solid #2ecc71; border-radius: 8px; margin-left: 7px; font-family:source-han-sans-korean;") do %>
+                          <span class="fui-search"></span>
+                        <% end %>
+                      </div>
                     </form>
+                  
 				        </div>
 				<div class="row">
                     <div class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 text-center" style="margin-top:15px">
