@@ -44,7 +44,16 @@
         <% end -%>
       </div>
     </div>
-        <%= f.submit '로그인', :class => 'btn btn-primary', :style=>"width:100%" %>
+    
+    
+      <%= f.submit '로그인', :class => 'btn btn-primary', :style=>"width:100%" %>
+      
+    <div id="naver_id_login">
+      <%= link_to user_omniauth_authorize_path(:naver), target:"_blank" do %>
+        <img src="/images/icons/naverlogWhite.png" style="width:60%" />
+      <% end %>
+    </div>
+    
         <p style="font-size:13px; margin-top:15px;">아직 회원이 아니신가요?</p>
       <%- if devise_mapping.registerable? %>
         <%= link_to '회원가입', '#', class: 'right btn btn-info', :style=>"width:100%", data: {toggle: "modal", target: "#sign_up"}%>

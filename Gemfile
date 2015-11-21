@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'omniauth-naver'
 gem 'bxslider-rails'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem "fog-aws"
