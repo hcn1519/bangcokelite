@@ -1,7 +1,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--googlemap 넣기-->
-    <script type="text/javascript"
+<script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdcrzqmVvJgOpIy23Dlw08MHrQN1C17Sg&libraries=geometry">
     </script>
     <!--jquery 넣기-->
@@ -605,14 +605,13 @@
                         }; // function end
                       })(infoWindow));
  
- //listbox 색칠
+ // 마커에 마우스 대면 리스트박스 이동
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#cbefde");
                        
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 1000);
                        });
@@ -628,7 +627,7 @@
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#a4e2c5");
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
                         
                       });
  
@@ -642,7 +641,7 @@
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#fff");
+                        $(result_id).css("background-color","transparent");
                         });
 
                       };
@@ -759,14 +758,13 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       })(infoWindow));
  
 
- //listbox 색칠
+ // 마커에 마우스 대면 리스트박스 이동
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#cbefde");
                        
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
                        });
@@ -782,7 +780,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#a4e2c5");
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
                         
                       });
  
@@ -798,7 +796,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#fff");
+                        $(result_id).css("background-color","transparent");
                         });
 
                       };
@@ -916,14 +914,14 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       })(infoWindow));
  
 
- //listbox 색칠
+ // 마커에 마우스 대면 리스트박스 이동
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#cbefde");
+                         
                        
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
                        });
@@ -939,7 +937,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#a4e2c5");
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
                         
                       });
  
@@ -955,7 +953,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#fff");
+                        $(result_id).css("background-color","transparent");
                         });
 
                       };
@@ -1071,14 +1069,14 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       })(infoWindow));
  
 
- //listbox 색칠
+ // 마커에 마우스 대면 리스트박스 이동
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#cbefde");
+                         
                        
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
                        });
@@ -1094,7 +1092,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#a4e2c5");
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
                         
                       });
  
@@ -1110,7 +1108,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#fff");
+                        $(result_id).css("background-color","transparent");
                         });
 
                       };
@@ -1222,14 +1220,14 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         }; // function end
                       })(infoWindow));
  
- //listbox 색칠
+ // 마커에 마우스 대면 리스트박스 이동
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#cbefde");
+                         
                        
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 1000);
                        });
@@ -1245,7 +1243,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#a4e2c5");
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
                         
                       });
  
@@ -1259,7 +1257,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#fff");
+                        $(result_id).css("background-color","transparent");
                         });
 
                       };
@@ -1373,14 +1371,14 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         }; // function end
                       })(infoWindow));
  
- //listbox 색칠
+ // 마커에 마우스 대면 리스트박스 이동
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#cbefde");
+                         
                        
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 1000);
                        });
@@ -1396,7 +1394,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#a4e2c5");
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
                         
                       });
  
@@ -1410,7 +1408,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#fff");
+                        $(result_id).css("background-color","transparent");
                         });
 
                       };
@@ -1524,14 +1522,14 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         }; // function end
                       })(infoWindow));
  
- //listbox 색칠
+ // 마커에 마우스 대면 리스트박스 이동
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#cbefde");
+                         
                        
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 1000);
                        });
@@ -1547,7 +1545,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#a4e2c5");
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
                         
                       });
  
@@ -1561,7 +1559,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#fff");
+                        $(result_id).css("background-color","transparent");
                         });
 
 //말풍선 디자인 시작//
@@ -1682,14 +1680,14 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       })(infoWindow));
  
 
- //listbox 색칠
+ // 마커에 마우스 대면 리스트박스 이동
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#cbefde");
+                         
                        
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
                        });
@@ -1705,7 +1703,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#a4e2c5");
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
                         
                       });
  
@@ -1721,7 +1719,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#fff");
+                        $(result_id).css("background-color","transparent");
                         });
 
                       };
@@ -1836,14 +1834,14 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       })(infoWindow));
  
 
- //listbox 색칠
+ // 마커에 마우스 대면 리스트박스 이동
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#cbefde");
+                         
                        
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
                        });
@@ -1859,7 +1857,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#a4e2c5");
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
                         
                       });
  
@@ -1875,7 +1873,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#fff");
+                        $(result_id).css("background-color","transparent");
                         });
 
                       };
@@ -1989,14 +1987,14 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       })(infoWindow));
  
 
- //listbox 색칠
+ // 마커에 마우스 대면 리스트박스 이동
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#cbefde");
+                         
                        
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
                        });
@@ -2012,7 +2010,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#a4e2c5");
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
                         
                       });
  
@@ -2028,7 +2026,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#fff");
+                        $(result_id).css("background-color","transparent");
                         });
 
                       };
@@ -2087,7 +2085,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
  
   <style type="text/css">
   .gm-style-iw {
-  width: 320px !important;
+  width: 330px !important;
    top: 15px !important;
    left: 30px !important;
    right: 0 !important;
@@ -2097,7 +2095,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 }
 
     /*사이즈별 화면 조정 */
-   
+   https://detailset-bigwindow-1.c9users.io.
     @media (max-width: 359px) {
       
     .panel {
@@ -2197,7 +2195,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
      #option{
        margin:0px; 
-       padding:0px; 
+              padding-top:0;
+       padding-right:0;
+       padding-bottom:0; 
        font-size:13px;
        padding-left:5px;
        margin-top:5px;
@@ -2324,7 +2324,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
      #option{
        margin:0px; 
-       padding:0px; 
+             padding-top:0;
+       padding-right:0;
+       padding-bottom:0;
        font-size:14px;
        padding-left:5px;
        margin-top:5px;
@@ -2578,8 +2580,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      }
      #option{
        margin:0px; 
-       padding:0px; 
-       margin-left:7px;
+             padding-top:0;
+       padding-right:0;
+       padding-bottom:0;
+       padding-left:7px;
        color: #666666;
      }
    
@@ -2864,7 +2868,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         float:right;
      }
      #option{
-        padding:0px;
+               padding-top:0;
+       padding-right:0;
+       padding-bottom:0;
         font-size:0.7em;
         margin-top:5px;
         padding-left:5px;
@@ -2986,7 +2992,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      #option{
        margin-top:3px; 
        padding-left:5px;
-       padding:0px; 
+              padding-top:0;
+       padding-right:0;
+       padding-bottom:0;
        color: #666666;
           /*width: 30%;*/
      }
@@ -3263,7 +3271,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
   
   <!--박스 늘리기 for ipad 버튼-->
   <div class="col-sm-12 hidden-xs hidden-md hidden-lg ipadButton" style="padding-right: 0px; padding-left: 0px; width:100%; height:30px; background-color:#95A5A6;">
-    <button id="ipadfold" style="border-color:#fff; background-color:#95A5A6; color:#fff; width:100%; height:100%; padding:0px;" type="button" class="btn btn-default" aria-label="Center">
+    <button id="ipadfold" style="border-color:#fff; background-color:#e9e7e9; color:#383f52; width:100%; height:100%; padding:0px;" type="button" class="btn btn-default" aria-label="Center">
       <span id="menu-icon" class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><br/>
     </button>
   </div>
@@ -4200,6 +4208,11 @@ $(document).ready(function(){
         $(".room").mouseout(function() {
           $(this).css("background-color", "transparent");
         }); 
+        
+        
+        $("#ready").click(function(){
+          alert("현재 준비중입니다");
+        });
       });
 
 

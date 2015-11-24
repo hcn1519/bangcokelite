@@ -9,7 +9,8 @@
     <%= csrf_meta_tags %>
     <link href="/Flat-UI-2.2.2/dist/css/flat-ui.css" rel="stylesheet">
     <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
-    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js"></script>
+    
+    
     <style type="text/css">
       html, body {
         font-family:source-han-sans-korean;
@@ -23,6 +24,12 @@
       .btn-default {
         font-family:source-han-sans-korean;
       }
+      label {
+        font-family:source-han-sans-korean;
+      }
+      tr td {
+        font-family:source-han-sans-korean;
+      }
       @font-face {
         font-family: 'BMJUA';
         src: url('/fonts/BMJUA_ttf.ttf');
@@ -33,7 +40,7 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <main role="main">
+    <main role="main" style="font-family:source-han-sans-korean">
        
        <%= render "welcome/login_modal" %>
        <%= render "welcome/sign_up_modal" %>

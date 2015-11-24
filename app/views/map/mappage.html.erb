@@ -1,7 +1,7 @@
 <head>
 
 <!--googlemap 넣기-->
-    <script type="text/javascript"
+   <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdcrzqmVvJgOpIy23Dlw08MHrQN1C17Sg&libraries=geometry">
     </script>
     <!--jquery 넣기-->
@@ -431,18 +431,18 @@
              var deposit= '예치금'+ "&nbsp;"+ "없음";
            }
            
-           if (data[i].extra_price != 0 ) { var extra_price = '관리비' + '별도'; } else { var extra_price = '관리비' + "없음"; }
+           if (data[i].extra_price != 0 ) { var extra_price = '관리비' + '별도'; } else { var extra_price = '관리비' + '없음'; }
  
            if (data[i].transportation_kind == "지하철") {
              var vehicle = data[i].transportation_subway;
              if (vehicle == "대흥"){
-               subway = '<span class="sub_circle line_number_6" style="border-radius:5px; font-size:12px; padding:2px">6호선</span>'+ '&nbsp;' + '<span style="color#9a4510">'+vehicle + '역'+'</span>' ;
+               subway = '<span class="sub_circle line_number_6" style="font-family:source-han-sans-korean; border-radius:5px; font-size:12px; padding:2px">6호선</span>'+ '&nbsp;' + '<span style="color#9a4510">'+vehicle + '역'+'</span>' ;
              } else if (vehicle == "신촌" || vehicle == "이대" ) {
-               subway = '<span class="sub_circle line_number_2" style="border-radius:5px; font-size:12px; padding:2px">2호선</span>'+ '&nbsp;' + '<span style="color:#00904">'+vehicle + '역'+'</span>';
+               subway = '<span class="sub_circle line_number_2" style="font-family:source-han-sans-korean; border-radius:5px; font-size:12px; padding:2px">2호선</span>'+ '&nbsp;' + '<span style="color:#00904">'+vehicle + '역'+'</span>';
              } else if (vehicle == "서강대") {
-               subway = '<div class="line_number_kj" style="font-size:12px; padding-left:1px; padding-right:1px;">경의</div>' + '&nbsp;' + '<span style="color:#41b9b9">'+vehicle+ '역' +'</span>';
+               subway = '<div class="line_number_kj" style="font-family:source-han-sans-korean; font-size:12px; padding-left:1px; padding-right:1px;">경의</div>' + '&nbsp;' + '<span style="color:#41b9b9">'+vehicle+ '역' +'</span>';
              } else if (vehicle == "신촌기차") {
-               subway = '<div class="line_number_kj" style="font-size:12px; padding-left:1px; padding-right:1px;">경의</div>' + '&nbsp;' + '<span style="color:#0063b1">'+vehicle + '역' +'</span>';
+               subway = '<div class="line_number_kj" style="font-family:source-han-sans-korean; font-size:12px; padding-left:1px; padding-right:1px;">경의</div>' + '&nbsp;' + '<span style="color:#0063b1">'+vehicle + '역' +'</span>';
              }
             
 
@@ -467,22 +467,22 @@
                  '<div class="col-md-8 col-sm-8 col-lg-8" style="padding-left:7px; padding-top:5px;">' +
                     '<div class="row" style="margin:0px; padding:0px">' +
                     //월세가 같을 때 price_to 안보여주도록
-                       '<div style="font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
+                       '<div style="font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500; font-family:source-han-sans-korean;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
                          '('+ deposit + ',&nbsp;'+ extra_price + ')&nbsp;'+
                        '</div>'+
                     '</div>'+
   
                     //학교별로 색깔 다르게? 학교, 교문, 시간 데이터 넣기
-                    '<div class="row" style="margin:0; font-size:13px">' + 
+                    '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">' + 
                       university + '&nbsp;' + entrance + '&nbsp;'+ '<span>' + data[i].distance1 +'m'+ '(' +data[i].distance_time1 +'분)' + '</span>' + '</div>'+
                       //교통수단별로 색깔 다르게? 정류장, 분 데이터 넣기
-                      '<div class="row" style="margin:0; font-size:13px">' + subway + '&nbsp;'+ '<span>' + data[i].transportation_distance + 'm' +'('+ data[i].transportation_distance_time +'분)' + '</span>' + '</div>'+
+                      '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">' + subway + '&nbsp;'+ '<span>' + data[i].transportation_distance + 'm' +'('+ data[i].transportation_distance_time +'분)' + '</span>' + '</div>'+
                       //해당되는 데이터만 뜨도록
                       
                   '</div>'+ 
                   
                   '<div class="row" style="margin:0px">'+
-                      '<div class="col-md-12 col-lg-12" style="color:#777777; margin:0; padding:0; padding-left:5px; margin-top:2px; font-size:12px">'+ '#' + data[i].hasuk_kind + '&nbsp;' + '&nbsp;'+'#' + infoMeal + '&nbsp;' +'&nbsp;#' + data[i].gender + '</div>' +
+                      '<div class="col-md-12 col-lg-12" style="color:#777777; margin:0; padding:0; padding-left:5px; margin-top:2px; font-size:12px; font-family:source-han-sans-korean">'+ '#' + data[i].hasuk_kind + '&nbsp;' + '&nbsp;'+'#' + infoMeal + '&nbsp;' +'&nbsp;#' + data[i].gender + '</div>' +
                   '</div>'+
                
                
@@ -597,8 +597,7 @@
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#ff93b0");
-                       
+
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
                        });
 
@@ -614,7 +613,7 @@
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#ff93b0");
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
                         
                       });
  
@@ -630,7 +629,7 @@
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#999999");
+                        $(result_id).css("background-color","transparent");
                         });
 
                       };
@@ -724,14 +723,13 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       })(infoWindow));
  
 
- //listbox 색칠
+// 마커에 마우스 대면 리스트박스 이동
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#cbefde");
                        
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
                        });
@@ -747,7 +745,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#a4e2c5");
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
                         
                       });
  
@@ -763,7 +761,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#fff");
+                        $(result_id).css("background-color","transparent");
                         });
 
                       };
@@ -863,14 +861,13 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       })(infoWindow));
  
 
- //listbox 색칠
+// 마커에 마우스 대면 리스트박스 이동
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(result_id).css("background-color","#ff93b0");
                        
                         $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
                        });
@@ -886,7 +883,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       //console.log(result_id); 
 
                       $(document).ready(function() {
-                        $(result_id).css("background-color","#ff93b0");
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
                         
                       });
  
@@ -902,7 +899,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                        $(result_id).css("background-color","#999999");
+                        $(result_id).css("background-color","transparent");
                         });
 
                       };
@@ -997,16 +994,15 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             })(infoWindow));
        
       
-       //listbox 색칠
+// 마커에 마우스 대면 리스트박스 이동
                            google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                             return function() {
                                var result_id = "#" + "a" + str_id;
                              //console.log(result_id);
       
                              $(document).ready(function() {
-                               $(result_id).css("background-color","#cbefde");
-                             
-                              $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
+
+                              $(".roomList").animate({scrollTop: $(result_id).offset().top }, 2000);
                              });
       
                             };
@@ -1020,7 +1016,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             //console.log(result_id); 
       
                             $(document).ready(function() {
-                              $(result_id).css("background-color","#a4e2c5");
+                              $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
                               
                             });
        
@@ -1036,7 +1032,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                              //console.log(result_id);
       
                              $(document).ready(function() {
-                              $(result_id).css("background-color","#999999");
+                              $(result_id).css("background-color","transparent");
                               });
       
                             };
@@ -1058,7 +1054,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
  
    <style type="text/css">
   .gm-style-iw {
-  width: 320px !important;
+  width: 330px !important;
    top: 15px !important;
    left: 30px !important;
    right: 0 !important;
@@ -1168,7 +1164,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
      #option{
        margin:0px; 
-       padding:0px; 
+              padding-top:0;
+       padding-right:0;
+       padding-bottom:0; 
        font-size:13px;
        padding-left:5px;
        margin-top:5px;
@@ -1295,7 +1293,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
      #option{
        margin:0px; 
-       padding:0px; 
+              padding-top:0;
+       padding-right:0;
+       padding-bottom:0;
        font-size:14px;
        padding-left:5px;
        margin-top:5px;
@@ -1549,8 +1549,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      }
      #option{
        margin:0px; 
-       padding:0px; 
-       margin-left:7px;
+       padding-top:0;
+       padding-right:0;
+       padding-bottom:0;
+       padding-left:7px;
        color: #666666;
      }
    
@@ -1835,7 +1837,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         float:right;
      }
      #option{
-        padding:0px;
+               padding-top:0;
+       padding-right:0;
+       padding-bottom:0;
         font-size:0.7em;
         margin-top:5px;
         padding-left:5px;
@@ -1957,7 +1961,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      #option{
        margin-top:3px; 
        padding-left:5px;
-       padding:0px; 
+              padding-top:0;
+       padding-right:0;
+       padding-bottom:0;
        color: #666666;
           /*width: 30%;*/
      }
@@ -2234,7 +2240,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
   
   <!--박스 늘리기 for ipad 버튼-->
   <div class="col-sm-12 hidden-xs hidden-md hidden-lg ipadButton" style="padding-right: 0px; padding-left: 0px; width:100%; height:30px; background-color:#95A5A6;">
-    <button id="ipadfold" style="border-color:#fff; background-color:#95A5A6; color:#fff; width:100%; height:100%; padding:0px;" type="button" class="btn btn-default" aria-label="Center">
+    <button id="ipadfold" style="border-color:#fff; background-color:#e9e7e9; color:#383f52; width:100%; height:100%; padding:0px;" type="button" class="btn btn-default" aria-label="Center">
       <span id="menu-icon" class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><br/>
     </button>
   </div>
@@ -2248,7 +2254,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
   <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 hidden-xs hidden-sm foldButton" style="padding-right: 0px; padding-left: 0px; width:3%; height:100%;">
     <div style="padding-right: 0px;padding-left: 0px; height:100%">
       <div class="folderbox" style="height:100%">
-        <button id="fold" style="border-color:#fff; background-color:#f5f5f5; color:#383f52; width:100%; height:100%; padding-left: 0px;padding-right: 0px; border-left: solid 1px #999999; border-right: solid 1px #999999;" type="button" class="btn btn-default" aria-label="Center">
+        <button id="fold" style="border-color:#fff; background-color:#e9e7e9; color:#383f52; width:100%; height:100%; padding-left: 0px;padding-right: 0px; border-left: solid 1px #999999; border-right: solid 1px #999999;" type="button" class="btn btn-default" aria-label="Center">
           <span id="menu-icon" class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><br/>
         </button>
       </div>

@@ -6,6 +6,7 @@ class HasukHousesController < ApplicationController
   
   def index
     @hasuk_houses = current_user.hasuk_houses
+    
   end
 
   # GET /hasuk_houses/1
@@ -28,16 +29,9 @@ class HasukHousesController < ApplicationController
   def create
     @hasuk_house = current_user.hasuk_houses.build(hasuk_house_params)
     @hasuk_house.user_id = current_user.id
-
-    respond_to do |format|
-      if @hasuk_house.save
-        format.html { redirect_to @hasuk_house, notice: '성공적으로 등록되었습니다.' }
-        format.json { render :show, status: :created, location: @hasuk_house }
-      else
-        format.html { render :new }
-        format.json { render json: @hasuk_house.errors, status: :unprocessable_entity }
-      end
-    end
+    
+    flash[:notice] = "성공적으로 등록되었습니다." if @hasuk_house.save
+    respond_with(@hasuk_house)
   end
 
   # PATCH/PUT /hasuk_houses/1

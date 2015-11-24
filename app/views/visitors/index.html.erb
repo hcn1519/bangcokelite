@@ -24,7 +24,7 @@ main {
         border-bottom:1px solid #BDC3C7;
     }
     .navbar-default .navbar-toggle:before {
-        color:#3e5771;
+        color:#7F8C8D;
     }
     .navbar-default .navbar-nav > li > a {
         color:#fff;
@@ -177,7 +177,7 @@ body {
 }
 
 .intro {
-    background: url(/images/index-images/block_back_mb.png);
+    background: url(/images/index-images/back7.jpg);
 }
 
 }
@@ -186,7 +186,7 @@ body {
 @media(min-width:767px) and (max-width: 1199px) {
 
 .intro {
-    background: url(/images/index-images/block_back_dark.png);
+    background: url(/images/index-images/back8.jpg);
 }
 
 .btn-group {
@@ -288,7 +288,7 @@ body {
 }
 
 #main-img {
-    width: 350px;
+    width: 80%;
     padding-bottom: 60px;
 }
 
@@ -310,7 +310,7 @@ body {
 }
 
 #main-img {
-    width: 350px;
+    width: 100%;
     padding-bottom: 60px;
 }
 
@@ -331,7 +331,7 @@ body {
 }
 
 .intro {
-    background: url(/images/index-images/block_back_dark.png);
+    background: url(/images/index-images/back6.jpg);
 
 }
 
@@ -354,7 +354,7 @@ body {
 }
 
 .intro-body .container {
-    padding-top: 150px;
+    padding-top: 100px;
     padding-bottom: 30px;
 }
     
@@ -419,7 +419,7 @@ body {
 }
 
 #main-img {
-    width: 350px;
+    width: 100%;
     padding-bottom: 60px;
 }
 
@@ -481,7 +481,7 @@ footer {
 
 
 #info_button {
-    background: url(/images/index-images/background.png); 
+    background: url(/images/index-images/background.jpg); 
 }
 
 .point2 {
@@ -523,8 +523,8 @@ p {
                     <form action="/map/mappage" method="GET">
                       <div class="btn-group" role="group">
                         
-                        <%= select_tag "univ", "<option selected>학교 선택</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe,class:"btn btn-default btn-lg dropdown-toggle", id:"univ_btn", style: "font-family:source-han-sans-korean; border-radius:8px; background: #ffffff; color: #999999; border: 2px solid #999999;" %>
-                        <%= button_tag(type: "submit",class:"btn btn-success btn-lg", id:"submit_btn", style: "border: 2px solid #2ecc71; border-radius: 8px; margin-left: 5px; font-family:source-han-sans-korean;") do %>
+                        <%= select_tag "univ", "<option selected>학교 선택</option><option value='서강'>서강대학교</option><option value='연세'>연세대학교</option><option value='이화'>이화여자대학교</option>".html_safe,class:"btn btn-default btn-lg dropdown-toggle", id:"univ_btn", style: "font-family:source-han-sans-korean; border-radius:8px; background: #ffffff; color: #999999; border: 2px solid #999999;" %>
+                        <%= button_tag(type: "submit",class:"btn btn-success btn-lg", id:"submit_btn", remote: true, style: "border: 2px solid #2ecc71; border-radius: 8px; margin-left: 5px; font-family:source-han-sans-korean;") do %>
                           <span class="fui-search"></span>
                         <% end %>
                       </div>
@@ -610,7 +610,7 @@ p {
       </div>
       <div class="row text-control"> 
         <div class="col-lg-5 col-md-5 col-sm-4 target-img">
-	        <img class="img-responsive target-img" src="/images/index-images/pamplet.png" alt="">
+	        <img class="img-responsive target-img" src="/images/index-images/pamplet.jpg" alt="">
 	    </div><!-- /col-lg-4 -->
 	    <div class="col-lg-7 col-md-7 col-sm-8">
             <p class="feature-title darkblue-text">새로 하숙집을 구하는 대학생</p> 
@@ -633,12 +633,8 @@ p {
         </div>
     </div>
     <!-- 밑마닥 -->
-    <footer>
-        <div class="container text-center">
-            <p>Copyright &copy; Your Website 2014</p>
-        </div>
-    </footer>
-
+    
+ <div style="height:50px; background-image:url('/images/index-images/navimg5.png'); border-bottom:1px solid #BDC3C7"></div>
 
 <!--스���롤바 부드럽게 내려가는 효과 -->
     <script src="/js/jquery.js"></script>
@@ -677,7 +673,6 @@ $(window).scroll(function() {
         
         
     } else if ($(window).width() < 992 & $(".navbar").offset().top > 50) {
-        
         //줄어든 상태 css 내려가기(with collapse)
         $(".navbar-default .navbar-toggle:before").css("color", "#3e5771");
         $(".navbar-default .navbar-brand").css("color", "#3e5771");

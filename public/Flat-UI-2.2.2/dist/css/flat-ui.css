@@ -4384,6 +4384,7 @@ select[multiple].navbar-form .select2-search input[type="text"] {
 }
 .navbar-default .navbar-toggle:before {
   color: #34495e;
+  
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
