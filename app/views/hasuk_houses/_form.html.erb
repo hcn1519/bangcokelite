@@ -404,15 +404,15 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="inline" style="width:15px; height:45px; background-color:#2ECC71; margin-top:3px"></div>
         <div class="page-header inline" style="margin-top:0px">
-          <h3 style="font-weight:bold; margin-top:0px; margin-left:10px">방 등록하기</h3>
+          <h3 style="font-weight:bold; margin-top:0px; margin-left:10px">하숙집 등록</h3>
         </div>
       </div><!--제목-->
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default" style="background-color:rgba(46, 204, 113, 0.2); border-color: rgba(46, 204, 113, 0.2);margin-bottom: 40px;">
           <div class="panel-body" style="padding-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-top: 10px;">
             <ul>
-              <li style="font-size:15px">회원님의 연락처가 방 상세보기 페이지에 노출됩니다.</li>
-              <li style="font-size:15px">등록한 방은 별도의 갱신이 없을 경우 6개월 동안 노출됩니다.</li>
+              <li style="font-size:15px">하숙방콕은 무료로 하숙집을 홍보해주는 서비스입니다.</li>
+              <li style="font-size:15px">등록하시면 학생들이 회원님의 하숙집 정보와 연락처를 확인할 수 있습니다.</li>
             </ul>
           </div>
         </div>
@@ -562,7 +562,7 @@
       </tr>
       
       <tr>
-        <td id="column"><center><%= f.label :building_age, "건물나이(준공년도)" %></center></td>
+        <td id="column"><center><%= f.label :building_age, "준공연도" %></center></td>
         <td>
           <div class="col-md-12 col-xs-12 col-sm-12 form-inline">
            <%= f.number_field :building_age, class:"form-control", style:"float:left; max-width:80px;" %>
@@ -671,7 +671,7 @@
           </tr>
  
         <tr>
-            <td style="width:15%" id="column"><center>별도 관리비</center></td>
+            <td style="width:15%" id="column"><center>관리비</center></td>
             <td colspan="3" id="checktd">
               <div class="form-inline">
                  <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
@@ -700,9 +700,6 @@
       <div class="inline" style="margin-top:0px">
         <h4 style=" margin-top: 5px; margin-left: 5px;">옵션</h4>
       </div>
-      <div class="inline" style="margin-top:0px">
-        <p style="color:#ff9682; margin-top: 10px; margin-left: 5px;">*항목에 없는 옵션을 3개까지 직접 추가할 수 있습니다.</h3>
-      </div>
     </div>
   </div><!--옵션 타이틀-->
   
@@ -725,7 +722,7 @@
           </tr>
           <tr>
             <td style="padding-bottom:0px" colspan="3">
-              <%= f.text_field :meal_memo, class:"form-control", style:"margin-bottom:5px", placeholder:"메모, 아침 식사시간 - 07:00 ~ 09:00, 저녁 식사시간 - 17:00 ~ 19:00, 주말 식사는 제공하지 않습니다." %>
+              <%= f.text_field :meal_memo, class:"form-control", style:"margin-bottom:5px", placeholder:"식사시간 등 식사에 관한 설명 ex)아침-07:00~09:00, 저녁-17:00~19:00, 주말엔 식사를 제공하지 않습니다." %>
               <br>
             </td>
           </tr>
@@ -813,7 +810,7 @@
     </div>
   </div><!--상세설명 타이틀-->
   
-  <%= text_area_tag "hasuk_house[post_description]", nil,rows: 10, class:"form-control", placeholder:"추가 설명을 해주세요. (ex. 채광, 교통, 주변 시설, 분위기 등)" %>
+  <%= text_area_tag "hasuk_house[post_description]", nil,rows: 10, class:"form-control", placeholder:"추가 설명을 해주세요. (ex. 채광, 주변 편의시설, 분위기 등)" %>
   
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
@@ -976,7 +973,7 @@
       </tr>
       <tr>
             <td style="padding-bottom:0px" colspan="3">
-              <%= f.text_field :transportation_memo, class:"form-control", style:"margin-bottom:5px", placeholder:"상세한 교통수단을 설명해주세요." %>
+              <%= f.text_field :transportation_memo, class:"form-control", style:"margin-bottom:5px", placeholder:"다른 교통수단과 정류장을 더 설명해주세요." %>
             </td>
         </div>
           </tr>
@@ -1114,11 +1111,11 @@
   </div>
   <!--할인제도 내용-->
   <div class="row" style="padding:15px; background-color:#f2f2f2; border:1px solid #dbdbdb">
-    <p style="font-size:0.9em; margin-bottom:5px">첫 번째 달에 할인을 선택하실 경우, 하숙집이 학생들에게 더 많이 노출 됩니다.</p>
-    <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+    <p style="font-size:0.9em; margin-bottom:5px">하숙방콕을 보고 연락한 학생에게 첫달 월세를 할인해주는 제도입니다.<br>할인을 선택하시면 검색 시 우선적으로 노출되어 학생들의 월세 부담을 덜어주면서 홍보 효과도 높일 수 있습니다.</p>
+    <div class="col-md-12 col-sm-12col-xs-12" style="padding:0px; margin:0px">
       <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
       <div class="form-inline">
-        <span style="margin-top:1em; margin-right:0.5em; float:left; font-size:0.9em">금액 -</span>
+        <span style="margin-top:1em; margin-right:0.5em; float:left; font-size:0.9em">할인금액</span>
         <%= number_field_tag "hasuk_house[discount_price]",nil, class:"form-control discount_price", style:"float:left; padding:5px; width:40%;" %>
         <span style="margin-top:1em; margin-left:0.3em; margin-right:0.5em; float:left; font-size:0.9em">원</span>
       </div>

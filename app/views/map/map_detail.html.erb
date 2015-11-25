@@ -1448,7 +1448,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
               }//거리 범위 지정
               }//가격 범위 지정
               }//성별 종류 끝  
-              }//하숙 종류 끝
+              }//하��� 종류 끝
               }//polygon true 끝
               
             } else if ('<%= @section %>' =="정문(이대역)"){
@@ -2264,7 +2264,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      }
      #small-device{
        padding:0.4em;
-    font-size:0.7em;
+       /*font-size:0.7em;*/
+      font-size: 0.8em;
      }
      .small-device{
        padding:0.4em;
@@ -2393,7 +2394,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      
     #small-device{
        padding:0.4em;
-       font-size:0.65em;
+       /*font-size:0.65em;*/
+       font-size: 0.85em;
      }
      .small-device{
        padding:0.4em;
@@ -2922,7 +2924,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         left:55%;
      }
      #modal-price {
-         height:45px;
+         height:30px;
          margin-bottom:0px;
      }
      #slider3{
@@ -3293,9 +3295,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
   </div>
   
   
-    <div class="listbox col-lg-11 col-md-11 col-sm-12 col-xs-12" style="padding-left:0px; padding-right:0px;">
+    <div class="listbox col-lg-11 col-md-11 col-sm-12 col-xs-12" style="background-color: #ededed; padding-left:0px; padding-right:0px;">
       <div class="panel panel-default">
-        <div class="panel-heading col-lg-12 col-md-12 col-xs-12 col-sm-12" style="padding:5px; padding-left:10px; font-size:0.8em">검색결과</div>
+        <div class="panel-heading col-lg-12 col-md-12 col-xs-12 col-sm-12" style="background-color:#34495e; padding:5px; padding-left:10px; font-size:0.8em">검색결과</div>
         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 roomList panel-body" style="padding:0px;">
  
       
@@ -3450,7 +3452,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                               
                               <% else %>
                               
-                                <span id="subway"> <span class="hidden-sm hidden-md">&nbsp|&nbsp</span> 신촌기차역 1103m(21분)</span>
+                                <span id="subway"> <span class="hidden-sm hidden-md">&nbsp|&nbsp</span> 신촌기차역 1103m(21���)</span>
                               
                               <% end %>
  
@@ -3478,15 +3480,15 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                           <% end %>
                           
                           <% if c.gender=="여성전용" %>
-                            <span>#여성전용</span>
+                            <span>&nbsp#여성전용</span>
                           <% elsif c.gender =="남녀공용" %>
-                            <span>#남녀공용</span>
+                            <span>&nbsp#남녀공용</span>
                           <% elsif c.gender == "남녀층 분리" %>
-                            <span>#남녀층 분리</span>
+                            <span>&nbsp#남녀층 분리</span>
                           <% elsif c.gender == "남성전용" %>
-                            <span>#남성전용</span>
+                            <span>&nbsp#남성전용</span>
                           <% else %>
-                            <span>#DB없음</span>
+                            <span>&nbsp#DB없음</span>
                           <% end %>
                           
                         </div>
@@ -3659,15 +3661,15 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                           <% end %>
                           
                           <% if c.gender=="여성전용" %>
-                            <span>#여성전용</span>
+                            <span>&nbsp#여성전용</span>
                           <% elsif c.gender =="남녀공용" %>
-                            <span>#남녀공용</span>
+                            <span>&nbsp#남녀공용</span>
                           <% elsif c.gender == "남녀층 분리" %>
-                            <span>#남녀층 분리</span>
+                            <span>&nbsp#남녀층 분리</span>
                           <% elsif c.gender == "남성전용" %>
-                            <span>#남성전용</span>
+                            <span>&nbsp#남성전용</span>
                           <% else %>
-                            <span>#DB없음</span>
+                            <span>&nbsp#DB없음</span>
                           <% end %>
                           
                         </div>
@@ -3838,15 +3840,15 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                           <% end %>
                           
                           <% if c.gender=="여성전용" %>
-                            <span>#여성전용</span>
+                            <span>&nbsp#여성전용</span>
                           <% elsif c.gender =="남녀공용" %>
-                            <span>#남녀공용</span>
+                            <span>&nbsp#남녀공용</span>
                           <% elsif c.gender == "남녀층 분리" %>
-                            <span>#남녀층 분리</span>
+                            <span>&nbsp#남녀층 분리</span>
                           <% elsif c.gender == "남성전용" %>
-                            <span>#남성전용</span>
+                            <span>&nbsp#남성전용</span>
                           <% else %>
-                            <span>#DB없음</span>
+                            <span>&nbsp#DB없음</span>
                           <% end %>
                           
                         </div>
@@ -4017,15 +4019,15 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                           <% end %>
                           
                           <% if c.gender=="여성전용" %>
-                            <span>#여성전용</span>
+                            <span>&nbsp#여성전용</span>
                           <% elsif c.gender =="남녀공용" %>
-                            <span>#남녀공용</span>
+                            <span>&nbsp#남녀공용</span>
                           <% elsif c.gender == "남녀층 분리" %>
-                            <span>#남녀층 분리</span>
+                            <span>&nbsp#남녀층 분리</span>
                           <% elsif c.gender == "남성전용" %>
-                            <span>#남성전용</span>
+                            <span>&nbsp#남성전용</span>
                           <% else %>
-                            <span>#DB없음</span>
+                            <span>&nbsp#DB없음</span>
                           <% end %>
                           
                         </div>

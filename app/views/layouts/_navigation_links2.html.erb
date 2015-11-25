@@ -230,28 +230,4 @@ $(document).ready(function(){
 });          
 //popover 관련
 
-
-          $(document).ready(function(){
-            
-            $("#hasuk_name_find").click(function(){
-            
-              var hasuk_name = $("#search-query-3").val();
-              var ajax_univ = "<%= @univ %>";
-
-                  $.ajax({
-                    url: "/map/mappage",
-                    type: 'GET',
-                    data:{ 'univ' : ajax_univ } ,
-                    success: function(data){
-                        
-                        $("#name_search_result").append("성공");
-                    }
-                  });
-                  
-               
-            
-                
-            });
-            
-          });
 </script>
