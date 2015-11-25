@@ -19,7 +19,10 @@
     background-color:#2ecc71;
   }
  
-
+  .btn-default {
+    background-color: #ffffff;
+    color: #999999;
+  }
 </style>
 
   
@@ -32,17 +35,17 @@
             <%= @univ %>여자대학교
             <b class="caret"></b>
           <% end %>
-          <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
+          <ul class="dropdown-menu" style="text-align:center; background-color:#ffffff; border:1px solid #999999;">
             <li>
               <form id="sogang" action="/map/mappage" method="GET">
                 <input type="hidden" value="서강" name="univ">
-                <input id="submitt" type="submit" value="서강대학교" class="btn btn-small btn-success" >
+                <input id="submitt" type="submit" value="서강대학교" class="btn btn-small btn-default" >
               </form>
             </li>
             <li>
               <form id="yonsei" action="/map/mappage" method="GET">
                 <input type="hidden" value="연세" name="univ">
-                <input id="submitt"  type="submit" value="연세대학교" class="btn btn-small btn-success">
+                <input id="submitt"  type="submit" value="연세대학교" class="btn btn-small btn-default">
               </form>
             </li>  
           </ul>
@@ -53,17 +56,17 @@
             <%= @univ %>대학교
             <b class="caret"></b>
           <% end %>
-          <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
+          <ul class="dropdown-menu" style="text-align:center; background-color:#ffffff; border:1px solid #999999;">
             <li>
               <form id="yonsei" action="/map/mappage" method="GET">
                 <input type="hidden" value="연세" name="univ">
-                <input id="submitt"  type="submit" value="연세대학교" class="btn btn-small btn-success">
+                <input id="submitt"  type="submit" value="연세대학교" class="btn btn-small btn-default">
               </form>
             </li>
             <li>
             <form id="ewha" action="/map/mappage" method="GET">
               <input type="hidden" value="이화" name="univ">
-              <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small btn-success">
+              <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small btn-default">
             </form>
           </li>
           </ul>
@@ -74,17 +77,17 @@
             <%= @univ %>대학교
             <b class="caret"></b>
           <% end %>
-          <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
+          <ul class="dropdown-menu" style="text-align:center; background-color:#ffffff; border:1px solid #999999;">
             <li>
               <form id="sogang" action="/map/mappage" method="GET">
                 <input type="hidden" value="서강" name="univ">
-                <input id="submitt" type="submit" value="서강대학교" class="btn btn-small btn-success" >
+                <input id="submitt" type="submit" value="서강대학교" class="btn btn-small btn-default" >
               </form>
             </li>
             <li>
             <form id="ewha" action="/map/mappage" method="GET">
               <input type="hidden" value="이화" name="univ">
-              <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small btn-success">
+              <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small btn-default">
             </form>
           </li>
           </ul>
@@ -100,17 +103,17 @@
             <%= @univ %>여자대학교
             <b class="caret"></b>
           <% end %>
-          <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
+          <ul class="dropdown-menu" style="text-align:center; background-color:#ffffff; border:1px solid #999999;">
             <li>
               <form id="sogang" action="/map/mappage" method="GET">
                 <input type="hidden" value="서강" name="univ">
-                <input id="submitt" type="submit" value="서강대학교" class="btn btn-small btn-success" >
+                <input id="submitt" type="submit" value="서강대학교" class="btn btn-small btn-default" >
               </form>
             </li>
             <li>
               <form id="yonsei" action="/map/mappage" method="GET">
                 <input type="hidden" value="연세" name="univ">
-                <input id="submitt"  type="submit" value="연세대학교" class="btn btn-small btn-success">
+                <input id="submitt"  type="submit" value="연세대학교" class="btn btn-small btn-default">
               </form>
             </li>  
         </ul>
@@ -121,38 +124,38 @@
             <%= @univ %>대학교
             <b class="caret"></b>
           <% end %>
-          <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
+          <ul class="dropdown-menu" style="text-align:center; background-color:#ffffff; border:1px solid #999999;">
             <li>
               <form id="yonsei" action="/map/mappage" method="GET">
                 <input type="hidden" value="연세" name="univ">
-                <input id="submitt"  type="submit" value="연세대학교" class="btn btn-small btn-success">
+                <input id="submitt"  type="submit" value="연세대학교" class="btn btn-small btn-default">
               </form>
             </li>
             <li>
             <form id="ewha" action="/map/mappage" method="GET">
               <input type="hidden" value="이화" name="univ">
-              <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small btn-success">
+              <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small btn-default">
             </form>
           </li>
           </ul>
         </li>  
     <% elsif @univ == "연세" %>
-        <li class="dropdown" style="text-align:center">
+        <li class="dropdown" >
           <%= link_to "#", :class => 'dropdown-toggle', "data-toggle":"dropdown", style:"color:#202d61" do %>
             <%= @univ %>대학교
             <b class="caret"></b>
           <% end %>
-          <ul class="dropdown-menu" style="text-align:center; background-color:#2ecc71">
+          <ul class="dropdown-menu" style="text-align:center; background-color:#ffffff; border:1px solid #999999;">
             <li>
               <form id="sogang" action="/map/mappage" method="GET">
                 <input type="hidden" value="서강" name="univ">
-                <input id="submitt" type="submit" value="서강대학교" class="btn btn-small btn-success" >
+                <input id="submitt" type="submit" value="서강대학교" class="btn btn-small btn-default" >
               </form>
             </li>
             <li>
             <form id="ewha" action="/map/mappage" method="GET">
               <input type="hidden" value="이화" name="univ">
-              <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small btn-success">
+              <input id="submitt" type="submit" value="이화여자대학교" class="btn btn-small btn-default">
             </form>
           </li>
           </ul>

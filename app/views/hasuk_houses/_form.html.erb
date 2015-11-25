@@ -235,7 +235,6 @@
 </script>
 <style type="text/css">
   body {
-    font-family: 'Noto Sans', sans-serif;
     margin-top:30px;
   }
   #map-canvas {
@@ -572,12 +571,24 @@
         <td id="column" style="width:15%"><center><%= f.label :remodeling, "리모델링" %></center></td>
         <td>
           <div class="col-md-12 col-xs-12 col-sm-12 form-inline">
-             <%= f.number_field :remodeling, class:"form-control remodel", style:"float:left; max-width:80px;" %>
+      
+    <% if @hasuk_house.remodeling == 0 %>   
+             <%= f.number_field :remodeling, class:"form-control remodel",:disabled => true, style:"float:left; max-width:80px;" %>
              <span id="form-right">년</span>
- <!--해당없음에 체크시 0을 저장한다-->            
+    <% else %>
+              <%= f.number_field :remodeling, class:"form-control remodel", style:"float:left; max-width:80px;" %>
+             <span id="form-right">년</span>
+    <% end %>
+ <!--해당없음에 체크시 0을 저장한다-->
+    <% if @hasuk_house.remodeling == 0 %>
+             <label class="radio-inline" id="radio-right" style="margin-left:0.5em">
+                 <%= check_box_tag "hasuk_house[remodeling]", 0, true, class:"check_remodel" %>해당없음
+             </label>
+    <% else %>
              <label class="radio-inline" id="radio-right" style="margin-left:0.5em">
                  <%= check_box_tag "hasuk_house[remodeling]", 0, false, class:"check_remodel" %>해당없음
              </label>
+    <% end %>
          </div>
         </td>
       </tr>
@@ -608,14 +619,25 @@
             <td>
               <div class="form-inline">
               <div class="col-md-5 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+        <% if @hasuk_house.small_deposit == 0 %> 
+                <%= f.number_field :small_deposit, class:"form-control small_deposit", :disabled => true, style:"float:left; max-width:80px;" %>
+                 <span id="form-right">만 원</span>
+        <% else %>
                 <%= f.number_field :small_deposit, class:"form-control small_deposit", style:"float:left; max-width:80px;" %>
                  <span id="form-right">만 원</span>
+        <% end %>
                </div>
                <div class="col-md-4 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
                  <!--해당없음에 체크시 0을 저장한다-->
+      <% if @hasuk_house.small_deposit == 0 %> 
+                 <label class="radio-inline" id="radio-right">
+                   <%= check_box_tag "hasuk_house[small_deposit]", 0, true, class:"check_small_deposit" %>해당없음
+                 </label>
+      <% else %>
                  <label class="radio-inline" id="radio-right">
                    <%= check_box_tag "hasuk_house[small_deposit]", 0, false, class:"check_small_deposit" %>해당없음
                  </label>
+      <% end %>
                </div>
               </div>
             </td>
@@ -623,15 +645,25 @@
             <td>
               <div class="form-inline">
                  <div class="col-md-6 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
-                   <!--<input type="number" style="float:left; max-width:80px;" id="big_depositbox" name="big_deposit" class="form-control">-->
+    <% if @hasuk_house.big_deposit == 0 %>               
+                   <%= f.number_field :big_deposit, class:"form-control big_deposit", :disabled => true, style:"float:left; max-width:80px;" %>
+                   <span id="form-right">만 원</span>
+    <% else %>
                    <%= f.number_field :big_deposit, class:"form-control big_deposit", style:"float:left; max-width:80px;" %>
                    <span id="form-right">만 원</span>
+    <% end %>
                  </div>
                  <div class="col-md-4 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
     <!--해당없음에 체크시 0을 저장한다-->
+    <% if @hasuk_house.big_deposit == 0 %>
+                   <label class="radio-inline big_check" id="radio-right">
+                       <%= check_box_tag "hasuk_house[big_deposit]", 0, true, class:"check_big_deposit" %>해당없음
+                   </label>
+    <% else %>
                    <label class="radio-inline big_check" id="radio-right">
                        <%= check_box_tag "hasuk_house[big_deposit]", 0, false, class:"check_big_deposit" %>해당없음
                    </label>
+    <% end %>
                  </div>
               </div>
             </td>
@@ -657,14 +689,25 @@
             <td>
               <div class="form-inline">
               <div class="col-md-6 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+      <% if @hasuk_house.least_contract == 0 %>
+                <%= f.number_field :least_contract, class:"form-control least_contract", :disabled => true, style:"float:left; padding:5px; max-width:50px;" %>
+                <span id="form-right">개월 이상</span>
+      <% else %>
                 <%= f.number_field :least_contract, class:"form-control least_contract", style:"float:left; padding:5px; max-width:50px;" %>
                 <span id="form-right">개월 이상</span>
+      <% end %>
               </div>
               <div class="col-md-5 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
     <!--해당없음에 체크시 0을 저장한다-->
+    <% if @hasuk_house.least_contract == 0 %>
+                <label class="radio-inline" id="radio-right">
+                     <%= check_box_tag "hasuk_house[least_contract]",0 , true, class:"check_least_contract" %>해당없음
+                 </label>
+    <% else %>
                 <label class="radio-inline" id="radio-right">
                      <%= check_box_tag "hasuk_house[least_contract]",0 , false, class:"check_least_contract" %>해당없음
                  </label>
+    <% end %>
               </div>
               </div>
             </td>          
@@ -675,13 +718,23 @@
             <td colspan="3" id="checktd">
               <div class="form-inline">
                  <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+    <% if @hasuk_house.extra_price == 0 %>
+                   <%= f.number_field :extra_price, class:"form-control extra_price", :disabled => true, style:"float:left; max-width:80px;" %>
+                   <span id="form-right">만 원</span>
+    <% else %>
                    <%= f.number_field :extra_price, class:"form-control extra_price", style:"float:left; max-width:80px;" %>
                    <span id="form-right">만 원</span>
-
+    <% end %>
     <!--해당없음에 체크시 0을 저장한다-->
+    <% if @hasuk_house.extra_price == 0 %>
+                   <label class="radio-inline" id="radio-right" style="margin-left:7px">
+                       <%= check_box_tag "hasuk_house[extra_price]", 0, true, class:"check_extra_price" %>해당없음
+                   </label>
+    <% else %>
                    <label class="radio-inline" id="radio-right" style="margin-left:7px">
                        <%= check_box_tag "hasuk_house[extra_price]", 0, false, class:"check_extra_price" %>해당없음
                    </label>
+    <% end %>
                  </div>
               </div>
               
@@ -713,10 +766,17 @@
             <% @meal = ["아침", "점심", "저녁", "제공 안함"] %>
           
               <% 4.times do |i| %>
-                <label  class="radio-inline" id="check-right">
+        <% if @hasuk_house.send("meal#{i+1}") == "" %>
+                <label class="radio-inline" id="check-right">
                 <%= check_box_tag "hasuk_house[meal#{i+1}]", "#{@meal[i]}" %>
                 <%= "#{@meal[i]}" %>
                 </label>
+        <% else %>
+                <label  class="radio-inline" id="check-right">
+                <%= check_box_tag "hasuk_house[meal#{i+1}]", "#{@meal[i]}", true %>
+                <%= "#{@meal[i]}" %>
+                </label>
+        <% end %>
               <% end %>
             </td>
           </tr>
@@ -732,10 +792,17 @@
             <% @personal_option = ["침대", "책상", "옷장", "행거", "수납장", "에어컨", "TV", "화장실", "샤워실", "세탁기", "냉장고", "전자레인지", "가스레인지", "인덕션"] %>
           
               <% 14.times do |i| %>
+         <% if @hasuk_house.send("personal_option#{i+1}") == "" %>
                 <label  class="radio-inline" id="check-right">
                 <%= check_box_tag "hasuk_house[personal_option#{i+1}]", "#{@personal_option[i]}" %>
                 <%= "#{@personal_option[i]}" %>
                 </label>
+         <% else %>
+                <label  class="radio-inline" id="check-right">
+                <%= check_box_tag "hasuk_house[personal_option#{i+1}]", "#{@personal_option[i]}", true %>
+                <%= "#{@personal_option[i]}" %>
+                </label>
+         <% end %>
               <% end %>
               
                 
@@ -759,10 +826,17 @@
              <% @common_option = ["중앙난방", "화장실", "샤워실", "세탁실", "CCTV", "냉장고", "전자레인지", "가스레인지", "인덕션", "정수기"] %>
              
              <% 10.times do |i| %>
+      <% if @hasuk_house.send("common_option#{i+1}") == "" %>
                 <label  class="radio-inline" id="check-right">
                 <%= check_box_tag "hasuk_house[common_option#{i+1}]", "#{@common_option[i]}" %>
                 <%= "#{@common_option[i]}" %>
                 </label>
+      <% else %>
+                <label  class="radio-inline" id="check-right">
+                <%= check_box_tag "hasuk_house[common_option#{i+1}]", "#{@common_option[i]}", true %>
+                <%= "#{@common_option[i]}" %>
+                </label>
+      <% end %>
               <% end %>
             
             </td>
@@ -770,27 +844,58 @@
           <tr>
             <td style="width:15%" id="column"><center>인터넷</center></td>
             <td id="checktd">
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '와이파이') %>
+      <% if @hasuk_house.internet == "와이파이" %>
+              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '와이파이', checked: true) %>
                 <span>와이파이</span>
               </label>
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '유선 인터넷') %>
+      <% else %>
+              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '와이파이', checked: false) %>
+                <span>와이파이</span>
+              </label>
+      <% end %>
+      
+      <% if @hasuk_house.internet == "유선인터넷" %>
+              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '유선 인터넷', checked: true) %>
                 <span>유선 인터넷</span>
               </label>  
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '없음') %>
+      <% else %>
+              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '유선 인터넷', checked: false) %>
+                <span>유선 인터넷</span>
+              </label>
+      <% end %>
+      
+      <% if @hasuk_house.internet == "없음" %>
+              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '없음', checked: true) %>
                 <span>없음</span>
-              </label>  
+              </label>
+      <% else %>
+              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '없음', checked: false) %>
+                <span>없음</span>
+              </label>
+      <% end %>
             </td>
             
             <td id="column"><center><%= f.label :personal_trash, "쓰레기 처리" %></center></td>
             
             <td id="checktd">
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","personal_trash", '본인이 알아서') %>
+      <% if @hasuk_house.personal_trash == "본인이 알아서" %>
+              <label style="margin-right:10px;"><%= radio_button("hasuk_house","personal_trash", '본인이 알아서', checked: true) %>
                 <span>본인이 알아서</span>
               </label>
-              
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","personal_trash", '없음') %>
+      <% else %>
+              <label style="margin-right:10px;"><%= radio_button("hasuk_house","personal_trash", '본인이 알아서', checked: false) %>
+                <span>본인이 알아서</span>
+              </label>
+      <% end %>
+      <% if @hasuk_house.personal_trash == "해줌" %>
+              <label style="margin-right:10px;"><%= radio_button("hasuk_house","personal_trash", '해줌', checked: true) %>
                 <span>처리해줌</span>
-              </label>  
+              </label>
+      <% else %>
+              <label style="margin-right:10px;"><%= radio_button("hasuk_house","personal_trash", '해줌', checked: false) %>
+                <span>처리해줌</span>
+              </label>
+      <% end %>
             </td>
             
           </tr>
@@ -809,9 +914,11 @@
       </div>
     </div>
   </div><!--상세설명 타이틀-->
-  
-  <%= text_area_tag "hasuk_house[post_description]", nil,rows: 10, class:"form-control", placeholder:"추가 설명을 해주세요. (ex. 채광, 주변 편의시설, 분위기 등)" %>
-  
+  <% if @hasuk_house.post_description != nil || @hasuk_house.post_description != "" %>
+    <%= text_area_tag "hasuk_house[post_description]", @hasuk_house.post_description ,rows: 10, class:"form-control", placeholder:"추가 설명을 해주세요. (ex. 채광, 주변 편의시설, 분위기 등)" %>
+  <% else %>
+    <%= text_area_tag "hasuk_house[post_description]", nil,rows: 10, class:"form-control", placeholder:"추가 설명을 해주세요. (ex. 채광, 주변 편의시설, 분위기 등)" %>
+  <% end %>
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
       <div class="inline">
@@ -848,8 +955,7 @@
           <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px;">
 
 
-            <div id="map-canvas">
-            </div>
+            <div id="map-canvas"></div>
 
           </div>
         </td>
@@ -873,45 +979,148 @@
               <% if i == 1 %>
                 <span class="fui-star-2" style="font-size: 1.4em; font-weight:bold; color:#F1C40F; float:left;position: absolute;"></span>
               <% end %>
+      <% if @hasuk_house.send("univ_distance#{i}") == "서강" %>
+              <%= select_tag "hasuk_house[univ_distance#{i}]", 
+              "<option>인근 학교선택</option><option value='서강' selected='selected'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe, class:"form-control" %>
+      <% elsif @hasuk_house.send("univ_distance#{i}") == "이화" %>
+              <%= select_tag "hasuk_house[univ_distance#{i}]", 
+              "<option>인근 학교선택</option><option value='서강'>서강대학교</option><option value='이화' selected='selected'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe, class:"form-control" %>
+      <% elsif @hasuk_house.send("univ_distance#{i}") == "연세" %>
+              <%= select_tag "hasuk_house[univ_distance#{i}]", 
+              "<option>인근 학교선택</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세' selected='selected'>연세대학교</option>".html_safe, class:"form-control" %>
+      <% else %>
               <%= select_tag "hasuk_house[univ_distance#{i}]", 
               "<option>인근 학교선택</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe, class:"form-control" %>
+      <% end %>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-3">
+      <% if @hasuk_house.send("univ_distance#{i}") == "서강" && @hasuk_house.send("sogang_gate#{i}") == "정문" %>
+              <%= select_tag "hasuk_house[sogang_gate#{i}]", 
+              "<option selected>교문선택</option>
+              <option selected='selected' value='정문' href='http://map.daum.net/?eX=486230&eY=1125571&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
+              <option value='후문' href='http://map.daum.net/?eX=487609&eY=1125346&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%ED%9B%84%EB%AC%B8'>후문</option>
+              <option value='남문' href='http://map.daum.net/?eX=486525&eY=1124966&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%EB%82%A8%EB%AC%B8'>남문</option>".html_safe, class:"form-control", style:"display:block" %> 
+      <% elsif @hasuk_house.send("univ_distance#{i}") == "서강" && @hasuk_house.send("sogang_gate#{i}") == "후문" %>
+              <%= select_tag "hasuk_house[sogang_gate#{i}]", 
+              "<option selected>교문선택</option>
+              <option value='정문' href='http://map.daum.net/?eX=486230&eY=1125571&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
+              <option selected='selected' value='후문' href='http://map.daum.net/?eX=487609&eY=1125346&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%ED%9B%84%EB%AC%B8'>후문</option>
+              <option value='남문' href='http://map.daum.net/?eX=486525&eY=1124966&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%EB%82%A8%EB%AC%B8'>남문</option>".html_safe, class:"form-control", style:"display:block" %> 
+      <% elsif @hasuk_house.send("univ_distance#{i}") == "서강" && @hasuk_house.send("sogang_gate#{i}") == "남문" %>
+              <%= select_tag "hasuk_house[sogang_gate#{i}]", 
+              "<option selected>교문선택</option>
+              <option value='정문' href='http://map.daum.net/?eX=486230&eY=1125571&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
+              <option value='후문' href='http://map.daum.net/?eX=487609&eY=1125346&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%ED%9B%84%EB%AC%B8'>후문</option>
+              <option selected='selected' value='남문' href='http://map.daum.net/?eX=486525&eY=1124966&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%EB%82%A8%EB%AC%B8'>남문</option>".html_safe, class:"form-control", style:"display:block" %> 
+      <% else %>
               <%= select_tag "hasuk_house[sogang_gate#{i}]", 
               "<option selected>교문선택</option>
               <option value='정문' href='http://map.daum.net/?eX=486230&eY=1125571&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
               <option value='후문' href='http://map.daum.net/?eX=487609&eY=1125346&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%ED%9B%84%EB%AC%B8'>후문</option>
               <option value='남문' href='http://map.daum.net/?eX=486525&eY=1124966&eName=%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90+%EB%82%A8%EB%AC%B8'>남문</option>".html_safe, class:"form-control", style:"display:none" %> 
-
+      <% end %>
+      
+      
+      <% if @hasuk_house.send("univ_distance#{i}") == "이화" && @hasuk_house.send("sogang_gate#{i}") == "정문" %>
+              <%= select_tag "hasuk_house[ewha_gate#{i}]", 
+              "<option selected>교문선택</option>
+              <option selected='selected' value='정문' href='http://map.daum.net/?eX=487981&eY=1127879&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
+              <option value='후문' href='http://map.daum.net/?eX=487769&eY=1128887&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%ED%9B%84%EB%AC%B8'>후문</option>
+              <option value='서문' href='http://map.daum.net/?eX=487500&eY=1128080&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>서문</option>
+              <option value='북문' href='http://map.daum.net/?eX=487500&eY=1128080&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>북문</option>".html_safe, class:"form-control", style:"display:block" %> 
+      <% elsif @hasuk_house.send("univ_distance#{i}") == "이화" && @hasuk_house.send("sogang_gate#{i}") == "후문" %>  
+              <%= select_tag "hasuk_house[ewha_gate#{i}]", 
+              "<option selected>교문선택</option>
+              <option value='정문' href='http://map.daum.net/?eX=487981&eY=1127879&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
+              <option selected='selected' value='후문' href='http://map.daum.net/?eX=487769&eY=1128887&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%ED%9B%84%EB%AC%B8'>후문</option>
+              <option value='서문' href='http://map.daum.net/?eX=487500&eY=1128080&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>서문</option>
+              <option value='북문' href='http://map.daum.net/?eX=487500&eY=1128080&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>북문</option>".html_safe, class:"form-control", style:"display:block" %>
+      <% elsif @hasuk_house.send("univ_distance#{i}") == "이화" && @hasuk_house.send("sogang_gate#{i}") == "서문" %>
+              <%= select_tag "hasuk_house[ewha_gate#{i}]", 
+              "<option selected>교문선택</option>
+              <option value='정문' href='http://map.daum.net/?eX=487981&eY=1127879&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
+              <option value='후문' href='http://map.daum.net/?eX=487769&eY=1128887&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%ED%9B%84%EB%AC%B8'>후문</option>
+              <option selected='selected' value='서문' href='http://map.daum.net/?eX=487500&eY=1128080&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>서문</option>
+              <option value='북문' href='http://map.daum.net/?eX=487500&eY=1128080&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>북문</option>".html_safe, class:"form-control", style:"display:block" %>
+      <% elsif @hasuk_house.send("univ_distance#{i}") == "이화" && @hasuk_house.send("sogang_gate#{i}") == "북문" %>
               <%= select_tag "hasuk_house[ewha_gate#{i}]", 
               "<option selected>교문선택</option>
               <option value='정문' href='http://map.daum.net/?eX=487981&eY=1127879&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
               <option value='후문' href='http://map.daum.net/?eX=487769&eY=1128887&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%ED%9B%84%EB%AC%B8'>후문</option>
               <option value='서문' href='http://map.daum.net/?eX=487500&eY=1128080&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>서문</option>
-              <option value='북문' href='http://map.daum.net/?eX=487500&eY=1128080&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>북문</option>".html_safe, class:"form-control", style:"display:none" %> 
-            
-           
+              <option selected='selected' value='북문' href='http://map.daum.net/?eX=487500&eY=1128080&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>북문</option>".html_safe, class:"form-control", style:"display:block" %>
+      <% else %>
+              <%= select_tag "hasuk_house[ewha_gate#{i}]", 
+              "<option selected>교문선택</option>
+              <option value='정문' href='http://map.daum.net/?eX=487981&eY=1127879&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
+              <option value='후문' href='http://map.daum.net/?eX=487769&eY=1128887&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%ED%9B%84%EB%AC%B8'>후문</option>
+              <option value='서문' href='http://map.daum.net/?eX=487500&eY=1128080&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>서문</option>
+              <option value='북문' href='http://map.daum.net/?eX=487500&eY=1128080&eName=%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>북문</option>".html_safe, class:"form-control", style:"display:none" %>
+      <% end %>
+      
+      
+      <% if @hasuk_house.send("univ_distance#{i}") == "연세" && @hasuk_house.send("sogang_gate#{i}") == "정문" %>
+              <%= select_tag "hasuk_house[yonsei_gate#{i}]", 
+              "<option selected>교문선택</option>
+              <option selected='selected' value='정문' href='http://map.daum.net/?eX=486048&eY=1128012&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
+              <option value='동문' href='http://map.daum.net/?eX=488078&eY=1129657&eName=%EC%97%B0%EC%84%B8%EB%8C%80+%EB%8F%99%EB%AC%B8'>동문</option>
+              <option value='서문' href='http://map.daum.net/?eX=485406&eY=1128891&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>서문</option>
+              <option value='남문' href='http://map.daum.net/?eX=485249&eY=1128258&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EB%82%A8%EB%AC%B8'>남문</option>".html_safe, class:"form-control", style:"display:block" %> 
+      <% elsif @hasuk_house.send("univ_distance#{i}") == "연세" && @hasuk_house.send("sogang_gate#{i}") == "동문" %>
+              <%= select_tag "hasuk_house[yonsei_gate#{i}]", 
+              "<option selected>교문선택</option>
+              <option value='정문' href='http://map.daum.net/?eX=486048&eY=1128012&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
+              <option selected='selected' value='동문' href='http://map.daum.net/?eX=488078&eY=1129657&eName=%EC%97%B0%EC%84%B8%EB%8C%80+%EB%8F%99%EB%AC%B8'>동문</option>
+              <option value='서문' href='http://map.daum.net/?eX=485406&eY=1128891&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>서문</option>
+              <option value='남문' href='http://map.daum.net/?eX=485249&eY=1128258&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EB%82%A8%EB%AC%B8'>남문</option>".html_safe, class:"form-control", style:"display:block" %> 
+      <% elsif @hasuk_house.send("univ_distance#{i}") == "연세" && @hasuk_house.send("sogang_gate#{i}") == "서문" %>
+              <%= select_tag "hasuk_house[yonsei_gate#{i}]", 
+              "<option selected>교문선택</option>
+              <option value='정문' href='http://map.daum.net/?eX=486048&eY=1128012&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
+              <option value='동문' href='http://map.daum.net/?eX=488078&eY=1129657&eName=%EC%97%B0%EC%84%B8%EB%8C%80+%EB%8F%99%EB%AC%B8'>동문</option>
+              <option selected='selected' value='서문' href='http://map.daum.net/?eX=485406&eY=1128891&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>서문</option>
+              <option value='남문' href='http://map.daum.net/?eX=485249&eY=1128258&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EB%82%A8%EB%AC%B8'>남문</option>".html_safe, class:"form-control", style:"display:block" %> 
+      <% elsif @hasuk_house.send("univ_distance#{i}") == "연세" && @hasuk_house.send("sogang_gate#{i}") == "남문" %>
+              <%= select_tag "hasuk_house[yonsei_gate#{i}]", 
+              "<option selected>교문선택</option>
+              <option value='정문' href='http://map.daum.net/?eX=486048&eY=1128012&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
+              <option value='동문' href='http://map.daum.net/?eX=488078&eY=1129657&eName=%EC%97%B0%EC%84%B8%EB%8C%80+%EB%8F%99%EB%AC%B8'>동문</option>
+              <option value='서문' href='http://map.daum.net/?eX=485406&eY=1128891&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>서문</option>
+              <option selected='selected' value='남문' href='http://map.daum.net/?eX=485249&eY=1128258&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EB%82%A8%EB%AC%B8'>남문</option>".html_safe, class:"form-control", style:"display:block" %> 
+      <% else %>
               <%= select_tag "hasuk_house[yonsei_gate#{i}]", 
               "<option selected>교문선택</option>
               <option value='정문' href='http://map.daum.net/?eX=486048&eY=1128012&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EC%A0%95%EB%AC%B8'>정문</option>
               <option value='동문' href='http://map.daum.net/?eX=488078&eY=1129657&eName=%EC%97%B0%EC%84%B8%EB%8C%80+%EB%8F%99%EB%AC%B8'>동문</option>
               <option value='서문' href='http://map.daum.net/?eX=485406&eY=1128891&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EC%84%9C%EB%AC%B8'>서문</option>
               <option value='남문' href='http://map.daum.net/?eX=485249&eY=1128258&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EB%82%A8%EB%AC%B8'>남문</option>".html_safe, class:"form-control", style:"display:none" %> 
-             
+      <% end %>
             </div>
              <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                  <div class="form-inline">
+    <% if @hasuk_house.send("distance_time#{i}") != "" || @hasuk_house.send("distance_time#{i}") != nil %>
+                    <span id="form-left">시간 :</span>
+                      <%= number_field_tag "hasuk_house[distance_time#{i}]", @hasuk_house.send("distance_time#{i}"), class:"form-control distance_time#{i}", style:"float:left; padding:5px; width:40%;" %>
+                    <span id="form-right">분</span>
+    <% else %>
                     <span id="form-left">시간 :</span>
                       <%= number_field_tag "hasuk_house[distance_time#{i}]", nil, class:"form-control distance_time#{i}", style:"float:left; padding:5px; width:40%;" %>
                     <span id="form-right">분</span>
+    <% end %>
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                   <div class="form-inline">
+    <% if @hasuk_house.send("distance#{i}") != "" || @hasuk_house.send("distance_time#{i}") != nil %>
+                    <span id="form-left">거리 :</span>
+                      <%= number_field_tag "hasuk_house[distance#{i}]", @hasuk_house.send("distance#{i}"), class:"form-control distance#{i}", style:"float:left; padding:5px; width:40%;" %>
+                    <span id="form-right">m</span>
+    <% else %>
                     <span id="form-left">거리 :</span>
                       <%= number_field_tag "hasuk_house[distance#{i}]", nil, class:"form-control distance#{i}", style:"float:left; padding:5px; width:40%;" %>
                     <span id="form-right">m</span>
+    <% end %>
                   </div>
                 </div>
               </div>
@@ -926,11 +1135,60 @@
           
             <div class="col-md-3 col-sm-3 col-xs-3">
                 <span class="fui-star-2" style="font-size: 1.4em; font-weight:bold; color:#F1C40F; float:left;position: absolute;"></span>
-                <%= select_tag "hasuk_house[transportation_kind]", 
+    <% if @hasuk_house.transportation_kind == "지하철" %>
+              <%= select_tag "hasuk_house[transportation_kind]", 
+              "<option>인근 교통수단</option><option value='지하철' selected='selected'>지하철</option><option value='버스'>버스</option>".html_safe, class:"form-control" %>
+    <% elsif @hasuk_house.transportation_kind == "버스" %>
+              <%= select_tag "hasuk_house[transportation_kind]", 
+              "<option>인근 교통수단</option><option value='지하철'>지하철</option><option value='버스' selected='selected'>버스</option>".html_safe, class:"form-control" %>
+    <% else %>          
+              <%= select_tag "hasuk_house[transportation_kind]", 
               "<option>인근 교통수단</option><option value='지하철'>지하철</option><option value='버스'>버스</option>".html_safe, class:"form-control" %>
+    <% end %>
             </div>
             
             <div class="col-md-3 col-sm-3 col-xs-3">
+    <% if @hasuk_house.transportation_kind == "지하철" && @hasuk_house.transportation_subway == "신촌" %>
+              <%= select_tag "hasuk_house[transportation_subway]", 
+              "<option selected>지하철역</option>
+              <option selected='selected' value='신촌' href='http://map.daum.net/?eX=486056&eY=1126562&eName=%EC%8B%A0%EC%B4%8C%EC%97%AD'>신촌역</option>
+              <option value='이대' href='http://map.daum.net/?eX=488028&eY=1126999&eName=%EC%9D%B4%EB%8C%80%EC%97%AD'>이대역</option>
+              <option value='대흥' href='http://map.daum.net/?eX=487166&eY=1124541&eName=%EB%8C%80%ED%9D%A5%EC%97%AD'>대흥역</option>
+              <option value='서강대' href='http://map.daum.net/?eX=485823&eY=1125659&eName=%EC%84%9C%EA%B0%95%EB%8C%80%EC%97%AD'>서강대역</option>'
+              <option value='신촌기차' href='http://map.daum.net/?eX=487324&eY=1127844&eName=%EC%8B%A0%EC%B4%8C%EA%B8%B0%EC%B0%A8%EC%97%AD'>신촌기차역</option>'".html_safe, class:"form-control", style:"display:block" %>
+    <% elsif @hasuk_house.transportation_kind == "지하철" && @hasuk_house.transportation_subway == "이대" %>          
+              <%= select_tag "hasuk_house[transportation_subway]", 
+              "<option selected>지하철역</option>
+              <option value='신촌' href='http://map.daum.net/?eX=486056&eY=1126562&eName=%EC%8B%A0%EC%B4%8C%EC%97%AD'>신촌역</option>
+              <option selected='selected' value='이대' href='http://map.daum.net/?eX=488028&eY=1126999&eName=%EC%9D%B4%EB%8C%80%EC%97%AD'>이대역</option>
+              <option value='대흥' href='http://map.daum.net/?eX=487166&eY=1124541&eName=%EB%8C%80%ED%9D%A5%EC%97%AD'>대흥역</option>
+              <option value='서강대' href='http://map.daum.net/?eX=485823&eY=1125659&eName=%EC%84%9C%EA%B0%95%EB%8C%80%EC%97%AD'>서강대역</option>'
+              <option value='신촌기차' href='http://map.daum.net/?eX=487324&eY=1127844&eName=%EC%8B%A0%EC%B4%8C%EA%B8%B0%EC%B0%A8%EC%97%AD'>신촌기차역</option>'".html_safe, class:"form-control", style:"display:block" %>
+    <% elsif @hasuk_house.transportation_kind == "지하철" && @hasuk_house.transportation_subway == "대흥" %>
+              <%= select_tag "hasuk_house[transportation_subway]", 
+              "<option selected>지하철역</option>
+              <option value='신촌' href='http://map.daum.net/?eX=486056&eY=1126562&eName=%EC%8B%A0%EC%B4%8C%EC%97%AD'>신촌역</option>
+              <option value='이대' href='http://map.daum.net/?eX=488028&eY=1126999&eName=%EC%9D%B4%EB%8C%80%EC%97%AD'>이대역</option>
+              <option selected='selected' value='대흥' href='http://map.daum.net/?eX=487166&eY=1124541&eName=%EB%8C%80%ED%9D%A5%EC%97%AD'>대흥역</option>
+              <option value='서강대' href='http://map.daum.net/?eX=485823&eY=1125659&eName=%EC%84%9C%EA%B0%95%EB%8C%80%EC%97%AD'>서강대역</option>'
+              <option value='신촌기차' href='http://map.daum.net/?eX=487324&eY=1127844&eName=%EC%8B%A0%EC%B4%8C%EA%B8%B0%EC%B0%A8%EC%97%AD'>신촌기차역</option>'".html_safe, class:"form-control", style:"display:block" %>
+    <% elsif @hasuk_house.transportation_kind == "지하철" && @hasuk_house.transportation_subway == "서강대" %>
+              <%= select_tag "hasuk_house[transportation_subway]", 
+              "<option selected>지하철역</option>
+              <option value='신촌' href='http://map.daum.net/?eX=486056&eY=1126562&eName=%EC%8B%A0%EC%B4%8C%EC%97%AD'>신촌역</option>
+              <option value='이대' href='http://map.daum.net/?eX=488028&eY=1126999&eName=%EC%9D%B4%EB%8C%80%EC%97%AD'>이대역</option>
+              <option value='대흥' href='http://map.daum.net/?eX=487166&eY=1124541&eName=%EB%8C%80%ED%9D%A5%EC%97%AD'>대흥역</option>
+              <option selected='selected' value='서강대' href='http://map.daum.net/?eX=485823&eY=1125659&eName=%EC%84%9C%EA%B0%95%EB%8C%80%EC%97%AD'>서강대역</option>'
+              <option value='신촌기차' href='http://map.daum.net/?eX=487324&eY=1127844&eName=%EC%8B%A0%EC%B4%8C%EA%B8%B0%EC%B0%A8%EC%97%AD'>신촌기차역</option>'".html_safe, class:"form-control", style:"display:block" %>
+    <% elsif @hasuk_house.transportation_kind == "지하철" && @hasuk_house.transportation_subway == "신촌기차" %>
+              <%= select_tag "hasuk_house[transportation_subway]", 
+              "<option selected>지하철역</option>
+              <option value='신촌' href='http://map.daum.net/?eX=486056&eY=1126562&eName=%EC%8B%A0%EC%B4%8C%EC%97%AD'>신촌역</option>
+              <option value='이대' href='http://map.daum.net/?eX=488028&eY=1126999&eName=%EC%9D%B4%EB%8C%80%EC%97%AD'>이대역</option>
+              <option value='대흥' href='http://map.daum.net/?eX=487166&eY=1124541&eName=%EB%8C%80%ED%9D%A5%EC%97%AD'>대흥역</option>
+              <option value='서강대' href='http://map.daum.net/?eX=485823&eY=1125659&eName=%EC%84%9C%EA%B0%95%EB%8C%80%EC%97%AD'>서강대역</option>'
+              <option selected='selected' value='신촌기차' href='http://map.daum.net/?eX=487324&eY=1127844&eName=%EC%8B%A0%EC%B4%8C%EA%B8%B0%EC%B0%A8%EC%97%AD'>신촌기차역</option>'".html_safe, class:"form-control", style:"display:block" %>
+    <% else %>
               <%= select_tag "hasuk_house[transportation_subway]", 
               "<option selected>지하철역</option>
               <option value='신촌' href='http://map.daum.net/?eX=486056&eY=1126562&eName=%EC%8B%A0%EC%B4%8C%EC%97%AD'>신촌역</option>
@@ -938,7 +1196,79 @@
               <option value='대흥' href='http://map.daum.net/?eX=487166&eY=1124541&eName=%EB%8C%80%ED%9D%A5%EC%97%AD'>대흥역</option>
               <option value='서강대' href='http://map.daum.net/?eX=485823&eY=1125659&eName=%EC%84%9C%EA%B0%95%EB%8C%80%EC%97%AD'>서강대역</option>'
               <option value='신촌기차' href='http://map.daum.net/?eX=487324&eY=1127844&eName=%EC%8B%A0%EC%B4%8C%EA%B8%B0%EC%B0%A8%EC%97%AD'>신촌기차역</option>'".html_safe, class:"form-control", style:"display:none" %>
-              
+    <% end %>
+    
+    <% if @hasuk_house.transportation_kind == "버스" && @hasuk_house.transportation_subway == "광성중고등학교" %>
+              <%= select_tag "hasuk_house[transportation_bus]", 
+              "<option selected>버스정류장</option>
+              <option selected='selected' value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
+              <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
+              <option value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
+              <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
+    <% elsif @hasuk_house.transportation_kind == "버스" && @hasuk_house.transportation_subway == "신촌오거리" %>
+              <%= select_tag "hasuk_house[transportation_bus]", 
+              "<option selected>버스정류장</option>
+              <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
+              <option selected='selected' value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
+              <option value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
+              <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
+    <% elsif @hasuk_house.transportation_kind == "버스" && @hasuk_house.transportation_subway == "이대역" %>
+              <%= select_tag "hasuk_house[transportation_bus]", 
+              "<option selected>버스정류장</option>
+              <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
+              <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
+              <option selected='selected' value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
+              <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
+    <% elsif @hasuk_house.transportation_kind == "버스" && @hasuk_house.transportation_subway == "신촌기차역" %>
+              <%= select_tag "hasuk_house[transportation_bus]", 
+              "<option selected>버스정류장</option>
+              <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
+              <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
+              <option value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option selected='selected' value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
+              <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
+    <% elsif @hasuk_house.transportation_kind == "버스" && @hasuk_house.transportation_subway == "이대후문" %>
+              <%= select_tag "hasuk_house[transportation_bus]", 
+              "<option selected>버스정류장</option>
+              <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
+              <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
+              <option value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
+              <option selected='selected' value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
+    <% elsif @hasuk_house.transportation_kind == "버스" && @hasuk_house.transportation_subway == "연세대앞" %>
+              <%= select_tag "hasuk_house[transportation_bus]", 
+              "<option selected>버스정류장</option>
+              <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
+              <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
+              <option value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
+              <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option selected='selected' value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
+    <% elsif @hasuk_house.transportation_kind == "버스" && @hasuk_house.transportation_subway == "서대문우체국" %>
+              <%= select_tag "hasuk_house[transportation_bus]", 
+              "<option selected>버스정류장</option>
+              <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
+              <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
+              <option value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
+              <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option selected='selected' value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
+    <% else %>
               <%= select_tag "hasuk_house[transportation_bus]", 
               "<option selected>버스정류장</option>
               <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
@@ -948,22 +1278,35 @@
               <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
               <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
               <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:none" %>
-              
+    
+    <% end %>
             </div>
             
              <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                  <div class="form-inline">
+      <% if @hasuk_house.transportation_distance_time != "" || @hasuk_house.transportation_distance_time != nil %>
+                    <span id="form-left">시간 :</span>
+                      <%= number_field_tag "hasuk_house[transportation_distance_time]", @hasuk_house.transportation_distance_time, class:"form-control transportation_distance_time", style:"float:left; padding:5px; width:40%;" %>
+                    <span id="form-right">분</span>
+      <% else %>
                     <span id="form-left">시간 :</span>
                       <%= number_field_tag "hasuk_house[transportation_distance_time]", nil, class:"form-control transportation_distance_time", style:"float:left; padding:5px; width:40%;" %>
                     <span id="form-right">분</span>
+      <% end %>
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                   <div class="form-inline">
+      <% if @hasuk_house.transportation_distance != "" || @hasuk_house.transportation_distance != nil %>
+                    <span id="form-left">거리 :</span>
+                      <%= number_field_tag "hasuk_house[transportation_distance]", @hasuk_house.transportation_distance, class:"form-control transportation_distance", style:"float:left; padding:5px; width:40%;" %>
+                    <span id="form-right">m</span>
+      <% else %>
                     <span id="form-left">거리 :</span>
                       <%= number_field_tag "hasuk_house[transportation_distance]", nil, class:"form-control transportation_distance", style:"float:left; padding:5px; width:40%;" %>
                     <span id="form-right">m</span>
+      <% end %>
                   </div>
                 </div>
               </div>
@@ -973,7 +1316,11 @@
       </tr>
       <tr>
             <td style="padding-bottom:0px" colspan="3">
+    <% if @hasuk_house.transportation_memo != "" || @hasuk_house.transportation_memo != nil %>
+              <%= f.text_field :transportation_memo, :value => @hasuk_house.transportation_memo, class:"form-control", style:"margin-bottom:5px" %>
+    <% else %>
               <%= f.text_field :transportation_memo, class:"form-control", style:"margin-bottom:5px", placeholder:"다른 교통수단과 정류장을 더 설명해주세요." %>
+    <% end %>
             </td>
         </div>
           </tr>
@@ -1010,32 +1357,71 @@
     <% for i in 1..8 %>
     <div class="col-md-3 col-sm-4 col-xs-12">
       <div class="image-upload" style="height:7em">
+        
+      <% if @hasuk_house.send("room_img#{i}") != nil || @hasuk_house.send("room_img#{i}") != "" %>
+        <%= file_field_tag "hasuk_house[room_img#{i}]", value: @hasuk_house.send("room_img#{i}"), class:"file-input#{i}" %>
+      <% else %>
         <%= file_field_tag "hasuk_house[room_img#{i}]", class:"file-input#{i}" %>
+      <% end %>
         <div class="img-thumbnail" style="width: 100%; height: 7em;">
+      <% if @hasuk_house.send("room_img#{i}") != nil || @hasuk_house.send("room_img#{i}") != "" %>
+          <span class="fui-cross-circle crossroom<%= i%>" style="display:block; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
+      <% else %>
           <span class="fui-cross-circle crossroom<%= i%>" style="display:none; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
+      <% end %>
           <% if i ==1 %>
-                <span class="fui-star-2" style="font-size:0.8em; font-weight:bold; color:#F1C40F; float:left;"></span>
-                <span style="font-size:0.8em; color:#e74c3c; float:left; position: absolute">대표사진</span>
+      
+      <% if @hasuk_house.send("room_img#{i}") != nil || @hasuk_house.send("room_img#{i}") != "" %>
+                <span class="fui-star-2" style="font-size:0.8em; font-weight:bold; color:#F1C40F; float:left;" display="none"></span>
+                <span style="font-size:0.8em; color:#e74c3c; float:left; position: absolute" display="none">대표사진</span>
                 <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="margin-bottom: 0px; position: absolute; margin-top: 3%;margin-left: 22%;">
                   <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
                 </label>
-            
-          <% else %>  
+      <% else %>
+                <span class="fui-star-2" style="font-size:0.8em; font-weight:bold; color:#F1C40F; float:left;"></span>
+                <span style="font-size:0.8em; color:#e74c3c; float:left; position: absolute">대표사진</span>
+                <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="margin-bottom: 0px; position: absolute; margin-top: 3%;margin-left: 22%;">
+                  <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true" display="none"></span>
+                </label>
+      <% end %>
+          <% else %>
+          
+      <% if @hasuk_house.send("room_img#{i}") != nil || @hasuk_house.send("room_img#{i}") != "" %>
             <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
               <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
             </label>
+      <% else %>
+            <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" display="none" style="margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
+              <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true" display="none"></span>
+            </label>
+      <% end %>
+      
           <% end %>
+      <% if @hasuk_house.send("room_img#{i}") != nil || @hasuk_house.send("room_img#{i}") != "" %>
+            <% roomImg = @hasuk_house.send("room_img#{i}") %>
+            <img style="width:9.75em; height:6.4em; display:block; position: absolute; z-index:1" id="room-file-preview<%= i%>" src="<%= roomImg %>"/>
+      <% else %>
             <img style="width:9.75em; height:6.4em; display:none; position: absolute; z-index:1" id="room-file-preview<%= i%>" src="#"/>
+      <% end %>
         </div>
           
       </div>  
       <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px">
         <div class="form-group form-inline">
            <label style="float: left; margin-top: 1em; margin-right: 0.5em;">월세</label>
-           <%= number_field_tag "hasukhouse[room_price#{i}]", nil, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
-           <span style="font-size: 0.8em;float: left;margin-top: 1.4em;margin-left: 0.5em;">만 원</span>
+      <% if @hasuk_house.send("room_price#{i}") != nil || @hasuk_house.send("room_price#{i}") != "" %>
+          <%= number_field_tag "hasukhouse[room_price#{i}]", @hasuk_house.send("room_price#{i}"), class:"form-control", style:"float:left; padding:5px; width:40%;" %>
+          <span style="font-size: 0.8em;float: left;margin-top: 1.4em;margin-left: 0.5em;">만 원</span>
+      <% else %>
+          <%= number_field_tag "hasukhouse[room_price#{i}]", nil, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
+          <span style="font-size: 0.8em;float: left;margin-top: 1.4em;margin-left: 0.5em;">만 원</span>
+      <% end %>
       </div>
+      <% if @hasuk_house.send("room_description#{i}") != nil || @hasuk_house.send("room_description#{i}") != "" %>
+           <%= text_area_tag "hasuk_house[room_description#{i}]",@hasuk_house.send("room_description#{i}"),rows: 2, class:"form-control", placeholder:"방 설명(선택)" %>
+      <% else %>
            <%= text_area_tag "hasuk_house[room_description#{i}]", nil,rows: 2, class:"form-control", placeholder:"방 설명(선택)" %>
+      <% end %>
         </div>
       
     </div>
@@ -1115,27 +1501,27 @@
     <div class="col-md-12 col-sm-12col-xs-12" style="padding:0px; margin:0px">
       <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
       <div class="form-inline">
+  <% if @hasuk_house.discount_price == 0 %>
         <span style="margin-top:1em; margin-right:0.5em; float:left; font-size:0.9em">할인금액</span>
-        <%= number_field_tag "hasuk_house[discount_price]",nil, class:"form-control discount_price", style:"float:left; padding:5px; width:40%;" %>
+        <%= number_field_tag "hasuk_house[discount_price]", nil, :disabled => true, class:"form-control discount_price", style:"float:left; padding:5px; width:40%;" %>
         <span style="margin-top:1em; margin-left:0.3em; margin-right:0.5em; float:left; font-size:0.9em">원</span>
+  <% else %>
+        <span style="margin-top:1em; margin-right:0.5em; float:left; font-size:0.9em">할인금액</span>
+        <%= number_field_tag "hasuk_house[discount_price]", @hasuk_house.discount_price, class:"form-control discount_price", style:"float:left; padding:5px; width:40%;" %>
+        <span style="margin-top:1em; margin-left:0.3em; margin-right:0.5em; float:left; font-size:0.9em">원</span>
+  <% end %>
       </div>
-      <!--<div style="float:left">
-      <input class="btn btn-warning" id="calculateBtn" type="button" value="할인율 계산하기" style="margin-left: 10px; margin-top: 10px;">
-      </div>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
-      <div class="form-inline">
-        <span style="margin-top:1em; margin-right:0.5em; float:left; font-size:0.9em">할인율 -</span>
-        <%#= f.text_field :discount_rate, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
-        <%#= number_field_tag "hasuk_house[discount_rate]", nil, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
-        <span style="margin-top:1em; margin-left:0.3em; margin-right:0.5em; float:left; font-size:0.9em">%</span>
-      </div>
-      
+
      <!--해당없음에 체크시 0을 저장한다-->  
-     
+  <% if @hasuk_house.discount_price == 0 %>   
+         <label class="radio-inline" style="margin-top:0.8em; font-size:0.9em; margin-left:0.5em">
+             <%= check_box_tag "hasuk_house[discount_price]", 0 , true, class:"check_discount_price" %>해당없음
+         </label>
+  <% else %>
          <label class="radio-inline" style="margin-top:0.8em; font-size:0.9em; margin-left:0.5em">
              <%= check_box_tag "hasuk_house[discount_price]", 0 , false, class:"check_discount_price" %>해당없음
          </label>
+  <% end %>
       </div>
     </div>
   </div> <!--할인제도 끝-->
@@ -1186,6 +1572,7 @@ $(document).ready(function(){
    
   });
   //값 입력하지 않을 때 0 집어넣기
+  
 
 });
 
@@ -1656,7 +2043,6 @@ $(".crossmeal4").click(function() {
   $(document).ready(function(){
     //해당 없음 누르면 글 못 쓰게 하기
     $(function() {
-          enable_cc();
           $(".check_remodel").click(enable_cc);
         });
         
@@ -1670,7 +2056,6 @@ $(".crossmeal4").click(function() {
           }
         }
     $(function() {
-          enable_cd();
           $(".check_small_deposit").click(enable_cd);
         });
         
@@ -1685,8 +2070,8 @@ $(".crossmeal4").click(function() {
         }
         
     $(function() {
-          enable_ce();
           $(".check_big_deposit").click(enable_ce);
+          
         });
         
         function enable_ce() {
@@ -1700,7 +2085,6 @@ $(".crossmeal4").click(function() {
         }
         
      $(function() {
-          enable_ck();
           $(".check_least_contract").click(enable_ck);
         });
         
@@ -1714,7 +2098,6 @@ $(".crossmeal4").click(function() {
           }
         }
     $(function() {
-          enable_cx();
           $(".check_extra_price").click(enable_cx);
         });
         
@@ -1727,7 +2110,6 @@ $(".crossmeal4").click(function() {
         }
         
     $(function() {
-          enable_cb();
           $(".check_discount_price").click(enable_cb);
         });
         
