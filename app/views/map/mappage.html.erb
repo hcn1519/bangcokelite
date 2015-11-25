@@ -1087,6 +1087,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
    border-radius: 5px;
 }
 
+
+
     /*사이즈별 화면 조정 */
    
     @media (max-width: 359px) {
@@ -1094,6 +1096,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     .modal-dialog {
       margin:0;
     }
+    
     .panel {
       border: none;
     }
@@ -1493,7 +1496,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     .modal-dialog {
         position: relative;
         width: auto;
-        margin: 10px;
+        margin: auto;
     }
 
     .thumbnail {
@@ -1633,7 +1636,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     .modal-dialog {
       position: relative;
       width: auto;
-      margin: 10px;
+      margin: auto;
     }
     
     .thumbnail {
@@ -3081,156 +3084,87 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
  <script>
 
-$(document).ready(function(){
     $('#login').on('show.bs.modal', function () {
-       $(this).find('.modal-body').css({
-              width:'auto', //probably not needed
-              height:'auto', //probably not needed 
-              'max-height':'50%'
-       });
-    });
+   $(this).find('.modal-body').css({
+          width:'auto', //probably not needed
+          height:'auto', //probably not needed 
+          'max-height':'50%'
+   });
 });
 
-      //검색 버튼 누르기 효과 시작
-      $(document).ready(function() {
+      $("#fold").click(function(){
+        //$(".map_container").slideToggle("slow"); //접기
+        $(".roomList").css("width", "100%");
+        $(".map_container").css("width", "0%");
         
-        $("#bt1").click(function(){
-          $(this).addClass("active");
-          $("#bt2").removeClass("active");
-        });
-         $("#bt2").click(function(){
-          $(this).addClass("active");
-          $("#bt1").removeClass("active");
-        });
-        $("#bt3").click(function(){
-          $(this).addClass("active");
-          $("#bt4").removeClass("active");
-          $("#bt5").removeClass("active");
-          $("#bt6").removeClass("active");
-          $("#bt7").removeClass("active");
-        });
-        $("#bt4").click(function(){
-          $(this).addClass("active");
-          $("#bt3").removeClass("active");
-          $("#bt5").removeClass("active");
-          $("#bt6").removeClass("active");
-          $("#bt7").removeClass("active");
-        });
-        $("#bt5").click(function(){
-          $(this).addClass("active");
-          $("#bt3").removeClass("active");
-          $("#bt4").removeClass("active");
-          $("#bt6").removeClass("active");
-          $("#bt7").removeClass("active");
-        });
-        $("#bt6").click(function(){
-          $(this).addClass("active");
-          $("#bt3").removeClass("active");
-          $("#bt4").removeClass("active");
-          $("#bt5").removeClass("active");
-          $("#bt7").removeClass("active");
-        });
-        $("#bt7").click(function(){
-          $(this).addClass("active");
-          $("#bt3").removeClass("active");
-          $("#bt4").removeClass("active");
-          $("#bt5").removeClass("active");
-          $("#bt6").removeClass("active");
-        });
-        $("#bt8").click(function(){
-          $(this).addClass("active");
-          $("#bt9").removeClass("active");
-          $("#bt10").removeClass("active");
-        });
-        $("#bt9").click(function(){
-          $(this).addClass("active");
-          $("#bt8").removeClass("active");
-          $("#bt10").removeClass("active");
-        });
-        $("#bt10").click(function(){
-          $(this).addClass("active");
-          $("#bt8").removeClass("active");
-          $("#bt9").removeClass("active");
-        });  //검색버튼 누르기 효과 끝
-      
-        $("#fold").click(function(){
-          //$(".map_container").slideToggle("slow"); //접기
-          $(".roomList").css("width", "100%");
-          $(".map_container").css("width", "0%");
+        if($("#menu-icon").hasClass("glyphicon-menu-left") == true){
+
+          //지도 있는 상태-> 없는 상태
+          $("#menu-icon").removeClass("glyphicon-menu-left");
+          $("#menu-icon").addClass("glyphicon-menu-right");
           
-          if($("#menu-icon").hasClass("glyphicon-menu-left") == true){
-  
-            //지도 있는 상태-> 없는 상태
-            $("#menu-icon").removeClass("glyphicon-menu-left");
-            $("#menu-icon").addClass("glyphicon-menu-right");
-            
-            $(".mainbox").removeClass("col-lg-6");
-            $(".mainbox").addClass("col-lg-12");
-            $(".room").removeClass("col-lg-6");
-            $(".room").addClass("col-lg-3");
-            $(".mainbox").removeClass("col-md-6");
-            $(".mainbox").addClass("col-md-12");
-            $(".room").removeClass("col-md-6");
-            $(".room").addClass("col-md-3");
-            $(".room").css("width","25%");
-            $(".foldButton").css( "width", "1.5%");
-            $(".listbox").css("width", "98.5%");
+          $(".mainbox").removeClass("col-lg-6");
+          $(".mainbox").addClass("col-lg-12");
+          $(".room").removeClass("col-lg-6");
+          $(".room").addClass("col-lg-3");
+          $(".mainbox").removeClass("col-md-6");
+          $(".mainbox").addClass("col-md-12");
+          $(".room").removeClass("col-md-6");
+          $(".room").addClass("col-md-3");
+          $(".room").css("width","25%");
+          $(".foldButton").css( "width", "1.5%");
+          $(".listbox").css("width", "98.5%");
 
-          } else  {
-            //지도 없는 상태-> 있는 상태
-            $("#menu-icon").removeClass("glyphicon-menu-right");
-            $("#menu-icon").addClass("glyphicon-menu-left");
-            
-            $(".map_container").css("width", "50%");
-            $(".roomList").css("width", "100%");
-            
-            $(".mainbox").removeClass("col-lg-12");
-            $(".mainbox").addClass("col-lg-6");
-            $(".room").removeClass("col-lg-3");
-            $(".room").addClass("col-lg-6");
-            $(".mainbox").removeClass("col-md-12");
-            $(".mainbox").addClass("col-md-6");
-            $(".room").removeClass("col-md-3");
-            $(".room").addClass("col-md-6");            
-            $(".room").css("width", "50%");
-            $(".foldButton").css( "width", "3%");
-            $(".listbox").css("width", "97%");
-          }
-        });
-        
-        $("#ipadfold").click(function(){
-            if($("#menu-icon").hasClass("glyphicon-menu-up") == true){
-                //지도 있는 상태-> 없는 상태
-                $("#menu-icon").removeClass("glyphicon-menu-up");
-                $("#menu-icon").addClass("glyphicon-menu-down");
-                $(".map_container").animate({
-                    height: "0%"
-                    }, 700);
-                $(".roomList").css("height","904px");
-                
-            } else {
-                 //지도 없는 상태-> 있는 상태
-                $("#menu-icon").removeClass("glyphicon-menu-down");
-                $("#menu-icon").addClass("glyphicon-menu-up");
-                $(".map_container").animate({
-                    height: "46.5%"
-                    });
-                $(".roomList").css("height","468px");
-            }
-        });
-        
-        $(".room").mouseover(function(){
-          $(this).css("background-color", "rgba(45, 205, 113, 0.5)");
-        });
-        $(".room").mouseout(function() {
-          $(this).css("background-color", "transparent");
-        }); 
-        
-        
+        } else  {
+          //지도 없는 상태-> 있는 상태
+          $("#menu-icon").removeClass("glyphicon-menu-right");
+          $("#menu-icon").addClass("glyphicon-menu-left");
+          
+          $(".map_container").css("width", "50%");
+          $(".roomList").css("width", "100%");
+          
+          $(".mainbox").removeClass("col-lg-12");
+          $(".mainbox").addClass("col-lg-6");
+          $(".room").removeClass("col-lg-3");
+          $(".room").addClass("col-lg-6");
+          $(".mainbox").removeClass("col-md-12");
+          $(".mainbox").addClass("col-md-6");
+          $(".room").removeClass("col-md-3");
+          $(".room").addClass("col-md-6");            
+          $(".room").css("width", "50%");
+          $(".foldButton").css( "width", "3%");
+          $(".listbox").css("width", "97%");
+        }
       });
-
-
-  </script>
+      
+      $("#ipadfold").click(function(){
+          if($("#menu-icon").hasClass("glyphicon-menu-up") == true){
+              //지도 있는 상태-> 없는 상태
+              $("#menu-icon").removeClass("glyphicon-menu-up");
+              $("#menu-icon").addClass("glyphicon-menu-down");
+              $(".map_container").animate({
+                  height: "0%"
+                  }, 700);
+              $(".roomList").css("height","904px");
+              
+          } else {
+               //지도 없는 상태-> 있는 상태
+              $("#menu-icon").removeClass("glyphicon-menu-down");
+              $("#menu-icon").addClass("glyphicon-menu-up");
+              $(".map_container").animate({
+                  height: "46.5%"
+                  });
+              $(".roomList").css("height","468px");
+          }
+      });
+      
+      $(".room").mouseover(function(){
+        $(this).css("background-color", "rgba(45, 205, 113, 0.5)");
+      });
+      $(".room").mouseout(function() {
+        $(this).css("background-color", "transparent");
+      }); 
+</script>
   
 
 </body>

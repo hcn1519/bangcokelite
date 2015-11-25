@@ -218,7 +218,15 @@ $(document).ready(function(){
       }
     });
     
-    $('[data-toggle="popover"]').each(function () {
+    $(".myaccount").each(function () {
+    var button = $(this);
+    button.popover().on('shown.bs.popover', function() {
+        button.data('bs.popover').tip().find('[data-dismiss="popover"]').on('click', function () {
+            button.popover('toggle');
+        });
+    });
+    });
+    $(".namesearch").each(function () {
     var button = $(this);
     button.popover().on('shown.bs.popover', function() {
         button.data('bs.popover').tip().find('[data-dismiss="popover"]').on('click', function () {

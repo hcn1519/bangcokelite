@@ -21,7 +21,7 @@
     left:2%;
   }
   .ui-slider-range {
-    background:#F1C40F;
+    background:#2ecc71;
  
   }
   .ui-slider-segment {
@@ -46,14 +46,20 @@
   .search_btn {
     width: 140px;
   }
-  
- #small-device{
+
+ .btn-success {
     border-right: 1px solid #2ecc71;
     border-top: 1px solid #2ecc71;
     border-bottom: 1px solid #2ecc71;
     color: #666666;
     background-color: #ffffff;
   }
+  
+
+ #small-device{
+
+  }
+  
   #name_search_list a{
     color:#1ABC9C;
   }
@@ -63,6 +69,7 @@
     @media (max-width: 359px) {
        .search_btn {
     width: 120px;
+    
   } 
     }
 </style>
@@ -98,10 +105,10 @@
                               <input type="radio" id="bt2" name="hasuk_kind" value="잠만 자는 방" />잠만 자는 방
                           </label>
                           <label id="small-device"class="btn btn-success" style="margin-top:10px">
-                              <input type="radio" id="bt1" name="hasuk_kind" value="원룸형" />원룸형
+                              <input type="radio" id="bt3" name="hasuk_kind" value="원룸형" />원룸형
                           </label> 
                           <label id="small-device" class="btn btn-success" style="margin-top:10px">
-                              <input type="radio" id="bt2" name="hasuk_kind" value="고시원형" />고시원형
+                              <input type="radio" id="bt4" name="hasuk_kind" value="고시원형" />고시원형
                           </label> 
                         </div>
                       </div>
@@ -111,16 +118,16 @@
                         <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
                           
                           <label id="small-device" class="btn btn-success" style="border-left:1px solid #2ecc71; margin-top:10px">
-                              <input type="radio" name="gender" value="남녀공용" />남녀공용
+                              <input type="radio" id="bt5" name="gender" value="남녀공용" />남녀공용
                           </label> 
                           <label id="small-device" class="btn btn-success" style="margin-top:10px" >
-                              <input type="radio"  name="gender" value="남녀층 분리" />남녀층 분리
+                              <input type="radio"  id="bt6" name="gender" value="남녀층 분리" />남녀층 분리
                           </label>
                           <label id="small-device" class="btn btn-success" style="margin-top:10px">
-                              <input type="radio"  name="gender" value="여성전용" />여성전용
+                              <input type="radio"  id="bt7" name="gender" value="여성전용" />여성전용
                           </label> 
                           <label id="small-device" class="btn btn-success" style="margin-top:10px">
-                              <input type="radio" name="gender" value="남성전용" />남성전용
+                              <input type="radio" id="bt8" name="gender" value="남성전용" />남성전용
                           </label> 
                         </div>
                       </div>
@@ -142,35 +149,35 @@
                         <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
                           <% if @univ == "서강" %>
                           <label id="small-device" class="btn btn-success" style="border-left:1px solid #2ecc71; margin-top: 10px;">
-                              <input type="radio" id="bt3"name="section" value="남문(대흥역)" /> 남문(대흥역)
+                              <input type="radio" id="bt9" name="section" value="남문(대흥역)" /> 남문(대흥역)
                           </label> 
                           
                           <% elsif @univ == "연세" %>
                           <label id="small-device" class="btn btn-success" style="border-left:1px solid #2ecc71; margin-top: 10px;">
-                              <input type="radio" id="bt4" name="section" value="정문(신촌역)" /> 정문(신촌역)
+                              <input type="radio" id="bt9" name="section" value="정문(신촌역)" /> 정문(신촌역)
                           </label> 
                           <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                              <input type="radio" id="bt5" name="section" value="연대서문" /> 서문
+                              <input type="radio" id="bt10" name="section" value="연대서문" /> 서문
                           </label> 
                           <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                              <input type="radio" id="bt6" name="section" value="연대남문" /> 남문
+                              <input type="radio" id="bt11" name="section" value="연대남문" /> 남문
                           </label> 
                           <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                              <input type="radio" id="bt7" name="section" value="이대후문" /> 동문
+                              <input type="radio" id="bt12" name="section" value="이대후문" /> 동문
                           </label>
                           <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                              <input type="radio" id="bt8" name="section" value="신촌기차역" /> 신촌기차역
+                              <input type="radio" id="bt13" name="section" value="신촌기차역" /> 신촌기차역
                           </label>
             
                           <% elsif @univ == "이화" %>
                           <label id="small-device" class="btn btn-success" style="border-left:1px solid #2ecc71; margin-top: 10px;">
-                              <input type="radio" id="bt4" name="section" value="정문(이대역)" /> 정문(이대역)
+                              <input type="radio" id="bt9" name="section" value="정문(이대역)" /> 정문(이대역)
                           </label> 
                           <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                              <input type="radio" id="bt5" name="section" value="신촌기차역" /> 신촌기차역
+                              <input type="radio" id="bt10" name="section" value="신촌기차역" /> 신촌기차역
                           </label> 
                           <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                              <input type="radio" id="bt6" name="section" value="이대후문" /> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp후문&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                              <input type="radio" id="bt11" name="section" value="이대후문" /> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp후문&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                           </label> 
                           
                           <% end %>
@@ -180,29 +187,29 @@
                         <span id="select-title" readonly style="font-size:15px; font-weight:bold;">도보</span>
                         <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px; padding-left:0px;padding-right: 0px;">
                           <label id="small-device" class="btn btn-success" style="border-left:1px solid #2ecc71; margin-top: 10px;">
-                              <input class="btn btn-default" type="radio" id="bt8" name="distance" value=5 /> 5분 이내
+                              <input class="btn btn-default" type="radio" id="bt14" name="distance" value=5 /> 5분 이내
                            </label>
                           <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                              <input type="radio" id="bt8" name="distance" value=10 /> 10분 이내
+                              <input type="radio" id="bt15" name="distance" value=10 /> 10분 이내
                           </label> 
                           <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                              <input type="radio" id="bt9" name="distance" value=15 /> 15분 이내
+                              <input type="radio" id="bt16" name="distance" value=15 /> 15분 이내
                           </label>   
                           <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
-                              <input type="radio" id="bt10" name="distance" value=20 /> 20분 이내
+                              <input type="radio" id="bt17" name="distance" value=20 /> 20분 이내
                           </label>   
                         </div>
                       </div>
                       <div class="row" style="margin: 0;">
                         <div id="modal-padding" class="col-md-6 col-sm-6 col-xs-6">
-                          <button id="out" type="button" style="float:left" class="search_btn btn btn-danger small-device" data-dismiss="modal">취소</button>
+                          <button id="out" type="button" style="float:left" class="search_btn btn btn-default small-device" data-dismiss="modal">취소</button>
                         </div>  
                         <div id="modal-padding" class="col-md-6 col-sm-6 col-xs-6">
-                          <input id="search" type="submit" value="검색하기" class="search_btn btn btn-success small-device" style="float:right">
+                          <input id="search" type="submit" value="검색하기" class="search_btn btn small-device" style="background-color:#323d4e; color:#ffffff; float:right">
                         </div>
                       </div>
                       <!--<div style="float:right">
-                        <input id="search" type="submit" value="검색하기" class="btn btn-info small-device">
+                        <input id="search" type="submit" value="검색하기" class="btn btn-success small-device">
                         <button id="out" type="button" class="btn btn-danger small-device" data-dismiss="modal">취소</button>
                       </div>-->
               
@@ -243,6 +250,118 @@
 
 
 <script>
+      //검색 버튼 누르기 효과 시작
+      $(document).ready(function() {
+        
+        $("#bt1").click(function(){
+          $(this).addClass("active");
+          $("#bt2").removeClass("active");
+          $("#bt3").removeClass("active");
+          $("#bt4").removeClass("active");
+        });
+         $("#bt2").click(function(){
+          $(this).addClass("active");
+          $("#bt1").removeClass("active");
+          $("#bt3").removeClass("active");
+          $("#bt4").removeClass("active");
+        });
+        $("#bt3").click(function(){
+          $(this).addClass("active");
+          $("#bt1").removeClass("active");
+          $("#bt2").removeClass("active");
+          $("#bt4").removeClass("active");
+        });
+        $("#bt4").click(function(){
+          $(this).addClass("active");
+          $("#bt1").removeClass("active");
+          $("#bt2").removeClass("active");
+          $("#bt3").removeClass("active");
+        });
+        $("#bt5").click(function(){
+          $(this).addClass("active");
+          $("#bt6").removeClass("active");
+          $("#bt7").removeClass("active");
+          $("#bt8").removeClass("active");
+        });
+        $("#bt6").click(function(){
+          $(this).addClass("active");
+          $("#bt5").removeClass("active");
+          $("#bt7").removeClass("active");
+          $("#bt8").removeClass("active");
+        });
+        $("#bt7").click(function(){
+          $(this).addClass("active");
+          $("#bt5").removeClass("active");
+          $("#bt6").removeClass("active");
+          $("#bt8").removeClass("active");
+        });
+        $("#bt8").click(function(){
+          $(this).addClass("active");
+          $("#bt5").removeClass("active");
+          $("#bt6").removeClass("active");
+          $("#bt7").removeClass("active");
+        });
+        $("#bt9").click(function(){
+          $(this).addClass("active");
+          $("#bt10").removeClass("active");
+          $("#bt11").removeClass("active");
+          $("#bt12").removeClass("active");
+          $("#bt13").removeClass("active");
+        });
+        $("#bt10").click(function(){
+          $(this).addClass("active");
+          $("#bt9").removeClass("active");
+          $("#bt11").removeClass("active");
+          $("#bt12").removeClass("active");
+          $("#bt13").removeClass("active");
+        });
+        $("#bt11").click(function(){
+          $(this).addClass("active");
+          $("#bt9").removeClass("active");
+          $("#bt10").removeClass("active");
+          $("#bt12").removeClass("active");
+          $("#bt13").removeClass("active");
+        });
+        $("#bt12").click(function(){
+          $(this).addClass("active");
+          $("#bt9").removeClass("active");
+          $("#bt10").removeClass("active");
+          $("#bt11").removeClass("active");
+          $("#bt13").removeClass("active");
+        });
+        $("#bt13").click(function(){
+          $(this).addClass("active");
+          $("#bt9").removeClass("active");
+          $("#bt10").removeClass("active");
+          $("#bt11").removeClass("active");
+          $("#bt12").removeClass("active");
+        });
+        $("#bt14").click(function(){
+          $(this).addClass("active");
+          $("#bt15").removeClass("active");
+          $("#bt16").removeClass("active");
+          $("#bt17").removeClass("active");
+        });
+        $("#bt15").click(function(){
+          $(this).addClass("active");
+          $("#bt14").removeClass("active");
+          $("#bt16").removeClass("active");
+          $("#bt17").removeClass("active");
+        });
+        $("#bt16").click(function(){
+          $(this).addClass("active");
+          $("#bt14").removeClass("active");
+          $("#bt15").removeClass("active");
+          $("#bt17").removeClass("active");
+        });
+        $("#bt17").click(function(){
+          $(this).addClass("active");
+          $("#bt14").removeClass("active");
+          $("#bt15").removeClass("active");
+          $("#bt16").removeClass("active");
+        });//검색버튼 누르기 효과 끝
+      });
+
 $(document).ready(function(){
   $("#search").click(function(){
     var price_from = $('span.first').text();
@@ -304,8 +423,6 @@ $(document).ready(function(){
 }); 
 
   $(document).ready(function(){
-    
-    
     $("#hasuk_name_find").click(function(){
       $(document).ajaxStart(function(){
         if ($("#name_search_result").html != "") {
@@ -324,7 +441,7 @@ $(document).ready(function(){
             data: hasuk_name,
             success: function(data){
                 $.get("/map/from_hasuk", function(data){
-                  $("#resultTitle").append("검색결과 입니다.");
+                  $("#resultTitle").append("검색결과입니다.");
                   var k=0;
                   for (var i = 0; i < data.length; i++){
                     if (data[i].hasuk_name.indexOf(hasuk_name) > -1) {
@@ -343,6 +460,5 @@ $(document).ready(function(){
         
         
     });
-    
   });
 </script>
