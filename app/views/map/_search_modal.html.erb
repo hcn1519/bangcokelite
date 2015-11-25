@@ -48,9 +48,18 @@
   }
   
  #small-device{
-    border-left: 1px solid #ffffff;
+    border-right: 1px solid #2ecc71;
+    border-top: 1px solid #2ecc71;
+    border-bottom: 1px solid #2ecc71;
+    color: #666666;
+    background-color: #ffffff;
   }
-
+  #name_search_list a{
+    color:#1ABC9C;
+  }
+  #name_search_list a:hover{
+    color:#16A085;
+  }
     @media (max-width: 359px) {
        .search_btn {
     width: 120px;
@@ -59,10 +68,10 @@
 </style>
 <div class="modal fade col-md-12 col-sm-12 col-xs-12" id="search">
   <div class="modal-dialog">
-    <div class="modal-content col-md-12 col-sm-12 col-xs-12" id="modal-size2" style="padding-left:0px; padding-right:0px">
+    <div class="modal-content col-md-12 col-sm-12 col-xs-12" id="modal-size2" style="background-color:#f5f5f5; padding-left:0px; padding-right:0px">
       
       <div class="modal-body" style="padding: 5px;">
-        <div class="panel panel-default col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 0px;padding-left: 0px;padding-right: 0px; padding-bottom: 15px;">
+        <div class="panel panel-default col-md-12 col-sm-12 col-xs-12" style="background-color:#f5f5f5;  margin-bottom: 0px;padding-left: 0px;padding-right: 0px; padding-bottom: 15px;">
           <div class="pandel-head" style="padding-left:10px; padding-right:10px;">
             <ul class="nav nav-tabs" id="tabContent">
               <li class="active"><a href="#FindByCondition" data-toggle="tab" class="btn btn-small">조건 검색</a></li>
@@ -82,7 +91,7 @@
                       <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <span id="select-title" readonly style="font-size:15px; font-weight:bold;">종류</span>
                         <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
-                          <label id="small-device" class="btn btn-success" style="margin-top:10px">
+                          <label id="small-device" class="btn btn-success" style="border-left:1px solid #2ecc71; margin-top:10px">
                               <input type="radio" id="bt1" name="hasuk_kind" value="일반하숙" />일반하숙
                           </label>
                           <label id="small-device" class="btn btn-success" style="margin-top:10px">
@@ -101,7 +110,7 @@
                         
                         <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
                           
-                          <label id="small-device" class="btn btn-success" style="margin-top:10px">
+                          <label id="small-device" class="btn btn-success" style="border-left:1px solid #2ecc71; margin-top:10px">
                               <input type="radio" name="gender" value="남녀공용" />남녀공용
                           </label> 
                           <label id="small-device" class="btn btn-success" style="margin-top:10px" >
@@ -132,12 +141,12 @@
                         <span id="select-title" readonly style="font-size:15px; font-weight:bold;">구역</span>
                         <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px;">
                           <% if @univ == "서강" %>
-                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                          <label id="small-device" class="btn btn-success" style="border-left:1px solid #2ecc71; margin-top: 10px;">
                               <input type="radio" id="bt3"name="section" value="남문(대흥역)" /> 남문(대흥역)
                           </label> 
                           
                           <% elsif @univ == "연세" %>
-                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                          <label id="small-device" class="btn btn-success" style="border-left:1px solid #2ecc71; margin-top: 10px;">
                               <input type="radio" id="bt4" name="section" value="정문(신촌역)" /> 정문(신촌역)
                           </label> 
                           <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
@@ -154,7 +163,7 @@
                           </label>
             
                           <% elsif @univ == "이화" %>
-                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                          <label id="small-device" class="btn btn-success" style="border-left:1px solid #2ecc71; margin-top: 10px;">
                               <input type="radio" id="bt4" name="section" value="정문(이대역)" /> 정문(이대역)
                           </label> 
                           <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
@@ -170,7 +179,7 @@
                       <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <span id="select-title" readonly style="font-size:15px; font-weight:bold;">도보</span>
                         <div class="btn-group" data-toggle="buttons" style="margin-bottom:10px; padding-left:0px;padding-right: 0px;">
-                          <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
+                          <label id="small-device" class="btn btn-success" style="border-left:1px solid #2ecc71; margin-top: 10px;">
                               <input class="btn btn-default" type="radio" id="bt8" name="distance" value=5 /> 5분 이내
                            </label>
                           <label id="small-device" class="btn btn-success" style="margin-top: 10px;">
@@ -189,7 +198,7 @@
                           <button id="out" type="button" style="float:left" class="search_btn btn btn-danger small-device" data-dismiss="modal">취소</button>
                         </div>  
                         <div id="modal-padding" class="col-md-6 col-sm-6 col-xs-6">
-                          <input id="search" type="submit" value="검색하기" class="search_btn btn btn-info small-device" style="float:right">
+                          <input id="search" type="submit" value="검색하기" class="search_btn btn btn-success small-device" style="float:right">
                         </div>
                       </div>
                       <!--<div style="float:right">
@@ -202,7 +211,8 @@
                   </div> <!--검색 박스 끝 -->
                     
               <div class="tab-pane" id="FindByName">
-
+                
+                <h6 style="font-size:18px; margin-left:10px">하숙집을 이름으로 검색해보세요.</h6>
                   <div class="input-group input-group-rounded" style="margin-top:20px; margin-bottom:20px">
                     <input type="text" class="form-control" placeholder="하숙집 검색" id="search-query-3" style="border-color:#2ECC71;">
                     <span class="input-group-btn">
@@ -212,11 +222,11 @@
                     </span>
                   </div>
                 
-                <p id="name_search_result"></p>  
-                
-                <div id="nameLoading">
-                  
-                </div>
+                <div id="resultTitle" style="margin-left:10px; color:#2ECC71"></div> 
+                <ul>
+                <div id="name_search_result"></div>  
+                </ul>
+                <div id="nameLoading"></div>
               </div><!--이름 검색 끝 -->
         
             </div>
@@ -300,6 +310,7 @@ $(document).ready(function(){
       $(document).ajaxStart(function(){
         if ($("#name_search_result").html != "") {
           $("#name_search_result").html("");
+          $("#resultTitle").html("");
         }
         $("#nameLoading").html("<img src='/images/icons/nameSearchLoading.gif' style='width:50px; height:50px; margin-bottom:20px'>");
       }).ajaxStop(function() {
@@ -313,15 +324,16 @@ $(document).ready(function(){
             data: hasuk_name,
             success: function(data){
                 $.get("/map/from_hasuk", function(data){
+                  $("#resultTitle").append("검색결과 입니다.");
                   var k=0;
                   for (var i = 0; i < data.length; i++){
-                    if (data[i].hasuk_name == hasuk_name) {
-                      $("#name_search_result").append("<a target='_blank' href='/hasuk_houses/" + data[i].id + "'>" + data[i].hasuk_name + "</a>");
+                    if (data[i].hasuk_name.indexOf(hasuk_name) > -1) {
+                      $("#name_search_result").append("<li id='name_search_list' style='font-size:16px; margin-bottom:5px'>" +"<a target='_blank' href='/hasuk_houses/" + data[i].id + "'>" + data[i].hasuk_name + "</a>" + "</li>");
                       k = k+1;
                     }
                   };
                   if (k == 0) {
-                  $("#name_search_result").append("결과 없음");
+                  $("#name_search_result").append("<p style='font-size:16px'>" + "찾고 있는 하숙집이 없습니다."+ "<br/>" + "띄어쓰기를 체크해보는 건 어떨까요?" + "</p>");
                   }
                 });
                 

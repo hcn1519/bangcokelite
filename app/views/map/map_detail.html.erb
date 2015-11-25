@@ -203,10 +203,10 @@
         icon: yo_dong
       });    
       
-  var d_marker = {
-    url: '/images/icons/d_marker.png',
-    size: new google.maps.Size(55, 25),
-    };
+     var d_marker = {
+        url: '/images/icons/marker1.png',
+        size: new google.maps.Size(50, 20),
+      }; 
  
   //서강A(서강대 남문)
   var sogang_a = [
@@ -554,7 +554,11 @@
                 <% @distance = 0 %>
               <% end %>
               if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) {  
-                var marker = new MarkerWithLabel({  
+                var labelKind = ["label1","label2" ,"label3"];
+                 labelKind = shuffle(labelKind);
+                 var markerLabel = labelKind[0];
+                   
+                    var marker = new MarkerWithLabel({  
                          position: latlng,
                          map: map,
                          <% if 'data[i].price_from' != 'data[i].price_to' %>
@@ -563,7 +567,8 @@
                             labelContent: data[i].price_from,
                          <% end %>    
                          labelAnchor: new google.maps.Point(27, 25),
-                         labelClass: "labels",
+                         
+                         labelClass: markerLabel,
                          icon: d_marker
                      });
                 
@@ -705,7 +710,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                   <% @distance = 0 %>
                 <% end %>
                 if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) { 
-                  var marker = new MarkerWithLabel({  
+                  var labelKind = ["label1","label2" ,"label3"];
+                   labelKind = shuffle(labelKind);
+                   var markerLabel = labelKind[0];
+                   
+                    var marker = new MarkerWithLabel({  
                          position: latlng,
                          map: map,
                          <% if 'data[i].price_from' != 'data[i].price_to' %>
@@ -714,7 +723,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             labelContent: data[i].price_from,
                          <% end %>    
                          labelAnchor: new google.maps.Point(27, 25),
-                         labelClass: "labels",
+                         
+                         labelClass: markerLabel,
                          icon: d_marker
                      });
                 marker.setValues({type: "point", id: i});
@@ -861,7 +871,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                   <% @distance = 0 %>
                 <% end %>
                 if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) { 
-                  var marker = new MarkerWithLabel({  
+                  var labelKind = ["label1","label2" ,"label3"];
+                   labelKind = shuffle(labelKind);
+                   var markerLabel = labelKind[0];
+                   
+                    var marker = new MarkerWithLabel({  
                          position: latlng,
                          map: map,
                          <% if 'data[i].price_from' != 'data[i].price_to' %>
@@ -870,7 +884,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             labelContent: data[i].price_from,
                          <% end %>    
                          labelAnchor: new google.maps.Point(27, 25),
-                         labelClass: "labels",
+                         
+                         labelClass: markerLabel,
                          icon: d_marker
                      });
                 marker.setValues({type: "point", id: i});
@@ -1016,7 +1031,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                   <% @distance = 0 %>
                 <% end %>
                 if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) { 
-                  var marker = new MarkerWithLabel({  
+                  var labelKind = ["label1","label2" ,"label3"];
+                   labelKind = shuffle(labelKind);
+                   var markerLabel = labelKind[0];
+                   
+                    var marker = new MarkerWithLabel({  
                          position: latlng,
                          map: map,
                          <% if 'data[i].price_from' != 'data[i].price_to' %>
@@ -1025,7 +1044,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             labelContent: data[i].price_from,
                          <% end %>    
                          labelAnchor: new google.maps.Point(27, 25),
-                         labelClass: "labels",
+                         
+                         labelClass: markerLabel,
                          icon: d_marker
                      });
                 marker.setValues({type: "point", id: i});
@@ -1169,7 +1189,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 <% @distance = 0 %>
               <% end %>
               if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) {  
-                var marker = new MarkerWithLabel({  
+                var labelKind = ["label1","label2" ,"label3"];
+                 labelKind = shuffle(labelKind);
+                 var markerLabel = labelKind[0];
+                   
+                    var marker = new MarkerWithLabel({  
                          position: latlng,
                          map: map,
                          <% if 'data[i].price_from' != 'data[i].price_to' %>
@@ -1178,7 +1202,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             labelContent: data[i].price_from,
                          <% end %>    
                          labelAnchor: new google.maps.Point(27, 25),
-                         labelClass: "labels",
+                         
+                         labelClass: markerLabel,
                          icon: d_marker
                      });
                 
@@ -1320,7 +1345,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 <% @distance = 0 %>
               <% end %>
               if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) {  
-                var marker = new MarkerWithLabel({  
+                var labelKind = ["label1","label2" ,"label3"];
+                 labelKind = shuffle(labelKind);
+                 var markerLabel = labelKind[0];
+                   
+                    var marker = new MarkerWithLabel({  
                          position: latlng,
                          map: map,
                          <% if 'data[i].price_from' != 'data[i].price_to' %>
@@ -1329,7 +1358,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             labelContent: data[i].price_from,
                          <% end %>    
                          labelAnchor: new google.maps.Point(27, 25),
-                         labelClass: "labels",
+                         
+                         labelClass: markerLabel,
                          icon: d_marker
                      });
                 
@@ -1471,7 +1501,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 <% @distance = 0 %>
               <% end %>
               if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) {  
-                var marker = new MarkerWithLabel({  
+                var labelKind = ["label1","label2" ,"label3"];
+                 labelKind = shuffle(labelKind);
+                 var markerLabel = labelKind[0];
+                   
+                    var marker = new MarkerWithLabel({  
                          position: latlng,
                          map: map,
                          <% if 'data[i].price_from' != 'data[i].price_to' %>
@@ -1480,7 +1514,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             labelContent: data[i].price_from,
                          <% end %>    
                          labelAnchor: new google.maps.Point(27, 25),
-                         labelClass: "labels",
+                         
+                         labelClass: markerLabel,
                          icon: d_marker
                      });
                 
@@ -1628,7 +1663,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 <% @distance = 0 %>
               <% end %>
               if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) {  
-                var marker = new MarkerWithLabel({  
+                var labelKind = ["label1","label2" ,"label3"];
+                 labelKind = shuffle(labelKind);
+                 var markerLabel = labelKind[0];
+                   
+                    var marker = new MarkerWithLabel({  
                          position: latlng,
                          map: map,
                          <% if 'data[i].price_from' != 'data[i].price_to' %>
@@ -1637,7 +1676,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             labelContent: data[i].price_from,
                          <% end %>    
                          labelAnchor: new google.maps.Point(27, 25),
-                         labelClass: "labels",
+                         
+                         labelClass: markerLabel,
                          icon: d_marker
                      });
                 
@@ -1782,7 +1822,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 <% @distance = 0 %>
               <% end %>
               if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) {  
-                var marker = new MarkerWithLabel({  
+                var labelKind = ["label1","label2" ,"label3"];
+                 labelKind = shuffle(labelKind);
+                 var markerLabel = labelKind[0];
+                       
+                    var marker = new MarkerWithLabel({  
                          position: latlng,
                          map: map,
                          <% if 'data[i].price_from' != 'data[i].price_to' %>
@@ -1791,7 +1835,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             labelContent: data[i].price_from,
                          <% end %>    
                          labelAnchor: new google.maps.Point(27, 25),
-                         labelClass: "labels",
+                         
+                         labelClass: markerLabel,
                          icon: d_marker
                      });
                 
@@ -1935,7 +1980,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 <% @distance = 0 %>
               <% end %>
               if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) {  
-                var marker = new MarkerWithLabel({  
+                var labelKind = ["label1","label2" ,"label3"];
+                 labelKind = shuffle(labelKind);
+                 var markerLabel = labelKind[0];
+                   
+                    var marker = new MarkerWithLabel({  
                          position: latlng,
                          map: map,
                          <% if 'data[i].price_from' != 'data[i].price_to' %>
@@ -1944,7 +1993,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             labelContent: data[i].price_from,
                          <% end %>    
                          labelAnchor: new google.maps.Point(27, 25),
-                         labelClass: "labels",
+                         
+                         labelClass: markerLabel,
                          icon: d_marker
                      });
                 
@@ -2076,7 +2126,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
              } //반복문
          }); //학교별 마커 띄우기 끝
-
+        function shuffle(o){
+          for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+          return o;
+        }
       } //구글맵 기본 설정 끝
       google.maps.event.addDomListener(window, 'load', initialize);
       
@@ -2097,7 +2150,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     /*사이즈별 화면 조정 */
    https://detailset-bigwindow-1.c9users.io.
     @media (max-width: 359px) {
-      
+    
+    .modal-dialog {
+        margin: 0;
+    } 
+    
     .panel {
       border: none;
     }
@@ -2237,6 +2294,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      }
     
     @media (min-width: 360px) {
+      
+    .modal-dialog {
+        margin: 0;
+    } 
     .panel {
       border: none;
     }
@@ -2381,7 +2442,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
       }
     }
      @media (min-width: 400px) {
-
+    .modal-dialog {
+        margin: 0;
+    } 
     .modal-content#modal-size1{
        width:300px;
        left:0%;
@@ -2485,7 +2548,12 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      }
     }
     @media (min-width: 481px) {
-      
+    .modal-dialog {
+        position: relative;
+        width: auto;
+        margin: 10px;
+    }  
+    
     .thumbnail {
         padding: 0px;
         margin-bottom: 15px;
@@ -2619,7 +2687,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
 
     @media (min-width: 768px) {
-    
+    .modal-dialog {
+        position: relative;
+        width: auto;
+        margin: 10px;
+    }
     .thumbnail {
       line-height:1.2;
       margin:5px; 
@@ -3175,16 +3247,37 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
        
 /*마커 디자인 */
-    .labels {
+    .label1 {
      color: #ffffff;
-     background-color :#2ecc71;
-     width: 55px;
-     border: 2px #ffffff solid;
-     border-radius: 15px;
+     width: 60px;
+     border: 2px solid #e9e9e2;
+     border-radius: 8px;
      font-size: 13px;
      text-align: center;
      white-space: nowrap;
+     background-color:#6f4e35;
    }
+   .label2 {
+     color: #ffffff;
+     width: 60px;
+     border: 2px solid #e9e9e2;
+     border-radius: 8px;
+     font-size: 13px;
+     text-align: center;
+     white-space: nowrap;
+     background-color:#993a18;
+   }
+   .label3 {
+     color: #ffffff;
+     width: 60px;
+     border: 2px solid #e9e9e2;
+     border-radius: 8px;
+     font-size: 13px;
+     text-align: center;
+     white-space: nowrap;
+     background-color:#95582b;
+   }
+  /*마커 디자인 */ 
    
    .sub_circle {
     border-radius: 40%;
