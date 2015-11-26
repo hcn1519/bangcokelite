@@ -766,7 +766,7 @@
             <% @meal = ["아침", "점심", "저녁", "제공 안함"] %>
           
               <% 4.times do |i| %>
-        <% if @hasuk_house.send("meal#{i+1}") == "" %>
+        <% if @hasuk_house.send("meal#{i+1}") == "" || @hasuk_house.send("meal#{i+1}") == nil  %>
                 <label class="radio-inline" id="check-right">
                 <%= check_box_tag "hasuk_house[meal#{i+1}]", "#{@meal[i]}" %>
                 <%= "#{@meal[i]}" %>
@@ -792,7 +792,7 @@
             <% @personal_option = ["침대", "책상", "옷장", "행거", "수납장", "에어컨", "TV", "화장실", "샤워실", "세탁기", "냉장고", "전자레인지", "가스레인지", "인덕션"] %>
           
               <% 14.times do |i| %>
-         <% if @hasuk_house.send("personal_option#{i+1}") == "" %>
+         <% if @hasuk_house.send("personal_option#{i+1}") == "" || @hasuk_house.send("personal_option#{i+1}") == nil %>
                 <label  class="radio-inline" id="check-right">
                 <%= check_box_tag "hasuk_house[personal_option#{i+1}]", "#{@personal_option[i]}" %>
                 <%= "#{@personal_option[i]}" %>
@@ -826,7 +826,7 @@
              <% @common_option = ["중앙난방", "화장실", "샤워실", "세탁실", "CCTV", "냉장고", "전자레인지", "가스레인지", "인덕션", "정수기"] %>
              
              <% 10.times do |i| %>
-      <% if @hasuk_house.send("common_option#{i+1}") == "" %>
+      <% if @hasuk_house.send("common_option#{i+1}") == "" || @hasuk_house.send("common_option#{i+1}") == nil %>
                 <label  class="radio-inline" id="check-right">
                 <%= check_box_tag "hasuk_house[common_option#{i+1}]", "#{@common_option[i]}" %>
                 <%= "#{@common_option[i]}" %>
@@ -1357,51 +1357,52 @@
     <% for i in 1..8 %>
     <div class="col-md-3 col-sm-4 col-xs-12">
       <div class="image-upload" style="height:7em">
-        
-      <% if @hasuk_house.send("room_img#{i}") != nil || @hasuk_house.send("room_img#{i}") != "" %>
-        <%= file_field_tag "hasuk_house[room_img#{i}]", value: @hasuk_house.send("room_img#{i}"), class:"file-input#{i}" %>
-      <% else %>
+      <% @roomImg = @hasuk_house.send("room_img#{i}") %>
+
+      <% if @roomImg.file == nil %>
         <%= file_field_tag "hasuk_house[room_img#{i}]", class:"file-input#{i}" %>
-      <% end %>
-        <div class="img-thumbnail" style="width: 100%; height: 7em;">
-      <% if @hasuk_house.send("room_img#{i}") != nil || @hasuk_house.send("room_img#{i}") != "" %>
-          <span class="fui-cross-circle crossroom<%= i%>" style="display:block; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
       <% else %>
+        <%= file_field_tag "hasuk_house[room_img#{i}]", value: @roomImg, class:"file-input#{i}" %>
+      <% end %>
+      
+      
+        <div class="img-thumbnail" style="width: 100%; height: 7em;">
+      <% if @roomImg.file == nil %>
           <span class="fui-cross-circle crossroom<%= i%>" style="display:none; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
+      <% else %>
+          <span class="fui-cross-circle crossroom<%= i%>" style="display:block; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
       <% end %>
           <% if i ==1 %>
-      
-      <% if @hasuk_house.send("room_img#{i}") != nil || @hasuk_house.send("room_img#{i}") != "" %>
-                <span class="fui-star-2" style="font-size:0.8em; font-weight:bold; color:#F1C40F; float:left;" display="none"></span>
-                <span style="font-size:0.8em; color:#e74c3c; float:left; position: absolute" display="none">대표사진</span>
-                <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="margin-bottom: 0px; position: absolute; margin-top: 3%;margin-left: 22%;">
-                  <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
-                </label>
-      <% else %>
                 <span class="fui-star-2" style="font-size:0.8em; font-weight:bold; color:#F1C40F; float:left;"></span>
                 <span style="font-size:0.8em; color:#e74c3c; float:left; position: absolute">대표사진</span>
-                <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="margin-bottom: 0px; position: absolute; margin-top: 3%;margin-left: 22%;">
-                  <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true" display="none"></span>
+
+      <% if @roomImg.file == nil %>
+                <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="display:block; margin-bottom: 0px; position: absolute; margin-top: 3%;margin-left: 22%;">
+                  <span class="fui-plus-circle" style="display:block; cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
+                </label>
+      <% else %>
+                <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="display:none; margin-bottom: 0px; position: absolute; margin-top: 3%;margin-left: 22%;">
+                  <span class="fui-plus-circle" style="display:none; cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
                 </label>
       <% end %>
           <% else %>
           
-      <% if @hasuk_house.send("room_img#{i}") != nil || @hasuk_house.send("room_img#{i}") != "" %>
-            <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
-              <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
+      <% if @roomImg.file == nil %>
+            <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="display:block; margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
+              <span class="fui-plus-circle" style="display:block; cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
             </label>
       <% else %>
-            <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" display="none" style="margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
-              <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true" display="none"></span>
+            <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="display:none; margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
+              <span class="fui-plus-circle" style="display:none; cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
             </label>
       <% end %>
       
           <% end %>
-      <% if @hasuk_house.send("room_img#{i}") != nil || @hasuk_house.send("room_img#{i}") != "" %>
-            <% roomImg = @hasuk_house.send("room_img#{i}") %>
-            <img style="width:9.75em; height:6.4em; display:block; position: absolute; z-index:1" id="room-file-preview<%= i%>" src="<%= roomImg %>"/>
-      <% else %>
+      <% if @roomImg.file == nil %>
             <img style="width:9.75em; height:6.4em; display:none; position: absolute; z-index:1" id="room-file-preview<%= i%>" src="#"/>
+      <% else %>
+            
+            <img style="width:9.75em; height:6.4em; display:block; position: absolute; z-index:1" id="room-file-preview<%= i%>" src="<%= @roomImg %>"/>
       <% end %>
         </div>
           
@@ -1444,14 +1445,32 @@
   <% for i  in 1..4 %>
     <div class="col-md-3 col-sm-4 col-xs-12">
       <div class="image-upload" style="height:7em">
-      <%= file_field_tag "hasuk_house[common_img#{i}]", class:"file-input#{i}" %>
-       <!-- <input type="file" name="common_img[]" id="file-input<%#= i%>" class="file-input<%#= i%>">-->
-        <div class="img-thumbnail" style="width: 100%; height: 7em;">
+      <% @commonImg = @hasuk_house.send("common_img#{i}") %>
+      
+      <% if @commonImg.file == nil %><!--없으면 -->
+        <%= file_field_tag "hasuk_house[common_img#{i}]", class:"file-input#{i}" %>
+      
+          <div class="img-thumbnail" style="width: 100%; height: 7em;">
           <span class="fui-cross-circle crosscommon<%= i%>" style="display:none; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
-          <label for="hasuk_house_common_img<%= i%>" id="common-labelinput<%= i%>" style="margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
-            <span class="fui-plus-circle" style="cursor:pointer; font-size:45px; color:#27AE60;" aria-hidden="true"></span>
+          
+          <label for="hasuk_house_common_img<%= i%>" id="common-labelinput<%= i%>" style="display:block; margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
+            <span class="fui-plus-circle" style="display:block; cursor:pointer; font-size:45px; color:#27AE60;" aria-hidden="true"></span>
           </label>
+          
           <img style="width:9.75em; height:6.4em; display:none; position: absolute; z-index:1" id="common-file-preview<%= i%>" src="#"/>
+      
+      <% else %><!--있으면 -->
+        <%= file_field_tag "hasuk_house[common_img#{i}]", value: @commonImg, class:"file-input#{i}" %>
+          
+          <div class="img-thumbnail" style="width: 100%; height: 7em;">
+          
+          <span class="fui-cross-circle crosscommon<%= i%>" style="display:block; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
+          <label for="hasuk_house_common_img<%= i%>" id="common-labelinput<%= i%>" style="display:none; margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
+            <span class="fui-plus-circle" style="display:none; cursor:pointer; font-size:45px; color:#27AE60;" aria-hidden="true"></span>
+          </label>
+          
+          <img style="width:9.75em; height:6.4em; display:block; position: absolute; z-index:1" id="common-file-preview<%= i%>" src="<%= @commonImg %>"/>
+      <% end %>
         </div>
       </div>  
     </div>
@@ -1474,14 +1493,31 @@
     <% for i in 1..4 %>
         <div class="col-md-3 col-sm-3 col-xs-12">
       <div class="image-upload" style="height:7em">
-      <%= file_field_tag "hasuk_house[meal_img#{i}]", class:"file-input#{i}" %>
-        <div class="img-thumbnail" style="width: 100%; height: 7em;">
-          <span class="fui-cross-circle crossmeal<%= i%>" style="display:none; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
-          <label for="hasuk_house_meal_img<%= i%>" id="meal-labelinput<%= i%>" style="margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
-            <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
-          </label>
-          <img style="width:9.75em; height:6.4em; display:none; position: absolute; z-index:1" id="meal-file-preview<%= i%>" src="#"/>
-        </div>
+        
+      <% @mealImg = @hasuk_house.send("meal_img#{i}") %>
+      
+      <% if @mealImg.file == nil %><!--없으면 -->
+      
+        <%= file_field_tag "hasuk_house[meal_img#{i}]", class:"file-input#{i}" %>
+          <div class="img-thumbnail" style="width: 100%; height: 7em;">
+            <span class="fui-cross-circle crossmeal<%= i%>" style="display:none; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
+            <label for="hasuk_house_meal_img<%= i%>" id="meal-labelinput<%= i%>" style="margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
+              <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
+            </label>
+            <img style="width:9.75em; height:6.4em; display:none; position: absolute; z-index:1" id="meal-file-preview<%= i%>" src="#"/>
+          </div>
+      
+      <% else %>
+        <%= file_field_tag "hasuk_house[meal_img#{i}]", value: @mealImg, class:"file-input#{i}" %>
+          <div class="img-thumbnail" style="width: 100%; height: 7em;">
+            <span class="fui-cross-circle crossmeal<%= i%>" style="display:block; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
+            <label for="hasuk_house_meal_img<%= i%>" id="meal-labelinput<%= i%>" style="display:none; margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
+              <span class="fui-plus-circle" style="display:none; cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
+            </label>
+            <img style="width:9.75em; height:6.4em; display:block; position: absolute; z-index:1" id="meal-file-preview<%= i%>" src="<%= @mealImg %>"/>
+          </div>
+      
+      <% end %>
       </div>  
     </div>
     <% end %>
@@ -1525,7 +1561,15 @@
       </div>
     </div>
   </div> <!--할인제도 끝-->
-      <center style="margin-top:40px; margin-bottom:20px;"><input type="submit" value="등록하기" class="btn btn-success btn-lg ForValueZero"></center>
+  <% if @hasuk_house.id == nil %>
+      <center style="margin-top:40px; margin-bottom:20px;">
+        <input type="submit" value="등록하기" class="btn btn-success btn-lg ForValueZero">
+      </center>
+  <% else %>
+      <center style="margin-top:40px; margin-bottom:20px;">
+        <input type="submit" value="수정하기" class="btn btn-success btn-lg ForValueZero">
+      </center>
+  <% end %>
     
     </form>
   

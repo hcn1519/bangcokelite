@@ -125,8 +125,12 @@ body {
 
 @media (max-width: 767px) {
 
+.modal-dialog {
+  margin:0;
+}
 .container {
   /*margin-top:5px;*/
+  padding-top:0;
   margin-top: 0px;
   margin-bottom: 0px;
   background-color: #f5f5f5;
@@ -456,7 +460,7 @@ p {
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
     color: #fff;
-    background-color: #58d68d;
+    background: #2ecc71;
 }
 
 .info-zone .row {
@@ -545,6 +549,15 @@ main {
 .dain_table {
   padding:0px; 
   margin-top:5px; 
+}
+
+.btn-danger2 {
+    color: #ffffff;
+    background-color:#ff8773;
+}
+.btn-danger2:hover, .btn-danger2.hover, .btn-danger2:focus, .btn-danger2:active, .btn-danger2.active, .open > .dropdown-toggle.btn-danger2 {
+    color: #ffffff;
+    background-color: #ec7063;
 }
 
 </style>
@@ -1186,7 +1199,7 @@ main {
               <% if @hasuk_house.post_description.size > 20 %>
               <%= @hasuk_house.post_description.split(//).first(20).join %>...&nbsp;&nbsp;
             </span>
-            <button style="float:left;padding: 4px;font-size: 0.6em;" type="button" class="btn btn-success" data-toggle="modal" data-target="#descript">
+            <button style="float:left;padding: 4px;font-size: 0.6em;" type="button" class="btn btn-default" data-toggle="modal" data-target="#descript">
                 더보기
               </button>
               <% else %>
@@ -1196,13 +1209,13 @@ main {
   
           </div> 
     
-          <div>
+          <div style="padding:0 9px;">
             <% if user_signed_in? %>
-              <center><button type="button" id="like" class="btn btn-primary btn-md" style="background-color:#ee8176;">찜하기
-              <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#contact" style="background-color:#71b7e6;">연락처보기</button></center>
+              <center><button type="button" id="like" class="btn btn-danger2 btn-md" style="border-radius:0;">콕! 찜하기
+              <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#contact" style="border-radius:0;">연락처보기</button></center>
             <% else %>
-              <center><button type="button" id="like" class="btn btn-primary btn-md" style="background-color:#ee8176;">찜하기</button>
-              <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#login" style="background-color:#71b7e6;">연락처보기</button></center>
+              <center><button type="button" id="like" class="btn btn-danger2 btn-md" style="border-radius:0;">콕! 찜하기</button>
+              <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#login" style="border-radius:0;">연락처보기</button></center>
             <% end %>
         </div>
       </div>

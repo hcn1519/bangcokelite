@@ -1087,7 +1087,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
    border-radius: 5px;
 }
 
-
+  .modal-body {
+    padding-bottom: 30px;
+  }
 
     /*사이즈별 화면 조정 */
    
@@ -1095,9 +1097,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     
     .modal-dialog {
       margin:0;
-    }
-    .panel {
-      border: none;
     }
 
     .thumbnail .caption {
@@ -1240,9 +1239,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     .modal-dialog {
       margin:0;
     }  
-    .panel {
-      border: none;
-    }
 
     .thumbnail {
         padding: 0px;
@@ -1430,10 +1426,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
          padding-right:5px;
      }
      
-    .panel {
-      border: none;
-    }
-    
      .map_container {
       padding-left:0px; 
       padding-right:0px;
@@ -1514,10 +1506,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     line-height: 1.5;
     }
     
-    .panel {
-      border: none;
-    }
-
      .modal-content#modal-size1{
 
      }
@@ -2304,6 +2292,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
       border-radius: 0;
     }
     
+    .panel {
+      border: none;
+    }
     </style> 
 </head>
 <body>
@@ -2334,7 +2325,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
   <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 hidden-xs hidden-sm foldButton" style="padding-right: 0px; padding-left: 0px; width:3%; height:100%;">
     <div style="padding-right: 0px;padding-left: 0px; height:100%">
       <div class="folderbox" style="height:100%">
-        <button id="fold" style="border-color:#fff; background-color:#e9e7e9; color:#383f52; width:100%; height:100%; padding-left: 0px;padding-right: 0px; border-left: solid 1px #999999; border-right: solid 1px #999999;" type="button" class="btn btn-default" aria-label="Center">
+        <button id="fold" style="border-color:#fff; background-color:#e9e7e9; color:#383f52; width:100%; height:100%; padding-left: 0px;padding-right: 0px; border: solid 1px #999999;" type="button" class="btn btn-default" aria-label="Center">
           <span id="menu-icon" class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><br/>
         </button>
       </div>
@@ -2385,7 +2376,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
                     
                     <!--정보 표시-->
-                    <div class="caption" style="padding-top:5px; padding-left:0px; padding-right:0px;">
+                    <div class="caption" style="padding-top:5px; padding-left:5px; padding-right:0px;">
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div id="price-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                           <div style="float:left">
@@ -2568,7 +2559,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
                     
                     <!--정보 표시-->
-                    <div class="caption" style="padding-top:5px; padding-left:0px; padding-right:0px;">
+                    <div class="caption" style="padding-top:5px; padding-left:5px; padding-right:0px;">
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div id="price-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                           <div style="float:left">
@@ -2751,7 +2742,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
                     
                     <!--정보 표시-->
-                    <div class="caption" style="padding-top:5px; padding-left:0px; padding-right:0px;">
+                    <div class="caption" style="padding-top:5px; padding-left:5px; padding-right:0px;">
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div id="price-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                           <div style="float:left">
@@ -2934,7 +2925,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
                     
                     <!--정보 표시-->
-                    <div class="caption" style="padding-top:5px; padding-left:0px; padding-right:0px;">
+                    <div class="caption" style="padding-top:5px; padding-left:5px; padding-right:0px;">
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div id="price-size" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                           <div style="float:left">
