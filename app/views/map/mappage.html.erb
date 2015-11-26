@@ -609,8 +609,8 @@ google.maps.event.addListener(marker, 'click', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-
-                        $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
+                         $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       
                        });
 
                       };
@@ -752,8 +752,8 @@ google.maps.event.addListener(marker, 'click', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
+                         $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
                        
-                        $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
                        });
 
                       };
@@ -901,11 +901,12 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
+                         $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
                        
-                        $(".roomList").animate({scrollTop: $(result_id).offset().top-300 }, 2000);
                        });
-
+                       
                       };
+
 
                      })(str_id));
 
@@ -1045,9 +1046,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                              //console.log(result_id);
       
                              $(document).ready(function() {
-
-                              $(".roomList").animate({scrollTop: $(result_id).offset().top }, 2000);
-                             });
+                         $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       
+                       });
       
                             };
       
