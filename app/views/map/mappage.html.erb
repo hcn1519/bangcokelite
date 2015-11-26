@@ -554,7 +554,8 @@
                          labelAnchor: new google.maps.Point(27, 25),
                          
                          labelClass: markerLabel,
-                         icon: d_marker
+                         icon: d_marker,
+                         url: "/hasuk_houses/" +  data_id
                      });
                     marker.setValues({type: "point", id: i});
                     var data_id = data[i].id;
@@ -565,6 +566,10 @@
 
 
 //event 구간
+google.maps.event.addListener(marker, 'click', function() {
+              var markerUrl = this.url;
+              window.open(markerUrl, "_blank");
+          });
 // 말풍선 출력 
                     google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
                           return function() {
@@ -692,7 +697,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                          labelAnchor: new google.maps.Point(27, 25),
                          
                          labelClass: markerLabel,
-                         icon: d_marker
+                         icon: d_marker,
+                         url: "/hasuk_houses/" +  data_id
                      });
                     marker.setValues({type: "point", id: i});
                     var data_id = data[i].id;
@@ -703,6 +709,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
 
 //event 구간
+google.maps.event.addListener(marker, 'click', function() {
+              var markerUrl = this.url;
+              window.open(markerUrl, "_blank");
+          });
 //1.말풍선 출력 
                     google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
                           return function() {
@@ -834,7 +844,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                          labelAnchor: new google.maps.Point(27, 25),
                          
                          labelClass: markerLabel,
-                         icon: d_marker
+                         icon: d_marker,
+                         url: "/hasuk_houses/" +  data_id
                      });
                     marker.setValues({type: "point", id: i});
                     var data_id = data[i].id;
@@ -845,7 +856,13 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
 
 //event 구간
-//1.말풍선 출력 
+
+//클릭하면 상세페이지 오픈
+ google.maps.event.addListener(marker, 'click', function() {
+        var markerUrl = this.url;
+        window.open(markerUrl, "_blank");
+    });
+//말풍선 출력 
                     google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
                           return function() {
                             infoWindow.setContent(contentString);
@@ -854,7 +871,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                            }; // function end
                       })(marker,contentString,infoWindow));
 
-//2.말풍선 지우기
+//말풍선 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
                        return function()  {
                         infoWindow.close();
@@ -908,7 +925,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                     })(str_id));
 
                      
-//4. listbox 색 지우기
+// listbox 색 지우기
                      google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
@@ -972,7 +989,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                          labelAnchor: new google.maps.Point(27, 25),
                          
                          labelClass: markerLabel,
-                         icon: d_marker
+                         icon: d_marker,
+                         url: "/hasuk_houses/" +  data_id
                      });
                       marker.setValues({type: "point", id: i});
                       var data_id = data[i].id;
@@ -983,6 +1001,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
       
       
       //event 구간
+      //클릭하면 상세페이지 오픈
+       google.maps.event.addListener(marker, 'click', function() {
+              var markerUrl = this.url;
+              window.open(markerUrl, "_blank");
+          });
       //1.말풍선 출력 
                           google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
                                 return function() {
