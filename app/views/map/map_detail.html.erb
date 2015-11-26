@@ -623,8 +623,8 @@
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
-                       
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
                        });
                       };
 
@@ -786,8 +786,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
-                       
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
                        });
 
                       };
@@ -953,8 +953,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
-                       
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
                        });
 
                       };
@@ -1118,8 +1118,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                       $(document).ready(function() {
-                         $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
-                       
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
                        });
 
                       };
@@ -1279,8 +1279,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
-                       
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
                        });
 
                       };
@@ -1440,8 +1440,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
-                       
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
                        });
 
                       };
@@ -1601,8 +1601,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
-                       
+                       //  $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
                        });
 
                       };
@@ -1769,8 +1769,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                         $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
-                       
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
                        });
 
                       };
@@ -1933,8 +1933,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                       $(document).ready(function() {
-                         $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
-                       
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
                        });
 
                       };
@@ -2096,8 +2096,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                       $(document).ready(function() {
-                         $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
-                       
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
                        });
 
                       };
@@ -2202,7 +2202,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     padding-bottom: 30px;
   }
     /*사이즈별 화면 조정 */
-   https://detailset-bigwindow-1.c9users.io.
     @media (max-width: 359px) {
     
     .modal-dialog {
@@ -2245,8 +2244,15 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
        padding:0.4em;
         font-size:0.7em;
      }
-     #select-title{
-         
+     .listbox {
+        width:100%;
+        overflow-y:scroll;
+        height:100%;
+    }
+    
+    .roomList{
+       height:100%;
+       overflow:auto;
      }
      #typebox{
          padding:0px;
@@ -2264,10 +2270,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
      .listbox {
         width:100%;
+        overflow-y:scroll;
         background-color: #ededed;
     }
     .roomList{
-       height:550px;
+       height:100%;
        overflow:auto;
      }
      
@@ -2303,7 +2310,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
      #option{
        margin:0px; 
-              padding-top:0;
+       padding-top:0;
        padding-right:0;
        padding-bottom:0; 
        font-size:13px;
@@ -2364,7 +2371,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
       #signbutton {
         padding-left:0px;
       }
-      /*아이폰4 크기 */
       .modal-content#modal-size2{
       }
       
@@ -2380,8 +2386,15 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
        padding:0.4em;
         font-size:0.7em;
      }
-     #select-title{
-         
+      .listbox {
+        width:100%;
+        overflow-y:scroll;
+        height:100%;
+    }
+    
+    .roomList{
+       height:100%;
+       overflow:auto;
      }
      #typebox{
          padding:0px;
@@ -2397,14 +2410,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
       height: 100%;
       margin-top: 0.1em;
     }
-     .listbox {
-        width:100%;
-    }
-    .roomList{
-       height:550px;
-       overflow:auto;
-     }
-     
+    
      #price-size {
         padding:0px;
         margin:0px;
@@ -2489,7 +2495,18 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     	top:5px;
     	left:300px;
       }
+       .listbox {
+        width:100%;
+        overflow-y:scroll;
+        height:100%;
     }
+    
+    .roomList{
+       height:100%;
+       overflow:auto;
+     }
+    }
+   
      @media (min-width: 400px) {
     .modal-dialog {
         margin: 0;
@@ -2524,9 +2541,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      }
      
      
-     #select-title{
-         
-     }
      #typebox{
          padding:0px;
          margin:0px;
@@ -2542,9 +2556,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
      .listbox {
         width:100%;
+        overflow-y:scroll;
+        background-color: #ededed;
     }
     .roomList{
-       height:550px;
+       height:100%
        overflow:auto;
      }
      
@@ -2575,6 +2591,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
        margin:0px; 
        padding:0px; 
        color: #666666;
+       margin-left:5px;
      }
 
 
@@ -2582,6 +2599,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         margin:0px;
         padding:0px;
         padding-left:5px;
+        margin-top:5px;
      }
 
      .image-size {
@@ -2592,6 +2610,18 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
        margin:0px;
        padding:0px;
      }
+      #circle {
+      position:absolute;
+    	width: 60px;
+    	height: 60px;
+    	background: #E74C3C;
+    	opacity:0.8;
+    	-moz-border-radius: 50px;
+    	-webkit-border-radius: 50px;
+    	border-radius: 50px;
+    	top:5px;
+    	left:340px;
+      }
     }
     @media (min-width: 481px) {
     .modal-dialog {
@@ -2625,9 +2655,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
        padding:0.63em;
        font-size:0.7em;
      }
-     #select-title{
-         
-     }
+     
      #typebox{
          padding:0px;
          margin:0px;
@@ -2637,9 +2665,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      
      /*패블릿 스마트폰 */
      
-     #select-title{
-         
-     }
+     
      #typebox{
          padding:0px;
          margin:0px;
@@ -2657,9 +2683,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
      .listbox {
         width:100%;
+        overflow-y:scroll;
+        background-color: #ededed;
     }
     .roomList{
-       height:871px;
+       height:100%;
        overflow:auto;
      }
      
@@ -2726,7 +2754,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     	-webkit-border-radius: 50px;
     	border-radius: 50px;
     	top:10px;
-    	left:300px;
+    	left:350px;
     }
     }
 
@@ -2780,12 +2808,15 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
       height: 46.5%;
       margin-top: 0.1em;
     }
-    .listbox {
+      .listbox {
         width:100%;
+        overflow-y:scroll;
+        height:100%;
+        background-color: #ededed;
     }
-     
-     .roomList{
-       height:468px;
+    
+    .roomList{
+       height:100%;
        overflow:auto;
      }
      #price-size {
@@ -2887,22 +2918,16 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      }
      
      /*832px보다 크고 960px 이하 */
-     #price-size {
-       
-     }
-     #deposit-size {
-       
-     }
-
-     #kind-size{
-       
-     }
-     #option{
-       
-     }
-
-     #distance-size{
-       
+      .listbox {
+        width:97%;
+        overflow-y:scroll;
+        height:100%;
+        background-color: #ededed;
+    }
+    
+    .roomList{
+       height:100%;
+       overflow:auto;
      }
     }
    
@@ -2951,11 +2976,15 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
       height: 100%;
       margin-top: 0.1em;
     }
-     .listbox {
+      .listbox {
         width:97%;
+        overflow-y:scroll;
+        height:100%;
+        background-color: #ededed;
     }
+    
     .roomList{
-       height:666px;
+       height:100%;
        overflow:auto;
      }
      #price-size {
@@ -3049,9 +3078,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
      #slider3{
        margin-top:0px;
      }
-     #select-title{
-         
-     }
+     
      #typebox{
          padding:0px;
          margin:0px;
@@ -3065,13 +3092,15 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
       height: 100%;
       margin-top: 0.1em;
     }
-    
-     .listbox {
+      .listbox {
         width:97%;
+        overflow-y:scroll;
+        height:100%;
+        background-color: #ededed;
     }
     
     .roomList{
-       height:555px;
+       height:100%;
        overflow:auto;
      }
      #small-device{
@@ -3158,7 +3187,17 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     }
     }
     @media (min-width: 1135px){
-     
+       .listbox {
+        width:97%;
+        overflow-y:scroll;
+        height:100%;
+        background-color: #ededed;
+    }
+    
+    .roomList{
+       height:100%;
+       overflow:auto;
+     }
      /*노트북 크기 */
     }
     
