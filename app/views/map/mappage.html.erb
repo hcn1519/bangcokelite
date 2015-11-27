@@ -1001,88 +1001,114 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        markerObj = document.getElementById(hash_id);
       
       
-      //event 구간
-      //클릭하면 상세페이지 오픈
-       google.maps.event.addListener(marker, 'click', function() {
+//event 구간
+google.maps.event.addListener(marker, 'click', function() {
               var markerUrl = this.url;
               window.open(markerUrl, "_blank");
           });
-      //1.말풍선 출력 
-                          google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
-                                return function() {
-                                  infoWindow.setContent(contentString);
-                                  infoWindow.open(map,marker);
-      
-                                 }; // function end
-                            })(marker,contentString,infoWindow));
-      
-      //2.말풍선 지우기
-                           google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
-                             return function()  {
-                              infoWindow.close();
-                              };
-                           })(infoWindow));
-      
-       // listbox로 말풍선 띄우기
-                           google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
-                             return function() {
-                               infoWindow.setContent(contentString);
-                               infoWindow.open(map,marker);
-                             }; // function end
-                           })(marker,contentString,infoWindow));
-      
-       // listbox로 말풍선 띄운 것 지우기
-                            google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
-                              return function() {
-                                infoWindow.close();
-                              }; // function end
-                            })(infoWindow));
-       
-      
-// 마커에 마우스 대면 리스트박스 이동
-                           google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
-                            return function() {
-                               var result_id = "#" + "a" + str_id;
-                             //console.log(result_id);
-      
-                             $(document).ready(function() {
-                         //$(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+// 말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+// 말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+
+ // 마커에 마우스 대면 리스트박스 이동
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        // $(".listbox").animate({ scrollTop: $(".listbox").scrollTop() + $(result_id).position().top },500);
                        $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
                        });
-      
-                            };
-      
-                           })(str_id));
-      
-      // listbox 색 입히기
-                          google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
-                           return function() { 
-                              var result_id = "#" + "a" + str_id;
-                            //console.log(result_id); 
-      
-                            $(document).ready(function() {
-                              $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
-                              
-                            });
-       
-                           };
-      
-                          })(str_id));
-      
-                           
-      //4. listbox 색 지우기
-                           google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
-                            return function() {
-                               var result_id = "#" + "a" + str_id;
-                             //console.log(result_id);
-      
-                             $(document).ready(function() {
-                              $(result_id).css("background-color","transparent");
-                              });
-      
-                            };
-      
-                           })(str_id));
+
+                      };
+
+                     })(str_id));
+
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
+                        
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+                     
+// listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","transparent");
+                        });
+
+                      };
+
+                     })(str_id));
+
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
 
                  marker.setMap(map);
              <% end %>
@@ -1094,6 +1120,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
           for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
           return o;
         }
+     
       } //구글맵 기본 설정 끝
       google.maps.event.addDomListener(window, 'load', initialize);
       
@@ -2163,7 +2190,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     #nameOfhasuk p {
        font-size: 0.6em;
        color:#ECF0F1;
-       padding: 5%;
+       padding: 5px;
        border-radius:5px;
        background: rgb(0, 0, 0);
        background: rgba(0, 0, 0, 0.7);
