@@ -74,10 +74,14 @@
      <div id="naver_id_login">
             
       <%= link_to user_omniauth_authorize_path(:naver), class: 'btn modal_btn', :style=>"border:1px solid #1EC800; margin-top:10px; padding-top:0; padding-bottom:0; color:#999999; background-color:#ffffff;", target:"_blank" do %>
-        <div class="row ">
-          <img src="/images/icons/naver.png" style="display:inline; margin:0; max-width:40px; height:40px;"/>
-          네이버 아이디로 로그인
-          </div>
+        <div class="row">
+            <div style="display:inline-block">
+              <img src="/images/icons/naver.png" style="display:inline; margin:0; max-width:40px; height:40px;"/>
+            </div>
+            <div style="display:inline-block">
+              <span style="vertical-align:middle">네이버 아이디로 로그인</span>
+            </div>
+        </div>
         <!--<div class="row" style="padding:0px">
           <div class="col-md-2 col-sm-2 col-xs-2" style="padding:0px">
             <img src="/images/icons/naverlogshortWhite.png" style="height:40px; margin-left:0px" />
