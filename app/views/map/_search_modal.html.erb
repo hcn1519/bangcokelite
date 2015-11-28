@@ -398,8 +398,8 @@ $(document).ready(function(){
   $.fn.addSliderSegments = function (amount, orientation) {
   return this.each(function () {
     if (orientation == "vertical") {
-      var output = ''
-        , i;
+      var output = '', i;
+
       for (i = 1; i <= amount - 2; i++) {
         output += '<div class="ui-slider-segment" style="top:' + 100 / (amount - 1) * i + '%;"></div>';
       };

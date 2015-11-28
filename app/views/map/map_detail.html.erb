@@ -3654,7 +3654,12 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
             <% @price_from_i = @price_from.to_i %>
             <% @price_to_i = @price_to.to_i %>
             <!--왠지는 모르겠지만 @price_from이 스트링으로 찍힌다. -->
-            
+            <% if c.price_from.nil? %>
+              <% c.price_from = 0 %>
+            <% end %>
+            <% if c.price_to.nil? %>
+              <% c.price_to = 0 %>
+            <% end %>
         <% if @price_from_i <= c.price_from && @price_to_i + 10 > c.price_to %>
         
           <% if @distance.nil? %>

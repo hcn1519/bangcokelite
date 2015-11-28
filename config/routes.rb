@@ -9,6 +9,6 @@ Rails.application.routes.draw do
 
   resources :hasuk_houses
   root to: 'visitors#index'
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :registrations => "users/registrations", :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users
 end
