@@ -4,9 +4,29 @@ class HasukHousesController < ApplicationController
   # GET /hasuk_houses
   # GET /hasuk_houses.json
   
+  def favorite
+    @hasuk_house = HasukHouse.find_by_id(params[:id])
+    
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @hasuk_house
+      #redirect_to :back, notice: 'You favorited #{@hasuk_house.hasuk_name}'
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@hasuk_house)
+      #redirect_to :back, notice: 'Unfavorited #{@hasuk_house.hasuk_name}'
+
+    else
+      # Type missing, nothing happens
+      redirect_to :back, notice: 'Nothing happened.'
+    end
+    
+    @like = current_user.favorites.uniq
+  end
+  
+  
   def index
     @hasuk_houses = current_user.hasuk_houses
-    
   end
 
   # GET /hasuk_houses/1

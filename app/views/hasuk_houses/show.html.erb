@@ -560,6 +560,9 @@ main {
     background-color: #ec7063;
 }
 
+form.button_to {
+  display:inline-block;
+}
 </style>
 
 
@@ -1211,10 +1214,20 @@ main {
     
           <div style="padding:0 9px;">
             <% if user_signed_in? %>
-              <center><button type="button" id="like" class="btn btn-danger2 btn-md" style="border-radius:0;">콕! 찜하기
-              <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#contact" style="border-radius:0;">연락처보기</button></center>
+              <center>
+                
+                <%#= link_to "unfavorite", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), :class => "btn btn-primary btn-md", method: :put %>
+                <% if @hasuk_house.favorited_by != true %>
+                  <%= button_to "콕하기!", favorite_hasuk_house_path(@hasuk_house, type: "favorite"), form: {target: '_blank'}, :id => "like",:class => "btn btn-danger2 btn-md", style:"display:inline-block; border-radius:0;", method: :put %>
+                  <%= button_to "콕한상태!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), form: {target: '_blank'}, :id => "dislike",:class => "btn btn-danger2 btn-md", style:"display:none; border-radius:0;", method: :put %>
+                <% else %>
+                  <%= button_to "콕하기!", favorite_hasuk_house_path(@hasuk_house, type: "favorite"), form: {target: '_blank'}, :id => "like",:class => "btn btn-danger2 btn-md", style:"display:none; border-radius:0;", method: :put %>
+                  <%= button_to "콕한상태!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), form: {target: '_blank'}, :id => "dislike",:class => "btn btn-danger2 btn-md", style:"display:inline-block; border-radius:0;", method: :put %>
+                <% end %>
+                <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#contact" style="border-radius:0;">연락처보기</button>
+              </center>
             <% else %>
-              <center><button type="button" id="like" class="btn btn-danger2 btn-md" style="border-radius:0;">콕! 찜하기</button>
+              <center><button type="button" data-target="#login" data-toggle="modal" class="btn btn-danger2 btn-md" style="border-radius:0;">콕하기</button>
               <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#login" style="border-radius:0;">연락처보기</button></center>
             <% end %>
         </div>
@@ -1223,7 +1236,7 @@ main {
     </div><!--row end-->
     
     <div class="row mob-border">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="title row">구역 정보</div>
          <div class="info-zone col-lg-12 col-md-12 col-sm-12 col-xs-12 " style="margin-bottom: 30px;">
         
@@ -1282,6 +1295,20 @@ main {
 </div>
 
 <script>
+
+$("#like").click(function(){
+  if( $("#like").css("display", "inline-block") == true ) {
+    
+    $("#like").css("display", "none");
+    $("#dislike").css("display", "inline-block");
+    
+  }
+  else {
+    $("#like").css("display", "inline-block");
+    $("#dislike").css("display", "none");
+  }
+});
+
 var $j = jQuery.noConflict();
 
 var realSlider= $j("ul#bxslider").bxSlider({

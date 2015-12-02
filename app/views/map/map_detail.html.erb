@@ -3641,7 +3641,13 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
   
     <div class="listbox col-lg-11 col-md-11 col-sm-12 col-xs-12" style="background-color: #ededed; padding-left:0px; padding-right:0px;">
       <div class="panel panel-default">
-        <div class="panel-heading col-lg-12 col-md-12 col-xs-12 col-sm-12" style="background-color:#34495e; padding:5px; padding-left:10px; font-size:0.8em">검색결과</div>
+        <div class="panel-heading col-lg-12 col-md-12 col-xs-12 col-sm-12" style="background-color:#34495e; padding:7px; padding-left:10px; font-size:0.8em">검색결과
+          <div style="float:right">
+            <button id="sortByDiscount" class="btn btn-success btn-sm">할인이 중요해!</button>
+            <button id="sortByPrice" class="btn btn-success btn-sm">가격이 중요해!</button>
+            <button id="sortByDistance" class="btn btn-success btn-sm">거리가 중요해!</button>
+          </div>
+        </div>
         <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 roomList panel-body" style="padding:0px;">
  
       
@@ -4578,7 +4584,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 
         <% end %><!-- 성별 종류에 걸리는 end -->
             
-        <% end %><!-- 하숙방 종류에 걸리는 end -->             
+        <% end %><!-- 하숙방 ���류에 걸리는 end -->             
           
         <%# end %><!--@univ 걸리는 end -->
           

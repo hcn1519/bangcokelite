@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   has_many :hasuk_houses, dependent: :destroy
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  has_many :favorite_hasuk_houses
+  has_many :favorites, through: :favorite_hasuk_houses, source: :hasuk_house
+  
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
           :omniauthable, :omniauth_providers => [:naver]
