@@ -1,9 +1,9 @@
 <head>
-
-<!--googlemap 넣기-->
+      <!--googlemap 넣기-->
    <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdcrzqmVvJgOpIy23Dlw08MHrQN1C17Sg&libraries=geometry">
     </script>
+
     <!--jquery 넣기-->
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -17,10 +17,12 @@
  
     <script type="text/javascript">
     var map = null; 
-    
-    
+    var marker = null;
+    var infoWindow = null;
+    var markerObj = null;
     //구글맵 기본 설정 시작
       function initialize() {
+        
         //학교별 지도 view 다르게 시작
         if("<%= @univ %>" == "서강"){
           var mapOptions = {
@@ -380,13 +382,12 @@
     <% end %>
   <% end %>
 
-      
       //학교별 마커 띄우기 시작
      
        $.get("/map/from_hasuk", function(data, status){
              for (var i = 0; i < data.length; i++){
 
-           var infoWindow = new google.maps.InfoWindow();
+           infoWindow = new google.maps.InfoWindow();
            
            if (data[i].univ_distance1 == "서강") {
               var university = '<span style="color:#b20000">'+"서강대"+'</span>';
@@ -543,7 +544,7 @@
              labelKind = shuffle(labelKind);
              var markerLabel = labelKind[0];
                    
-                    var marker = new MarkerWithLabel({  
+                    marker = new MarkerWithLabel({  
                          position: latlng,
                          map: map,
                          <% if 'data[i].price_from' != 'data[i].price_to' %>
@@ -566,12 +567,12 @@
 
 
 //event 구간
-google.maps.event.addListener(marker, 'click', function() {
+var listener1 = google.maps.event.addListener(marker, 'click', function() {
               var markerUrl = this.url;
               window.open(markerUrl, "_blank");
           });
 // 말풍선 출력 
-                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+var listener2 = google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
                           return function() {
                             infoWindow.setContent(contentString);
                             infoWindow.open(map,marker);
@@ -580,14 +581,14 @@ google.maps.event.addListener(marker, 'click', function() {
                       })(marker,contentString,infoWindow));
 
 // 말풍선 지우기
-                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+var listener3 =  google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
                        return function()  {
                         infoWindow.close();
                         };
                      })(infoWindow));
 
  // listbox로 말풍선 띄우기
-                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+var listener4 = google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
                        return function() {
                          infoWindow.setContent(contentString);
                          infoWindow.open(map,marker);
@@ -595,7 +596,7 @@ google.maps.event.addListener(marker, 'click', function() {
                      })(marker,contentString,infoWindow));
 
  // listbox로 말풍선 띄운 것 지우기
-                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+var listener5 = google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
                         return function() {
                           infoWindow.close();
                         }; // function end
@@ -603,7 +604,7 @@ google.maps.event.addListener(marker, 'click', function() {
  
 
  // 마커에 마우스 대면 리스트박스 이동
-                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+ var listener6 = google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
                        //console.log(result_id);
@@ -619,7 +620,7 @@ google.maps.event.addListener(marker, 'click', function() {
 
 
 // listbox 색 입히기
-                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+  var listener7 = google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                      return function() { 
                         var result_id = "#" + "a" + str_id;
                       //console.log(result_id); 
@@ -635,7 +636,7 @@ google.maps.event.addListener(marker, 'click', function() {
 
                      
 // listbox 색 지우기
-                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+  var listener8 = google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
                        //console.log(result_id);
@@ -648,7 +649,7 @@ google.maps.event.addListener(marker, 'click', function() {
 
                      })(str_id));
 
-google.maps.event.addListener(infoWindow, 'domready', function() {
+var listener9 = google.maps.event.addListener(infoWindow, 'domready', function() {
 
     // Reference to the DIV that wraps the bottom of infowindow
     var iwOuter = $('.gm-style-iw');
@@ -674,7 +675,13 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
    iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
   });
 
-                 marker.setMap(map);
+/* google.maps.event.addListenerOnce(map, 'idle', function() {
+   google.maps.event.trigger(map, 'resize');
+});*/  
+   
+//google.maps.event.addDomListener(document.getElementById('sortByPrice'), 'click', initialize);
+  marker.setMap(map);
+  
                 } //division 괄호
              //univ 서강 걸리는 괄호
           
@@ -1116,12 +1123,13 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
            }//for loop
              
          }); //학교별 마커 띄우기 끝
- function shuffle(o){
-          for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-          return o;
-        }
-     
-      } //구글맵 기본 설정 끝
+   function shuffle(o){
+      for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+      return o;
+    }
+ 
+  } //구글맵 기본 설정 끝
+  
       google.maps.event.addDomListener(window, 'load', initialize);
       
       
@@ -2439,7 +2447,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         <div class="panel-heading col-lg-12 col-md-12 col-xs-12 col-sm-12" style="background-color:#34495e; padding:7px; padding-left:10px; font-size:0.8em">
           검색결과
           <div style="float:right">
-            <button id="sortByDiscount" class="btn btn-success btn-sm">할인이 중요해!</button>
             <button id="sortByPrice" class="btn btn-success btn-sm">가격이 중요해!</button>
             <button id="sortByDistance" class="btn btn-success btn-sm">거리가 중요해!</button>
           </div>
@@ -2478,6 +2485,17 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                               <span id="sale_price" style="font-size:23px; margin-left:14px"><%= @sale_price.round %></span>
                               <span style="font-size:13px">만</span>
                             <% end %>
+                          </div>
+                        </div>
+                      <% else %>
+                        <div id="circle" style="display:none">
+                          <div id="sale">
+                            <div class="row" style="margin:0px; padding:0px;margin-top: 5px;margin-left: 6px;">
+                              <span style="font-size:13px">첫 달<img style="width:20px; margin:0px; float:right; margin-left: 3px;margin-top: 3px;" src="/images//icons/discount1.png"/></span>
+                            </div>  
+                            <span id="sale_price" style="font-size:23px; margin-left:14px"></span>
+                            <span style="font-size:13px">만</span>
+                            
                           </div>
                         </div>
                       <% end %>
@@ -3196,44 +3214,19 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
 
 <script>
-$("#sortByDiscount").click(function(){
-  <% @sortingArr = @sortingArr.sort { |p1, p2| [p1.price_from, p1.price_to, p2.discount_price, p1.distance1] <=> [p2.price_from, p2.price_to, p1.discount_price] } %>
-
-   $(document).bind("ajaxStart.firstCall", function() {
-    
-    $(".roomList").css("-webkit-filter", "opacity(.2)");
-    $('#loadingImage').animate({opacity: "show"});
-     
-   });
-  
-  $(document).bind("ajaxStop.firstCall", function() {
-      $('#loadingImage').hide();
-      $(".roomList").css("-webkit-filter", "none");
-  });
-  
-  $.ajax({
-    url: "/map/mappage",
-    type: 'GET',
-    data: {univ: "<%= @univ %>"},
-    success: function(data){
-    }
-  });  
-  
-});//할인click 끝
-
 
 $("#sortByPrice").click(function(){
   <% @sortingArr = @sortingArr.sort { |p1, p2| [p1.price_from, p1.price_to, p2.discount_price, p1.distance1 ] <=> [p2.price_from, p2.price_to, p1.discount_price, p2.distance1 ] } %>
 
   $(document).bind("ajaxStart.firstCall", function() {
-    $(".roomList").css("-webkit-filter", "sepia(50%)");
+    $(".roomList").css("-webkit-filter", "grayscale(50%)");
     $('#loadingImage').animate({opacity: "show"});
   });
   $(document).bind("ajaxStop.firstCall", function() {
     $('#loadingImage').hide();
     $(".roomList").css("-webkit-filter", "none");
   });
-  
+
   $.ajax({
     url: "/map/mappage",
     type: 'GET',
@@ -3241,6 +3234,7 @@ $("#sortByPrice").click(function(){
     context: '.room',
     success: function(data){
       <% counter = 0 %>
+      
       
       <% @sortingArr.each do |i| %>
         //id 셋팅 라인
@@ -3256,6 +3250,186 @@ $("#sortByPrice").click(function(){
           $("#a<%= i.id %> #circle").css('display', "none");
         <% else %>
           <% @sale_change_price = i.discount_price/10000.0 %>
+          $("#a<%= i.id %> #circle").css('display', "block");
+           if ( <%= @sale_change_price %> % 1 != 0 ) {
+            $("#a<%= i.id %> #sale_price").text("<%= number_with_precision(@sale_change_price, precision: 1) %>");
+            $("#a<%= i.id %> #sale_price").css("margin-left", "5px");
+           } else {
+            $("#a<%= i.id %> #sale_price").text("<%= @sale_change_price.round %>");
+            $("#a<%= i.id %> #sale_price").css("margin-left", "14px");
+          }
+        <% end %>
+        
+        $("#a<%= i.id %> .image-size").attr("src", "<%= i.room_img1 %>");
+        //이미지 라인 끝
+        
+        //정보 첫 번째 줄
+        $("#a<%= i.id %> #price-size h4").text("<%= i.price_from %>~<%= i.price_to %>");
+        
+        <% if i.small_deposit == nil && i.big_deposit == nil %>
+          $("#a<%= i.id %> deposit-size p").text("(DB 없음)");
+        <% else %>
+        
+          <% if i.small_deposit == 0 %>
+            <% if i.big_deposit == 0 %>
+              $("#a<%= i.id %> deposit-size p").text("(예치금 없음)");
+            <% else %>
+              $("#a<%= i.id %> deposit-size p").text("(보증금 <%= i.big_deposit %>)");
+            <% end %>
+          <% else %>
+             $("#a<%= i.id %> deposit-size p").text("(예치금 <%= i.small_deposit %>)");
+          <% end %>
+        <% end %>
+        
+        <% if i.hasuk_kind == "일반하숙" %>
+            $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color1">일반하숙</span>');
+        <% elsif i.hasuk_kind == "잠만 자는 방" %>
+          $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color2">잠만자는</span>');
+        <% elsif i.hasuk_kind == "원룸형" %>
+          $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color3">원룸형</span>');
+        <% elsif i.hasuk_kind == "고시원형" %>
+          $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color4">고시원형</span>');
+        <% else %>
+            $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color4">형태없음</span>');
+        <% end %>
+        //정보 첫 번째 줄 끝
+        
+        //정보 두 번째 줄
+        
+        <% if i.univ_distance1 != "학교선택" %>
+          
+          <% if i.univ_distance1 == "이화" %>
+            var univ = '<span style="color:#0c6f40"><%= i.univ_distance1 %>여대</span>'+ '&nbsp;' + '<span><%= i.ewha_gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';
+          <% elsif i.univ_distance1 =="서강" %>
+            var univ = '<span style="color:#b20000"><%= i.univ_distance1 %>대</span>'+ '&nbsp;' + '<span><%= i.sogang_gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';  
+           <% elsif i.univ_distance1 =="연세" %>
+            var univ = '<span style="color:#202d61"><%= i.univ_distance1 %>대</span>'+ '&nbsp;' + '<span><%= i.yonsei_gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';  
+           <% else %>
+            var univ = '<span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-md hidden-xs hidden-lg">';
+           <% end %> 
+        <% end %>
+        
+        <% if i.transportation_kind == "지하철" %>
+            <% if i.transportation_subway == "대흥" %>
+                var transport = '&nbsp;' +'<span class="sub_circle line_number_6">6</span>'+ '&nbsp;' + '<span id="subway" style="color:#9a4510"><%= i.transportation_subway %>역</span>';
+            <% elsif i.transportation_subway == "신촌" || i.transportation_subway == "이대" %>
+                var transport = '&nbsp;' +'<span class="sub_circle line_number_2">2</span>'+ '&nbsp;' + '<span id="subway" style="color:#009044"><%= i.transportation_subway %>역</span>';
+            <% elsif i.transportation_subway == "서강대" %>
+                var transport = '&nbsp;' +'<div class="line_number_kj">경의</div>'+ '&nbsp;' + '<span id="subway" style="color:#41b9b9"><%= i.transportation_subway %>역</span>';
+            <% elsif i.transportation_subway == "신촌기차" %>
+                var transport = '&nbsp;' +'<div class="line_number_kj">경의</div>'+ '&nbsp;' + '<span id="subway" style="color:#0063b1"><%= i.transportation_subway %>역</span>';
+            <% end %>
+            var transport_distance = '&nbsp;' +'<span><%= i.transportation_distance %>m(<%= i.transportation_distance_time %>분)</span>';
+        <% elsif i.transportation_kind == "버스" %>
+            var transport = '&nbsp;' +'<div class="line_number_bus">버스</div>'+ '&nbsp;' + '<span id="bus" style="color:#0063b1"><%= i.transportation_bus %></span>';
+            var transport_distance = '&nbsp;' +'<span><%= i.transportation_distance %>m</span>';
+        
+        <% else %>
+        
+          var transport = '&nbsp;' +'<span id="subway"> <span class="hidden-sm hidden-md">&nbsp|&nbsp</span> 신촌기차역 1103m(21분)</span>';
+          var transport_distance = "";
+        <% end %>
+        var result_distance = univ + transport + transport_distance ;
+        $("#a<%= i.id %> #distance-size").html(result_distance);
+        //정보 두 번째 줄 끝
+        
+        //정보 세 번째 줄
+        
+        <% if i.meal4 == "제공 안함" %>
+          var meal_result = '<span># 식사제공 안함</span>';
+          
+        <% elsif i.meal1 == nil && i.meal2 == nil && i.meal3 == nil && i.meal4 == nil %>
+          var meal_result = '<span># 식사 DB 없음</span>';
+        <% else %>
+
+            <% unless i.meal1.nil? %>
+                var meal1 = '<span><%= i.meal1 %>,</span>';
+            <% else %>
+              var meal1 ="";
+            <% end %>
+            <% unless i.meal2.nil? %>
+                var meal2 = '<span><%= i.meal2 %>,</span>';
+            <% else %>
+              var meal2 ="";
+            <% end %>
+            <% unless i.meal3.nil? %>
+                var meal3 = '<span><%= i.meal3 %></span>';
+            <% else %>
+              var meal3 ="";
+            <% end %>
+            var meal_result = '<span>#</span>' + meal1 + meal2 + meal3;
+        <% end %>
+        
+        
+        
+        <% if i.gender=="여성전용" %>
+          genderOf = '<span>&nbsp#여성전용</span>';
+        <% elsif i.gender =="남녀공용" %>
+          genderOf = '<span>&nbsp#남녀공용</span>';
+        <% elsif i.gender == "남녀층 분리" %>
+          genderOf = '<span>&nbsp#남녀층 분리</span>';
+        <% elsif i.gender == "남성전용" %>
+          genderOf = '<span>&nbsp#남성전용</span>';
+        <% else %>
+          genderOf = '<span>&nbsp#DB없음</span>';
+        <% end %>
+        var gender_result = genderOf;
+        
+        var meal_gender = meal_result + gender_result;
+        $("#a<%= i.id %> #option").html(meal_gender);
+        
+        //정보 세 번째 줄 끝
+        <% counter += 1 %>
+      <% end %>
+      //google.maps.event.clearInstanceListeners(markerObj);
+
+      //initialize();
+      
+    }
+    
+  });  
+  
+});//가격click 끝
+//$('#sortByPrice').on('click',initialize);
+//google.maps.event.addDomListener(document.getElementById('sortByPrice'), 'click', initialize);
+
+
+
+$("#sortByDistance").click(function(){
+  <% @sortingArr = @sortingArr.sort { |p1, p2| [p1.distance1, p2.discount_price, p1.price_from, p1.price_to] <=> [p2.distance1, p1.discount_price, p2.price_from, p2.price_to] } %>
+
+   $(document).bind("ajaxStart.firstCall", function() {
+    $(".roomList").css("-webkit-filter", "grayscale(50%)");
+    $('#loadingImage').animate({opacity: "show"});
+   });
+  $(document).bind("ajaxStop.firstCall", function() {
+      $('#loadingImage').hide();
+      $(".roomList").css("-webkit-filter", "none");
+  });
+  
+  $.ajax({
+    url: "/map/mappage",
+    type: 'GET',
+    data: {univ: "<%= @univ %>"},
+    success: function(data){
+      <% counter = 0 %>
+      
+      
+      <% @sortingArr.each do |i| %>
+        //id 셋팅 라인
+        $(".position<%= counter %>").attr("id", "a<%= i.id %>");
+        $(".position<%= counter %>").attr("href", "/hasuk_houses/<%= i.id %>");
+        $(".position<%= counter %> > a").attr("href", "/hasuk_houses/<%= i.id %>");
+        //id 셋팅 라인
+        
+        //이미지 라인
+        $("#a<%= i.id %> #nameOfhasuk > p").text('<%= i.hasuk_name %>');
+        
+        <% if i.discount_price.nil? || i.discount_price == 0 %>
+          $("#a<%= i.id %> #circle").css('display', "none");
+        <% else %>
+          <% @sale_change_price = i.discount_price/10000.0 %>
+           $("#a<%= i.id %> #circle").css('display', "block");
            if ( <%= @sale_change_price %> % 1 != 0 ) {
             $("#a<%= i.id %> #sale_price").text("<%= number_with_precision(@sale_change_price, precision: 1) %>");
             $("#a<%= i.id %> #sale_price").css("margin-left", "5px");
@@ -3390,31 +3564,6 @@ $("#sortByPrice").click(function(){
     }
   });  
   
-});//가격click 끝
-
-$("#sortByDistance").click(function(){
-  <% @sortingArr = @sortingArr.sort { |p1, p2| [p1.price_from, p1.price_to, p2.discount_price] <=> [p2.price_from, p2.price_to, p1.discount_price] } %>
-
-   $(document).bind("ajaxStart.firstCall", function() {
-    
-    $(".roomList").css("-webkit-filter", "grayscale(50%)");
-    $('#loadingImage').animate({opacity: "show"});
-     
-   });
-  
-  $(document).bind("ajaxStop.firstCall", function() {
-      $('#loadingImage').hide();
-      $(".roomList").css("-webkit-filter", "none");
-  });
-  
-  $.ajax({
-    url: "/map/mappage",
-    type: 'GET',
-    data: {univ: "<%= @univ %>"},
-    success: function(data){
-    }
-  });  
-  
 });//거리click 끝
 
     $('#login').on('show.bs.modal', function () {
@@ -3497,7 +3646,7 @@ $("#sortByDistance").click(function(){
       $(".room").mouseout(function() {
         $(this).css("background-color", "transparent");
       }); 
+      
 </script>
-  
 
 </body>
