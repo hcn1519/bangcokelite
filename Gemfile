@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'omniauth-facebook'
+gem 'omniauth-kakao'
 gem 'omniauth-naver'
 gem 'bxslider-rails'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'

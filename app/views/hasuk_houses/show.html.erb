@@ -1218,11 +1218,11 @@ form.button_to {
                 
                 <%#= link_to "unfavorite", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), :class => "btn btn-primary btn-md", method: :put %>
                 <% if @hasuk_house.favorited_by != true %>
-                  <%= button_to "콕하기!", favorite_hasuk_house_path(@hasuk_house, type: "favorite"), form: {target: '_blank'}, :id => "like",:class => "btn btn-danger2 btn-md", style:"display:inline-block; border-radius:0;", method: :put %>
-                  <%= button_to "콕한상태!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), form: {target: '_blank'}, :id => "dislike",:class => "btn btn-danger2 btn-md", style:"display:none; border-radius:0;", method: :put %>
+                  <%= button_to "콕하기!", favorite_hasuk_house_path(@hasuk_house, type: "favorite"), form: {target: '_blank'}, :id => "toLike",:class => "btn btn-danger2 btn-md", style:"display:inline-block; border-radius:0;", method: :put %>
+                  <%= button_to "콕한상태!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), form: {target: '_blank'}, :id => "toDislike",:class => "btn btn-danger2 btn-md", style:"display:none; border-radius:0;", method: :put %>
                 <% else %>
-                  <%= button_to "콕하기!", favorite_hasuk_house_path(@hasuk_house, type: "favorite"), form: {target: '_blank'}, :id => "like",:class => "btn btn-danger2 btn-md", style:"display:none; border-radius:0;", method: :put %>
-                  <%= button_to "콕한상태!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), form: {target: '_blank'}, :id => "dislike",:class => "btn btn-danger2 btn-md", style:"display:inline-block; border-radius:0;", method: :put %>
+                  <%= button_to "콕하기!", favorite_hasuk_house_path(@hasuk_house, type: "favorite"), form: {target: '_blank'}, :id => "toLike",:class => "btn btn-danger2 btn-md", style:"display:none; border-radius:0;", method: :put %>
+                  <%= button_to "콕한상태!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), form: {target: '_blank'}, :id => "toDislike",:class => "btn btn-danger2 btn-md", style:"display:inline-block; border-radius:0;", method: :put %>
                 <% end %>
                 <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#contact" style="border-radius:0;">연락처보기</button>
               </center>
@@ -1295,20 +1295,32 @@ form.button_to {
 </div>
 
 <script>
-
-$("#like").click(function(){
-  if( $("#like").css("display", "inline-block") == true ) {
+/*
+$("#toLike").click(function(){
+  if( $("#toLike").css("display", "inline-block") == true ) {
     
-    $("#like").css("display", "none");
-    $("#dislike").css("display", "inline-block");
+    $("#toLike").css("display", "none");
+    $("#toDislike").css("display", "inline-block");
     
   }
   else {
-    $("#like").css("display", "inline-block");
-    $("#dislike").css("display", "none");
+    $("#toLike").css("display", "inline-block");
+    $("#toDislike").css("display", "none");
   }
 });
-
+$("#toDislike").click(function(){
+  if( $("#toDislike").css("display", "inline-block") != true ) {
+    
+    $("#toLike").css("display", "none");
+    $("#toDislike").css("display", "inline-block");
+    
+  }
+  else {
+    $("#toLike").css("display", "inline-block");
+    $("#toDislike").css("display", "none");
+  }
+});
+*/
 var $j = jQuery.noConflict();
 
 var realSlider= $j("ul#bxslider").bxSlider({
@@ -1395,9 +1407,7 @@ $(document).ready(function(){
     $("#pictab2").removeClass("active");
   });
   
-  $("#like").click(function(){
-    alert("준비중입니다");
-  });
+  
 });
 </script>
 

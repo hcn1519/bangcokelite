@@ -20,6 +20,7 @@
     var marker = null;
     var infoWindow = null;
     var markerObj = null;
+    
     //구글맵 기본 설정 시작
       function initialize() {
         
@@ -2393,10 +2394,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
       height:50px;
       opacity:1;
     }
-    .filter-me {
-      filter: <filter-function> [<filter-function>]* | none
-    }
-    
+   
     .btn-sm {
       padding: 7px 13px;
       margin-right: 5px;
@@ -3381,9 +3379,10 @@ $("#sortByPrice").click(function(){
         //정보 세 번째 줄 끝
         <% counter += 1 %>
       <% end %>
-      //google.maps.event.clearInstanceListeners(markerObj);
+      
+      google.maps.event.clearInstanceListeners(markerObj);
 
-      //initialize();
+      initialize();
       
     }
     

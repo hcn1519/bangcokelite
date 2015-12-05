@@ -54,7 +54,12 @@
     <li><%= link_to "하숙집 등록", "/hasuk_houses/new", 'data-no-turbolink' => true, :class => 'btn btn-small' %></li>
     <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small' %></li>
     <li><%= link_to "#popup","data-toggle" => "popover", "data-trigger" =>"click", "data-placement" =>"bottom",  "data-container" => "body", :class => 'btn btn-small myaccount' do %>
-     <%= current_user.name %>님<span style="top:3px" class="fui-triangle-down-small"></span>
+     <% if current_user.name.include? '@' %>
+         <%= current_user.name.downcase.split("@").first %>님
+     <% else %>
+         <%= current_user.name %>님
+     <% end %>
+     <span style="top:3px" class="fui-triangle-down-small"></span>
     <% end %>
     </li>
         
@@ -66,17 +71,23 @@
             <span class="fui-user" style="font-size:2em"></span>
           </div>
           <div class="col-md-9 col-sm-9 col-xs-9" style="padding-left:0px; padding-right: 5px;">
-            <div class="col-md-6" style="padding:0; padding-top:2px">
-                <span><%= current_user.name %>님</span>
+            <div class="col-md-8 col-sm-8 col-xs-8" style="padding:0; padding-top:2px">
+              <span>
+                  <% if current_user.name.include? '@' %>
+                    <%= current_user.name.downcase.split("@").first %>님
+                  <% else %>
+                    <%= current_user.name %>님
+                  <% end %>
+              </span>
             </div>
-            <div class="col-md-6" style="padding:0;">
+            <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
             <%= link_to '로그아웃', destroy_user_session_path, :method=>'delete', :class => 'btn btn-small', :id => "log-out", style:"font-size: 12px; padding: 5px;" %>
             </div>
             <span style="font-size:12px"><%= current_user.email %></span>
           </div>
     </div>
     <div class="row" style="padding:15px">
-        <%= link_to "찜 목록", "#", :class => 'btn btn-danger', :id =>"out", style:"width:100%", "data-dismiss" => "popover" %>
+        <%= link_to "콕 목록", "#", :class => 'btn btn-danger', :id =>"out", style:"width:100%", "data-dismiss" => "popover" %>
     </div>
     <div class="row" style="padding:15px; padding-top:0px">
         <%= link_to "정보수정", "#edit", "data-toggle" => "modal", :class => 'btn btn-info', :id =>"edit-account", style:"width:100%", "data-dismiss" => "popover" %>
@@ -106,7 +117,12 @@
         <li><%= link_to "하숙집 등록", "/hasuk_houses/new", 'data-no-turbolink' => true, :class => 'btn btn-small', :id => "close" %></li>
         
         <li><%= link_to "#popup","data-toggle" => "popover", "data-trigger" =>"click", "data-placement" =>"bottom",  "data-container" => "body", :class => 'btn btn-small myaccount' do %>
-             <%= current_user.name %>님<span style="top:3px" class="fui-triangle-down-small"></span>
+             <% if current_user.name.include? '@' %>
+                 <%= current_user.name.downcase.split("@").first %>님
+             <% else %>
+                 <%= current_user.name %>님
+             <% end %>
+             <span style="top:3px" class="fui-triangle-down-small"></span>
             <% end %>
         </li>
         
@@ -118,17 +134,23 @@
             <span class="fui-user" style="font-size:2em"></span>
           </div>
           <div class="col-md-9 col-sm-9 col-xs-9" style="padding-left:0px; padding-right: 5px;">
-            <div class="col-md-6" style="padding:0; padding-top:2px">
-                <span><%= current_user.name %>님</span>
+            <div class="col-md-8 col-sm-8 col-xs-8" style="padding:0; padding-top:2px">
+                <span>
+                <% if current_user.name.include? '@' %>
+                     <%= current_user.name.downcase.split("@").first %>님
+                 <% else %>
+                     <%= current_user.name %>님
+                 <% end %>
+                </span>
             </div>
-            <div class="col-md-6" style="padding:0;">
+            <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
             <%= link_to '로그아웃', destroy_user_session_path, :method=>'delete', :class => 'btn btn-small', :id => "log-out", style:"font-size: 12px; padding: 5px;" %>
             </div>
             <span style="font-size:12px"><%= current_user.email %></span>
           </div>
     </div>
     <div class="row" style="padding:15px">
-        <%= link_to "찜 목록", "#", :class => 'btn btn-danger', :id =>"out", style:"width:100%", "data-dismiss" => "popover" %>
+        <%= link_to "콕 목록", "#", :class => 'btn btn-danger', :id =>"out", style:"width:100%", "data-dismiss" => "popover" %>
     </div>
     <div class="row" style="padding:15px; padding-top:0px">
         <%= link_to "정보수정", "#edit", "data-toggle" => "modal", :class => 'btn btn-info', :id =>"edit-account", style:"width:100%", "data-dismiss" => "popover" %>
@@ -157,7 +179,13 @@
         <li><%= link_to "하숙집 등록", "/hasuk_houses/new", 'data-no-turbolink' => true, :class => 'btn btn-small', :id => "close" %></li>
         <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small', :id => "close" %></li>
         <li><%= link_to "#popup","data-toggle" => "popover", "data-trigger" =>"click", "data-placement" =>"bottom",  "data-container" => "body", :class => 'btn btn-small myaccount' do %>
-         <%= current_user.name %>님<span style="top:3px" class="fui-triangle-down-small"></span>
+         <% if current_user.name.include? '@' %>
+             <%= current_user.name.downcase.split("@").first %>님
+         <% else %>
+             <%= current_user.name %>님
+         <% end %>
+         
+         <span style="top:3px" class="fui-triangle-down-small"></span>
         <% end %>
         </li>
             
@@ -169,17 +197,23 @@
                 <span class="fui-user" style="font-size:2em"></span>
               </div>
               <div class="col-md-9 col-sm-9 col-xs-9" style="padding-left:0px; padding-right: 5px;">
-                <div class="col-md-6" style="padding:0; padding-top:2px">
-                    <span><%= current_user.name %>님</span>
+                <div class="col-md-8 col-sm-8 col-xs-8" style="padding:0; padding-top:2px">
+                    <span>
+                        <% if current_user.name.include? '@' %>
+                          <%= current_user.name.downcase.split("@").first %>님
+                        <% else %>
+                          <%= current_user.name %>님
+                        <% end %>
+                        </span>
                 </div>
-                <div class="col-md-6" style="padding:0;">
+                <div class="col-md-4 col-sm-4 col-xs-4" style="padding:0;">
                 <%= link_to '로그아웃', destroy_user_session_path, :method=>'delete', :class => 'btn btn-small', :id => "log-out", style:"font-size: 12px; padding: 5px;" %>
                 </div>
                 <span style="font-size:12px"><%= current_user.email %></span>
               </div>
         </div>
         <div class="row" style="padding:15px">
-            <%= link_to "찜 목록", "#", :class => 'btn btn-danger', :id =>"out", style:"width:100%", "data-dismiss" => "popover" %>
+            <%= link_to "콕 목록", "#", :class => 'btn btn-danger', :id =>"out", style:"width:100%", "data-dismiss" => "popover" %>
         </div>
         <div class="row" style="padding:15px; padding-top:0px">
             <%= link_to "정보수정", "#edit", "data-toggle" => "modal", :class => 'btn btn-info', :id =>"edit-account", style:"width:100%", "data-dismiss" => "popover" %>

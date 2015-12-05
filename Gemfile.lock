@@ -162,6 +162,11 @@ GEM
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
+    omniauth-facebook (3.0.0)
+      omniauth-oauth2 (~> 1.2)
+    omniauth-kakao (0.1.2)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.1)
     omniauth-naver (0.0.1)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
@@ -282,6 +287,8 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  omniauth-facebook
+  omniauth-kakao
   omniauth-naver
   quiet_assets
   rails (= 4.2.4)

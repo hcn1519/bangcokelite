@@ -17,14 +17,11 @@ class HasukHousesController < ApplicationController
       #redirect_to :back, notice: 'Unfavorited #{@hasuk_house.hasuk_name}'
 
     else
-      # Type missing, nothing happens
       redirect_to :back, notice: 'Nothing happened.'
     end
-    
     @like = current_user.favorites.uniq
   end
-  
-  
+
   def index
     @hasuk_houses = current_user.hasuk_houses
   end
