@@ -9,7 +9,8 @@ Devise.setup do |config|
   config.omniauth :facebook, "148421845518292", "f82ae1bc1a51ed6d1e0933ce33410c7d", scope: 'email', info_fields: 'email'
   # require 'omniauth-kakao'
   # config.omniauth :kakao, "7e1b61622052754db6342ebb0fdd747b", callback_url: "http://detailset-bigwindow-1.c9users.io"
-  
+  config.authentication_keys = [ :login ]
+  config.scoped_views = true
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
