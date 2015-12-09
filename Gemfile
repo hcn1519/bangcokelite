@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'figaro'
 gem 'therubyracer', platform: :ruby
 gem 'passenger'
 gem 'omniauth-facebook'

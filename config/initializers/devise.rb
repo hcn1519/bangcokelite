@@ -1,7 +1,8 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  
+  config.secret_key = '6ca64c1690366a92467ffba667f032db549df44e754cbf7c1ece63ea5b26c7ca57d08594c9c83b5bb2ef73d10a161b4149dc07c33ef986e4165fb0631ed3d6c0'
+
   #require 'omniauth-naver'
   #config.omniauth :naver, "h0XQnsapkYhcystpREai", "aTpgjJy_hr", callback_url: "http://detailset-bigwindow-1.c9users.io"
   
@@ -25,7 +26,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'no-reply@' + Rails.application.secrets.domain_name
+  #config.mailer_sender = 'no-reply@' + Rails.application.secrets.domain_name
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
