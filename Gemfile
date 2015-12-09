@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'therubyracer', platform: :ruby
+gem 'passenger'
 gem 'omniauth-facebook'
 gem 'omniauth-kakao'
 gem 'omniauth-naver'
