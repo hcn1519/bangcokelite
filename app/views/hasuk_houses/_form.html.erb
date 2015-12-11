@@ -392,6 +392,13 @@
       background-color:#D35400;
       border:1px solid #D35400;
     }
+    
+.radio {
+  cursor:pointer;
+  display:inline-block;
+  margin-right:10px;
+  padding-left: 25px;
+}    
 </style>
 
 
@@ -461,8 +468,6 @@
         </td>
       </tr>
       <!--연락처 구간 끝-->
-      
-      
       <!--종류-->
       <tr>
         <td id="column">
@@ -479,12 +484,6 @@
               <div style="font-size:0.9em">
                 <span style="font-weight:bold; font-size:1em">잠만 자는 하숙</span> - 식사가 제공되지 않고 잠만 잘 수 있는 하숙이다.<br>
               </div>
-              <div style="font-size:0.9em">
-                <span style="font-weight:bold; font-size:1em">원룸형 하숙</span> - 화장실을 방마다 두고, 취사시설이 없어 자취는 아니며 식사가 따로 제공된다.<br>
-              </div>
-              <div style="font-size:0.9em">
-                <span style="font-weight:bold; font-size:1em">고시원형 하숙</span> - 건물의 형태와 방의 넓이, 옵션은 고시원과 크게 다를 바 없으며, 화장실과 샤워실도 공용으로 사용한다. 다만 일반적인 고시원과 달리 식사가 제공된다.<br>
-              </div>  
               <div style="float:right; margin-bottom:5px">
                 <span style="font-size:0.5em; color:#BDC3C7">출처 - 나무위키</span>
               </div>
@@ -494,106 +493,34 @@
         </td>
         
         <td colspan="3" style="padding-left:15px;">
-          <label style="margin-right:10px;"><%= radio_button("hasuk_house","hasuk_kind", '일반하숙') %>
+          <label class="radio"><%= radio_button("hasuk_house","hasuk_kind", '일반하숙') %>
             <span>일반하숙</span>
           </label>
-          <label style="margin-right:10px;"><%= radio_button("hasuk_house","hasuk_kind", '잠만 자는 방') %>
+          <label class="radio"><%= radio_button("hasuk_house","hasuk_kind", '잠만 자는 방') %>
             <span>잠만 자는 방</span>
-          </label>  
-          <label style="margin-right:10px;"><%= radio_button("hasuk_house","hasuk_kind", '원룸형') %>
-            <span>원룸형</span>
-          </label>  
-          <label><%= radio_button("hasuk_house","hasuk_kind", '고시원형') %>
-            <span>고시원형</span>
           </label>  
         </td>
       </tr>
       <!--종류 끝-->
       
+      
       <!--성별-->
       <tr>
         <td id="column"><center>성별</center></td>
         <td colspan="3" id="checktd">
-        <label style="margin-right:10px;"><%= radio_button("hasuk_house","gender", '남녀공용') %>
+
+          <label class="radio" style="cursor:pointer; display:inline-block; margin-right:10px; padding-left: 25px;"><%= radio_button("hasuk_house","gender", '남녀공용') %>
             <span>남녀공용</span>
           </label>
-          <label style="margin-right:10px;"><%= radio_button("hasuk_house","gender", '남녀층 분리') %>
-            <span>남녀층 분리</span>
-          </label>  
-          <label style="margin-right:10px;"><%= radio_button("hasuk_house","gender", '여성전용') %>
+
+          <label class="radio" style="cursor:pointer; display:inline-block; margin-right:10px; padding-left: 25px;"><%= radio_button("hasuk_house","gender", '여성전용') %>
             <span>여성전용</span>
-          </label>  
-          <label><%= radio_button("hasuk_house","gender", '남성전용') %>
-            <span>남성전용</span>
           </label>
         </td>
+        
       </tr>
       <!--성별 끝-->    
- 
-
-      <tr>
-        <td id="column"><center><%= f.label :size_to, "방크기" %></center></td>
-        <td>
-          <div class="col-md-12 col-xs-12 col-sm-12 form-inline" style="padding-right:0px">
-            <div class="col-md-4 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
-              <%= f.number_field :size_from, class: "form-control", style:"float: left; padding:5px; max-width:50px;" %>
-              <span id="form-middle">평 ~</span> 
-            </div>
-            <div class="col-md-4 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
-               <%= f.number_field :size_to, class: "form-control", style:"float: left; padding:5px; max-width:50px;" %>
-              <span id="form-right" style="padding-right:0px">평</span>
-            </div>
-          </div>
-        </td>
-        <td id="column" style="width:15%"><center><%= f.label :floor_to, "방층수" %></center></td>
-        <td>
-          <div class="col-md-12 col-xs-12 col-sm-12 form-inline">
-            <div class="col-md-6 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
-              <%= f.number_field :floor_from, class: "form-control", style:"float: left; padding:5px; max-width:50px;" %>
-              <span id="form-middle">층 ~</span> 
-            </div>
-            <div class="col-md-6 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
-              <%= f.number_field :floor_to, class: "form-control", style:"float: left; padding:5px; max-width:50px;" %>
-              <span id="form-right">층</span>
-            </div>
-          </div>
-        </td>
-      </tr>
-      
-      <tr>
-        <td id="column"><center><%= f.label :building_age, "준공연도" %></center></td>
-        <td>
-          <div class="col-md-12 col-xs-12 col-sm-12 form-inline">
-           <%= f.number_field :building_age, class:"form-control", style:"float:left; max-width:80px;" %>
-           <span id="form-right">년</span>
-          </div>
-        </td>
-        <td id="column" style="width:15%"><center><%= f.label :remodeling, "리모델링" %></center></td>
-        <td>
-          <div class="col-md-12 col-xs-12 col-sm-12 form-inline">
-      
-    <% if @hasuk_house.remodeling == 0 %>   
-             <%= f.number_field :remodeling, class:"form-control remodel",:disabled => true, style:"float:left; max-width:80px;" %>
-             <span id="form-right">년</span>
-    <% else %>
-              <%= f.number_field :remodeling, class:"form-control remodel", style:"float:left; max-width:80px;" %>
-             <span id="form-right">년</span>
-    <% end %>
- <!--해당없음에 체크시 0을 저장한다-->
-    <% if @hasuk_house.remodeling == 0 %>
-             <label class="radio-inline" id="radio-right" style="margin-left:0.5em">
-                 <%= check_box_tag "hasuk_house[remodeling]", 0, true, class:"check_remodel" %>해당없음
-             </label>
-    <% else %>
-             <label class="radio-inline" id="radio-right" style="margin-left:0.5em">
-                 <%= check_box_tag "hasuk_house[remodeling]", 0, false, class:"check_remodel" %>해당없음
-             </label>
-    <% end %>
-         </div>
-        </td>
-      </tr>
-      
-    </table><!--table1 끝-->
+     </table><!--table1 끝-->
     
   </div><!-- 하숙집 박스 row-->
       
@@ -634,7 +561,7 @@
                    <%= check_box_tag "hasuk_house[small_deposit]", 0, true, class:"check_small_deposit" %>해당없음
                  </label>
       <% else %>
-                 <label class="radio-inline" id="radio-right">
+                 <label class="checkbox radio-inline" id="radio-right" style="padding-left: 25px;">
                    <%= check_box_tag "hasuk_house[small_deposit]", 0, false, class:"check_small_deposit" %>해당없음
                  </label>
       <% end %>
@@ -660,7 +587,7 @@
                        <%= check_box_tag "hasuk_house[big_deposit]", 0, true, class:"check_big_deposit" %>해당없음
                    </label>
     <% else %>
-                   <label class="radio-inline big_check" id="radio-right">
+                   <label class="checkbox radio-inline big_check" id="radio-right" style="padding-left: 25px;">
                        <%= check_box_tag "hasuk_house[big_deposit]", 0, false, class:"check_big_deposit" %>해당없음
                    </label>
     <% end %>
@@ -698,13 +625,14 @@
       <% end %>
               </div>
               <div class="col-md-5 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+    
     <!--해당없음에 체크시 0을 저장한다-->
     <% if @hasuk_house.least_contract == 0 %>
                 <label class="radio-inline" id="radio-right">
                      <%= check_box_tag "hasuk_house[least_contract]",0 , true, class:"check_least_contract" %>해당없음
                  </label>
     <% else %>
-                <label class="radio-inline" id="radio-right">
+                <label class="checkbox radio-inline" id="radio-right" style="padding-left:25px">
                      <%= check_box_tag "hasuk_house[least_contract]",0 , false, class:"check_least_contract" %>해당없음
                  </label>
     <% end %>
@@ -713,196 +641,11 @@
             </td>          
           </tr>
  
-        <tr>
-            <td style="width:15%" id="column"><center>관리비</center></td>
-            <td colspan="3" id="checktd">
-              <div class="form-inline">
-                 <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
-    <% if @hasuk_house.extra_price == 0 %>
-                   <%= f.number_field :extra_price, class:"form-control extra_price", :disabled => true, style:"float:left; max-width:80px;" %>
-                   <span id="form-right">만 원</span>
-    <% else %>
-                   <%= f.number_field :extra_price, class:"form-control extra_price", style:"float:left; max-width:80px;" %>
-                   <span id="form-right">만 원</span>
-    <% end %>
-    <!--해당없음에 체크시 0을 저장한다-->
-    <% if @hasuk_house.extra_price == 0 %>
-                   <label class="radio-inline" id="radio-right" style="margin-left:7px">
-                       <%= check_box_tag "hasuk_house[extra_price]", 0, true, class:"check_extra_price" %>해당없음
-                   </label>
-    <% else %>
-                   <label class="radio-inline" id="radio-right" style="margin-left:7px">
-                       <%= check_box_tag "hasuk_house[extra_price]", 0, false, class:"check_extra_price" %>해당없음
-                   </label>
-    <% end %>
-                 </div>
-              </div>
-              
-            </td>
-          </tr>
         </table>             
       </div>
     </div>
   </div><!-- table2 끝row-->
   
-   <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
-      <div class="inline">
-        <img src="/images/icons/option.png" style="height:40px; width:40px; margin-top:3px;"/>
-      </div>
-      <div class="inline" style="margin-top:0px">
-        <h4 style=" margin-top: 5px; margin-left: 5px;">옵션</h4>
-      </div>
-    </div>
-  </div><!--옵션 타이틀-->
-  
-  <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="table-responsive">
-        <table class="table" style="width:100%">
-          <tr>
-            <td id="column" rowspan="2"><center>식사</center></td>
-            <td id="checktd" colspan="3">
-            <% @meal = ["아침", "점심", "저녁", "제공 안함"] %>
-          
-              <% 4.times do |i| %>
-        <% if @hasuk_house.send("meal#{i+1}") == "" || @hasuk_house.send("meal#{i+1}") == nil  %>
-                <label class="radio-inline" id="check-right">
-                <%= check_box_tag "hasuk_house[meal#{i+1}]", "#{@meal[i]}" %>
-                <%= "#{@meal[i]}" %>
-                </label>
-        <% else %>
-                <label  class="radio-inline" id="check-right">
-                <%= check_box_tag "hasuk_house[meal#{i+1}]", "#{@meal[i]}", true %>
-                <%= "#{@meal[i]}" %>
-                </label>
-        <% end %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td style="padding-bottom:0px" colspan="3">
-              <%= f.text_field :meal_memo, class:"form-control", style:"margin-bottom:5px", placeholder:"식사시간 등 식사에 관한 설명 ex)아침-07:00~09:00, 저녁-17:00~19:00, 주말엔 식사를 제공하지 않습니다." %>
-              <br>
-            </td>
-          </tr>
-          <tr>
-            <td style="width:15%" id="column"><center>개인물품/시설</center></td>
-            <td colspan="3" id="checktd">
-            <% @personal_option = ["침대", "책상", "옷장", "행거", "수납장", "에어컨", "TV", "화장실", "샤워실", "세탁기", "냉장고", "전자레인지", "가스레인지", "인덕션"] %>
-          
-              <% 14.times do |i| %>
-         <% if @hasuk_house.send("personal_option#{i+1}") == "" || @hasuk_house.send("personal_option#{i+1}") == nil %>
-                <label  class="radio-inline" id="check-right">
-                <%= check_box_tag "hasuk_house[personal_option#{i+1}]", "#{@personal_option[i]}" %>
-                <%= "#{@personal_option[i]}" %>
-                </label>
-         <% else %>
-                <label  class="radio-inline" id="check-right">
-                <%= check_box_tag "hasuk_house[personal_option#{i+1}]", "#{@personal_option[i]}", true %>
-                <%= "#{@personal_option[i]}" %>
-                </label>
-         <% end %>
-              <% end %>
-              
-                
-              <!--<div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                  <%#= f.text_field :personal_option15, class:"form-control", style:"margin-bottom:5px", placeholder:"추가옵션1" %> 
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                  <%#= f.text_field :personal_option16, class:"form-control", style:"margin-bottom:5px", placeholder:"추가옵션2" %>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                  <%#= f.text_field :personal_option17, class:"form-control", style:"margin-bottom:5px", placeholder:"추가옵션3" %>
-                </div>
-              </div>-->
-            </td>
-          </tr>
-          <tr>
-            <td style="width:15%" id="column"><center>공동물품/시설</center></td>
-            <td colspan="3" id="checktd">
-            
-             <% @common_option = ["중앙난방", "화장실", "샤워실", "세탁실", "CCTV", "냉장고", "전자레인지", "가스레인지", "인덕션", "정수기"] %>
-             
-             <% 10.times do |i| %>
-      <% if @hasuk_house.send("common_option#{i+1}") == "" || @hasuk_house.send("common_option#{i+1}") == nil %>
-                <label  class="radio-inline" id="check-right">
-                <%= check_box_tag "hasuk_house[common_option#{i+1}]", "#{@common_option[i]}" %>
-                <%= "#{@common_option[i]}" %>
-                </label>
-      <% else %>
-                <label  class="radio-inline" id="check-right">
-                <%= check_box_tag "hasuk_house[common_option#{i+1}]", "#{@common_option[i]}", true %>
-                <%= "#{@common_option[i]}" %>
-                </label>
-      <% end %>
-              <% end %>
-            
-            </td>
-          </tr>
-          <tr>
-            <td style="width:15%" id="column"><center>인터넷</center></td>
-            <td id="checktd">
-      <% if @hasuk_house.internet == "와이파이" %>
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '와이파이', checked: true) %>
-                <span>와이파이</span>
-              </label>
-      <% else %>
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '와이파이', checked: false) %>
-                <span>와이파이</span>
-              </label>
-      <% end %>
-      
-      <% if @hasuk_house.internet == "유선인터넷" %>
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '유선 인터넷', checked: true) %>
-                <span>유선 인터넷</span>
-              </label>  
-      <% else %>
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '유선 인터넷', checked: false) %>
-                <span>유선 인터넷</span>
-              </label>
-      <% end %>
-      
-      <% if @hasuk_house.internet == "없음" %>
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '없음', checked: true) %>
-                <span>없음</span>
-              </label>
-      <% else %>
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","internet", '없음', checked: false) %>
-                <span>없음</span>
-              </label>
-      <% end %>
-            </td>
-            
-            <td id="column"><center><%= f.label :personal_trash, "쓰레기 처리" %></center></td>
-            
-            <td id="checktd">
-      <% if @hasuk_house.personal_trash == "본인이 알아서" %>
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","personal_trash", '본인이 알아서', checked: true) %>
-                <span>본인이 알아서</span>
-              </label>
-      <% else %>
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","personal_trash", '본인이 알아서', checked: false) %>
-                <span>본인이 알아서</span>
-              </label>
-      <% end %>
-      <% if @hasuk_house.personal_trash == "해줌" %>
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","personal_trash", '해줌', checked: true) %>
-                <span>처리해줌</span>
-              </label>
-      <% else %>
-              <label style="margin-right:10px;"><%= radio_button("hasuk_house","personal_trash", '해줌', checked: false) %>
-                <span>처리해줌</span>
-              </label>
-      <% end %>
-            </td>
-            
-          </tr>
-        </table><!--table3 끝-->
-      </div>
-    </div>
-  </div>
   
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
@@ -1407,23 +1150,6 @@
         </div>
           
       </div>  
-      <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px">
-        <div class="form-group form-inline">
-           <label style="float: left; margin-top: 1em; margin-right: 0.5em;">월세</label>
-      <% if @hasuk_house.send("room_price#{i}") != nil || @hasuk_house.send("room_price#{i}") != "" %>
-          <%= number_field_tag "hasukhouse[room_price#{i}]", @hasuk_house.send("room_price#{i}"), class:"form-control", style:"float:left; padding:5px; width:40%;" %>
-          <span style="font-size: 0.8em;float: left;margin-top: 1.4em;margin-left: 0.5em;">만 원</span>
-      <% else %>
-          <%= number_field_tag "hasukhouse[room_price#{i}]", nil, class:"form-control", style:"float:left; padding:5px; width:40%;" %>
-          <span style="font-size: 0.8em;float: left;margin-top: 1.4em;margin-left: 0.5em;">만 원</span>
-      <% end %>
-      </div>
-      <% if @hasuk_house.send("room_description#{i}") != nil || @hasuk_house.send("room_description#{i}") != "" %>
-           <%= text_area_tag "hasuk_house[room_description#{i}]",@hasuk_house.send("room_description#{i}"),rows: 2, class:"form-control", placeholder:"방 설명(선택)" %>
-      <% else %>
-           <%= text_area_tag "hasuk_house[room_description#{i}]", nil,rows: 2, class:"form-control", placeholder:"방 설명(선택)" %>
-      <% end %>
-        </div>
       
     </div>
     <% end %>
@@ -1523,44 +1249,7 @@
     <% end %>
     </div><!--식사 사진 끝-->
     
-  <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:20px; margin-bottom:5px;">
-      <div class="inline" style="margin-top:2px; width:10px; height:30px; background-color:rgba(46, 204, 113, 0.76)"></div>
-      <div class="inline" style="margin-top:0px">
-          <h5 style="margin-top:0px; margin-left:5px; color:#E74C3C;">첫 달 할인 제도<span style="color:#9C9C9C">(선택)</span></h5>
-        </div>
-    </div><!--소제목 할인 제도-->
-  </div>
-  <!--할인제도 내용-->
-  <div class="row" style="padding:15px; background-color:#f2f2f2; border:1px solid #dbdbdb">
-    <p style="font-size:0.9em; margin-bottom:5px">하숙방콕을 보고 연락한 학생에게 첫달 월세를 할인해주는 제도입니다.<br>할인을 선택하시면 검색 시 우선적으로 노출되어 학생들의 월세 부담을 덜어주면서 홍보 효과도 높일 수 있습니다.</p>
-    <div class="col-md-12 col-sm-12col-xs-12" style="padding:0px; margin:0px">
-      <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
-      <div class="form-inline">
-  <% if @hasuk_house.discount_price == 0 %>
-        <span style="margin-top:1em; margin-right:0.5em; float:left; font-size:0.9em">할인금액</span>
-        <%= number_field_tag "hasuk_house[discount_price]", nil, :disabled => true, class:"form-control discount_price", style:"float:left; padding:5px; width:40%;" %>
-        <span style="margin-top:1em; margin-left:0.3em; margin-right:0.5em; float:left; font-size:0.9em">원</span>
-  <% else %>
-        <span style="margin-top:1em; margin-right:0.5em; float:left; font-size:0.9em">할인금액</span>
-        <%= number_field_tag "hasuk_house[discount_price]", @hasuk_house.discount_price, class:"form-control discount_price", style:"float:left; padding:5px; width:40%;" %>
-        <span style="margin-top:1em; margin-left:0.3em; margin-right:0.5em; float:left; font-size:0.9em">원</span>
-  <% end %>
-      </div>
-
-     <!--해당없음에 체크시 0을 저장한다-->  
-  <% if @hasuk_house.discount_price == 0 %>   
-         <label class="radio-inline" style="margin-top:0.8em; font-size:0.9em; margin-left:0.5em">
-             <%= check_box_tag "hasuk_house[discount_price]", 0 , true, class:"check_discount_price" %>해당없음
-         </label>
-  <% else %>
-         <label class="radio-inline" style="margin-top:0.8em; font-size:0.9em; margin-left:0.5em">
-             <%= check_box_tag "hasuk_house[discount_price]", 0 , false, class:"check_discount_price" %>해당없음
-         </label>
-  <% end %>
-      </div>
-    </div>
-  </div> <!--할인제도 끝-->
+  
   <% if @hasuk_house.id == nil %>
       <center style="margin-top:40px; margin-bottom:20px;">
         <input type="submit" value="등록하기" class="btn btn-success btn-lg ForValueZero">
@@ -1581,6 +1270,10 @@
 
 
 <script type="text/javascript">
+$(document).ready(function(){ 
+  $(':checkbox').radiocheck('uncheck');
+  $(':radio').radiocheck('uncheck');
+})
 
         
 $(document).ready(function(){
@@ -1974,23 +1667,16 @@ $(".crossmeal4").click(function() {
   $("#meal-labelinput4").css("z-index", "2");
 });//x버튼 누른 효과
   
+  <% for i in 1..8 %>
+    $("#hasuk_house_room_img<%= i %>").change(function(){readURL<%= i %>(this);});
+  <% end %>
   
-  $("#hasuk_house_room_img1").change(function(){readURL1(this);});
-  $("#hasuk_house_room_img2").change(function(){readURL2(this);});
-  $("#hasuk_house_room_img3").change(function(){readURL3(this);});
-  $("#hasuk_house_room_img4").change(function(){readURL4(this);});
-  $("#hasuk_house_room_img5").change(function(){readURL5(this);});
-  $("#hasuk_house_room_img6").change(function(){readURL6(this);});
-  $("#hasuk_house_room_img7").change(function(){readURL7(this);});
-  $("#hasuk_house_room_img8").change(function(){readURL8(this);});
-  $("#hasuk_house_common_img1").change(function(){readURL9(this);});
-  $("#hasuk_house_common_img2").change(function(){readURL10(this);});
-  $("#hasuk_house_common_img3").change(function(){readURL11(this);});
-  $("#hasuk_house_common_img4").change(function(){readURL12(this);});
-  $("#hasuk_house_meal_img1").change(function(){readURL13(this);});
-  $("#hasuk_house_meal_img2").change(function(){readURL14(this);});
-  $("#hasuk_house_meal_img3").change(function(){readURL15(this);});
-  $("#hasuk_house_meal_img4").change(function(){readURL16(this);});
+  <% for i in 1..4 %>
+    $("#hasuk_house_common_img<%= i %>").change(function(){readURL<%= i+8 %>(this);});
+    $("#hasuk_house_meal_img<%= i %>").change(function(){readURL<%= i+12 %>(this);});
+  <% end %>
+  
+  
   
   
   
@@ -2086,19 +1772,7 @@ $(".crossmeal4").click(function() {
   
   $(document).ready(function(){
     //해당 없음 누르면 글 못 쓰게 하기
-    $(function() {
-          $(".check_remodel").click(enable_cc);
-        });
-        
-        function enable_cc() {
-          if (this.checked) {
-            $(".remodel").prop("disabled", true);
-            
-          } else {
-            $(".remodel").removeAttr("disabled");
-            
-          }
-        }
+    
     $(function() {
           $(".check_small_deposit").click(enable_cd);
         });
@@ -2109,21 +1783,6 @@ $(".crossmeal4").click(function() {
             
           } else {
             $(".small_deposit").removeAttr("disabled");
-            
-          }
-        }
-        
-    $(function() {
-          $(".check_big_deposit").click(enable_ce);
-          
-        });
-        
-        function enable_ce() {
-          if (this.checked) {
-            $(".big_deposit").prop("disabled", true);
-            
-          } else {
-            $(".big_deposit").removeAttr("disabled");
             
           }
         }
@@ -2141,29 +1800,7 @@ $(".crossmeal4").click(function() {
             
           }
         }
-    $(function() {
-          $(".check_extra_price").click(enable_cx);
-        });
-        
-        function enable_cx() {
-          if (this.checked) {
-            $(".extra_price").prop("disabled", true);
-          } else {
-            $(".extra_price").removeAttr("disabled");
-          }
-        }
-        
-    $(function() {
-          $(".check_discount_price").click(enable_cb);
-        });
-        
-        function enable_cb() {
-          if (this.checked) {
-            $(".discount_price").prop("disabled", true);
-          } else {
-            $(".discount_price").removeAttr("disabled");
-          }
-        }
+    
         //해당없음 누르면 글 못 쓰게 하기 설정
         
         $(".fui-plus-circle").mouseover(function() {
