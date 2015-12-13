@@ -5,12 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+=begin
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
+=end
 
 
-
-
+=begin
 @meal = ["아침", "점심", "저녁", "제공 안함"]
 @personal_option = ["침대", "책상", "옷장", "행거", "수납장", "에어컨", "TV", "화장실", "샤워실", "세탁기", "냉장고", "전자레인지", "가스레인지", "인덕션"]
 @common_option = ["중앙난방", "화장실", "샤워실", "세탁실", "CCTV", "냉장고", "전자레인지", "가스레인지", "인덕션", "정수기"]
@@ -19,7 +20,7 @@ for i in 1..20 do
    @room_img = Array.new
    @room_img[i-1] = ["images/bangs/ha#{i}.jpg"] 
 end
-
+=end
 
 
 user2 = User.new
@@ -30,10 +31,9 @@ user2.password = 'power064'
 user2.password_confirmation ="power064"
 user2.save!
 
-
 #서강대 씨드
 
-
+=begin
 HasukHouse.create(
     division:"남문(대흥역)",
     id:1, user_id:2,
@@ -2202,3 +2202,4 @@ HasukHouse.create(
      meal_img4:"",
      discount_price:28000
     )
+=end

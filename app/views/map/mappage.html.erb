@@ -3394,7 +3394,7 @@ $("#sortByPrice").click(function(){
 
 
 
-$("#sortByDistance").click(function(){
+$("sortByDistance").click(function(){
   <% @sortingArr = @sortingArr.sort { |p1, p2| [p1.distance1, p2.discount_price, p1.price_from, p1.price_to] <=> [p2.distance1, p1.discount_price, p2.price_from, p2.price_to] } %>
 
    $(document).bind("ajaxStart.firstCall", function() {
@@ -3412,8 +3412,7 @@ $("#sortByDistance").click(function(){
     data: {univ: "<%= @univ %>"},
     success: function(data){
       <% counter = 0 %>
-      
-      
+     
       <% @sortingArr.each do |i| %>
         //id 셋팅 라인
         $(".position<%= counter %>").attr("id", "a<%= i.id %>");

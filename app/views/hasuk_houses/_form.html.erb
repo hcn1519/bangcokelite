@@ -240,7 +240,6 @@
   #map-canvas {
     height:200px;
     width:100%;
-    max-width:400px;
   }
   div.inline { 
     float:left; 
@@ -389,6 +388,12 @@
 .telPhone {
   padding:0;
 }
+#radio_left {
+  float:left; 
+  padding-left:25px;
+  margin-top: 20px;
+  margin-right: 10px;
+}
 @media (min-width: 300px) { 
   /*xs크기 셋팅 768px이하*/
   .telPhone {
@@ -397,6 +402,61 @@
   }
   #hasuk_house_telPhone {
     margin-top:0px;
+  }
+  #column {
+    padding:0px;
+  }
+  label {
+    font-size:14px;
+  }
+  #map-canvas {
+    margin-top:10px;
+  }
+  
+  .fui-star-2.img{
+    position:absolute;
+    font-size:0.8em;
+    font-weight:bold;
+    color:#F1C40F;
+  }
+  .img_title {
+    font-size:0.8em; 
+    color:#e74c3c;
+    position: absolute;
+    left:11%;
+  }
+  
+  .preview {
+    width:100%;
+    height:10em;
+    display:block;
+    z-index:1;
+  }
+  .plus_circle {
+     margin-bottom: 0px; 
+     position: absolute;
+     margin-top: 12%;
+     margin-left: 40%;
+  }
+  .fui-plus-circle {
+    display:block;
+    cursor:pointer;
+    font-size:3em;
+    color:#27AE60;
+  }
+  .img-thumbnail {
+    height:10.7em;
+  }
+  .fui-cross-circle {
+    display:block;
+    position: absolute; 
+    z-index:2; 
+    cursor:pointer;
+    clear:both;
+    font-size:20px;
+    color:#E67E22; 
+    margin-right: 5px;
+    margin-left:82%;
   }
   /*xs크기 셋팅 768px이하*/
 }
@@ -409,6 +469,50 @@
   #hasuk_house_telPhone {
     margin-top:10px;
   }
+  label {
+    font-size:15px;
+  }
+  #map-canvas {
+    margin-top:0px;
+  }
+  .img_title {
+    font-size:0.8em; 
+    color:#e74c3c;
+    position: absolute;
+    left:15%;
+  }
+  .img-thumbnail {
+    height:9.5em;
+  }
+  .preview {
+    width:100%;
+    height:8.8em;
+    display:block;
+    z-index:1;
+  }
+  .plus_circle {
+     margin-bottom: 0px; 
+     position: absolute;
+     margin-top: 12%;
+     margin-left: 31%;
+  }
+  .fui-plus-circle {
+    display:block;
+    cursor:pointer;
+    font-size:3em;
+    color:#27AE60;
+  }
+  .fui-cross-circle {
+    display:block;
+    position: absolute; 
+    z-index:2; 
+    cursor:pointer;
+    clear:both;
+    font-size:20px;
+    color:#E67E22; 
+    margin-right: 5px;
+    margin-left:73%;
+  }
   /*sm크기 셋팅 768px이상 992px 이하*/
 }
 @media (min-width: 992px) {
@@ -420,6 +524,38 @@
   #hasuk_house_telPhone {
     margin-top:0px;
   }
+  label {
+    font-size:15px;
+  }
+  #map-canvas {
+    margin-top:0px;
+  }
+  .plus_circle {
+     margin-bottom: 0px; 
+     position: absolute;
+     margin-top: 3%;
+     margin-left: 31%;
+  }
+  .fui-plus-circle {
+    display:block;
+    cursor:pointer;
+    font-size:3em;
+    color:#27AE60;
+  }
+  .img-thumbnail {
+    height:9.5em;
+  }
+  .fui-cross-circle {
+    display:block;
+    position: absolute; 
+    z-index:2; 
+    cursor:pointer;
+    clear:both;
+    font-size:20px;
+    color:#E67E22; 
+    margin-right: 5px;
+    margin-left:66%;
+  }
   /*md크기 셋팅 992px이상 1200px 이하*/
 }
 @media (min-width: 1200px) {
@@ -430,6 +566,58 @@
   }
   #hasuk_house_telPhone {
     margin-top:10px;
+  }
+  label {
+    font-size:15px;
+  }
+  #map-canvas {
+    margin-top:0px;
+  }
+  .fui-star-2.img{
+    position:absolute;
+    font-size:0.8em;
+    font-weight:bold;
+    color:#F1C40F;
+  }
+  .img_title {
+    font-size:0.8em; 
+    color:#e74c3c;
+    position: absolute;
+    left:17%;
+  }
+  
+  .preview {
+    width:9.75em;
+    height:6.4em;
+    display:block;
+    position: absolute;
+    z-index:1;
+  }
+  .plus_circle {
+     margin-bottom: 0px; 
+     position: absolute;
+     margin-top: 3%;
+     margin-left: 31%;
+  }
+  .fui-plus-circle {
+    display:block;
+    cursor:pointer;
+    font-size:3em;
+    color:#27AE60;
+  }
+  .img-thumbnail {
+    height:7em;
+  }
+  .fui-cross-circle {
+    display:block;
+    position: absolute; 
+    z-index:2; 
+    cursor:pointer;
+    clear:both;
+    font-size:20px;
+    color:#E67E22; 
+    margin-right: 5px;
+    margin-left:66%;
   }
   /*lg크기 셋팅 1200px 이상*/
 }
@@ -513,10 +701,10 @@
         </td>
         
         <td colspan="3" style="padding-left:15px;">
-          <label class="radio default_check"><%= radio_button("hasuk_house","hasuk_kind", '일반하숙') %>
+          <label class="radio"><%= radio_button("hasuk_house","hasuk_kind", '일반하숙', :checked => true, :class =>"sleeping_display1") %>
             <span>일반하숙</span>
           </label>
-          <label class="radio"><%= radio_button("hasuk_house","hasuk_kind", '잠만 자는 방') %>
+          <label class="radio"><%= radio_button("hasuk_house","hasuk_kind", '잠만 자는 방',  :class =>"sleeping_display2") %>
             <span>잠만 자는 방</span>
           </label>
           
@@ -530,7 +718,7 @@
         <td id="column"><center>성별</center></td>
         <td colspan="3" id="checktd">
 
-          <label class="radio default_check" style="cursor:pointer; display:inline-block; margin-right:10px; padding-left: 25px;"><%= radio_button("hasuk_house","gender", '남녀공용') %>
+          <label class="radio" style="cursor:pointer; display:inline-block; margin-right:10px; padding-left: 25px;"><%= radio_button("hasuk_house","gender", '남녀공용') %>
             <span>남녀공용</span>
           </label>
 
@@ -563,10 +751,85 @@
         <table class="table" style="width:100%">
           
           <tr>
-            <td id="column"><center><%= f.label :small_deposit, "예치금" %></center></td>
-            <td>
+            <td id="column"><center><%= f.label :price_from, "월세" %></center></td>
+            <td colspan="3">
+            <!--월세 시작-->
               <div class="form-inline">
-              <div class="col-md-5 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+                <div class="col-md-3 col-sm-3 col-xs-3" style="padding:0px; margin:0px">
+                  <label class="radio-inline checkbox" id="radio_left">
+                     <%= check_box_tag "price_from_check", 0, true, class:"check_price" %>일반
+                  </label>
+                 </div>
+                <div class="col-md-9 col-sm-9 col-xs-12" style="padding:0px; margin:0px">
+                    <%= f.number_field :price_from, class:"form-control", style:"float:left; max-width:70px;" %>
+                    <span id="form-middle">만 원 ~</span>
+                    <%= f.number_field :price_to, class:"form-control", style:"float:left; max-width:70px;" %>
+                    <span id="form-middle">만 원</span>
+                  </div>
+                </div>
+              </div>
+            <!--월세 끝-->
+            <!--원룸형 시작-->
+              <div class="form-inline">
+                <div class="col-md-3 col-sm-3 col-xs-3" style="padding:0px; margin:0px">
+                  <label class="radio-inline checkbox" id="radio_left">
+                     <%= check_box_tag "oneroom_price_from_check", 0, false, class:"check_price" %>원룸형<br>(개인 화장실 있는 방)
+                  </label>
+                 </div>
+                <div class="col-md-9 col-sm-9 col-xs-12" id="oneroom_price_from" style="padding:0px; margin:0px">
+                  <%= f.number_field :oneroom_price_from , class:"form-control", style:"float:left; max-width:70px;", :disabled => true %>
+                  <span id="form-middle">만 원 ~</span>
+
+                  <%= f.number_field :oneroom_price_to, class:"form-control", style:"float:left; max-width:70px;", :disabled => true %>
+                  <span id="form-middle">만 원</span>
+                </div>
+              </div>
+            <!--원룸형 끝-->
+            </td>
+            
+ 
+          </tr>
+          <tr>
+            <td id="column"><center><%= f.label :sleeping_only_price_from, "협의사항" %></center></td>
+            <td colspan="3">
+            <!--협의사항 잠만자는 시작-->
+            
+              <div class="form-inline" id="sleeping_only_display">
+                <div class="col-md-3 col-sm-3 col-xs-3" style="padding:0px; margin:0px">
+                  <label class="radio-inline checkbox" id="radio_left">
+                    <%= check_box_tag "sleeping_only_price_from_check", 0, false, class:"check_small_deposit" %>잠만 자는 경우<br>(식사 제공 안함)
+                  </label>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-12" id="sleeping_only_price_from" style="padding:0px; margin:0px">
+                  <%= f.number_field :sleeping_only_price_from, class:"form-control", style:"float:left; max-width:70px;", :disabled => true %>
+                  <span id="form-middle">만 원부터</span>
+                </div>
+                
+              </div>
+            <!--협의사항 잠만자는 끝-->
+            <!--협의사항 2인1실 시작-->
+              <div class="form-inline">
+                <div class="col-md-3 col-sm-3 col-xs-3" style="padding:0px; margin:0px">
+                  <label class="radio-inline checkbox" id="radio_left">
+                    <%= check_box_tag "mate_price_from_check", 0, false, class:"check_small_deposit" %>2인 1실 가능
+                  </label>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-12" id="mate_price_from" style="padding:0px; margin:0px">
+                  <%= f.number_field :mate_price_from, class:"form-control", style:"float:left; max-width:70px;", :disabled => true %>
+                  <span id="form-middle">만 원부터</span>
+                </div>
+                
+              </div>
+            <!--협의사항 2인1실 끝-->
+            </td>
+            
+ 
+          </tr>
+          <tr>
+            <td id="column"><center><%= f.label :small_deposit, "예치금" %></center></td>
+            <td colspan="3">
+              <div class="form-inline">
+              <div class="col-md-3 col-sm-6 col-xs-7" style="padding:0px; margin:0px">
         <% if @hasuk_house.small_deposit == 0 %> 
                 <%= f.number_field :small_deposit, class:"form-control small_deposit", :disabled => true, style:"float:left; max-width:80px;" %>
                  <span id="form-right">만 원</span>
@@ -575,7 +838,7 @@
                  <span id="form-right">만 원</span>
         <% end %>
                </div>
-               <div class="col-md-4 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
+               <div class="col-md-2 col-sm-2 col-xs-2" style="padding:0px; margin:0px; margin-top:5px">
                  <!--해당없음에 체크시 0을 저장한다-->
       <% if @hasuk_house.small_deposit == 0 %> 
                  <label class="radio-inline" id="radio-right">
@@ -586,55 +849,40 @@
                    <%= check_box_tag "hasuk_house[small_deposit]", 0, false, class:"check_small_deposit" %>해당없음
                  </label>
       <% end %>
-               </div>
               </div>
-            </td>
             
-          </tr>
-          
-          <tr>
-            <td id="column"><center><%= f.label :price_from, "월세" %></center></td>
-            <td>
-            <!--월세 시작-->
-              <div class="form-inline">
-                <div class="col-md-6 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
-                  <%= f.number_field :price_from, class:"form-control", style:"float:left; max-width:70px;" %>
-                  <span id="form-middle">만 원 ~</span>
-                </div>
-                <div class="col-md-6 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
-                  <%= f.number_field :price_to, class:"form-control", style:"float:left; max-width:70px;" %>
-                  <span id="form-middle">만 원</span>
-                </div>
-              </div>
-            <!--월세 끝-->
+            </div>
+
             </td>
-            <td style="width:15%" id="column"><center>최소계약기간</center></td>
-            <td>
-              <div class="form-inline">
-              <div class="col-md-6 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
-      <% if @hasuk_house.least_contract == 0 %>
-                <%= f.number_field :least_contract, class:"form-control least_contract", :disabled => true, style:"float:left; padding:5px; max-width:50px;" %>
-                <span id="form-right">개월 이상</span>
-      <% else %>
-                <%= f.number_field :least_contract, class:"form-control least_contract", style:"float:left; padding:5px; max-width:50px;" %>
-                <span id="form-right">개월 이상</span>
-      <% end %>
-              </div>
-              <div class="col-md-5 col-sm-12 col-xs-12" style="padding:0px; margin:0px">
-    
-    <!--해당없음에 체크시 0을 저장한다-->
-    <% if @hasuk_house.least_contract == 0 %>
-                <label class="radio-inline" id="radio-right">
-                     <%= check_box_tag "hasuk_house[least_contract]",0 , true, class:"check_least_contract" %>해당없음
-                 </label>
-    <% else %>
-                <label class="checkbox radio-inline" id="radio-right" style="padding-left:25px">
-                     <%= check_box_tag "hasuk_house[least_contract]",0 , false, class:"check_least_contract" %>해당없음
-                 </label>
-    <% end %>
-              </div>
-              </div>
-            </td>          
+        </tr>
+        <tr>
+          <td id="column"><center><%= f.label :least_contract, "최소계약기간" %></center></td>
+              
+          <td colspan="3">
+          <div class="col-md-3 col-sm-6 col-xs-7" style="padding:0px; margin:0px">
+  <% if @hasuk_house.least_contract == 0 %>
+            <%= f.number_field :least_contract, class:"form-control least_contract", :disabled => true, style:"float:left; padding:5px; max-width:50px;" %>
+            <span id="form-right">개월 이상</span>
+  <% else %>
+            <%= f.number_field :least_contract, class:"form-control least_contract", style:"float:left; padding:5px; max-width:50px;" %>
+            <span id="form-right">개월 이상</span>
+  <% end %>
+          </div>
+          <div class="col-md-2 col-sm-2 col-xs-2" style="padding:0px; margin:0px; margin-top:5px">
+
+<!--해당없음에 체크시 0을 저장한다-->
+<% if @hasuk_house.least_contract == 0 %>
+            <label class="radio-inline" id="radio-right">
+                 <%= check_box_tag "hasuk_house[least_contract]",0 , true, class:"check_least_contract" %>해당없음
+             </label>
+<% else %>
+            <label class="checkbox radio-inline" id="radio-right" style="padding-left:25px">
+                 <%= check_box_tag "hasuk_house[least_contract]",0 , false, class:"check_least_contract" %>해당없음
+             </label>
+<% end %>
+          </div>
+
+          </td>
           </tr>
  
         </table>             
@@ -653,11 +901,14 @@
       </div>
     </div>
   </div><!--상세설명 타이틀-->
+  
   <% if @hasuk_house.hasuk_house_description != nil || @hasuk_house.hasuk_house_description != "" %>
     <%= text_area_tag "hasuk_house[hasuk_house_description]", @hasuk_house.hasuk_house_description ,rows: 10, class:"form-control", placeholder:"추가 설명을 해주세요. (ex. 채광, 주변 편의시설, 분위기 등)" %>
   <% else %>
     <%= text_area_tag "hasuk_house[hasuk_house_description]", nil,rows: 10, class:"form-control", placeholder:"추가 설명을 해주세요. (ex. 채광, 주변 편의시설, 분위기 등)" %>
   <% end %>
+  
+  
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
       <div class="inline">
@@ -670,40 +921,43 @@
   </div><!--위치 타이틀-->
 
 
-  
-
-  <div class="table-responsive">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="table-responsive">
     <table class="table" style="width:100%">
    <!--주소 구간 -->
       <tr>
       
-        <td id="column" style="width:15%"><center>주소</center></td>
-        <td colspan="1" style="width:40%">
-        <div class="col-md-12 col-sm-8 col-xs-8" style="margin:0px; padding:0px;">
+        <td id="column" style="width:10%"><center>주소</center></td>
+        <td>
+        <div class="col-md-6 col-sm-6 col-xs-12" style="margin:0px; padding:0px; padding-right:7px; padding-top:8%;">
             <%= f.text_field :address, class:"form-control", placeholder:"주소입력", :required => true %>
-        </div>
-        <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px;">
             <input class="btn btn-success" id="mapfind" type="button" value="주소 검색하기" >
             <input class="btn btn-info" id="mapfindcheck" type="button" value="확인">
+            
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12" style="margin:0px; padding:0px;">    
+          <div id="map-canvas"></div>
         </div>
           <%= f.text_field :division, class:"form-control", placeholder:"구역 설정", style:"display:none" %>
           <%= f.number_field :lat, class:"form-control", placeholder:"위도", :step => 'any', style:"display:none" %>
           <%= f.number_field :lng, class:"form-control", placeholder:"경도", :step => 'any', style:"display:none" %>
+        
         </td>
-        <td class="formap" colspan="2">
-          <div class="col-md-12 col-sm-12 col-xs-12" style="margin:0px; padding:0px;">
-
-
-            <div id="map-canvas"></div>
-
-          </div>
-        </td>
+        
       </tr>
       <!--위치 구간 끝-->
-      
+      </table><!--거리 구간 끝 -->
+  </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="table-responsive">
+    <table class="table" style="width:100%">
       <tr>
-        <td id="column" rowspan="4" style="width:15%"><center>거리</center></td>
-        <td colspan="3">
+        <td id="column" rowspan="3" style="width:10%"><center>거리</center></td>
+        <td>
           <p style="font-size:1em">하숙집에서 가장 가까운 학교를 선택하고, 해당 학교의 교문과의 거리를 입력해주세요.</p>
           <p style="font-size:1em">학교를 선택하고, 문 버튼을 누르면 길찾기 페이지가 나옵니다.</p>
           <p style="font-size:1em">해당 페이지에서 하숙집 주소를 출발지에 입력하고, 도보로 길찾기를 선택하여 나오는 시간과 거리를 입력하면 됩니다.</p>
@@ -711,7 +965,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="3">
+        <td>
  <% univ = Array.new, sogang_gate = Array.new, ewha_gate = Array.new, yonsei_gate = Array.new %>
  <% trans_kind = Array.new, station = Array.new %>
  
@@ -893,6 +1147,7 @@
           
         </td>
       </tr>
+      
       <tr><!--교통수단-->
       
         <td colspan="3">
@@ -914,7 +1169,7 @@
           <% else %>
             <% trans_kind[i] = "인근 교통수단" %>
           <% end %>
-<!-- trans_kind[1], trans_kind[2], station[1], station[2] 셋팅 -->  
+<!-- trans_kind[1], trans_kind[2], station[1], station[2] 셋팅 --> 
           
           
           
@@ -1105,8 +1360,20 @@
         </div>
           </tr>
   </table><!--거리 구간 끝 -->
-  
-  
+  </div>
+  </div>
+  </div>
+    <%= f.text_field :univ1, class:"form-control", placeholder:"학교1" %>
+    <%= f.text_field :gate1, class:"form-control", placeholder:"교문1" %>
+
+    <%= f.text_field :univ2, class:"form-control", placeholder:"학교2" %>
+    <%= f.text_field :gate2, class:"form-control", placeholder:"교문2" %>
+    
+    <%= f.text_field :trans_kind1, class:"form-control", placeholder:"교통수단1"%>
+    <%= f.text_field :station1, class:"form-control", placeholder:"역1" %>
+    
+    <%= f.text_field :trans_kind2, class:"form-control", placeholder:"교통수단2"%>
+    <%= f.text_field :station2, class:"form-control", placeholder:"역2" %>
   </div>
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px; margin-bottom:10px;">
@@ -1136,7 +1403,7 @@
     
     <% for i in 1..8 %>
     <div class="col-md-3 col-sm-4 col-xs-12">
-      <div class="image-upload" style="height:7em">
+      <div class="image-upload" style="height:auto">
       <% @roomImg = @hasuk_house.send("room_img#{i}") %>
 
       <% if @roomImg.file == nil %>
@@ -1146,43 +1413,43 @@
       <% end %>
       
       
-        <div class="img-thumbnail" style="width: 100%; height: 7em;">
+        <div class="img-thumbnail" style="width: 100%;">
       <% if @roomImg.file == nil %>
-          <span class="fui-cross-circle crossroom<%= i%>" style="display:none; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
+          <span class="fui-cross-circle crossroom<%= i%>" style="display:none;"></span>  
       <% else %>
-          <span class="fui-cross-circle crossroom<%= i%>" style="display:block; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
+          <span class="fui-cross-circle crossroom<%= i%>" ></span>  
       <% end %>
           <% if i ==1 %>
-                <span class="fui-star-2" style="font-size:0.8em; font-weight:bold; color:#F1C40F; float:left;"></span>
-                <span style="font-size:0.8em; color:#e74c3c; float:left; position: absolute">대표사진</span>
+                <span class="fui-star-2 img"></span>
+                <span class="img_title">대표사진</span>
 
       <% if @roomImg.file == nil %>
-                <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="display:block; margin-bottom: 0px; position: absolute; margin-top: 3%;margin-left: 22%;">
-                  <span class="fui-plus-circle" style="display:block; cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
+                <label class="plus_circle" for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>">
+                  <span class="fui-plus-circle" aria-hidden="true"></span>
                 </label>
       <% else %>
-                <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="display:none; margin-bottom: 0px; position: absolute; margin-top: 3%;margin-left: 22%;">
-                  <span class="fui-plus-circle" style="display:none; cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
+                <label class="plus_circle" for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="display:none;">
+                  <span class="fui-plus-circle" style="display:none;" aria-hidden="true"></span>
                 </label>
       <% end %>
           <% else %>
           
       <% if @roomImg.file == nil %>
-            <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="display:block; margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
-              <span class="fui-plus-circle" style="display:block; cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
+            <label class="plus_circle" for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>">
+              <span class="fui-plus-circle" aria-hidden="true"></span>
             </label>
       <% else %>
-            <label for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="display:none; margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
-              <span class="fui-plus-circle" style="display:none; cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
+            <label class="plus_circle" for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="display:none;">
+              <span class="fui-plus-circle" style="display:none;" aria-hidden="true"></span>
             </label>
       <% end %>
       
           <% end %>
       <% if @roomImg.file == nil %>
-            <img style="width:9.75em; height:6.4em; display:none; position: absolute; z-index:1" id="room-file-preview<%= i%>" src="#"/>
+            <img class="preview" style="display:none;" id="room-file-preview<%= i%>" src="#"/>
       <% else %>
             
-            <img style="width:9.75em; height:6.4em; display:block; position: absolute; z-index:1" id="room-file-preview<%= i%>" src="<%= @roomImg %>"/>
+            <img class="preview" id="room-file-preview<%= i%>" src="<%= @roomImg %>"/>
       <% end %>
         </div>
           
@@ -1207,32 +1474,32 @@
   <!--배경색-->
   <% for i  in 1..4 %>
     <div class="col-md-3 col-sm-4 col-xs-12">
-      <div class="image-upload" style="height:7em">
+      <div class="image-upload" style="height:auto">
       <% @commonImg = @hasuk_house.send("common_img#{i}") %>
       
       <% if @commonImg.file == nil %><!--없으면 -->
         <%= file_field_tag "hasuk_house[common_img#{i}]", class:"file-input#{i}" %>
       
-          <div class="img-thumbnail" style="width: 100%; height: 7em;">
-          <span class="fui-cross-circle crosscommon<%= i%>" style="display:none; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
+          <div class="img-thumbnail" style="width: 100%;">
+          <span class="fui-cross-circle crosscommon<%= i%>" style="display:none;"></span>  
           
-          <label for="hasuk_house_common_img<%= i%>" id="common-labelinput<%= i%>" style="display:block; margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
-            <span class="fui-plus-circle" style="display:block; cursor:pointer; font-size:45px; color:#27AE60;" aria-hidden="true"></span>
+          <label class="plus_circle" for="hasuk_house_common_img<%= i%>" id="common-labelinput<%= i%>">
+            <span class="fui-plus-circle" aria-hidden="true"></span>
           </label>
           
-          <img style="width:9.75em; height:6.4em; display:none; position: absolute; z-index:1" id="common-file-preview<%= i%>" src="#"/>
+          <img class="preview" style="display:none;" id="common-file-preview<%= i%>" src="#"/>
       
       <% else %><!--있으면 -->
         <%= file_field_tag "hasuk_house[common_img#{i}]", value: @commonImg, class:"file-input#{i}" %>
           
-          <div class="img-thumbnail" style="width: 100%; height: 7em;">
+          <div class="img-thumbnail" style="width: 100%;">
           
-          <span class="fui-cross-circle crosscommon<%= i%>" style="display:block; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
-          <label for="hasuk_house_common_img<%= i%>" id="common-labelinput<%= i%>" style="display:none; margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
-            <span class="fui-plus-circle" style="display:none; cursor:pointer; font-size:45px; color:#27AE60;" aria-hidden="true"></span>
+          <span class="fui-cross-circle crosscommon<%= i%>" ></span>  
+          <label class="plus_circle" for="hasuk_house_common_img<%= i%>" id="common-labelinput<%= i%>" style="display:none;">
+            <span class="fui-plus-circle" style="display:none;" aria-hidden="true"></span>
           </label>
           
-          <img style="width:9.75em; height:6.4em; display:block; position: absolute; z-index:1" id="common-file-preview<%= i%>" src="<%= @commonImg %>"/>
+          <img class="preview" id="common-file-preview<%= i%>" src="<%= @commonImg %>"/>
       <% end %>
         </div>
       </div>  
@@ -1254,30 +1521,30 @@
     <div class="row" style="padding:15px; background-color:#f2f2f2; border:1px solid #dbdbdb">
     <!--배경색-->
     <% for i in 1..4 %>
-        <div class="col-md-3 col-sm-3 col-xs-12">
-      <div class="image-upload" style="height:7em">
+        <div class="col-md-3 col-sm-4 col-xs-12">
+      <div class="image-upload" style="height:auto">
         
       <% @mealImg = @hasuk_house.send("meal_img#{i}") %>
       
       <% if @mealImg.file == nil %><!--없으면 -->
       
         <%= file_field_tag "hasuk_house[meal_img#{i}]", class:"file-input#{i}" %>
-          <div class="img-thumbnail" style="width: 100%; height: 7em;">
-            <span class="fui-cross-circle crossmeal<%= i%>" style="display:none; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
-            <label for="hasuk_house_meal_img<%= i%>" id="meal-labelinput<%= i%>" style="margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
-              <span class="fui-plus-circle" style="cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
+          <div class="img-thumbnail" style="width: 100%;">
+            <span class="fui-cross-circle crossmeal<%= i%>" style="display:none;"></span>  
+            <label class="plus_circle" for="hasuk_house_meal_img<%= i%>" id="meal-labelinput<%= i%>">
+              <span class="fui-plus-circle" aria-hidden="true"></span>
             </label>
-            <img style="width:9.75em; height:6.4em; display:none; position: absolute; z-index:1" id="meal-file-preview<%= i%>" src="#"/>
+            <img class="preview" style="display:none;" id="meal-file-preview<%= i%>" src="#"/>
           </div>
       
       <% else %>
         <%= file_field_tag "hasuk_house[meal_img#{i}]", value: @mealImg, class:"file-input#{i}" %>
-          <div class="img-thumbnail" style="width: 100%; height: 7em;">
-            <span class="fui-cross-circle crossmeal<%= i%>" style="display:block; position: absolute; z-index:2; cursor:pointer; clear:both;margin-left: 66%; font-size:20px; color:#E67E22; margin-right: 5px;"></span>  
-            <label for="hasuk_house_meal_img<%= i%>" id="meal-labelinput<%= i%>" style="display:none; margin-bottom: 0px; margin-top: 4%; margin-left: 36%;">
-              <span class="fui-plus-circle" style="display:none; cursor:pointer; font-size:3em; color:#27AE60;" aria-hidden="true"></span>
+          <div class="img-thumbnail" style="width: 100%;">
+            <span class="fui-cross-circle crossmeal<%= i%>" ></span>  
+            <label class="plus_circle" for="hasuk_house_meal_img<%= i%>" id="meal-labelinput<%= i%>" style="display:none;">
+              <span class="fui-plus-circle" style="display:none;" aria-hidden="true"></span>
             </label>
-            <img style="width:9.75em; height:6.4em; display:block; position: absolute; z-index:1" id="meal-file-preview<%= i%>" src="<%= @mealImg %>"/>
+            <img class="preview" id="meal-file-preview<%= i%>" src="<%= @mealImg %>"/>
           </div>
       
       <% end %>
@@ -1308,11 +1575,155 @@
 
 <script type="text/javascript">
 $(document).ready(function(){ 
-  $(':checkbox').radiocheck('uncheck');
-  $(':radio').radiocheck('uncheck');
-  $(".default_check").radiocheck("check");
+  $(':checkbox').radiocheck();
+  $(':radio').radiocheck();
 });
 
+$(document).ready(function(){
+  //교통수단 value 실제 데이터로 옮겨 넣기용
+  $("#univ1").change(function(){
+    var univ1_value = $("#univ1 option:selected").val();
+     $.ajax({
+        url: "/hasuk_houses/new",
+        data: { univ1_value },
+        success: function(data){
+          $("#hasuk_house_univ1").val(univ1_value);
+        }
+     });
+  });
+  $("#univ2").change(function(){
+    var univ2_value = $("#univ2 option:selected").val();
+     $.ajax({
+        url: "/hasuk_houses/new",
+        data: { univ2_value },
+        success: function(data){
+          $("#hasuk_house_univ2").val(univ2_value);
+        }
+     });
+  });
+  $("#sogang_gate1").change(function(){
+    var sogang_gate1_value = $("#sogang_gate1 option:selected").val();
+     $.ajax({
+        url: "/hasuk_houses/new",
+        data: { sogang_gate1_value },
+        success: function(data){
+          $("#hasuk_house_gate1").val(sogang_gate1_value);
+        }
+     });
+  });
+  $("#sogang_gate2").change(function(){
+    var sogang_gate2_value = $("#sogang_gate2 option:selected").val();
+     $.ajax({
+        url: "/hasuk_houses/new",
+        data: { sogang_gate2_value },
+        success: function(data){
+          $("#hasuk_house_gate2").val(sogang_gate2_value);
+        }
+     });
+  });
+  $("#ewha_gate1").change(function(){
+    var ewha_gate1_value = $("#ewha_gate1 option:selected").val();
+     $.ajax({
+        url: "/hasuk_houses/new",
+        data: { ewha_gate1_value },
+        success: function(data){
+          $("#hasuk_house_gate1").val(ewha_gate1_value);
+        }
+     });
+  });
+  $("#ewha_gate2").change(function(){
+    var ewha_gate2_value = $("#ewha_gate2 option:selected").val();
+     $.ajax({
+        url: "/hasuk_houses/new",
+        data: { ewha_gate2_value },
+        success: function(data){
+          $("#hasuk_house_gate2").val(ewha_gate2_value);
+        }
+     });
+  });
+  $("#yonsei_gate1").change(function(){
+    var yonsei_gate1_value = $("#yonsei_gate1 option:selected").val();
+     $.ajax({
+        url: "/hasuk_houses/new",
+        data: { yonsei_gate1_value },
+        success: function(data){
+          $("#hasuk_house_gate1").val(yonsei_gate1_value);
+        }
+     });
+  });
+  $("#yonsei_gate2").change(function(){
+    var yonsei_gate2_value = $("#yonsei_gate2 option:selected").val();
+     $.ajax({
+        url: "/hasuk_houses/new",
+        data: { yonsei_gate2_value },
+        success: function(data){
+          $("#hasuk_house_gate2").val(yonsei_gate1_value);
+        }
+     });
+  });
+  
+  $("#trans_kind1").change(function(){
+    var trans_kind1_value = $("#trans_kind1 option:selected").val();
+     $.ajax({
+        url: "/hasuk_houses/new",
+        data: { trans_kind1_value },
+        success: function(data){
+          $("#hasuk_house_trans_kind1").val(trans_kind1_value);
+        }
+     });
+  });
+  $("#trans_kind2").change(function(){
+    var trans_kind2_value = $("#trans_kind2 option:selected").val();
+     $.ajax({
+        url: "/hasuk_houses/new",
+        data: { trans_kind2_value },
+        success: function(data){
+          $("#hasuk_house_trans_kind2").val(trans_kind2_value);
+        }
+     });
+  });
+  $("#subway1").change(function(){
+    var subway1_value = $("#subway1 option:selected").val();
+     $.ajax({
+        url: "/hasuk_houses/new",
+        data: { subway1_value },
+        success: function(data){
+          $("#hasuk_house_station1").val(subway1_value);
+        }
+     });
+  });
+  $("#subway2").change(function(){
+    var subway2_value = $("#subway2 option:selected").val();
+     $.ajax({
+        url: "/hasuk_houses/new",
+        data: { subway2_value },
+        success: function(data){
+          $("#hasuk_house_station2").val(subway2_value);
+        }
+     });
+  });
+  $("#bus1").change(function(){
+    var bus1_value = $("#bus1 option:selected").val();
+     $.ajax({
+        url: "/hasuk_houses/new",
+        data: { bus1_value },
+        success: function(data){
+          $("#hasuk_house_station1").val(bus1_value);
+        }
+     });
+  });
+  $("#bus2").change(function(){
+    var bus2_value = $("#bus2 option:selected").val();
+     $.ajax({
+        url: "/hasuk_houses/new",
+        data: { bus2_value },
+        success: function(data){
+          $("#hasuk_house_station2").val(bus2_value);
+        }
+     });
+  });
+  //교통수단 value 실제 데이터로 옮겨 넣기용
+});
         
 $(document).ready(function(){
   
@@ -1850,7 +2261,55 @@ $(".crossmeal4").click(function() {
           }
         }
     
+    
         //해당없음 누르면 글 못 쓰게 하기 설정
+        
+    $(function() {
+      $("#price_from_check").click(enable_a);
+      $("#oneroom_price_from_check").click(enable_b);
+      $("#sleeping_only_price_from_check").click(enable_z);
+      $("#mate_price_from_check").click(enable_e);
+      $(".sleeping_display1").click(enable_d);
+      $(".sleeping_display2").click(enable_g);
+      
+    });
+    function enable_a() {
+      if (this.checked) { 
+        $("#hasuk_house_price_from").removeAttr("disabled");
+        $("#hasuk_house_price_to").removeAttr("disabled");
+      } else { 
+        $("#hasuk_house_price_from").prop("disabled", true);
+        $("#hasuk_house_price_to").prop("disabled", true);
+      }
+    }
+
+    function enable_b() {
+      if (this.checked) { 
+        $("#hasuk_house_oneroom_price_from").removeAttr("disabled");
+        $("#hasuk_house_oneroom_price_to").removeAttr("disabled");
+      } else { 
+        $("#hasuk_house_oneroom_price_from").prop("disabled", true);
+        $("#hasuk_house_oneroom_price_to").prop("disabled", true);
+      }
+    }
+
+    function enable_z() {
+      if (this.checked) { $("#hasuk_house_sleeping_only_price_from").removeAttr("disabled"); }
+      else { $("#hasuk_house_sleeping_only_price_from").prop("disabled", true); }
+    }
+
+    function enable_e() {
+      if (this.checked) { $("#hasuk_house_mate_price_from").removeAttr("disabled"); }
+      else { $("#hasuk_house_mate_price_from").prop("disabled", true); }
+    }
+    function enable_d() {
+      if ('.sleeping_display2'.checked) { $("#sleeping_only_display").css("display", "none"); }
+      else { $("#sleeping_only_display").css("display", "block"); }
+    }
+    function enable_g() {
+      if ('.sleeping_display1'.checked) { $("#sleeping_only_display").css("display", "block"); }
+      else { $("#sleeping_only_display").css("display", "none"); }
+    }
         
         $(".fui-plus-circle").mouseover(function() {
           $(this).css("color", "#E67E22");
