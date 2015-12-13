@@ -37,30 +37,20 @@ user2.save!
 HasukHouse.create(
     division:"남문(대흥역)",
     id:1, user_id:2,
-    hasuk_name: "서강 하숙방1", celPhone:"010-1234-5678", telPhone:"02-123-4567", memo:"문자 주시면 답장드립니다.",
+    hasuk_name: "서강 하숙방1", celPhone:"010-1234-5678", telPhone:"02-123-4567", contact_memo:"문자 주시면 답장드립니다.",
     hasuk_kind:"일반하숙", gender:"남성전용",
     
-    size_from:4, size_to:7, floor_from:1, floor_to:3, building_age:1990, remodeling:2013,
     small_deposit:0, big_deposit:100, price_from:30, price_to:50, least_contract:6, 
-    extra_price:3,
-    
-    meal2:"점심", meal3:"저녁", meal4:"", meal_memo:"식사는 반찬이 준비되어 있습니다.",
-    
-    personal_option1:"#{@personal_option[0]}", personal_option2:"#{@personal_option[1]}", personal_option3:"#{@personal_option[2]}", personal_option4:"#{@personal_option[3]}", personal_option5:"#{@personal_option[4]}",
-    personal_option6:"#{@personal_option[5]}", personal_option7:"#{@personal_option[6]}", personal_option8:"#{@personal_option[7]}", personal_option9:"#{@personal_option[8]}", personal_option10:"#{@personal_option[9]}",
-    personal_option11:"#{@personal_option[10]}", personal_option12:"#{@personal_option[11]}", personal_option13:"#{@personal_option[12]}", personal_option14:"",
     
     
-    common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
-    common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
+
+    hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.547867 , lng:126.9377533 ,
     
-    internet:"와이파이", personal_trash:"해줌", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.547867 , lng:126.9377533 ,
-        #교문까지 거리 및 시간
-     univ_distance1:"서강", univ_distance2:"학교선택",
-     sogang_gate1:"남문", sogang_gate2:"교문선택", 
-     ewha_gate1:"교문선택", ewha_gate2:"교문선택",
-     yonsei_gate1:"교문선택", yonsei_gate2:"교문선택",
-     distance_time1: 5, distance1: 282,
+    #교문까지 거리 및 시간
+     univ1:"서강",
+     gate1:"남문", 
+     distance_time1: 5, 
+     distance1: 282,
      
       #교통수단까지 거리 및 시간
      transportation_kind:"지하철", transportation_subway:"대흥",  transportation_distance_time: 7,
@@ -1354,7 +1344,7 @@ HasukHouse.create(
     internet:"유선인터넷", personal_trash:"본인이 알아서", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 창천동", lat:37.558828 , lng:126.934266,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"학교선택", 
-     sogang_gate1:"교문선택", sogang_gate2:"교문선택", 
+     sogang_gate1:"교문선���", sogang_gate2:"교문선택", 
      ewha_gate1:"교문선택", ewha_gate2:"교문선택", 
      yonsei_gate1:"정문", yonsei_gate2:"교문선택", 
      distance_time1:4, distance1:160,
@@ -1897,7 +1887,7 @@ HasukHouse.create(
     common_option1:"#{@common_option[0]}", common_option2:"#{@common_option[1]}", common_option3:"#{@common_option[2]}", common_option4:"#{@common_option[3]}", common_option5:"#{@common_option[4]}",
     common_option6:"#{@common_option[5]}", common_option7:"#{@common_option[6]}", common_option8:"#{@common_option[7]}", common_option9:"#{@common_option[8]}", common_option10:"#{@common_option[9]}",
     
-    internet:"와이파이", personal_trash:"해줌", post_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 광성로6안길 14", lat:37.557157 , lng: 126.939345,
+    internet:"와이파이", personal_trash:"해줌", post_description:"방 별로 창문��� 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 광성로6안길 14", lat:37.557157 , lng: 126.939345,
         #교문까지 거리 및 시간
      univ_distance1:"연세", univ_distance2:"이화", 
      sogang_gate1:"교문선택", sogang_gate2:"교문선택", 
@@ -2182,24 +2172,6 @@ HasukHouse.create(
      transportation_distance: 465,
       
      :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha40.jpg")),
-     room_img2:"#{@room_img[7]}",
-     room_img3:"#{@room_img[8]}",
-     room_img4:"",
-     room_img5:"",
-     room_img6:"",
-     room_img7:"",
-     room_img8:"",
-     room_price1:30, room_price2:35, room_price3:40,
-     room_description1:"남동향입니다.", room_description2:"화장실이 따로 있습니다.", room_description3:"", room_description4:"", room_description5:"",
-     room_description6:"", room_description7:"", room_description8:"",
-     common_img1:"#{@room_img[9]}",
-     common_img2:"#{@room_img[10]}",
-     common_img3:"",
-     common_img4:"",
-     meal_img1:"#{@room_img[5]}",
-     meal_img2:"",
-     meal_img3:"",
-     meal_img4:"",
-     discount_price:28000
+     
     )
 =end

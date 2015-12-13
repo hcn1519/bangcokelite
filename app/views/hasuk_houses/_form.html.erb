@@ -678,10 +678,10 @@
         <td id="column" rowspan="2"><center><%= f.label :celPhone, "연락처" %></center></td>
         <td>
           <div class="celPhone col-xs-12 col-lg-6 col-md-6 col-sm-6" style="margin:0; padding:0">
-            <%= f.text_field :celPhone, class:"form-control", placeholder:"H.P" %>
+            <%= f.text_field :celPhone, class:"form-control", placeholder:"H.P(휴대폰)", :required => true  %>
           </div>
           <div class="telPhone col-xs-12 col-lg-6 col-md-6 col-sm-6">
-            <%= f.text_field :telPhone, class:"form-control", placeholder:"Tel(휴대폰)" %>
+            <%= f.text_field :telPhone, class:"form-control", placeholder:"Tel" %>
           </div>
         </td>
       </tr>
@@ -751,7 +751,7 @@
         <table class="table" style="width:100%">
           
           <tr>
-            <td id="column"><center><%= f.label :price_from, "월세" %></center></td>
+            <td id="column"><center><%= f.label :miniroom_price_from, "월세" %></center></td>
             <td colspan="3">
             <!--월세 시작-->
               <div class="form-inline">
@@ -761,9 +761,9 @@
                   </label>
                  </div>
                 <div class="col-md-9 col-sm-9 col-xs-12" style="padding:0px; margin:0px">
-                    <%= f.number_field :price_from, class:"form-control", style:"float:left; max-width:70px;" %>
+                    <%= f.number_field :miniroom_price_from, class:"form-control", style:"float:left; max-width:70px;", :required => true %>
                     <span id="form-middle">만 원 ~</span>
-                    <%= f.number_field :price_to, class:"form-control", style:"float:left; max-width:70px;" %>
+                    <%= f.number_field :miniroom_price_to, class:"form-control", style:"float:left; max-width:70px;", :required => true %>
                     <span id="form-middle">만 원</span>
                   </div>
                 </div>
@@ -777,7 +777,7 @@
                   </label>
                  </div>
                 <div class="col-md-9 col-sm-9 col-xs-12" id="oneroom_price_from" style="padding:0px; margin:0px">
-                  <%= f.number_field :oneroom_price_from , class:"form-control", style:"float:left; max-width:70px;", :disabled => true %>
+                  <%= f.number_field :oneroom_price_from, class:"form-control", style:"float:left; max-width:70px;", :disabled => true %>
                   <span id="form-middle">만 원 ~</span>
 
                   <%= f.number_field :oneroom_price_to, class:"form-control", style:"float:left; max-width:70px;", :disabled => true %>
@@ -889,7 +889,8 @@
       </div>
     </div>
   </div><!-- table2 끝row-->
-  
+  <%= f.number_field :price_from, class:"form-control main_price_from", style:"float:left; max-width:80px;", placeholder:"최소", :required => true %>
+  <%= f.number_field :price_to, class:"form-control main_price_to", style:"float:left; max-width:80px;", placeholder:"최대", :required => true %>
   
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
@@ -1723,6 +1724,66 @@ $(document).ready(function(){
      });
   });
   //교통수단 value 실제 데이터로 옮겨 넣기용
+  
+  //최댓값, 최솟값 월세 셋팅
+  price_from_arr = ["#hasuk_house_miniroom_price_from", "#hasuk_house_oneroom_price_from", "#hasuk_house_sleeping_only_price_from", "#hasuk_house_mate_price_from"];
+  price_to_arr = ["#hasuk_house_miniroom_price_to", "#hasuk_house_oneroom_price_to"]
+  for( var i=0; i <= 3; i++) {
+    $(price_from_arr[i]).change(function(){
+      var result = $(this).val();
+      if ($("#hasuk_house_miniroom_price_from").val() != null) {
+        if (result >= $(this).val()) { 
+          result = $(this).val();
+        }
+      }
+      if ($("#hasuk_house_oneroom_price_from").val() != null) {
+        if (result >= $(this).val()) {
+          result = $(this).val();
+        }
+      }
+      if ($("#hasuk_house_sleeping_only_price_from").val() != null) {
+        if (result >= $(this).val()) {
+          result = $(this).val();
+        }  
+      }
+      if ($("#hasuk_house_mate_price_from").val() != null) {
+        if (result >= $(this).val()) {
+          result = $(this).val();
+        }  
+      }
+      $.ajax({
+          url: "/hasuk_houses/new",
+          data: { result },
+          success: function(data){
+            $("#hasuk_house_price_from").val(result);
+          }
+       });
+    });
+  }//price_from 셋팅 for loop
+  for( var i=0; i <= 1; i++) {
+    $(price_to_arr[i]).change(function(){
+      var result = $(this).val();
+      if ($("#hasuk_house_miniroom_price_to").val() != null) {
+        if (result <= $(this).val()) { 
+          result = $(this).val();
+        }
+      }
+      if ($("#hasuk_house_oneroom_price_to").val() != null) {
+        if (result <= $(this).val()) {
+          result = $(this).val();
+        }
+      }
+      $.ajax({
+          url: "/hasuk_houses/new",
+          data: { result },
+          success: function(data){
+            $("#hasuk_house_price_to").val(result);
+          }
+       });
+    });
+  }//price_to 셋팅 for loop
+  
+  //최댓값, 최솟값 월세 셋팅
 });
         
 $(document).ready(function(){

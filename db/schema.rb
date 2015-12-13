@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20151207143856) do
     t.string   "gender"
     t.integer  "price_from"
     t.integer  "price_to"
+    t.integer  "miniroom_price_from"
+    t.integer  "miniroom_price_to"
     t.integer  "oneroom_price_from"
     t.integer  "oneroom_price_to"
     t.integer  "sleeping_only_price_from"

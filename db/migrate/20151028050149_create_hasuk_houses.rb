@@ -17,6 +17,8 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.integer :price_from
       t.integer :price_to
       
+      t.integer :miniroom_price_from
+      t.integer :miniroom_price_to
       t.integer :oneroom_price_from 
       t.integer :oneroom_price_to 
       t.integer :sleeping_only_price_from 
@@ -25,7 +27,7 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.integer :small_deposit
       t.integer :least_contract
       
-      #상세설명
+      #상세설명tgrrrrrrrr
       t.string :hasuk_house_description
       
       
