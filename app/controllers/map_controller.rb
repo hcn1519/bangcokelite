@@ -3,13 +3,13 @@ class MapController < ApplicationController
     @univ = params[:univ]
 
     @hasuk = HasukHouse.all()
-    @hasuk = HasukHouse.all.sort { |p1, p2| [p2.discount_price, p1.distance_time1] <=> [p1.discount_price, p2.distance_time1] }
+    @hasuk = HasukHouse.all.sort { |p1, p2| [p1.price_from, p1.price_to, p1.distance1] <=> [p2.price_from, p2.price_to, p2.distance1] }
     
     
   end
 
   def map_detail
-    @hasuk = HasukHouse.all.sort { |p1, p2| [p2.discount_price, p1.distance_time1] <=> [p1.discount_price, p2.distance_time1] }
+    @hasuk = HasukHouse.all.sort { |p1, p2| [p1.price_from, p1.price_to, p1.distance1] <=> [p2.price_from, p2.price_to, p2.distance1] }
     
     @univ = params[:univ]
     @hasuk_kind = params[:hasuk_kind]
@@ -22,7 +22,7 @@ class MapController < ApplicationController
 
   def from_hasuk
     @place = HasukHouse.all
-    @place = HasukHouse.all.sort { |p1, p2| [p2.discount_price, p1.distance_time1] <=> [p1.discount_price, p2.distance_time1] }
+    @place = HasukHouse.all.sort { |p1, p2| [p1.price_from, p1.price_to, p1.distance1] <=> [p2.price_from, p2.price_to, p2.distance1] }
     
     
     render json: @place

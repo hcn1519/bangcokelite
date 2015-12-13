@@ -1246,81 +1246,122 @@
               "<option selected>버스정류장</option>
               <option selected='selected' value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
               <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
-              <option value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='이대' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
               <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
               <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='이대부고' href='http://map.daum.net/?eX=488199&eY=1129723&eName=%EC%9D%B4%EB%8C%80%EB%B6%80%EA%B3%A0'>이대부고</option>
               <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='연희교차로/브라운스톤' href='http://map.daum.net/?eX=484576&eY=1129516&eName=%EC%97%B0%ED%9D%AC%EA%B5%90%EC%B0%A8%EB%A1%9C%2F%EB%B8%8C%EB%9D%BC%EC%9A%B4%EC%8A%A4%ED%86%A4'>연희교차로/브라운스톤</option>
               <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
     <% elsif trans_kind[i] == "버스" && bus[i] == "신촌오거리" %>
               <%= select_tag "bus#{i}", 
               "<option selected>버스정류장</option>
               <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
               <option selected='selected' value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
-              <option value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='이대' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
               <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
               <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='이대부고' href='http://map.daum.net/?eX=488199&eY=1129723&eName=%EC%9D%B4%EB%8C%80%EB%B6%80%EA%B3%A0'>이대부고</option>
               <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='연희교차로/브라운스톤' href='http://map.daum.net/?eX=484576&eY=1129516&eName=%EC%97%B0%ED%9D%AC%EA%B5%90%EC%B0%A8%EB%A1%9C%2F%EB%B8%8C%EB%9D%BC%EC%9A%B4%EC%8A%A4%ED%86%A4'>연희교차로/브라운스톤</option>
               <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
     <% elsif trans_kind[i] == "버스" && bus[i] == "이대역" %>
               <%= select_tag "bus#{i}", 
               "<option selected>버스정류장</option>
               <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
               <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
-              <option selected='selected' value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option selected='selected' value='이대' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
               <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
               <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='이대부고' href='http://map.daum.net/?eX=488199&eY=1129723&eName=%EC%9D%B4%EB%8C%80%EB%B6%80%EA%B3%A0'>이대부고</option>
               <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='연희교차로/브라운스톤' href='http://map.daum.net/?eX=484576&eY=1129516&eName=%EC%97%B0%ED%9D%AC%EA%B5%90%EC%B0%A8%EB%A1%9C%2F%EB%B8%8C%EB%9D%BC%EC%9A%B4%EC%8A%A4%ED%86%A4'>연희교차로/브라운스톤</option>
               <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
     <% elsif trans_kind[i] == "버스" && bus[i] == "신촌기차역" %>
               <%= select_tag "bus#{i}",
               "<option selected>버스정류장</option>
               <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
               <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
-              <option value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='이대' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
               <option selected='selected' value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
               <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='이대부고' href='http://map.daum.net/?eX=488199&eY=1129723&eName=%EC%9D%B4%EB%8C%80%EB%B6%80%EA%B3%A0'>이대부고</option>
               <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='연희교차로/브라운스톤' href='http://map.daum.net/?eX=484576&eY=1129516&eName=%EC%97%B0%ED%9D%AC%EA%B5%90%EC%B0%A8%EB%A1%9C%2F%EB%B8%8C%EB%9D%BC%EC%9A%B4%EC%8A%A4%ED%86%A4'>연희교차로/브라운스톤</option>
               <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
     <% elsif trans_kind[i] == "버스" && bus[i] == "이대후문" %>
               <%= select_tag "bus#{i}", 
               "<option selected>버스정류장</option>
               <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
               <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
-              <option value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='이대' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
               <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
               <option selected='selected' value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='이대부고' href='http://map.daum.net/?eX=488199&eY=1129723&eName=%EC%9D%B4%EB%8C%80%EB%B6%80%EA%B3%A0'>이대부고</option>
               <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='연희교차로/브라운스톤' href='http://map.daum.net/?eX=484576&eY=1129516&eName=%EC%97%B0%ED%9D%AC%EA%B5%90%EC%B0%A8%EB%A1%9C%2F%EB%B8%8C%EB%9D%BC%EC%9A%B4%EC%8A%A4%ED%86%A4'>연희교차로/브라운스톤</option>
               <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
     <% elsif trans_kind[i] == "버스" && bus[i] == "연세대앞" %>
               <%= select_tag "bus#{i}", 
               "<option selected>버스정류장</option>
               <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
               <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
-              <option value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='이대' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
               <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
               <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='이대부고' href='http://map.daum.net/?eX=488199&eY=1129723&eName=%EC%9D%B4%EB%8C%80%EB%B6%80%EA%B3%A0'>이대부고</option>
               <option selected='selected' value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='연희교차로/브라운스톤' href='http://map.daum.net/?eX=484576&eY=1129516&eName=%EC%97%B0%ED%9D%AC%EA%B5%90%EC%B0%A8%EB%A1%9C%2F%EB%B8%8C%EB%9D%BC%EC%9A%B4%EC%8A%A4%ED%86%A4'>연희교차로/브라운스톤</option>
               <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
     <% elsif trans_kind[i] == "버스" && bus[i] == "서대문우체국" %>
               <%= select_tag "bus#{i}", 
               "<option selected>버스정류장</option>
               <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
               <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
-              <option value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='이대' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
               <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
               <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='이대부고' href='http://map.daum.net/?eX=488199&eY=1129723&eName=%EC%9D%B4%EB%8C%80%EB%B6%80%EA%B3%A0'>이대부고</option>
               <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='연희교차로/브라운스톤' href='http://map.daum.net/?eX=484576&eY=1129516&eName=%EC%97%B0%ED%9D%AC%EA%B5%90%EC%B0%A8%EB%A1%9C%2F%EB%B8%8C%EB%9D%BC%EC%9A%B4%EC%8A%A4%ED%86%A4'>연희교차로/브라운스톤</option>
               <option selected='selected' value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
+    <% elsif trans_kind[i] == "버스" && bus[i] == "이대부고" %>
+              <%= select_tag "bus#{i}", 
+              "<option selected>버스정류장</option>
+              <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
+              <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
+              <option value='이대' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
+              <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option selected='selected' value='이대부고' href='http://map.daum.net/?eX=488199&eY=1129723&eName=%EC%9D%B4%EB%8C%80%EB%B6%80%EA%B3%A0'>이대부고</option>
+              <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='연희교차로/브라운스톤' href='http://map.daum.net/?eX=484576&eY=1129516&eName=%EC%97%B0%ED%9D%AC%EA%B5%90%EC%B0%A8%EB%A1%9C%2F%EB%B8%8C%EB%9D%BC%EC%9A%B4%EC%8A%A4%ED%86%A4'>연희교차로/브라운스톤</option>
+              <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>
+    <% elsif trans_kind[i] == "버스" && bus[i] == "연희교차로/브라운스톤" %>
+              <%= select_tag "bus#{i}", 
+              "<option selected>버스정류장</option>
+              <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
+              <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
+              <option value='이대' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
+              <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='이대부고' href='http://map.daum.net/?eX=488199&eY=1129723&eName=%EC%9D%B4%EB%8C%80%EB%B6%80%EA%B3%A0'>이대부고</option>
+              <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option selected='selected' value='연희교차로/브라운스톤' href='http://map.daum.net/?eX=484576&eY=1129516&eName=%EC%97%B0%ED%9D%AC%EA%B5%90%EC%B0%A8%EB%A1%9C%2F%EB%B8%8C%EB%9D%BC%EC%9A%B4%EC%8A%A4%ED%86%A4'>연희교차로/브라운스톤</option>
+              <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:block" %>          
     <% else %>
               <%= select_tag "bus#{i}", 
               "<option selected>버스정류장</option>
               <option value='광성중고등학교' href='http://map.daum.net/?eX=486473&eY=1124931&eName=%EA%B4%91%EC%84%B1%EC%A4%91%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>광성중고등학교</option>
               <option value='신촌오거리' href='http://map.daum.net/?eX=486483&eY=1126711&eName=%EC%8B%A0%EC%B4%8C%EC%98%A4%EA%B1%B0%EB%A6%AC%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌오거리</option>
-              <option value='이대역' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
+              <option value='이대' href='http://map.daum.net/?eX=487811&eY=1126986&eName=%EC%9D%B4%EB%8C%80%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>이대역</option>
               <option value='신촌기차역' href='http://map.daum.net/?eX=487283&eY=1127575&eName=%EC%8B%A0%EC%B4%8C+%EA%B8%B0%EC%B0%A8%EC%97%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>신촌기차역</option>
               <option value='이대후문' href='http://map.daum.net/?eX=487642&eY=1128827&eName=%EC%9D%B4%EB%8C%80+%ED%9B%84%EB%AC%B8+%EB%B2%84%EC%8A%A4+%EC%A0%95%EB%A5%98%EC%9E%A5'>이대 후문</option>
+              <option value='이대부고' href='http://map.daum.net/?eX=488199&eY=1129723&eName=%EC%9D%B4%EB%8C%80%EB%B6%80%EA%B3%A0'>이대부고</option>
               <option value='연세대앞' href='http://map.daum.net/?eX=485672&eY=1127904&eName=%EC%97%B0%EC%84%B8%EB%8C%80%EC%95%9E+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>연세대앞(정문)</option>
+              <option value='연희교차로/브라운스톤' href='http://map.daum.net/?eX=484576&eY=1129516&eName=%EC%97%B0%ED%9D%AC%EA%B5%90%EC%B0%A8%EB%A1%9C%2F%EB%B8%8C%EB%9D%BC%EC%9A%B4%EC%8A%A4%ED%86%A4'>연희교차로/브라운스톤</option>
               <option value='서대문우체국' href='http://map.daum.net/?eX=484820&eY=1128636&eName=%EC%84%9C%EB%8C%80%EB%AC%B8+%EC%9A%B0%EC%B2%B4%EA%B5%AD+%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5'>서대문우체국</option>".html_safe, class:"form-control", style:"display:none" %>
+              
     <% end %>
             </div>
             

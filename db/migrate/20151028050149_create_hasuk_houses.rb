@@ -27,7 +27,7 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.integer :small_deposit
       t.integer :least_contract
       
-      #상세설명tgrrrrrrrr
+      #상세설명
       t.string :hasuk_house_description
       
       
