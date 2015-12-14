@@ -969,6 +969,8 @@
     </div>
   </div><!--상세설명 타이틀-->
   
+  <%= f.text_field :title, class:"form-control", placeholder:"한 줄 설명" %>
+  
   <% if @hasuk_house.hasuk_house_description != nil || @hasuk_house.hasuk_house_description != "" %>
     <%= text_area_tag "hasuk_house[hasuk_house_description]", @hasuk_house.hasuk_house_description ,rows: 10, class:"form-control", placeholder:"추가 설명을 해주세요. (ex. 채광, 주변 편의시설, 분위기 등)" %>
   <% else %>

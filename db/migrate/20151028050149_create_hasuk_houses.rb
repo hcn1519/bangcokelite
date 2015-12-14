@@ -28,7 +28,8 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.integer :least_contract
       
       #상세설명
-      t.string :hasuk_house_description
+      t.string :title
+      t.text :hasuk_house_description
       
       
       t.string :address

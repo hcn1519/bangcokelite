@@ -48,6 +48,7 @@ HasukHouse.create(
     mate_price_from: price_from.sample,
     least_contract: least_contract.sample,
     
+    title: "수요일마다 삼겹살 파티하는 집",
     hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", 
     address:"서울특별시 마포구 독막로 221-7", lat:37.547867 , lng:126.9377533 ,
     
@@ -92,7 +93,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "수요일마다 삼겹살 파티하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.549090 , lng:126.937480,
 
      #교문까지 거리 및 시간
@@ -135,7 +136,7 @@ HasukHouse.create(
     mate_price_from: price_from.sample,
     least_contract: least_contract.sample,
     
-   
+    title: "수요일마다 삼겹살 파티하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 신수동 89-80", lat:37.548791 , lng:126.937312,
      
      #교문까지 거리 및 시간
@@ -178,7 +179,7 @@ HasukHouse.create(
     mate_price_from: price_from.sample,
     least_contract: least_contract.sample,
     
-    
+    title: "수요일마다 삼겹살 파티하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 백범로 10길 24", lat:37.548290 , lng:126.939664,
      
      #교문까지 거리 및 시간
@@ -222,7 +223,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "수요일마다 삼겹살 파티하는 집",
     hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 광성로6안길 14", lat:37.548715 , lng: 126.937881 ,
      
      #교문까지 거리 및 시간
@@ -266,7 +267,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "수요일마다 삼겹살 파티하는 집",
       hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 신수동 89-91", lat:37.548600 , lng:126.937538,
      
      #교문까지 거리 및 시간
@@ -310,7 +311,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "수요일마다 삼겹살 파티하는 집",
       hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 신수동 89-89", lat:37.548498 , lng:126.937372,
      
      #교문까지 거리 및 시간
@@ -354,7 +355,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "수요일마다 삼겹살 파티하는 집",
       hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 광성로 34-14", lat:37.549127, lng:126.937206,
      
      #교문까지 거리 및 시간
@@ -397,7 +398,7 @@ HasukHouse.create(
     mate_price_from: price_from.sample,
     least_contract: least_contract.sample,
     
-    
+    title: "수요일마다 삼겹살 파티하는 집",
     hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 신수동 89-66", lat:37.548940 , lng:126.937147,
      
      #교문까지 거리 및 시간
@@ -440,7 +441,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
 
-    
+    title: "수요일마다 삼겹살 파티하는 집",
       hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 신수동 89-86", lat:37.548638 , lng:126.937388,
      
      #교문까지 거리 및 시간
@@ -485,7 +486,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "수요일마다 삼겹살 파티하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 연희동 339-6", lat:37.563879 , lng:126.933127 ,
       
     #교문까지 거리 및 시간
@@ -528,8 +529,8 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
-     hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 연희동 339-96", lat:37.563743 , lng:126.932757,
+    title: "수요일마다 삼겹살 파티하는 집",
+    hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 연희동 339-96", lat:37.563743 , lng:126.932757,
     
     #교문까지 거리 및 시간
     univ1:"연세",
@@ -576,7 +577,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "수요일마다 삼겹살 파티하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 연희동 339-23", lat:37.565023 , lng:126.931673,
     
     #교문까지 거리 및 시간
@@ -624,7 +625,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "목요일마다 고기 파티하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 연희동 309-25", lat:37.565299 , lng:126.931979,
     #교문까지 거리 및 시간
     univ1:"연세",
@@ -671,7 +672,7 @@ HasukHouse.create(
     mate_price_from: price_from.sample,
     least_contract: least_contract.sample,
     
-    
+    title: "목요일마다 고기 파티하는 집",
     hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 연희동 340-40", lat:37.564725 , lng: 126.931271 ,
     
     #교문까지 거리 및 시간
@@ -721,7 +722,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
    
-    
+    title: "목요일마다 고기 파티하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건���은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 성산동", lat:37.562964, lng:126.930199,
      
      #교문까지 거리 및 시간
@@ -770,7 +771,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
    
-    
+    title: "목요일마다 고기 파티하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 성산동", lat:37.563190 , lng:126.930134,
     
      #교문까지 거리 및 시간
@@ -818,7 +819,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "목요일마다 고기 파티하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 성산동", lat:37.562709, lng:126.930038,
     
      #교문까지 거리 및 시간
@@ -865,7 +866,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "목요일마다 고기 파티하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 성산동", lat:37.562752 , lng:126.930215,
      #교문까지 거리 및 시간
     univ1:"연세",
@@ -913,7 +914,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "목요일마다 고기 파티하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 성산동", lat:37.562688 , lng:126.929598,
      
       #교문까지 거리 및 시간
@@ -961,7 +962,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "고기 파티 안 하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 창천동", lat:37.558810 , lng:126.935077,
      
       #교문까지 거리 및 시간
@@ -1008,7 +1009,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
    
-    
+    title: "고기 파티 안 하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 창천동", lat:37.559006 , lng:126.935790,
      #교문까지 거리 및 시간
     univ1:"연세",
@@ -1055,7 +1056,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
    
-    
+    title: "고기 파티 안 하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 창천동", lat:37.558547 , lng:126.935044,
     
      #교문까지 거리 및 시간
@@ -1103,7 +1104,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "고기 파티 안 하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 창천동", lat:37.559011, lng:126.934797,
     
      #교문까지 거리 및 시간
@@ -1153,7 +1154,7 @@ HasukHouse.create(
     
     
     
-    
+    title: "고기 파티 안 하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 서대문구 창천동", lat:37.558828 , lng:126.934266,
    
     #교문까지 거리 및 시간
@@ -1205,7 +1206,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
    
-    
+    title: "고기 파티 안 하는 집",
     hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.558215, lng:126.945186 ,
     
      #교문까지 거리 및 시간
@@ -1249,7 +1250,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "고기 파티 안 하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.558513 , lng:126.944703,
      #교문까지 거리 및 시간
     univ1:"이화",
@@ -1288,7 +1289,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "고기 파티 안 하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 신수동 89-80", lat:37.557845 , lng:126.944188,
      #교문까지 거리 및 시간
     univ1:"이화",
@@ -1328,7 +1329,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
     
-    
+    title: "고기 파티 안 하는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 백범로 10길 24", lat:37.557505 , lng:126.943888,
      #교문까지 거리 및 시간
     univ1:"이화",
@@ -1370,7 +1371,7 @@ HasukHouse.create(
     
     
     
-    
+    title: "고기 파티 안 하는 집",
     hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 광성로6안길 14", lat:37.558572 , lng:126.944290 ,
     #교문까지 거리 및 시간
     univ1:"이화",
@@ -1412,7 +1413,7 @@ HasukHouse.create(
     mate_price_from: price_from.sample,
     least_contract: least_contract.sample,
 
-    
+    title: "빨래 일일이 걷어서 세탁기 돌려주는 집",
     hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.557413 , lng:126.940074 ,
     
     #교문까지 거리 및 시간
@@ -1458,6 +1459,7 @@ HasukHouse.create(
     mate_price_from: price_from.sample,
     least_contract: least_contract.sample,
     
+    title: "빨래 일일이 걷어서 세탁기 돌려주는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.557451 , lng:126.941453,
     #교문까지 거리 및 시간
     univ1:"이화",
@@ -1503,7 +1505,7 @@ HasukHouse.create(
     least_contract: least_contract.sample,
     
    
-    
+    title: "빨래 일일이 걷어서 세탁기 돌려주는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 신수동 89-80", lat:37.558182 , lng:126.941501,
     
     #교문까지 거리 및 시간
@@ -1552,7 +1554,7 @@ HasukHouse.create(
     
     
     
-    
+    title: "빨래 일일이 걷어서 세탁기 돌려주는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 백범로 10길 24", lat:37.558365 , lng:126.940788,
     
     #교문까지 거리 및 시간
@@ -1601,7 +1603,7 @@ HasukHouse.create(
     
     
    
-    
+    title: "빨래 일일이 걷어서 세탁기 돌려주는 집",
     hasuk_house_description:"방 별로 창문��� 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 광성로6안길 14", lat:37.557157 , lng: 126.939345,
     
     #교문까지 거리 및 시간
@@ -1651,7 +1653,7 @@ HasukHouse.create(
     
     
     
-    
+    title: "빨래 일일이 걷어서 세탁기 돌려주는 집",
    hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.567185 , lng:126.946372 ,
    
    #교문까지 거리 및 시간
@@ -1697,7 +1699,7 @@ HasukHouse.create(
     mate_price_from: price_from.sample,
     least_contract: least_contract.sample,
     
-
+title: "빨래 일일이 걷어서 세탁기 돌려주는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.567580 , lng:126.945884,
     
     #교문까지 거리 및 시간
@@ -1743,6 +1745,7 @@ HasukHouse.create(
     mate_price_from: price_from.sample,
     least_contract: least_contract.sample,
 
+title: "빨래 일일이 걷어서 세탁기 돌려주는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 신수동 89-80", lat:37.567916 , lng:126.947123,
     
     #교문까지 거리 및 시간
@@ -1789,6 +1792,7 @@ HasukHouse.create(
     mate_price_from: price_from.sample,
     least_contract: least_contract.sample,
  
+ title: "빨래 일일이 걷어서 세탁기 돌려주는 집",
      hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 백범로 10길 24", lat:37.567091 , lng:126.946732,
     
     #교문까지 거리 및 시간
@@ -1834,6 +1838,7 @@ HasukHouse.create(
     mate_price_from: price_from.sample,
     least_contract: least_contract.sample,
     
+    title: "빨래 일일이 걷어서 세탁기 돌려주는 집",
     hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울 마포구 광성로6안길 14", lat:37.568180 , lng: 126.945954,
     
     #교문까지 거리 및 시간
