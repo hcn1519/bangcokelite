@@ -65,6 +65,54 @@ hr {
     border-top: 1px solid #aeaeae;
 }
 
+ .sub_circle {
+    border-radius: 40%;
+    padding-left: 3px;
+    padding-right: 3px;
+    color: #ffffff;
+    text-align: center;
+    display: inline-block;
+    line-height: 1;
+}
+    .line_number_2 {
+        background: #29c531;
+    }
+    
+    .line_number_6 {
+        background: #cd7c2b;
+    }
+    
+    .line_number_kj {
+        background: #7bc2a3;
+        border-radius: 15%;
+        padding-left: 2px;
+        padding-right: 2px;
+        color: #ffffff;
+        text-align: center;
+        font-size: 8px;
+        display: inline-block;
+    }
+    
+    .line_number_bus {
+        background: #3498DB;
+        border-radius: 15%;
+        padding:1.5px;
+        color: #ffffff;
+        text-align: center;
+        font-size: 8px;
+        display: inline-block;
+    }
+    
+    .bus_circle {
+        border-radius: 20%;
+        padding-left: 2px;
+        padding-right: 2px;
+        color: #ffffff;
+        text-align: center;
+        display: inline-block;
+        
+    }
+
 @media (max-width: 320px) {
 .col-xs-3 {
     width: 20%;
@@ -77,10 +125,27 @@ hr {
 .info_list, .info_content {
     font-size: 15px;  
 }
-
+#pictab1{
+  display:inline-block;
+  width:49%;
+}
+#pictab2{
+  display:inline-block;
+  width:50%;
+  margin-left:0px;
+}
 }
 
 @media (max-width: 767px) {
+#pictab1{
+  display:inline-block;
+  width:49%;
+}
+#pictab2{
+  display:inline-block;
+  width:50%;
+  margin-left:0px;
+}
 #map {
   height: 200px;
   background-color: #ffffff;
@@ -255,7 +320,7 @@ hr {
                 <div class="photo-zone"> 
               <ul id="myTabs" class="btn-group nav nav-tabs nav-pills nav-justified" style="" role="tablist">
                   <li id="pictab1" role="presentation" class="active"><a href="#photo" aria-controls="photo" role="tab" data-toggle="tab">사진</a></li>
-                  <li id="pictab3" role="presentation"><a href="#roadviewcon" aria-controls="roadviewcon" role="tab" data-toggle="tab">로드뷰</a></li>
+                  <li id="pictab2" role="presentation"><a href="#roadviewcon" aria-controls="roadviewcon" role="tab" data-toggle="tab">로드뷰</a></li>
               </ul>
             
           <!-- Tab panes -->
@@ -318,23 +383,61 @@ hr {
         <div class="col-sm-6 col-xs-12">
             <div class="info">
                 <div class="row">
-                    <span class="hasuk_name" style="display: inline-block">이화하숙&nbsp</span>
-                    <div class="oneline">한줄설명이 들어가는 공간입니다.</div>
+                  <% if @hasuk_house.hasuk_name != nil %>
+                    <span class="hasuk_name" style="display: inline-block"><%= @hasuk_house.hasuk_name %>&nbsp</span>
+                  <% else %>
+                    <span class="hasuk_name" style="display: inline-block">-&nbsp</span>
+                  <% end %>
+                  <% if @hasuk_house.title != nil %>
+                    <% if @hasuk_house.title.length >= 17 %>
+                      <div class="oneline"><%= @hasuk_house.title.split(//).first(17).join %>..</div>
+                    <% else %>
+                      <div class="oneline"><%= @hasuk_house.title %></div>
+                    <% end %>
+                  <% else %>
+                    <div class="oneline">-</div>
+                  <% end %>
                 </div>
                 <div class="row" style="margin-top: 10px">
                     <div class="info_list col-xs-3">유형</div>
-                    <div class="info_content col-xs-9">일반하숙 / 여성전용</div>
+                  <% if @hasuk_house.hasuk_kind == "일반하숙" %>
+                    <% if @hasuk_house.gender == "남녀공용" %>
+                      <div class="info_content col-xs-9">일반하숙 / 남녀공용</div>
+                    <% else %>
+                      <div class="info_content col-xs-9">일반하숙 / 여성전용</div>
+                    <% end %>
+                  <% elsif @hasuk_house.hasuk_kind == "잠만 자는 방" %>
+                    <% if @hasuk_house.gender == "남녀공용" %>
+                      <div class="info_content col-xs-9">잠만 자는 방 / 남녀공용</div>
+                    <% else %>
+                      <div class="info_content col-xs-9">잠만 자는 방 / 여성전용</div>
+                    <% end %>
+                  <% else %>
+                    -
+                  <% end %>
                 </div>
                 <div class="row">
                     <div class="info_list col-xs-3 price_margin">월세</div>
                     <div class="info_content col-xs-9">
                         <div class="col-sm-6 col-xs-12">
                             <span class="room">미니룸</span>
-                            <span class="price">40~50</span><span class="manwon">만원</span>
+                            <% if @hasuk_house.miniroom_price_from != nil %>
+                              <span class="price"><%= @hasuk_house.miniroom_price_from %>~<%= @hasuk_house.miniroom_price_to %></span>
+                              <span class="manwon">만원</span>
+                            <% else %>
+                              <span class="price">-</span>
+                            <% end %>
+                            
                         </div>
                         <div class="col-sm-6 col-xs-12">
                             <span class="room">원룸형</span>
-                            <span class="price">45~55</span><span class="manwon">만원</span>
+                            <% if @hasuk_house.oneroom_price_from != nil %>
+                              <span class="price"><%= @hasuk_house.oneroom_price_from %>~<%= @hasuk_house.oneroom_price_to %></span>
+                              <span class="manwon">만원</span>
+                            <% else %>
+                              <span class="price">-</span>
+                            <% end %>
+                            
                         </div>
                     </div>
                 </div>
@@ -342,57 +445,201 @@ hr {
                     <div class="info_list col-xs-3 price_margin">협의</div>
                     <div class="info_content col-xs-9">
                         <div class="col-sm-6 col-xs-12">
+                          <% if @hasuk_house.sleeping_only_price_from != nil %>  
                             <span class="room">잠만자면</span>
-                            <span class="price">35</span><span class="manwon">만원~</span>
+                            <span class="price"><%= @hasuk_house.sleeping_only_price_from %></span>
+                            <span class="manwon">만원~</span>
+                          <% else %>
+                            <span class="price">-</span>
+                          <% end %>
                         </div>
                         <div class="col-sm-6 col-xs-12">
+                          <% if @hasuk_house.mate_price_from != nil %>
                             <span class="room">2인1실</span>
-                            <span class="price">45</span><span class="manwon">만원~</span>
+                            <span class="price"><%= @hasuk_house.mate_price_from %></span>
+                            <span class="manwon">만원~</span>
+                          <% else %>
+                            <span class="price">-</span>
+                          <% end %>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="info_list col-xs-3">예치금</div>
-                    <div class="info_content col-xs-9">20<span class="manwon">만원</span></div>                                        
+                    <% if @hasuk_house.small_deposit != nil && @hasuk_house.small_deposit != 0 %>
+                      <div class="info_content col-xs-9"><%= @hasuk_house.small_deposit %><span class="manwon">만원</span></div>                                        
+                    
+                    <% else %>
+                      <div class="info_content col-xs-9"><span class="manwon">없음</span></div> 
+                    <% end %>
                 </div> 
                 <div class="row">
                     <div class="info_list col-xs-3">계약기간</div>
-                    <div class="info_content col-xs-9">3<span class="manwon">개월 이상</span></div>                    
+                    <% if @hasuk_house.least_contract != nil && @hasuk_house.least_contract != 0 %>
+                      <div class="info_content col-xs-9"><%= @hasuk_house.least_contract %><span class="manwon">개월 이상</span></div>                    
+                    <% else %>
+                      <div class="info_content col-xs-9"><span class="manwon">없음</span></div>  
+                    <% end %>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="info_list col-xs-3">통학</div>
                     <div class="info_content col-xs-9">
-                        <div class="row">이화여대 정문 <span class="">3</span><span class="manwon">분</span>(300m)</div>
-                        <div class="row">연세대 정문 3<span class="manwon">분</span>(300m)</div>
+                      <% if @hasuk_house.univ1 != nil %>
+                        <% if @hasuk_house.univ1 == "이화" %>
+                          <div class="row"><%= @hasuk_house.univ1 %>여대 <%= @hasuk_house.gate1 %> <%= @hasuk_house.distance_time1 %></span><span class="manwon">분</span>(<%= @hasuk_house.distance1 %>m)</div>
+                        <% else %>
+                          <div class="row"><%= @hasuk_house.univ1 %>대 <%= @hasuk_house.gate1 %> <%= @hasuk_house.distance_time1 %></span><span class="manwon">분</span>(<%= @hasuk_house.distance1 %>m)</div>
+                        <% end %>
+                      <% else %>
+                        <div class="row">-</div>
+                      <% end %>
+                      <% if @hasuk_house.univ2 != nil %>
+                        <% if @hasuk_house.univ2 == "이화" %>
+                          <div class="row"><%= @hasuk_house.univ2 %>여대 <%= @hasuk_house.gate2 %> <%= @hasuk_house.distance_time2 %></span><span class="manwon">분</span>(<%= @hasuk_house.distance2 %>m)</div>  
+                        <% else %>
+                          <div class="row"><%= @hasuk_house.univ2 %>대 <%= @hasuk_house.gate2 %> <%= @hasuk_house.distance_time2 %></span><span class="manwon">분</span>(<%= @hasuk_house.distance2 %>m)</div>  
+                        <% end %>
+                      <% else %>
+                        <div class="row">-</div>
+                      <% end %>
                     </div> 
                 </div>
                 <div class="row">
                     <div class="info_list col-xs-3">교통</div>
                     <div class="info_content col-xs-9">
-                        <div class="row">이대역 1<span class="manwon">분</span>(50m)</div>
-                        <div class="row">버스정류장 3<span class="manwon">분</span>(240m)</div>
+                      <div class="row">
+                        <% if @hasuk_house.trans_kind1 == "지하철" %>
+                          <% if @hasuk_house.station1 == "대흥" %>
+                              <span class="sub_circle line_number_6">6</span>&nbsp;<span id="subway" style="color:#9a4510"><%= @hasuk_house.station1 %>역</span>
+                          <% elsif @hasuk_house.station1 == "신촌" || @hasuk_house.station1 == "이대" %>
+                              <span class="sub_circle line_number_2">2</span>&nbsp;<span id="subway" style="color:#009044"><%= @hasuk_house.station1 %>역</span>
+                          <% elsif @hasuk_house.station1 == "서강대" %>
+                              <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#41b9b9"><%= @hasuk_house.station1 %>역</span>
+                          <% elsif @hasuk_house.station1 == "신촌기차" %>
+                              <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#0063b1"><%= @hasuk_house.station1 %>역</span>
+                          <% end %>
+                          <span><%= @hasuk_house.trans_distance_time1 %>분(<%= @hasuk_house.trans_distance1 %>m)</span>
+                       <% elsif @hasuk_house.trans_kind1 == "버스" %>
+                          <div class="line_number_bus">버스</div>
+                          <span id="bus" style="color:#0063b1"><%= @hasuk_house.station1 %></span>
+                          <span><%= @hasuk_house.trans_distance_time1 %>분(<%= @hasuk_house.trans_distance1 %>m)</span>
+                      
+                       <% else %>
+                      
+                        <span id="subway"> 신촌기차역 21분(1103m)</span>
+                      
+                       <% end %>  
+                      </div>  
+                      <div class="row">
+                        <% if @hasuk_house.trans_kind2 == "지하철" %>
+                          <% if @hasuk_house.station2 == "대흥" %>
+                              <span class="sub_circle line_number_6">6</span>&nbsp;<span id="subway" style="color:#9a4510"><%= @hasuk_house.station2 %>역</span>
+                          <% elsif @hasuk_house.station2 == "신촌" || @hasuk_house.station2 == "이대" %>
+                              <span class="sub_circle line_number_2">2</span>&nbsp;<span id="subway" style="color:#009044"><%= @hasuk_house.station2 %>역</span>
+                          <% elsif @hasuk_house.station2 == "서강대" %>
+                              <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#41b9b9"><%= @hasuk_house.station2 %>역</span>
+                          <% elsif @hasuk_house.station2 == "신촌기차" %>
+                              <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#0063b1"><%= @hasuk_house.station2 %>역</span>
+                          <% end %>
+                          <span><%= @hasuk_house.trans_distance_time2 %>분(<%= @hasuk_house.trans_distance2 %>m)</span>
+                       <% elsif @hasuk_house.trans_kind2 == "버스" %>
+                          <div class="line_number_bus">버스</div>
+                          <span id="bus" style="color:#0063b1"><%= @hasuk_house.station2 %></span>
+                          <span><%= @hasuk_house.trans_distance_time2 %>분(<%= @hasuk_house.trans_distance2 %>m)</span>
+                      
+                       <% else %>
+                      
+                        <span id="subway"> 신촌기차역 21분(1103m)</span>
+                      
+                       <% end %>  
+                      </div>
+                       
                     </div> 
                 </div>
                 <hr>
                 <div class="row">
                     <div class="info_list col-xs-12">상세설명</div>
-                    <div class="info_content col-xs-12">설명설명설명</div>
+                    <div class="info_content col-xs-12">
+                    
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0px">
+                        <span id="inner-content" style="float:left;">
+                          <% if @hasuk_house.hasuk_house_description.size > 30 %>
+                            <%= @hasuk_house.hasuk_house_description.split(//).first(30).join %>...&nbsp;&nbsp;
+                        </span>
+                        <button style="float:left;padding: 4px;font-size: 0.6em;" type="button" class="btn btn-default" data-toggle="modal" data-target="#descript">
+                            더보기
+                          </button>
+                          <% else %>
+                            <%= @hasuk_house.hasuk_house_description %>
+                          <% end %>
+                        </div>
+              
+                      </div> 
+                      
+                      
+                      
+                    </div><!--상세설명 끝-->
                 </div>
                 <hr>
                 <div class="row">
                     <div class="info_list col-xs-3">문의</div>
                     <div class="info_content col-xs-9">
-                        <div class="row">010-1234-1234(연락시 참고사항)</div>
-                        <div class="row">주소</div>
+                      <% if @hasuk_house.celPhone != nil %>
+                        <% if @hasuk_house.contact_memo != nil %>
+                          <div class="row"><%= @hasuk_house.celPhone %>(<%= @hasuk_house.contact_memo %>)</div>
+                        <% else %>
+                          <div class="row"><%= @hasuk_house.celPhone %></div>
+                        <% end %>
+                      <% else %>
+                        <% if @hasuk_house.telPhone != nil %>
+                          <% if @hasuk_house.contact_memo != nil %>
+                            <div class="row"><%= @hasuk_house.telPhone %>(<%= @hasuk_house.contact_memo %>)</div>
+                          <% else %>
+                            <div class="row"><%= @hasuk_house.telPhone %></div>
+                          <% end %>
+                        <% else %>
+                          -
+                        <% end %>
+                      <% end %>
+                      
+                        <div class="row"><%= @hasuk_house.address %></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6 kok">
-                        조회수 3 &nbsp&nbsp&nbsp ♡3
+                        조회수 3 &nbsp&nbsp&nbsp 
+                        <% if user_signed_in? %> 
+                          <% if current_user.favorites.include?(@hasuk_house) != true %>
+                            <span class="glyphicon glyphicon-heart" style="color:none;" aria-hidden="true"></span>
+                            <%= @hasuk_house.favorited_by.size %>
+                            <!--로그인 했는데 콕은 안함 -->
+                          <% else %>
+                            <span class="glyphicon glyphicon-heart" style="color:#E74C3C;" aria-hidden="true"></span>
+                            <%= @hasuk_house.favorited_by.size %>
+                            <!--로그인하고 콕도 함 -->
+                          <% end %>
+                        <% else %>
+                          <span class="glyphicon glyphicon-heart" style="color:none;" aria-hidden="true"></span>
+                          <%= @hasuk_house.favorited_by.size %>
+                          <!--로그인을 안함 -->
+                        <% end %>
                     </div>
                     <div class="col-xs-6">
-                        <button type="button" class="btn btn-danger btn-lg" style="font-size: 15px; width: 80%; float: right;">콕하기</button>
+                        
+                    <% if user_signed_in? %> 
+                      <% if current_user.favorites.include?(@hasuk_house) != true %>
+                        <%= button_to "콕하기!", favorite_hasuk_house_path(@hasuk_house, type: "favorite"), :id => "toLike",:class => "btn btn-danger2 btn-lg", style:"font-size: 15px; width: 80%; float: right;", method: :put %>
+                      <% else %>
+                        <%= button_to "콕한상태!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), :id => "toDislike",:class => "btn btn-danger btn-lg", style:"font-size: 15px; width: 80%; float: right;", method: :put %>
+                      <% end %>
+                    <% else %>
+                      <%= button_to "콕하기!", '#', :id => "toLike",:class => "btn btn-danger2 btn-md", style:"font-size: 15px; width: 80%; float: right;", 'data-toggle': "modal", 'data-target':'#login' %>  
+                    
+                    <% end %>
+                    
                     </div>
                 </div>
                 <div class="row">
@@ -427,9 +674,30 @@ hr {
         </div>
     </div> 
 </div>    
+</body>
+<div class="modal fade" id="descript" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%= @hasuk_house.title %></h4>
+      </div>
+      <div class="modal-body">
+        <p><%= @hasuk_house.hasuk_house_description %></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script>
+$(document).ready(function(){
+  $
+});
+
 var $j = jQuery.noConflict();
 
 var realSlider= $j("ul#bxslider").bxSlider({
@@ -501,19 +769,11 @@ $(document).ready(function(){
     
     $(this).addClass("active");
     $("#pictab2").removeClass("active");
-    $("#pictab3").removeClass("active");
   });
   $("#pictab2").click(function(){
     
     $(this).addClass("active");
     $("#pictab1").removeClass("active");
-    $("#pictab3").removeClass("active");
-  });
-  $("#pictab3").click(function(){
-    
-    $(this).addClass("active");
-    $("#pictab1").removeClass("active");
-    $("#pictab2").removeClass("active");
   });
   
 });

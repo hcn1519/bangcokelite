@@ -2,12 +2,15 @@ Rails.application.routes.draw do
   
   root to: 'visitors#index'
   
+  
+  
   get 'map/mappage'
 
   get 'map/map_detail'
 
   get 'map/from_hasuk'
-
+  
+  get 'map/myfavorite'
   resources :hasuk_houses do
     put :favorite, on: :member
   end

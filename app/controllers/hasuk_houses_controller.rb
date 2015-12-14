@@ -7,25 +7,25 @@ class HasukHousesController < ApplicationController
   def favorite
     @hasuk_house = HasukHouse.find_by_id(params[:id])
     
+    
     type = params[:type]
     if type == "favorite"
       current_user.favorites << @hasuk_house
-      #redirect_to :back, notice: 'You favorited #{@hasuk_house.hasuk_name}'
 
     elsif type == "unfavorite"
       current_user.favorites.delete(@hasuk_house)
-      #redirect_to :back, notice: 'Unfavorited #{@hasuk_house.hasuk_name}'
 
     else
       redirect_to :back, notice: 'Nothing happened.'
     end
     @like = current_user.favorites.uniq
   end
-
+  
+  
   def index
     @hasuk_houses = current_user.hasuk_houses
   end
-
+  
   # GET /hasuk_houses/1
   # GET /hasuk_houses/1.json
   def show
@@ -76,6 +76,7 @@ class HasukHousesController < ApplicationController
   end
 
   private
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_hasuk_house
       @hasuk_house = HasukHouse.find(params[:id])
@@ -83,6 +84,6 @@ class HasukHousesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hasuk_house_params
-      params.require(:hasuk_house).permit(:hasuk_name, :celPhone, :telPhone, :memo, :hasuk_kind, :gender, :size_from, :size_to, :floor_from, :floor_to, :building_age, :remodeling, :small_deposit, :big_deposit, :price_from, :price_to, :least_contract, :extra_price, :meal1, :meal2, :meal3, :meal4, :meal_memo, :personal_option1, :personal_option2, :personal_option3, :personal_option4, :personal_option5, :personal_option6, :personal_option7, :personal_option8, :personal_option9, :personal_option10, :personal_option11, :personal_option12, :personal_option13, :personal_option14, :personal_option15, :personal_option16, :personal_option17, :common_option1, :common_option2, :common_option3, :common_option4, :common_option5, :common_option6, :common_option7, :common_option8, :common_option9, :common_option10, :common_option11, :common_option12, :common_option13, :internet, :personal_trash, :post_description, :address, :lat, :lng, :division, :univ_distance1, :univ_distance2, :sogang_gate1, :sogang_gate2, :ewha_gate1, :ewha_gate2, :yonsei_gate1, :yonsei_gate2, :distance_time1, :distance_time2, :distance1, :distance2, :transportation_kind, :transportation_subway, :transportation_bus, :transportation_distance_time, :transportation_distance, :transportation_memo, :room_img1, :room_img2, :room_img3, :room_img4, :room_img5, :room_img6, :room_img7, :room_img8, :room_price1, :room_price2, :room_price3, :room_price4, :room_price5, :room_price6, :room_price7, :room_price8, :room_description1, :room_description2, :room_description3, :room_description4, :room_description5, :room_description6, :room_description7, :room_description8, :common_img1, :common_img2, :common_img3, :common_img4, :meal_img1, :meal_img2, :meal_img3, :meal_img4, :discount_price, :discount_rate)
+      params.require(:hasuk_house).permit(:hasuk_name, :celPhone, :telPhone, :contact_memo, :hasuk_kind, :gender, :small_deposit, :price_from, :price_to, :miniroom_price_from, :miniroom_price_to, :oneroom_price_from, :oneroom_price_to, :sleeping_only_price_from, :mate_price_from, :least_contract, :title, :hasuk_house_description, :address, :lat, :lng, :division, :univ1, :univ2, :gate1, :gate2, :distance_time1, :distance_time2, :distance1, :distance2, :trans_kind1, :trans_kind2, :station1, :station2, :trans_distance_time1, :trans_distance1, :trans_distance_time2, :trans_distance2, :room_img1, :room_img2, :room_img3, :room_img4, :room_img5, :room_img6, :room_img7, :room_img8, :common_img1, :common_img2, :common_img3, :common_img4, :meal_img1, :meal_img2, :meal_img3, :meal_img4)
     end
 end
