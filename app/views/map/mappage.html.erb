@@ -1137,6 +1137,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     </script>
  
    <style type="text/css">
+   
+   .col-md-9,.col-lg-9,.col-sm-9,.col-xs-9 {
+  padding-left: 0;
+}
+
   .gm-style-iw {
   width: 330px !important;
    top: 15px !important;
@@ -2386,7 +2391,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size" style="width:100%;">
                       
                     </div>
-                   
+                  
                    
                     <!--정보 표시-->
                     <div class="caption" style="padding-top:5px; padding-left:5px; padding-right:0px;">
@@ -2394,46 +2399,49 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                           <img src="/images/icons/price2.png" style="width:25px; height:25px; margin:0"/>
                         </div>
-                        <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>월세</span>
                         </div>
-                        
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.miniroom_price_from != nil %>
                             <span id="room_kind">미니룸</span> <span id="price"><%= c.miniroom_price_from %>~<%= c.miniroom_price_to %></span>
                          <% else %>
                              <span>-</span>
                          <% end %>
                         </div>
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.oneroom_price_from != nil %>
                              <span id="room_kind">원룸형</span> <span id="price"><%= c.oneroom_price_from %>~<%= c.oneroom_price_to %></span>
                          <% else %>
                              <span>-</span>
                          <% end %>
+                         </div>
+                       
                         </div>
                       </div><!--정보 첫번째 줄 끝-->
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                         </div>
-                        <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>협의</span>
                         </div>
-                        
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.sleeping_only_price_from != nil %>
                             <span id="room_kind">잠만 자면</span> <span id="price"><%= c.sleeping_only_price_from %>~</span>
                          <% else %>
                              <span>-</span>
                          <% end %>
                         </div>
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.mate_price_from != nil %>
-                             <span id="room_kind">2인 1실</span> <span id="price"><%= c.mate_price_from %>~</span>
+                             <span id="room_kind">2인1실</span> <span id="price"><%= c.mate_price_from %>~</span>
                          <% else %>
                              <span>-</span>
                          <% end %>
+                        </div>
                         </div>
                       </div><!--정보 두번째 줄 끝-->
                       
@@ -2442,11 +2450,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                          <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                            <img src="/images/icons/school.png" style="width:25px; height:20px; margin:0; margin-top:2px"/>
                          </div>
-                         <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                            <span>통학</span>
                          </div>
                         
-                         <div id="school-distance" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                         <div id="school-distance" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 
                             <% if c.univ1 != "학교선택" %>
                                 <% if c.univ1 == "이화" %>
@@ -2467,7 +2475,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                           <img src="/images/icons/trans.gif" style="width: 20px;height: 20px; margin:0;margin-top: 2px; margin-left: 3px;"/>
                         </div>
-                        <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>교통</span>
                         </div>
                         
@@ -2603,18 +2611,18 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                           <img src="/images/icons/price2.png" style="width:25px; height:25px; margin:0"/>
                         </div>
-                        <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>월세</span>
                         </div>
                         
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.miniroom_price_from != nil %>
                             <span id="room_kind">미니룸</span> <span id="price"><%= c.miniroom_price_from %>~<%= c.miniroom_price_to %></span>
                          <% else %>
                              <span>-</span>
                          <% end %>
                         </div>
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.oneroom_price_from != nil %>
                              <span id="room_kind">원룸형</span> <span id="price"><%= c.oneroom_price_from %>~<%= c.oneroom_price_to %></span>
                          <% else %>
@@ -2626,20 +2634,20 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                         </div>
-                        <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>협의</span>
                         </div>
                         
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.sleeping_only_price_from != nil %>
                             <span id="room_kind">잠만 자면</span> <span id="price"><%= c.sleeping_only_price_from %>~</span>
                          <% else %>
                              <span>-</span>
                          <% end %>
                         </div>
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.mate_price_from != nil %>
-                             <span id="room_kind">2인 1실</span> <span id="price"><%= c.mate_price_from %>~</span>
+                             <span id="room_kind">2인1실</span> <span id="price"><%= c.mate_price_from %>~</span>
                          <% else %>
                              <span>-</span>
                          <% end %>
@@ -2651,7 +2659,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                          <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                            <img src="/images/icons/school.png" style="width:25px; height:20px; margin:0; margin-top:2px"/>
                          </div>
-                         <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                            <span>통학</span>
                          </div>
                         
@@ -2676,7 +2684,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                           <img src="/images/icons/trans.gif" style="width: 20px;height: 20px; margin:0;margin-top: 2px; margin-left: 3px;"/>
                         </div>
-                        <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>교통</span>
                         </div>
                         
@@ -2812,18 +2820,18 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                           <img src="/images/icons/price2.png" style="width:25px; height:25px; margin:0"/>
                         </div>
-                        <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>월세</span>
                         </div>
                         
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.miniroom_price_from != nil %>
                             <span id="room_kind">미니룸</span> <span id="price"><%= c.miniroom_price_from %>~<%= c.miniroom_price_to %></span>
                          <% else %>
                              <span>-</span>
                          <% end %>
                         </div>
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.oneroom_price_from != nil %>
                              <span id="room_kind">원룸형</span> <span id="price"><%= c.oneroom_price_from %>~<%= c.oneroom_price_to %></span>
                          <% else %>
@@ -2835,20 +2843,20 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                         </div>
-                        <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>협의</span>
                         </div>
                         
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.sleeping_only_price_from != nil %>
                             <span id="room_kind">잠만 자면</span> <span id="price"><%= c.sleeping_only_price_from %>~</span>
                          <% else %>
                              <span>-</span>
                          <% end %>
                         </div>
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.mate_price_from != nil %>
-                             <span id="room_kind">2인 1실</span> <span id="price"><%= c.mate_price_from %>~</span>
+                             <span id="room_kind">2인1실</span> <span id="price"><%= c.mate_price_from %>~</span>
                          <% else %>
                              <span>-</span>
                          <% end %>
@@ -2860,7 +2868,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                          <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                            <img src="/images/icons/school.png" style="width:25px; height:20px; margin:0; margin-top:2px"/>
                          </div>
-                         <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                            <span>통학</span>
                          </div>
                         
@@ -2885,7 +2893,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                           <img src="/images/icons/trans.gif" style="width: 20px;height: 20px; margin:0;margin-top: 2px; margin-left: 3px;"/>
                         </div>
-                        <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>교통</span>
                         </div>
                         
@@ -3019,18 +3027,18 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                           <img src="/images/icons/price2.png" style="width:25px; height:25px; margin:0"/>
                         </div>
-                        <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>월세</span>
                         </div>
                         
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.miniroom_price_from != nil %>
                             <span id="room_kind">미니룸</span> <span id="price"><%= c.miniroom_price_from %>~<%= c.miniroom_price_to %></span>
                          <% else %>
                              <span>-</span>
                          <% end %>
                         </div>
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.oneroom_price_from != nil %>
                              <span id="room_kind">원룸형</span> <span id="price"><%= c.oneroom_price_from %>~<%= c.oneroom_price_to %></span>
                          <% else %>
@@ -3042,20 +3050,20 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                         </div>
-                        <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>협의</span>
                         </div>
                         
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.sleeping_only_price_from != nil %>
                             <span id="room_kind">잠만 자면</span> <span id="price"><%= c.sleeping_only_price_from %>~</span>
                          <% else %>
                              <span>-</span>
                          <% end %>
                         </div>
-                        <div id="price-content" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <% if c.mate_price_from != nil %>
-                             <span id="room_kind">2인 1실</span> <span id="price"><%= c.mate_price_from %>~</span>
+                             <span id="room_kind">2인1실</span> <span id="price"><%= c.mate_price_from %>~</span>
                          <% else %>
                              <span>-</span>
                          <% end %>
@@ -3067,7 +3075,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                          <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                            <img src="/images/icons/school.png" style="width:25px; height:20px; margin:0; margin-top:2px"/>
                          </div>
-                         <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                            <span>통학</span>
                          </div>
                         
@@ -3092,7 +3100,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                           <img src="/images/icons/trans.gif" style="width: 20px;height: 20px; margin:0;margin-top: 2px; margin-left: 3px;"/>
                         </div>
-                        <div id="condition" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding:0px;">
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>교통</span>
                         </div>
                         
