@@ -389,152 +389,126 @@
              for (var i = 0; i < data.length; i++){
 
            infoWindow = new google.maps.InfoWindow();
+         
+         if (data[i].hasuk_kind == '잠만 자는 방') {
+             var hasuk_kind = '잠만';
+         } else {
+             var hasuk_kind = "";
+         }
+         if (data[i].gender == "여성전용") {
+             var gender = '여성';
+         } else {
+             var gender = "";
+         }
            
            if (data[i].univ1 == "서강") {
-              var university = '<span style="color:#b20000">'+"서강대"+'</span>';
+              var university = '<span>'+"서강대"+'</span>';
               var entrance = data[i].gate1;
            } else if (data[i].univ1 == "연세") {
-              var university = '<span style="color:#202d61">'+"연세대"+'</span>';
+              var university = '<span>'+"연세대"+'</span>';
               var entrance = data[i].gate1;
            } else if (data[i].univ1 == "이화") {
-              var university = '<span style="color:#0c6f40">'+"이화여대"+'</span>';
+              var university = '<span>'+"이화여대"+'</span>';
               var entrance = data[i].gate1;
            } else {
              var entrance = "교문";
            }
-           
-           if (data[i].meal4 == "제공 안함") { 
-             var infoMeal = "식사없음"; 
-             
-           } else { 
-             if (data[i].meal1 != null) {
-               var meal1 = data[i].meal1 + ",";
-             } else {
-               var meal1 = "";
-             } 
-             if (data[i].meal2 != null) {
-               var meal2 = data[i].meal2 + ",";
-             } else {
-               var meal2 = "";
-             }
-             if (data[i].meal3 != null) {
-               var meal3 = data[i].meal3;
-             } else {
-               var meal3 = "";
-             }
-             
-             var infoMeal = meal1 + meal2 + meal3;
-           }
-           
-           
-           if (data[i].small_deposit != 0) {
-             var deposit= '예치금'+ "&nbsp;"+ data[i].small_deposit;
-           } else if (data[i].small_deposit == 0 && data[i].big_deposit != 0) {
-             var deposit = '보증금'+ "&nbsp;"+ data[i].big_deposit;
-           } else if (data[i].small_deposit == 0 && data[i].big_deposit == 0) {
-             var deposit= '예치금'+ "&nbsp;"+ "없음";
-           }
-           
-           if (data[i].extra_price != 0 ) { var extra_price = '관리비' + '별도'; } else { var extra_price = '관리비' + '없음'; }
- 
-           if (data[i].trans_kind1 == "지하철") {
-             var vehicle = data[i].station1;
+           //학교 이름 지정
+        var vehicle = data[i].station1;
+        
+         if (data[i].trans_kind1 == "지하철") {
+
              if (vehicle == "대흥"){
                subway = '<span class="sub_circle line_number_6" style="font-family:source-han-sans-korean; border-radius:5px; font-size:12px; padding:2px">6호선</span>'+ '&nbsp;' + '<span style="color#9a4510">'+vehicle + '역'+'</span>' ;
              } else if (vehicle == "신촌" || vehicle == "이대" ) {
-               subway = '<span class="sub_circle line_number_2" style="font-family:source-han-sans-korean; border-radius:5px; font-size:12px; padding:2px">2호선</span>'+ '&nbsp;' + '<span style="color:#00904">'+vehicle + '역'+'</span>';
+               subway = '<span class="sub_circle line_number_2" style="font-family:source-han-sans-korean; border-radius:5px; font-size:12px; padding:2px">2호선</span>'+ '&nbsp;' + '<span style="color:#29c531">'+vehicle + '역'+'</span>';
              } else if (vehicle == "서강대") {
                subway = '<div class="line_number_kj" style="font-family:source-han-sans-korean; font-size:12px; padding-left:1px; padding-right:1px;">경의</div>' + '&nbsp;' + '<span style="color:#41b9b9">'+vehicle+ '역' +'</span>';
              } else if (vehicle == "신촌기차") {
                subway = '<div class="line_number_kj" style="font-family:source-han-sans-korean; font-size:12px; padding-left:1px; padding-right:1px;">경의</div>' + '&nbsp;' + '<span style="color:#0063b1">'+vehicle + '역' +'</span>';
              }
-            
+            //교통 이름 지정 - 지하철
 
-            if (data[i].discount_price == null || data[i].discount_price == 0) {
-              var discount = '<span style="position:absolute; display:none">'+ 0 + '</span>';
-            } else {
-              var discount = '<span style="position:absolute; z-index:1000; margin-top:3px; padding-left:1px; padding-right:1px; margin-left:3px; color:#fff; background-color:#E74C3C; font-family:BMJUA; font-size:14px; border-radius:5px; opacity:0.8">' + '할인' + '</span>';
-            }
-            
-             var contentString =
-             '<div id="iw-container">' + '<div class="iw-content">' +
-             
-             
-               '<div class="row" style="margin:0px">'+
-               
-               
-                 '<div class="col-md-4 col-sm-4 col-lg-4" style="padding:5px;">' +
-                   discount +
-                   '<img src="'+ data[i].room_img1.url + '"style="width:100px; height:75px;" >' +
-                   '</div>'+
+    var contentString =
+     '<div id="iw-container">' + '<div class="iw-content">' +
+
+       '<div class="row" style="margin:0px">'+
+       
+         '<div class="col-md-4 col-sm-4 col-lg-4" style="padding:5px">' +
+           '<img src="'+ data[i].room_img1.url + '"style="width:100px; height:75px;" />' +
+           '</div>'+
+        //이미지 부분
         
-                 '<div class="col-md-8 col-sm-8 col-lg-8" style="padding-left:7px; padding-top:5px;">' +
-                    '<div class="row" style="margin:0px; padding:0px">' +
-                    //월세가 같을 때 price_to 안보여주도록
-                       '<div style="font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500; font-family:source-han-sans-korean;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
-                         '('+ deposit + ',&nbsp;'+ extra_price + ')&nbsp;'+
-                       '</div>'+
-                    '</div>'+
-  
-                    //학교별로 색깔 다르게? 학교, 교문, 시간 데이터 넣기
-                    '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">' + 
-                      university + '&nbsp;' + entrance + '&nbsp;'+ '<span>' + data[i].distance1 +'m'+ '(' +data[i].distance_time1 +'분)' + '</span>' + '</div>'+
-                      //교통수단별로 색깔 다르게? 정류장, 분 데이터 넣기
-                      '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">' + subway + '&nbsp;'+ '<span>' + data[i].transportation_distance + 'm' +'('+ data[i].transportation_distance_time +'분)' + '</span>' + '</div>'+
-                      //해당되는 데이터만 뜨도록
-                      
-                  '</div>'+ 
-                  
-                  '<div class="row" style="margin:0px">'+
-                      '<div class="col-md-12 col-lg-12" style="color:#777777; margin:0; padding:0; padding-left:5px; margin-top:2px; font-size:12px; font-family:source-han-sans-korean">'+ '#' + data[i].hasuk_kind + '&nbsp;' + '&nbsp;'+'#' + infoMeal + '&nbsp;' +'&nbsp;#' + data[i].gender + '</div>' +
-                  '</div>'+
-               
-               
+         '<div class="col-md-8 col-sm-8 col-lg-8" style="padding:0px; padding-left:21px; padding-top:5px;">' +
+            '<div class="row" style="margin:0px; padding:0px">' +
+            
+               '<div class="col-md-4 col-sm-4 col-xs-4" style="padding:0; font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500; font-family:source-han-sans-korean;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
                '</div>'+
-               
-               
-             '</div>'+ '</div>';
+               '<div class="col-md-3 col-sm-3 col-lg-3" style="padding:0; margin-top: 3px;text-align: center;">' +
+                   '<div id="hasuk_kind_sleep">'+ hasuk_kind + '</div>' +
+               '</div>' +
+               '<div class="col-md-3 col-sm-3 col-lg-3" style="padding:0;margin-top: 3px;text-align: center;">' +
+                   '<div id="hasuk_gender_woman">'+ gender +'</div>' +
+                '</div>' +
+            '</div>'+
+
+            '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">' + 
+              university + '&nbsp;' + entrance + '&nbsp;'+ '<span>' + data[i].distance_time1 +'분'+ '(' + data[i].distance1 +'m)' + '</span>' + '</div>'+
+              
+              '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">'+ subway + '&nbsp;'+ '<span>' + data[i].trans_distance_time1 + '분' +'('+ data[i].trans_distance1 +'m)' + '</span>' + '</div>'+
+              
+          '</div>'+ 
+           //정보 부분
+           
+       '</div>'+ //전체 row
+     
+     '</div>'+ '</div>'; //iw-container랑 iw-content
+     
            } else {
-             var vehicle = data[i].station2;
+            
+            var bus = '<div class="line_number_bus" style="font-size:11px; padding-left:1px; padding-right:1px;">버스</div>';
+            //교통 이름 지정 - 버스, 버스는 색깔 통일
              var contentString =
             '<div id="iw-container">' + '<div class="iw-content">' +
             
                '<div class="row" style="margin:0px">'+
-               
-               
-                 '<div class="col-md-4 col-sm-4 col-xs-4" style="padding: 5px;">' +
-                 discount +
-                     '<img src="'+ data[i].room_img1.url + '"style="width:100px; height:75px;" >' +
+
+                 '<div class="col-md-4 col-sm-4 col-xs-4" style="padding:5px; padding-right:20px">' +
+                     '<img src="'+ data[i].room_img1.url + '"style="width:100px; height:75px;" />' +
                    '</div>'+
                    
-                   
-                 '<div class="col-md-8 col-sm-8 col-xs-8" style="padding-left:7px; padding-top:5px;">' +
+                 '<div class="col-md-8 col-sm-8 col-xs-8" style="padding:0px; padding-left: 12px; padding-top:5px;">' +
                     '<div class="row" style="margin:0px; padding:0px">' +
-                    //월세가 같을 때 price_to 안보여주도록
-                       '<div style="font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
-                         '('+ deposit + ',&nbsp;'+ extra_price + ')&nbsp;'+
-                       '</div>'+
-                    '</div>'+
                     
+                       '<div class="col-md-4 col-sm-4 col-xs-4" style="padding:0; font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500; font-family:source-han-sans-korean;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
+                           '</div>'+
+                           '<div class="col-md-3 col-sm-3 col-lg-3" style="padding:0; margin-top: 3px;text-align: center;">' +
+                               '<div id="hasuk_kind_sleep">'+ hasuk_kind + '</div>' +
+                           '</div>' +
+                           '<div class="col-md-3 col-sm-3 col-lg-3" style="padding:0; margin-top: 3px;text-align: center;">' +
+                               '<div id="hasuk_gender_woman">'+ gender +'</div>' +
+                            '</div>' +
+                        '</div>'+
                     
-                    //학교별로 색깔 다르게? 학교, 교문, 시간 데이터 넣기
-                    '<div class="row" style="margin:0; font-size:13px">' + 
+
+                    '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">' + 
                     university + '&nbsp;' + entrance  + '&nbsp;'+ '<span>' + data[i].distance1 +'m'+ '(' +data[i].distance_time1 +'분)' + '</span>' + '</div>'+
-                    //교통수단별로 색깔 다르게? 정류장, 분 데이터 넣기
-                    '<div class="row" style="margin:0; font-size:13px">' + '<span style="color:#0063b1">' + '<div class="line_number_bus" style="font-size:11px; padding-left:1px; padding-right:1px;">버스</div>' + '&nbsp;' + vehicle + '</span>' + '&nbsp;'+ '<span style="font-size:14px">' + data[i].transportation_distance + 'm' +'('+ data[i].transportation_distance_time +'분)' + '</span>' + '</div>'+
-                    //해당되는 데이터만 뜨도록
+
+                    '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">' + bus + '&nbsp;' +
+                         
+                        '<span style="color:#0063b1">'  + vehicle + '</span>' + '&nbsp;'+ '<span style="font-size:14px">' + data[i].trans_distance_time1 +
+                        '분' +'('+ data[i].trans_distance1 + 'm )' + '</span>' + '</div>'+
+
                     
                   '</div>'+
-                  
-                  '<div class="row" style="margin:0px">'+
-                    '<div class="col-md-12 col-lg-12" style="color:#777777; margin:0; padding:0; padding-left:5px; margin-top:2px; font-size:12px">'+ '#' + data[i].hasuk_kind + '&nbsp;'+ '&nbsp;#' + infoMeal + '&nbsp;#' + '&nbsp;'+ data[i].gender + '</div>' +
-                 '</div>'+
+                  //정보 부분
                
-               '</div>'+
+               '</div>'+ //전체 row
                
                
-              '</div>'+ '</div>';
+              '</div>'+ '</div>'; //iw-container랑 iw-content
            }
+          
 
         var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);  
 
@@ -731,12 +705,12 @@ google.maps.event.addListener(marker, 'click', function() {
                       })(marker,contentString,infoWindow));
 
 //2.말풍선 지우기
-                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+ /*                    google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
                        return function()  {
                         infoWindow.close();
                         };
                      })(infoWindow));
-
+*/
  // listbox로 말풍선 띄우기
                      google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
                        return function() {
@@ -1143,7 +1117,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 }
 
   .gm-style-iw {
-  width: 330px !important;
+  width: 320px !important;
    top: 15px !important;
    left: 30px !important;
    right: 0 !important;
@@ -1151,7 +1125,12 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
    border: 1px solid #ECF0F1;
    border-radius: 5px;
 }
-
+    #hasuk_kind_sleep {
+    font-size:12px; color:#D35400; border:1px solid #D35400; padding:1px; border-radius:5px; display:inline-block; font-family: source-han-sans-korean;
+    }/*잠만 자는 */
+    #hasuk_gender_woman {
+    font-size:12px; color:#D4009C; border:1px solid #D4009C; padding:1px; border-radius:5px; display:inline-block; font-family: source-han-sans-korean;
+    }/*여성 전용 */
   .modal-body {
     padding-bottom: 30px;
   }
@@ -1180,6 +1159,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         border: none;
     }
 
+    .thumbnail-text {
+       padding-bottom:5px;
+    }        
       .modal-content#modal-size1{
        width:300px;
        left:0%;
@@ -1272,14 +1254,18 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         min-height:200px;
      }
      .image {
-       margin:0px;
+       margin:0px;  margin-bottom:5px;
        padding:0px;
      }
 
      }
     
     @media (min-width: 360px) {
-      
+    
+    .thumbnail-text {
+       padding-bottom:8px;
+    }
+
     .modal-dialog {
       margin:0;
     }  
@@ -1359,10 +1345,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         padding:0;
     }
     #room_kind {
-        font-size:18px;
+        font-size:16px;
     }
     #price {
-        font-size:19px;
+        font-size:20px;
         color:#2ECC71;
     }
     #school-distance {
@@ -1370,14 +1356,14 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         padding:0;
     }
     #school-distance span {
-        font-size:18px;
+        font-size:16px;
     }
     #trans-distance {
         margin-top:5px;
         padding:0;
     }
     #trans-distance span {
-        font-size:18px;
+        font-size:16px;
     }
 
      .image-size {
@@ -1385,7 +1371,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         min-height:200px;
      }
      .image {
-       margin:0px;
+       margin:0px;  margin-bottom:8px;
        padding:0px;
      }
 
@@ -1508,7 +1494,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         min-height:200px;
      }
      .image {
-       margin:0px;
+       margin:0px;  margin-bottom:5px;
        padding:0px;
      }
     }
@@ -1621,14 +1607,16 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         min-height:200px;
      }
      .image {
-       margin:0px;
+       margin:0px;  margin-bottom:5px;
        padding:0px;
      }
 
     }
     
     @media (min-width: 768px) {
-    
+    .thumbnail-text {
+       padding-bottom:3px;
+    }
     .modal-dialog {
       position: relative;
       width: auto;
@@ -1732,7 +1720,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         min-height:100px;
      }
      .image {
-       margin:0px;
+       margin:0px;   margin-bottom:5px;
        padding:0px;
        padding-left:5px;
        padding-right:5px;
@@ -1890,7 +1878,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         height:6.5em; 
      }
      .image {
-       margin:0px;
+       margin:0px;  margin-bottom:5px;
        padding:0px;
        padding-left:5px;
        padding-right:5px;
@@ -1993,7 +1981,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
         min-height:140px;
      }
      .image {
-       margin:0px;
+       margin:0px;  margin-bottom:5px;
        padding:0px;
        padding-left:5px;
        padding-right:5px;
@@ -2015,15 +2003,13 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
        height:100%;
        overflow:auto;
      }
+     
     }
     
    
    
     /*사이즈별 모달 조정 끝*/
-    
-    
-    
-    
+
     
     #search.btn-info{
       color:#3498db;
@@ -2297,6 +2283,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 #price {
     font-weight:600;
 }
+
+
     </style> 
 </head>
 <body>
@@ -2421,9 +2409,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         <% unless c.title.nil? %>  
               
                             <% if c.title.length >= 17 %>
-                                <span style="float:left; margin-top:10px"><%= c.title.split(//).first(17).join %>..</span>
+                                <span style="float:left; margin-top:8px"><%= c.title.split(//).first(17).join %>..</span>
                             <% else %>
-                                <span style="float:left; margin-top:10px"><%= c.title %></span>
+                                <span style="float:left; margin-top:8px"><%= c.title %></span>
                             <% end %>
                         <% end %>
                         <% unless c.price_from.nil? %>
@@ -2444,6 +2432,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                    
                     <!--정보 표시-->
                     <div class="caption" style="padding-top:5px; padding-left:5px; padding-right:0px;">
+                    <div class="thumbnail-text">
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                           <img src="/images/icons/price2.png" style="width:20px; height:20px; margin-top:2px; margin-right:0;"/>
@@ -2557,6 +2546,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       
                       
                 </div> 
+                </div><!--썸네일텍스트 끝-->
                   </div>
                   </a> 
                 </div>
@@ -2633,9 +2623,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         <% unless c.title.nil? %>  
               
                             <% if c.title.length >= 17 %>
-                                <span style="float:left; margin-top:10px"><%= c.title.split(//).first(17).join %>..</span>
+                                <span style="float:left; margin-top:8px"><%= c.title.split(//).first(17).join %>..</span>
                             <% else %>
-                                <span style="float:left; margin-top:10px"><%= c.title %></span>
+                                <span style="float:left; margin-top:8px"><%= c.title %></span>
                             <% end %>
                         <% end %>
                         <% unless c.price_from.nil? %>
@@ -2656,6 +2646,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                    
                     <!--정보 표시-->
                     <div class="caption" style="padding-top:5px; padding-left:5px; padding-right:0px;">
+                    <div class="thumbnail-text">
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                           <img src="/images/icons/price2.png" style="width:20px; height:20px; margin-top:2px; margin-right:0;"/>
@@ -2768,6 +2759,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       
                       
                 </div> 
+                </div>
                   </div>
                   </a> 
                 </div>
@@ -2844,9 +2836,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         <% unless c.title.nil? %>  
               
                             <% if c.title.length >= 17 %>
-                                <span style="float:left; margin-top:10px"><%= c.title.split(//).first(17).join %>..</span>
+                                <span style="float:left; margin-top:8px"><%= c.title.split(//).first(17).join %>..</span>
                             <% else %>
-                                <span style="float:left; margin-top:10px"><%= c.title %></span>
+                                <span style="float:left; margin-top:8px"><%= c.title %></span>
                             <% end %>
                         <% end %>
                         <% unless c.price_from.nil? %>
@@ -2867,6 +2859,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                    
                     <!--정보 표시-->
                     <div class="caption" style="padding-top:5px; padding-left:5px; padding-right:0px;">
+                    <div class="thumbnail-text">
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                           <img src="/images/icons/price2.png" style="width:20px; height:20px; margin-top:2px; margin-right:0;"/>
@@ -2979,6 +2972,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       
                       
                 </div> 
+                </div>
                   </div>
                   </a> 
                 </div>
@@ -3055,7 +3049,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <% if c.title.length >= 17 %>
                                 <span style="float:left; margin-top:10px;"><%= c.title.split(//).first(17).join %>..</span>
                             <% else %>
-                                <span style="float:left; margin-top:10px"><%= c.title %></span>
+                                <span style="float:left; margin-top:8px"><%= c.title %></span>
                             <% end %>
                         <% end %>
                         <% unless c.price_from.nil? %>
@@ -3076,6 +3070,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                    
                     <!--정보 표시-->
                     <div class="caption" style="padding-top:5px; padding-left:5px; padding-right:0px;">
+                     <div class="thumbnail-text">
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                           <img src="/images/icons/price2.png" style="width:20px; height:20px; margin-top:2px; margin-right:0;"/>
@@ -3185,7 +3180,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       </div><!--정보 세번째 줄 끝-->
                       
                       
-                </div> 
+                </div>
+                </div>
                   </div>
                   </a> 
                 </div>
