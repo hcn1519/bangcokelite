@@ -35,6 +35,11 @@
     color: #e74c3c;
     border: 1px solid #ff8773;
   }  
+  hr {
+    
+    border: 0;
+    border-top: 1px solid #aeaeae;
+}
 </style>
 
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -93,7 +98,7 @@
         </div>-->
       <%# end %>
       <%= link_to user_omniauth_authorize_path(:facebook) do %>
-        <div class="row" style="background-color:#3b579d; margin-top:10px">
+        <div class="row" style="background-color:#3b579d; margin-top:10px; margin-left:0; margin-right:0;">
             <center>
             <div style="display:inline-block">
               <img src="/images/icons/Facebook_logo.png" style="display:inline; margin:0; max-width:40px; height:40px;"/>
@@ -106,8 +111,8 @@
       <% end %>
       <%#= link_to "Sign in with kakao", user_omniauth_authorize_path(:kakao), target:"_blank" %>
     <!--</div>-->
-     <hr>
-        <p style="font-size:13px; margin-top:15px;">아직 회원이 아니신가요?</p>
+      <hr>
+      <p style="font-size:14px; margin-top:10px; margin-bottom:0;">아직 회원이 아니신가요?</p>
       <%- if devise_mapping.registerable? %>
         <%= link_to '회원가입', '#', class: 'right btn btn-danger2 modal_btn', data: {toggle: "modal", target: "#sign_up"}%>
       <% end -%>
