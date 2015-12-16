@@ -22,11 +22,11 @@ body, main {
     margin:0;
 }
 
-.col-xs-3, .col-xs-6, .col-xs-12 {
+.col-xs-2, .col-xs-6, .col-xs-12 {
   padding:0;
 }
 
-.col-xs-9 {
+.col-xs-10 {
   padding-right: 0;    
 }
 
@@ -121,13 +121,15 @@ hr {
 
 
 @media (max-width: 321px) {
-.col-xs-3 {
+    
+.col-xs-2 {
     width: 20%;
 }    
 
-.col-xs-9 {
+.col-xs-10 {
     width: 80%;
 }
+
 
 #pictab1{
   display:inline-block;
@@ -197,11 +199,18 @@ hr {
 }
 .photo, .info,#map {
     margin-bottom: 30px;
-}   
+}
+
+.col-xs-4 {
+  width: 80%;  
+} 
 
 }
 
 @media(min-width:768px) {
+.col-xs-4 {
+  width: 30%;  
+}
 
 .hasuk_name {
   margin-bottom: 5px;
@@ -231,7 +240,7 @@ hr {
 }
 
 .room {
-  width:50px; 
+  width:58px; 
   display:inline-block;
 }
 
@@ -267,13 +276,6 @@ hr {
 @media(min-width: 1200px) {
 
 }
-.col-xs-3 {
-    width: 20%;
-}    
-
-.col-xs-9 {
-    width: 80%;
-} 
 
 
 .info_list {
@@ -438,26 +440,26 @@ hr {
         <div class="col-sm-6 col-xs-12">
             <div class="info">
                 <div class="row">
-                    <div class="info_list col-xs-3">유형</div>
+                    <div class="info_list col-xs-2">유형</div>
                   <% if @hasuk_house.hasuk_kind == "일반하숙" %>
                     <% if @hasuk_house.gender == "남녀공용" %>
-                      <div class="info_content col-xs-9">일반하숙 / 남녀공용</div>
+                      <div class="info_content col-xs-10">일반하숙 / 남녀공용</div>
                     <% else %>
-                      <div class="info_content col-xs-9">일반하숙 / 여성전용</div>
+                      <div class="info_content col-xs-10">일반하숙 / 여성전용</div>
                     <% end %>
                   <% elsif @hasuk_house.hasuk_kind == "잠만 자는 방" %>
                     <% if @hasuk_house.gender == "남녀공용" %>
-                      <div class="info_content col-xs-9">잠만 자는 방 / 남녀공용</div>
+                      <div class="info_content col-xs-10">잠만 자는 방 / 남녀공용</div>
                     <% else %>
-                      <div class="info_content col-xs-9">잠만 자는 방 / 여성전용</div>
+                      <div class="info_content col-xs-10">잠만 자는 방 / 여성전용</div>
                     <% end %>
                   <% else %>
                     -
                   <% end %>
                 </div>
                 <div class="row">
-                    <div class="info_list col-xs-3 price_margin">월세</div>
-                    <div class="info_content col-xs-9">
+                    <div class="info_list col-xs-2 price_margin">월세</div>
+                    <div class="info_content col-xs-10">
                         <div class="col-sm-6 col-xs-12">
                             <span class="room">미니룸</span>
                             <% if @hasuk_house.miniroom_price_from != nil %>
@@ -481,8 +483,8 @@ hr {
                     </div>
                 </div>
                 <div class="row">
-                    <div class="info_list col-xs-3 price_margin">협의</div>
-                    <div class="info_content col-xs-9">
+                    <div class="info_list col-xs-2 price_margin">협의</div>
+                    <div class="info_content col-xs-10">
                         <div class="col-sm-6 col-xs-12">
                           <% if @hasuk_house.sleeping_only_price_from != nil %>  
                             <span class="room">잠만자면</span>
@@ -504,27 +506,32 @@ hr {
                         </div>
                     </div>
                 </div>
+               <hr>
                 <div class="row">
-                    <div class="info_list col-xs-3">예치금</div>
+                    <div class="info_list col-xs-2">보증금</div>
+                    <div class="info_content col-sm-4 col-xs-10">100만원</div>
+                    <div class="info_list col-xs-2">예치금</div>
                     <% if @hasuk_house.small_deposit != nil && @hasuk_house.small_deposit != 0 %>
-                      <div class="info_content col-xs-9"><%= @hasuk_house.small_deposit %><span class="manwon">만원</span></div>                                        
+                      <div class="info_content col-xs-4"><%= @hasuk_house.small_deposit %><span class="manwon">만원</span></div>                                        
                     
                     <% else %>
-                      <div class="info_content col-xs-9"><span class="manwon">없음</span></div> 
+                      <div class="info_content col-sm-4 col-xs-10"><span class="manwon">-</span></div> 
                     <% end %>
                 </div> 
                 <div class="row">
-                    <div class="info_list col-xs-3">계약기간</div>
+                    <div class="info_list col-xs-2">관리비</div>
+                    <div class="info_content col-sm-4 col-xs-10">별도</div>
+                    <div class="info_list col-xs-2">계약기간</div>
                     <% if @hasuk_house.least_contract != nil && @hasuk_house.least_contract != 0 %>
-                      <div class="info_content col-xs-9"><%= @hasuk_house.least_contract %><span class="manwon">개월 이상</span></div>                    
+                      <div class="info_content col-sm-4 col-xs-10"><%= @hasuk_house.least_contract %><span class="manwon">개월 이상</span></div>                    
                     <% else %>
-                      <div class="info_content col-xs-9"><span class="manwon">없음</span></div>  
+                      <div class="info_content col-sm-4 col-xs-10"><span class="manwon">-</span></div>  
                     <% end %>
                 </div>
                 <hr>
                 <div class="row" style="margin-bottom:5px;">
-                    <div class="info_list col-xs-3">통학</div>
-                    <div class="info_content col-xs-9">
+                    <div class="info_list col-xs-2">통학</div>
+                    <div class="info_content col-xs-10">
                       <% if @hasuk_house.univ1 != nil %>
                         <% if @hasuk_house.univ1 == "이화" %>
                           <div class="row"><%= @hasuk_house.univ1 %>여대 <%= @hasuk_house.gate1 %> <%= @hasuk_house.distance_time1 %></span><span class="manwon">분</span>(<%= @hasuk_house.distance1 %>m)</div>
@@ -546,8 +553,8 @@ hr {
                     </div> 
                 </div>
                 <div class="row">
-                    <div class="info_list col-xs-3">교통</div>
-                    <div class="info_content col-xs-9">
+                    <div class="info_list col-xs-2">교통</div>
+                    <div class="info_content col-xs-10">
                       <div class="row">
                         <% if @hasuk_house.trans_kind1 == "지하철" %>
                           <% if @hasuk_house.station1 == "대흥" %>
@@ -624,8 +631,8 @@ hr {
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="info_list col-xs-3">문의</div>
-                    <div class="info_content col-xs-9">
+                    <div class="info_list col-xs-2">문의</div>
+                    <div class="info_content col-xs-10">
                       <% if @hasuk_house.celPhone != nil %>
                         <% if @hasuk_house.contact_memo != nil %>
                           <div class="row"><%= @hasuk_house.celPhone %>(<%= @hasuk_house.contact_memo %>)</div>
