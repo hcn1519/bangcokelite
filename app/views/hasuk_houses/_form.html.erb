@@ -237,6 +237,7 @@
   body {
     margin-top:30px;
   }
+
   #map-canvas {
     height:200px;
     width:100%;
@@ -395,6 +396,7 @@
   margin-right: 10px;
 }
 @media (min-width: 300px) { 
+  
   /*xs크기 셋팅 768px이하*/
   .telPhone {
    padding-left:0px; 
@@ -405,6 +407,7 @@
   }
   #column {
     padding:0px;
+    width:12%;
   }
   label {
     font-size:14px;
@@ -458,9 +461,24 @@
     margin-right: 5px;
     margin-left:82%;
   }
+  .mob_price {
+    max-width:50px;
+  }
   /*xs크기 셋팅 768px이하*/
 }
 @media (min-width: 768px) {
+  
+  .image-upload{
+    padding-left:5px;
+    padding-right:5px;
+  }
+  .mob_price {
+    max-width:70px;
+  }
+  #column {
+    padding: 0px;
+    width: 20%;
+}
   /*sm크기 셋팅 768px이상 992px 이하*/
   .telPhone {
    padding-left:5px;
@@ -621,25 +639,42 @@
   }
   /*lg크기 셋팅 1200px 이상*/
 }
+
+.row {
+  margin:0;
+}
+
+.col-lg-12, .col-md-12, .col-sm-12, .col-xs-12, .col-sm-3, .col-md-3 {
+  padding:0;
+}
+
+.page-header {
+    padding-bottom: 0px;
+    border-bottom: 0;
+}
+
+.table-responsive > .table > thead > tr > th, .table-responsive > .table > thead > tr > td, .table-responsive > .table > tbody > tr > th, .table-responsive > .table > tbody > tr > td, .table-responsive > .table > tfoot > tr > th, .table-responsive > .table > tfoot > tr > td {
+    white-space: normal;
+}
 </style>
 
 
 </head>
 <body>
 <%= form_for( @hasuk_house, html: { :multipart => true }) do |f| %>
-   <div class="container" style="margin-top:50px; max-width:900px">
+   <div class="container" style="margin-top:50px; max-width:768px">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="inline" style="width:15px; height:45px; background-color:#2ECC71; margin-top:3px"></div>
+        <div class="inline" style="width:10px; height:30px; background-color:#2ECC71; margin-top:3px"></div>
         <div class="page-header inline" style="margin-top:0px">
-          <h3 style="font-weight:bold; margin-top:0px; margin-left:10px">하숙집 등록</h3>
+          <h4 style="font-weight:bold; margin-top:0px; margin-left:10px">하숙집 등록</h4>
         </div>
       </div><!--제목-->
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default" style="background-color:rgba(46, 204, 113, 0.2); border-color: rgba(46, 204, 113, 0.2);margin-bottom: 40px;">
           <div class="panel-body" style="padding-left: 0px; padding-right: 0px; padding-bottom: 0px; padding-top: 10px;">
             <ul>
-              <li style="font-size:15px">하숙방콕은 무료로 하숙집을 홍보해주는 서비스입니다.</li>
+              <li style="font-size:15px">하숙방콕은 무료로 하숙집을 홍보할 수 있는 서비스입니다.</li>
               <li style="font-size:15px">등록하시면 학생들이 회원님의 하숙집 정보와 연락처를 확인할 수 있습니다.</li>
             </ul>
           </div>
@@ -687,7 +722,7 @@
       </tr>
       <tr>
         <td colspan="2">
-          <%= f.text_field :contact_memo, class:"form-control", placeholder:"메모 ex) 전화를 받지 않을 시 문자 남겨주시면 확인 후 연락드리겠습니다." %>
+          <%= f.text_field :contact_memo, class:"form-control", placeholder:"메모 ex)전화를 안 받으면 문자 남겨주세요." %>
         </td>
       </tr>
       <!--연락처 구간 끝-->
@@ -702,12 +737,12 @@
         
         <td colspan="3" style="padding-left:15px;">
           <label class="radio"><%= radio_button("hasuk_house","hasuk_kind", '일반하숙', :checked => true, :class =>"sleeping_display1") %>
-            <span>일반하숙</span>
+            <span>일반하숙</span><span style="color:#666666">&nbsp(식사 가능)</span>
           </label>
           <label class="radio"><%= radio_button("hasuk_house","hasuk_kind", '잠만 자는 방',  :class =>"sleeping_display2") %>
-            <span>잠만 자는 방</span>
+            <span>잠만자는 집</span><span style="color:#666666">&nbsp(식사 불가능)</span>
           </label>
-          
+          <br><span style="color:#e74c3c">잠만자는 게 가능해도 원래 식사를 제공하는 집이면 일반하숙에 체크해주세요.</span>
         </td>
       </tr>
       <!--종류 끝-->
@@ -755,7 +790,7 @@
             <td colspan="3">
             <!--월세 시작-->
               <div class="form-inline">
-                <div class="col-md-3 col-sm-3 col-xs-3" style="padding:0px; margin:0px">
+                <div class="col-md-3 col-sm-3 col-xs-4" style="padding:0px; margin:0px">
           <% if @hasuk_house.miniroom_price_from != 0 || @hasuk_house.miniroom_price_from != nil  %>
                   <label class="radio-inline checkbox" id="radio_left">
                      <%= check_box_tag "price_from_check", 0, true, class:"check_price" %>일반
@@ -766,46 +801,47 @@
                   </label>
           <% end %>
                  </div>
-                <div class="col-md-9 col-sm-9 col-xs-12" style="padding:0px; margin:0px">
+                <div class="col-md-9 col-sm-9 col-xs-8" style="padding:0px; margin:0px">
           <% if @hasuk_house.miniroom_price_from != 0 || @hasuk_house.miniroom_price_from != nil  %>
-                    <%= f.number_field :miniroom_price_from, :value => @hasuk_house.miniroom_price_from, class:"form-control", style:"float:left; max-width:70px;", :required => true %>
+                    <%= f.number_field :miniroom_price_from, :value => @hasuk_house.miniroom_price_from, class:"form-control mob_price", style:"float:left; ", :required => true %>
           <% else %>
-                    <%= f.number_field :miniroom_price_from, class:"form-control", style:"float:left; max-width:70px;", :required => true %>
+                    <%= f.number_field :miniroom_price_from, class:"form-control mob_price", style:"float:left; ", :required => true %>
           <% end %>
-                    <span id="form-middle">만 원 ~</span>
-                    <%= f.number_field :miniroom_price_to, class:"form-control", style:"float:left; max-width:70px;", :required => true %>
-                    <span id="form-middle">만 원</span>
+                    <span id="form-middle">~</span>
+                    <%= f.number_field :miniroom_price_to, class:"form-control mob_price", style:"float:left; ", :required => true %>
+                    <span id="form-middle">만원</span>
                   </div>
                 </div>
               </div>
             <!--월세 끝-->
             <!--원룸형 시작-->
               <div class="form-inline">
-                <div class="col-md-3 col-sm-3 col-xs-3" style="padding:0px; margin:0px">
+                <div class="col-md-3 col-sm-3 col-xs-4" style="padding:0px; margin:0px">
         <% if @hasuk_house.oneroom_price_from != 0 && @hasuk_house.oneroom_price_from != nil  %>
                   <label class="radio-inline checkbox" id="radio_left">
-                     <%= check_box_tag "oneroom_price_from_check", 0, true, class:"check_price" %>원룸형<br>(개인 화장실 있는 방)
+                     <%= check_box_tag "oneroom_price_from_check", 0, true, class:"check_price" %>원룸형
                   </label>
           <% else %>
                   <label class="radio-inline checkbox" id="radio_left">
-                     <%= check_box_tag "oneroom_price_from_check", 0, false, class:"check_price" %>원룸형<br>(개인 화장실 있는 방)
+                     <%= check_box_tag "oneroom_price_from_check", 0, false, class:"check_price" %>원룸형
                   </label>
           <% end %>
                  </div>
-                <div class="col-md-9 col-sm-9 col-xs-12" id="oneroom_price_from" style="padding:0px; margin:0px">
+                <div class="col-md-9 col-sm-9 col-xs-8" id="oneroom_price_from" style="padding:0px; margin:0px">
           <% if @hasuk_house.oneroom_price_from != 0 && @hasuk_house.oneroom_price_from != nil  %>
-                  <%= f.number_field :oneroom_price_from, class:"form-control", style:"float:left; max-width:70px;" %>
+                  <%= f.number_field :oneroom_price_from, class:"form-control mob_price", style:"float:left; " %>
           <% else %>
-                  <%= f.number_field :oneroom_price_from, class:"form-control", style:"float:left; max-width:70px;", :disabled => true %>
+                  <%= f.number_field :oneroom_price_from, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
           <% end %>
-                  <span id="form-middle">만 원 ~</span>
+                  <span id="form-middle">~</span>
           <% if @hasuk_house.oneroom_price_to != 0 && @hasuk_house.oneroom_price_to != nil  %>
-                  <%= f.number_field :oneroom_price_to, class:"form-control", style:"float:left; max-width:70px;" %>
+                  <%= f.number_field :oneroom_price_to, class:"form-control mob_price", style:"float:left; " %>
           <% else %>
-                  <%= f.number_field :oneroom_price_to, class:"form-control", style:"float:left; max-width:70px;", :disabled => true %>
+                  <%= f.number_field :oneroom_price_to, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
           <% end %>
-                  <span id="form-middle">만 원</span>
+                  <span id="form-middle">만원</span>
                 </div>
+                <div class="col-xs-12" style="padding:0"><span style="color:#e74c3c">원룸형은 개인화장실이 있는 방을 의미합니다.</span></div>
               </div>
             <!--원룸형 끝-->
             </td>
@@ -818,71 +854,75 @@
             <!--협의사항 잠만자는 시작-->
       <% if @hasuk_house.hasuk_kind == "일반하숙" %>      
               <div class="form-inline" id="sleeping_only_display" style="display:block">
-                <div class="col-md-3 col-sm-3 col-xs-3" style="padding:0px; margin:0px">
+                <div class="row" style="margin:0">
+                <div class="col-md-3 col-sm-3 col-xs-6" style="padding:0px; margin:0px">
           <% if @hasuk_house.sleeping_only_price_from != 0 && @hasuk_house.sleeping_only_price_from != nil  %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "sleeping_only_price_from_check", 0, true, class:"check_small_deposit" %>잠만 자는 경우<br>(식사 제공 안함)
+                    <%= check_box_tag "sleeping_only_price_from_check", 0, true, class:"check_small_deposit" %>잠만자는 경우<br>(식사 제공 안함)
                   </label>
           <% else %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "sleeping_only_price_from_check", 0, false, class:"check_small_deposit" %>잠만 자는 경우<br>(식사 제공 안함)
+                    <%= check_box_tag "sleeping_only_price_from_check", 0, false, class:"check_small_deposit" %>잠만자는 경우<br>(식사 제공 안함)
                   </label>
           <% end %>
                 </div>
       
-                <div class="col-md-9 col-sm-9 col-xs-12" id="sleeping_only_price_from" style="padding:0px; margin:0px">
+                <div class="col-md-9 col-sm-9 col-xs-6" id="sleeping_only_price_from" style="padding:0px; margin:0px">
           <% if @hasuk_house.sleeping_only_price_from != nil %>
-                  <%= f.number_field :sleeping_only_price_from, class:"form-control", style:"float:left; max-width:70px;" %>
+                  <%= f.number_field :sleeping_only_price_from, class:"form-control mob_price", style:"float:left; " %>
           <% else %>
-                  <%= f.number_field :sleeping_only_price_from, class:"form-control", style:"float:left; max-width:70px;", :disabled => true %>
+                  <%= f.number_field :sleeping_only_price_from, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
           <% end %>
-                  <span id="form-middle">만 원부터</span>
+                  <span id="form-middle">만원~</span>
+                </div>
                 </div>
       <% else %>
               <div class="form-inline" id="sleeping_only_display" style="display:none">
-                <div class="col-md-3 col-sm-3 col-xs-3" style="padding:0px; margin:0px">
+               <div class="row" style="margin:0">
+                <div class="col-md-3 col-sm-3 col-xs-6" style="padding:0px; margin:0px">
           <% if @hasuk_house.sleeping_only_price_from != 0 && @hasuk_house.sleeping_only_price_from != nil   %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "sleeping_only_price_from_check", 0, true, class:"check_small_deposit" %>잠만 자는 경우<br>(식사 제공 안함)
+                    <%= check_box_tag "sleeping_only_price_from_check", 0, true, class:"check_small_deposit" %>잠만자는 경우<br>(식사 제공 안함)
                   </label>
           <% else %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "sleeping_only_price_from_check", 0, false, class:"check_small_deposit" %>잠만 자는 경우<br>(식사 제공 안함)
+                    <%= check_box_tag "sleeping_only_price_from_check", 0, false, class:"check_small_deposit" %>잠만자는 경우<br>(식사 제공 안함)
                   </label>
           <% end %>
                 </div>
       
-                <div class="col-md-9 col-sm-9 col-xs-12" id="sleeping_only_price_from" style="padding:0px; margin:0px">
+                <div class="col-md-9 col-sm-9 col-xs-6" id="sleeping_only_price_from" style="padding:0px; margin:0px">
           <% if @hasuk_house.sleeping_only_price_from != nil %>
-                  <%= f.number_field :sleeping_only_price_from, class:"form-control", style:"float:left; max-width:70px;" %>
+                  <%= f.number_field :sleeping_only_price_from, class:"form-control mob_price", style:"float:left; " %>
           <% else %>
-                  <%= f.number_field :sleeping_only_price_from, class:"form-control", style:"float:left; max-width:70px;", :disabled => true %>
+                  <%= f.number_field :sleeping_only_price_from, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
           <% end %>
-                  <span id="form-middle">만 원부터</span>
-                </div>  
+                  <span id="form-middle">만원~</span>
+                </div> 
+                </div>
       <% end %>
               </div>
             <!--협의사항 잠만자는 끝-->
             <!--협의사항 2인1실 시작-->
               <div class="form-inline">
-                <div class="col-md-3 col-sm-3 col-xs-3" style="padding:0px; margin:0px">
+                <div class="col-md-3 col-sm-3 col-xs-6" style="padding:0px; margin:0px">
           <% if @hasuk_house.mate_price_from != 0 && @hasuk_house.mate_price_from != nil  %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "mate_price_from_check", 0, true, class:"check_small_deposit" %>2인 1실 가능
+                    <%= check_box_tag "mate_price_from_check", 0, true, class:"check_small_deposit" %>2인1실 가능
                   </label>
           <% else %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "mate_price_from_check", 0, false, class:"check_small_deposit" %>2인 1실 가능
+                    <%= check_box_tag "mate_price_from_check", 0, false, class:"check_small_deposit" %>2인1실 가능
                   </label>
           <% end %>
                 </div>
-                <div class="col-md-9 col-sm-9 col-xs-12" id="mate_price_from" style="padding:0px; margin:0px">
+                <div class="col-md-9 col-sm-9 col-xs-6" id="mate_price_from" style="padding:0px; margin:0px">
           <% if @hasuk_house.mate_price_from != 0 && @hasuk_house.mate_price_from != nil  %>
-                  <%= f.number_field :mate_price_from, class:"form-control", style:"float:left; max-width:70px;" %>
+                  <%= f.number_field :mate_price_from, class:"form-control mob_price", style:"float:left; " %>
           <% else %>
-                  <%= f.number_field :mate_price_from, class:"form-control", style:"float:left; max-width:70px;", :disabled => true %>
+                  <%= f.number_field :mate_price_from, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
           <% end %>
-                  <span id="form-middle">만 원부터</span>
+                  <span id="form-middle">만원~</span>
                 </div>
                 
               </div>
@@ -895,16 +935,16 @@
             <td id="column"><center><%= f.label :small_deposit, "예치금" %></center></td>
             <td colspan="3">
               <div class="form-inline">
-              <div class="col-md-3 col-sm-6 col-xs-7" style="padding:0px; margin:0px">
+              <div class="col-md-3 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
         <% if @hasuk_house.small_deposit == 0 %> 
-                <%= f.number_field :small_deposit, class:"form-control small_deposit", :disabled => true, style:"float:left; max-width:80px;" %>
-                 <span id="form-right">만 원</span>
+                <%= f.number_field :small_deposit, class:"form-control mob_price small_deposit", :disabled => true, style:"float:left;" %>
+                 <span id="form-right">만원</span>
         <% else %>
-                <%= f.number_field :small_deposit, class:"form-control small_deposit", style:"float:left; max-width:80px;" %>
-                 <span id="form-right">만 원</span>
+                <%= f.number_field :small_deposit, class:"form-control mob_price small_deposit", style:"float:left;" %>
+                 <span id="form-right">만원</span>
         <% end %>
                </div>
-               <div class="col-md-2 col-sm-2 col-xs-2" style="padding:0px; margin:0px; margin-top:5px">
+               <div class="col-md-2 col-sm-2 col-xs-6" style="padding:0px; margin:0px; margin-top:5px">
                  <!--해당없음에 체크시 0을 저장한다-->
       <% if @hasuk_house.small_deposit == 0 %> 
                  <label class="radio-inline" id="radio-right">
@@ -927,14 +967,14 @@
           <td colspan="3">
           <div class="col-md-3 col-sm-6 col-xs-7" style="padding:0px; margin:0px">
   <% if @hasuk_house.least_contract == 0 %>
-            <%= f.number_field :least_contract, class:"form-control least_contract", :disabled => true, style:"float:left; padding:5px; max-width:50px;" %>
+            <%= f.number_field :least_contract, class:"form-control mob_price least_contract", :disabled => true, style:"float:left; padding:5px;" %>
             <span id="form-right">개월 이상</span>
   <% else %>
-            <%= f.number_field :least_contract, class:"form-control least_contract", style:"float:left; padding:5px; max-width:50px;" %>
+            <%= f.number_field :least_contract, class:"form-control mob_price least_contract", style:"float:left; padding:5px;" %>
             <span id="form-right">개월 이상</span>
   <% end %>
           </div>
-          <div class="col-md-2 col-sm-2 col-xs-2" style="padding:0px; margin:0px; margin-top:5px">
+          <div class="col-md-2 col-sm-2 col-xs-5" style="padding:0px; margin:0px; margin-top:5px">
 
 <!--해당없음에 체크시 0을 저장한다-->
 <% if @hasuk_house.least_contract == 0 %>
@@ -1040,7 +1080,7 @@
  
         <% for i in 1..2 %>
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="col-md-3 col-sm-3 col-xs-3" style="padding-left:0px;">
+            <div class="col-md-3 col-sm-3 col-xs-7" style="padding-left:0px;">
               <% if i == 1 %>
                 <span class="fui-star-2" style="font-size: 1.4em; font-weight:bold; color:#F1C40F; float:left;position: absolute;"></span>
               <% end %>
@@ -1080,7 +1120,7 @@
                 "<option>인근 학교선택</option><option value='서강'>서강대학교</option><option value='이화'>이화여자대학교</option><option value='연세'>연세대학교</option>".html_safe, class:"form-control" %>
         <% end %>
             </div>
-            <div class="col-md-3 col-sm-3 col-xs-3">
+            <div class="col-md-3 col-sm-3 col-xs-5">
       <% if univ[i] == "서강" && sogang_gate[i] == "정문" %>
               <%= select_tag "sogang_gate#{i}", 
               "<option selected>교문선택</option>
@@ -1183,7 +1223,7 @@
               <option value='남문' href='http://map.daum.net/?eX=485249&eY=1128258&eName=%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90+%EB%82%A8%EB%AC%B8'>남문</option>".html_safe, class:"form-control", style:"display:none" %> 
       <% end %>
             </div>
-             <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
+             <div class="col-md-6 col-sm-6 col-xs-12" style="padding:0px; margin:0px">
                <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                  <div class="form-inline">
     <% if @hasuk_house.send("distance_time#{i}") != "" || @hasuk_house.send("distance_time#{i}") != nil %>
@@ -1242,7 +1282,7 @@
           
           
           
-            <div class="col-md-3 col-sm-3 col-xs-3">
+            <div class="col-md-3 col-sm-3 col-xs-7">
               <% if i == 1 %>
                 <span class="fui-star-2" style="font-size: 1.4em; font-weight:bold; color:#F1C40F; float:left;position: absolute;"></span>
               <% end %>
@@ -1258,7 +1298,7 @@
     <% end %>
             </div>
             
-            <div class="col-md-3 col-sm-3 col-xs-3">
+            <div class="col-md-3 col-sm-3 col-xs-5">
     <% if trans_kind[i] == "지하철" && subway[i] == "신촌" %>
               <%= select_tag "subway#{i}", 
               "<option selected>지하철역</option>
@@ -1433,7 +1473,7 @@
     <% end %>
             </div>
             
-             <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
+             <div class="col-md-6 col-sm-6 col-xs-12" style="padding:0px; margin:0px">
                <div class="col-md-6 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
                  <div class="form-inline">
       <% if @hasuk_house.send("trans_distance_time#{i}") != "" || @hasuk_house.send("trans_distance_time#{i}") != nil %>
@@ -1503,7 +1543,7 @@
           <h5 style="margin-top:0px; margin-left:5px">방</h5>
         </div>
       <div class="inline" style="margin-top:0px">
-        <p style="color:#ff9682; margin-top: 5px; margin-left: 10px;">*대표사진이 검색시 나타납니다.</p>
+        <span style="color:#e74c3c; margin-top: 5px; margin-left: 10px;">검색시 대표사진이 보여집니다.</span>
       </div>
     </div><!--소제목 방-->
   </div>

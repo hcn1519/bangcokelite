@@ -1,3 +1,5 @@
+<head>
+   
 <style type="text/css">
   @media (max-width: 991px) {
     .navbar-header {
@@ -51,8 +53,7 @@
 }
 
 </style>
-<%# navigation styled for Bootstrap 3.0 %>
-
+</head>
 <% if current_page?('/') %>
     <nav class="navbar navbar-default navbar-fixed-top" style="height:50px; background-color:transparent; border-bottom:transparent">
 <% else %>
@@ -69,7 +70,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+      <%= link_to '하숙방콕', root_path, class: 'navbar-brand' %>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">

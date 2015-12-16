@@ -1650,9 +1650,7 @@ HasukHouse.create(
     mate_price_from: price_from.sample,
     least_contract: least_contract.sample,
     
-    
-    
-    
+
     title: "빨래 일일이 걷어서 세탁기 돌려주는 집",
    hasuk_house_description:"방 별로 창문이 모두 비치되어 있습니다. 건물은 남동향으로 채광이 좋은 편입니다.", address:"서울특별시 마포구 독막로 221-7", lat:37.567185 , lng:126.946372 ,
    
