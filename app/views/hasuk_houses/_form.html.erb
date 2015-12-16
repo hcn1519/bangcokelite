@@ -1042,7 +1042,7 @@
         <div class="col-md-6 col-sm-6 col-xs-12" style="margin:0px; padding:0px; padding-right:7px; padding-top:8%;">
             <%= f.text_field :address, class:"form-control", placeholder:"주소입력", :required => true %>
             <input class="btn btn-success" id="mapfind" type="button" value="주소 검색하기" >
-            <input class="btn btn-info" id="mapfindcheck" type="button" value="확인">
+            <input class="btn btn-info" id="mapfindcheck" type="button" value="확인" style="display:none">
             
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12" style="margin:0px; padding:0px;">    
@@ -1724,6 +1724,12 @@
 
 
 <script type="text/javascript">
+$(document).ready(function(){
+  $("#mapfind").click(function(){
+    $("#mapfindcheck").css("display", "block");
+  });
+});
+
 $(document).ready(function(){ 
   $(':checkbox').radiocheck();
   $(':radio').radiocheck();
