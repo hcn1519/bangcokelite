@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207143856) do
+ActiveRecord::Schema.define(version: 20151216164656) do
 
   create_table "favorite_hasuk_houses", force: :cascade do |t|
     t.integer  "hasuk_house_id"
@@ -106,5 +106,11 @@ ActiveRecord::Schema.define(version: 20151207143856) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["uid"], name: "index_users_on_uid"
   add_index "users", ["username"], name: "index_users_on_username", unique: true
+
+  create_table "view_counts", force: :cascade do |t|
+    t.string   "ip_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

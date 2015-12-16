@@ -30,6 +30,17 @@ class HasukHousesController < ApplicationController
   # GET /hasuk_houses/1.json
   def show
     @hasuk_house = HasukHouse.find(params[:id])
+    
+    @mark = ViewCount.new
+    @mark.ip_address = request.remote_ip
+    @mark.save
+    
+    @ip_arr = Array.new
+    ViewCount.all.each do |c|
+      @ip_arr << c.ip_address
+    end
+    
+    @page_view_count = @ip_arr.uniq.count
   end
 
   # GET /hasuk_houses/new
