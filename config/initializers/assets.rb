@@ -20,5 +20,4 @@ Rails.application.config.assets.precompile += %w( index_effect.js )
 Rails.application.config.assets.precompile += %w( font-awesome.min.css )
 Rails.application.config.assets.precompile += %w( grayscale.css )
 
-Rails.application.config.assets.precompile += %w( markerwithlabel.js )
 

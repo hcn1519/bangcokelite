@@ -3211,7 +3211,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
  <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
  
  <!--지도 디자인 관련 js -->
- <%= javascript_include_tag 'markerwithlabel', 'data-turbolinks-track' => true %>
+ <script src="/js/markerwithlabel.js"></script>
  <!--지도 디자인 관련 js -->
 
 <script>
@@ -3243,7 +3243,7 @@ $("#sortByPrice").click(function(){
         $(".position<%= counter %> > a").attr("href", "/hasuk_houses/<%= i.id %>");
         //id 셋팅 라인
         
-        //이미지 라인
+        //이미��� 라인
         $("#a<%= i.id %> #nameOfhasuk > p").text('<%= i.hasuk_name %>');
         
         
