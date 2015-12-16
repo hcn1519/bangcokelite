@@ -12,3 +12,13 @@ Rails.application.config.assets.precompile += %w( bx_loader.gif controls.png )
 
 Rails.application.config.assets.precompile += %w( jquery.bxslider.css )
 Rails.application.config.assets.precompile += %w( jquery.bxslider.min.js )
+
+Rails.application.config.assets.precompile += %w( jquery.js )
+Rails.application.config.assets.precompile += %w( jquery.easing.min.js )
+Rails.application.config.assets.precompile += %w( index_effect.js )
+
+Rails.application.config.assets.precompile += %w( font-awesome.min.css )
+Rails.application.config.assets.precompile += %w( grayscale.css )
+
+Rails.application.config.assets.precompile += %w( markerwithlabel.js )
+

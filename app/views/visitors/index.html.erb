@@ -1,13 +1,12 @@
 <head>
-    <!-- Custom CSS -->
-    <link href="/css/grayscale.css" rel="stylesheet">
+<!-- Custom CSS -->
+    <%= stylesheet_link_tag 'grayscale', media: 'all', 'data-turbolinks-track' => true %>
     <link rel="shortcut icon" href="/Flat-UI-2.2.2/dist/img/favicon.ico">
     <!-- Custom Fonts -->
-    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <%= stylesheet_link_tag 'font-awesome.min', media: 'all', 'data-turbolinks-track' => true %>
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
 <style type="text/css">
-
 
 main {
     margin-top:0px;
@@ -641,10 +640,17 @@ p {
     
  <div style="height:50px; background-image:url('/images/index-images/navimg5.png'); border-bottom:1px solid #BDC3C7"></div>
 
+    
+
+
+
 <!--스크롤바 부드럽게 내려가는 효과 -->
-    <script src="/js/jquery.js"></script>
-    <script src="/js/jquery.easing.min.js"></script>
-    <script src="/js/index_effect.js"></script>
+<%= javascript_include_tag 'jquery', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'jquery.easing.min', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'index_effect', 'data-turbolinks-track' => true %>
+   <!-- <script src="/js/.js"></script>
+    <script src="/js/.js"></script>
+    <script src="/js/index_effect.js"></script>-->
 <!--스크롤바 부드럽게 내려가는 효과 -->
    
     

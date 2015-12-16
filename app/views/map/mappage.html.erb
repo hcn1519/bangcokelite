@@ -6,11 +6,7 @@
 
     <!--jquery 넣기-->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
- <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
- 
- <!--지도 디자인 관련 js -->
- <script src="/js/markerwithlabel.js" type="text/javascript"></script>
- <!--지도 디자인 관련 js -->
+
  
     <script type="text/javascript">
     var map = null; 
@@ -3212,9 +3208,13 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
   
   </div><!--오른쪽 박스 끝 -->
 
+ <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
+ 
+ <!--지도 디자인 관련 js -->
+ <%= javascript_include_tag 'markerwithlabel', 'data-turbolinks-track' => true %>
+ <!--지도 디자인 관련 js -->
 
 <script>
-
 $("#sortByPrice").click(function(){
   <% @sortingArr = @sortingArr.sort { |p1, p2| [p1.price_from, p1.price_to, p1.distance1 ] <=> [p2.price_from, p2.price_to, p2.distance1 ] } %>
 
