@@ -26,7 +26,7 @@
 	background-color:#333;
 	margin-left:0px;
 	margin-right:0px;
-
+	border: none;
 }
 
 .bx-wrapper img {
@@ -47,6 +47,7 @@
     vertical-align: middle;
 	float: none !important;
 }
+.bx-wrapper, .bx-viewport, .bx-wrapper {height: 100% !important;}
 .bx-wrapper .bx-viewport {
 	background:#333;
 	margin-left:0px;

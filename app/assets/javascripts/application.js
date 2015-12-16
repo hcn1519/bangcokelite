@@ -13,5 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bxslider
+//= require jquery.easing.min
+//= require index_effect
+
 
 //= require_tree .

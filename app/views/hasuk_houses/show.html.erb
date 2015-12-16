@@ -1,9 +1,9 @@
 <head>
   
   <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=db900969ca97b093efb0ddf86d45f9e5"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <%= stylesheet_link_tag 'jquery.bxslider.css', media: 'all', 'data-turbolinks-track' => true %>
   
+  <%= stylesheet_link_tag 'jquery.bxslider.css', media: 'all', 'data-turbolinks-track' => true %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <style>
 
 .nav-justified > li > a, .nav-tabs.nav-justified > li > a {
@@ -413,7 +413,7 @@ hr {
           
             </div>
             <div id="roadviewcon" style="width:100%;" role="tanpanel" class="tab-pane">
-              <div id="roadview" style="width:100%; height:445px; max-height:500px"></div>
+              <div id="roadview" style="width:100%; height:490px; max-height:500px"></div>
                   <script>
                     
                     var roadviewContainer = document.getElementById('roadview'); //로드뷰를 표시할 div
@@ -730,16 +730,14 @@ hr {
   </div>
 </div>
 
-  <!-- bxSlider Javascript file -->
-  <%= javascript_include_tag 'jquery.bxslider.min', 'data-turbolinks-track' => true %>
-  
+
 <script>
   $(document).ready(function(){
      $("#toLike").click(function(){
        $.ajax({
           url: "/hasuk_houses/<%= @hasuk_house.id %>",
           type: 'GET',
-          data: data,
+          data: {id: <%= @hasuk_house.id %> },
           success: function(data){
             $(".glyphicon-heart").css("color", "#262626");
           }
@@ -749,7 +747,7 @@ hr {
        $.ajax({
           url: "/hasuk_houses/<%= @hasuk_house.id %>",
           type: 'GET',
-          data: data,
+          data: {id: <%= @hasuk_house.id %> },
           success: function(data){
             $(".glyphicon-heart").css("color", "#E74C3C");
           }
@@ -758,15 +756,21 @@ hr {
   });
 </script>
 
-
-
-
 <script>
-$(document).ready(function(){
+$('#pictab1 a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show');
+  $("#pictab2 a").tab("hide");
+});
+$('#pictab2 a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show');
+  $("#pictab1 a").tab("hide");
+});
+ 
+ var $jj = jQuery.noConflict();
   
-  var $j = jQuery.noConflict();
-  
-  var realSlider= $j("ul#bxslider").bxSlider({
+  var realSlider= $("ul#bxslider").bxSlider({
         speed:1000,
         pager:false,
         controls: true,
@@ -781,7 +785,7 @@ $(document).ready(function(){
         
       });
       
-      var realThumbSlider=$j("ul#bxslider-pager").bxSlider({
+      var realThumbSlider=$("ul#bxslider-pager").bxSlider({
         minSlides: 8,
         maxSlides: 8,
         slideWidth: 100,
@@ -801,16 +805,16 @@ $(document).ready(function(){
       
       linkRealSliders(realSlider,realThumbSlider);
       
-      if($j("#bxslider-pager li").length<5){
-        $j("#bxslider-pager .bx-next").hide();
+      if($("#bxslider-pager li").length<5){
+        $("#bxslider-pager .bx-next").hide();
       }
 
 // sincronizza sliders realizzazioni
   function linkRealSliders(bigS,thumbS){
     
-    $j("ul#bxslider-pager").on("click","a",function(event){
+    $("ul#bxslider-pager").on("click","a",function(event){
       event.preventDefault();
-      var newIndex=$j(this).parent().attr("data-slideIndex");
+      var newIndex=$(this).parent().attr("data-slideIndex");
           bigS.goToSlide(newIndex);
     });
   }
@@ -818,7 +822,7 @@ $(document).ready(function(){
 //slider!=$thumbSlider. slider is the realslider
   function changeRealThumb(slider,newIndex){
     
-    var $thumbS=$j("#bxslider-pager");
+    var $thumbS=$("#bxslider-pager");
     $thumbS.find('.active').removeClass("active");
     $thumbS.find('li[data-slideIndex="'+newIndex+'"]').addClass("active");
     
@@ -826,21 +830,6 @@ $(document).ready(function(){
     else slider.goToSlide(slider.getSlideCount()-4);
   
   }
-});
-
-$(document).ready(function(){
-  $("#pictab1").click(function(){
-    
-    $(this).addClass("active");
-    $("#pictab2").removeClass("active");
-  });
-  $("#pictab2").click(function(){
-    
-    $(this).addClass("active");
-    $("#pictab1").removeClass("active");
-  });
-  
-});
 </script>
 
 </body>
