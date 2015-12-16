@@ -605,7 +605,7 @@
   }
   
   .preview {
-    width:9.75em;
+    width:8.5em;
     height:6.4em;
     display:block;
     position: absolute;
@@ -858,11 +858,11 @@
                 <div class="col-md-3 col-sm-3 col-xs-6" style="padding:0px; margin:0px">
           <% if @hasuk_house.sleeping_only_price_from != 0 && @hasuk_house.sleeping_only_price_from != nil  %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "sleeping_only_price_from_check", 0, true, class:"check_small_deposit" %>잠만자는 경우<br>(식사 제공 안함)
+                    <%= check_box_tag "sleeping_only_price_from_check", 0, true %>잠만자는 경우<br>(식사 제공 안함)
                   </label>
           <% else %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "sleeping_only_price_from_check", 0, false, class:"check_small_deposit" %>잠만자는 경우<br>(식사 제공 안함)
+                    <%= check_box_tag "sleeping_only_price_from_check", 0, false %>잠만자는 경우<br>(식사 제공 안함)
                   </label>
           <% end %>
                 </div>
@@ -882,11 +882,11 @@
                 <div class="col-md-3 col-sm-3 col-xs-6" style="padding:0px; margin:0px">
           <% if @hasuk_house.sleeping_only_price_from != 0 && @hasuk_house.sleeping_only_price_from != nil   %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "sleeping_only_price_from_check", 0, true, class:"check_small_deposit" %>잠만자는 경우<br>(식사 제공 안함)
+                    <%= check_box_tag "sleeping_only_price_from_check", 0, true %>잠만자는 경우<br>(식사 제공 안함)
                   </label>
           <% else %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "sleeping_only_price_from_check", 0, false, class:"check_small_deposit" %>잠만자는 경우<br>(식사 제공 안함)
+                    <%= check_box_tag "sleeping_only_price_from_check", 0, false %>잠만자는 경우<br>(식사 제공 안함)
                   </label>
           <% end %>
                 </div>
@@ -908,11 +908,11 @@
                 <div class="col-md-3 col-sm-3 col-xs-6" style="padding:0px; margin:0px">
           <% if @hasuk_house.mate_price_from != 0 && @hasuk_house.mate_price_from != nil  %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "mate_price_from_check", 0, true, class:"check_small_deposit" %>2인1실 가능
+                    <%= check_box_tag "mate_price_from_check", 0, true %>2인1실 가능
                   </label>
           <% else %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "mate_price_from_check", 0, false, class:"check_small_deposit" %>2인1실 가능
+                    <%= check_box_tag "mate_price_from_check", 0, false %>2인1실 가능
                   </label>
           <% end %>
                 </div>
@@ -932,6 +932,36 @@
  
           </tr>
           <tr>
+            <td id="column"><center><%= f.label :big_deposit, "보증금" %></center></td>
+            <td colspan="3">
+              <div class="form-inline">
+              <div class="col-md-3 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
+        <% if @hasuk_house.big_deposit == 0 %> 
+                <%= f.number_field :big_deposit, class:"form-control mob_price big_deposit", :disabled => true, style:"float:left;" %>
+                 <span id="form-right">만원</span>
+        <% else %>
+                <%= f.number_field :big_deposit, class:"form-control mob_price big_deposit", style:"float:left;" %>
+                 <span id="form-right">만원</span>
+        <% end %>
+               </div>
+               <div class="col-md-2 col-sm-2 col-xs-6" style="padding:0px; margin:0px; margin-top:5px">
+                 <!--해당없음에 체크시 0을 저장한다-->
+      <% if @hasuk_house.big_deposit == 0 %> 
+                 <label class="checkbox radio-inline" id="radio-right" style="padding-left: 25px;">
+                   <%= check_box_tag "hasuk_house[big_deposit]", 0, true, class:"check_big_deposit" %>해당없음
+                 </label>
+      <% else %>
+                 <label class="checkbox radio-inline" id="radio-right" style="padding-left: 25px;">
+                   <%= check_box_tag "hasuk_house[big_deposit]", 0, false, class:"check_big_deposit" %>해당없음
+                 </label>
+      <% end %>
+              </div>
+            
+            </div>
+
+            </td>
+        </tr>
+          <tr>
             <td id="column"><center><%= f.label :small_deposit, "예치금" %></center></td>
             <td colspan="3">
               <div class="form-inline">
@@ -947,7 +977,7 @@
                <div class="col-md-2 col-sm-2 col-xs-6" style="padding:0px; margin:0px; margin-top:5px">
                  <!--해당없음에 체크시 0을 저장한다-->
       <% if @hasuk_house.small_deposit == 0 %> 
-                 <label class="radio-inline" id="radio-right">
+                 <label class="checkbox radio-inline" id="radio-right" style="padding-left: 25px;">
                    <%= check_box_tag "hasuk_house[small_deposit]", 0, true, class:"check_small_deposit" %>해당없음
                  </label>
       <% else %>
@@ -961,6 +991,23 @@
 
             </td>
         </tr>
+        <tr>
+        <td id="column">
+          <center>
+            <span>별도 관리비</span>
+          </center>
+        </td>
+        
+        <td colspan="3" style="padding-left:15px;">
+          <label class="radio"><%= radio_button("hasuk_house","admin_fee", true, :checked => true, :class =>"admin_fee") %>
+            <span>있음</span>
+          </label>
+          <label class="radio"><%= radio_button("hasuk_house","admin_fee", false,  :class =>"admin_fee") %>
+            <span>없음</span>
+          </label>
+        </td>
+        
+      </tr>
         <tr>
           <td id="column"><center><%= f.label :least_contract, "최소계약기간" %></center></td>
               
@@ -2456,6 +2503,7 @@ $(".crossmeal4").click(function() {
     
     $(function() {
           $(".check_small_deposit").click(enable_cd);
+          $(".check_big_deposit").click(enable_cq);
         });
         
         function enable_cd() {
@@ -2464,6 +2512,15 @@ $(".crossmeal4").click(function() {
             
           } else {
             $(".small_deposit").removeAttr("disabled");
+            
+          }
+        }
+        function enable_cq() {
+          if (this.checked) {
+            $(".big_deposit").prop("disabled", true);
+            
+          } else {
+            $(".big_deposit").removeAttr("disabled");
             
           }
         }

@@ -509,7 +509,13 @@ hr {
                <hr>
                 <div class="row">
                     <div class="info_list col-xs-2">보증금</div>
-                    <div class="info_content col-sm-4 col-xs-10">100만원</div>
+                    <div class="info_content col-sm-4 col-xs-10">
+                      <% if @hasuk_house.big_deposit != nil && @hasuk_house.big_deposit != 0 %>
+                        <%= @hasuk_house.big_deposit %>만원
+                      <% else %>
+                        -
+                      <% end %>
+                    </div>
                     <div class="info_list col-xs-2">예치금</div>
                     <% if @hasuk_house.small_deposit != nil && @hasuk_house.small_deposit != 0 %>
                       <div class="info_content col-xs-4"><%= @hasuk_house.small_deposit %><span class="manwon">만원</span></div>                                        
@@ -520,7 +526,13 @@ hr {
                 </div> 
                 <div class="row">
                     <div class="info_list col-xs-2">관리비</div>
-                    <div class="info_content col-sm-4 col-xs-10">별도</div>
+                    <div class="info_content col-sm-4 col-xs-10">
+                      <% if @hasuk_house.admin_fee != nil && @hasuk_house.admin_fee != false %>
+                        별도
+                      <% else %>
+                        -
+                      <% end %>
+                    </div>
                     <div class="info_list col-xs-2">계약기간</div>
                     <% if @hasuk_house.least_contract != nil && @hasuk_house.least_contract != 0 %>
                       <div class="info_content col-sm-4 col-xs-10"><%= @hasuk_house.least_contract %><span class="manwon">개월 이상</span></div>                    

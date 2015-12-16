@@ -36,8 +36,10 @@ ActiveRecord::Schema.define(version: 20151207143856) do
     t.integer  "oneroom_price_to"
     t.integer  "sleeping_only_price_from"
     t.integer  "mate_price_from"
-    t.integer  "small_deposit"
+    t.integer  "small_deposit",            default: 0
     t.integer  "least_contract"
+    t.integer  "big_deposit",              default: 0
+    t.boolean  "admin_fee",                default: false
     t.string   "title"
     t.text     "hasuk_house_description"
     t.string   "address"
@@ -77,8 +79,8 @@ ActiveRecord::Schema.define(version: 20151207143856) do
     t.string   "meal_img3"
     t.string   "meal_img4"
     t.integer  "hasuk_house_viewcount"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "users", force: :cascade do |t|

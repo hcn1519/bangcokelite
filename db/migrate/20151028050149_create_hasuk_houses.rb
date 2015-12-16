@@ -24,8 +24,11 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.integer :sleeping_only_price_from 
       t.integer :mate_price_from
 
-      t.integer :small_deposit
+      t.integer :small_deposit, :default => 0
       t.integer :least_contract
+      
+      t.integer :big_deposit, :default => 0
+      t.boolean :admin_fee, :default => false
       
       #상세설명
       t.string :title

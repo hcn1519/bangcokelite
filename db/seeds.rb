@@ -70,7 +70,9 @@ HasukHouse.create(
     station2: "광성중고등학교",
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
-
+    
+    big_deposit: 100,
+    admin_fee: true,
     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha1.jpg")),
      
     )
@@ -114,7 +116,9 @@ HasukHouse.create(
     station2: "광성중고등학교",
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
-      
+     
+     big_deposit: 200,
+    admin_fee: true, 
      :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha2.jpg")),
      
      )
@@ -244,7 +248,9 @@ HasukHouse.create(
     station2: "대흥",
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
-      
+    
+    big_deposit: 100,
+    admin_fee: true,  
      :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha5.jpg")),
      
     )
@@ -507,7 +513,8 @@ HasukHouse.create(
     station2: "연희교차로/브라운스톤우정",
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
-      
+     big_deposit: 100,
+    admin_fee: true, 
      :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha11.jpg")),
      
     )
@@ -603,7 +610,8 @@ HasukHouse.create(
     station2: "연희교차로/브라운스톤우정",
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
-      
+      big_deposit: 100,
+    admin_fee: true,
      :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha13.jpg")),
      
      )
@@ -700,7 +708,8 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample, 
     
-      
+      big_deposit: 100,
+    admin_fee: true,
      :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha15.jpg")),
     
     )
@@ -892,7 +901,8 @@ HasukHouse.create(
     station2: "연세대앞",
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
-      
+      big_deposit: 100,
+    admin_fee: true,
      :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha19.jpg")),
      
      )
@@ -1034,7 +1044,8 @@ HasukHouse.create(
     station2: "연세대앞",
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
-      
+      big_deposit: 100,
+    admin_fee: true,
      :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha22.jpg")),
     
      )     
@@ -1307,7 +1318,8 @@ HasukHouse.create(
     station2: "연세대앞",
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
-      
+     big_deposit: 100,
+    admin_fee: true, 
      :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha28.jpg")),
      
      )
@@ -1483,7 +1495,8 @@ HasukHouse.create(
     station2: "신촌",
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
-      
+      big_deposit: 150,
+    admin_fee: true,
      :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha32.jpg")),
     
      )
@@ -1628,6 +1641,8 @@ HasukHouse.create(
     station2: "신촌기차역",
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
+     big_deposit: 150,
+    admin_fee: true,
      :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha35.jpg")),
     
     )
@@ -1768,7 +1783,9 @@ title: "빨래 일일이 걷어서 세탁기 돌려주는 집",
     station2: "이대후문",
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
-      
+     
+     big_deposit: 150,
+    admin_fee: true, 
      :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha38.jpg")),
    
      )
@@ -1861,7 +1878,8 @@ HasukHouse.create(
     station2: "이대후문",
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
-      
+      big_deposit: 150,
+    admin_fee: true,
      :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha40.jpg"))
      
     )

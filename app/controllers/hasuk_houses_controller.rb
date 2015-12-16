@@ -3,7 +3,7 @@ class HasukHousesController < ApplicationController
   before_filter :authenticate_user!, only: [:index, :new, :edit, :update, :destory]
   # GET /hasuk_houses
   # GET /hasuk_houses.json
-  
+  respond_to :js, :html, :json
   def favorite
     @hasuk_house = HasukHouse.find_by_id(params[:id])
     
@@ -84,6 +84,6 @@ class HasukHousesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hasuk_house_params
-      params.require(:hasuk_house).permit(:hasuk_name, :celPhone, :telPhone, :contact_memo, :hasuk_kind, :gender, :small_deposit, :price_from, :price_to, :miniroom_price_from, :miniroom_price_to, :oneroom_price_from, :oneroom_price_to, :sleeping_only_price_from, :mate_price_from, :least_contract, :title, :hasuk_house_description, :address, :lat, :lng, :division, :univ1, :univ2, :gate1, :gate2, :distance_time1, :distance_time2, :distance1, :distance2, :trans_kind1, :trans_kind2, :station1, :station2, :trans_distance_time1, :trans_distance1, :trans_distance_time2, :trans_distance2, :room_img1, :room_img2, :room_img3, :room_img4, :room_img5, :room_img6, :room_img7, :room_img8, :common_img1, :common_img2, :common_img3, :common_img4, :meal_img1, :meal_img2, :meal_img3, :meal_img4)
+      params.require(:hasuk_house).permit(:hasuk_name, :celPhone, :telPhone, :contact_memo, :hasuk_kind, :gender, :small_deposit, :big_deposit, :admin_fee, :price_from, :price_to, :miniroom_price_from, :miniroom_price_to, :oneroom_price_from, :oneroom_price_to, :sleeping_only_price_from, :mate_price_from, :least_contract, :title, :hasuk_house_description, :address, :lat, :lng, :division, :univ1, :univ2, :gate1, :gate2, :distance_time1, :distance_time2, :distance1, :distance2, :trans_kind1, :trans_kind2, :station1, :station2, :trans_distance_time1, :trans_distance1, :trans_distance_time2, :trans_distance2, :room_img1, :room_img2, :room_img3, :room_img4, :room_img5, :room_img6, :room_img7, :room_img8, :common_img1, :common_img2, :common_img3, :common_img4, :meal_img1, :meal_img2, :meal_img3, :meal_img4)
     end
 end
