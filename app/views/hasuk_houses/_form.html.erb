@@ -995,8 +995,8 @@
       </div>
     </div>
   </div><!-- table2 끝row-->
-  <%= f.number_field :price_from, class:"form-control main_price_from", style:"float:left; max-width:80px;", placeholder:"최소", :required => true %>
-  <%= f.number_field :price_to, class:"form-control main_price_to", style:"float:left; max-width:80px;", placeholder:"최대" %>
+  <%= f.number_field :price_from, class:"form-control main_price_from", style:"display:none; float:left; max-width:80px;", placeholder:"최소", :required => true %>
+  <%= f.number_field :price_to, class:"form-control main_price_to", style:"display:none; float:left; max-width:80px;", placeholder:"최대" %>
   
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
@@ -1041,8 +1041,9 @@
         <td>
         <div class="col-md-6 col-sm-6 col-xs-12" style="margin:0px; padding:0px; padding-right:7px; padding-top:8%;">
             <%= f.text_field :address, class:"form-control", placeholder:"주소입력", :required => true %>
-            <input class="btn btn-success" id="mapfind" type="button" value="주소 검색하기" >
-            <input class="btn btn-info" id="mapfindcheck" type="button" value="확인" style="display:none">
+            <input class="btn btn-success" id="mapfind" type="button" value="주소 확인하기" >
+            <span id="location-confirm" style="display:none; padding-top:10px;">지도에 표시된 위치를 확인하셨습니까?</span>
+            <input class="btn btn-info" id="mapfindcheck" type="button" value="네" style="display:none; width:70px;">
             
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12" style="margin:0px; padding:0px;">    
@@ -1513,17 +1514,17 @@
   </div>
   </div>
   </div>
-    <%= f.text_field :univ1, class:"form-control", placeholder:"학교1" %>
-    <%= f.text_field :gate1, class:"form-control", placeholder:"교문1" %>
+    <%= f.text_field :univ1, class:"form-control", placeholder:"학교1", style:"display:none" %>
+    <%= f.text_field :gate1, class:"form-control", placeholder:"교문1", style:"display:none" %>
 
-    <%= f.text_field :univ2, class:"form-control", placeholder:"학교2" %>
-    <%= f.text_field :gate2, class:"form-control", placeholder:"교문2" %>
+    <%= f.text_field :univ2, class:"form-control", placeholder:"학교2", style:"display:none" %>
+    <%= f.text_field :gate2, class:"form-control", placeholder:"교문2", style:"display:none" %>
     
-    <%= f.text_field :trans_kind1, class:"form-control", placeholder:"교통수단1"%>
-    <%= f.text_field :station1, class:"form-control", placeholder:"역1" %>
+    <%= f.text_field :trans_kind1, class:"form-control", placeholder:"교통수단1", style:"display:none"%>
+    <%= f.text_field :station1, class:"form-control", placeholder:"역1", style:"display:none" %>
     
-    <%= f.text_field :trans_kind2, class:"form-control", placeholder:"교통수단2"%>
-    <%= f.text_field :station2, class:"form-control", placeholder:"역2" %>
+    <%= f.text_field :trans_kind2, class:"form-control", placeholder:"교통수단2", style:"display:none" %>
+    <%= f.text_field :station2, class:"form-control", placeholder:"역2", style:"display:none" %>
   </div>
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px; margin-bottom:10px;">
@@ -1726,7 +1727,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
   $("#mapfind").click(function(){
-    $("#mapfindcheck").css("display", "block");
+    $("#location-confirm").css("display", "inline-block");
+    $("#mapfindcheck").css("display", "inline-block");
   });
 });
 
