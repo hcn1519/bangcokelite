@@ -18,6 +18,12 @@ class HasukHousesController < ApplicationController
     else
       redirect_to :back, notice: 'Nothing happened.'
     end
+    
+    if request.xhr?
+      render json: { count: @hasuk_house.favorited_by.size, id: params[:id] }
+    else
+      redirect_to @hasuk_house
+    end
     @like = current_user.favorites.uniq
   end
   

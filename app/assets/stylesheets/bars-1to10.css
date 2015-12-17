@@ -1,3 +1,22 @@
+.my_rate{
+  padding:30px;
+  padding-top:15px;
+  padding-right:0px;
+  background-color: #f2f1ed;
+  border-radius:15px;
+}
+
+th {
+  background-color:#f2f1ed;
+}
+.review_list {
+ font-size: 15px;  
+}
+
+.rate_section {
+  padding:60px;
+}
+
 .br-theme-bars-1to10 .br-widget {
   height: 40px;
   white-space: nowrap;
@@ -31,6 +50,7 @@
   padding: 0 20px 0 20px;
   color: #2ECC71;
   font-weight: 400;
+  margin-top: -6px;
 }
 /* 오른쪽 텍스트*/
 .br-theme-bars-movie .br-widget .br-current-rating {
@@ -56,6 +76,7 @@
   color: #2ECC71;
 }
 /* 읽기전용*/
+
 
 @media print {
   .br-theme-bars-1to10 .br-widget a {

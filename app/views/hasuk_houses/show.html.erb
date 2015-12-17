@@ -23,13 +23,10 @@ body, main {
     margin:0;
 }
 
-.col-xs-2, .col-xs-6, .col-xs-12 {
+.col-xs-6, .col-xs-12 {
   padding:0;
 }
 
-.col-xs-10 {
-  padding-right: 0;    
-}
 
 .col-sm-6 {
   padding: 0;
@@ -37,7 +34,8 @@ body, main {
 .info {
   border: 1px solid #999999;
   background-color: #ffffff;
-  padding:15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .oneline {
@@ -122,14 +120,11 @@ hr {
 
 
 @media (max-width: 321px) {
-    
-.col-xs-2 {
-    width: 20%;
-}    
 
-.col-xs-10 {
-    width: 80%;
-}
+
+.info_list {
+    padding-top: 3px;
+}    
 
 
 #pictab1{
@@ -147,9 +142,6 @@ hr {
   padding-left:0;
 }
 
-.info_list {
-  padding-top: 3px;
-}
 .info_content {
     font-size: 16px;  
 }
@@ -162,6 +154,13 @@ hr {
 
 @media (max-width: 767px) {
 
+.col-xs-2 {
+  width: 22%;
+} 
+
+.col-xs-10 {
+    width: 78%;
+}
 .info_content {
   line-height:;
 }
@@ -209,6 +208,7 @@ hr {
 }
 
 @media(min-width:768px) {
+
 .col-xs-4 {
   width: 30%;  
 }
@@ -222,7 +222,7 @@ hr {
 }   
 
 .container {
-  padding: 30px;
+  padding: 60px;
   padding-top:10px;
   width: 970px;
   margin-bottom: 70px;
@@ -255,8 +255,6 @@ hr {
 
 .info {
   margin-left: 5px; 
-  padding: 20px;
-  padding-top: 15px;
 }
 
 .title {
@@ -272,13 +270,19 @@ hr {
 .location {
   margin-top:20px;
 }
+
+.table-responsive {
+  padding-right:50px;
+}
 }
 
 @media(min-width: 1200px) {
 
 }
 
-
+.info_hr {
+  padding:0 15px;
+}
 .info_list {
     font-size: 14px;
 }
@@ -507,19 +511,19 @@ hr {
                         </div>
                     </div>
                 </div>
-               <hr>
+               <div class="info_hr"><hr></div>
                 <div class="row">
                     <div class="info_list col-xs-2">보증금</div>
                     <div class="info_content col-sm-4 col-xs-10">
                       <% if @hasuk_house.big_deposit != nil && @hasuk_house.big_deposit != 0 %>
-                        <%= @hasuk_house.big_deposit %>만원
+                        <%= @hasuk_house.big_deposit %><span class="manwon">만원</span>
                       <% else %>
                         -
                       <% end %>
                     </div>
                     <div class="info_list col-xs-2">예치금</div>
                     <% if @hasuk_house.small_deposit != nil && @hasuk_house.small_deposit != 0 %>
-                      <div class="info_content col-xs-4"><%= @hasuk_house.small_deposit %><span class="manwon">만원</span></div>                                        
+                      <div class="info_content col-sm-4 col-xs-10"><%= @hasuk_house.small_deposit %><span class="manwon">만원</span></div>                                        
                     
                     <% else %>
                       <div class="info_content col-sm-4 col-xs-10"><span class="manwon">-</span></div> 
@@ -534,14 +538,14 @@ hr {
                         없음
                       <% end %>
                     </div>
-                    <div class="info_list col-xs-2">계약기간</div>
+                    <div class="info_list col-xs-2" style="padding-right:0;">계약기간</div>
                     <% if @hasuk_house.least_contract != nil && @hasuk_house.least_contract != 0 %>
                       <div class="info_content col-sm-4 col-xs-10"><%= @hasuk_house.least_contract %><span class="manwon">개월 이상</span></div>                    
                     <% else %>
                       <div class="info_content col-sm-4 col-xs-10"><span class="manwon">-</span></div>  
                     <% end %>
                 </div>
-                <hr>
+               <div class="info_hr"><hr></div>
                 <div class="row" style="margin-bottom:5px;">
                     <div class="info_list col-xs-2">통학</div>
                     <div class="info_content col-xs-10">
@@ -617,14 +621,14 @@ hr {
                        
                     </div> 
                 </div>
-                <hr>
+                <div class="info_hr"><hr></div>
                 <div class="row">
-                    <div class="info_list col-xs-12">상세설명</div>
+                    <div class="info_list col-xs-12" style="padding-left:15px;">상세설명</div>
                     <div class="info_content col-xs-12">
                     
                       <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0px">
-                        <span id="inner-content" style="float:left;">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left:15px;">
+                        <span id="inner-content" style="float:left; font-size:14px;">
                           <% if @hasuk_house.hasuk_house_description.size > 30 %>
                             <%= @hasuk_house.hasuk_house_description.split(//).first(30).join %>...&nbsp;&nbsp;
                         </span>
@@ -642,7 +646,7 @@ hr {
                       
                     </div><!--상세설명 끝-->
                 </div>
-                <hr>
+                <div class="info_hr"><hr></div>
                 <div class="row">
                     <div class="info_list col-xs-2">문의</div>
                     <div class="info_content col-xs-10">
@@ -667,22 +671,22 @@ hr {
                         <div class="row"><%= @hasuk_house.address %></div>
                     </div>
                 </div>
-                <div class="row" style="margin-top:10px; margin-bottom:0">
+                <div class="row" style="margin-top:10px; margin-bottom:0; padding-right:15px; padding-left:15px;">
                     <div class="col-xs-6 kok">
                         조회수 <%= @page_view_count %> &nbsp&nbsp&nbsp 
                         <% if user_signed_in? %> 
                           <% if current_user.favorites.include?(@hasuk_house) != true %>
                             <span class="glyphicon glyphicon-heart" style="color:none;" aria-hidden="true"></span>
-                            <span id="sizeoflike"><%= @hasuk_house.favorited_by.size %></span>
+                            <span id="sizeoflike" data-id="<%= @hasuk_house.id %>"><%= @hasuk_house.favorited_by.size %></span>
                             <!--로그인 했는데 콕은 안함 -->
                           <% else %>
                             <span class="glyphicon glyphicon-heart" style="color:#E74C3C;" aria-hidden="true"></span>
-                            <span id="sizeoflike" style="color:#e74c4c"><%= @hasuk_house.favorited_by.size %></span>
+                            <span id="sizeoflike" data-id="<%= @hasuk_house.id %>" style="color:#e74c4c"><%= @hasuk_house.favorited_by.size %></span>
                             <!--로그인하고 콕도 함 -->
                           <% end %>
                         <% else %>
                           <span class="glyphicon glyphicon-heart" style="color:none;" aria-hidden="true"></span>
-                          <span id="sizeoflike"><%= @hasuk_house.favorited_by.size %></span>
+                          <span id="sizeoflike" data-id="<%= @hasuk_house.id %>"><%= @hasuk_house.favorited_by.size %></span>
                           <!--로그인을 안함 -->
                         <% end %>
                     </div>
@@ -690,9 +694,9 @@ hr {
                         
                     <% if user_signed_in? %> 
                       <% if current_user.favorites.include?(@hasuk_house) != true %>
-                        <%= link_to "콕하기!", favorite_hasuk_house_path(@hasuk_house, type: "favorite"), :id => "toLike",:class => "like btn btn-danger2 btn-lg", style:"display:block; font-size: 15px; width: 80%; float: right;", method: :put, :remote => true %>
+                        <%= link_to "콕하기!", favorite_hasuk_house_path(@hasuk_house, type: "favorite"),:class => "vote btn btn-danger2 btn-lg", style:"display:block; font-size: 15px; width: 80%; float: right;", method: :put, :remote => true, data: { toggle_text: '콕했어요!', toggle_href: favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), id: @hasuk_house.id } %>
                       <% else %>
-                        <%= link_to "콕했어요!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), :id => "toDsilike", :class => "like btn btn-danger btn-lg", style:"display:block; font-size: 15px; width: 80%; float: right;", method: :put, :remote => true %>                                
+                        <%= link_to "콕했어요!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), :class => "vote btn btn-danger btn-lg", style:"display:block; font-size: 15px; width: 80%; float: right;", method: :put, :remote => true, data: { toggle_text: '콕하기!', toggle_href: favorite_hasuk_house_path(@hasuk_house, type: "favorite"), id: @hasuk_house.id } %>                                
                       <% end %>
                     <% else %>
                       <%= link_to "콕하기!", '#login', :class => "btn btn-danger2 btn-md", style:"font-size: 15px; width: 80%; float: right;", 'data-toggle': "modal" %>  
@@ -737,37 +741,55 @@ hr {
     
     <div class="hasuk_name" style="margin-top: 15px">리뷰<span style="font-size:15px">(참여: N명)</span></div>
         <!-- 리뷰 타이틀-->
-    <div class="row" style="border: 1px solid #262626">
+    <div class="row rate_section" style="border: 1px solid #999999">
         <!-- 전체 row-->
-      <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="col-md-5 col-sm-5 col-xs-12">
         <!-- 평점 나오는 구간-->
-        
+        <div class="table-responsive">
+          <table class="table" style="width:100%">
+            <tr><!-- 첫번째 줄-->
+              <th>항목</th>
+              <th>점수</th>
+            </tr><!-- 첫번째 줄-->
+            <% for i in 1..7 %>
+            <tr><!-- 두 번째 줄-->
+              <td><%= @review_index[i-1] %></td>
+              <td>3.7/4.3</td>
+            </tr><!-- 두 번째 줄-->
+            <% end %>
+          </table>
+        </div>
       </div>
-      <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="col-md-7 col-sm-7 col-xs-12">
         <!-- 평가하기 구간-->
-        <div class="row">
-          
+        <div class="row my_rate">
+           
             <% for i in 1..7 %>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <div id="s<%= i %>" class="br-wrapper br-theme-fontawesome-stars" style="margin-top:10px">
+              <div id="s<%= i %>" class="review_list br-wrapper br-theme-fontawesome-stars" style="margin-top:10px">
               <%= @review_index[i-1] %>
                 <select id="review<%= i %>">
                   <option value="0">F</option>
                   <option value="1">D</option>
-                  <option value="2">C0</option>
+                  <option value="2">C</option>
                   <option value="2.3">C+</option>
                   <option value="2.7">B-</option>
-                  <option value="3">B0</option>
+                  <option value="3">B</option>
                   <option value="3.3">B+</option>
                   <option value="3.7">A-</option>
-                  <option value="4">A0</option>
+                  <option value="4">A</option>
                   <option value="4.3">A+</option>
                 </select>
-                <span id="rate-description<%= i%>" style="font-size:15px">
+                <span id="rate-description<%= i%>" style="font-size:14px; color:#82888a">
                   <%= @review_default[i-1] %>
                 </span>
               </div>
             </div>
+            <% if i == 6 %>
+              <div class="col-md-12 col-xs-12 col-sm-12">
+                <div style="padding-right:20px;"><hr></div>
+              </div>
+            <% end %>
             <% end %>
           
         </div>
@@ -835,11 +857,11 @@ hr {
       });
       $("#s<%= i %> a").mouseover(function () {
         var score = $("#s<%= i %> .br-current-rating").text();
-        if (score == "A+" || score == "A0" || score == "A-") {
+        if (score == "A+" || score == "A" || score == "A-") {
           $('#rate-description<%= i %>').text("<%= @review[0] %>");
-        } else if (score == "B+" || score == "B0" || score == "B-") {
+        } else if (score == "B+" || score == "B" || score == "B-") {
           $('#rate-description<%= i %>').text("<%= @review[1] %>");
-        } else if (score == "C+" || score == "C0") {
+        } else if (score == "C+" || score == "C") {
           $('#rate-description<%= i %>').text("<%= @review[2] %>");
         } else {
           $('#rate-description<%= i %>').text("<%= @review[3] %>");
@@ -847,51 +869,21 @@ hr {
       });
   });
 <% end %>
-
-  
-  $(document).ready(function(){
-     $("#toLike").click(function(){
-       $.ajax({
-          url: "/hasuk_houses/<%= @hasuk_house.id %>",
-          type: 'GET',
-          data: {status},
-          success: function(status, data){
-            $(".glyphicon-heart").css("color", "#E74C3C");
-            $("#sizeoflike").css("color", "#E74C3C");
-            $(".btn-lg").text("콕했어요!").fadeIn();
-            $("#toLike").addClass("btn-danger");
-            $("#toLike").removeClass("btn-danger2");
-            $("#toLike").attr({
-              href: "/hasuk_houses/<%= @hasuk_house.id %>/favorite?type=unfavorite"
-            });
-            $("#toLike").attr("id", "toDislike");
-            //$("#toLike").css("display", "none");
-            //$("#toDislike").css("display", "block");
-            
-          }
-       });
+</script>
+<script>
+  $(".vote").click(function(){
+      if($(this).hasClass("btn-danger2") == true) {
+        $(this).removeClass("btn-danger2");
+        $(this).addClass("btn-danger");
+        $(".glyphicon-heart").css("color", "#e74c4c");
+        $("#sizeoflike").css("color", "#e74c4c");
+      } else if ($(this).hasClass("btn-danger") == true){
+        $(this).removeClass("btn-danger");
+        $(this).addClass("btn-danger2");
+        $(".glyphicon-heart").css("color", "#888888");
+        $("#sizeoflike").css("color", "#888888");
+      }
      });
-     $("#toDislike").click(function(){
-       $.ajax({
-          url: "/hasuk_houses/<%= @hasuk_house.id %>",
-          type: 'GET',
-          data: {status, id: <%= @hasuk_house.id %> },
-          success: function(status, data){
-            $(".glyphicon-heart").css("color", "#888888");
-            $("#sizeoflike").css("color", "#888888");
-            $(".btn-lg").text("콕하기!").fadeIn();
-            $("#toLike").addClass("btn-danger2");
-            $("#toLike").removeClass("btn-danger");
-            $("#toLike").attr({
-              href: "/hasuk_houses/<%= @hasuk_house.id %>/favorite?type=favorite"
-            });
-            $("#toLike").attr("id", "toDislike");
-            //$("#toLike").css("display", "block");
-            //$("#toDislike").css("display", "none");
-          }
-       });
-     });
-  });
 </script>
 
 <script>
