@@ -16,6 +16,7 @@
 //= require bxslider
 //= require jquery.easing.min
 //= require index_effect
+//= require jquery.barrating.min
 
 
 //= require_tree .

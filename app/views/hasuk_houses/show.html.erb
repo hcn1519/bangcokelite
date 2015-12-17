@@ -3,7 +3,8 @@
   <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=db900969ca97b093efb0ddf86d45f9e5"></script>
   
   <%= stylesheet_link_tag 'jquery.bxslider.css', media: 'all', 'data-turbolinks-track' => true %>
- <%= javascript_include_tag 'jquery.bxslider.min', 'data-turbolinks-track' => true %>  
+ 
+ <%= stylesheet_link_tag 'bars-1to10', media: 'all', 'data-turbolinks-track' => true %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <style>
 
@@ -527,10 +528,10 @@ hr {
                 <div class="row">
                     <div class="info_list col-xs-2">관리비</div>
                     <div class="info_content col-sm-4 col-xs-10">
-                      <% if @hasuk_house.admin_fee != nil && @hasuk_house.admin_fee != false %>
+                      <% if @hasuk_house.admin_fee == true %>
                         별도
                       <% else %>
-                        -
+                        없음
                       <% end %>
                     </div>
                     <div class="info_list col-xs-2">계약기간</div>
@@ -731,6 +732,47 @@ hr {
             </div>    
         </div>
     </div> 
+    <% @review_index = ["식사", "위생", "주인", "방음", "난방", "보안", "총점"] %>
+    <% @review_default = ["먹을 만함","벌레 가끔 보임/공동시설 깨끗한편","잔소리, 간섭 없는 편","이 정도면 괜찮음", "그럭저럭 지낼 만함","항목 없음","가격 대비 괜찮음"] %>
+    
+    <div class="hasuk_name" style="margin-top: 15px">리뷰<span style="font-size:15px">(참여: N명)</span></div>
+        <!-- 리뷰 타이틀-->
+    <div class="row" style="border: 1px solid #262626">
+        <!-- 전체 row-->
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <!-- 평점 나오는 구간-->
+        
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <!-- 평가하기 구간-->
+        <div class="row">
+          
+            <% for i in 1..7 %>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div id="s<%= i %>" class="br-wrapper br-theme-fontawesome-stars" style="margin-top:10px">
+              <%= @review_index[i-1] %>
+                <select id="review<%= i %>">
+                  <option value="0">F</option>
+                  <option value="1">D</option>
+                  <option value="2">C0</option>
+                  <option value="2.3">C+</option>
+                  <option value="2.7">B-</option>
+                  <option value="3">B0</option>
+                  <option value="3.3">B+</option>
+                  <option value="3.7">A-</option>
+                  <option value="4">A0</option>
+                  <option value="4.3">A+</option>
+                </select>
+                <span id="rate-description<%= i%>" style="font-size:15px">
+                  <%= @review_default[i-1] %>
+                </span>
+              </div>
+            </div>
+            <% end %>
+          
+        </div>
+      </div>      
+    </div>
 </div>    
 
 <div class="modal fade" id="descript" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -749,9 +791,64 @@ hr {
     </div>
   </div>
 </div>
-
-
+<%= javascript_include_tag 'jquery.bxslider.min', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'jquery.barrating.min', 'data-turbolinks-track' => true %>
 <script>
+
+<% for i in 1..7 %>
+  <% if i == 1 %>
+  //식사, 0이 a구간, 3이 f구간
+    <% @review = Array.new %>
+    <% @review = ["맛있음", "먹을 만함", "반찬이 부실해 먹을 게 없음","언제부턴가 밥을 안 먹게 됨"] %>
+  <% elsif i == 2 %>
+  //위생, 0이 a구간, 3이 f구간
+    <% @review = Array.new %>
+    <% @review = ["벌레 본 적 없음/공동시설 위생 굿","벌레 가끔 보임/공동시설 깨끗한편","벌레 자주 보임/공동시설 비위생적","바퀴벌레랑 동거"] %>
+    <% elsif i == 3 %>
+  //주인, 0이 a구간, 3이 f구간
+    <% @review = Array.new %>
+    <% @review = ["요구사항 잘 들어주고 친절","잔소리, 간섭 없는 편","잔소리, 간섭 좀 있음","주인 때문에 집 옮김"] %>
+  <% elsif i == 4 %>
+  //방음, 0이 a구간, 3이 f구간
+    <% @review = Array.new %>
+    <% @review = ["조용해서 혼자 사는 줄", "이 정도면 괜찮음", "소음이 자주 거슬림", "옆방 통화 선명하게 들림"] %>
+  <% elsif i == 5 %>
+  //보안, 0이 a구간, 3이 f구간
+    <% @review = Array.new %>
+    <% @review = ["여름에 시원 겨울에 따뜻", "그럭저럭 지낼 만함","더(추)운 거 각오하고 가야함","냉난방 1도 안 해줌ㅜ"] %>
+    
+  <% elsif i == 6 %>
+  //난방, 0이 a구간, 3이 f구간
+    <% @review = Array.new %>
+    <% @review = ["항목 없음","항목 없음","항목 없음","항목 없음"] %>
+  <% elsif i == 7 %>
+  //총 평가, 0이 a구간, 3이 f구간
+    <% @review = Array.new %>
+    <% @review = ["가격도 저렴한데 조건도 좋음","가격 대비 괜찮음","여기 안 갔으면 좋겠는데… 방이 없음 어쩔 수 없지…","절대 가지마"] %>
+    
+
+  <% end %>
+  $(function() {
+      $('#review<%= i %>').barrating({
+        theme: 'bars-1to10',
+        initialRating: 3
+      });
+      $("#s<%= i %> a").mouseover(function () {
+        var score = $("#s<%= i %> .br-current-rating").text();
+        if (score == "A+" || score == "A0" || score == "A-") {
+          $('#rate-description<%= i %>').text("<%= @review[0] %>");
+        } else if (score == "B+" || score == "B0" || score == "B-") {
+          $('#rate-description<%= i %>').text("<%= @review[1] %>");
+        } else if (score == "C+" || score == "C0") {
+          $('#rate-description<%= i %>').text("<%= @review[2] %>");
+        } else {
+          $('#rate-description<%= i %>').text("<%= @review[3] %>");
+        } 
+      });
+  });
+<% end %>
+
+  
   $(document).ready(function(){
      $("#toLike").click(function(){
        $.ajax({
