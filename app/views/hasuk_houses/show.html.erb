@@ -1,11 +1,10 @@
 <head>
-  
-  <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=db900969ca97b093efb0ddf86d45f9e5"></script>
-  
-  <%= stylesheet_link_tag 'jquery.bxslider.css', media: 'all', 'data-turbolinks-track' => true %>
- 
+ <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=db900969ca97b093efb0ddf86d45f9e5"></script>
+ <%= stylesheet_link_tag 'jquery.bxslider.css', media: 'all', 'data-turbolinks-track' => true %>
  <%= stylesheet_link_tag 'bars-1to10', media: 'all', 'data-turbolinks-track' => true %>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+ <%= javascript_include_tag 'jquery.bxslider.min', 'data-turbolinks-track' => true %>
+ <%= javascript_include_tag 'jquery.barrating.min', 'data-turbolinks-track' => true %>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <style>
 
 .nav-justified > li > a, .nav-tabs.nav-justified > li > a {
@@ -813,8 +812,7 @@ hr {
     </div>
   </div>
 </div>
-<%= javascript_include_tag 'jquery.bxslider.min', 'data-turbolinks-track' => true %>
-<%= javascript_include_tag 'jquery.barrating.min', 'data-turbolinks-track' => true %>
+
 <script>
 
 <% for i in 1..7 %>
