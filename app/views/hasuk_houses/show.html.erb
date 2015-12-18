@@ -31,7 +31,6 @@ body, main {
   padding: 0;
 }
 .info {
-  border: 1px solid #999999;
   background-color: #ffffff;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -66,7 +65,7 @@ hr {
     margin-top: 10px;
     margin-bottom: 10px;
     border: 0;
-    border-top: 1px solid #d3d3d3;
+    border-top: 1px solid #ddd;
 }
 
  .sub_circle {
@@ -120,7 +119,9 @@ hr {
 
 @media (max-width: 321px) {
 
-
+.green {
+  margin-left:15px;
+}
 .info_list {
     padding-top: 3px;
 }    
@@ -128,12 +129,16 @@ hr {
 
 #pictab1{
   display:inline-block;
-  width:49%;
+  width:32%;
 }
 #pictab2{
   display:inline-block;
-  width:50%;
+  width:33%;
   margin-left:0px;
+}
+#pictab3{
+  display:inline-block;
+  width:32%;
 }
 
 .container {
@@ -141,9 +146,6 @@ hr {
   padding-left:0;
 }
 
-.info_content {
-    font-size: 16px;  
-}
 
 .hasuk_name, .oneline {
   padding-left: 15px;
@@ -153,6 +155,24 @@ hr {
 
 @media (max-width: 767px) {
 
+.my_rate{
+  padding:15px;
+  padding-top:15px;
+  padding-right:0px;
+  background-color: #ffffff;
+}
+
+.info {
+  border: 1px solid #dddddd;
+}
+
+.info_content {
+    font-size: 16px;  
+}
+
+td {
+  font-size: 16px;
+}
 .col-xs-2 {
   width: 22%;
 } 
@@ -170,12 +190,16 @@ hr {
 }
 #pictab1{
   display:inline-block;
-  width:49%;
+  width:32%;
 }
 #pictab2{
   display:inline-block;
-  width:50%;
+  width:33%;
   margin-left:0px;
+}
+#pictab3{
+  display:inline-block;
+  width:32%;
 }
 #map {
   height: 200px;
@@ -204,9 +228,25 @@ hr {
   width: 80%;  
 } 
 
+.rate_section {
+  margin-top: 15px;  
+}
+
 }
 
 @media(min-width:768px) {
+  
+.my_rate{
+  padding:30px;
+  padding-top:15px;
+  padding-right:0px;
+  background-color: #f2f1ed;
+  border-radius:15px;
+}
+
+.rate_section {
+  margin-top: 20px;  
+}
 
 .col-xs-4 {
   width: 30%;  
@@ -254,6 +294,7 @@ hr {
 
 .info {
   margin-left: 5px; 
+  border: 1px solid #999999;
 }
 
 .title {
@@ -361,7 +402,7 @@ hr {
 <div class="container">
 
        <div class="row">
-         <div class="inline" style="display:inline-block; width:7px; height:22px; background-color:#2ECC71; margin-bottom:-2px;"></div>
+         <div class="inline green" style="display:inline-block; width:7px; height:22px; background-color:#2ECC71; margin-bottom:-2px;"></div>
               <% if @hasuk_house.hasuk_name != nil %>
                 <span class="hasuk_name" style="display: inline-block"><%= @hasuk_house.hasuk_name %>&nbsp</span>
               <% else %>
@@ -381,7 +422,8 @@ hr {
                 <div class="photo-zone"> 
               <ul id="myTabs" class="btn-group nav nav-tabs nav-pills nav-justified" style="" role="tablist">
                   <li id="pictab1" role="presentation" class="active"><a href="#photo" aria-controls="photo" role="tab" data-toggle="tab">사진</a></li>
-                  <li id="pictab2" role="presentation"><a href="#roadviewcon" aria-controls="roadviewcon" role="tab" data-toggle="tab">로드뷰</a></li>
+                  <li id="pictab2" role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab">교통지도보기</a></li>
+                  <li id="pictab3" role="presentation"><a href="#roadviewcon" aria-controls="roadviewcon" role="tab" data-toggle="tab">로드뷰</a></li>
               </ul>
             
           <!-- Tab panes -->
@@ -418,6 +460,27 @@ hr {
                 <li data-slideIndex="5"><a href=""><img style="max-height:55px" src="/images/bangs/ha6.jpg" ></a></li>
               </ul>
           
+            </div>
+            <div id="address" style="width:100%;" role="tanpanel" class="tab-pane">
+                  <div id="map" style="width:100%; height:490px; max-height:500px"></div>
+                  <script>
+                    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+              
+                    var LatLng = new daum.maps.LatLng(<%= @hasuk_house.lat %>, <%= @hasuk_house.lng %>);
+                    var options = { //지도를 생성할 때 필요한 기본 옵션
+                    	center: LatLng, //지도의 중심좌표.
+                    	level: 3 //지도의 레벨(확대, 축소 정도)
+                    };
+                  
+                    var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+                    var markerPosition  = LatLng;
+
+                    var marker = new daum.maps.Marker({
+                        position: markerPosition
+                    });
+                    
+                    marker.setMap(map);
+                  </script>
             </div>
             <div id="roadviewcon" style="width:100%;" role="tanpanel" class="tab-pane">
               <div id="roadview" style="width:100%; height:490px; max-height:500px"></div>
@@ -627,7 +690,7 @@ hr {
                     
                       <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left:15px;">
-                        <span id="inner-content" style="float:left; font-size:14px;">
+                        <span id="inner-content" style="float:left;">
                           <% if @hasuk_house.hasuk_house_description.size > 30 %>
                             <%= @hasuk_house.hasuk_house_description.split(//).first(30).join %>...&nbsp;&nbsp;
                         </span>
@@ -709,51 +772,26 @@ hr {
             </div>
         </div>
     </div> 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="location">
-                <div class="hasuk_name">위치</div>
-                <div id="map"></div>
-                  <script>
-                    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-              
-                    var LatLng = new daum.maps.LatLng(<%= @hasuk_house.lat %>, <%= @hasuk_house.lng %>);
-                    var options = { //지도를 생성할 때 필요한 기본 옵션
-                    	center: LatLng, //지도의 중심좌표.
-                    	level: 3 //지도의 레벨(확대, 축소 정도)
-                    };
-                  
-                    var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
-                    var markerPosition  = LatLng;
-
-                    var marker = new daum.maps.Marker({
-                        position: markerPosition
-                    });
-                    
-                    marker.setMap(map);
-                  </script>
-            </div>    
-        </div>
-    </div> 
+     
     <% @review_index = ["식사", "위생", "주인", "방음", "난방", "보안", "총점"] %>
     <% @review_default = ["먹을 만함","벌레 가끔 보임/공동시설 깨끗한편","잔소리, 간섭 없는 편","이 정도면 괜찮음", "그럭저럭 지낼 만함","항목 없음","가격 대비 괜찮음"] %>
     
     <div class="hasuk_name" style="margin-top: 15px">리뷰<span style="font-size:15px">(참여: N명)</span></div>
         <!-- 리뷰 타이틀-->
-    <div class="row rate_section" style="border: 1px solid #999999">
+    <div class="row rate_section">
         <!-- 전체 row-->
       <div class="col-md-5 col-sm-5 col-xs-12">
         <!-- 평점 나오는 구간-->
         <div class="table-responsive">
-          <table class="table" style="width:100%">
+          <table class="table" style="width:100%;">
             <tr><!-- 첫번째 줄-->
-              <th>항목</th>
-              <th>점수</th>
+              <th class="table1">항목</th>
+              <th class="table2">점수</th>
             </tr><!-- 첫번째 줄-->
             <% for i in 1..7 %>
             <tr><!-- 두 번째 줄-->
-              <td><%= @review_index[i-1] %></td>
-              <td>3.7/4.3</td>
+              <td class="table1"><%= @review_index[i-1] %></td>
+              <td class="table2">3.7/4.3</td>
             </tr><!-- 두 번째 줄-->
             <% end %>
           </table>
@@ -889,11 +927,19 @@ $('#pictab1 a').click(function (e) {
   e.preventDefault()
   $(this).tab('show');
   $("#pictab2 a").tab("hide");
+  $("#pictab3 a").tab("hide");
 });
 $('#pictab2 a').click(function (e) {
   e.preventDefault()
   $(this).tab('show');
   $("#pictab1 a").tab("hide");
+  $("#pictab2 a").tab("hide");
+});
+$('#pictab3 a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show');
+  $("#pictab1 a").tab("hide");
+  $("#pictab3 a").tab("hide");
 });
  
  var $jj = jQuery.noConflict();

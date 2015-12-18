@@ -1,0 +1,974 @@
+// Place all the styles related to the map controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+   .col-md-9,.col-lg-9,.col-sm-9,.col-xs-9 {
+  padding-left: 0;
+}
+
+  .gm-style-iw {
+  width: 320px !important;
+   top: 15px !important;
+   left: 30px !important;
+   right: 0 !important;
+   background-color: #fff;
+   border: 1px solid #ECF0F1;
+   border-radius: 5px;
+}
+    #hasuk_kind_sleep {
+    font-size:12px; color:#D35400; border:1px solid #D35400; padding:1px; border-radius:5px; display:inline-block; font-family: source-han-sans-korean;
+    }/*잠만 자는 */
+    #hasuk_gender_woman {
+    font-size:12px; color:#D4009C; border:1px solid #D4009C; padding:1px; border-radius:5px; display:inline-block; font-family: source-han-sans-korean;
+    }/*여성 전용 */
+  .modal-body {
+    padding-bottom: 30px;
+  }
+
+    /*사이즈별 화면 조정 */
+   
+    @media (max-width: 359px) {
+
+    .modal-dialog {
+      margin:0;
+    }
+
+    div.description{  
+    font-size:15px;
+    padding-top:5px;
+    padding-bottom:10px;
+    }
+    
+    .thumbnail .caption {
+    border-bottom: 1px solid #c9c9c9;
+    font-size: 13px;
+    line-height: 1.5;
+    }
+    
+    .thumbnail {
+        padding: 0px;
+        margin-bottom: 15px;
+        line-height: 1.1;
+        border: none;
+    }
+
+    .thumbnail-text {
+       padding-bottom:5px;
+    }        
+      .modal-content#modal-size1{
+       width:300px;
+       left:0%;
+       padding:0px;
+      }
+      #signbutton {
+        padding-left:0px;
+      }
+      /*아이폰4 크기 */
+
+      
+     #modal-price {
+         height:30px;
+     }
+     #small-device{
+       padding:0.4em;
+    font-size:0.7em;
+     }
+     .small-device{
+       padding:0.4em;
+        font-size:0.7em;
+     }
+   .listbox {
+      width:100%;
+      overflow-y:scroll;
+      height:100%;
+    }
+    
+    .roomList{
+       height:100%;
+       overflow:auto;
+     }
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+     
+     
+     .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+    
+     #price-icon {
+        padding:0px;
+        margin:0px;
+        font-size:1em;
+        margin-top:3px;
+     }
+     #price-icon img {
+        margin-left:5px;
+     }
+    #condition {
+      margin-top:3px;
+      color: #82888a;
+    }
+    
+    #price-content {
+        padding:0;
+    }
+    #room_kind {
+        font-size:14px;
+    }
+    #price {
+        font-size:19px;
+        color:#2ECC71;
+    }
+    #school-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #school-distance span {
+        font-size:16px;
+    }
+    #trans-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #trans-distance span {
+        font-size:16px;
+    }
+    
+
+     .image-size {
+        height:9em; 
+        min-height:200px;
+     }
+     .image {
+       margin:0px;  margin-bottom:5px;
+       padding:0px;
+     }
+
+     }
+    
+    @media (min-width: 360px) {
+    
+    .thumbnail-text {
+       padding-bottom:8px;
+    }
+
+    .modal-dialog {
+      margin:0;
+    }  
+
+    div.description{  
+        font-size:18px;
+        padding-top:5px;
+        padding-bottom:10px;
+    }
+    .thumbnail {
+        padding: 0px;
+        margin-bottom: 15px;
+        line-height: 1.1;
+        border: none;
+    }
+      .modal-content#modal-size1{
+       width:300px;
+       left:0%;
+       padding:0px;
+      }
+      #signbutton {
+        padding-left:0px;
+      }
+      /*아이폰4 크기 */
+      .modal-content#modal-size2{
+      }
+      
+     #modal-price {
+         height:30px;
+     }
+     #small-device{
+       padding:0.4em;
+      /*font-size:0.7em;*/
+      font-size: 0.8em;
+     }
+     .small-device{
+       padding:0.4em;
+        font-size:0.7em;
+     }
+    .listbox {
+      width:100%;
+      overflow-y:scroll;
+      height:100%;
+    }
+    
+    .roomList{
+       height:100%;
+       overflow:auto;
+     }
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+     
+     
+     .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+    #main_price {
+        font-size:25px;
+        font-weight:bold;
+    }
+     #room_title {
+         font-size:15px;
+     }
+    #price-icon {
+        padding:0px;
+        margin:0px;
+        font-size:1em;
+        margin-top:3px;
+     }
+     #price-icon img {
+        margin-left:5px;
+     }
+      #condition span {
+      margin-left:8px;
+      font-size:13px;
+    }
+    #condition {
+      margin-top:2.5px;
+    }
+    
+     #price-content {
+        padding:0;
+    }
+    #room_kind {
+        font-size:15px;
+    }
+    #price {
+        font-size:20px;
+        color:#2ECC71;
+    }
+    #school-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #school-distance span {
+        font-size:15px;
+    }
+    #trans-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #trans-distance span {
+        font-size:15px;
+    }
+
+     .image-size {
+        height:9em; 
+        min-height:240px;
+     }
+     .image {
+       margin:0px;  margin-bottom:8px;
+       padding:0px;
+     }
+
+}
+    @media only screen and (min-device-width : 375px)  {
+   /*아이폰 6 셋팅 */
+
+       .listbox {
+        width:100%;
+        overflow-y:scroll;
+        height:100%;
+    }
+     #condition span {
+      margin-left:8px;
+      font-size:13px;
+    }
+    #main_price {
+        font-size:25px;
+        font-weight:bold;
+    }
+    #room_title {
+         font-size:15px;
+     }
+    .roomList{
+       height:100%;
+       overflow:auto;
+     }
+    }
+     @media (min-width: 400px) {
+
+    .modal-dialog {
+      margin:0;
+    }
+    
+    .modal-content#modal-size1{
+       width:300px;
+       left:0%;
+       padding:0px;
+      }
+      #signbutton {
+        padding-left:0px;
+      }
+      /*조금 큰 스마트폰 크기 */
+     
+    #small-device{
+       padding:0.4em;
+       /*font-size:0.65em;*/
+       font-size: 0.85em;
+     }
+     .small-device{
+       padding:0.4em;
+      font-size:0.65em;
+     }
+     #modal-price {
+         height:30px;
+     }
+     #small-device{
+       padding:0.6em;
+     }
+     .small-device{
+       padding:0.6em;
+     }
+     
+      .listbox {
+        width:100%;
+        overflow-y:scroll;
+        height:100%;
+    }
+    
+    .roomList{
+       height:100%;
+       overflow:auto;
+     }
+    
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+     
+     .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+     #condition span {
+      margin-left:8px;
+      font-size:13px;
+    }
+    #main_price {
+        font-size:25px;
+        font-weight:bold;
+    }
+    #room_title {
+         font-size:15px;
+     }
+   #price-icon {
+        padding:0px;
+        margin:0px;
+        font-size:1em;
+        margin-top:3px;
+     }
+     #price-icon img {
+        margin-left:5px;
+     }
+    #condition {
+      margin-top:5px;
+    }
+    
+    #price-content {
+        padding:0;
+    }
+    #room_kind {
+        font-size:13px;
+    }
+    #price {
+        font-size:19px;
+        color:#2ECC71;
+    }
+
+    #school-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #school-distance span {
+        font-size:13px;
+    }
+    #trans-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #trans-distance span {
+        font-size:13px;
+    }
+
+     .image-size {
+        height:9em; 
+        min-height:200px;
+     }
+     .image {
+       margin:0px;  margin-bottom:5px;
+       padding:0px;
+     }
+    }
+    @media (min-width: 481px) {
+    
+    .modal-dialog {
+        position: relative;
+        width: auto;
+        margin: auto;
+    }
+
+    .thumbnail {
+        padding: 0px;
+        margin-bottom: 15px;
+        line-height: 1.2;
+        border: none;
+    }
+    
+    .thumbnail .caption {
+    border-bottom: 1px solid #c9c9c9;
+    font-size: 13px;
+    line-height: 1.5;
+    }
+    
+     #condition span {
+      margin-left:8px;
+      font-size:13px;
+    }
+     
+     #small-device {
+       padding:0.63em;
+       font-size:0.7em;
+     }
+     .small-device{
+       padding:0.63em;
+       font-size:0.7em;
+     }
+
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+     
+     /*패블릿 스마트폰 */
+
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+     
+      .listbox {
+        width:100%;
+        overflow-y:scroll;
+        height:100%;
+    }
+    
+    .roomList{
+       height:100%;
+       overflow:auto;
+     }
+     
+     .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+     
+     
+     #price-icon {
+        padding:0px;
+        margin:0px;
+        font-size:1em;
+        margin-top:3px;
+     }
+     #price-icon img {
+        margin-left:5px;
+     }
+    #condition {
+      margin-top:5px;
+    }
+    
+    #price-content {
+        padding:0;
+    }
+    #room_kind {
+        font-size:13px;
+    }
+    #price {
+        font-size:19px;
+        color:#2ECC71;
+    }
+    
+    #school-distance {
+        margin-top:5px;
+        padding:0;
+    }
+   #school-distance span {
+        font-size:13px;
+    }
+    #trans-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #trans-distance span {
+        font-size:13px;
+    }
+     .image-size {
+        height:9em; 
+        min-height:200px;
+     }
+     .image {
+       margin:0px;  margin-bottom:5px;
+       padding:0px;
+     }
+
+    }
+    
+    @media (min-width: 768px) {
+    .thumbnail-text {
+       padding-bottom:3px;
+    }
+    div.description {
+        font-size:14px;
+        padding-top:2px;
+        padding-bottom:5px;
+    }
+    .modal-dialog {
+      position: relative;
+      width: auto;
+      margin: auto;
+    }
+    
+    .thumbnail {
+      line-height:1.2;
+      margin:5px; 
+      border-radius:0px;
+    }
+    
+     .modal-content#modal-size2{
+        width:450px;
+        left:13%;
+     }
+     #modal-price {
+         height:30px;
+     }
+     #small-device{
+       padding:0.8em;
+       font-size:0.9em;
+     }
+     .small-device{
+       padding:0.8em;
+       font-size:0.9em;
+     }
+     #select-title{
+        margin-right:5px;
+     }
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+     
+      .listbox {
+        width:100%;
+        overflow-y:scroll;
+        height:100%;
+    }
+    
+    .roomList{
+       height:100%;
+       overflow:auto;
+     }
+     
+      html, body { 
+      height: 97.5%; 
+      margin: 0; 
+      padding: 0; 
+    }
+    .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 46.5%;
+      margin-top: 0.1em;
+    }
+    #main_price {
+        font-size:19px;
+        font-weight:bold;
+    }
+    #room_title {
+         font-size:10px;
+     }
+    #price-icon {
+        padding:0px;
+        margin:0px;
+        font-size:1em;
+        margin-top:3px;
+     }
+     #price-icon img {
+        margin-left:5px;
+     }
+    #condition {
+      margin-top:4px;
+    }
+    #condition span {
+      margin-left:8px;
+      font-size:11px;
+    }
+    
+    #price-content {
+        padding:0;
+    }
+    #room_kind {
+        font-size:11px;
+    }
+    #price {
+        font-size:16px;
+        color:#2ECC71;
+    }
+
+    #school-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #school-distance span {
+        font-size:12px;
+    }
+    #trans-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #trans-distance span {
+        font-size:12px;
+    }
+     .image-size {
+        height:6.5em; 
+        min-height:100px;
+     }
+     .image {
+       margin:0px;   margin-bottom:5px;
+       padding:0px;
+       padding-left:5px;
+       padding-right:5px;
+       padding-top:5px;
+    }
+
+    }
+     @media (min-width: 832px) {
+       
+    .thumbnail {
+      line-height:1.2;
+      margin:5px; 
+      border-radius:0px;
+    }
+     
+     #small-device{
+       padding:0.8em;
+       font-size:0.9em;
+     }
+     .small-device{
+       padding:0.8em;
+       font-size:0.9em;
+     }
+     
+
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+      .listbox {
+        width:97%;
+        overflow-y:scroll;
+        height:100%;
+    }
+    
+    .roomList{
+       height:100%;
+       overflow:auto;
+     }
+     /*832px보다 크고 960px 이하 */
+    
+    }
+   
+    @media (min-width: 960px) {
+      
+    .thumbnail {
+      line-height:1.2;
+      margin:5px; 
+      border-radius:0px;
+    }
+      .modal-content#modal-size1{
+       width:400px;
+       left:0%;
+       padding:0px;
+     }
+      .modal-content#modal-size2{
+        width:450px;
+        left:50%;
+     }
+    #modal-price {
+         height:30px;
+     }
+    #select-title{
+         margin-right:5px;
+     }
+    #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+    }
+    #small-device{
+       padding:0.8em;
+       font-size:0.9em;
+     }
+     .small-device{
+       padding:0.8em;
+       font-size:0.9em;
+     } 
+   
+    .listbox {
+        width:97%;
+        overflow-y:scroll;
+        height:100%;
+    }
+    
+    .roomList{
+       height:100%;
+       overflow:auto;
+     }
+   #condition span {
+      margin-left:8px;
+      font-size:13px;
+    }
+    .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+     .listbox {
+        width:97%;
+        overflow-y:scroll;
+        height:100%;
+    }
+    .roomList{
+       height:100%;
+       overflow:auto;
+     }
+     #main_price {
+        font-size:23px;
+        font-weight:bold;
+    }
+     #room_title {
+         font-size:14px;
+     }
+    #price-icon {
+        padding:0px;
+        margin:0px;
+        font-size:1em;
+        margin-top:3px;
+     }
+     #price-icon img {
+        margin-left:5px;
+     }
+    #condition {
+      margin-top:6px;
+    }
+    
+    #price-content {
+        padding:0;
+    }
+    #room_kind {
+        font-size:13px;
+    }
+    #price {
+        font-size:19px;
+        color:#2ECC71;
+    }
+    
+   #school-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #school-distance span {
+        font-size:13px;
+    }
+    #trans-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #trans-distance span {
+        font-size:13px;
+    }
+    
+     #distance-size span{
+         font-size:0.7em;
+     }
+     .image-size {
+        height:6.5em; 
+     }
+     .image {
+       margin:0px;  margin-bottom:5px;
+       padding:0px;
+       padding-left:5px;
+       padding-right:5px;
+       padding-top:5px;
+     }
+
+    } 
+    @media (min-width: 1050px){
+    
+    .thumbnail {
+      line-height:1.2;
+      margin:5px; 
+      border-radius:0px;
+      border: 1px solid #bdc3c7;
+    }
+     .listbox {
+        width:97%;
+        overflow-y:scroll;
+        height:100%;
+    }
+    
+    .roomList{
+       height:100%;
+       overflow:auto;
+     }
+     .modal-content#modal-size2{
+        width:500px;
+        left:55%;
+     }
+     #modal-price {
+         height:30px;
+         margin-bottom:0px;
+     }
+     #slider3{
+       margin-top:0px;
+     }
+
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+
+    .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+    #condition span {
+      margin-left:8px;
+      font-size:13px;
+    }
+    
+     #small-device{
+       padding:0.8em;
+       font-size:0.9em;
+     }
+     .small-device{
+       padding:0.7em;
+     }
+     #main_price {
+        font-size:23px;
+        font-weight:bold;
+    }
+     #room_title {
+         font-size:14px;
+     }
+     #price-icon {
+        padding:0px;
+        margin:0px;
+        font-size:1em;
+        margin-top:3px;
+     }
+     #price-icon img {
+        margin-left:5px;
+     }
+    #condition {
+      margin-top:6px;
+    }
+    
+     #price-content {
+        padding:0;
+    }
+    #room_kind {
+        font-size:13px;
+    }
+    #price {
+        font-size:19px;
+        color:#2ECC71;
+    }
+
+    #school-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #school-distance span {
+        font-size:13px;
+    }
+    #trans-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #trans-distance span {
+        font-size:13px;
+    }
+     .image-size {
+        height:9em; 
+        min-height:140px;
+     }
+     .image {
+       margin:0px;  margin-bottom:5px;
+       padding:0px;
+       padding-left:5px;
+       padding-right:5px;
+       padding-top:5px;
+     }
+     /*노트북 크기 */
+     
+    }
+    @media (min-width: 1135px){
+     
+     /*노트북 크기 */
+     .listbox {
+        width:97%;
+        overflow-y:scroll;
+        height:100%;
+    }
+    
+    .roomList{
+       height:100%;
+       overflow:auto;
+     }
+     
+    }
+    
+   
+   
+    /*사이즈별 모달 조정 끝*/
+
+    
+

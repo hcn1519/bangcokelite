@@ -1,20 +1,23 @@
-.my_rate{
-  padding:30px;
-  padding-top:15px;
-  padding-right:0px;
-  background-color: #f2f1ed;
-  border-radius:15px;
-}
 
+
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+  padding-right:15px;
+  padding-left:15px;
+}
+.table1{
+}
+.table2{
+  text-align: right;
+}
 th {
   background-color:#f2f1ed;
 }
+
+td {
+  background-color:#ffffff;
+}
 .review_list {
  font-size: 15px;  
-}
-
-.rate_section {
-  padding:60px;
 }
 
 .br-theme-bars-1to10 .br-widget {
