@@ -1,6 +1,3 @@
-// Place all the styles related to the map controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
    .col-md-9,.col-lg-9,.col-sm-9,.col-xs-9 {
   padding-left: 0;
 }
@@ -967,3 +964,283 @@
     }
 
     /*사이즈별 모달 조정 끝*/
+        #search.btn-info{
+      color:#3498db;
+      background-color:#fff;
+      border:1px solid #3498db;
+    }
+    #search.btn-info:hover {
+      color:#fff;
+      background-color:#31b0d5;
+      border:1px solid #31b0d5;
+    }
+    #out.btn-danger {
+      color:#E74C3C;
+      background-color:#fff;
+      border:1px solid #E74C3C;
+    }
+    #out.btn-danger:hover {
+      color:#fff;
+      background-color:#E74C3C;
+      border:1px solid #E74C3C;
+    }
+    #myroom.btn-warning {
+      color:#f1c40f;
+      background-color:#fff;
+      border:1px solid #f1c40f;
+    }
+    #myroom.btn-warning:hover {
+      color:#fff;
+      background-color:#f1c40f;
+      border:1px solid #f1c40f;
+    }
+
+    a:hover{
+      background-color:#dddddd;
+      color:blue;
+    }
+    
+
+    /*하숙방 이름 css */
+    #nameOfhasuk { 
+       position: absolute; 
+       top: 10px;
+       left: 5px; 
+    }
+    #nameOfhasuk p {
+       font-size: 0.6em;
+       color:#ECF0F1;
+       padding: 3px;
+       border-radius:5px;
+       background: rgba(0, 0, 0, 0.7);
+       margin-bottom: 0px;
+    }
+    #sleeping_only { 
+       position: absolute; 
+       top: 10px;
+       left: 5px; 
+    }
+    #sleeping_only p {
+       font-size: 0.6em;
+       color:#ECF0F1;
+       padding: 3px;
+       border-radius:5px;
+       background: rgba(13, 46, 80, 0.7);
+       margin-bottom: 0px;
+    }
+    #nameOfhasukWoman { 
+       position: absolute; 
+       top: 10px;
+       left: 5px; 
+    }
+    #nameOfhasukWoman p {
+       font-size: 0.6em;
+       color:#ECF0F1;
+       padding: 3px;
+       border-radius:5px;
+       background: rgba(231, 76, 60, 0.7);
+       margin-bottom: 0px;
+    }
+     /*하숙방 이름 css */
+   
+    /*하숙 종류 css */
+    #hasuk_kind_color1 {
+    color:#27AE60; border:1px solid #27AE60; padding:2px; border-radius:5px;
+    }/*일반 */
+    
+    #hasuk_kind_color2 {
+    color:#D35400; border:1px solid #D35400; padding:2px; border-radius:5px;
+    }/*잠만 자는 */
+    
+    
+    body.modal-open {
+        overflow: hidden;
+        position:fixed;
+        width: 100%;
+    }
+    #myModal .modal-dialog  {
+      width:30%;
+     
+    }
+    #myModal2 .modal-dialog {
+     
+      left:30%;
+      outline: none;
+      width:35%;
+    }
+    
+    .modal-backdrop.in {
+      opacity:0.1;
+    }
+    
+    /*지도 레이아웃 설정 */
+    html, body { 
+      height: 95.5%; 
+      margin: 0; 
+      padding: 0; 
+    }
+    #map-canvas{
+        height:100%;
+        width:100%;
+    }
+    .mainbox {
+      height:100%;
+      margin: 0;
+      padding: 0;
+    }
+    .folderbox {
+      padding:0px;
+    }
+    .roomList {
+      padding:0px; 
+
+      overflow-y:auto;
+    }
+
+       
+/*마커 디자인 */
+    .label1 {
+     color: #ffffff;
+     width: 60px;
+     border: 2px solid #e9e9e2;
+     border-radius: 8px;
+     font-size: 13px;
+     text-align: center;
+     white-space: nowrap;
+     background-color:#6f4e35;
+   }
+   .label2 {
+     color: #ffffff;
+     width: 60px;
+     border: 2px solid #e9e9e2;
+     border-radius: 8px;
+     font-size: 13px;
+     text-align: center;
+     white-space: nowrap;
+     background-color:#993a18;
+   }
+   .label3 {
+     color: #ffffff;
+     width: 60px;
+     border: 2px solid #e9e9e2;
+     border-radius: 8px;
+     font-size: 13px;
+     text-align: center;
+     white-space: nowrap;
+     background-color:#95582b;
+   }
+  /*마커 디자인 */ 
+   
+   .sub_circle {
+    border-radius: 40%;
+    padding-left: 3px;
+    padding-right: 3px;
+    color: #ffffff;
+    text-align: center;
+    display: inline-block;
+    line-height: 1;
+}
+    .line_number_2 {
+        background: #29c531;
+    }
+    
+    .line_number_6 {
+        background: #cd7c2b;
+    }
+    
+    .line_number_kj {
+        background: #7bc2a3;
+        border-radius: 15%;
+        padding-left: 2px;
+        padding-right: 2px;
+        color: #ffffff;
+        text-align: center;
+        font-size: 8px;
+        display: inline-block;
+    }
+    
+    .line_number_bus {
+        background: #3498DB;
+        border-radius: 15%;
+        padding:1.5px;
+        color: #ffffff;
+        text-align: center;
+        font-size: 8px;
+        display: inline-block;
+    }
+    
+    .bus_circle {
+        border-radius: 20%;
+        padding-left: 2px;
+        padding-right: 2px;
+        color: #ffffff;
+        text-align: center;
+        display: inline-block;
+        
+    }
+    
+    
+    
+    .panel-default > .panel-heading {
+    color: #ffffff;
+    border: none;
+    background-color: #333f50;
+    border-radius: 0;
+    }
+   
+    .thumbnail {
+      border-radius: 0;
+    }
+    
+    .panel {
+      border: none;
+    }
+    #loadingImage {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index:100;
+      display:none;
+      width:50px; 
+      height:50px;
+      opacity:1;
+    }
+   
+    .btn-sm {
+      padding: 5px 10px;
+      line-height:1;
+      border-radius:15px;
+    }
+    div.description{  
+    position:absolute; /* absolute position (so we can position it where we want)*/  
+    bottom:0px; /* position will be on bottom */  
+    left:0px;  
+    width:100%;  
+    /* styling bellow */  
+    
+    background-color:black;  
+    color:white;  
+    opacity:0.75; /* transparency */  
+    padding-left:10px;
+    padding-right:10px;
+    } 
+#condition {
+    color: #82888a;
+    padding-left:5px;
+}
+
+#price {
+    font-weight:600;
+}
+
+.btn-default3:hover, .btn-default3.hover, .btn-default3:focus, .btn-default3:active, .btn-default3.active, .open > .dropdown-toggle.btn-default3 {
+color: #e74c3c;
+background-color: #f5f5f5;
+border-color: #ffffff;
+}
+
+.btn-default3 {
+background-color: transparent;
+color: #ffffff;
+border: 1px solid #ffffff;
+}  
