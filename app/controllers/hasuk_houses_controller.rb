@@ -24,7 +24,6 @@ class HasukHousesController < ApplicationController
     else
       redirect_to @hasuk_house
     end
-    @like = current_user.favorites.uniq
   end
   
   

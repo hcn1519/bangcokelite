@@ -1,7 +1,1204 @@
-<style type="text/css">
-    body {
-        margin-top:100px;
-    }
-</style>
+<head>
+    
+    <%= stylesheet_link_tag 'map', media: 'all', 'data-turbolinks-track' => true %>
+      <!--googlemap 넣기-->
+   <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdcrzqmVvJgOpIy23Dlw08MHrQN1C17Sg&libraries=geometry">
+    </script>
 
-<%= @like.inspect %>
+    <!--jquery 넣기-->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script type="text/javascript">
+    var map = null; 
+    var marker = null;
+    var infoWindow = null;
+    var markerObj = null;
+    
+    //구글맵 기본 설정 시작
+      function initialize() {
+
+          var mapOptions = {
+            center: { lat: 37.557102, lng: 126.940806},
+            zoom: 15
+          }; 
+
+          map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+      
+      //학교별 문 이미지 삽입
+      //서강대 정문 이미지
+        var s_jung = {
+        url: '/images/icons/s_jung.png',
+        size: new google.maps.Size(50, 24),
+        
+        };
+      
+      //서강대 후문 이미지
+        var s_who = {
+        url: '/images/icons/s_who.png',
+        size: new google.maps.Size(50, 24),
+        
+        };
+        
+        //서강대 남문 이미지
+        var s_nam = {
+        url: '/images/icons/s_nam.png',
+        size: new google.maps.Size(50, 24),
+        
+        };
+        
+        
+        //이대 정문 이미지
+        var e_jung = {
+        url: '/images/icons/e_jung.png',
+        size: new google.maps.Size(50, 24),
+        
+        };
+        
+        //이대 후문 이미지
+        var e_who = {
+        url: '/images/icons/e_who.png',
+        size: new google.maps.Size(50, 24),
+        };
+
+        //이대 서문 이미지
+        var e_seo = {
+        url: '/images/icons/e_seo.png',
+        size: new google.maps.Size(50, 24),
+        
+        };
+        
+        //이대 북문 이미지
+        var e_book = {
+        url: '/images/icons/e_book.png',
+        size: new google.maps.Size(50, 24),
+        };        
+        
+        //연대 정문 이미지
+        var y_jung = {
+        url: '/images/icons/y_jung.png',
+        size: new google.maps.Size(50, 24),
+        };
+        
+        //연대 서문 이미지
+        var y_seo = {
+        url: '/images/icons/y_seo.png',
+        size: new google.maps.Size(50, 24),
+        };
+        
+        //연대 남문 이미지
+        var y_nam = {
+        url: '/images/icons/y_nam.png',
+        size: new google.maps.Size(50, 24),
+        };
+        
+        //연대 동문 이미지
+        var y_dong = {
+        url: '/images/icons/y_dong.png',
+        size: new google.maps.Size(50, 24),
+        };
+        
+        //서강대 문
+        //정문
+      var doorMarker1 = new google.maps.Marker({
+        position: {lat: 37.551405, lng: 126.937727},
+        map: map,
+        icon: s_jung
+      });
+          
+          
+      //후문
+      var doorMarker3 = new google.maps.Marker({
+        position: {lat: 37.550660, lng: 126.943936},
+        map: map,
+        icon: s_who
+      }); 
+      
+        //남문
+      var doorMarker2 = new google.maps.Marker({
+        position: {lat: 37.549376, lng: 126.938918},
+        map: map,
+        icon: s_nam
+      });
+      
+      
+      
+      //이화여대 문
+      
+      //정문
+      var doorMarker4 = new google.maps.Marker({
+        position: {lat: 37.559727, lng: 126.945536},
+        map: map,
+        icon: e_jung
+      });
+      
+      //후문
+      var doorMarker5 = new google.maps.Marker({
+        position: {lat: 37.563548, lng: 126.944605},
+        map: map,
+        icon: e_who
+      });
+      
+
+    //북문
+      var doorMarker6 = new google.maps.Marker({
+        position: {lat: 37.568269, lng: 126.949951},
+        map: map,
+        icon: e_book
+      });
+      
+      
+      //서문
+      var doorMarker7 = new google.maps.Marker({
+        position: {lat: 37.560564, lng: 126.943427},
+        map: map,
+        icon: e_seo
+      }); 
+
+      //연세대 문
+      
+      //정문
+      var doorMarker8 = new google.maps.Marker({
+        position: {lat: 37.560252, lng: 126.936760},
+        map: map,
+        icon: y_jung
+      });
+      
+      //동문
+      
+      //서문
+      var doorMarker10 = new google.maps.Marker({
+        position: {lat: 37.563726, lng: 126.933921},
+        map: map,
+        icon: y_seo
+      });
+      
+      
+      //남문
+      var doorMarker11 = new google.maps.Marker({
+        position: {lat: 37.561191, lng: 126.933139},
+        map: map,
+        icon: y_nam
+      });   
+     
+      //동문 
+      var doorMarker12 = new google.maps.Marker({
+        position: {lat: 37.56635, lng: 126.94585},
+        map: map,
+        icon: y_dong
+      }); 
+
+        
+      var d_marker = {
+        url: '/images/icons/marker1.png',
+        size: new google.maps.Size(50, 20),
+      }; 
+
+  //서강A(서강대 남문)
+  var sogang_a = [
+    {lat:37.547856, lng:126.941885},{lat:37.546631, lng:126.940732},{lat:37.547222, lng:126.937739},
+    {lat:37.549774, lng:126.936365},{lat:37.549758, lng:126.937520},{lat:37.549687, lng:126.937893},
+    {lat:37.549706, lng:126.938092},{lat:37.549815, lng:126.938444},{lat:37.549394, lng:126.938764},
+    {lat:37.549177, lng:126.939053},{lat:37.547856, lng:126.941885}
+    ];
+    
+  //이화A(이대 정문)
+  var ewha_a = [ //이대 정문 구역 //신촌기차역에서 시작. 이대정문구역이랑 겹침
+    {lat:37.559112, lng:126.942823},{lat:37.558547, lng:126.942733},//구역5, 공통구역이랑 만나는 꼭지점
+    {lat:37.556677, lng:126.942861},{lat:37.556880, lng:126.946686},
+    {lat:37.558752, lng:126.946537},{lat:37.559181, lng:126.946352},
+    {lat:37.559162, lng:126.945679},{lat:37.559112, lng:126.942823}
+    ];
+  
+  //이화B(신촌기차역)
+  var ewha_yonsei_b = [
+    {lat:37.558557, lng:126.942693},{lat:37.559081, lng:126.942178},{lat:37.559053, lng:126.939687},{lat:37.559004, lng:126.939428},
+    {lat:37.557559, lng:126.937469},{lat:37.556957, lng:126.937513},{lat:37.555946, lng:126.937495},{lat:37.555901, lng:126.937583},
+    {lat:37.555460, lng:126.937813},{lat:37.556551, lng:126.941061},{lat:37.556686, lng:126.942824},{lat:37.558557, lng:126.942693}
+    ];
+    
+    
+  //이화-연세D(이대후문/연대동문)
+  var ewha_yonsei_d = [             
+    {lat:37.566943, lng:126.946975},{lat:37.566913, lng:126.947406},{lat:37.566832, lng:126.947586},
+    {lat:37.567125, lng:126.947889},{lat:37.566981, lng:126.948396},{lat:37.567104, lng:126.948498},
+    {lat:37.567276, lng:126.948916},{lat:37.567393, lng:126.948882},{lat:37.567601, lng:126.948954},
+    {lat:37.567733, lng:126.949420},{lat:37.568013, lng:126.949434},{lat:37.568188, lng:126.949329},
+    {lat:37.568298, lng:126.949150},{lat:37.569115, lng:126.948040},{lat:37.569301, lng:126.947577},
+    {lat:37.569189, lng:126.946146},{lat:37.569062, lng:126.945272},{lat:37.569065, lng:126.944933},
+    {lat:37.568970, lng:126.944677},{lat:37.568506, lng:126.944824},{lat:37.568007, lng:126.945011},
+    {lat:37.567569, lng:126.945156},{lat:37.567115, lng:126.945471},{lat:37.566486, lng:126.945841},
+    {lat:37.566542, lng:126.946132},{lat:37.566943, lng:126.946975}
+    ];
+    
+  //연세A(연대 정문) (B는 겹치는 구역)
+  var yonsei_a = [  //명물길 예림고시원 앞에서 시작
+    {lat:37.559068, lng:126.939704},{lat:37.559282, lng:126.939681},{lat:37.559358, lng:126.936327},
+    {lat:37.559218, lng:126.934372},{lat:37.558977, lng:126.933753},{lat:37.558377, lng:126.932946},
+    {lat:37.557389, lng:126.932107},{lat:37.556987, lng:126.931930},{lat:37.555306, lng:126.936883},
+    {lat:37.555458, lng:126.937795},{lat:37.555890, lng:126.937567},{lat:37.555941, lng:126.937473},
+    {lat:37.556957, lng:126.937492},{lat:37.557570, lng:126.937447},{lat:37.559014, lng:126.939414},
+    {lat:37.559068, lng:126.939704}
+    ];
+     
+  //연세C(연대 남문) 
+  var yonsei_c = [ 
+    {lat:37.559229, lng:126.934336},{lat:37.559830, lng:126.934185},{lat:37.562716, lng:126.931055},{lat:37.564505, lng:126.929139},//연희교차로
+    {lat:37.560915, lng:126.926766},{lat:37.559668, lng:126.926766},{lat:37.559598, lng:126.927887},
+    {lat:37.559265, lng:126.928693},{lat:37.559191, lng:126.929309},{lat:37.558960, lng:126.929542},
+    {lat:37.558817, lng:126.930105},{lat:37.557610, lng:126.931322},{lat:37.557426, lng:126.932094},//연대 정문구역과 만나는 지점  
+    {lat:37.558419, lng:126.932926},{lat:37.559018, lng:126.933782},{lat:37.559229, lng:126.934336}
+    ];
+    
+  //연세E(연대 서문)  
+  var yonsei_e = [
+    {lat:37.564575, lng:126.929218},{lat:37.569033, lng:126.932693},{lat:37.567914, lng:126.934999},
+    {lat:37.567919, lng:126.935547},{lat:37.567540, lng:126.935828},{lat:37.566556, lng:126.935190},
+    {lat:37.566350, lng:126.934866},{lat:37.566198, lng:126.934404},{lat:37.563799, lng:126.933859},
+    {lat:37.563453, lng:126.933630},{lat:37.563158, lng:126.932769},{lat:37.563256, lng:126.932042},
+    {lat:37.562751, lng:126.931375},{lat:37.564575, lng:126.929218}
+    ];
+    
+  
+  //서강a(서강대 남문)
+  var sogang_a = new google.maps.Polygon({
+    paths: sogang_a,
+    //strokeColor: '#594F4F',
+    strokeOpacity: 0.3,
+    strokeWeight: 1,
+    fillColor: '#F75D59',
+    fillOpacity: 0.3
+  });
+
+  //이화a(이대 정문)
+  var ewha_a = new google.maps.Polygon({
+    paths: ewha_a,
+    //strokeColor: '#594F4F',
+    strokeOpacity: 0.3,
+    strokeWeight: 1,
+    fillColor: '#F87217',
+    fillOpacity: 0.3
+  });
+
+   //이화-연세B(신촌기차역)
+  var ewha_yonsei_b = new google.maps.Polygon({
+    paths: ewha_yonsei_b,
+    //strokeColor: '#594F4F',
+    strokeOpacity: 0.3,
+    strokeWeight: 1,
+    fillColor: '#7FE817',
+    fillOpacity: 0.3
+  });
+
+  //이화-연세D(이대 후문)
+   var ewha_yonsei_d = new google.maps.Polygon({
+    paths: ewha_yonsei_d,
+    //strokeColor: '#594F4F',
+    strokeOpacity: 0.3,
+    strokeWeight: 1,
+    fillColor: '#4FD1D1',
+    fillOpacity: 0.3
+  });
+
+  //연세A(연대 정문)
+   var yonsei_a = new google.maps.Polygon({
+    paths: yonsei_a,
+    //strokeColor: '#594F4F',
+    strokeOpacity: 0.3,
+    strokeWeight: 1,
+    fillColor: '#B51414',
+    fillOpacity: 0.2
+   });
+
+  //연세C(연대 남문) 
+ var yonsei_c = new google.maps.Polygon({
+    paths: yonsei_c,
+    //strokeColor: '#594F4F',
+    strokeOpacity: 0.3,
+    strokeWeight: 1,
+    fillColor: '#FFFF00',
+    fillOpacity: 0.2
+  });
+
+  //연세E(연대 서문) 
+ var yonsei_e = new google.maps.Polygon({
+    paths: yonsei_e,
+    //strokeColor: '#594F4F',
+    strokeOpacity: 0.3,
+    strokeWeight: 1,
+    fillColor: '#1414B4',
+    fillOpacity: 0.2
+  });
+  
+    sogang_a.setMap(map);
+    
+    yonsei_a.setMap(map);
+    yonsei_c.setMap(map); 
+    yonsei_e.setMap(map); 
+    ewha_yonsei_b.setMap(map); 
+    ewha_yonsei_d.setMap(map);
+    
+    ewha_a.setMap(map);
+
+     
+       $.get( "/map/from_favorite", function(data, status){
+             for (var i = 0; i < data.length; i++){
+
+           infoWindow = new google.maps.InfoWindow();
+         
+         if (data[i].hasuk_kind == '잠만 자는 방') {
+             var hasuk_kind = '잠만';
+         } else {
+             var hasuk_kind = "";
+         }
+         if (data[i].gender == "여성전용") {
+             var gender = '여성';
+         } else {
+             var gender = "";
+         }
+           
+           if (data[i].univ1 == "서강") {
+              var university = '<span>'+"서강대"+'</span>';
+              var entrance = data[i].gate1;
+           } else if (data[i].univ1 == "연세") {
+              var university = '<span>'+"연세대"+'</span>';
+              var entrance = data[i].gate1;
+           } else if (data[i].univ1 == "이화") {
+              var university = '<span>'+"이화여대"+'</span>';
+              var entrance = data[i].gate1;
+           } else {
+             var entrance = "교문";
+           }
+           //학교 이름 지정
+        var vehicle = data[i].station1;
+        
+         if (data[i].trans_kind1 == "지하철") {
+
+             if (vehicle == "대흥"){
+               subway = '<span class="sub_circle line_number_6" style="font-family:source-han-sans-korean; border-radius:5px; font-size:12px; padding:2px">6호선</span>'+ '&nbsp;' + '<span style="color#9a4510">'+vehicle + '역'+'</span>' ;
+             } else if (vehicle == "신촌" || vehicle == "이대" ) {
+               subway = '<span class="sub_circle line_number_2" style="font-family:source-han-sans-korean; border-radius:5px; font-size:12px; padding:2px">2호선</span>'+ '&nbsp;' + '<span style="color:#29c531">'+vehicle + '역'+'</span>';
+             } else if (vehicle == "서강대") {
+               subway = '<div class="line_number_kj" style="font-family:source-han-sans-korean; font-size:12px; padding-left:1px; padding-right:1px;">경의</div>' + '&nbsp;' + '<span style="color:#41b9b9">'+vehicle+ '역' +'</span>';
+             } else if (vehicle == "신촌기차") {
+               subway = '<div class="line_number_kj" style="font-family:source-han-sans-korean; font-size:12px; padding-left:1px; padding-right:1px;">경의</div>' + '&nbsp;' + '<span style="color:#0063b1">'+vehicle + '역' +'</span>';
+             }
+            //교통 이름 지정 - 지하철
+
+    var contentString =
+     '<div id="iw-container">' + '<div class="iw-content">' +
+
+       '<div class="row" style="margin:0px">'+
+       
+         '<div class="col-md-4 col-sm-4 col-lg-4" style="padding:5px">' +
+           '<img src="'+ data[i].room_img1.url + '"style="width:100px; height:75px;" />' +
+           '</div>'+
+        //이미지 부분
+        
+         '<div class="col-md-8 col-sm-8 col-lg-8" style="padding:0px; padding-left:21px; padding-top:5px;">' +
+            '<div class="row" style="margin:0px; padding:0px">' +
+            
+               '<div class="col-md-4 col-sm-4 col-xs-4" style="padding:0; font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500; font-family:source-han-sans-korean;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
+               '</div>'+
+               '<div class="col-md-3 col-sm-3 col-lg-3" style="padding:0; margin-top: 3px;text-align: center;">' +
+                   '<div id="hasuk_kind_sleep">'+ hasuk_kind + '</div>' +
+               '</div>' +
+               '<div class="col-md-3 col-sm-3 col-lg-3" style="padding:0;margin-top: 3px;text-align: center;">' +
+                   '<div id="hasuk_gender_woman">'+ gender +'</div>' +
+                '</div>' +
+            '</div>'+
+
+            '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">' + 
+              university + '&nbsp;' + entrance + '&nbsp;'+ '<span>' + data[i].distance_time1 +'분'+ '(' + data[i].distance1 +'m)' + '</span>' + '</div>'+
+              
+              '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">'+ subway + '&nbsp;'+ '<span>' + data[i].trans_distance_time1 + '분' +'('+ data[i].trans_distance1 +'m)' + '</span>' + '</div>'+
+              
+          '</div>'+ 
+           //정보 부분
+           
+       '</div>'+ //전체 row
+     
+     '</div>'+ '</div>'; //iw-container랑 iw-content
+     
+           } else {
+            
+            var bus = '<div class="line_number_bus" style="font-size:11px; padding-left:1px; padding-right:1px;">버스</div>';
+            //교통 이름 지정 - 버스, 버스는 색깔 통일
+             var contentString =
+            '<div id="iw-container">' + '<div class="iw-content">' +
+            
+               '<div class="row" style="margin:0px">'+
+
+                 '<div class="col-md-4 col-sm-4 col-xs-4" style="padding:5px; padding-right:20px">' +
+                     '<img src="'+ data[i].room_img1.url + '"style="width:100px; height:75px;" />' +
+                   '</div>'+
+                   
+                 '<div class="col-md-8 col-sm-8 col-xs-8" style="padding:0px; padding-left: 12px; padding-top:5px;">' +
+                    '<div class="row" style="margin:0px; padding:0px">' +
+                    
+                       '<div class="col-md-4 col-sm-4 col-xs-4" style="padding:0; font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500; font-family:source-han-sans-korean;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
+                           '</div>'+
+                           '<div class="col-md-3 col-sm-3 col-lg-3" style="padding:0; margin-top: 3px;text-align: center;">' +
+                               '<div id="hasuk_kind_sleep">'+ hasuk_kind + '</div>' +
+                           '</div>' +
+                           '<div class="col-md-3 col-sm-3 col-lg-3" style="padding:0; margin-top: 3px;text-align: center;">' +
+                               '<div id="hasuk_gender_woman">'+ gender +'</div>' +
+                            '</div>' +
+                        '</div>'+
+                    
+
+                    '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">' + 
+                    university + '&nbsp;' + entrance  + '&nbsp;'+ '<span>' + data[i].distance1 +'m'+ '(' +data[i].distance_time1 +'분)' + '</span>' + '</div>'+
+
+                    '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">' + bus + '&nbsp;' +
+                         
+                        '<span style="color:#0063b1">'  + vehicle + '</span>' + '&nbsp;'+ '<span style="font-size:14px">' + data[i].trans_distance_time1 +
+                        '분' +'('+ data[i].trans_distance1 + 'm )' + '</span>' + '</div>'+
+
+                    
+                  '</div>'+
+                  //정보 부분
+               
+               '</div>'+ //전체 row
+               
+               
+              '</div>'+ '</div>'; //iw-container랑 iw-content
+           }
+          
+
+        var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);  
+
+              
+             var labelKind = ["label1","label2" ,"label3"];
+             labelKind = shuffle(labelKind);
+             var markerLabel = labelKind[0];
+           
+            var marker = new MarkerWithLabel({  
+                 position: latlng,
+                 map: map,
+                 <% if 'data[i].price_from' != 'data[i].price_to' %>
+                    labelContent: data[i].price_from+'~'+data[i].price_to,
+                 <% else %>
+                    labelContent: data[i].price_from,
+                 <% end %>    
+                 labelAnchor: new google.maps.Point(27, 25),
+                 
+                 labelClass: markerLabel,
+                 icon: d_marker,
+                 url: "/hasuk_houses/" +  data_id
+             });
+              marker.setValues({type: "point", id: i});
+              var data_id = data[i].id;
+              var str_id = data_id.toString();
+              //console.log(str_id);
+               var hash_id = "a" +str_id;
+               markerObj = document.getElementById(hash_id);
+
+      
+//event 구간
+google.maps.event.addListener(marker, 'click', function() {
+              var markerUrl = this.url;
+              window.open(markerUrl, "_blank");
+          });
+// 말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+// 말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+
+ // 마커에 마우스 대면 리스트박스 이동
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        // $(".listbox").animate({ scrollTop: $(".listbox").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
+                       });
+
+                      };
+
+                     })(str_id));
+
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
+                        
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+                     
+// listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","transparent");
+                        });
+
+                      };
+
+                     })(str_id));
+
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+
+                 marker.setMap(map);
+             
+           }//for loop
+             
+         }); //학교별 마커 띄우기 끝
+   function shuffle(o){
+      for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+      return o;
+    }
+ 
+  } //구글맵 기본 설정 끝
+  
+      google.maps.event.addDomListener(window, 'load', initialize);
+      
+      
+    </script>
+ 
+ <!-- css는 app/assets/stylesheets/map.css에 있음 -->  
+
+</head>
+<body>
+<%= render "map/search_modal" %>
+
+  <!--지도부분 시작-->
+  
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 map_container hidden-xs" style="padding-left:0px; padding-right:0px;">         
+    <!-- head에서 설정한 id로 map이 들어온다. -->
+    <div id="map-canvas">
+    </div>
+
+  </div><!--지도부분 끝-->
+  
+  <!--박스 늘리기 for ipad 버튼-->
+  <div class="col-sm-12 hidden-xs hidden-md hidden-lg ipadButton" style="padding-right: 0px; padding-left: 0px; width:100%; height:30px; background-color:#95A5A6;">
+    <button id="ipadfold" style="border-color:#fff; background-color:#e9e7e9; color:#383f52; width:100%; height:100%; padding:0px;" type="button" class="btn btn-default" aria-label="Center">
+      <span id="menu-icon" class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><br/>
+    </button>
+  </div>
+  
+  <!--오른쪽 박스 시작-->
+ <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mainbox" style="padding-left: 0px; padding-right: 0px;"> 
+
+   
+    <!--방 리스트 박스-->
+  <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 hidden-xs hidden-sm foldButton" style="padding-right: 0px; padding-left: 0px; width:3%; height:100%;">
+    <div style="padding-right: 0px;padding-left: 0px; height:100%">
+      <div class="folderbox" style="height:100%">
+        <button id="fold" style="border-color:#fff; background-color:#e9e7e9; color:#383f52; width:100%; height:100%; padding-left: 0px;padding-right: 0px; border: solid 1px #999999;" type="button" class="btn btn-default" aria-label="Center">
+          <span id="menu-icon" class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><br/>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+
+    <div class="listbox col-lg-11 col-md-11 col-sm-12 col-xs-12" style="background-color: #ededed; padding-left:0px; padding-right:0px;">
+      <div class="panel panel-default">
+      
+      <center>
+        <img id="loadingImage" src='/images/icons/nameSearchLoading.gif' style="opacity:1">
+      </center>
+        <div class="panel-heading col-lg-12 col-md-12 col-xs-12 col-sm-12" style="background-color:#34495e; padding:5px; padding-left:10px;">
+          <span style="font-size:14px; color:#d4d4d4">검색결과</span>
+          <div style="float:right; margin-top:-2px; margin-right:5px;">
+           <div class="btn-group" role="group" aria-label="정렬">
+            <button id="sortByPrice" class="btn btn-default3 btn-sm">가격순</button>
+            <button id="sortByDistance" class="btn btn-default3 btn-sm">거리순</button>
+           </div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 roomList panel-body" style="padding:0px;">
+    <% @position_counter = 0 %>
+    <% @like.each do |c| %>
+      <% @sortingArr ||= Array.new %>
+      
+              <!--개별 방 박스 1 시작-->
+              
+        <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+          <% @position_counter += 1 %>
+          <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
+          <div class="img-responsive thumbnail">
+            <!--이미지 지정-->
+            <div class="image col-lg-12 col-md-12 col-xs-12 col-sm-12">
+          <% if c.hasuk_name != nil %>      
+            
+            <% if c.hasuk_kind == "잠만 자는 방" %>
+                <% if c.gender == "여성전용" %>
+                    <!--이름o, 잠o, 여성o -->
+                    <div id="nameOfhasukWoman">
+                      <p>잠만자는/여성/<%= c.hasuk_name %></p>
+                    </div>
+                <% else %>
+                    <!--이름o, 잠o, 여성x -->
+                    <div id="sleeping_only">
+                      <p>잠만자는/<%= c.hasuk_name %></p>
+                    </div>
+                <% end %>
+                
+            <% else %>
+                <% if c.gender == "여성전용" %>
+                    <!--이름o, 잠x, 여성o -->
+                    <div id="nameOfhasukWoman">
+                      <p>여성/<%= c.hasuk_name %></p>
+                    </div>
+                <% else %>
+                    <!--이름o, 잠x, 여성x -->
+                    <div id="nameOfhasuk">
+                      <p><%= c.hasuk_name %></p>
+                    </div>
+                <% end %>
+            <% end %>
+          <% else %>
+            <% if c.hasuk_kind == "잠만 자는 방" %>
+                <% if c.gender == "여성전용" %>
+                    <!--이름x, 잠o, 여성o -->
+                    <div id="nameOfhasukWoman">
+                      <p>잠만자는/여성</p>
+                    </div>
+                <% else %>
+                    <!--이름x, 잠o, 여성x -->
+                    <div id="sleeping_only">
+                      <p>잠만자는 방</p>
+                    </div>
+                <% end %>
+            <% else %>
+                <% if c.gender == "여성전용" %>
+                    <!--이름x, 잠x, 여성o -->
+                    <div id="nameOfhasukWoman">
+                      <p>여성전용</p>
+                    </div>
+                <% else %>
+                    <!--이름x, 잠x, 여성x -->
+                    
+                <% end %>
+            <% end %>
+          <% end %>
+          
+              <div class="description">
+                <% unless c.title.nil? %>  
+      
+                    <% if c.title.length >= 17 %>
+                        <span id="room_title" style="float:left; margin-top:8px"><%= c.title.split(//).first(17).join %>..</span>
+                    <% else %>
+                        <span id="room_title" style="float:left; margin-top:8px"><%= c.title %></span>
+                    <% end %>
+                <% end %>
+                <% unless c.price_from.nil? %>
+                    <span style="font-size:12px; color:#FFF; margin-bottom:0px; margin-top:0px; float:right">
+                        <span id="main_price"><%= c.price_from %>~<%= c.price_to %></span>
+                      만원
+                    </span>
+                    <% else %>
+                    <span style="color:#fff; margin-bottom:0px; margin-top:0px; float:right">
+                      <span id="main_price">00~00</span>
+                      만원
+                    </span>
+                    <% end %>
+              </div>
+              <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size" style="width:100%;">
+              
+            </div>
+          
+           
+            <!--정보 표시-->
+            <div class="caption" style="padding-top:5px; padding-left:5px; padding-right:0px;">
+            <div class="thumbnail-text">
+              <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                  <img src="/images/icons/price2.png" style="width:20px; height:20px; margin-top:2px; margin-right:0;"/>
+                </div>
+                <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
+                  <span>월세</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                 <% if c.miniroom_price_from != nil %>
+                    <span id="room_kind">미니룸&nbsp</span> <span id="price"><%= c.miniroom_price_from %>~<%= c.miniroom_price_to %></span>
+                 <% else %>
+                     <span>-</span>
+                 <% end %>
+                </div>
+                <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                 <% if c.oneroom_price_from != nil %>
+                     <span id="room_kind">원룸형&nbsp</span> <span id="price"><%= c.oneroom_price_from %>~<%= c.oneroom_price_to %></span>
+                 <% else %>
+                     <span>-</span>
+                 <% end %>
+                 </div>
+               
+                </div>
+              </div><!--정보 첫번째 줄 끝-->
+              
+              <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                </div>
+                <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
+                  <span>협의</span>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                 <% if c.sleeping_only_price_from != nil %>
+                    <span id="room_kind">잠만자면&nbsp</span> <span id="price"><%= c.sleeping_only_price_from %>~</span>
+                 <% else %>
+                     <span>-</span>
+                 <% end %>
+                </div>
+                <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                 <% if c.mate_price_from != nil %>
+                     <span id="room_kind">2인1실&nbsp</span> <span id="price"><%= c.mate_price_from %>~</span>
+                 <% else %>
+                     <span>-</span>
+                 <% end %>
+                </div>
+                </div>
+              </div><!--정보 두번째 줄 끝-->
+              
+              
+              <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                 <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                   <img src="/images/icons/school.png" style="width:22px; height:15px; margin-right:0; margin-top:3px"/>
+                 </div>
+                 <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
+                   <span>통학</span>
+                 </div>
+                
+                 <div id="school-distance" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+
+                    <% if c.univ1 != "학교선택" %>
+                        <% if c.univ1 == "이화" %>
+                          <span><%= c.univ1 %>여대 <%= c.gate1 %> <%= c.distance_time1 %>분(<%= c.distance1 %>m)</span>  
+                        <% elsif c.univ1 =="서강" %>
+                          <span><%= c.univ1 %>대 <%= c.gate1 %> <%= c.distance_time1 %>분(<%= c.distance1 %>m)</span>
+                         <% elsif c.univ1 =="연세" %>
+                          <span><%= c.univ1 %>대 <%= c.gate1 %> <%= c.distance_time1 %>분(<%= c.distance1 %>m)</span> 
+                         <% else %>
+                          <span id="gate"><span>이화여대 정문 20분(1064m)</span>
+                         <% end %> 
+                    <% end %>  
+                
+                 </div>
+              </div><!--정보 세번째 줄 끝-->
+              
+              <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                  <img src="/images/icons/trans.gif" style="width: 14px;height: 18px; margin-left:8px;margin-top: 2px;"/>
+                </div>
+                <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
+                  <span>교통</span>
+                </div>
+                
+                <div id="trans-distance" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+
+                    <% if c.trans_kind1 == "지하철" %>
+                          <% if c.station1 == "대흥" %>
+                              <span class="sub_circle line_number_6">6</span>&nbsp;<span id="subway" style="color:#9a4510"><%= c.station1 %>역</span>
+                          <% elsif c.station1 == "신촌" || c.station1 == "이대" %>
+                              <span class="sub_circle line_number_2">2</span>&nbsp;<span id="subway" style="color:#009044"><%= c.station1 %>역</span>
+                          <% elsif c.station1 == "서강대" %>
+                              <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#41b9b9"><%= c.station1 %>역</span>
+                          <% elsif c.station1 == "신촌기차" %>
+                              <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#0063b1"><%= c.station1 %>역</span>
+                          <% end %>
+                          <span><%= c.trans_distance_time1 %>분(<%= c.trans_distance1 %>m)</span>
+                      <% elsif c.trans_kind1 == "버스" %>
+                          <div class="line_number_bus">버스</div>
+                          <span id="bus" style="color:#0063b1"><%= c.station1 %></span>
+                          <span><%= c.trans_distance_time1 %>분(<%= c.trans_distance1 %>m)</span>
+                      
+                      <% else %>
+                      
+                        <span id="subway"> 신촌기차역 21분(1103m)</span>
+                      
+                      <% end %>
+                
+                </div>
+              </div><!--정보 세번째 줄 끝-->
+              
+              
+        </div> 
+        </div><!--썸네일텍스트 끝-->
+          </div>
+          </a> 
+        </div>
+  <% @sortingArr.push(c) %>
+      
+      
+    <% end %><!--반복문 -->
+    
+        </div>
+      </div>
+    </div><!--방 리스트 박스 끝--> 
+  
+  </div><!--오른쪽 박스 끝 -->
+
+ <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
+ 
+ <!--지도 디자인 관련 js -->
+ <script src="/js/markerwithlabel.js"></script>
+ <!--지도 디자인 관련 js -->
+
+<script>
+$("#sortByPrice").click(function(){
+    <% unless @sortingArr.nil? %>
+      <% @sortingArr = @sortingArr.sort { |p1, p2| [p1.price_from, p1.price_to, p1.distance1 ] <=> [p2.price_from, p2.price_to, p2.distance1 ] } %>
+    <% end %>
+  $(document).bind("ajaxStart.firstCall", function() {
+    $(".roomList").css("-webkit-filter", "grayscale(50%)");
+    $('#loadingImage').animate({opacity: "show"});
+  });
+  $(document).bind("ajaxStop.firstCall", function() {
+    $('#loadingImage').hide();
+    $(".roomList").css("-webkit-filter", "none");
+  });
+
+  $.ajax({
+    url: "/map/mappage",
+    type: 'GET',
+    data: {univ: "<%= @univ %>"},
+    context: '.room',
+    success: function(data){
+      <% counter = 0 %>
+      
+      <% unless @sortingArr.nil? %>
+      <% @sortingArr.each do |i| %>
+        //id 셋팅 라인
+        $(".position<%= counter %>").attr("id", "a<%= i.id %>");
+        $(".position<%= counter %>").attr("href", "/hasuk_houses/<%= i.id %>");
+        $(".position<%= counter %> > a").attr("href", "/hasuk_houses/<%= i.id %>");
+        //id 셋팅 라인
+        
+        //이미��� 라인
+        $("#a<%= i.id %> #nameOfhasuk > p").text('<%= i.hasuk_name %>');
+        
+        
+        $("#a<%= i.id %> .image-size").attr("src", "<%= i.room_img1 %>");
+        //이미지 라인 끝
+        
+        //정보 첫 번째 줄
+        $("#a<%= i.id %> #price-icon h4").text("<%= i.price_from %>~<%= i.price_to %>");
+        
+       
+        <% if i.hasuk_kind == "일반하숙" %>
+            $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color1">일반하숙</span>');
+        <% elsif i.hasuk_kind == "잠만 자는 방" %>
+          $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color2">잠만자는</span>');
+       
+        <% else %>
+            $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color4">형태없음</span>');
+        <% end %>
+        //정보 첫 번째 줄 끝
+        
+        //정보 두 번째 줄
+        
+        <% if i.univ1 != "학교선택" %>
+          
+          <% if i.univ1 == "이화" %>
+            var univ = '<span style="color:#0c6f40"><%= i.univ1 %>여대</span>'+ '&nbsp;' + '<span><%= i.gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';
+          <% elsif i.univ1 =="서강" %>
+            var univ = '<span style="color:#b20000"><%= i.univ1 %>대</span>'+ '&nbsp;' + '<span><%= i.gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';  
+           <% elsif i.univ1 =="연세" %>
+            var univ = '<span style="color:#202d61"><%= i.univ1 %>대</span>'+ '&nbsp;' + '<span><%= i.gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';  
+           <% else %>
+            var univ = '<span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-md hidden-xs hidden-lg">';
+           <% end %> 
+        <% end %>
+        
+        <% if i.trans_kind1 == "지하철" %>
+            <% if i.station1 == "대흥" %>
+                var transport = '&nbsp;' +'<span class="sub_circle line_number_6">6</span>'+ '&nbsp;' + '<span id="subway" style="color:#9a4510"><%= i.station1 %>역</span>';
+            <% elsif i.station1 == "신촌" || i.station1 == "이대" %>
+                var transport = '&nbsp;' +'<span class="sub_circle line_number_2">2</span>'+ '&nbsp;' + '<span id="subway" style="color:#009044"><%= i.station1 %>역</span>';
+            <% elsif i.station1 == "서강대" %>
+                var transport = '&nbsp;' +'<div class="line_number_kj">경의</div>'+ '&nbsp;' + '<span id="subway" style="color:#41b9b9"><%= i.station1 %>역</span>';
+            <% elsif i.station1 == "신촌기차" %>
+                var transport = '&nbsp;' +'<div class="line_number_kj">경의</div>'+ '&nbsp;' + '<span id="subway" style="color:#0063b1"><%= i.station1 %>역</span>';
+            <% end %>
+            var transport_distance = '&nbsp;' +'<span><%= i.trans_distance1 %>m(<%= i.trans_distance_time1 %>분)</span>';
+        <% elsif i.trans_kind1 == "버스" %>
+            var transport = '&nbsp;' +'<div class="line_number_bus">버스</div>'+ '&nbsp;' + '<span id="bus" style="color:#0063b1"><%= i.station2 %></span>';
+            var transport_distance = '&nbsp;' +'<span><%= i.trans_distance1 %>m</span>';
+        
+        <% else %>
+        
+          var transport = '&nbsp;' +'<span id="subway"> <span class="hidden-sm hidden-md">&nbsp|&nbsp</span> 신촌기차역 1103m(21분)</span>';
+          var transport_distance = "";
+        <% end %>
+        var result_distance = univ + transport + transport_distance ;
+        $("#a<%= i.id %> #distance-size").html(result_distance);
+        //정보 두 번째 줄 끝
+        
+        //정보 세 번째 줄
+        
+  
+        //정보 세 번째 줄 끝
+        <% counter += 1 %>
+      <% end %>
+      <% end %>
+      
+      google.maps.event.clearInstanceListeners(markerObj);
+
+      initialize();
+      
+    }
+    
+  });  
+  
+});//가격click 끝
+//$('#sortByPrice').on('click',initialize);
+//google.maps.event.addDomListener(document.getElementById('sortByPrice'), 'click', initialize);
+
+
+
+$("sortByDistance").click(function(){
+    <% unless @sortingArr.nil? %>
+  <% @sortingArr = @sortingArr.sort { |p1, p2| [p1.distance1, p1.price_from, p1.price_to] <=> [p2.distance1, p2.price_from, p2.price_to] } %>
+    <% end %>
+   $(document).bind("ajaxStart.firstCall", function() {
+    $(".roomList").css("-webkit-filter", "grayscale(50%)");
+    $('#loadingImage').animate({opacity: "show"});
+   });
+  $(document).bind("ajaxStop.firstCall", function() {
+      $('#loadingImage').hide();
+      $(".roomList").css("-webkit-filter", "none");
+  });
+  
+  $.ajax({
+    url: "/map/mappage",
+    type: 'GET',
+    data: {univ: "<%= @univ %>"},
+    success: function(data){
+      <% counter = 0 %>
+     <% unless @sortingArr.nil? %>
+      <% @sortingArr.each do |i| %>
+        //id 셋팅 라인
+        $(".position<%= counter %>").attr("id", "a<%= i.id %>");
+        $(".position<%= counter %>").attr("href", "/hasuk_houses/<%= i.id %>");
+        $(".position<%= counter %> > a").attr("href", "/hasuk_houses/<%= i.id %>");
+        //id 셋팅 라인
+        
+        //이미지 라인
+        $("#a<%= i.id %> #nameOfhasuk > p").text('<%= i.hasuk_name %>');
+        
+        
+        
+        $("#a<%= i.id %> .image-size").attr("src", "<%= i.room_img1 %>");
+        //이미지 라인 끝
+        
+        //정보 첫 번째 줄
+        $("#a<%= i.id %> #price-icon h4").text("<%= i.price_from %>~<%= i.price_to %>");
+        
+        
+        
+        <% if i.hasuk_kind == "일반하숙" %>
+            $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color1">일반하숙</span>');
+        <% elsif i.hasuk_kind == "잠만 자는 방" %>
+          $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color2">잠만자는</span>');
+        
+        <% else %>
+            $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color4">형태없음</span>');
+        <% end %>
+        //정보 첫 번째 줄 끝
+        
+        //정보 두 번째 줄
+        
+        <% if i.univ1 != "학교선택" %>
+          
+          <% if i.univ1 == "이화" %>
+            var univ = '<span style="color:#0c6f40"><%= i.univ1 %>여대</span>'+ '&nbsp;' + '<span><%= i.gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';
+          <% elsif i.univ1 =="서강" %>
+            var univ = '<span style="color:#b20000"><%= i.univ1 %>대</span>'+ '&nbsp;' + '<span><%= i.gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';  
+           <% elsif i.univ1 =="연세" %>
+            var univ = '<span style="color:#202d61"><%= i.univ1 %>대</span>'+ '&nbsp;' + '<span><%= i.gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';  
+           <% else %>
+            var univ = '<span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-md hidden-xs hidden-lg">';
+           <% end %> 
+        <% end %>
+        
+        <% if i.trans_kind1 == "지하철" %>
+            <% if i.station1 == "대흥" %>
+                var transport = '&nbsp;' +'<span class="sub_circle line_number_6">6</span>'+ '&nbsp;' + '<span id="subway" style="color:#9a4510"><%= i.station1 %>역</span>';
+            <% elsif i.station1 == "신촌" || i.station1 == "이대" %>
+                var transport = '&nbsp;' +'<span class="sub_circle line_number_2">2</span>'+ '&nbsp;' + '<span id="subway" style="color:#009044"><%= i.station1 %>역</span>';
+            <% elsif i.station1 == "서강대" %>
+                var transport = '&nbsp;' +'<div class="line_number_kj">경의</div>'+ '&nbsp;' + '<span id="subway" style="color:#41b9b9"><%= i.station1 %>역</span>';
+            <% elsif i.station1 == "신촌기차" %>
+                var transport = '&nbsp;' +'<div class="line_number_kj">경의</div>'+ '&nbsp;' + '<span id="subway" style="color:#0063b1"><%= i.station1 %>역</span>';
+            <% end %>
+            var transport_distance = '&nbsp;' +'<span><%= i.trans_distance1 %>m(<%= i.trans_distance_time1 %>분)</span>';
+        <% elsif i.trans_kind1 == "버스" %>
+            var transport = '&nbsp;' +'<div class="line_number_bus">버스</div>'+ '&nbsp;' + '<span id="bus" style="color:#0063b1"><%= i.station2 %></span>';
+            var transport_distance = '&nbsp;' +'<span><%= i.trans_distance1 %>m</span>';
+        
+        <% else %>
+        
+          var transport = '&nbsp;' +'<span id="subway"> <span class="hidden-sm hidden-md">&nbsp|&nbsp</span> 신촌기차역 1103m(21분)</span>';
+          var transport_distance = "";
+        <% end %>
+        var result_distance = univ + transport + transport_distance ;
+        $("#a<%= i.id %> #distance-size").html(result_distance);
+        //정보 두 번째 줄 끝
+        
+        //정보 세 번째 줄
+        
+        
+        
+        //정보 세 번째 줄 끝
+        <% counter += 1 %>
+      <% end %>
+      <% end %>
+    }
+  });  
+  
+});//거리click 끝
+
+    $('#login').on('show.bs.modal', function () {
+   $(this).find('.modal-body').css({
+          width:'auto', //probably not needed
+          height:'auto', //probably not needed 
+          'max-height':'50%'
+   });
+});
+
+      $("#fold").click(function(){
+        //$(".map_container").slideToggle("slow"); //접기
+        $(".roomList").css("width", "100%");
+        $(".map_container").css("width", "0%");
+        
+        if($("#menu-icon").hasClass("glyphicon-menu-left") == true){
+
+          //지도 있는 상태-> 없는 상태
+          $("#menu-icon").removeClass("glyphicon-menu-left");
+          $("#menu-icon").addClass("glyphicon-menu-right");
+          
+          $(".mainbox").removeClass("col-lg-6");
+          $(".mainbox").addClass("col-lg-12");
+          $(".room").removeClass("col-lg-6");
+          $(".room").addClass("col-lg-3");
+          $(".mainbox").removeClass("col-md-6");
+          $(".mainbox").addClass("col-md-12");
+          $(".room").removeClass("col-md-6");
+          $(".room").addClass("col-md-3");
+          $(".room").css("width","25%");
+          $(".foldButton").css( "width", "1.5%");
+          $(".listbox").css("width", "98.5%");
+
+        } else  {
+          //지도 없는 상태-> 있는 상태
+          $("#menu-icon").removeClass("glyphicon-menu-right");
+          $("#menu-icon").addClass("glyphicon-menu-left");
+          
+          $(".map_container").css("width", "50%");
+          $(".roomList").css("width", "100%");
+          
+          $(".mainbox").removeClass("col-lg-12");
+          $(".mainbox").addClass("col-lg-6");
+          $(".room").removeClass("col-lg-3");
+          $(".room").addClass("col-lg-6");
+          $(".mainbox").removeClass("col-md-12");
+          $(".mainbox").addClass("col-md-6");
+          $(".room").removeClass("col-md-3");
+          $(".room").addClass("col-md-6");            
+          $(".room").css("width", "50%");
+          $(".foldButton").css( "width", "3%");
+          $(".listbox").css("width", "97%");
+        }
+      });
+      
+      $("#ipadfold").click(function(){
+          if($("#menu-icon").hasClass("glyphicon-menu-up") == true){
+              //지도 있는 상태-> 없는 상태
+              $("#menu-icon").removeClass("glyphicon-menu-up");
+              $("#menu-icon").addClass("glyphicon-menu-down");
+              $(".map_container").animate({
+                  height: "0%"
+                  }, 700);
+              $(".roomList").css("height","904px");
+              
+          } else {
+               //지도 없는 상태-> 있는 상태
+              $("#menu-icon").removeClass("glyphicon-menu-down");
+              $("#menu-icon").addClass("glyphicon-menu-up");
+              $(".map_container").animate({
+                  height: "46.5%"
+                  });
+              $(".roomList").css("height","468px");
+          }
+      });
+      
+      $(".room").mouseover(function(){
+        $(this).css("background-color", "rgba(45, 205, 113, 0.5)");
+      });
+      $(".room").mouseout(function() {
+        $(this).css("background-color", "transparent");
+      }); 
+      
+</script>
+
+</body>

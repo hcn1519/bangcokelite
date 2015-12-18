@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'map/from_hasuk'
   
   get 'map/myfavorite'
+  get 'map/from_favorite'
   resources :hasuk_houses do
     put :favorite, on: :member
   end

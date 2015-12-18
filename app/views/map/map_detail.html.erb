@@ -3258,7 +3258,220 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                   </a> 
                 </div>
           <% @sortingArr.push(c) %>
-            <% end %><!-- univ end -->
+        
+        
+            <% end %><!-- division end -->
+        <% else %>
+                          <% @position_counter += 1 %>
+              <!--개별 방 박스 1 시작-->
+              
+                <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+                  <% @position_counter += 1 %>
+                  <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
+                  <div class="img-responsive thumbnail">
+                    <!--이미지 지정-->
+                    <div class="image col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                  <% if c.hasuk_name != nil %>      
+                    
+                    <% if c.hasuk_kind == "잠만 자는 방" %>
+                        <% if c.gender == "여성전용" %>
+                            <!--이름o, 잠o, 여성o -->
+                            <div id="nameOfhasukWoman">
+                              <p>잠만자는/여성/<%= c.hasuk_name %></p>
+                            </div>
+                        <% else %>
+                            <!--이름o, 잠o, 여성x -->
+                            <div id="sleeping_only">
+                              <p>잠만자는/<%= c.hasuk_name %></p>
+                            </div>
+                        <% end %>
+                        
+                    <% else %>
+                        <% if c.gender == "여성전용" %>
+                            <!--이름o, 잠x, 여성o -->
+                            <div id="nameOfhasukWoman">
+                              <p>여성/<%= c.hasuk_name %></p>
+                            </div>
+                        <% else %>
+                            <!--이름o, 잠x, 여성x -->
+                            <div id="nameOfhasuk">
+                              <p><%= c.hasuk_name %></p>
+                            </div>
+                        <% end %>
+                    <% end %>
+                  <% else %>
+                    <% if c.hasuk_kind == "잠만 자는 방" %>
+                        <% if c.gender == "여성전용" %>
+                            <!--이름x, 잠o, 여성o -->
+                            <div id="nameOfhasukWoman">
+                              <p>잠만자는/여성</p>
+                            </div>
+                        <% else %>
+                            <!--이름x, 잠o, 여성x -->
+                            <div id="sleeping_only">
+                              <p>잠만자는 방</p>
+                            </div>
+                        <% end %>
+                    <% else %>
+                        <% if c.gender == "여성전용" %>
+                            <!--이름x, 잠x, 여성o -->
+                            <div id="nameOfhasukWoman">
+                              <p>여성전용</p>
+                            </div>
+                        <% else %>
+                            <!--이름x, 잠x, 여성x -->
+                            
+                        <% end %>
+                    <% end %>
+                  <% end %>
+                  
+                      <div class="description">
+                        <% unless c.title.nil? %>  
+              
+                            <% if c.title.length >= 17 %>
+                                <span id="room_title" style="float:left; margin-top:8px"><%= c.title.split(//).first(17).join %>..</span>
+                            <% else %>
+                                <span id="room_title" style="float:left; margin-top:8px"><%= c.title %></span>
+                            <% end %>
+                        <% end %>
+                        <% unless c.price_from.nil? %>
+                            <span style="font-size:12px; color:#FFF; margin-bottom:0px; margin-top:0px; float:right">
+                                <span id="main_price"><%= c.price_from %>~<%= c.price_to %></span>
+                              만원
+                            </span>
+                            <% else %>
+                            <span style="color:#fff; margin-bottom:0px; margin-top:0px; float:right">
+                              <span id="main_price">00~00</span>
+                              만원
+                            </span>
+                            <% end %>
+                      </div>
+                      <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size" style="width:100%;">
+                      
+                    </div>
+                  
+                   
+                    <!--정보 표시-->
+                    <div class="caption" style="padding-top:5px; padding-left:5px; padding-right:0px;">
+                    <div class="thumbnail-text">
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                          <img src="/images/icons/price2.png" style="width:20px; height:20px; margin-top:2px; margin-right:0;"/>
+                        </div>
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
+                          <span>월세</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                         <% if c.miniroom_price_from != nil %>
+                            <span id="room_kind">미니룸&nbsp</span> <span id="price"><%= c.miniroom_price_from %>~<%= c.miniroom_price_to %></span>
+                         <% else %>
+                             <span>-</span>
+                         <% end %>
+                        </div>
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                         <% if c.oneroom_price_from != nil %>
+                             <span id="room_kind">원룸형&nbsp</span> <span id="price"><%= c.oneroom_price_from %>~<%= c.oneroom_price_to %></span>
+                         <% else %>
+                             <span>-</span>
+                         <% end %>
+                         </div>
+                       
+                        </div>
+                      </div><!--정보 첫번째 줄 끝-->
+                      
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        </div>
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
+                          <span>협의</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                         <% if c.sleeping_only_price_from != nil %>
+                            <span id="room_kind">잠만자면&nbsp</span> <span id="price"><%= c.sleeping_only_price_from %>~</span>
+                         <% else %>
+                             <span>-</span>
+                         <% end %>
+                        </div>
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                         <% if c.mate_price_from != nil %>
+                             <span id="room_kind">2인1실&nbsp</span> <span id="price"><%= c.mate_price_from %>~</span>
+                         <% else %>
+                             <span>-</span>
+                         <% end %>
+                        </div>
+                        </div>
+                      </div><!--정보 두번째 줄 끝-->
+                      
+                      
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                           <img src="/images/icons/school.png" style="width:22px; height:15px; margin-right:0; margin-top:3px"/>
+                         </div>
+                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
+                           <span>통학</span>
+                         </div>
+                        
+                         <div id="school-distance" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+
+                            <% if c.univ1 != "학교선택" %>
+                                <% if c.univ1 == "이화" %>
+                                  <span><%= c.univ1 %>여대 <%= c.gate1 %> <%= c.distance_time1 %>분(<%= c.distance1 %>m)</span>  
+                                <% elsif c.univ1 =="서강" %>
+                                  <span><%= c.univ1 %>대 <%= c.gate1 %> <%= c.distance_time1 %>분(<%= c.distance1 %>m)</span>
+                                 <% elsif c.univ1 =="연세" %>
+                                  <span><%= c.univ1 %>대 <%= c.gate1 %> <%= c.distance_time1 %>분(<%= c.distance1 %>m)</span> 
+                                 <% else %>
+                                  <span id="gate"><span>이화여대 정문 20분(1064m)</span>
+                                 <% end %> 
+                            <% end %>  
+                        
+                         </div>
+                      </div><!--정보 세번째 줄 끝-->
+                      
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                          <img src="/images/icons/trans.gif" style="width: 14px;height: 18px; margin-left:8px;margin-top: 2px;"/>
+                        </div>
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
+                          <span>교통</span>
+                        </div>
+                        
+                        <div id="trans-distance" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+
+                            <% if c.trans_kind1 == "지하철" %>
+                                  <% if c.station1 == "대흥" %>
+                                      <span class="sub_circle line_number_6">6</span>&nbsp;<span id="subway" style="color:#9a4510"><%= c.station1 %>역</span>
+                                  <% elsif c.station1 == "신촌" || c.station1 == "이대" %>
+                                      <span class="sub_circle line_number_2">2</span>&nbsp;<span id="subway" style="color:#009044"><%= c.station1 %>역</span>
+                                  <% elsif c.station1 == "서강대" %>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#41b9b9"><%= c.station1 %>역</span>
+                                  <% elsif c.station1 == "신촌기차" %>
+                                      <div class="line_number_kj">경의</div>&nbsp;<span id="subway" style="color:#0063b1"><%= c.station1 %>역</span>
+                                  <% end %>
+                                  <span><%= c.trans_distance_time1 %>분(<%= c.trans_distance1 %>m)</span>
+                              <% elsif c.trans_kind1 == "버스" %>
+                                  <div class="line_number_bus">버스</div>
+                                  <span id="bus" style="color:#0063b1"><%= c.station1 %></span>
+                                  <span><%= c.trans_distance_time1 %>분(<%= c.trans_distance1 %>m)</span>
+                              
+                              <% else %>
+                              
+                                <span id="subway"> 신촌기차역 21분(1103m)</span>
+                              
+                              <% end %>
+                        
+                        </div>
+                      </div><!--정보 세번째 줄 끝-->
+                      
+                      
+                </div> 
+                </div><!--썸네일텍스트 끝-->
+                  </div>
+                  </a> 
+                </div>
+          <% @sortingArr.push(c) %>
             
           <% end %><!--구역 범위에 걸리는 end -->  
 

@@ -28,7 +28,12 @@ class MapController < ApplicationController
     render json: @place
   end
   
-    def myfavorite
-      @like = current_user.favorites.uniq
-    end
+  def myfavorite
+    @like = current_user.favorites.uniq
+  end
+  def from_favorite
+    @like = current_user.favorites.uniq
+    
+    render json: @like
+  end
 end
