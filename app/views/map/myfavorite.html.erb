@@ -17,14 +17,14 @@
     
     //구글맵 기본 설정 시작
       function initialize() {
-
+        var bounds = new google.maps.LatLngBounds();
           var mapOptions = {
             center: { lat: 37.557102, lng: 126.940806},
             zoom: 15
           }; 
 
           map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
-      
+ 
       //학교별 문 이미지 삽입
       //서강대 정문 이미지
         var s_jung = {
@@ -345,7 +345,7 @@
              for (var i = 0; i < data.length; i++){
 
            infoWindow = new google.maps.InfoWindow();
-         
+        
          if (data[i].hasuk_kind == '잠만 자는 방') {
              var hasuk_kind = '잠만';
          } else {
@@ -493,9 +493,10 @@
               //console.log(str_id);
                var hash_id = "a" +str_id;
                markerObj = document.getElementById(hash_id);
-
-      
+ bounds.extend(marker.position);
 //event 구간
+map.fitBounds(bounds); 
+
 google.maps.event.addListener(marker, 'click', function() {
               var markerUrl = this.url;
               window.open(markerUrl, "_blank");
