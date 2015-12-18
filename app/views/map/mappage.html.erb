@@ -1,4 +1,6 @@
 <head>
+    
+    <%= stylesheet_link_tag 'map', media: 'all', 'data-turbolinks-track' => true %>
       <!--googlemap 넣기-->
    <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdcrzqmVvJgOpIy23Dlw08MHrQN1C17Sg&libraries=geometry">
@@ -1386,6 +1388,7 @@ color: #ffffff;
 border: 1px solid #ffffff;
 }  
 </style>
+
 </head>
 <body>
 <%= render "map/search_modal" %>
