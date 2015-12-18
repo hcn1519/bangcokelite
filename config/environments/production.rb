@@ -20,7 +20,7 @@ Rails.application.configure do
   # NGINX, varnish or squid.
   # config.action_dispatch.rack_cache = true
   config.assets.precompile += %w( bx_loader.gif controls.png )
-  config.assets.precompile =  ['*.js', '*.css', '*.css.erb'] 
+  config.assets.precompile =  ['*.js', '*.css', '*.css.erb', '*.css.scss', '*.scss'] 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   config.serve_static_files = true
