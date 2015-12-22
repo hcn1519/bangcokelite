@@ -21,13 +21,12 @@ td {
 }
 
 .br-theme-bars-1to10 .br-widget {
-  height: 40px;
+  height: 30px;
   white-space: nowrap;
 }
 /* 기본 배경색(투명색) */
 .br-theme-bars-1to10 .br-widget a {
   display: block;
-  width: 12px;
   padding: 5px 0;
   height: 28px;
   float: left;
@@ -50,7 +49,6 @@ td {
   font-size: 20px;
   line-height: 2;
   float: left;
-  padding: 0 20px 0 20px;
   color: #2ECC71;
   font-weight: 400;
   margin-top: -6px;

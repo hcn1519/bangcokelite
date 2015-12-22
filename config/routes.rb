@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   root to: 'visitors#index'
   
-  
+  post 'rating/create'
   
   get 'map/mappage'
 
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   get 'map/myfavorite'
   get 'map/from_favorite'
+  
   resources :hasuk_houses do
     put :favorite, on: :member
   end

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_one :rating_for_hasuk_house
+  
   has_many :hasuk_houses, dependent: :destroy
   has_many :favorite_hasuk_houses
   has_many :favorites, through: :favorite_hasuk_houses, source: :hasuk_house
