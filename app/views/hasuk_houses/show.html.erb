@@ -967,7 +967,12 @@ td {
             <% end %>
             <% end %><!--for end -->
             <div class="col-md-6 col-sm-6 col-xs-12">
+            <% if user_signed_in? %>
               <%= submit_tag "평가 제출", :class => "btn btn-primary btn-lg", style:"display:block; font-size: 15px; width: 80%;"%>
+            <% else %>
+              
+              <%= link_to "평가 제출", '#login', :class => "btn btn-primary btn-lg", style:"display:block; font-size: 15px; width: 80%;", 'data-toggle': "modal" %>  
+            <% end %>
             </div>
             <% end %><!-- form tag -->
             
