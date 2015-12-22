@@ -2,7 +2,7 @@ class RatingController < ApplicationController
     def create
        # @hasuk_house = HasukHouse.find(params[:hasuk_house_id])
         
-        @myscore = RatingforHasukHouse.create( user_id: current_user.id,
+        @myscore = RatingForHasukHouse.create( user_id: current_user.id,
                                       avg_rating_score_id: params[:hasuk_house_id],
                                       meal_score: params[:review1],
                                       clean_score: params[:review2],

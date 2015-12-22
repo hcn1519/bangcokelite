@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216164656) do
+ActiveRecord::Schema.define(version: 20151222070025) do
+
+  create_table "avg_rating_scores", force: :cascade do |t|
+    t.integer  "hasuk_house_id"
+    t.integer  "how_many_people_did"
+    t.float    "total_meal_score"
+    t.float    "total_clean_score"
+    t.float    "total_owner_score"
+    t.float    "total_silence_score"
+    t.float    "total_aircondition_score"
+    t.float    "total_cctv_score"
+    t.float    "total_score"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "favorite_hasuk_houses", force: :cascade do |t|
     t.integer  "hasuk_house_id"
@@ -81,6 +95,20 @@ ActiveRecord::Schema.define(version: 20151216164656) do
     t.integer  "hasuk_house_viewcount"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+  end
+
+  create_table "rating_for_hasuk_houses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "avg_rating_score_id"
+    t.float    "meal_score"
+    t.float    "clean_score"
+    t.float    "owner_score"
+    t.float    "silence_score"
+    t.float    "aircondition_score"
+    t.float    "cctv_score"
+    t.float    "total_score"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -46,6 +46,23 @@ class HasukHousesController < ApplicationController
     end
     
     @page_view_count = @ip_arr.uniq.count
+    
+    @avg_score = AvgRatingScore.where(hasuk_house_id: @hasuk_house.id)
+    
+    if @avg_score[0].nil?
+    #없으면
+      @avg_score[0] = AvgRatingScore.new
+      @avg_score[0].hasuk_house_id = @hasuk_house.id
+      @avg_score[0].how_many_people_did = 0
+      @avg_score[0].total_meal_score =  0
+      @avg_score[0].total_clean_score =  0
+      @avg_score[0].total_owner_score =  0
+      @avg_score[0].total_silence_score =  0
+      @avg_score[0].total_aircondition_score = 0
+      @avg_score[0].total_cctv_score = 0
+      @avg_score[0].total_score = 0
+      @avg_score[0].save
+    end
   end
 
   # GET /hasuk_houses/new
