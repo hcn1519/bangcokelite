@@ -768,7 +768,7 @@
     
   </div><!-- 하숙집 박스 row-->
       
-  
+ <!-- 
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px; ">
       <div class="inline">
@@ -780,181 +780,187 @@
     </div>
   </div><!--가격 박스-->
   
+<!--  
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="table-responsive">
         <table class="table" style="width:100%">
           
           <tr>
-            <td id="column"><center><%= f.label :miniroom_price_from, "월세" %></center></td>
+            <td id="column"><center><%#= f.label :miniroom_price_from, "월세" %></center></td>
             <td colspan="3">
             <!--월세 시작-->
+<!--            
               <div class="form-inline">
                 <div class="col-md-3 col-sm-3 col-xs-4" style="padding:0px; margin:0px">
-          <% if @hasuk_house.miniroom_price_from != 0 || @hasuk_house.miniroom_price_from != nil  %>
+          <%# if @hasuk_house.miniroom_price_from != 0 || @hasuk_house.miniroom_price_from != nil  %>
                   <label class="radio-inline checkbox" id="radio_left">
-                     <%= check_box_tag "price_from_check", 0, true, class:"check_price" %>일반
+                     <%#= check_box_tag "price_from_check", 0, true, class:"check_price" %>일반
                   </label>
-          <% else %>
+          <%# else %>
                   <label class="radio-inline checkbox" id="radio_left">
-                     <%= check_box_tag "price_from_check", 0, false, class:"check_price" %>일반
+                     <%#= check_box_tag "price_from_check", 0, false, class:"check_price" %>일반
                   </label>
-          <% end %>
+          <%# end %>
                  </div>
                 <div class="col-md-9 col-sm-9 col-xs-8" style="padding:0px; margin:0px">
-          <% if @hasuk_house.miniroom_price_from != 0 || @hasuk_house.miniroom_price_from != nil  %>
-                    <%= f.number_field :miniroom_price_from, :value => @hasuk_house.miniroom_price_from, class:"form-control mob_price", style:"float:left; ", :required => true %>
-          <% else %>
-                    <%= f.number_field :miniroom_price_from, class:"form-control mob_price", style:"float:left; ", :required => true %>
-          <% end %>
+          <%# if @hasuk_house.miniroom_price_from != 0 || @hasuk_house.miniroom_price_from != nil  %>
+                    <%#= f.number_field :miniroom_price_from, :value => @hasuk_house.miniroom_price_from, class:"form-control mob_price", style:"float:left; ", :required => true %>
+          <%# else %>
+                    <%#= f.number_field :miniroom_price_from, class:"form-control mob_price", style:"float:left; ", :required => true %>
+          <%# end %>
                     <span id="form-middle">~</span>
-                    <%= f.number_field :miniroom_price_to, class:"form-control mob_price", style:"float:left; ", :required => true %>
+                    <%#= f.number_field :miniroom_price_to, class:"form-control mob_price", style:"float:left; ", :required => true %>
                     <span id="form-middle">만원</span>
                   </div>
                 </div>
               </div>
             <!--월세 끝-->
             <!--원룸형 시작-->
+  <!--
               <div class="form-inline">
                 <div class="col-md-3 col-sm-3 col-xs-4" style="padding:0px; margin:0px">
-        <% if @hasuk_house.oneroom_price_from != 0 && @hasuk_house.oneroom_price_from != nil  %>
+        <%# if @hasuk_house.oneroom_price_from != 0 && @hasuk_house.oneroom_price_from != nil  %>
                   <label class="radio-inline checkbox" id="radio_left">
-                     <%= check_box_tag "oneroom_price_from_check", 0, true, class:"check_price" %>원룸형
+                     <%#= check_box_tag "oneroom_price_from_check", 0, true, class:"check_price" %>원룸형
                   </label>
-          <% else %>
+          <%# else %>
                   <label class="radio-inline checkbox" id="radio_left">
-                     <%= check_box_tag "oneroom_price_from_check", 0, false, class:"check_price" %>원룸형
+                     <%#= check_box_tag "oneroom_price_from_check", 0, false, class:"check_price" %>원룸형
                   </label>
-          <% end %>
+          <%# end %>
                  </div>
                 <div class="col-md-9 col-sm-9 col-xs-8" id="oneroom_price_from" style="padding:0px; margin:0px">
-          <% if @hasuk_house.oneroom_price_from != 0 && @hasuk_house.oneroom_price_from != nil  %>
-                  <%= f.number_field :oneroom_price_from, class:"form-control mob_price", style:"float:left; " %>
-          <% else %>
-                  <%= f.number_field :oneroom_price_from, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
-          <% end %>
+          <%# if @hasuk_house.oneroom_price_from != 0 && @hasuk_house.oneroom_price_from != nil  %>
+                  <%#= f.number_field :oneroom_price_from, class:"form-control mob_price", style:"float:left; " %>
+          <%# else %>
+                  <%#= f.number_field :oneroom_price_from, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
+          <%# end %>
                   <span id="form-middle">~</span>
-          <% if @hasuk_house.oneroom_price_to != 0 && @hasuk_house.oneroom_price_to != nil  %>
-                  <%= f.number_field :oneroom_price_to, class:"form-control mob_price", style:"float:left; " %>
-          <% else %>
-                  <%= f.number_field :oneroom_price_to, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
-          <% end %>
+          <%# if @hasuk_house.oneroom_price_to != 0 && @hasuk_house.oneroom_price_to != nil  %>
+                  <%#= f.number_field :oneroom_price_to, class:"form-control mob_price", style:"float:left; " %>
+          <%# else %>
+                  <%#= f.number_field :oneroom_price_to, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
+          <%# end %>
                   <span id="form-middle">만원</span>
                 </div>
                 <div class="col-xs-12" style="padding:0"><span style="color:#e74c3c">원룸형은 개인화장실이 있는 방을 의미합니다.</span></div>
               </div>
-            <!--원룸형 끝-->
-            </td>
             
- 
+            </td>
+            <!--원룸형 끝-->
+ <!--
           </tr>
           <tr>
-            <td id="column"><center><%= f.label :sleeping_only_price_from, "협의사항" %></center></td>
+            <td id="column"><center><%#= f.label :sleeping_only_price_from, "협의사항" %></center></td>
             <td colspan="3">
             <!--협의사항 잠만자는 시작-->
-      <% if @hasuk_house.hasuk_kind == "일반하숙" %>      
+<!--
+      <%# if @hasuk_house.hasuk_kind == "일반하숙" %>      
               <div class="form-inline" id="sleeping_only_display" style="display:block">
                 <div class="row" style="margin:0">
                 <div class="col-md-3 col-sm-3 col-xs-6" style="padding:0px; margin:0px">
-          <% if @hasuk_house.sleeping_only_price_from != 0 && @hasuk_house.sleeping_only_price_from != nil  %>
+          <%# if @hasuk_house.sleeping_only_price_from != 0 && @hasuk_house.sleeping_only_price_from != nil  %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "sleeping_only_price_from_check", 0, true %>잠만자는 경우<br>(식사 제공 안함)
+                    <%#= check_box_tag "sleeping_only_price_from_check", 0, true %>잠만자는 경우<br>(식사 제공 안함)
                   </label>
-          <% else %>
+          <%# else %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "sleeping_only_price_from_check", 0, false %>잠만자는 경우<br>(식사 제공 안함)
+                    <%#= check_box_tag "sleeping_only_price_from_check", 0, false %>잠만자는 경우<br>(식사 제공 안함)
                   </label>
-          <% end %>
+          <%# end %>
                 </div>
       
                 <div class="col-md-9 col-sm-9 col-xs-6" id="sleeping_only_price_from" style="padding:0px; margin:0px">
-          <% if @hasuk_house.sleeping_only_price_from != nil %>
-                  <%= f.number_field :sleeping_only_price_from, class:"form-control mob_price", style:"float:left; " %>
-          <% else %>
-                  <%= f.number_field :sleeping_only_price_from, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
-          <% end %>
+          <%# if @hasuk_house.sleeping_only_price_from != nil %>
+                  <%#= f.number_field :sleeping_only_price_from, class:"form-control mob_price", style:"float:left; " %>
+          <%# else %>
+                  <%#= f.number_field :sleeping_only_price_from, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
+          <%# end %>
                   <span id="form-middle">만원~</span>
                 </div>
                 </div>
-      <% else %>
+      <%# else %>
               <div class="form-inline" id="sleeping_only_display" style="display:none">
                <div class="row" style="margin:0">
                 <div class="col-md-3 col-sm-3 col-xs-6" style="padding:0px; margin:0px">
-          <% if @hasuk_house.sleeping_only_price_from != 0 && @hasuk_house.sleeping_only_price_from != nil   %>
+          <%# if @hasuk_house.sleeping_only_price_from != 0 && @hasuk_house.sleeping_only_price_from != nil   %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "sleeping_only_price_from_check", 0, true %>잠만자는 경우<br>(식사 제공 안함)
+                    <%#= check_box_tag "sleeping_only_price_from_check", 0, true %>잠만자는 경우<br>(식사 제공 안함)
                   </label>
-          <% else %>
+          <%# else %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "sleeping_only_price_from_check", 0, false %>잠만자는 경우<br>(식사 제공 안함)
+                    <%#= check_box_tag "sleeping_only_price_from_check", 0, false %>잠만자는 경우<br>(식사 제공 안함)
                   </label>
-          <% end %>
+          <%# end %>
                 </div>
       
                 <div class="col-md-9 col-sm-9 col-xs-6" id="sleeping_only_price_from" style="padding:0px; margin:0px">
-          <% if @hasuk_house.sleeping_only_price_from != nil %>
-                  <%= f.number_field :sleeping_only_price_from, class:"form-control mob_price", style:"float:left; " %>
-          <% else %>
-                  <%= f.number_field :sleeping_only_price_from, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
-          <% end %>
+          <%# if @hasuk_house.sleeping_only_price_from != nil %>
+                  <%#= f.number_field :sleeping_only_price_from, class:"form-control mob_price", style:"float:left; " %>
+          <%# else %>
+                  <%#= f.number_field :sleeping_only_price_from, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
+          <%# end %>
                   <span id="form-middle">만원~</span>
                 </div> 
                 </div>
-      <% end %>
+      <%# end %>
               </div>
             <!--협의사항 잠만자는 끝-->
             <!--협의사항 2인1실 시작-->
+<!--
               <div class="form-inline">
                 <div class="col-md-3 col-sm-3 col-xs-6" style="padding:0px; margin:0px">
-          <% if @hasuk_house.mate_price_from != 0 && @hasuk_house.mate_price_from != nil  %>
+          <%# if @hasuk_house.mate_price_from != 0 && @hasuk_house.mate_price_from != nil  %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "mate_price_from_check", 0, true %>2인1실 가능
+                    <%#= check_box_tag "mate_price_from_check", 0, true %>2인1실 가능
                   </label>
-          <% else %>
+          <%# else %>
                   <label class="radio-inline checkbox" id="radio_left">
-                    <%= check_box_tag "mate_price_from_check", 0, false %>2인1실 가능
+                    <%#= check_box_tag "mate_price_from_check", 0, false %>2인1실 가능
                   </label>
-          <% end %>
+          <%# end %>
                 </div>
                 <div class="col-md-9 col-sm-9 col-xs-6" id="mate_price_from" style="padding:0px; margin:0px">
-          <% if @hasuk_house.mate_price_from != 0 && @hasuk_house.mate_price_from != nil  %>
-                  <%= f.number_field :mate_price_from, class:"form-control mob_price", style:"float:left; " %>
-          <% else %>
-                  <%= f.number_field :mate_price_from, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
-          <% end %>
+          <%# if @hasuk_house.mate_price_from != 0 && @hasuk_house.mate_price_from != nil  %>
+                  <%#= f.number_field :mate_price_from, class:"form-control mob_price", style:"float:left; " %>
+          <%# else %>
+                  <%#= f.number_field :mate_price_from, class:"form-control mob_price", style:"float:left; ", :disabled => true %>
+          <%# end %>
                   <span id="form-middle">만원~</span>
                 </div>
                 
               </div>
-            <!--협의사항 2인1실 끝-->
-            </td>
             
- 
+            </td>
+            <!--협의사항 2인1실 끝-->
+ <!--
           </tr>
           <tr>
-            <td id="column"><center><%= f.label :big_deposit, "보증금" %></center></td>
+            <td id="column"><center><%#= f.label :big_deposit, "보증금" %></center></td>
             <td colspan="3">
               <div class="form-inline">
               <div class="col-md-3 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
-        <% if @hasuk_house.big_deposit == 0 %> 
-                <%= f.number_field :big_deposit, class:"form-control mob_price big_deposit", :disabled => true, style:"float:left;" %>
+        <%# if @hasuk_house.big_deposit == 0 %> 
+                <%#= f.number_field :big_deposit, class:"form-control mob_price big_deposit", :disabled => true, style:"float:left;" %>
                  <span id="form-right">만원</span>
-        <% else %>
-                <%= f.number_field :big_deposit, class:"form-control mob_price big_deposit", style:"float:left;" %>
+        <%# else %>
+                <%#= f.number_field :big_deposit, class:"form-control mob_price big_deposit", style:"float:left;" %>
                  <span id="form-right">만원</span>
-        <% end %>
+        <%# end %>
                </div>
                <div class="col-md-2 col-sm-2 col-xs-6" style="padding:0px; margin:0px; margin-top:5px">
                  <!--해당없음에 체크시 0을 저장한다-->
-      <% if @hasuk_house.big_deposit == 0 %> 
+<!--
+      <%# if @hasuk_house.big_deposit == 0 %> 
                  <label class="checkbox radio-inline" id="radio-right" style="padding-left: 25px;">
-                   <%= check_box_tag "hasuk_house[big_deposit]", 0, true, class:"check_big_deposit" %>해당없음
+                   <%#= check_box_tag "hasuk_house[big_deposit]", 0, true, class:"check_big_deposit" %>해당없음
                  </label>
-      <% else %>
+      <%# else %>
                  <label class="checkbox radio-inline" id="radio-right" style="padding-left: 25px;">
-                   <%= check_box_tag "hasuk_house[big_deposit]", 0, false, class:"check_big_deposit" %>해당없음
+                   <%#= check_box_tag "hasuk_house[big_deposit]", 0, false, class:"check_big_deposit" %>해당없음
                  </label>
-      <% end %>
+      <%# end %>
               </div>
             
             </div>
@@ -962,29 +968,30 @@
             </td>
         </tr>
           <tr>
-            <td id="column"><center><%= f.label :small_deposit, "예치금" %></center></td>
+            <td id="column"><center><%#= f.label :small_deposit, "예치금" %></center></td>
             <td colspan="3">
               <div class="form-inline">
               <div class="col-md-3 col-sm-6 col-xs-6" style="padding:0px; margin:0px">
-        <% if @hasuk_house.small_deposit == 0 %> 
-                <%= f.number_field :small_deposit, class:"form-control mob_price small_deposit", :disabled => true, style:"float:left;" %>
+        <%# if @hasuk_house.small_deposit == 0 %> 
+                <%#= f.number_field :small_deposit, class:"form-control mob_price small_deposit", :disabled => true, style:"float:left;" %>
                  <span id="form-right">만원</span>
-        <% else %>
-                <%= f.number_field :small_deposit, class:"form-control mob_price small_deposit", style:"float:left;" %>
+        <%# else %>
+                <%#= f.number_field :small_deposit, class:"form-control mob_price small_deposit", style:"float:left;" %>
                  <span id="form-right">만원</span>
-        <% end %>
+        <%# end %>
                </div>
                <div class="col-md-2 col-sm-2 col-xs-6" style="padding:0px; margin:0px; margin-top:5px">
                  <!--해당없음에 체크시 0을 저장한다-->
-      <% if @hasuk_house.small_deposit == 0 %> 
+<!--
+      <%# if @hasuk_house.small_deposit == 0 %> 
                  <label class="checkbox radio-inline" id="radio-right" style="padding-left: 25px;">
-                   <%= check_box_tag "hasuk_house[small_deposit]", 0, true, class:"check_small_deposit" %>해당없음
+                   <%#= check_box_tag "hasuk_house[small_deposit]", 0, true, class:"check_small_deposit" %>해당없음
                  </label>
-      <% else %>
+      <%# else %>
                  <label class="checkbox radio-inline" id="radio-right" style="padding-left: 25px;">
-                   <%= check_box_tag "hasuk_house[small_deposit]", 0, false, class:"check_small_deposit" %>해당없음
+                   <%#= check_box_tag "hasuk_house[small_deposit]", 0, false, class:"check_small_deposit" %>해당없음
                  </label>
-      <% end %>
+      <%# end %>
               </div>
             
             </div>
@@ -997,42 +1004,44 @@
             <span>별도 관리비</span>
           </center>
         </td>
-        
+-->
+<!--
         <td colspan="3" style="padding-left:15px;">
-          <label class="radio"><%= radio_button("hasuk_house","admin_fee", true, :checked => true, :class =>"admin_fee") %>
+          <label class="radio"><%#= radio_button("hasuk_house","admin_fee", true, :checked => true, :class =>"admin_fee") %>
             <span>있음</span>
           </label>
-          <label class="radio"><%= radio_button("hasuk_house","admin_fee", false,  :class =>"admin_fee") %>
+          <label class="radio"><%#= radio_button("hasuk_house","admin_fee", false,  :class =>"admin_fee") %>
             <span>없음</span>
           </label>
         </td>
         
       </tr>
         <tr>
-          <td id="column"><center><%= f.label :least_contract, "최소계약기간" %></center></td>
+          <td id="column"><center><%#= f.label :least_contract, "최소계약기간" %></center></td>
               
           <td colspan="3">
           <div class="col-md-3 col-sm-6 col-xs-7" style="padding:0px; margin:0px">
-  <% if @hasuk_house.least_contract == 0 %>
-            <%= f.number_field :least_contract, class:"form-control mob_price least_contract", :disabled => true, style:"float:left; padding:5px;" %>
+  <%# if @hasuk_house.least_contract == 0 %>
+            <%#= f.number_field :least_contract, class:"form-control mob_price least_contract", :disabled => true, style:"float:left; padding:5px;" %>
             <span id="form-right">개월 이상</span>
-  <% else %>
-            <%= f.number_field :least_contract, class:"form-control mob_price least_contract", style:"float:left; padding:5px;" %>
+  <%# else %>
+            <%#= f.number_field :least_contract, class:"form-control mob_price least_contract", style:"float:left; padding:5px;" %>
             <span id="form-right">개월 이상</span>
-  <% end %>
+  <%# end %>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-5" style="padding:0px; margin:0px; margin-top:5px">
 
 <!--해당없음에 체크시 0을 저장한다-->
-<% if @hasuk_house.least_contract == 0 %>
+<!--
+<%# if @hasuk_house.least_contract == 0 %>
             <label class="checkbox radio-inline" id="radio-right">
-                 <%= check_box_tag "hasuk_house[least_contract]",0 , true, class:"check_least_contract" %>해당없음
+                 <%#= check_box_tag "hasuk_house[least_contract]",0 , true, class:"check_least_contract" %>해당없음
              </label>
-<% else %>
+<%# else %>
             <label class="checkbox radio-inline" id="radio-right">
-                 <%= check_box_tag "hasuk_house[least_contract]",0 , false, class:"check_least_contract" %>해당없음
+                 <%#= check_box_tag "hasuk_house[least_contract]",0 , false, class:"check_least_contract" %>해당없음
              </label>
-<% end %>
+<%# end %>
           </div>
 
           </td>
@@ -1042,9 +1051,10 @@
       </div>
     </div>
   </div><!-- table2 끝row-->
-  <%= f.number_field :price_from, class:"form-control main_price_from", style:"display:none; float:left; max-width:80px;", placeholder:"최소", :required => true %>
-  <%= f.number_field :price_to, class:"form-control main_price_to", style:"display:none; float:left; max-width:80px;", placeholder:"최대" %>
+  <%#= f.number_field :price_from, class:"form-control main_price_from", style:"display:none; float:left; max-width:80px;", placeholder:"최소", :required => true %>
+  <%#= f.number_field :price_to, class:"form-control main_price_to", style:"display:none; float:left; max-width:80px;", placeholder:"최대" %>
   
+  <!--
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
       <div class="inline">
@@ -1056,13 +1066,13 @@
     </div>
   </div><!--상세설명 타이틀-->
   
-  <%= f.text_field :title, class:"form-control", placeholder:"한 줄 설명" %>
+  <%#= f.text_field :title, class:"form-control", placeholder:"한 줄 설명" %>
   
-  <% if @hasuk_house.hasuk_house_description != nil || @hasuk_house.hasuk_house_description != "" %>
-    <%= text_area_tag "hasuk_house[hasuk_house_description]", @hasuk_house.hasuk_house_description ,rows: 10, class:"form-control", placeholder:"추가 설명을 해주세요. (ex. 채광, 주변 편의시설, 분위기 등)" %>
-  <% else %>
-    <%= text_area_tag "hasuk_house[hasuk_house_description]", nil,rows: 10, class:"form-control", placeholder:"추가 설명을 해주세요. (ex. 채광, 주변 편의시설, 분위기 등)" %>
-  <% end %>
+  <%# if @hasuk_house.hasuk_house_description != nil || @hasuk_house.hasuk_house_description != "" %>
+    <%#= text_area_tag "hasuk_house[hasuk_house_description]", @hasuk_house.hasuk_house_description ,rows: 10, class:"form-control", placeholder:"추가 설명을 해주세요. (ex. 채광, 주변 편의시설, 분위기 등)" %>
+  <%# else %>
+    <%#= text_area_tag "hasuk_house[hasuk_house_description]", nil,rows: 10, class:"form-control", placeholder:"추가 설명을 해주세요. (ex. 채광, 주변 편의시설, 분위기 등)" %>
+  <%# end %>
   
   
   <div class="row">
@@ -1933,6 +1943,7 @@ $(document).ready(function(){
   //교통수단 value 실제 데이터로 옮겨 넣기용
   
   //최댓값, 최솟값 월세 셋팅
+  /*
   price_from_arr = ["#hasuk_house_miniroom_price_from", "#hasuk_house_oneroom_price_from", "#hasuk_house_sleeping_only_price_from", "#hasuk_house_mate_price_from"];
   price_to_arr = ["#hasuk_house_miniroom_price_to", "#hasuk_house_oneroom_price_to"]
   for( var i=0; i <= 3; i++) {
@@ -1991,6 +2002,7 @@ $(document).ready(function(){
   }//price_to 셋팅 for loop
   
   //최댓값, 최솟값 월세 셋팅
+  */
 });
         
 $(document).ready(function(){
@@ -2497,10 +2509,11 @@ $(".crossmeal4").click(function() {
   }
   
   //링크 타고 길찾기 페이지 넘어가기(지하철, 버스)
-  
+ 
+ 
   $(document).ready(function(){
     //해당 없음 누르면 글 못 쓰게 하기
-    
+/*     
     $(function() {
           $(".check_small_deposit").click(enable_cd);
           $(".check_big_deposit").click(enable_cq);
@@ -2588,7 +2601,8 @@ $(".crossmeal4").click(function() {
       if ('.sleeping_display1'.checked) { $("#sleeping_only_display").css("display", "block"); }
       else { $("#sleeping_only_display").css("display", "none"); }
     }
-        
+ */
+ 
         $(".fui-plus-circle").mouseover(function() {
           $(this).css("color", "#E67E22");
         });
