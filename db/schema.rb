@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20151222070025) do
     t.integer  "how_many_people_did"
     t.float    "total_meal_score"
     t.float    "total_clean_score"
-    t.float    "total_owner_score"
     t.float    "total_silence_score"
     t.float    "total_aircondition_score"
     t.float    "total_cctv_score"

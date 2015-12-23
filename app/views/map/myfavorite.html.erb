@@ -448,7 +448,7 @@
                     
 
                     '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">' + 
-                    university + '&nbsp;' + entrance  + '&nbsp;'+ '<span>' + data[i].distance1 +'m'+ '(' +data[i].distance_time1 +'분)' + '</span>' + '</div>'+
+                    university + '&nbsp;' + entrance  + '&nbsp;'+ '<span>' + data[i].distance_time1 +'분'+ '(' +data[i].distance1 +'m)' + '</span>' + '</div>'+
 
                     '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">' + bus + '&nbsp;' +
                          
@@ -474,19 +474,19 @@
              var markerLabel = labelKind[0];
            
             var marker = new MarkerWithLabel({  
-                 position: latlng,
-                 map: map,
-                 <% if 'data[i].price_from' != 'data[i].price_to' %>
-                    labelContent: data[i].price_from+'~'+data[i].price_to,
-                 <% else %>
-                    labelContent: data[i].price_from,
-                 <% end %>    
-                 labelAnchor: new google.maps.Point(27, 25),
-                 
-                 labelClass: markerLabel,
-                 icon: d_marker,
-                 url: "/hasuk_houses/" +  data_id
-             });
+                         position: latlng,
+                         map: map,
+                         <%# if 'data[i].price_from' != 'data[i].price_to' %>
+                            //labelContent: data[i].price_from+'~'+data[i].price_to,
+                         <%# else %>
+                            //labelContent: data[i].price_from,
+                         <%# end %>    
+                         labelAnchor: new google.maps.Point(27, 25),
+                         
+                         labelClass: markerLabel,
+                         icon: d_marker,
+                         url: "/hasuk_houses/" +  data_id
+                     });
               marker.setValues({type: "point", id: i});
               var data_id = data[i].id;
               var str_id = data_id.toString();
@@ -743,83 +743,87 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
           <% end %>
           
               <div class="description">
-                <% unless c.title.nil? %>  
-      
-                    <% if c.title.length >= 17 %>
-                        <span id="room_title" style="float:left; margin-top:8px"><%= c.title.split(//).first(17).join %>..</span>
-                    <% else %>
-                        <span id="room_title" style="float:left; margin-top:8px"><%= c.title %></span>
-                    <% end %>
-                <% end %>
-                <% unless c.price_from.nil? %>
-                    <span style="font-size:12px; color:#FFF; margin-bottom:0px; margin-top:0px; float:right">
-                        <span id="main_price"><%= c.price_from %>~<%= c.price_to %></span>
-                      만원
-                    </span>
-                    <% else %>
-                    <span style="color:#fff; margin-bottom:0px; margin-top:0px; float:right">
-                      <span id="main_price">00~00</span>
-                      만원
-                    </span>
-                    <% end %>
-              </div>
-              <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size" style="width:100%;">
+                        <% unless c.address.nil? %>  
               
-            </div>
-          
-           
-            <!--정보 표시-->
-            <div class="caption" style="padding-top:5px; padding-left:5px; padding-right:0px;">
-            <div class="thumbnail-text">
-              <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                  <img src="/images/icons/price2.png" style="width:20px; height:20px; margin-top:2px; margin-right:0;"/>
-                </div>
-                <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
-                  <span>월세</span>
-                </div>
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                 <% if c.miniroom_price_from != nil %>
-                    <span id="room_kind">미니룸&nbsp</span> <span id="price"><%= c.miniroom_price_from %>~<%= c.miniroom_price_to %></span>
-                 <% else %>
-                     <span>-</span>
-                 <% end %>
-                </div>
-                <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                 <% if c.oneroom_price_from != nil %>
-                     <span id="room_kind">원룸형&nbsp</span> <span id="price"><%= c.oneroom_price_from %>~<%= c.oneroom_price_to %></span>
-                 <% else %>
-                     <span>-</span>
-                 <% end %>
-                 </div>
-               
-                </div>
-              </div><!--정보 첫번째 줄 끝-->
-              
-              <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                </div>
-                <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
-                  <span>협의</span>
-                </div>
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                 <% if c.sleeping_only_price_from != nil %>
-                    <span id="room_kind">잠만자면&nbsp</span> <span id="price"><%= c.sleeping_only_price_from %>~</span>
-                 <% else %>
-                     <span>-</span>
-                 <% end %>
-                </div>
-                <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                 <% if c.mate_price_from != nil %>
-                     <span id="room_kind">2인1실&nbsp</span> <span id="price"><%= c.mate_price_from %>~</span>
-                 <% else %>
-                     <span>-</span>
-                 <% end %>
-                </div>
-                </div>
-              </div><!--정보 두번째 줄 끝-->
+                            <% if c.address.length >= 25 %>
+                                <span id="room_title" style="float:left; margin-top:8px"><%= c.address.split(//).first(25).join %>..</span>
+                            <% else %>
+                                <span id="room_title" style="float:left; margin-top:8px"><%= c.address %></span>
+                            <% end %>
+                        <% end %>
+                        <!--
+                        <%# unless c.price_from.nil? %>
+                            <span style="font-size:12px; color:#FFF; margin-bottom:0px; margin-top:0px; float:right">
+                                <span id="main_price"><%#= c.price_from %>~<%#= c.price_to %></span>
+                              만원
+                            </span>
+                            <%# else %>
+                            <span style="color:#fff; margin-bottom:0px; margin-top:0px; float:right">
+                              <span id="main_price">00~00</span>
+                              만원
+                            </span>
+                            <%# end %>
+                        -->
+                      </div>
+                      <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size" style="width:100%;">
+                      
+                    </div>
+                  
+                   
+                    <!--정보 표시-->
+                    <div class="caption" style="padding-top:5px; padding-left:5px; padding-right:0px;">
+                    <div class="thumbnail-text">
+                      <!--
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                          <img src="/images/icons/price2.png" style="width:20px; height:20px; margin-top:2px; margin-right:0;"/>
+                        </div>
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
+                          <span>월세</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                         <%# if c.miniroom_price_from != nil %>
+                            <span id="room_kind">미니룸&nbsp</span> <span id="price"><%#= c.miniroom_price_from %>~<%#= c.miniroom_price_to %></span>
+                         <%# else %>
+                             <span>-</span>
+                         <%# end %>
+                        </div>
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                         <%# if c.oneroom_price_from != nil %>
+                             <span id="room_kind">원룸형&nbsp</span> <span id="price"><%#= c.oneroom_price_from %>~<%#= c.oneroom_price_to %></span>
+                         <%# else %>
+                             <span>-</span>
+                         <%# end %>
+                         </div>
+                       
+                        </div>
+                      </div><!--정보 첫번째 줄 끝-->
+                      
+                      <!--
+                      <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
+                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        </div>
+                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
+                          <span>협의</span>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                         <%# if c.sleeping_only_price_from != nil %>
+                            <span id="room_kind">잠만자면&nbsp</span> <span id="price"><%#= c.sleeping_only_price_from %>~</span>
+                         <%# else %>
+                             <span>-</span>
+                         <%# end %>
+                        </div>
+                        <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                         <%# if c.mate_price_from != nil %>
+                             <span id="room_kind">2인1실&nbsp</span> <span id="price"><%#= c.mate_price_from %>~</span>
+                         <%# else %>
+                             <span>-</span>
+                         <%# end %>
+                        </div>
+                        </div>
+                      </div><!--정보 두번째 줄 끝-->
               
               
               <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
@@ -906,10 +910,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
  <!--지도 디자인 관련 js -->
 
 <script>
+/*
 $("#sortByPrice").click(function(){
-    <% unless @sortingArr.nil? %>
-      <% @sortingArr = @sortingArr.sort { |p1, p2| [p1.price_from, p1.price_to, p1.distance1 ] <=> [p2.price_from, p2.price_to, p2.distance1 ] } %>
-    <% end %>
+  <%# @sortingArr = @sortingArr.sort { |p1, p2| [p1.distance1, p1.trans_distance1 ] <=> [p2.distance1, p2.trans_distance1 ] } %>
+
   $(document).bind("ajaxStart.firstCall", function() {
     $(".roomList").css("-webkit-filter", "grayscale(50%)");
     $('#loadingImage').animate({opacity: "show"});
@@ -922,86 +926,85 @@ $("#sortByPrice").click(function(){
   $.ajax({
     url: "/map/mappage",
     type: 'GET',
-    data: {univ: "<%= @univ %>"},
+    data: {univ: "<%#= @univ %>"},
     context: '.room',
     success: function(data){
-      <% counter = 0 %>
+      <%# counter = 0 %>
       
-      <% unless @sortingArr.nil? %>
-      <% @sortingArr.each do |i| %>
+      
+      <%# @sortingArr.each do |i| %>
         //id 셋팅 라인
-        $(".position<%= counter %>").attr("id", "a<%= i.id %>");
-        $(".position<%= counter %>").attr("href", "/hasuk_houses/<%= i.id %>");
-        $(".position<%= counter %> > a").attr("href", "/hasuk_houses/<%= i.id %>");
+        $(".position<%#= counter %>").attr("id", "a<%#= i.id %>");
+        $(".position<%#= counter %>").attr("href", "/hasuk_houses/<%#= i.id %>");
+        $(".position<%#= counter %> > a").attr("href", "/hasuk_houses/<%#= i.id %>");
         //id 셋팅 라인
         
         //이미��� 라인
-        $("#a<%= i.id %> #nameOfhasuk > p").text('<%= i.hasuk_name %>');
+        $("#a<%#= i.id %> #nameOfhasuk > p").text('<%#= i.hasuk_name %>');
         
         
-        $("#a<%= i.id %> .image-size").attr("src", "<%= i.room_img1 %>");
+        $("#a<%#= i.id %> .image-size").attr("src", "<%#= i.room_img1 %>");
         //이미지 라인 끝
         
         //정보 첫 번째 줄
-        $("#a<%= i.id %> #price-icon h4").text("<%= i.price_from %>~<%= i.price_to %>");
+        $("#a<%#= i.id %> #price-icon h4").text("<%#= i.price_from %>~<%#= i.price_to %>");
         
        
-        <% if i.hasuk_kind == "일반하숙" %>
-            $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color1">일반하숙</span>');
-        <% elsif i.hasuk_kind == "잠만 자는 방" %>
-          $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color2">잠만자는</span>');
+        <%# if i.hasuk_kind == "일반하숙" %>
+            $("#a<%#= i.id %> #kind-size").html('<span id="hasuk_kind_color1">일반하숙</span>');
+        <%# elsif i.hasuk_kind == "잠만 자는 방" %>
+          $("#a<%#= i.id %> #kind-size").html('<span id="hasuk_kind_color2">잠만자는</span>');
        
-        <% else %>
-            $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color4">형태없음</span>');
-        <% end %>
+        <%# else %>
+            $("#a<%#= i.id %> #kind-size").html('<span id="hasuk_kind_color4">형태없음</span>');
+        <%# end %>
         //정보 첫 번째 줄 끝
         
         //정보 두 번째 줄
         
-        <% if i.univ1 != "학교선택" %>
+        <%# if i.univ1 != "학교선택" %>
           
-          <% if i.univ1 == "이화" %>
-            var univ = '<span style="color:#0c6f40"><%= i.univ1 %>여대</span>'+ '&nbsp;' + '<span><%= i.gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';
-          <% elsif i.univ1 =="서강" %>
-            var univ = '<span style="color:#b20000"><%= i.univ1 %>대</span>'+ '&nbsp;' + '<span><%= i.gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';  
-           <% elsif i.univ1 =="연세" %>
-            var univ = '<span style="color:#202d61"><%= i.univ1 %>대</span>'+ '&nbsp;' + '<span><%= i.gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';  
-           <% else %>
+          <%# if i.univ1 == "이화" %>
+            var univ = '<span style="color:#0c6f40"><%#= i.univ1 %>여대</span>'+ '&nbsp;' + '<span><%#= i.gate1 %> <%#= i.distance1 %>m(<%#= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';
+          <%# elsif i.univ1 =="서강" %>
+            var univ = '<span style="color:#b20000"><%#= i.univ1 %>대</span>'+ '&nbsp;' + '<span><%#= i.gate1 %> <%#= i.distance1 %>m(<%#= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';  
+           <%# elsif i.univ1 =="연세" %>
+            var univ = '<span style="color:#202d61"><%#= i.univ1 %>대</span>'+ '&nbsp;' + '<span><%#= i.gate1 %> <%#= i.distance1 %>m(<%#= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';  
+           <%# else %>
             var univ = '<span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-md hidden-xs hidden-lg">';
-           <% end %> 
-        <% end %>
+           <%# end %> 
+        <%# end %>
         
-        <% if i.trans_kind1 == "지하철" %>
-            <% if i.station1 == "대흥" %>
-                var transport = '&nbsp;' +'<span class="sub_circle line_number_6">6</span>'+ '&nbsp;' + '<span id="subway" style="color:#9a4510"><%= i.station1 %>역</span>';
-            <% elsif i.station1 == "신촌" || i.station1 == "이대" %>
-                var transport = '&nbsp;' +'<span class="sub_circle line_number_2">2</span>'+ '&nbsp;' + '<span id="subway" style="color:#009044"><%= i.station1 %>역</span>';
-            <% elsif i.station1 == "서강대" %>
-                var transport = '&nbsp;' +'<div class="line_number_kj">경의</div>'+ '&nbsp;' + '<span id="subway" style="color:#41b9b9"><%= i.station1 %>역</span>';
-            <% elsif i.station1 == "신촌기차" %>
-                var transport = '&nbsp;' +'<div class="line_number_kj">경의</div>'+ '&nbsp;' + '<span id="subway" style="color:#0063b1"><%= i.station1 %>역</span>';
-            <% end %>
-            var transport_distance = '&nbsp;' +'<span><%= i.trans_distance1 %>m(<%= i.trans_distance_time1 %>분)</span>';
-        <% elsif i.trans_kind1 == "버스" %>
-            var transport = '&nbsp;' +'<div class="line_number_bus">버스</div>'+ '&nbsp;' + '<span id="bus" style="color:#0063b1"><%= i.station2 %></span>';
-            var transport_distance = '&nbsp;' +'<span><%= i.trans_distance1 %>m</span>';
+        <%# if i.trans_kind1 == "지하철" %>
+            <%# if i.station1 == "대흥" %>
+                var transport = '&nbsp;' +'<span class="sub_circle line_number_6">6</span>'+ '&nbsp;' + '<span id="subway" style="color:#9a4510"><%#= i.station1 %>역</span>';
+            <%# elsif i.station1 == "신촌" || i.station1 == "이대" %>
+                var transport = '&nbsp;' +'<span class="sub_circle line_number_2">2</span>'+ '&nbsp;' + '<span id="subway" style="color:#009044"><%#= i.station1 %>역</span>';
+            <%# elsif i.station1 == "서강대" %>
+                var transport = '&nbsp;' +'<div class="line_number_kj">경의</div>'+ '&nbsp;' + '<span id="subway" style="color:#41b9b9"><%#= i.station1 %>역</span>';
+            <%# elsif i.station1 == "신촌기차" %>
+                var transport = '&nbsp;' +'<div class="line_number_kj">경의</div>'+ '&nbsp;' + '<span id="subway" style="color:#0063b1"><%#= i.station1 %>역</span>';
+            <%# end %>
+            var transport_distance = '&nbsp;' +'<span><%#= i.trans_distance1 %>m(<%#= i.trans_distance_time1 %>분)</span>';
+        <%# elsif i.trans_kind1 == "버스" %>
+            var transport = '&nbsp;' +'<div class="line_number_bus">버스</div>'+ '&nbsp;' + '<span id="bus" style="color:#0063b1"><%#= i.station2 %></span>';
+            var transport_distance = '&nbsp;' +'<span><%#= i.trans_distance1 %>m</span>';
         
-        <% else %>
+        <%# else %>
         
           var transport = '&nbsp;' +'<span id="subway"> <span class="hidden-sm hidden-md">&nbsp|&nbsp</span> 신촌기차역 1103m(21분)</span>';
           var transport_distance = "";
-        <% end %>
+        <%# end %>
         var result_distance = univ + transport + transport_distance ;
-        $("#a<%= i.id %> #distance-size").html(result_distance);
+        $("#a<%#= i.id %> #distance-size").html(result_distance);
         //정보 두 번째 줄 끝
         
         //정보 세 번째 줄
         
   
         //정보 세 번째 줄 끝
-        <% counter += 1 %>
-      <% end %>
-      <% end %>
+        <%# counter += 1 %>
+      <%# end %>
       
       google.maps.event.clearInstanceListeners(markerObj);
 
@@ -1018,9 +1021,8 @@ $("#sortByPrice").click(function(){
 
 
 $("sortByDistance").click(function(){
-    <% unless @sortingArr.nil? %>
-  <% @sortingArr = @sortingArr.sort { |p1, p2| [p1.distance1, p1.price_from, p1.price_to] <=> [p2.distance1, p2.price_from, p2.price_to] } %>
-    <% end %>
+  <%# @sortingArr = @sortingArr.sort { |p1, p2| [p1.distance1, p1.price_from, p1.price_to] <=> [p2.distance1, p2.price_from, p2.price_to] } %>
+
    $(document).bind("ajaxStart.firstCall", function() {
     $(".roomList").css("-webkit-filter", "grayscale(50%)");
     $('#loadingImage').animate({opacity: "show"});
@@ -1033,77 +1035,77 @@ $("sortByDistance").click(function(){
   $.ajax({
     url: "/map/mappage",
     type: 'GET',
-    data: {univ: "<%= @univ %>"},
+    data: {univ: "<%#= @univ %>"},
     success: function(data){
-      <% counter = 0 %>
-     <% unless @sortingArr.nil? %>
-      <% @sortingArr.each do |i| %>
+      <%# counter = 0 %>
+     
+      <%# @sortingArr.each do |i| %>
         //id 셋팅 라인
-        $(".position<%= counter %>").attr("id", "a<%= i.id %>");
-        $(".position<%= counter %>").attr("href", "/hasuk_houses/<%= i.id %>");
-        $(".position<%= counter %> > a").attr("href", "/hasuk_houses/<%= i.id %>");
+        $(".position<%#= counter %>").attr("id", "a<%#= i.id %>");
+        $(".position<%#= counter %>").attr("href", "/hasuk_houses/<%#= i.id %>");
+        $(".position<%#= counter %> > a").attr("href", "/hasuk_houses/<%#= i.id %>");
         //id 셋팅 라인
         
         //이미지 라인
-        $("#a<%= i.id %> #nameOfhasuk > p").text('<%= i.hasuk_name %>');
+        $("#a<%#= i.id %> #nameOfhasuk > p").text('<%#= i.hasuk_name %>');
         
         
         
-        $("#a<%= i.id %> .image-size").attr("src", "<%= i.room_img1 %>");
+        $("#a<%#= i.id %> .image-size").attr("src", "<%#= i.room_img1 %>");
         //이미지 라인 끝
         
         //정보 첫 번째 줄
-        $("#a<%= i.id %> #price-icon h4").text("<%= i.price_from %>~<%= i.price_to %>");
+        $("#a<%#= i.id %> #price-icon h4").text("<%#= i.price_from %>~<%#= i.price_to %>");
         
         
         
-        <% if i.hasuk_kind == "일반하숙" %>
-            $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color1">일반하숙</span>');
-        <% elsif i.hasuk_kind == "잠만 자는 방" %>
-          $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color2">잠만자는</span>');
+        <%# if i.hasuk_kind == "일반하숙" %>
+            $("#a<%#= i.id %> #kind-size").html('<span id="hasuk_kind_color1">일반하숙</span>');
+        <%# elsif i.hasuk_kind == "잠만 자는 방" %>
+          $("#a<%#= i.id %> #kind-size").html('<span id="hasuk_kind_color2">잠만자는</span>');
         
-        <% else %>
-            $("#a<%= i.id %> #kind-size").html('<span id="hasuk_kind_color4">형태없음</span>');
-        <% end %>
+        <%# else %>
+            $("#a<%#= i.id %> #kind-size").html('<span id="hasuk_kind_color4">형태없음</span>');
+        <%# end %>
         //정보 첫 번째 줄 끝
         
         //정보 두 번째 줄
         
-        <% if i.univ1 != "학교선택" %>
+        <%# if i.univ1 != "학교선택" %>
           
-          <% if i.univ1 == "이화" %>
-            var univ = '<span style="color:#0c6f40"><%= i.univ1 %>여대</span>'+ '&nbsp;' + '<span><%= i.gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';
-          <% elsif i.univ1 =="서강" %>
-            var univ = '<span style="color:#b20000"><%= i.univ1 %>대</span>'+ '&nbsp;' + '<span><%= i.gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';  
-           <% elsif i.univ1 =="연세" %>
-            var univ = '<span style="color:#202d61"><%= i.univ1 %>대</span>'+ '&nbsp;' + '<span><%= i.gate1 %> <%= i.distance1 %>m(<%= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';  
-           <% else %>
+          <%# if i.univ1 == "이화" %>
+            var univ = '<span style="color:#0c6f40"><%#= i.univ1 %>여대</span>'+ '&nbsp;' + '<span><%#= i.gate1 %> <%#= i.distance1 %>m(<%#= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';
+          <%# elsif i.univ1 =="서강" %>
+            var univ = '<span style="color:#b20000"><%#= i.univ1 %>대</span>'+ '&nbsp;' + '<span><%#= i.gate1 %> <%#= i.distance1 %>m(<%#= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';  
+           <%# elsif i.univ1 =="연세" %>
+            var univ = '<span style="color:#202d61"><%#= i.univ1 %>대</span>'+ '&nbsp;' + '<span><%#= i.gate1 %> <%#= i.distance1 %>m(<%#= i.distance_time1 %>분)</span> <br class="hidden-md hidden-xs hidden-lg">  <span class="hidden-sm hidden-md">&nbsp|</span>';  
+           <%# else %>
             var univ = '<span id="gate"><span style="color:#0c6f40">이화여대</span> 정문 1064m(20분)</span><br class="hidden-md hidden-xs hidden-lg">';
-           <% end %> 
-        <% end %>
+           <%# end %> 
+        <%# end %>
         
-        <% if i.trans_kind1 == "지하철" %>
-            <% if i.station1 == "대흥" %>
-                var transport = '&nbsp;' +'<span class="sub_circle line_number_6">6</span>'+ '&nbsp;' + '<span id="subway" style="color:#9a4510"><%= i.station1 %>역</span>';
-            <% elsif i.station1 == "신촌" || i.station1 == "이대" %>
-                var transport = '&nbsp;' +'<span class="sub_circle line_number_2">2</span>'+ '&nbsp;' + '<span id="subway" style="color:#009044"><%= i.station1 %>역</span>';
-            <% elsif i.station1 == "서강대" %>
-                var transport = '&nbsp;' +'<div class="line_number_kj">경의</div>'+ '&nbsp;' + '<span id="subway" style="color:#41b9b9"><%= i.station1 %>역</span>';
-            <% elsif i.station1 == "신촌기차" %>
-                var transport = '&nbsp;' +'<div class="line_number_kj">경의</div>'+ '&nbsp;' + '<span id="subway" style="color:#0063b1"><%= i.station1 %>역</span>';
-            <% end %>
-            var transport_distance = '&nbsp;' +'<span><%= i.trans_distance1 %>m(<%= i.trans_distance_time1 %>분)</span>';
-        <% elsif i.trans_kind1 == "버스" %>
-            var transport = '&nbsp;' +'<div class="line_number_bus">버스</div>'+ '&nbsp;' + '<span id="bus" style="color:#0063b1"><%= i.station2 %></span>';
-            var transport_distance = '&nbsp;' +'<span><%= i.trans_distance1 %>m</span>';
+        <%# if i.trans_kind1 == "지하철" %>
+            <%# if i.station1 == "대흥" %>
+                var transport = '&nbsp;' +'<span class="sub_circle line_number_6">6</span>'+ '&nbsp;' + '<span id="subway" style="color:#9a4510"><%#= i.station1 %>역</span>';
+            <%# elsif i.station1 == "신촌" || i.station1 == "이대" %>
+                var transport = '&nbsp;' +'<span class="sub_circle line_number_2">2</span>'+ '&nbsp;' + '<span id="subway" style="color:#009044"><%#= i.station1 %>역</span>';
+            <%# elsif i.station1 == "서강대" %>
+                var transport = '&nbsp;' +'<div class="line_number_kj">경의</div>'+ '&nbsp;' + '<span id="subway" style="color:#41b9b9"><%#= i.station1 %>역</span>';
+            <%# elsif i.station1 == "신촌기차" %>
+                var transport = '&nbsp;' +'<div class="line_number_kj">경의</div>'+ '&nbsp;' + '<span id="subway" style="color:#0063b1"><%#= i.station1 %>역</span>';
+            <%# end %>
+            var transport_distance = '&nbsp;' +'<span><%#= i.trans_distance1 %>m(<%#= i.trans_distance_time1 %>분)</span>';
+        <%# elsif i.trans_kind1 == "버스" %>
+            var transport = '&nbsp;' +'<div class="line_number_bus">버스</div>'+ '&nbsp;' + '<span id="bus" style="color:#0063b1"><%#= i.station2 %></span>';
+            var transport_distance = '&nbsp;' +'<span><%#= i.trans_distance1 %>m</span>';
         
-        <% else %>
+        <%# else %>
         
           var transport = '&nbsp;' +'<span id="subway"> <span class="hidden-sm hidden-md">&nbsp|&nbsp</span> 신촌기차역 1103m(21분)</span>';
           var transport_distance = "";
-        <% end %>
+        <%# end %>
         var result_distance = univ + transport + transport_distance ;
-        $("#a<%= i.id %> #distance-size").html(result_distance);
+        $("#a<%#= i.id %> #distance-size").html(result_distance);
         //정보 두 번째 줄 끝
         
         //정보 세 번째 줄
@@ -1111,13 +1113,14 @@ $("sortByDistance").click(function(){
         
         
         //정보 세 번째 줄 끝
-        <% counter += 1 %>
-      <% end %>
-      <% end %>
+        <%# counter += 1 %>
+      <%# end %>
+      
     }
   });  
   
 });//거리click 끝
+*/
 
     $('#login').on('show.bs.modal', function () {
    $(this).find('.modal-body').css({

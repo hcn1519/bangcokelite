@@ -7,7 +7,6 @@ class CreateAvgRatingScores < ActiveRecord::Migration
       
       t.float :total_meal_score
       t.float :total_clean_score
-      t.float :total_owner_score
       t.float :total_silence_score
       t.float :total_aircondition_score
       t.float :total_cctv_score

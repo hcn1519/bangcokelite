@@ -56,7 +56,6 @@ class HasukHousesController < ApplicationController
       @avg_score[0].how_many_people_did = 0
       @avg_score[0].total_meal_score =  0
       @avg_score[0].total_clean_score =  0
-      @avg_score[0].total_owner_score =  0
       @avg_score[0].total_silence_score =  0
       @avg_score[0].total_aircondition_score = 0
       @avg_score[0].total_cctv_score = 0

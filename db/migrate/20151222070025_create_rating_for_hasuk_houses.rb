@@ -6,7 +6,6 @@ class CreateRatingForHasukHouses < ActiveRecord::Migration
       
       t.float :meal_score
       t.float :clean_score
-      t.float :owner_score
       t.float :silence_score
       t.float :aircondition_score
       t.float :cctv_score
