@@ -345,7 +345,11 @@
              for (var i = 0; i < data.length; i++){
 
            infoWindow = new google.maps.InfoWindow();
-        
+         if (data[i].hasuk_name != null) {
+             var name = data[i].hasuk_name;
+         } else {
+             var name = "하숙";
+         }
          if (data[i].hasuk_kind == '잠만 자는 방') {
              var hasuk_kind = '잠만';
          } else {
@@ -398,18 +402,18 @@
          '<div class="col-md-8 col-sm-8 col-lg-8" style="padding:0px; padding-left:21px; padding-top:5px;">' +
             '<div class="row" style="margin:0px; padding:0px">' +
             
-               '<div class="col-md-4 col-sm-4 col-xs-4" style="padding:0; font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500; font-family:source-han-sans-korean;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
+               '<div class="col-md-8 col-sm-8 col-xs-8" style="margin-top:3px; padding:0; font-size: 12px;">'+ '<span style="font-size: 13px; font-weight: 500; font-family:source-han-sans-korean;">' + name + '</span>' +
                '</div>'+
-               '<div class="col-md-3 col-sm-3 col-lg-3" style="padding:0; margin-top: 3px;text-align: center;">' +
+               '<div class="col-md-2 col-sm-2 col-lg-2" style="padding:0; margin-top: 3px;text-align: center;">' +
                    '<div id="hasuk_kind_sleep">'+ hasuk_kind + '</div>' +
                '</div>' +
-               '<div class="col-md-3 col-sm-3 col-lg-3" style="padding:0;margin-top: 3px;text-align: center;">' +
+               '<div class="col-md-2 col-sm-2 col-lg-2" style="padding:0;margin-top: 3px;text-align: center;">' +
                    '<div id="hasuk_gender_woman">'+ gender +'</div>' +
                 '</div>' +
             '</div>'+
 
             '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">' + 
-              university + '&nbsp;' + entrance + '&nbsp;'+ '<span>' + data[i].distance_time1 +'분'+ '(' + data[i].distance1 +'m)' + '</span>' + '</div>'+
+              university + '&nbsp;' + entrance + '&nbsp;'+ '<span>' + data[i].distance_time1 +'분'+ '(' +data[i].distance1 +'m)' + '</span>' + '</div>'+
               
               '<div class="row" style="margin:0; font-size:13px; font-family:source-han-sans-korean">'+ subway + '&nbsp;'+ '<span>' + data[i].trans_distance_time1 + '분' +'('+ data[i].trans_distance1 +'m)' + '</span>' + '</div>'+
               
@@ -436,12 +440,12 @@
                  '<div class="col-md-8 col-sm-8 col-xs-8" style="padding:0px; padding-left: 12px; padding-top:5px;">' +
                     '<div class="row" style="margin:0px; padding:0px">' +
                     
-                       '<div class="col-md-4 col-sm-4 col-xs-4" style="padding:0; font-size: 12px;">'+ '<span style="font-size: 18px; font-weight: 500; font-family:source-han-sans-korean;">' + data[i].price_from + '~' + data[i].price_to + '</span>' +
+                       '<div class="col-md-8 col-sm-8 col-xs-8" style="margin-top:3px; padding:0; font-size: 12px;">'+ '<span style="font-size: 13px; font-weight: 500; font-family:source-han-sans-korean;">' + name + '</span>' +
                            '</div>'+
-                           '<div class="col-md-3 col-sm-3 col-lg-3" style="padding:0; margin-top: 3px;text-align: center;">' +
+                           '<div class="col-md-2 col-sm-2 col-lg-2" style="padding:0; margin-top: 3px;text-align: center;">' +
                                '<div id="hasuk_kind_sleep">'+ hasuk_kind + '</div>' +
                            '</div>' +
-                           '<div class="col-md-3 col-sm-3 col-lg-3" style="padding:0; margin-top: 3px;text-align: center;">' +
+                           '<div class="col-md-2 col-sm-2 col-lg-2" style="padding:0; margin-top: 3px;text-align: center;">' +
                                '<div id="hasuk_gender_woman">'+ gender +'</div>' +
                             '</div>' +
                         '</div>'+
@@ -466,7 +470,7 @@
            }
           
 
-        var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);  
+        var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);    
 
               
              var labelKind = ["label1","label2" ,"label3"];
@@ -682,7 +686,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
       
               <!--개별 방 박스 1 시작-->
               
-        <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+        <div class="room col-lg-12 col-md-12 col-sm-12 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
           <% @position_counter += 1 %>
           <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
           <div class="img-responsive thumbnail">
@@ -1143,16 +1147,14 @@ $("sortByDistance").click(function(){
           
           $(".mainbox").removeClass("col-lg-6");
           $(".mainbox").addClass("col-lg-12");
-          $(".room").removeClass("col-lg-6");
-          $(".room").addClass("col-lg-3");
+          
           $(".mainbox").removeClass("col-md-6");
           $(".mainbox").addClass("col-md-12");
-          $(".room").removeClass("col-md-6");
-          $(".room").addClass("col-md-3");
-          $(".room").css("width","25%");
+          
           $(".foldButton").css( "width", "1.5%");
           $(".listbox").css("width", "98.5%");
-
+          $(".roomList").css({'-webkit-column-count': "6", '-moz-column-count': "6", 'column-count': "6"});
+        
         } else  {
           //지도 없는 상태-> 있는 상태
           $("#menu-icon").removeClass("glyphicon-menu-right");
@@ -1163,15 +1165,15 @@ $("sortByDistance").click(function(){
           
           $(".mainbox").removeClass("col-lg-12");
           $(".mainbox").addClass("col-lg-6");
-          $(".room").removeClass("col-lg-3");
-          $(".room").addClass("col-lg-6");
+          
           $(".mainbox").removeClass("col-md-12");
           $(".mainbox").addClass("col-md-6");
-          $(".room").removeClass("col-md-3");
-          $(".room").addClass("col-md-6");            
-          $(".room").css("width", "50%");
+          
           $(".foldButton").css( "width", "3%");
           $(".listbox").css("width", "97%");
+
+          $(".roomList").css({'-webkit-column-count': "3", '-moz-column-count': "3", 'column-count': "3"});
+
         }
       });
       

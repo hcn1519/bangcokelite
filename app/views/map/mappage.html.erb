@@ -1172,7 +1172,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
           <% if c.division =="남문(대흥역)" %>
               <!--개별 방 박스 1 시작-->
               
-                <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+                <div class="room col-lg-12 col-md-12 col-sm-12 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
                   <% @position_counter += 1 %>
                   <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
                   <div class="img-responsive thumbnail">
@@ -1255,7 +1255,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <%# end %>
                         -->
                       </div>
-                      <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size" style="width:100%;">
+                      <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size">
                       
                     </div>
                   
@@ -1391,7 +1391,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
                 <!--개별 방 박스 1 시작-->
               
-                <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+                <div class="room col-lg-12 col-md-12 col-sm-12 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
                   <% @position_counter += 1 %>
                   <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
                   <div class="img-responsive thumbnail">
@@ -1474,7 +1474,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <%# end %>
                         -->
                       </div>
-                      <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size" style="width:100%;">
+                      <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size">
                       
                     </div>
                   
@@ -1610,7 +1610,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
                <!--개별 방 박스 1 시작-->
               
-                <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+                <div class="room col-lg-12 col-md-12 col-sm-12 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
                   <% @position_counter += 1 %>
                   <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
                   <div class="img-responsive thumbnail">
@@ -1693,7 +1693,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <%# end %>
                         -->
                       </div>
-                      <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size" style="width:100%;">
+                      <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size">
                       
                     </div>
                   
@@ -1827,7 +1827,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
                <!--개별 방 박스 1 시작-->
               
-                <div class="room col-lg-6 col-md-6 col-sm-4 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+                <div class="room col-lg-12 col-md-12 col-sm-12 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
                   <% @position_counter += 1 %>
                   <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
                   <div class="img-responsive thumbnail">
@@ -1910,7 +1910,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <%# end %>
                         -->
                       </div>
-                      <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size" style="width:100%;">
+                      <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size">
                       
                     </div>
                   
@@ -2289,16 +2289,14 @@ $("sortByDistance").click(function(){
           
           $(".mainbox").removeClass("col-lg-6");
           $(".mainbox").addClass("col-lg-12");
-          $(".room").removeClass("col-lg-6");
-          $(".room").addClass("col-lg-3");
+          
           $(".mainbox").removeClass("col-md-6");
           $(".mainbox").addClass("col-md-12");
-          $(".room").removeClass("col-md-6");
-          $(".room").addClass("col-md-3");
-          $(".room").css("width","25%");
+          
           $(".foldButton").css( "width", "1.5%");
           $(".listbox").css("width", "98.5%");
-
+          $(".roomList").css({'-webkit-column-count': "6", '-moz-column-count': "6", 'column-count': "6"});
+        
         } else  {
           //지도 없는 상태-> 있는 상태
           $("#menu-icon").removeClass("glyphicon-menu-right");
@@ -2309,15 +2307,15 @@ $("sortByDistance").click(function(){
           
           $(".mainbox").removeClass("col-lg-12");
           $(".mainbox").addClass("col-lg-6");
-          $(".room").removeClass("col-lg-3");
-          $(".room").addClass("col-lg-6");
+          
           $(".mainbox").removeClass("col-md-12");
           $(".mainbox").addClass("col-md-6");
-          $(".room").removeClass("col-md-3");
-          $(".room").addClass("col-md-6");            
-          $(".room").css("width", "50%");
+          
           $(".foldButton").css( "width", "3%");
           $(".listbox").css("width", "97%");
+
+          $(".roomList").css({'-webkit-column-count': "3", '-moz-column-count': "3", 'column-count': "3"});
+
         }
       });
       

@@ -1,7 +1,33 @@
    .col-md-9,.col-lg-9,.col-sm-9,.col-xs-9 {
   padding-left: 0;
 }
+.roomList {
+	-webkit-column-fill: auto;
+	-moz-column-fill: auto;
+	column-fill: auto;
+}
 
+.room {
+	display: inline-block;
+	-webkit-column-break-inside: avoid;
+	-moz-column-break-inside: avoid;
+	column-break-inside: avoid;
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
+}
+
+ .image-size {
+    width:100%;
+    height:auto;
+ }
+.room img {
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 15px;
+	margin-bottom: 5px;
+}
   .gm-style-iw {
   width: 320px !important;
    top: 15px !important;
@@ -24,7 +50,14 @@
     /*사이즈별 화면 조정 */
    
     @media (max-width: 359px) {
-
+.roomList {
+    -webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+	-webkit-column-gap: 5px;
+    -moz-column-gap: 5px;
+    column-gap: 5px;
+}
     .modal-dialog {
       margin:0;
     }
@@ -138,10 +171,6 @@
     }
     
 
-     .image-size {
-        height:9em; 
-        min-height:200px;
-     }
      .image {
        margin:0px;  margin-bottom:5px;
        padding:0px;
@@ -150,7 +179,14 @@
      }
     
     @media (min-width: 360px) {
-    
+.roomList {
+    -webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+	-webkit-column-gap: 5px;
+    -moz-column-gap: 5px;
+    column-gap: 5px;
+}
     .thumbnail-text {
        padding-bottom:8px;
     }
@@ -267,10 +303,7 @@
         font-size:15px;
     }
 
-     .image-size {
-        height:9em; 
-        min-height:240px;
-     }
+   
      .image {
        margin:0px;  margin-bottom:8px;
        padding:0px;
@@ -279,7 +312,14 @@
 }
     @media only screen and (min-device-width : 375px)  {
    /*아이폰 6 셋팅 */
-
+.roomList {
+    -webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+	-webkit-column-gap: 5px;
+    -moz-column-gap: 5px;
+    column-gap: 5px;
+}
        .listbox {
         width:100%;
         overflow-y:scroll;
@@ -306,7 +346,14 @@
     .modal-dialog {
       margin:0;
     }
-    
+.roomList {
+    -webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+	-webkit-column-gap: 5px;
+    -moz-column-gap: 5px;
+    column-gap: 5px;
+}
     .modal-content#modal-size1{
        width:300px;
        left:0%;
@@ -410,17 +457,21 @@
         font-size:13px;
     }
 
-     .image-size {
-        height:9em; 
-        min-height:200px;
-     }
+ 
      .image {
        margin:0px;  margin-bottom:5px;
        padding:0px;
      }
     }
     @media (min-width: 481px) {
-    
+.roomList {
+    -webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+	-webkit-column-gap: 5px;
+    -moz-column-gap: 5px;
+    column-gap: 5px;
+} 
     .modal-dialog {
         position: relative;
         width: auto;
@@ -527,10 +578,7 @@
     #trans-distance span {
         font-size:13px;
     }
-     .image-size {
-        height:9em; 
-        min-height:200px;
-     }
+
      .image {
        margin:0px;  margin-bottom:5px;
        padding:0px;
@@ -539,6 +587,15 @@
     }
     
     @media (min-width: 768px) {
+.roomList {
+    -webkit-column-count: 3;
+	-moz-column-count: 3;
+	column-count: 3;
+	-webkit-column-gap: 0px;
+    -moz-column-gap: 0px;
+    column-gap: 0px;
+}
+
     .thumbnail-text {
        padding-bottom:3px;
     }
@@ -655,10 +712,7 @@
     #trans-distance span {
         font-size:12px;
     }
-     .image-size {
-        height:6.5em; 
-        min-height:100px;
-     }
+
      .image {
        margin:0px;   margin-bottom:5px;
        padding:0px;
@@ -669,7 +723,14 @@
 
     }
      @media (min-width: 832px) {
-       
+.roomList {
+    -webkit-column-count: 3;
+	-moz-column-count: 3;
+	column-count: 3;
+	-webkit-column-gap: 0px;
+    -moz-column-gap: 0px;
+    column-gap: 0px;
+}       
     .thumbnail {
       line-height:1.2;
       margin:5px; 
@@ -707,7 +768,14 @@
     }
    
     @media (min-width: 960px) {
-      
+.roomList {
+    -webkit-column-count: 3;
+	-moz-column-count: 3;
+	column-count: 3;
+	-webkit-column-gap: 0px;
+    -moz-column-gap: 0px;
+    column-gap: 0px;
+}   
     .thumbnail {
       line-height:1.2;
       margin:5px; 
@@ -821,9 +889,7 @@
      #distance-size span{
          font-size:0.7em;
      }
-     .image-size {
-        height:6.5em; 
-     }
+
      .image {
        margin:0px;  margin-bottom:5px;
        padding:0px;
@@ -834,7 +900,14 @@
 
     } 
     @media (min-width: 1050px){
-    
+.roomList {
+    -webkit-column-count: 3;
+	-moz-column-count: 3;
+	column-count: 3;
+	-webkit-column-gap: 0px;
+    -moz-column-gap: 0px;
+    column-gap: 0px;
+}   
     .thumbnail {
       line-height:1.2;
       margin:5px; 
@@ -933,10 +1006,7 @@
     #trans-distance span {
         font-size:13px;
     }
-     .image-size {
-        height:9em; 
-        min-height:140px;
-     }
+
      .image {
        margin:0px;  margin-bottom:5px;
        padding:0px;
@@ -948,7 +1018,14 @@
      
     }
     @media (min-width: 1135px){
-     
+.roomList {
+    -webkit-column-count: 3;
+	-moz-column-count: 3;
+	column-count: 3;
+	-webkit-column-gap: 0px;
+    -moz-column-gap: 0px;
+    column-gap: 0px;
+}  
      /*노트북 크기 */
      .listbox {
         width:97%;
