@@ -1,0 +1,140 @@
+<div class="modal fade" id="ratingform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        
+      </div>
+      <div class="modal-body">
+<% @review_index = ["식사", "위생", "방음", "난방", "보안", "가격"] %>
+<% @review_default = ["먹을 만함","벌레 가끔 보임/공동시설 깨끗한편","옆방에서 매너만 지켜주면 괜찮음", "그럭저럭 지낼 만함","항목 없음","가격 대비 괜찮음"] %>
+<% @avg_arr= [@avg_score[0].how_many_people_did, @avg_score[0].total_meal_score,  @avg_score[0].total_clean_score, @avg_score[0].total_silence_score, @avg_score[0].total_aircondition_score, @avg_score[0].total_cctv_score, @avg_score[0].total_score] %>                    
+          
+<div class="row rate_section">
+
+<div class="col-md-7 col-sm-7 col-xs-12">
+<!-- 평가하기 구간-->
+<div class="inline green" style="display:inline-block; width:7px; height:22px; background-color:#2ECC71; margin-bottom:-2px;"></div><div class="hasuk_name" style="margin-top: 15px; display:inline-block">&nbsp평가 남기기</div>
+
+<div class="already-done" style="position: absolute; display: none; z-index: 5;top: 50%;left: 35%;">
+    이미 평가했습니다.
+</div>
+<div class="row my_rate" style="margin-top:10px">
+    <%= form_tag rating_create_path, method: "post" do %>
+      
+      <%= hidden_field_tag("hasuk_house_id", @hasuk_house.id ) %>
+    <% for i in 1..6 %>
+    <div class="col-md-6 col-sm-6 col-xs-12 rate_height">
+      <div id="s<%= i %>" class="review_list br-wrapper br-theme-fontawesome-stars" style="margin-top:10px">
+      <div class="row">
+        <div class="col-sm-2 col-xs-2"><%= @review_index[i-1] %></div>
+        
+        <div class="col-sm-10 col-xs-10" style="padding-right:0">
+          <%= select_tag "review#{i}", options_for_select({"F" =>0, "D" => 1, "C" => 2,"C+" => 2.3,"B-" =>2.7, "B" =>3,"B+"  =>3.3,"A-"=>3.7,"A" => 4, "A+" =>4.3}, 3) %>
+        </div>
+        
+      </div>
+        <div class="row">
+          <div class="rate_description">
+            <span id="rate-description<%= i%>" style="font-size:14px; color:#ec796c">
+              <%= @review_default[i-1] %>
+            </span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <% if i == 6 %>
+      <div class="col-md-12 col-xs-12 col-sm-12">
+        <div style="padding-right:20px;"><hr></div>
+      </div>
+    <% end %>
+    <% end %><!--for end -->
+    <div class="col-md-6 col-sm-6 col-xs-12">
+    <% if user_signed_in? %>
+      <%= submit_tag "평가 제출", :class => "btn btn-primary btn-lg", style:"display:block; font-size: 15px; width: 80%;"%>
+    <% else %>
+      <%= link_to "평가 제출", '#login', :class => "btn btn-primary btn-lg", style:"display:block; font-size: 15px; width: 80%;", 'data-toggle': "modal" %>  
+    <% end %>
+    </div>
+    <% end %><!-- form tag -->
+    
+</div>
+</div>      
+</div>
+        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+<% for i in 1..6 %>
+  <% if i == 1 %>
+  //식사, 0이 a구간, 3이 f구간
+    <% @review = Array.new %>
+    <% @review = ["맛있음", "먹을 만함", "반찬이 부실해 먹을 게 없음","언제부턴가 밥을 안 먹게 됨"] %>
+  <% elsif i == 2 %>
+  //위생, 0이 a구간, 3이 f구간
+    <% @review = Array.new %>
+    <% @review = ["벌레 본 적 없음/공동시설 위생 굿","벌레 가끔 보임/공동시설 깨끗한편","벌레 자주 보임/공동시설 비위생적","바퀴벌레랑 동거"] %>
+  
+  <% elsif i == 3 %>
+  //방음, 0이 a구간, 3이 f구간
+    <% @review = Array.new %>
+    <% @review = ["방음 잘 됨", "옆방에서 매너만 지켜주면 괜찮음", "옆방 통화 선명하게 들림", "자체 방음재 설치 필요"] %>
+  <% elsif i == 4 %>
+  //보안, 0이 a구간, 3이 f구간
+    <% @review = Array.new %>
+    <% @review = ["여름에 시원 겨울에 따뜻", "그럭저럭 지낼 만함","더(추)운 거 각오하고 가야함","냉난방 1도 안 해줌ㅜ"] %>
+    
+  <% elsif i == 5 %>
+  //난방, 0이 a구간, 3이 f구간
+    <% @review = Array.new %>
+    <% @review = ["항목 없음","항목 없음","항목 없음","항목 없음"] %>
+  <% elsif i == 6 %>
+  //총 평가, 0이 a구간, 3이 f구간
+    <% @review = Array.new %>
+    <% @review = ["가격도 저렴한데 조건도 좋음","가격 대비 괜찮음","여기 안 갔으면 좋겠는데… 방이 없음 어쩔 수 없지…","절대 가지마"] %>
+    
+
+  <% end %>
+  $(function() {
+      $('#review<%= i %>').barrating({
+        theme: 'bars-1to10',
+        initialRating: 3
+      });
+      $("#s<%= i %> a").mouseover(function () {
+        var score = $("#s<%= i %> .br-current-rating").text();
+        if (score == "A+" || score == "A" || score == "A-") {
+          $('#rate-description<%= i %>').text("<%= @review[0] %>");
+        } else if (score == "B+" || score == "B" || score == "B-") {
+          $('#rate-description<%= i %>').text("<%= @review[1] %>");
+        } else if (score == "C+" || score == "C") {
+          $('#rate-description<%= i %>').text("<%= @review[2] %>");
+        } else {
+          $('#rate-description<%= i %>').text("<%= @review[3] %>");
+        } 
+      });
+  });
+<% end %>
+</script>
+<script>
+  $(".vote").click(function(){
+      if($(this).hasClass("btn-danger2") == true) {
+        $(this).removeClass("btn-danger2");
+        $(this).addClass("btn-danger");
+        $(".glyphicon-heart").css("color", "#e74c4c");
+        $("#sizeoflike").css("color", "#e74c4c");
+      } else if ($(this).hasClass("btn-danger") == true){
+        $(this).removeClass("btn-danger");
+        $(this).addClass("btn-danger2");
+        $(".glyphicon-heart").css("color", "#888888");
+        $("#sizeoflike").css("color", "#888888");
+      }
+     });
+</script>
