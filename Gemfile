@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'chartkick'
 gem 'figaro'
 gem 'therubyracer', platform: :ruby
 gem 'passenger'

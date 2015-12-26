@@ -1,18 +1,15 @@
 <div class="modal fade" id="ratingform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog rating-form" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        
-      </div>
+      
       <div class="modal-body">
 <% @review_index = ["식사", "위생", "방음", "난방", "보안", "가격"] %>
 <% @review_default = ["먹을 만함","벌레 가끔 보임/공동시설 깨끗한편","옆방에서 매너만 지켜주면 괜찮음", "그럭저럭 지낼 만함","항목 없음","가격 대비 괜찮음"] %>
-<% @avg_arr= [@avg_score[0].how_many_people_did, @avg_score[0].total_meal_score,  @avg_score[0].total_clean_score, @avg_score[0].total_silence_score, @avg_score[0].total_aircondition_score, @avg_score[0].total_cctv_score, @avg_score[0].total_score] %>                    
-          
+<% @avg_arr= [@avg_score[0].how_many_people_did, @avg_score[0].total_meal_score,  @avg_score[0].total_clean_score, @avg_score[0].total_silence_score, @avg_score[0].total_aircondition_score, @avg_score[0].total_cctv_score, @avg_score[0].total_score] %>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>          
 <div class="row rate_section">
 
-<div class="col-md-7 col-sm-7 col-xs-12">
+<div class="col-md-12 col-sm-12 col-xs-12">
 <!-- 평가하기 구간-->
 <div class="inline green" style="display:inline-block; width:7px; height:22px; background-color:#2ECC71; margin-bottom:-2px;"></div><div class="hasuk_name" style="margin-top: 15px; display:inline-block">&nbsp평가 남기기</div>
 

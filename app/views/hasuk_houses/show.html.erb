@@ -4,6 +4,7 @@
  <%= stylesheet_link_tag 'bars-1to10', media: 'all', 'data-turbolinks-track' => true %>
  <%= javascript_include_tag 'jquery.bxslider.min', 'data-turbolinks-track' => true %>
  <%= javascript_include_tag 'jquery.barrating.min', 'data-turbolinks-track' => true %>
+ <%= javascript_include_tag "//www.google.com/jsapi", "chartkick", 'data-turbolinks-track' => true %>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <style>
 
@@ -59,7 +60,9 @@ body, main {
 .kok {
     color: #888888;
     font-size: 14px;
-    padding-top: 19px;
+    padding-top: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 hr {
     margin-top: 10px;
@@ -155,6 +158,9 @@ hr {
 
 @media (max-width: 767px) {
 
+.rating-form {
+  width: 100%;
+}
 .rate_description {
    margin-left: 16.66666667%;
    padding-left:30px;
@@ -238,10 +244,6 @@ td {
     margin-bottom: 30px;
 }
 
-.col-xs-4 {
-  width: 80%;  
-} 
-
 .rate_section {
   margin-top: 15px;  
 }
@@ -253,13 +255,15 @@ td {
 }
 
 @media(min-width:768px) {
-
+.rating-form {
+  width: 80%;
+}
 .rate_height {
   margin-bottom:10px;
 }
 .rate_description {
   text-align: center;  
-  margin-left: -30px;
+  margin-right: 70px;
 }
 
 .br-theme-bars-1to10 .br-widget a {
@@ -362,7 +366,9 @@ td {
 }
 
 @media(min-width: 1200px) {
-
+.rating-form {
+  width: 50%;
+}
 }
 
 .info_hr {
@@ -422,9 +428,6 @@ td {
 }
 
 
-.img-slider-container a img {
-   
-}
 .img-slider-container a.active img {
     border: 2px solid #fcb514;
 }
@@ -615,18 +618,10 @@ td {
                     <div class="info_list col-xs-2">전화</div>
                     <div class="info_content col-xs-10">
                       <% if @hasuk_house.celPhone != nil %>
-                        <% if @hasuk_house.contact_memo != nil %>
-                          <div class="row"><%= @hasuk_house.celPhone %>(<%= @hasuk_house.contact_memo %>)</div>
-                        <% else %>
                           <div class="row"><%= @hasuk_house.celPhone %></div>
-                        <% end %>
                       <% else %>
                         <% if @hasuk_house.telPhone != nil %>
-                          <% if @hasuk_house.contact_memo != nil %>
-                            <div class="row"><%= @hasuk_house.telPhone %>(<%= @hasuk_house.contact_memo %>)</div>
-                          <% else %>
                             <div class="row"><%= @hasuk_house.telPhone %></div>
-                          <% end %>
                         <% else %>
                           -
                         <% end %>
@@ -832,38 +827,98 @@ td {
     
                   <!-- 전체 row-->
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="inline green" style="display:inline-block; width:7px; height:22px; background-color:#2ECC71; margin-bottom:-2px;"></div><div class="hasuk_name" style="margin-top: 15px; display:inline-block">&nbsp;리뷰<span style="font-size:15px">(참여: <%= @avg_arr[0]%>명)</span></div>
+        <!--<div class="inline green" style="display:inline-block; width:7px; height:22px; background-color:#2ECC71; margin-bottom:-2px;"></div><div class="hasuk_name" style="display:inline-block">&nbsp;리뷰<span style="font-size:15px">(참여: <%#= @avg_arr[0]%>명)</span></div>
+        -->
         <!-- 평점 나오는 구간-->
-        <div class="table-responsive" style="margin-top:10px">
+        <% unless @avg_score[0].how_many_people_did == 0 %>
+          <%#= bar_chart [["식사", @avg_score[0].total_meal_score.to_f], ["위생", @avg_score[0].total_clean_score.to_f],["방음", @avg_score[0].total_silence_score.to_f],["난방", @avg_score[0].total_aircondition_score.to_f], ["보안", @avg_score[0].total_cctv_score], ["가격", @avg_score[0].total_score]], width: "100%", max: 4.3, colors: ["#2ECC71"]  %>
+             <script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var score = [
+        <%= @avg_score[0].total_meal_score %>, 
+        <%= @avg_score[0].total_clean_score %>,
+        <%= @avg_score[0].total_silence_score %>,
+        <%= @avg_score[0].total_aircondition_score %>,
+        <%= @avg_score[0].total_cctv_score %>,
+        <%= @avg_score[0].total_score %>
+        ];
+      var colorset = [];
+      
+      for(var k=0; k<=5; k++){
+        if(score[k] >= 3.7){
+          colorset[k] = '#3498DB';
+        } else if (score[k] >= 2.7 && score[k] < 3.7) {
+          colorset[k] = '#2ECC71';
+        } else if (score[k] >= 2.0 && score[k] < 2.7) {
+          colorset[k] = '#E67E22';
+        } else {
+          colorset[k] = '#C0392B';
+        }
+      }
+      var data = google.visualization.arrayToDataTable([
+        ["Element", "평점", {role: "style"}],
+        ["식사", <%= @avg_score[0].total_meal_score %>, colorset[0]],
+        ["위생", <%= @avg_score[0].total_clean_score %>, colorset[1]],
+        ["방음", <%= @avg_score[0].total_silence_score %>, colorset[2]],
+        ["난방", <%= @avg_score[0].total_aircondition_score %>, colorset[3]],
+        ["보안", <%= @avg_score[0].total_cctv_score %>, colorset[4]],
+        ["가격", <%= @avg_score[0].total_score %>, colorset[5]]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        fontName: 'source-han-sans-korean', 
+        fontSize: 13,
+        hAxis: {
+            format: 'short',
+            viewWindow: {
+              min: 0,
+              max: 4.3
+            }
+        },
+        title: "리뷰(참여<%= @avg_score[0].how_many_people_did %>명)",
+        width: "100%",
+        height: 237,
+        bar: {groupWidth: "70%"},
+        legend: { position: "none"},
+        annotations: {
+          textStyle: {
+            fontName: 'source-han-sans-korean',
+            fontSize: 13,
+            color: '#34495e'
+          }
+        }
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("barchart"));
+      chart.draw(view, options);
+  }
+  </script>
+        <div id="barchart" style="width: 100%; height: auto;"></div>                   
+        <% else %>
+        <!--평가 없을 경우 -->
+          <table style="width: 100%; height: 237px;">
+            <tr>
+               <td style="text-align: center; vertical-align: middle;">
+                <p>아직 평가가 없습니다.</p>
+                <p>평가를 남겨주세요.</p>
+               </td>
+            </tr>
+          </table>
+        <% end %>
+      <!--
+      <div class="table-responsive" style="margin-top:10px">
           <table class="table" style="width:100%;">
-            <tr><!-- 첫번째 줄-->
-              <th class="table1">항목</th>
-              <th class="table2">점수</th>
-            </tr><!-- 첫번째 줄-->
-            <% for i in 1..6 %>
-              
-              <% unless i == 6 %>
-                <tr><!-- 두 번째 줄-->
-                  <td class="table1"><%= @review_index[i-1] %></td>
-      <% if @avg_arr[0] == 0 %>
-            <% @result = 0 %>
-      <% else %>
-            <% @result = (@avg_arr[i]/ @avg_arr[0]).round(1) %>
-      <% end %>
-                <td class="table2"><%= @result %>/4.3</td>
-                </tr><!-- 두 번째 줄-->
-              <% else %>
-                <tr><!-- 두 번째 줄-->
-      <% if @avg_arr[0] == 0 %>
-            <% @result = 0 %>
-      <% else %>
-            <% @result = (@avg_arr[i]/ @avg_arr[0]).round(1) %>
-      <% end %>          
-                  <td style="font-size:18px; font-weight:600;"><%= @review_index[i-1] %></td>
-                  <td class="table2" style="font-size:18px; font-weight:600"><%= @result %>/4.3</td>
-                </tr><!-- 두 번째 줄-->
-              <% end %>
-            <% end %>
+            
+            
                 <!--
                 <tr>  
                   <td style="color:#82888a; border-top:0; padding-top:15px; padding-bottom:20px; font-size:14px" colspan="2">
@@ -902,15 +957,15 @@ td {
                   </div>
                 </td>
                 </tr>
-                총점 설명 섹션-->
+                
           </table>
-        </div>
+        </div>총점 설명 섹션-->
       </div>
                 <!--리뷰 끝-->
                 <div class="info_hr"><hr></div>
                 <div class="row" style="margin-top:10px; margin-bottom:0; padding-right:15px; padding-left:15px;">
-                    <div class="col-xs-6 kok">
-                        조회수 <%= @page_view_count %> &nbsp&nbsp&nbsp 
+                    <div class="col-xs-4 kok">
+                        조회수 <%= @page_view_count %>&nbsp;
                         <% if user_signed_in? %> 
                           <% if current_user.favorites.include?(@hasuk_house) != true %>
                             <span class="glyphicon glyphicon-heart" style="color:none;" aria-hidden="true"></span>
@@ -927,32 +982,29 @@ td {
                           <!--로그인을 안함 -->
                         <% end %>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-8" style="padding:0px">
                         
                     <% if user_signed_in? %> 
-                      <%= link_to "평가 남기기", '#ratingform', :class => "btn btn-primary btn-md", style:"font-size: 15px; width: 80%; float: right;", 'data-toggle': "modal" %>  
                       <% if current_user.favorites.include?(@hasuk_house) != true %>
-                        <%= link_to "콕하기!", favorite_hasuk_house_path(@hasuk_house, type: "favorite"),:class => "vote btn btn-danger2 btn-md", style:"display:block; font-size: 15px; width: 80%; float: right;", method: :put, :remote => true, data: { toggle_text: '콕했어요!', toggle_href: favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), id: @hasuk_house.id } %>
+                        <%= link_to "콕하기!", favorite_hasuk_house_path(@hasuk_house, type: "favorite"),:class => "vote btn btn-danger2 btn-md", style:"border: 1px solid #E74C3C; display:block; font-size: 15px; float: left; width:44%", method: :put, :remote => true, data: { toggle_text: '콕했어요!', toggle_href: favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), id: @hasuk_house.id } %>
                       <% else %>
-                        <%= link_to "콕했어요!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), :class => "vote btn btn-danger btn-md", style:"display:block; font-size: 15px; width: 80%; float: right;", method: :put, :remote => true, data: { toggle_text: '콕하기!', toggle_href: favorite_hasuk_house_path(@hasuk_house, type: "favorite"), id: @hasuk_house.id } %>                                
+                        <%= link_to "콕했어요!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), :class => "vote btn btn-danger btn-md", style:"border: 1px solid #E74C3C; display:block; font-size: 15px; float: left; width:44%", method: :put, :remote => true, data: { toggle_text: '콕하기!', toggle_href: favorite_hasuk_house_path(@hasuk_house, type: "favorite"), id: @hasuk_house.id } %>
                       <% end %>
+                      <%= link_to "평가 남기기", '#ratingform', :class => "btn btn-success btn-md", style:"border: 1px solid #2ECC71; font-size: 15px; float: right; width:50%", 'data-toggle': "modal" %>  
                     <% else %>
-                      <%= link_to "콕하기!", '#login', :class => "btn btn-danger2 btn-md", style:"font-size: 15px; width: 80%; float: right;", 'data-toggle': "modal" %>  
-                      <%= link_to "평가 남기기", '#login', :class => "btn btn-primary btn-md", style:"font-size: 15px; width: 80%; float: right;", 'data-toggle': "modal" %>  
+                      <%= link_to "콕하기!", '#login', :class => "btn btn-danger2 btn-md", style:"border: 1px solid #E74C3C; font-size: 15px; float: left; width:44%", 'data-toggle': "modal" %>  
+                      <%= link_to "평가 남기기", '#login', :class => "btn btn-success btn-md", style:"border: 1px solid #2ECC71; font-size: 15px; float: right; widht:50%", 'data-toggle': "modal" %>  
                     <% end %>
                     
                     </div>
                 </div>
-                <div class="row">
-                </div> 
             </div>
         </div>
     </div> 
-     
+
+    
    
-    
-    
-        <!-- 리뷰 타이틀-->
+
     
 </div>    
 
@@ -993,58 +1045,6 @@ td {
 <% end %>
 </script>
 
-<script>
-
-<% for i in 1..6 %>
-  <% if i == 1 %>
-  //식사, 0이 a구간, 3이 f구간
-    <% @review = Array.new %>
-    <% @review = ["맛있음", "먹을 만함", "반찬이 부실해 먹을 게 없음","언제부턴가 밥을 안 먹게 됨"] %>
-  <% elsif i == 2 %>
-  //위생, 0이 a구간, 3이 f구간
-    <% @review = Array.new %>
-    <% @review = ["벌레 본 적 없음/공동시설 위생 굿","벌레 가끔 보임/공동시설 깨끗한편","벌레 자주 보임/공동시설 비위생적","바퀴벌레랑 동거"] %>
-  
-  <% elsif i == 3 %>
-  //방음, 0이 a구간, 3이 f구간
-    <% @review = Array.new %>
-    <% @review = ["방음 잘 됨", "옆방에서 매너만 지켜주면 괜찮음", "옆방 통화 선명하게 들림", "자체 방음재 설치 필요"] %>
-  <% elsif i == 4 %>
-  //보안, 0이 a구간, 3이 f구간
-    <% @review = Array.new %>
-    <% @review = ["여름에 시원 겨울에 따뜻", "그럭저럭 지낼 만함","더(추)운 거 각오하고 가야함","냉난방 1도 안 해줌ㅜ"] %>
-    
-  <% elsif i == 5 %>
-  //난방, 0이 a구간, 3이 f구간
-    <% @review = Array.new %>
-    <% @review = ["항목 없음","항목 없음","항목 없음","항목 없음"] %>
-  <% elsif i == 6 %>
-  //총 평가, 0이 a구간, 3이 f구간
-    <% @review = Array.new %>
-    <% @review = ["가격도 저렴한데 조건도 좋음","가격 대비 괜찮음","여기 안 갔으면 좋겠는데… 방이 없음 어쩔 수 없지…","절대 가지마"] %>
-    
-
-  <% end %>
-  $(function() {
-      $('#review<%= i %>').barrating({
-        theme: 'bars-1to10',
-        initialRating: 3
-      });
-      $("#s<%= i %> a").mouseover(function () {
-        var score = $("#s<%= i %> .br-current-rating").text();
-        if (score == "A+" || score == "A" || score == "A-") {
-          $('#rate-description<%= i %>').text("<%= @review[0] %>");
-        } else if (score == "B+" || score == "B" || score == "B-") {
-          $('#rate-description<%= i %>').text("<%= @review[1] %>");
-        } else if (score == "C+" || score == "C") {
-          $('#rate-description<%= i %>').text("<%= @review[2] %>");
-        } else {
-          $('#rate-description<%= i %>').text("<%= @review[3] %>");
-        } 
-      });
-  });
-<% end %>
-</script>
 <script>
   $(".vote").click(function(){
       if($(this).hasClass("btn-danger2") == true) {
