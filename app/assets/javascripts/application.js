@@ -17,6 +17,7 @@
 //= require jquery.easing.min
 //= require index_effect
 //= require jquery.barrating.min
-
+//= require jsapi
+//= require chartkick
 
 //= require_tree .

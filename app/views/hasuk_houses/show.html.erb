@@ -831,77 +831,77 @@ td {
         -->
         <!-- 평점 나오는 구간-->
         <% unless @avg_score[0].how_many_people_did == 0 %>
-          <%#= bar_chart [["식사", @avg_score[0].total_meal_score.to_f], ["위생", @avg_score[0].total_clean_score.to_f],["방음", @avg_score[0].total_silence_score.to_f],["난방", @avg_score[0].total_aircondition_score.to_f], ["보안", @avg_score[0].total_cctv_score], ["가격", @avg_score[0].total_score]], width: "100%", max: 4.3, colors: ["#2ECC71"]  %>
-             <script type="text/javascript">
-    google.load("visualization", "1", {packages:["corechart"]});
-    google.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var score = [
-        <%= @avg_score[0].total_meal_score %>, 
-        <%= @avg_score[0].total_clean_score %>,
-        <%= @avg_score[0].total_silence_score %>,
-        <%= @avg_score[0].total_aircondition_score %>,
-        <%= @avg_score[0].total_cctv_score %>,
-        <%= @avg_score[0].total_score %>
-        ];
-      var colorset = [];
-      
-      for(var k=0; k<=5; k++){
-        if(score[k] >= 3.7){
-          colorset[k] = '#3498DB';
-        } else if (score[k] >= 2.7 && score[k] < 3.7) {
-          colorset[k] = '#2ECC71';
-        } else if (score[k] >= 2.0 && score[k] < 2.7) {
-          colorset[k] = '#E67E22';
-        } else {
-          colorset[k] = '#C0392B';
-        }
-      }
-      var data = google.visualization.arrayToDataTable([
-        ["Element", "평점", {role: "style"}],
-        ["식사", <%= @avg_score[0].total_meal_score %>, colorset[0]],
-        ["위생", <%= @avg_score[0].total_clean_score %>, colorset[1]],
-        ["방음", <%= @avg_score[0].total_silence_score %>, colorset[2]],
-        ["난방", <%= @avg_score[0].total_aircondition_score %>, colorset[3]],
-        ["보안", <%= @avg_score[0].total_cctv_score %>, colorset[4]],
-        ["가격", <%= @avg_score[0].total_score %>, colorset[5]]
-      ]);
-
-      var view = new google.visualization.DataView(data);
-      view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" },
-                       2]);
-
-      var options = {
-        fontName: 'source-han-sans-korean', 
-        fontSize: 13,
-        hAxis: {
-            format: 'short',
-            viewWindow: {
-              min: 0,
-              max: 4.3
+        
+        <script type="text/javascript">
+          google.load("visualization", "1", {packages:["corechart"]});
+          google.setOnLoadCallback(drawChart);
+          function drawChart() {
+            var score = [
+              <%= @avg_score[0].total_meal_score %>, 
+              <%= @avg_score[0].total_clean_score %>,
+              <%= @avg_score[0].total_silence_score %>,
+              <%= @avg_score[0].total_aircondition_score %>,
+              <%= @avg_score[0].total_cctv_score %>,
+              <%= @avg_score[0].total_score %>
+              ];
+            var colorset = [];
+            
+            for(var k=0; k<=5; k++){
+              if(score[k] >= 3.7){
+                colorset[k] = '#3498DB';
+              } else if (score[k] >= 2.7 && score[k] < 3.7) {
+                colorset[k] = '#2ECC71';
+              } else if (score[k] >= 2.0 && score[k] < 2.7) {
+                colorset[k] = '#E67E22';
+              } else {
+                colorset[k] = '#C0392B';
+              }
             }
-        },
-        title: "리뷰(참여<%= @avg_score[0].how_many_people_did %>명)",
-        width: "100%",
-        height: 237,
-        bar: {groupWidth: "70%"},
-        legend: { position: "none"},
-        annotations: {
-          textStyle: {
-            fontName: 'source-han-sans-korean',
-            fontSize: 13,
-            color: '#34495e'
-          }
+            var data = google.visualization.arrayToDataTable([
+              ["Element", "평점", {role: "style"}],
+              ["식사", <%= @avg_score[0].total_meal_score %>, colorset[0]],
+              ["위생", <%= @avg_score[0].total_clean_score %>, colorset[1]],
+              ["방음", <%= @avg_score[0].total_silence_score %>, colorset[2]],
+              ["난방", <%= @avg_score[0].total_aircondition_score %>, colorset[3]],
+              ["보안", <%= @avg_score[0].total_cctv_score %>, colorset[4]],
+              ["가격", <%= @avg_score[0].total_score %>, colorset[5]]
+            ]);
+      
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                             { calc: "stringify",
+                               sourceColumn: 1,
+                               type: "string",
+                               role: "annotation" },
+                             2]);
+      
+            var options = {
+              fontName: 'source-han-sans-korean', 
+              fontSize: 13,
+              hAxis: {
+                  format: 'short',
+                  viewWindow: {
+                    min: 0,
+                    max: 4.3
+                  }
+              },
+              title: "리뷰(참여<%= @avg_score[0].how_many_people_did %>명)",
+              width: "100%",
+              height: 237,
+              bar: {groupWidth: "70%"},
+              legend: { position: "none"},
+              annotations: {
+                textStyle: {
+                  fontName: 'source-han-sans-korean',
+                  fontSize: 13,
+                  color: '#34495e'
+                }
+              }
+            };
+            var chart = new google.visualization.BarChart(document.getElementById("barchart"));
+            chart.draw(view, options);
         }
-      };
-      var chart = new google.visualization.BarChart(document.getElementById("barchart"));
-      chart.draw(view, options);
-  }
-  </script>
+      </script>
         <div id="barchart" style="width: 100%; height: auto;"></div>                   
         <% else %>
         <!--평가 없을 경우 -->
