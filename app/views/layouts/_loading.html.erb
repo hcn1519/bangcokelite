@@ -1,0 +1,21 @@
+<style type="text/css">
+.se-pre-con {
+  	position: fixed;
+  	left: 0px;
+  	top: 0px;
+  	width: 100%;
+  	height: 100%;
+  	z-index: 9999;
+  	background: url(/images/loading/Preloader_2.gif) center no-repeat #fff;
+  	
+  }
+</style>
+<div class="se-pre-con"></div>
+
+<script>
+  $(window).load(function() {
+  	// Animate loader off screen
+  	  $(".se-pre-con").fadeOut("slow");
+    });
+
+</script>
