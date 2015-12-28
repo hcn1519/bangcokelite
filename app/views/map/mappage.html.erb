@@ -434,7 +434,7 @@
        '<div class="row" style="margin:0px">'+
        
          '<div class="col-md-4 col-sm-4 col-lg-4" style="padding:5px">' +
-           '<img src="'+ data[i].room_img1.url + '"style="width:100px; height:75px;" />' +
+           '<img src="'+ data[i].main_img.url + '"style="width:100px; height:75px;" />' +
            '</div>'+
         //이미지 부분
         
@@ -473,7 +473,7 @@
                '<div class="row" style="margin:0px">'+
 
                  '<div class="col-md-4 col-sm-4 col-xs-4" style="padding:5px; padding-right:20px">' +
-                     '<img src="'+ data[i].room_img1.url + '"style="width:100px; height:75px;" />' +
+                     '<img src="'+ data[i].main_img.url + '"style="width:100px; height:75px;" />' +
                    '</div>'+
                    
                  '<div class="col-md-8 col-sm-8 col-xs-8" style="padding:0px; padding-left: 12px; padding-top:5px;">' +
@@ -1255,7 +1255,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <%# end %>
                         -->
                       </div>
-                      <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size">
+                      <%#= c.main_img.url %><img src="<%= c.main_img %>" alt="이미지 없음" class="image-size">
                       
                     </div>
                   
@@ -1474,7 +1474,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <%# end %>
                         -->
                       </div>
-                      <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size">
+                      <%#= c.main_img.url %><img src="<%= c.main_img %>" alt="이미지 없음" class="image-size">
                       
                     </div>
                   
@@ -1693,7 +1693,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <%# end %>
                         -->
                       </div>
-                      <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size">
+                      <%#= c.main_img.url %><img src="<%= c.main_img %>" alt="이미지 없음" class="image-size">
                       
                     </div>
                   
@@ -1910,7 +1910,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <%# end %>
                         -->
                       </div>
-                      <%#= c.room_img1.url %><img src="<%= c.room_img1 %>" alt="이미지 없음" class="image-size">
+                      <%#= c.main_img.url %><img src="<%= c.main_img %>" alt="이미지 없음" class="image-size">
                       
                     </div>
                   
@@ -2089,7 +2089,7 @@ $("#sortByPrice").click(function(){
         $("#a<%#= i.id %> #nameOfhasuk > p").text('<%#= i.hasuk_name %>');
         
         
-        $("#a<%#= i.id %> .image-size").attr("src", "<%#= i.room_img1 %>");
+        $("#a<%#= i.id %> .image-size").attr("src", "<%#= i.main_img %>");
         //이미지 라인 끝
         
         //정보 첫 번째 줄
@@ -2197,7 +2197,7 @@ $("sortByDistance").click(function(){
         
         
         
-        $("#a<%#= i.id %> .image-size").attr("src", "<%#= i.room_img1 %>");
+        $("#a<%#= i.id %> .image-size").attr("src", "<%#= i.main_img %>");
         //이미지 라인 끝
         
         //정보 첫 번째 줄

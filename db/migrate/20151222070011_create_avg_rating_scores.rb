@@ -11,6 +11,7 @@ class CreateAvgRatingScores < ActiveRecord::Migration
       t.float :total_aircondition_score
       t.float :total_cctv_score
       t.float :total_score
+      t.float :all_score
       
       t.timestamps null: false
     end

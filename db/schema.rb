@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151222070025) do
+ActiveRecord::Schema.define(version: 20151228061348) do
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer  "hasuk_house_id"
+    t.integer  "user_id"
+    t.string   "img"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "attachments", ["hasuk_house_id"], name: "index_attachments_on_hasuk_house_id"
+  add_index "attachments", ["user_id"], name: "index_attachments_on_user_id"
 
   create_table "avg_rating_scores", force: :cascade do |t|
     t.integer  "hasuk_house_id"
@@ -22,6 +33,7 @@ ActiveRecord::Schema.define(version: 20151222070025) do
     t.float    "total_aircondition_score"
     t.float    "total_cctv_score"
     t.float    "total_score"
+    t.float    "all_score"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
@@ -75,23 +87,7 @@ ActiveRecord::Schema.define(version: 20151222070025) do
     t.integer  "trans_distance1"
     t.integer  "trans_distance_time2"
     t.integer  "trans_distance2"
-    t.string   "room_img1"
-    t.string   "room_img2"
-    t.string   "room_img3"
-    t.string   "room_img4"
-    t.string   "room_img5"
-    t.string   "room_img6"
-    t.string   "room_img7"
-    t.string   "room_img8"
-    t.string   "common_img1"
-    t.string   "common_img2"
-    t.string   "common_img3"
-    t.string   "common_img4"
-    t.string   "meal_img1"
-    t.string   "meal_img2"
-    t.string   "meal_img3"
-    t.string   "meal_img4"
-    t.integer  "hasuk_house_viewcount"
+    t.string   "main_img"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
   end
@@ -101,11 +97,12 @@ ActiveRecord::Schema.define(version: 20151222070025) do
     t.integer  "avg_rating_score_id"
     t.float    "meal_score"
     t.float    "clean_score"
-    t.float    "owner_score"
     t.float    "silence_score"
     t.float    "aircondition_score"
     t.float    "cctv_score"
     t.float    "total_score"
+    t.float    "all_score"
+    t.text     "comment"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end

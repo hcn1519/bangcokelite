@@ -73,7 +73,7 @@ HasukHouse.create(
     
     big_deposit: 100,
     admin_fee: true,
-    :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha1.jpg")),
+    :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha1.jpg")),
      
     )
 
@@ -119,7 +119,7 @@ HasukHouse.create(
      
      big_deposit: 200,
     admin_fee: true, 
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha2.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha2.jpg")),
      
      )
     
@@ -162,7 +162,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha3.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha3.jpg")),
      
      )
 
@@ -205,7 +205,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-    :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha4.jpg")),
+    :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha4.jpg")),
      
      )
 
@@ -251,7 +251,7 @@ HasukHouse.create(
     
     big_deposit: 100,
     admin_fee: true,  
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha5.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha5.jpg")),
      
     )
 
@@ -295,7 +295,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha6.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha6.jpg")),
     
      )
     
@@ -339,7 +339,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha7.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha7.jpg")),
      
      )
 
@@ -383,7 +383,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha8.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha8.jpg")),
      
      )
 
@@ -426,7 +426,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha9.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha9.jpg")),
      
      )
 
@@ -469,7 +469,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha10.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha10.jpg")),
      
      )
 #연세대 씨드
@@ -515,7 +515,7 @@ HasukHouse.create(
     trans_distance2: distance_kind.sample,
      big_deposit: 100,
     admin_fee: true, 
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha11.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha11.jpg")),
      
     )
 
@@ -563,7 +563,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha12.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha12.jpg")),
      
      )
     
@@ -612,7 +612,7 @@ HasukHouse.create(
     trans_distance2: distance_kind.sample,
       big_deposit: 100,
     admin_fee: true,
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha13.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha13.jpg")),
      
      )
 
@@ -660,7 +660,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha14.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha14.jpg")),
      
      )
 
@@ -710,7 +710,7 @@ HasukHouse.create(
     
       big_deposit: 100,
     admin_fee: true,
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha15.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha15.jpg")),
     
     )
 
@@ -759,7 +759,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha16.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha16.jpg")),
     
      )
     
@@ -807,7 +807,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-    :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha17.jpg")),
+    :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha17.jpg")),
     
      )
 
@@ -854,7 +854,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha18.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha18.jpg")),
     
      )
 
@@ -903,7 +903,7 @@ HasukHouse.create(
     trans_distance2: distance_kind.sample,
       big_deposit: 100,
     admin_fee: true,
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha19.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha19.jpg")),
      
      )
 
@@ -951,7 +951,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha20.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha20.jpg")),
      
      )     
 
@@ -999,7 +999,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha21.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha21.jpg")),
      
      )     
 HasukHouse.create(
@@ -1046,7 +1046,7 @@ HasukHouse.create(
     trans_distance2: distance_kind.sample,
       big_deposit: 100,
     admin_fee: true,
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha22.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha22.jpg")),
     
      )     
 
@@ -1094,7 +1094,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha23.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha23.jpg")),
     
      )     
      
@@ -1142,7 +1142,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha24.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha24.jpg")),
      
      )     
      
@@ -1192,7 +1192,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha25.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha25.jpg")),
      
      )
      
@@ -1240,7 +1240,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha26.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha26.jpg")),
     
     )
 
@@ -1280,7 +1280,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha27.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha27.jpg")),
     )
     
 HasukHouse.create(
@@ -1320,7 +1320,7 @@ HasukHouse.create(
     trans_distance2: distance_kind.sample,
      big_deposit: 100,
     admin_fee: true, 
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha28.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha28.jpg")),
      
      )
 
@@ -1360,7 +1360,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha29.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha29.jpg")),
      
      )
 
@@ -1403,7 +1403,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha30.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha30.jpg")),
      
     )
 
@@ -1451,7 +1451,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha31.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha31.jpg")),
     
     )
 
@@ -1497,7 +1497,7 @@ HasukHouse.create(
     trans_distance2: distance_kind.sample,
       big_deposit: 150,
     admin_fee: true,
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha32.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha32.jpg")),
     
      )
     
@@ -1544,7 +1544,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha33.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha33.jpg")),
    
      )
 
@@ -1593,7 +1593,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha34.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha34.jpg")),
      
      )
 
@@ -1643,7 +1643,7 @@ HasukHouse.create(
     trans_distance2: distance_kind.sample,
      big_deposit: 150,
     admin_fee: true,
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha35.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha35.jpg")),
     
     )
 
@@ -1692,7 +1692,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha36.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha36.jpg")),
      
     )
 
@@ -1738,7 +1738,7 @@ title: "빨래 일일이 걷어서 세탁기 돌려주는 집",
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
       
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha37.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha37.jpg")),
     
      )
     
@@ -1786,7 +1786,7 @@ title: "빨래 일일이 걷어서 세탁기 돌려주는 집",
      
      big_deposit: 150,
     admin_fee: true, 
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha38.jpg")),
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha38.jpg")),
    
      )
 
@@ -1833,7 +1833,7 @@ HasukHouse.create(
     trans_distance_time2: distance_time_kind.sample, 
     trans_distance2: distance_kind.sample,
     
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha39.jpg"))
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha39.jpg"))
    
      )
 
@@ -1880,6 +1880,6 @@ HasukHouse.create(
     trans_distance2: distance_kind.sample,
       big_deposit: 150,
     admin_fee: true,
-     :room_img1 => File.open(File.join(Rails.root, "public/images/bangs/ha40.jpg"))
+     :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha40.jpg"))
      
     )

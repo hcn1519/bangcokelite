@@ -10,6 +10,9 @@ class CreateRatingForHasukHouses < ActiveRecord::Migration
       t.float :aircondition_score
       t.float :cctv_score
       t.float :total_score
+      t.float :all_score
+      
+      t.text :comment
       
       t.timestamps null: false
     end

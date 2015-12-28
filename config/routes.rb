@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   
+  
+
   root to: 'visitors#index'
   
+  post 'img_upload/create'
   post 'rating/create'
   
   get 'map/mappage'

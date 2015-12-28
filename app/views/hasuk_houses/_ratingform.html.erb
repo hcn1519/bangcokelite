@@ -47,11 +47,17 @@
       </div>
     <% end %>
     <% end %><!--for end -->
+      <div class="col-md-12 col-xs-12 col-sm-12">
+        <%= hidden_field_tag("all_score", nil) %>
+        <div style="padding-right:20px;">
+          <%= text_area_tag "comment", nil,rows: 5, class:"form-control", placeholder:"해당 하숙집에 대한 평가를 남겨주세요" %>
+        </div>
+      </div>
     <div class="col-md-6 col-sm-6 col-xs-12">
     <% if user_signed_in? %>
-      <%= submit_tag "평가 제출", :class => "btn btn-primary btn-lg", style:"display:block; font-size: 15px; width: 80%;"%>
+      <%= submit_tag "평가 제출", :class => "all_point btn btn-primary btn-lg", style:"display:block; font-size: 15px;"%>
     <% else %>
-      <%= link_to "평가 제출", '#login', :class => "btn btn-primary btn-lg", style:"display:block; font-size: 15px; width: 80%;", 'data-toggle': "modal" %>  
+      <%= link_to "평가 제출", '#login', :class => "all_point btn btn-primary btn-lg", style:"display:block; font-size: 15px;", 'data-toggle': "modal" %>  
     <% end %>
     </div>
     <% end %><!-- form tag -->
@@ -119,6 +125,31 @@
       });
   });
 <% end %>
+</script>
+<script>
+//평가하기 총점 셋팅
+  $(".all_point").mouseover(function(){
+    var total_point = 0;
+    <% for i in 1..6 do %>
+      var score_value = $("#review<%= i %>").val();
+      total_point = total_point + parseFloat(score_value);
+    console.log(score_value);
+    <% end %>
+  
+    var avg_total = total_point/6.0;
+    var avg_total = Math.round(avg_total * 10) / 10;
+    
+    console.log(avg_total);
+    $.ajax({
+        url: "/hasuk_houses/<%= @hasuk_house.id %>",
+        data: avg_total,
+        success: function(data){
+          $("#all_score").val(avg_total);
+        }
+     });  
+  });
+  
+
 </script>
 <script>
   $(".vote").click(function(){
