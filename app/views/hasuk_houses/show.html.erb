@@ -480,38 +480,35 @@ td {
           <!-- Tab panes -->
           <div class="tab-content">
             <div id="photo" role="tabpanel" class="tab-pane active">
-              <ul id="bxslider">
-                <!--
-                <%# for i in 1..8 %>
-                  <%# unless @hasuk_house.room_img1.nil? %>
-                    <li>
-                      <img src="<%#= @hasuk_house.room_img1 %>" alt="" title="
-                      <%# unless @hasuk_house.room_price1.nil? %>월세 <%#= @hasuk_house.room_price1 %>만 원<%# end %>
-                      <%# unless @hasuk_house.room_description1.nil? %> <%#= @hasuk_house.room_description1 %><%# end %>">
-                    </li>
-                  <%# end %>
-                <%# end %>
-                -->
-                <li><img src="/images/bangs/ha1.jpg" alt="" title="" /> </li>
-                <li><img src="/images/bangs/ha2.jpg" alt="" title="" /> </li>
-                <li><img src="/images/bangs/ha3.jpg" alt="" title="" /> </li>
-                <li><img src="/images/bangs/ha4.jpg" alt="" title="" /> </li>
-                <li><img src="/images/bangs/ha5.jpg" alt="" title="" /> </li>
-                <li><img src="/images/bangs/ha6.jpg" alt="" title="" /> </li>
-              </ul>
-
+              <div class="main_pic">
+                <ul id="bxslider">
+  
+                  <!--우리가 올리는 사진-->
+                  <li><img src="<%= @hasuk_house.main_img %>" alt="" title="" /> </li>
+                  
+                  <!--사람들이 올리는 사진-->
+                  
+                  <% @users_hasuk_img.each do |i| %>
+                    <li><img src="<%= i.img %>"/> </li>
+                  <% end %>
+                </ul>
+              </div>
     <!-- The thumbnails -->
-    
-              <ul id="bxslider-pager">
-                <li data-slideIndex="0"><a href=""><img style="max-height:55px" src="/images/bangs/ha1.jpg" ></a></li>
-                <li data-slideIndex="1"><a href=""><img style="max-height:55px" src="/images/bangs/ha2.jpg" ></a></li>
-                <li data-slideIndex="2"><a href=""><img style="max-height:55px" src="/images/bangs/ha3.jpg" ></a></li>
-                <li data-slideIndex="3"><a href=""><img style="max-height:55px" src="/images/bangs/ha4.jpg" ></a></li>
-                <li data-slideIndex="4"><a href=""><img style="max-height:55px" src="/images/bangs/ha5.jpg" ></a></li>
-                <li data-slideIndex="5"><a href=""><img style="max-height:55px" src="/images/bangs/ha6.jpg" ></a></li>
-              </ul>
-          
+              <div class="thumb_pic">
+                <ul id="bxslider-pager">
+                  <!--우리가 올리는 사진-->
+                  <li data-slideIndex="0"><a href=""><img style="max-height:55px" src="<%= @hasuk_house.main_img %>" ></a></li>
+                  
+                  <!--사람들이 올리는 사진-->
+                  <% @indexcounter=1 %>
+                  <% @users_hasuk_img.each do |i| %>
+                    <li data-slideIndex="<%= @indexcounter %>"><a href=""><img style="max-height:55px" src="<%= i.img %>" ></a></li>
+                    <% @indexcounter += 1 %>
+                  <% end %>
+                </ul>
+              </div>
             </div>
+            
             <div id="address" style="width:100%;" role="tanpanel" class="tab-pane">
               <div id="map" style="width:100%; height:490px; max-height:500px"></div>    
                   <script>
@@ -842,11 +839,12 @@ td {
               <%= @avg_score[0].total_silence_score %>,
               <%= @avg_score[0].total_aircondition_score %>,
               <%= @avg_score[0].total_cctv_score %>,
-              <%= @avg_score[0].total_score %>
+              <%= @avg_score[0].total_score %>,
+              <%= @avg_score[0].all_score %>
               ];
             var colorset = [];
             
-            for(var k=0; k<=5; k++){
+            for(var k=0; k<=6; k++){
               if(score[k] >= 3.7){
                 colorset[k] = '#3498DB';
               } else if (score[k] >= 2.7 && score[k] < 3.7) {
@@ -864,7 +862,8 @@ td {
               ["방음", <%= @avg_score[0].total_silence_score %>, colorset[2]],
               ["난방", <%= @avg_score[0].total_aircondition_score %>, colorset[3]],
               ["보안", <%= @avg_score[0].total_cctv_score %>, colorset[4]],
-              ["가격", <%= @avg_score[0].total_score %>, colorset[5]]
+              ["가격", <%= @avg_score[0].total_score %>, colorset[5]],
+              ["총점", <%= @avg_score[0].all_score %>, colorset[6]]
             ]);
       
             var view = new google.visualization.DataView(data);
@@ -902,7 +901,7 @@ td {
             chart.draw(view, options);
         }
       </script>
-        <div id="barchart" style="width: 100%; height: auto;"></div>                   
+        <div id="barchart" style="width: 100%; height: auto;"></div>                          
         <% else %>
         <!--평가 없을 경우 -->
           <table style="width: 100%; height: 237px;">
@@ -1001,10 +1000,26 @@ td {
             </div>
         </div>
     </div> 
+    <% if user_signed_in? %>
+      <%= form_tag(img_upload_create_path, { multipart: true, method: "POST"}) do %>
+        <%= hidden_field_tag("hasuk_house_id", @hasuk_house.id ) %>
+        <%= hidden_field_tag("user_id", current_user.id ) %>
 
+        <%= file_field_tag 'user_pic[]', multiple: true, accept: 'image/png,image/gif,image/jpeg' %>
+        
+        <%= submit_tag "image-upload", :class => "btn btn-primary btn-lg" %>
+      <% end %>
+   <% end %>
     
-   
-
+    <% @anonymous = 1 %>
+    <% @user_comment.each do |i| %>
+    <% @user = User.where(id: i.user_id) %>
+      작성자: 익명<%= @anonymous %><br>
+      댓글: <%= i.comment %><br>
+      평점: <%= i.all_score %><br>
+      작성시간: <%= i.created_at.strftime("%Y년 %m월 %d일 %p %I시 %M분") %><br>
+      <% @anonymous +=1 %>
+    <% end %>
     
 </div>    
 
@@ -1087,8 +1102,6 @@ $('#pictab3 a').click(function (e) {
         speed:1000,
         pager:false,
         controls: true,
-        nextText:'<span></span>',
-        prevText:'<span></span>',
         infiniteLoop:true,
         captions: true,
         onSlideBefore:function($slideElement, oldIndex, newIndex){
@@ -1107,10 +1120,8 @@ $('#pictab3 a').click(function (e) {
         pager:false,
         speed:1000,
         controls: true,
-        infiniteLoop:false,
+        infiniteLoop:true,
         hideControlOnEnd:true,
-        nextText:'<span></span>',
-        prevText:'<span></span>',
         onSlideBefore:function($slideElement, oldIndex, newIndex){
 
         }

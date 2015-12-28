@@ -60,8 +60,13 @@ class HasukHousesController < ApplicationController
       @avg_score[0].total_aircondition_score = 0
       @avg_score[0].total_cctv_score = 0
       @avg_score[0].total_score = 0
+      @avg_score[0].all_score = 0
       @avg_score[0].save
     end
+    
+    @user_comment = RatingForHasukHouse.where(avg_rating_score_id: @hasuk_house.id)
+    @users_hasuk_img = Attachment.where(hasuk_house_id: @hasuk_house.id);
+    
   end
 
   # GET /hasuk_houses/new

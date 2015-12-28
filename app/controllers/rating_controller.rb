@@ -9,10 +9,13 @@ class RatingController < ApplicationController
                                       silence_score: params[:review3],
                                       aircondition_score: params[:review4],
                                       cctv_score: params[:review5],
-                                      total_score: params[:review6]
+                                      total_score: params[:review6],
+                                      comment: params[:comment],
+                                      all_score: params[:all_score]
                                     )
         
         @avg_score = AvgRatingScore.where(hasuk_house_id: params[:hasuk_house_id])
+        
         
         @avg_score[0].hasuk_house_id = params[:hasuk_house_id]
         @avg_score[0].how_many_people_did = @avg_score[0].how_many_people_did + 1
@@ -22,6 +25,7 @@ class RatingController < ApplicationController
         @avg_score[0].total_aircondition_score = @avg_score[0].total_aircondition_score + @myscore.aircondition_score
         @avg_score[0].total_cctv_score = @avg_score[0].total_cctv_score + @myscore.cctv_score
         @avg_score[0].total_score = @avg_score[0].total_score + @myscore.total_score
+        @avg_score[0].all_score = @avg_score[0].all_score + @myscore.all_score
         @avg_score[0].save
 
     redirect_to :back

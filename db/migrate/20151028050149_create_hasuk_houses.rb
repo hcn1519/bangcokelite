@@ -67,27 +67,8 @@ class CreateHasukHouses < ActiveRecord::Migration
       t.integer :trans_distance_time2
       t.integer :trans_distance2
       
-      
-      #사진만
-      t.string :room_img1
-      t.string :room_img2
-      t.string :room_img3
-      t.string :room_img4
-      t.string :room_img5
-      t.string :room_img6
-      t.string :room_img7
-      t.string :room_img8
-      
-      t.string :common_img1
-      t.string :common_img2
-      t.string :common_img3
-      t.string :common_img4
-      t.string :meal_img1
-      t.string :meal_img2
-      t.string :meal_img3
-      t.string :meal_img4
-
-      t.integer :hasuk_house_viewcount
+      #대표사진
+      t.string :main_img
       
       t.timestamps null: false
     end

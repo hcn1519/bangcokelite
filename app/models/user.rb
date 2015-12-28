@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :attachments
+  
   has_one :rating_for_hasuk_house
   
   has_many :hasuk_houses, dependent: :destroy
