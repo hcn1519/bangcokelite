@@ -1,0 +1,61 @@
+<style type="text/css">
+  .gallery {
+    width:100%;
+    height:auto;
+    border:1px solid #262626;
+    border-radius: 5px;
+  }
+  .gallery img {
+    width:25%;
+    height:auto;
+    display:inline-block;
+  }
+</style>
+<div class="modal fade" id="imgUpload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog rating-form" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <% if user_signed_in? %>
+          <%= form_tag(img_upload_create_path, { multipart: true, method: "POST"}) do %>
+              <%= hidden_field_tag("hasuk_house_id", @hasuk_house.id ) %>
+              <%= hidden_field_tag("user_id", current_user.id ) %>
+  
+              <%= file_field_tag 'user_pic[]', multiple: true, accept: 'image/png,image/gif,image/jpeg', class: "pictures" %>
+          <div class="gallery"></div>
+          
+          
+              <%= submit_tag "사진 업로드", :class => "btn btn-primary btn-lg" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    // Multiple images preview in browser
+    var imagesPreview = function(input, placeToInsertImagePreview) {
+
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                }
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+
+    };
+
+    $('.pictures').on('change', function() {
+        imagesPreview(this, 'div.gallery');
+    });
+});
+</script>
