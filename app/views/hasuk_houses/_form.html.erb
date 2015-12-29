@@ -395,6 +395,36 @@
   margin-top: 20px;
   margin-right: 10px;
 }
+
+.fui-plus-circle {
+  display:block;
+  cursor:pointer;
+  font-size:3em;
+  color:#27AE60;
+}
+.preview {
+  width:97%;
+  height:auto;
+  display:block;
+  z-index:1;
+}
+.plus_circle {
+ margin-bottom: 0px; 
+ position: absolute;
+ top: 50%;
+ left:50%;
+ transform:translate(-50%, -50%);
+}
+.fui-cross-circle {
+  display:block;
+  position: absolute; 
+  z-index:2; 
+  cursor:pointer;
+  clear:both;
+  font-size:20px;
+  color:#E67E22; 
+  right:5%;
+}
 @media (min-width: 300px) { 
   
   /*xs크기 셋팅 768px이하*/
@@ -426,41 +456,14 @@
     font-size:0.8em; 
     color:#e74c3c;
     position: absolute;
-    left:11%;
+    left:6%;
   }
   
-  .preview {
-    width:100%;
-    height:10em;
-    display:block;
-    z-index:1;
-  }
-  .plus_circle {
-     margin-bottom: 0px; 
-     position: absolute;
-     margin-top: 12%;
-     margin-left: 40%;
-  }
-  .fui-plus-circle {
-    display:block;
-    cursor:pointer;
-    font-size:3em;
-    color:#27AE60;
-  }
   .img-thumbnail {
-    height:10.7em;
+    height:auto;
+    min-height:300px;
   }
-  .fui-cross-circle {
-    display:block;
-    position: absolute; 
-    z-index:2; 
-    cursor:pointer;
-    clear:both;
-    font-size:20px;
-    color:#E67E22; 
-    margin-right: 5px;
-    margin-left:82%;
-  }
+
   .mob_price {
     max-width:50px;
   }
@@ -493,44 +496,12 @@
   #map-canvas {
     margin-top:0px;
   }
-  .img_title {
-    font-size:0.8em; 
-    color:#e74c3c;
-    position: absolute;
-    left:15%;
-  }
+
   .img-thumbnail {
-    height:9.5em;
+    height:auto;
+    min-height:300px;
   }
-  .preview {
-    width:100%;
-    height:8.8em;
-    display:block;
-    z-index:1;
-  }
-  .plus_circle {
-     margin-bottom: 0px; 
-     position: absolute;
-     margin-top: 12%;
-     margin-left: 31%;
-  }
-  .fui-plus-circle {
-    display:block;
-    cursor:pointer;
-    font-size:3em;
-    color:#27AE60;
-  }
-  .fui-cross-circle {
-    display:block;
-    position: absolute; 
-    z-index:2; 
-    cursor:pointer;
-    clear:both;
-    font-size:20px;
-    color:#E67E22; 
-    margin-right: 5px;
-    margin-left:73%;
-  }
+
   /*sm크기 셋팅 768px이상 992px 이하*/
 }
 @media (min-width: 992px) {
@@ -548,32 +519,11 @@
   #map-canvas {
     margin-top:0px;
   }
-  .plus_circle {
-     margin-bottom: 0px; 
-     position: absolute;
-     margin-top: 3%;
-     margin-left: 31%;
-  }
-  .fui-plus-circle {
-    display:block;
-    cursor:pointer;
-    font-size:3em;
-    color:#27AE60;
-  }
   .img-thumbnail {
-    height:9.5em;
+    height:auto;
+    min-height:300px;
   }
-  .fui-cross-circle {
-    display:block;
-    position: absolute; 
-    z-index:2; 
-    cursor:pointer;
-    clear:both;
-    font-size:20px;
-    color:#E67E22; 
-    margin-right: 5px;
-    margin-left:66%;
-  }
+
   /*md크기 셋팅 992px이상 1200px 이하*/
 }
 @media (min-width: 1200px) {
@@ -597,45 +547,10 @@
     font-weight:bold;
     color:#F1C40F;
   }
-  .img_title {
-    font-size:0.8em; 
-    color:#e74c3c;
-    position: absolute;
-    left:17%;
-  }
-  
-  .preview {
-    width:8.5em;
-    height:6.4em;
-    display:block;
-    position: absolute;
-    z-index:1;
-  }
-  .plus_circle {
-     margin-bottom: 0px; 
-     position: absolute;
-     margin-top: 3%;
-     margin-left: 31%;
-  }
-  .fui-plus-circle {
-    display:block;
-    cursor:pointer;
-    font-size:3em;
-    color:#27AE60;
-  }
+
   .img-thumbnail {
-    height:7em;
-  }
-  .fui-cross-circle {
-    display:block;
-    position: absolute; 
-    z-index:2; 
-    cursor:pointer;
-    clear:both;
-    font-size:20px;
-    color:#E67E22; 
-    margin-right: 5px;
-    margin-left:66%;
+    height:auto;
+    min-height:300px;
   }
   /*lg크기 셋팅 1200px 이상*/
 }
@@ -1598,10 +1513,10 @@
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:5px;">
       <div class="inline" style="margin-top:2px; width:10px; height:30px; background-color:rgba(46, 204, 113, 0.76)"></div>
       <div class="inline" style="margin-top:0px">
-          <h5 style="margin-top:0px; margin-left:5px">방</h5>
+          <h5 style="margin-top:0px; margin-left:5px">대표사진</h5>
         </div>
       <div class="inline" style="margin-top:0px">
-        <span style="color:#e74c3c; margin-top: 5px; margin-left: 10px;">검색시 대표사진이 보여집니다.</span>
+        <span style="color:#e74c3c; margin-top: 5px; margin-left: 10px;">검색시 보여집니다.</span>
       </div>
     </div><!--소제목 방-->
   </div>
@@ -1609,158 +1524,48 @@
   
   <div class="row" style="padding:15px; background-color:#f2f2f2; border:1px solid #dbdbdb">
     
-    <% for i in 1..8 %>
-    <div class="col-md-3 col-sm-4 col-xs-12">
+    <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="image-upload" style="height:auto">
-      <% @roomImg = @hasuk_house.send("room_img#{i}") %>
+      <% @roomImg = @hasuk_house.main_img %>
 
       <% if @roomImg.file == nil %>
-        <%= file_field_tag "hasuk_house[room_img#{i}]", class:"file-input#{i}" %>
-      <% else %>
-        <%= file_field_tag "hasuk_house[room_img#{i}]", value: @roomImg, class:"file-input#{i}" %>
-      <% end %>
-      
-      
+        <%= file_field_tag "hasuk_house[main_img]", class:"file-input" %>
         <div class="img-thumbnail" style="width: 100%;">
-      <% if @roomImg.file == nil %>
-          <span class="fui-cross-circle crossroom<%= i%>" style="display:none;"></span>  
-      <% else %>
-          <span class="fui-cross-circle crossroom<%= i%>" ></span>  
-      <% end %>
-          <% if i ==1 %>
-                <span class="fui-star-2 img"></span>
-                <span class="img_title">대표사진</span>
-
-      <% if @roomImg.file == nil %>
-                <label class="plus_circle" for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>">
-                  <span class="fui-plus-circle" aria-hidden="true"></span>
-                </label>
-      <% else %>
-                <label class="plus_circle" for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="display:none;">
-                  <span class="fui-plus-circle" style="display:none;" aria-hidden="true"></span>
-                </label>
-      <% end %>
-          <% else %>
-          
-      <% if @roomImg.file == nil %>
-            <label class="plus_circle" for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>">
-              <span class="fui-plus-circle" aria-hidden="true"></span>
-            </label>
-      <% else %>
-            <label class="plus_circle" for="hasuk_house_room_img<%= i%>" id="room-labelinput<%= i%>" style="display:none;">
-              <span class="fui-plus-circle" style="display:none;" aria-hidden="true"></span>
-            </label>
-      <% end %>
-      
-          <% end %>
-      <% if @roomImg.file == nil %>
-            <img class="preview" style="display:none;" id="room-file-preview<%= i%>" src="#"/>
-      <% else %>
-            
-            <img class="preview" id="room-file-preview<%= i%>" src="<%= @roomImg %>"/>
-      <% end %>
-        </div>
-          
-      </div>  
-      
-    </div>
-    <% end %>
-    </div><!--방사진 끝-->
-      
-      
-      
-  <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:20px; margin-bottom:5px;">
-      <div class="inline" style="margin-top:2px; width:10px; height:30px; background-color:rgba(46, 204, 113, 0.76)"></div>
-      <div class="inline" style="margin-top:0px">
-          <h5 style="margin-top:0px; margin-left:5px">공동시설</h5>
-        </div>
-      </div><!--소제목 공동시설-->
-  </div>
-    
-  <div class="row" style="padding:15px; background-color:#f2f2f2; border:1px solid #dbdbdb">
-  <!--배경색-->
-  <% for i  in 1..4 %>
-    <div class="col-md-3 col-sm-4 col-xs-12">
-      <div class="image-upload" style="height:auto">
-      <% @commonImg = @hasuk_house.send("common_img#{i}") %>
-      
-      <% if @commonImg.file == nil %><!--없으면 -->
-        <%= file_field_tag "hasuk_house[common_img#{i}]", class:"file-input#{i}" %>
-      
-          <div class="img-thumbnail" style="width: 100%;">
-          <span class="fui-cross-circle crosscommon<%= i%>" style="display:none;"></span>  
-          
-          <label class="plus_circle" for="hasuk_house_common_img<%= i%>" id="common-labelinput<%= i%>">
+          <span class="fui-cross-circle crossroom" style="display:none;"></span>  
+          <span class="fui-star-2 img" style="position:absolute; left:4%"></span>
+          <span class="img_title">대표사진</span>
+          <label class="plus_circle" for="hasuk_house_main_img" id="room-labelinput">
             <span class="fui-plus-circle" aria-hidden="true"></span>
           </label>
-          
-          <img class="preview" style="display:none;" id="common-file-preview<%= i%>" src="#"/>
-      
-      <% else %><!--있으면 -->
-        <%= file_field_tag "hasuk_house[common_img#{i}]", value: @commonImg, class:"file-input#{i}" %>
-          
-          <div class="img-thumbnail" style="width: 100%;">
-          
-          <span class="fui-cross-circle crosscommon<%= i%>" ></span>  
-          <label class="plus_circle" for="hasuk_house_common_img<%= i%>" id="common-labelinput<%= i%>" style="display:none;">
+          <img class="preview img-responsive" style="display:none;" id="room-file-preview" src="#"/>
+      <% else %>
+        <%= file_field_tag "hasuk_house[main_img]", value: @roomImg, class:"file-input" %>
+        <div class="img-thumbnail" style="width: 100%;">
+          <span class="fui-cross-circle crossroom" ></span>  
+          <span class="fui-star-2 img" style="position:absolute; left:4%"></span>
+          <span class="img_title">대표사진</span>
+          <label class="plus_circle" for="hasuk_house_main_img" id="room-labelinput" style="display:none;">
             <span class="fui-plus-circle" style="display:none;" aria-hidden="true"></span>
           </label>
-          
-          <img class="preview" id="common-file-preview<%= i%>" src="<%= @commonImg %>"/>
+          <img class="preview img-responsive" id="room-file-preview" src="<%= @roomImg %>"/>
       <% end %>
-        </div>
-      </div>  
-    </div>
-  <% end %>
-  </div><!--공동사진 끝-->
-     
 
-      
-  <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:20px; margin-bottom:5px;">
-      <div class="inline" style="margin-top:2px; width:10px; height:30px; background-color:rgba(46, 204, 113, 0.76)"></div>
-      <div class="inline" style="margin-top:0px">
-          <h5 style="margin-top:0px; margin-left:5px">식사<span style="color:#9C9C9C">(선택)</span></h5>
-        </div>
-    </div><!--소제목 식사-->
-  </div>
-  
-    <div class="row" style="padding:15px; background-color:#f2f2f2; border:1px solid #dbdbdb">
-    <!--배경색-->
-    <% for i in 1..4 %>
-        <div class="col-md-3 col-sm-4 col-xs-12">
-      <div class="image-upload" style="height:auto">
-        
-      <% @mealImg = @hasuk_house.send("meal_img#{i}") %>
-      
-      <% if @mealImg.file == nil %><!--없으면 -->
-      
-        <%= file_field_tag "hasuk_house[meal_img#{i}]", class:"file-input#{i}" %>
-          <div class="img-thumbnail" style="width: 100%;">
-            <span class="fui-cross-circle crossmeal<%= i%>" style="display:none;"></span>  
-            <label class="plus_circle" for="hasuk_house_meal_img<%= i%>" id="meal-labelinput<%= i%>">
-              <span class="fui-plus-circle" aria-hidden="true"></span>
-            </label>
-            <img class="preview" style="display:none;" id="meal-file-preview<%= i%>" src="#"/>
-          </div>
-      
+                
+
+      <% if @roomImg.file == nil %>
+                
       <% else %>
-        <%= file_field_tag "hasuk_house[meal_img#{i}]", value: @mealImg, class:"file-input#{i}" %>
-          <div class="img-thumbnail" style="width: 100%;">
-            <span class="fui-cross-circle crossmeal<%= i%>" ></span>  
-            <label class="plus_circle" for="hasuk_house_meal_img<%= i%>" id="meal-labelinput<%= i%>" style="display:none;">
-              <span class="fui-plus-circle" style="display:none;" aria-hidden="true"></span>
-            </label>
-            <img class="preview" id="meal-file-preview<%= i%>" src="<%= @mealImg %>"/>
-          </div>
-      
+                
       <% end %>
+
+        </div>
+          
       </div>  
+      
     </div>
-    <% end %>
-    </div><!--식사 사진 끝-->
     
+    </div><!--대표사진 끝-->
+
   
   <% if @hasuk_house.id == nil %>
       <center style="margin-top:40px; margin-bottom:20px;">
@@ -2039,359 +1844,30 @@ $(document).ready(function(){
 });
 
 //이미지 1번
-function readURL1(input) {
+function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            $("#room-file-preview1").attr('src', e.target.result);
+            $("#room-file-preview").attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
-        $("#room-file-preview1").css("display", "block");
-        $("#room-labelinput1").css("display", "none");
-        $(".crossroom1").css("display", "block");
+        $("#room-file-preview").css("display", "block");
+        $("#room-labelinput").css("display", "none");
+        $(".crossroom").css("display", "block");
     }
 }
-$(".crossroom1").click(function() {
-  var $image = $('#room-file-preview1');
-  $('#room-file-preview1').removeAttr('src').replaceWith($image.clone());
+$(".crossroom").click(function() {
+  var $image = $('#room-file-preview');
+  $('#room-file-preview').removeAttr('src').replaceWith($image.clone());
   $(this).css("display", "none");
-  $("#room-file-preview1").css("display", "none");
-  $("#room-labelinput1").css("display", "block");
-  $("#room-labelinput1").css("z-index", "2");
+  $("#room-file-preview").css("display", "none");
+  $("#room-labelinput").css("display", "block");
+  $("#room-labelinput").css("z-index", "2");
 });
 
+  $("#hasuk_house_main_img").change(function(){readURL(this);});
 
 
-//이미지 2번
-function readURL2(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#room-file-preview2").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#room-file-preview2").css("display", "block");
-        $("#room-labelinput2").css("display", "none");
-        $(".crossroom2").css("display", "block");
-    }
-}
-$(".crossroom2").click(function() {
-  var $image = $('#room-file-preview2');
-  $('#room-file-preview2').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#room-file-preview2").css("display", "none");
-  $("#room-labelinput2").css("display", "block");
-  $("#room-labelinput2").css("z-index", "2");
-});
-
-//이미지 3번
-function readURL3(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#room-file-preview3").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#room-file-preview3").css("display", "block");
-        $("#room-labelinput3").css("display", "none");
-        $(".crossroom3").css("display", "block");
-    }
-}
-$(".crossroom3").click(function() {
-  var $image = $('#room-file-preview3');
-  $('#room-file-preview3').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#room-file-preview3").css("display", "none");
-  $("#room-labelinput3").css("display", "block");
-  $("#room-labelinput3").css("z-index", "2");
-});
-//이미지 4번
-function readURL4(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#room-file-preview4").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#room-file-preview4").css("display", "block");
-        $("#room-labelinput4").css("display", "none");
-        $(".crossroom4").css("display", "block");
-    }
-}
-
-$(".crossroom4").click(function() {
-  var $image = $('#room-file-preview4');
-  $('#room-file-preview4').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#room-file-preview4").css("display", "none");
-  $("#room-labelinput4").css("display", "block");
-  $("#room-labelinput4").css("z-index", "2");
-});
-
-//이미지 5번
-function readURL5(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#room-file-preview5").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#room-file-preview5").css("display", "block");
-        $("#room-labelinput5").css("display", "none");
-        $(".crossroom5").css("display", "block");
-    }
-}
-$(".crossroom5").click(function() {
-  var $image = $('#room-file-preview5');
-  $('#room-file-preview5').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#room-file-preview5").css("display", "none");
-  $("#room-labelinput5").css("display", "block");
-  $("#room-labelinput5").css("z-index", "2");
-});
-//이미지 6번
-function readURL6(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#room-file-preview6").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#room-file-preview6").css("display", "block");
-        $("#room-labelinput6").css("display", "none");
-        $(".crossroom6").css("display", "block");
-    }
-}
-$(".crossroom6").click(function() {
-  var $image = $('#room-file-preview6');
-  $('#room-file-preview6').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#room-file-preview6").css("display", "none");
-  $("#room-labelinput6").css("display", "block");
-  $("#room-labelinput6").css("z-index", "2");
-});
-//이미지 7번
-function readURL7(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#room-file-preview7").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#room-file-preview7").css("display", "block");
-        $("#room-labelinput7").css("display", "none");
-        $(".crossroom7").css("display", "block");
-    }
-}
-$(".crossroom7").click(function() {
-  var $image = $('#room-file-preview7');
-  $('#room-file-preview7').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#room-file-preview7").css("display", "none");
-  $("#room-labelinput7").css("display", "block");
-  $("#room-labelinput7").css("z-index", "2");
-});
-//이미지 8번
-function readURL8(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#room-file-preview8").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#room-file-preview8").css("display", "block");
-        $("#room-labelinput8").css("display", "none");
-        $(".crossroom8").css("display", "block");
-    }
-}
-$(".crossroom8").click(function() {
-  var $image = $('#room-file-preview8');
-  $('#room-file-preview8').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#room-file-preview8").css("display", "none");
-  $("#room-labelinput8").css("display", "block");
-  $("#room-labelinput8").css("z-index", "2");
-});
-//이미지 common1번
-function readURL9(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#common-file-preview1").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#common-file-preview1").css("display", "block");
-        $("#common-labelinput1").css("display", "none");
-        $(".crosscommon1").css("display", "block");
-    }
-}
-$(".crosscommon1").click(function() {
-  var $image = $('#common-file-preview1');
-  $('#common-file-preview1').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#common-file-preview1").css("display", "none");
-  $("#common-labelinput1").css("display", "block");
-  $("#common-labelinput1").css("z-index", "2");
-});
-//이미지 common2번
-function readURL10(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#common-file-preview2").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#common-file-preview2").css("display", "block");
-        $("#common-labelinput2").css("display", "none");
-        $(".crosscommon2").css("display", "block");
-    }
-}
-$(".crosscommon2").click(function() {
-  var $image = $('#common-file-preview2');
-  $('#common-file-preview2').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#common-file-preview2").css("display", "none");
-  $("#common-labelinput2").css("display", "block");
-  $("#common-labelinput2").css("z-index", "2");
-});
-//이미지 common3번
-function readURL11(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#common-file-preview3").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#common-file-preview3").css("display", "block");
-        $("#common-labelinput3").css("display", "none");
-        $(".crosscommon3").css("display", "block");
-    }
-}
-$(".crosscommon3").click(function() {
-  var $image = $('#common-file-preview3');
-  $('#common-file-preview3').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#common-file-preview3").css("display", "none");
-  $("#common-labelinput3").css("display", "block");
-  $("#common-labelinput3").css("z-index", "2");
-});
-//이미지 common4번
-function readURL12(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#common-file-preview4").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#common-file-preview4").css("display", "block");
-        $("#common-labelinput4").css("display", "none");
-        $(".crosscommon4").css("display", "block");
-    }
-}
-$(".crosscommon4").click(function() {
-  var $image = $('#common-file-preview4');
-  $('#common-file-preview4').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#common-file-preview4").css("display", "none");
-  $("#meal-labelinput4").css("display", "block");
-  $("#meal-labelinput4").css("z-index", "2");
-});
-//이미지 meal1번
-function readURL13(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#meal-file-preview1").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#meal-file-preview1").css("display", "block");
-        $("#meal-labelinput1").css("display", "none");
-        $(".crossmeal1").css("display", "block");
-    }
-}
-$(".crossmeal1").click(function() {
-  var $image = $('#meal-file-preview1');
-  $('#meal-file-preview1').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#meal-file-preview1").css("display", "none");
-  $("#meal-labelinput1").css("display", "block");
-  $("#meal-labelinput1").css("z-index", "2");
-});
-//이미지 meal2번
-function readURL14(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#meal-file-preview2").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#meal-file-preview2").css("display", "block");
-        $("#meal-labelinput2").css("display", "none");
-        $(".crossmeal2").css("display", "block");
-    }
-}
-$(".crossmeal2").click(function() {
-  var $image = $('#meal-file-preview2');
-  $('#meal-file-preview2').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#meal-file-preview2").css("display", "none");
-  $("#meal-labelinput2").css("display", "block");
-  $("#meal-labelinput2").css("z-index", "2");
-});
-//이미지 meal3번
-function readURL15(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#meal-file-preview3").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#meal-file-preview3").css("display", "block");
-        $("#meal-labelinput3").css("display", "none");
-        $(".crossmeal3").css("display", "block");
-    }
-}
-$(".crossmeal3").click(function() {
-  var $image = $('#meal-file-preview3');
-  $('#meal-file-preview3').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#meal-file-preview3").css("display", "none");
-  $("#meal-labelinput3").css("display", "block");
-  $("#meal-labelinput3").css("z-index", "2");
-});
-//이미지 meal4번
-function readURL16(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $("#meal-file-preview4").attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-        $("#meal-file-preview4").css("display", "block");
-        $("#meal-labelinput4").css("display", "none");
-        $(".crossmeal4").css("display", "block");
-    }
-}//이미지 프리뷰 나오는 효과
-
-$(".crossmeal4").click(function() {
-  var $image = $('#meal-file-preview4');
-  $('#meal-file-preview4').removeAttr('src').replaceWith($image.clone());
-  $(this).css("display", "none");
-  $("#meal-file-preview4").css("display", "none");
-  $("#meal-labelinput4").css("display", "block");
-  $("#meal-labelinput4").css("z-index", "2");
-});//x버튼 누른 효과
-  
-  <% for i in 1..8 %>
-    $("#hasuk_house_room_img<%= i %>").change(function(){readURL<%= i %>(this);});
-  <% end %>
-  
-  <% for i in 1..4 %>
-    $("#hasuk_house_common_img<%= i %>").change(function(){readURL<%= i+8 %>(this);});
-    $("#hasuk_house_meal_img<%= i %>").change(function(){readURL<%= i+12 %>(this);});
-  <% end %>
-  
-  
   
   //학교 선택 지도 링크 나오기
   $(document).ready(function(){

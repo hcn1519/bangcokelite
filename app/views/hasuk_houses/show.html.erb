@@ -455,7 +455,7 @@ td {
 </head>
 <body>
   <%= render 'hasuk_houses/ratingform' %>
-  
+  <%= render 'hasuk_houses/imgUpload' %>
 <div class="container">
 
        <div class="row">
@@ -1009,14 +1009,9 @@ td {
         </div>
     </div> 
     <% if user_signed_in? %>
-      <%= form_tag(img_upload_create_path, { multipart: true, method: "POST"}) do %>
-        <%= hidden_field_tag("hasuk_house_id", @hasuk_house.id ) %>
-        <%= hidden_field_tag("user_id", current_user.id ) %>
-
-        <%= file_field_tag 'user_pic[]', multiple: true, accept: 'image/png,image/gif,image/jpeg' %>
-        
-        <%= submit_tag "image-upload", :class => "btn btn-primary btn-lg" %>
-      <% end %>
+      <%= link_to "사진 올리기", '#imgUpload', :class => "btn btn-primary btn-lg", 'data-toggle': "modal" %>  
+    <% else %>
+      <%= link_to "사진 올리기", '#login', :class => "btn btn-primary btn-lg", 'data-toggle': "modal" %>  
    <% end %>
     
     <% @anonymous = 1 %>
