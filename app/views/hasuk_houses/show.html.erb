@@ -443,6 +443,13 @@ td {
     display: block;
     height:auto;
 }
+#slide-counter {
+  position: absolute;
+  z-index: 1;
+  color: #F1C40F;
+  right: 5%;
+  margin-top: 10px;
+}
 </style>
 
 </head>
@@ -480,7 +487,7 @@ td {
           <!-- Tab panes -->
           <div class="tab-content">
             <div id="photo" role="tabpanel" class="tab-pane active">
-              <div class="main_pic">
+            <div id="slide-counter"></div>
                 <ul id="bxslider">
   
                   <!--우리가 올리는 사진-->
@@ -492,22 +499,23 @@ td {
                     <li><img src="<%= i.img %>"/> </li>
                   <% end %>
                 </ul>
-              </div>
+
     <!-- The thumbnails -->
-              <div class="thumb_pic">
+<!--
                 <ul id="bxslider-pager">
-                  <!--우리가 올리는 사진-->
-                  <li data-slideIndex="0"><a href=""><img style="max-height:55px" src="<%= @hasuk_house.main_img %>" ></a></li>
                   
-                  <!--사람들이 올리는 사진-->
-                  <% @indexcounter=1 %>
-                  <% @users_hasuk_img.each do |i| %>
-                    <li data-slideIndex="<%= @indexcounter %>"><a href=""><img style="max-height:55px" src="<%= i.img %>" ></a></li>
-                    <% @indexcounter += 1 %>
-                  <% end %>
+                  <li data-slideIndex="0"><a href=""><img style="max-height:55px" src="<%#= @hasuk_house.main_img %>" ></a></li>
+                  
+                  
+                  <%# @indexcounter=1 %>
+                  <%# @users_hasuk_img.each do |i| %>
+                    <li data-slideIndex="<%#= @indexcounter %>"><a href=""><img style="max-height:55px" src="<%#= i.img %>" ></a></li>
+                    <#% @indexcounter += 1 %>
+                  <#% end %>
                 </ul>
+-->
               </div>
-            </div>
+            
             
             <div id="address" style="width:100%;" role="tanpanel" class="tab-pane">
               <div id="map" style="width:100%; height:490px; max-height:500px"></div>    
@@ -1098,41 +1106,26 @@ $('#pictab3 a').click(function (e) {
  
  var $jj = jQuery.noConflict();
   
+  $('#slide-counter').prepend('<span class="current-index"></span>/');
+  
   var realSlider= $("ul#bxslider").bxSlider({
         speed:1000,
         pager:false,
         controls: true,
         infiniteLoop:true,
         captions: true,
+        onSliderLoad: function (currentIndex){
+        $('#slide-counter .current-index').text(currentIndex + 1);
+        },
         onSlideBefore:function($slideElement, oldIndex, newIndex){
-          changeRealThumb(realThumbSlider,newIndex);
-          
+          //changeRealThumb(realThumbSlider,newIndex);
+          $('#slide-counter .current-index').text(newIndex + 1);
         }
         
       });
-      
-      var realThumbSlider=$("ul#bxslider-pager").bxSlider({
-        minSlides: 8,
-        maxSlides: 8,
-        slideWidth: 100,
-        slideMargin: 12,
-        moveSlides: 1,
-        pager:false,
-        speed:1000,
-        controls: true,
-        infiniteLoop:true,
-        hideControlOnEnd:true,
-        onSlideBefore:function($slideElement, oldIndex, newIndex){
-
-        }
-      });
-      
-      linkRealSliders(realSlider,realThumbSlider);
-      
-      if($("#bxslider-pager li").length<5){
-        $("#bxslider-pager .bx-next").hide();
-      }
-
+  $('#slide-counter').append(realSlider.getSlideCount());
+ 
+ /* 
 // sincronizza sliders realizzazioni
   function linkRealSliders(bigS,thumbS){
     
@@ -1142,6 +1135,29 @@ $('#pictab3 a').click(function (e) {
           bigS.goToSlide(newIndex);
     });
   }
+
+
+      var realThumbSlider=$("ul#bxslider-pager").bxSlider({
+        minSlides: 6,
+        maxSlides: 6,
+        slideWidth: 100,
+        slideMargin: 12,
+        moveSlides: 1,
+        pager:false,
+        speed:1000,
+        controls: true,
+        infiniteLoop:true,
+        hideControlOnEnd:true,
+
+      });
+      
+      linkRealSliders(realSlider,realThumbSlider);
+     
+      if($("#bxslider-pager li").length<5){
+        $("#bxslider-pager .bx-next").hide();
+      }
+
+
 
 //slider!=$thumbSlider. slider is the realslider
   function changeRealThumb(slider,newIndex){
@@ -1154,6 +1170,7 @@ $('#pictab3 a').click(function (e) {
     else slider.goToSlide(slider.getSlideCount()-4);
   
   }
+  */ 
 </script>
 
 </body>

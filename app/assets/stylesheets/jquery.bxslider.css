@@ -31,6 +31,7 @@
 
 .bx-wrapper img {
 	max-width: 100%;
+	max-height: 100%;
 	display:block;
 	background-color: #555555;
  	margin-left:0;
@@ -41,41 +42,28 @@
 
 /** THEME
 ===================================*/
-#bxslider li {
+/*사진 가운데 정렬 */
+.bx-viewport, #bxslider li {
 	display: table-cell;
     vertical-align: middle;
 	float: none !important;
 }
+/*사진 가운데 정렬 */
+
+/*사진 크기 셋팅*/
 @media (max-width: 359px) {
-	.main_pic {
-		height: 320px !important;
-	}
-	.thumb_pic {
-		height: 45px !important;
-	}
+  .bx-wrapper, .bx-viewport, .bx-wrapper { height: 450px !important;}
 }
 @media (min-width: 360px) {
-	.main_pic {
-		height: 350px !important;
-	}
-	.thumb_pic {
-		height: 50px !important;
-	}
+  .bx-wrapper, .bx-viewport, .bx-wrapper { height: 450px !important;}	
 }
 @media (min-width: 768px) {
-	.main_pic {
-		height: 425px !important;
-	}
-	.thumb_pic {
-		height: 65px !important;
-	}
+  .bx-wrapper, .bx-viewport, .bx-wrapper { height: 490px !important;}
 }
-/*
-.bx-wrapper, .bx-viewport, .bx-wrapper {
-	height: 100% !important;
-	max-height: 435px !important;
-}
-*/
+/*사진 크기 셋팅*/
+
+
+
 .bx-wrapper .bx-viewport {
 	background:#333;
 	margin-left:0px;
@@ -99,7 +87,7 @@
 
 .bx-wrapper .bx-loading {
 	min-height: 50px;
-	background: url(/assets/bx_loader.gif) center center no-repeat #fff;
+	background: url(/images/loading/Preloader_2.gif) center center no-repeat #fff;
 	height: 100%;
 	width: 100%;
 	position: absolute;

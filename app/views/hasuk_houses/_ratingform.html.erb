@@ -133,13 +133,11 @@
     <% for i in 1..6 do %>
       var score_value = $("#review<%= i %>").val();
       total_point = total_point + parseFloat(score_value);
-    console.log(score_value);
     <% end %>
   
     var avg_total = total_point/6.0;
     var avg_total = Math.round(avg_total * 10) / 10;
     
-    console.log(avg_total);
     $.ajax({
         url: "/hasuk_houses/<%= @hasuk_house.id %>",
         data: avg_total,
