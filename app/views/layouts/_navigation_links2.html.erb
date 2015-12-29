@@ -51,8 +51,11 @@
 
 <% if current_page?('/') %>
   <% if user_signed_in? %>
-    <li><%= link_to "하숙집 등록", "/hasuk_houses/new", 'data-no-turbolink' => true, :class => 'btn btn-small' %></li>
-    <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small' %></li>
+    <% @admin = User.where(id: 2) %>
+    <% if @admin[0].id == current_user.id %> 
+    <li><%= link_to "하숙집 등록", "/hasuk_houses/new", 'data-no-turbolink' => true, :class => 'btn btn-small', :id => "close" %></li>
+    <% end %>
+    <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small ready' %></li>
     <li><%= link_to "#popup","data-toggle" => "popover", "data-trigger" =>"click", "data-placement" =>"bottom",  "data-container" => "body", :class => 'btn btn-small myaccount' do %>
      <% if current_user.name.include? '@' %>
          <%= current_user.name.downcase.split("@").first %>님
@@ -98,8 +101,7 @@
 </div>
 
   <% else %>
-    <li><%= link_to "하숙집 등록", "#login", "data-toggle" => "modal", :class => 'btn btn-small' %></li>
-    <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small' %></li>
+    <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small ready' %></li>
     <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small', :id => "close" %></li>
     <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small', :id => "close" %></li>
     
@@ -113,9 +115,11 @@
                     <span class="search_menu"><span class="fui-search"></span>하숙집 검색</span>
             <% end %>
         </li>
-        <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small', :id => "close" %></li>
+        <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small ready', :id => "close" %></li>
+        <% @admin = User.where(id: 2) %>
+        <% if @admin[0].id == current_user.id %> 
         <li><%= link_to "하숙집 등록", "/hasuk_houses/new", 'data-no-turbolink' => true, :class => 'btn btn-small', :id => "close" %></li>
-        
+        <% end %>
         <li><%= link_to "#popup","data-toggle" => "popover", "data-trigger" =>"click", "data-placement" =>"bottom",  "data-container" => "body", :class => 'btn btn-small myaccount' do %>
              <% if current_user.name.include? '@' %>
                  <%= current_user.name.downcase.split("@").first %>님
@@ -168,16 +172,19 @@
               
             <% end %>
         </li>
-        <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small', :id => "close" %></li>
-        <li><%= link_to "하숙집 등록", "#login", "data-toggle" => "modal", :class => 'btn btn-small', :id => "close" %></li>
+        <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small ready', :id => "close" %></li>
         <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small', :id => "close" %></li>
         <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small', :id => "close" %></li>
     <% end %>
 
 <% else %>
     <% if user_signed_in? %>
+        <% @admin = User.where(id: 2) %>
+        <% if @admin[0].id == current_user.id %> 
         <li><%= link_to "하숙집 등록", "/hasuk_houses/new", 'data-no-turbolink' => true, :class => 'btn btn-small', :id => "close" %></li>
-        <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small', :id => "close" %></li>
+        <% end %>
+        
+        <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small ready', :id => "close" %></li>
         <li><%= link_to "#popup","data-toggle" => "popover", "data-trigger" =>"click", "data-placement" =>"bottom",  "data-container" => "body", :class => 'btn btn-small myaccount' do %>
          <% if current_user.name.include? '@' %>
              <%= current_user.name.downcase.split("@").first %>님
@@ -224,8 +231,8 @@
     </div>
     
       <% else %>
-        <li><%= link_to "하숙집 등록", "#login", "data-toggle" => "modal", :class => 'btn btn-small', :id => "close" %></li>
-        <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small', :id => "close" %></li>
+        
+        <li><%= link_to "학교주변 지역정보", "#", :class => 'btn btn-small ready', :id => "close" %></li>
         <li><%= link_to "로그인", "#login", "data-toggle" => "modal", :class => 'btn btn-small', :id => "close" %></li>
         <li><%= link_to "회원가입", "#sign_up", "data-toggle" => "modal", :class => 'btn btn-small', :id => "close" %></li>
         
@@ -272,5 +279,7 @@ $(document).ready(function(){
 });
 
 //popover 관련
-
+$(".ready").click(function(){
+       alert("준비중인 서비스입니다."); 
+    });
 </script>
