@@ -1,6 +1,7 @@
 <style type="text/css">
   .gallery {
     width:100%;
+    min-height:200px;
     height:auto;
     border:1px solid #262626;
     border-radius: 5px;
@@ -10,22 +11,43 @@
     height:auto;
     display:inline-block;
   }
+.fileupload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileupload input.pictures {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
 </style>
 <div class="modal fade" id="imgUpload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog rating-form" role="document">
     <div class="modal-content">
-      
+      <div class="modal-header" >
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 style="text-align:center; margin-top:10px;">&nbsp&nbsp사진 올리기</h4>
+      </div>
       <div class="modal-body">
         <% if user_signed_in? %>
           <%= form_tag(img_upload_create_path, { multipart: true, method: "POST"}) do %>
               <%= hidden_field_tag("hasuk_house_id", @hasuk_house.id ) %>
               <%= hidden_field_tag("user_id", current_user.id ) %>
-  
-              <%= file_field_tag 'user_pic[]', multiple: true, accept: 'image/png,image/gif,image/jpeg', class: "pictures" %>
-          <div class="gallery"></div>
-          
-          
-              <%= submit_tag "사진 업로드", :class => "btn btn-primary btn-lg" %>
+            <div class="fileupload btn btn-default">
+              <span>파일 열기</span>
+              <%= file_field_tag 'user_pic[]', multiple: true, accept: 'image/png,image/gif,image/jpeg', class: "pictures btn btn-success" %>
+            </div>
+          <div class="gallery" style="border-color:#a1a6a9;"></div>
+          <div class="row" style="margin-top:10px">
+              <%= submit_tag "업로드", :class => "btn btn-success btn-lg", :style=>"border-radius:0; font-size: 15px; width:140px; float:right;" %>
+          </div>  
           <% end %>
         <% end %>
       </div>

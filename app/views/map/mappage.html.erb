@@ -5,11 +5,11 @@
    <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdcrzqmVvJgOpIy23Dlw08MHrQN1C17Sg&libraries=geometry">
     </script>
+ 
 
     <!--jquery 넣기-->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
- 
     <script type="text/javascript">
     var map = null; 
     var marker = null;
@@ -209,8 +209,8 @@
 
         
       var d_marker = {
-        url: '/images/icons/marker1.png',
-        size: new google.maps.Size(50, 20),
+        url: '/images/icons/marker.png',
+        size: new google.maps.Size(20, 37),
       }; 
 
   //서강A(서강대 남문)
@@ -514,9 +514,9 @@
         <% if @univ == "서강" %>
             if (data[i].division == "남문(대흥역)"){
            
-             var labelKind = ["label1","label2" ,"label3"];
-             labelKind = shuffle(labelKind);
-             var markerLabel = labelKind[0];
+                            /*var labelKind = ["label1","label2" ,"label3"];
+                 labelKind = shuffle(labelKind);
+                 var markerLabel = labelKind[0];
                    
                     var marker = new MarkerWithLabel({  
                          position: latlng,
@@ -526,12 +526,20 @@
                          <%# else %>
                             //labelContent: data[i].price_from,
                          <%# end %>    
-                         labelAnchor: new google.maps.Point(27, 25),
+                         labelAnchor: new google.maps.Point(10, 0),
                          
                          labelClass: markerLabel,
                          icon: d_marker,
                          url: "/hasuk_houses/" +  data_id
                      });
+            */
+            
+              var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                icon: d_marker,
+                url: "/hasuk_houses/" +  data_id
+              });
                     marker.setValues({type: "point", id: i});
                     var data_id = data[i].id;
                     var str_id = data_id.toString();
@@ -663,11 +671,11 @@ var listener9 = google.maps.event.addListener(infoWindow, 'domready', function()
                 if (data[i].division == "정문(신촌역)" || data[i].division == "연대서문" || data[i].division == "연대남문" || data[i].division == "신촌기차역" || data[i].division == "이대후문"){
            
                  
-                     var labelKind = ["label1","label2" ,"label3"];
-                     labelKind = shuffle(labelKind);
-                     var markerLabel = labelKind[0];
+                                     /*var labelKind = ["label1","label2" ,"label3"];
+                 labelKind = shuffle(labelKind);
+                 var markerLabel = labelKind[0];
                    
-                    var  marker = new MarkerWithLabel({  
+                    var marker = new MarkerWithLabel({  
                          position: latlng,
                          map: map,
                          <%# if 'data[i].price_from' != 'data[i].price_to' %>
@@ -675,12 +683,20 @@ var listener9 = google.maps.event.addListener(infoWindow, 'domready', function()
                          <%# else %>
                             //labelContent: data[i].price_from,
                          <%# end %>    
-                         labelAnchor: new google.maps.Point(27, 25),
+                         labelAnchor: new google.maps.Point(10, 0),
                          
                          labelClass: markerLabel,
                          icon: d_marker,
                          url: "/hasuk_houses/" +  data_id
                      });
+            */
+            
+              var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                icon: d_marker,
+                url: "/hasuk_houses/" +  data_id
+              });
                     marker.setValues({type: "point", id: i});
                     var data_id = data[i].id;
                     var str_id = data_id.toString();
@@ -810,11 +826,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
              <% elsif @univ == "이화" %>
                if (data[i].division == "정문(이대역)" || data[i].division == "신촌기차역" || data[i].division == "이대후문"){
             
-                  var labelKind = ["label1","label2" ,"label3"];
-                   labelKind = shuffle(labelKind);
-                   var markerLabel = labelKind[0];
+                                  /*var labelKind = ["label1","label2" ,"label3"];
+                 labelKind = shuffle(labelKind);
+                 var markerLabel = labelKind[0];
                    
-                    var  marker = new MarkerWithLabel({  
+                    var marker = new MarkerWithLabel({  
                          position: latlng,
                          map: map,
                          <%# if 'data[i].price_from' != 'data[i].price_to' %>
@@ -822,12 +838,20 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                          <%# else %>
                             //labelContent: data[i].price_from,
                          <%# end %>    
-                         labelAnchor: new google.maps.Point(27, 25),
+                         labelAnchor: new google.maps.Point(10, 0),
                          
                          labelClass: markerLabel,
                          icon: d_marker,
                          url: "/hasuk_houses/" +  data_id
                      });
+            */
+            
+              var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                icon: d_marker,
+                url: "/hasuk_houses/" +  data_id
+              });
                     marker.setValues({type: "point", id: i});
                     var data_id = data[i].id;
                     var str_id = data_id.toString();
@@ -956,11 +980,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
              
              <% else  %> 
               
-                     var labelKind = ["label1","label2" ,"label3"];
-                     labelKind = shuffle(labelKind);
-                     var markerLabel = labelKind[0];
+                                     /*var labelKind = ["label1","label2" ,"label3"];
+                 labelKind = shuffle(labelKind);
+                 var markerLabel = labelKind[0];
                    
-                    var  marker = new MarkerWithLabel({  
+                    var marker = new MarkerWithLabel({  
                          position: latlng,
                          map: map,
                          <%# if 'data[i].price_from' != 'data[i].price_to' %>
@@ -968,12 +992,20 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                          <%# else %>
                             //labelContent: data[i].price_from,
                          <%# end %>    
-                         labelAnchor: new google.maps.Point(27, 25),
+                         labelAnchor: new google.maps.Point(10, 0),
                          
                          labelClass: markerLabel,
                          icon: d_marker,
                          url: "/hasuk_houses/" +  data_id
                      });
+            */
+            
+              var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                icon: d_marker,
+                url: "/hasuk_houses/" +  data_id
+              });
                       marker.setValues({type: "point", id: i});
                       var data_id = data[i].id;
                       var str_id = data_id.toString();
@@ -1150,12 +1182,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     <div class="listbox col-lg-11 col-md-11 col-sm-12 col-xs-12" style="background-color: #ededed; padding-left:0px; padding-right:0px;">
       <div class="panel panel-default">
       
-      <center>
-        <img id="loadingImage" src='/images/icons/nameSearchLoading.gif' style="opacity:1">
-      </center>
-        <div class="panel-heading col-lg-12 col-md-12 col-xs-12 col-sm-12" style="background-color:#34495e; padding:5px; padding-left:10px;">
+        <div class="panel-heading col-lg-12 col-md-12 col-xs-12 col-sm-12 hidden-xs hidden-sm" style="background-color:#34495e; padding:5px; padding-left:10px;">
           <span style="font-size:14px; color:#d4d4d4">검색결과</span>
-          <!--
+          <!-- 
           <div style="float:right; margin-top:-2px; margin-right:5px;">
            <div class="btn-group" role="group" aria-label="정렬">
             <button id="sortByPrice" class="btn btn-default3 btn-sm">가격순</button>
@@ -1164,17 +1193,20 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
           </div>
           -->
         </div>
-        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 roomList panel-body" style="padding:0px;">
+        <div class="col-lg-12 roomList panel-body" style="padding:0px;">
+
     <% @position_counter = 0 %>
     <% @hasuk.each do |c| %>
       <% @sortingArr ||= Array.new %>
       
+    
       <% if @univ == "서강" %>
           
           <% if c.division =="남문(대흥역)" %>
               <!--개별 방 박스 1 시작-->
-              
-                <div class="room col-lg-12 col-md-12 col-sm-12 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+
+                <div class="room position<%= @position_counter %>" id='a<%=c.id %>'>
+
                   <% @position_counter += 1 %>
                   <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
                   <div class="img-responsive thumbnail">
@@ -1235,10 +1267,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                   <% end %>
                   
                       <div class="description">
+
                         <% unless c.address.nil? %>  
-              
-                            <% if c.address.length >= 25 %>
-                                <span id="room_title" style="float:left; margin-top:8px"><%= c.address.split(//).first(25).join %>..</span>
+                              
+                            <% if c.address.length >= 15 %>
+                                <span id="room_title" style="float:left; margin-top:8px"><%= c.address.split(//).first(15).join %>..</span>
                             <% else %>
                                 <span id="room_title" style="float:left; margin-top:8px"><%= c.address %></span>
                             <% end %>
@@ -1261,19 +1294,18 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       
                     </div>
                   
-                   
                     <!--정보 표시-->
                     <div class="caption" style="padding-top:5px; padding-left:5px; padding-right:0px;">
                     <div class="thumbnail-text">
                       <!--
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                           <img src="/images/icons/price2.png" style="width:20px; height:20px; margin-top:2px; margin-right:0;"/>
                         </div>
                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>월세</span>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                         <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <%# if c.miniroom_price_from != nil %>
                             <span id="room_kind">미니룸&nbsp</span> <span id="price"><%#= c.miniroom_price_from %>~<%#= c.miniroom_price_to %></span>
@@ -1294,12 +1326,12 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       
                       <!--
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         </div>
                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>협의</span>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                         <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <%# if c.sleeping_only_price_from != nil %>
                             <span id="room_kind">잠만자면&nbsp</span> <span id="price"><%#= c.sleeping_only_price_from %>~</span>
@@ -1319,14 +1351,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                           <img src="/images/icons/school.png" style="width:22px; height:15px; margin-right:0; margin-top:3px"/>
+                         <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                           <img id="school_img" src="/images/icons/school.gif"/>
                          </div>
-                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
-                           <span>통학</span>
-                         </div>
-                        
-                         <div id="school-distance" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+
+                         <div id="school-distance" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 
                             <% if c.univ1 != "학교선택" %>
                                 <% if c.univ1 == "이화" %>
@@ -1341,17 +1370,14 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <% end %>  
                         
                          </div>
-                      </div><!--정보 세번째 줄 끝-->
+                      </div><!--���보 세번째 줄 끝-->
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                          <img src="/images/icons/trans.gif" style="width: 14px;height: 18px; margin-left:8px;margin-top: 2px;"/>
+                        <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                          <img id="trans_img" src="/images/icons/trans.gif"/>
                         </div>
-                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
-                          <span>교통</span>
-                        </div>
-                        
-                        <div id="trans-distance" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+
+                        <div id="trans-distance" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 
                             <% if c.trans_kind1 == "지하철" %>
                                   <% if c.station1 == "대흥" %>
@@ -1393,7 +1419,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
                 <!--개별 방 박스 1 시작-->
               
-                <div class="room col-lg-12 col-md-12 col-sm-12 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+                <div class="room col-lg-12 col-md-12 col-sm-12 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>'>
                   <% @position_counter += 1 %>
                   <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
                   <div class="img-responsive thumbnail">
@@ -1456,8 +1482,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       <div class="description">
                         <% unless c.address.nil? %>  
               
-                            <% if c.address.length >= 25 %>
-                                <span id="room_title" style="float:left; margin-top:8px"><%= c.address.split(//).first(25).join %>..</span>
+                            <% if c.address.length >= 15 %>
+                                <span id="room_title" style="float:left; margin-top:8px"><%= c.address.split(//).first(15).join %>..</span>
                             <% else %>
                                 <span id="room_title" style="float:left; margin-top:8px"><%= c.address %></span>
                             <% end %>
@@ -1486,13 +1512,13 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                     <div class="thumbnail-text">
                       <!--
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                           <img src="/images/icons/price2.png" style="width:20px; height:20px; margin-top:2px; margin-right:0;"/>
                         </div>
                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>월세</span>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                         <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <%# if c.miniroom_price_from != nil %>
                             <span id="room_kind">미니룸&nbsp</span> <span id="price"><%#= c.miniroom_price_from %>~<%#= c.miniroom_price_to %></span>
@@ -1513,12 +1539,12 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       
                       <!--
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         </div>
                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>협의</span>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                         <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <%# if c.sleeping_only_price_from != nil %>
                             <span id="room_kind">잠만자면&nbsp</span> <span id="price"><%#= c.sleeping_only_price_from %>~</span>
@@ -1538,14 +1564,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                           <img src="/images/icons/school.png" style="width:22px; height:15px; margin-right:0; margin-top:3px"/>
+                         <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                           <img id="school_img" src="/images/icons/school.gif"/>
                          </div>
-                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
-                           <span>통학</span>
-                         </div>
-                        
-                         <div id="school-distance" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+
+                         <div id="school-distance" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 
                             <% if c.univ1 != "학교선택" %>
                                 <% if c.univ1 == "이화" %>
@@ -1563,14 +1586,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       </div><!--정보 세번째 줄 끝-->
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                          <img src="/images/icons/trans.gif" style="width: 14px;height: 18px; margin-left:8px;margin-top: 2px;"/>
+                        <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                          <img id="trans_img" src="/images/icons/trans.gif"/>
                         </div>
-                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
-                          <span>교통</span>
-                        </div>
-                        
-                        <div id="trans-distance" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+
+                        <div id="trans-distance" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 
                             <% if c.trans_kind1 == "지하철" %>
                                   <% if c.station1 == "대흥" %>
@@ -1612,7 +1632,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
                <!--개별 방 박스 1 시작-->
               
-                <div class="room col-lg-12 col-md-12 col-sm-12 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+                <div class="room col-lg-12 col-md-12 col-sm-12 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>'>
                   <% @position_counter += 1 %>
                   <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
                   <div class="img-responsive thumbnail">
@@ -1675,8 +1695,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       <div class="description">
                         <% unless c.address.nil? %>  
               
-                            <% if c.address.length >= 25 %>
-                                <span id="room_title" style="float:left; margin-top:8px"><%= c.address.split(//).first(25).join %>..</span>
+                            <% if c.address.length >= 15 %>
+                                <span id="room_title" style="float:left; margin-top:8px"><%= c.address.split(//).first(15).join %>..</span>
                             <% else %>
                                 <span id="room_title" style="float:left; margin-top:8px"><%= c.address %></span>
                             <% end %>
@@ -1705,13 +1725,13 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                     <div class="thumbnail-text">
                       <!--
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                           <img src="/images/icons/price2.png" style="width:20px; height:20px; margin-top:2px; margin-right:0;"/>
                         </div>
                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>월세</span>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                         <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <%# if c.miniroom_price_from != nil %>
                             <span id="room_kind">미니룸&nbsp</span> <span id="price"><%#= c.miniroom_price_from %>~<%#= c.miniroom_price_to %></span>
@@ -1732,12 +1752,12 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       
                       <!--
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         </div>
                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>협의</span>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                         <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <%# if c.sleeping_only_price_from != nil %>
                             <span id="room_kind">잠만자면&nbsp</span> <span id="price"><%#= c.sleeping_only_price_from %>~</span>
@@ -1757,14 +1777,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                           <img src="/images/icons/school.png" style="width:22px; height:15px; margin-right:0; margin-top:3px"/>
+                         <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                           <img id="school_img" src="/images/icons/school.gif"/>
                          </div>
-                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
-                           <span>통학</span>
-                         </div>
-                        
-                         <div id="school-distance" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                         <div id="school-distance" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 
                             <% if c.univ1 != "학교선택" %>
                                 <% if c.univ1 == "이화" %>
@@ -1782,14 +1798,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       </div><!--정보 세번째 줄 끝-->
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                          <img src="/images/icons/trans.gif" style="width: 14px;height: 18px; margin-left:8px;margin-top: 2px;"/>
-                        </div>
-                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
-                          <span>교통</span>
+                        <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                          <img id="trans_img" src="/images/icons/trans.gif"/>
                         </div>
                         
-                        <div id="trans-distance" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div id="trans-distance" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 
                             <% if c.trans_kind1 == "지하철" %>
                                   <% if c.station1 == "대흥" %>
@@ -1829,7 +1842,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
                <!--개별 방 박스 1 시작-->
               
-                <div class="room col-lg-12 col-md-12 col-sm-12 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>' style="padding-left: 0px; padding-right:0px;">
+                <div class="room col-lg-12 col-md-12 col-sm-12 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>'>
                   <% @position_counter += 1 %>
                   <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
                   <div class="img-responsive thumbnail">
@@ -1892,8 +1905,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       <div class="description">
                         <% unless c.address.nil? %>  
               
-                            <% if c.address.length >= 25 %>
-                                <span id="room_title" style="float:left; margin-top:8px"><%= c.address.split(//).first(25).join %>..</span>
+                            <% if c.address.length >= 15 %>
+                                <span id="room_title" style="float:left; margin-top:8px"><%= c.address.split(//).first(15).join %>..</span>
                             <% else %>
                                 <span id="room_title" style="float:left; margin-top:8px"><%= c.address %></span>
                             <% end %>
@@ -1922,13 +1935,13 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                     <div class="thumbnail-text">
                       <!--
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                           <img src="/images/icons/price2.png" style="width:20px; height:20px; margin-top:2px; margin-right:0;"/>
                         </div>
                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>월세</span>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                         <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <%# if c.miniroom_price_from != nil %>
                             <span id="room_kind">미니룸&nbsp</span> <span id="price"><%#= c.miniroom_price_from %>~<%#= c.miniroom_price_to %></span>
@@ -1949,12 +1962,12 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       
                       <!--
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                         </div>
                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
                           <span>협의</span>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                         <div id="price-content" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                          <%# if c.sleeping_only_price_from != nil %>
                             <span id="room_kind">잠만자면&nbsp</span> <span id="price"><%#= c.sleeping_only_price_from %>~</span>
@@ -1974,14 +1987,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                         <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                           <img src="/images/icons/school.png" style="width:22px; height:15px; margin-right:0; margin-top:3px"/>
+                         <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                           <img id="school_img" src="/images/icons/school.gif"/>
                          </div>
-                         <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
-                           <span>통학</span>
-                         </div>
-                        
-                         <div id="school-distance" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                         
+                         <div id="school-distance" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 
                             <% if c.univ1 != "학교선택" %>
                                 <% if c.univ1 == "이화" %>
@@ -1999,14 +2009,11 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       </div><!--정보 세번째 줄 끝-->
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
-                        <div id="price-icon" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                          <img src="/images/icons/trans.gif" style="width: 14px;height: 18px; margin-left:8px;margin-top: 2px;"/>
+                        <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                          <img id="trans_img" src="/images/icons/trans.gif"/>
                         </div>
-                        <div id="condition" class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding:0px;">
-                          <span>교통</span>
-                        </div>
-                        
-                        <div id="trans-distance" class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+  
+                        <div id="trans-distance" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 
                             <% if c.trans_kind1 == "지하철" %>
                                   <% if c.station1 == "대흥" %>
@@ -2049,7 +2056,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
     </div><!--방 리스트 박스 끝--> 
   
   </div><!--오른쪽 박스 끝 -->
-
+ <%= javascript_include_tag 'waterfall-light', 'data-turbolinks-track' => true %>
  <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
  
  <!--지도 디자인 관련 js -->
@@ -2330,7 +2337,7 @@ $("sortByDistance").click(function(){
                   height: "0%"
                   }, 700);
               $(".roomList").css({"height":"97%", "width":"100%"});
-              $(".roomList").css({'-webkit-column-count': "3", '-moz-column-count': "3", 'column-count': "3"});
+              //$(".roomList").css({'-webkit-column-count': "3", '-moz-column-count': "3", 'column-count': "3"});
           } else {
                //지도 없는 상태-> 있는 상태
               $("#menu-icon").removeClass("glyphicon-menu-down");
@@ -2339,7 +2346,7 @@ $("sortByDistance").click(function(){
                   height: "46.5%"
                   });
               $(".roomList").css({"height":"50.5%", "width":"100%"});
-              $(".roomList").css({'-webkit-column-count': "3", '-moz-column-count': "3", 'column-count': "3"});
+              //$(".roomList").css({'-webkit-column-count': "3", '-moz-column-count': "3", 'column-count': "3"});
           }
       });
       
@@ -2351,5 +2358,31 @@ $("sortByDistance").click(function(){
       }); 
       
 </script>
+<script>
+    $('.roomList').waterfall({
+        gridWidth : [0,200,400,1400,1800],
+        gap: 0,
+        checkImagesLoaded: true,
+        scrollbottom : true
+    });
+    //$(".roomList").waterfall('sort');
+$(window).load(function() {
+  $.ajax({
+        url:'/map/mappage',
+        success:function(){
+            $.get("/map/from_hasuk", function(data, status){
+                for (var i = 0; i < data.length; i++){
+                    if(data) {
+                        $(".roomList").waterfall('sort');
+                    }
+                      else {
+                        $(".roomList").waterfall('end');
+                    }
+                }
+            });
+        }
+    });
+});
 
+</script>
 </body>
