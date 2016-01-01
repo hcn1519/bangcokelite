@@ -58,7 +58,7 @@
   .bx-wrapper, .bx-viewport, .bx-wrapper { height: 450px !important;}	
 }
 @media (min-width: 768px) {
-  .bx-wrapper, .bx-viewport, .bx-wrapper { height: 490px !important;}
+  .bx-wrapper, .bx-viewport, .bx-wrapper { height: 478px !important;}
 }
 /*사진 크기 셋팅*/
 
@@ -205,7 +205,7 @@
 }
 
 /* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
-
+/*
 .bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
 	text-align: left;
 	width: 80%;
@@ -215,7 +215,7 @@
 	right: 0;
 	width: 35px;
 }
-
+*/
 /* IMAGE CAPTIONS */
 
 .bx-wrapper .bx-caption {

@@ -34,7 +34,7 @@ body, main {
 .info {
   background-color: #ffffff;
   padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 0px;
 }
 
 .oneline {
@@ -59,8 +59,8 @@ body, main {
 
 .kok {
     color: #888888;
-    font-size: 14px;
-    padding-top: 10px;
+    font-size: 13px;
+    padding-top: 7px;
     padding-left: 0px;
     padding-right: 0px;
 }
@@ -157,6 +157,14 @@ hr {
 }
 
 @media (max-width: 767px) {
+.rate_btn {
+  border-radius: 0;
+}
+
+.all_point {
+  width: 140px;
+  border-radius:0;
+}
 
 .rating-form {
   width: 100%;
@@ -181,14 +189,17 @@ hr {
   background-color: #ffffff;
 }
 
+
 .info {
   border: 1px solid #dddddd;
 }
 
 .info_content {
-    font-size: 16px;  
+    font-size: 14px;  
 }
-
+.info_list {
+    font-size: 13px;
+}
 td {
   font-size: 16px;
 }
@@ -251,19 +262,50 @@ td {
 .br-theme-bars-1to10 .br-widget a {
   width: 12px;
 }
+.left_btn_col {
+  border-top:1px solid #dddddd; 
+  border-right:1px solid #dddddd;
+}  
 
+.right_btn_col {
+  border-top:1px solid #dddddd; 
+}
+
+.comment {
+  padding-left: 15px;
+  padding-right:15px;
+}
 }
 
 @media(min-width:768px) {
+.comment_section {
+  margin-top: 30px;
+}
+.left_btn_col {
+  border-top:1px solid #999999; 
+  border-right:1px solid #999999;
+}  
+
+.right_btn_col {
+  border-top:1px solid #999999; 
+}
+.all_point {
+  width: 140px;
+  border-radius:0;
+}
+
+.rate_btn {
+  border-radius: 0;
+}
 .rating-form {
-  width: 80%;
+  width: 550px;
 }
 .rate_height {
   margin-bottom:10px;
 }
 .rate_description {
-  text-align: center;  
-  margin-right: 70px;
+  text-align: left;  
+  padding-left: 50px;
 }
 
 .br-theme-bars-1to10 .br-widget a {
@@ -312,7 +354,7 @@ td {
 .container {
   padding: 60px;
   padding-top:10px;
-  width: 970px;
+  width: 920px;
   margin-bottom: 70px;
   
 }
@@ -324,10 +366,13 @@ td {
     display: inline-block;
 }
 
-.info_content {
-    font-size: 15px;  
+.info_content, .info_list {
+    font-size: 13px;  
 }
 
+.info_list {
+  padding-right:0;
+}
 .room {
   width:58px; 
   display:inline-block;
@@ -344,6 +389,7 @@ td {
 .info {
   margin-left: 5px; 
   border: 1px solid #999999;
+  line-height: 1.5;
 }
 
 .title {
@@ -363,20 +409,27 @@ td {
 .table-responsive {
   padding-right:50px;
 }
+
 }
 
 @media(min-width: 1200px) {
 .rating-form {
-  width: 50%;
+  width: 550px;
 }
 }
 
+.comment {
+  border-bottom: 1px solid #eeeeec;
+  color: #666666;
+  font-size: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color:#ffffff;
+}
 .info_hr {
   padding:0 15px;
 }
-.info_list {
-    font-size: 14px;
-}
+
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
     color: #2ecc71;
@@ -450,6 +503,23 @@ td {
   right: 5%;
   margin-top: 10px;
 }
+
+.btn-success2:hover {
+      color:#fff;
+      background-color:#2ecc71;
+    }
+.btn-success2:focus, .btn-success2 {
+    color: #2ecc71;
+    background-color: transparent;
+    border: none;
+}
+
+.btn-danger2, .btn-danger {
+  padding-top: 5px;
+  padding-bottom:5px;
+}
+
+
 </style>
 
 </head>
@@ -538,12 +608,12 @@ td {
                     
                     var bounds = new daum.maps.LatLngBounds();
                     bounds.extend(hasukLatLng);
-                    
+   
                     var imageSrc = '/images/icons/bus.jpg', // 마커이미지의 주소입니다    
                         imageSize = new daum.maps.Size(25, 25), // 마커이미지의 크기입니다
                         imageOption = {offset: new daum.maps.Point(12.5, 13)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
                     var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
-                    var busstop = ["광성중고등학교", "이대역", "신촌오거리.2호선신촌역", "신촌기차역", "이대후문", "이대부고", "연세대앞/연세대학교", "연희교차로/브라운스톤우정", "서대문우체국"],
+                    var busstop = ["광성중고등학교", "이대역" "신촌오거리.2호선신촌역", "신촌기차역", "이대후문", "이대부고", "연세대앞/연세대학교", "연희교차로/브라운스톤우정", "서대문우체국"],
                         bus_lat = [37.549313, 37.556676, 37.556040, 37.558718, 37.563023, 37.566515, 37.559966, 37.565787, 37.562658],
                         bus_lng = [126.938714, 126.944758, 126.939930, 126.942588, 126.943584, 126.946457, 126.935345, 126.930240, 126.931350];
                   
@@ -854,13 +924,13 @@ td {
             
             for(var k=0; k<=6; k++){
               if(score[k] >= 3.7){
-                colorset[k] = '#3498DB';
+                colorset[k] = '#79b5e6';
               } else if (score[k] >= 2.7 && score[k] < 3.7) {
-                colorset[k] = '#2ECC71';
+                colorset[k] = '#86cd65';
               } else if (score[k] >= 2.0 && score[k] < 2.7) {
-                colorset[k] = '#E67E22';
+                colorset[k] = '#ffc221';
               } else {
-                colorset[k] = '#C0392B';
+                colorset[k] = '#ff685f';
               }
             }
             var data = google.visualization.arrayToDataTable([
@@ -909,14 +979,16 @@ td {
             chart.draw(view, options);
         }
       </script>
-        <div id="barchart" style="width: 100%; height: auto;"></div>                          
+        <div id="barchart" style="width: 99%; height: auto;"></div>                          
         <% else %>
         <!--평가 없을 경우 -->
-          <table style="width: 100%; height: 237px;">
+          <table style="width: 99%; height: 237px;">
             <tr>
                <td style="text-align: center; vertical-align: middle;">
-                <p>아직 평가가 없습니다.</p>
-                <p>평가를 남겨주세요.</p>
+                <span class="info_content">
+                  아직 평가가 없습니다.<br>
+                  평가를 남겨주세요.
+                </span>
                </td>
             </tr>
           </table>
@@ -970,8 +1042,8 @@ td {
       </div>
                 <!--리뷰 끝-->
                 <div class="info_hr"><hr></div>
-                <div class="row" style="margin-top:10px; margin-bottom:0; padding-right:15px; padding-left:15px;">
-                    <div class="col-xs-4 kok">
+                <div class="row" style="margin-top:10px; margin-bottom:15px; padding-right:15px; padding-left:15px;">
+                    <div class="col-xs-6 kok">
                         조회수 <%= @page_view_count %>&nbsp;
                         <% if user_signed_in? %> 
                           <% if current_user.favorites.include?(@hasuk_house) != true %>
@@ -989,41 +1061,108 @@ td {
                           <!--로그인을 안함 -->
                         <% end %>
                     </div>
-                    <div class="col-xs-8" style="padding:0px">
+                    <div class="col-xs-6" style="padding:0px">
                         
                     <% if user_signed_in? %> 
                       <% if current_user.favorites.include?(@hasuk_house) != true %>
-                        <%= link_to "콕하기!", favorite_hasuk_house_path(@hasuk_house, type: "favorite"),:class => "vote btn btn-danger2 btn-md", style:"border: 1px solid #E74C3C; display:block; font-size: 15px; float: left; width:44%", method: :put, :remote => true, data: { toggle_text: '콕했어요!', toggle_href: favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), id: @hasuk_house.id } %>
+                        <%= link_to "♡ 콕하기", favorite_hasuk_house_path(@hasuk_house, type: "favorite"),:class => "vote btn btn-danger2 btn-sm", :style=>"border: 1px solid #ec7063; border-radius: 20px; display:block; font-size: 14x; float: right;", method: :put, :remote => true, data: { toggle_text: '콕했어요!', toggle_href: favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), id: @hasuk_house.id } %>
                       <% else %>
-                        <%= link_to "콕했어요!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), :class => "vote btn btn-danger btn-md", style:"border: 1px solid #E74C3C; display:block; font-size: 15px; float: left; width:44%", method: :put, :remote => true, data: { toggle_text: '콕하기!', toggle_href: favorite_hasuk_house_path(@hasuk_house, type: "favorite"), id: @hasuk_house.id } %>
+                        <%= link_to "콕했어요!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), :class => "vote btn btn-danger btn-sm",:style=>"border: 1px solid #E74C3C; border-radius:20px; display:block; font-size: 14px; float: right;", method: :put, :remote => true, data: { toggle_text: '♡ 콕하기', toggle_href: favorite_hasuk_house_path(@hasuk_house, type: "favorite"), id: @hasuk_house.id } %>
                       <% end %>
-                      <%= link_to "평가 남기기", '#ratingform', :class => "btn btn-success btn-md", style:"border: 1px solid #2ECC71; font-size: 15px; float: right; width:50%", 'data-toggle': "modal" %>  
+                      
                     <% else %>
-                      <%= link_to "콕하기!", '#login', :class => "btn btn-danger2 btn-md", style:"border: 1px solid #E74C3C; font-size: 15px; float: left; width:44%", 'data-toggle': "modal" %>  
-                      <%= link_to "평가 남기기", '#login', :class => "btn btn-success btn-md", style:"border: 1px solid #2ECC71; font-size: 15px; float: right; widht:50%", 'data-toggle': "modal" %>  
+                      <%= link_to "♡ 콕하기", '#login', :class => "btn btn-danger2 btn-md", :style=>"border: 1px solid #ec7063; border-radius:20px; font-size: 14px; float: right;", 'data-toggle': "modal" %>
                     <% end %>
                     
                     </div>
                 </div>
+                <div class="row" style="margin:0">
+                    <% if user_signed_in? %>
+                      <div class="col-xs-6 left_btn_col">
+                        <%= link_to '#imgUpload', :class => "btn btn-success2 btn-md rate_btn btn-block", 'data-toggle': "modal" do %>
+                          <span class="glyphicon glyphicon-camera"></span><%= " 사진 올리기" %>
+                        <% end %>
+                      </div> 
+                      <div class="col-xs-6 right_btn_col">
+                        <%= link_to '#ratingform', :class => "btn btn-success2 btn-md rate_btn btn-block", 'data-toggle': "modal" do %> 
+                          <span class="glyphicon glyphicon-pencil"></span><%= " 평가 남기기" %>
+                        <% end %>
+                      </div> 
+                        
+                    <% else %>
+                      <div class="col-xs-6 left_btn_col">
+                        <%= link_to '#login', :class => "btn btn-success2 btn-md rate_btn btn-block", 'data-toggle': "modal" do %>
+                          <span class="glyphicon glyphicon-camera"></span><%= " 사진 올리기" %>
+                        <% end %>
+                      </div> 
+                      <div class="col-xs-6 right_btn_col">
+                        <%= link_to '#login', :class => "btn btn-success2 btn-md rate_btn btn-block", 'data-toggle': "modal" do %> 
+                          <span class="glyphicon glyphicon-pencil"></span><%= " 평가 남기기" %>
+                        <% end %>
+                      </div> 
+                      <% end %>
+                  </div>
+                </div>
             </div>
         </div>
-    </div> 
-    <% if user_signed_in? %>
-      <%= link_to "사진 올리기", '#imgUpload', :class => "btn btn-primary btn-lg", 'data-toggle': "modal" %>  
-    <% else %>
-      <%= link_to "사진 올리기", '#login', :class => "btn btn-primary btn-lg", 'data-toggle': "modal" %>  
-   <% end %>
+    </div>
     
+    <div class="comment_section">
     <% @anonymous = 1 %>
     <% @user_comment.each do |i| %>
     <% @user = User.where(id: i.user_id) %>
-      작성자: 익명<%= @anonymous %><br>
-      댓글: <%= i.comment %><br>
-      평점: <%= i.all_score %><br>
-      작성시간: <%= i.created_at.strftime("%Y년 %m월 %d일 %p %I시 %M분") %><br>
+    
+    <div class="row">
+    <div class="col-md-10 col-md-offset-1 col-sm-12 comment">
+      <div class="row" style="font-weight:600">
+        <div class="col-xs-6">
+          익명<%= @anonymous %>
+        </div>
+        <div class="col-xs-6" style="color:#2ecc71; text-align:right;">
+        
+        <% if i.all_score.nil? %>
+        <% else %>
+          <% if i.all_score >= 4.3 %>
+            A+
+          <% elsif i.all_score >= 4 %>
+            A
+          <% elsif i.all_score >= 3.7 %>
+            A-
+          <% elsif i.all_score >= 3.3 %>
+            B+
+          <% elsif i.all_score >= 3 %>
+            B  
+          <% elsif i.all_score >= 2.7 %>
+            B-
+          <% elsif i.all_score >= 2.3 %>
+            C+   
+          <% elsif i.all_score >= 2 %>
+            C
+          <% elsif i.all_score >= 1 %>
+            D   
+          <% else %>
+            F
+          <% end %>
+        <% end %>  
+        </div>
+      </div>
+      <div class="row">
+        <%= i.comment %>  
+      </div>
+      <div class="row" style="font-size:13px; color: #82888a;">
+        <div class="col-xs-6">
+          <%= i.created_at.strftime("%Y-%m-%d  %p%I:%M") %>
+        </div>
+        <div class="col-xs-6" style="text-align:right">
+          수정  |  삭제
+        </div>
+      </div>
+    </div>
+    </div>
+      
       <% @anonymous +=1 %>
     <% end %>
-    
+   </div> 
 </div>    
 
 <!--
@@ -1107,8 +1246,7 @@ $('#pictab3 a').click(function (e) {
         speed:1000,
         pager:false,
         controls: true,
-        infiniteLoop:true,
-        captions: true,
+        infiniteLoop:false,
         onSliderLoad: function (currentIndex){
         $('#slide-counter .current-index').text(currentIndex + 1);
         },

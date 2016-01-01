@@ -95,9 +95,14 @@
     <div class="row" style="padding:15px; padding-top:0px">
         <%= link_to "정보수정", "#edit", "data-toggle" => "modal", :class => 'btn btn-info', :id =>"edit-account", style:"width:100%", "data-dismiss" => "popover" %>
     </div>
-    <div class="row" style="padding:15px; padding-top:0px">
-        <%= link_to "내가 등록한 방", "/hasuk_houses", :class => 'btn btn-warning', :id =>"myroom", style:"width:100%", "data-dismiss" => "popover" %>
-    </div>
+    <% if user_signed_in? %>
+     <% @admin = User.where(id: 2) %>
+         <% if @admin[0].id == current_user.id %> 
+        <div class="row" style="padding:15px; padding-top:0px">
+            <%= link_to "내가 등록한 방", "/hasuk_houses", :class => 'btn btn-warning', :id =>"myroom", style:"width:100%", "data-dismiss" => "popover" %>
+        </div>
+        <% end %>
+    <% end %>
 </div>
 
   <% else %>
@@ -159,9 +164,14 @@
     <div class="row" style="padding:15px; padding-top:0px">
         <%= link_to "정보수정", "#edit", "data-toggle" => "modal", :class => 'btn btn-info', :id =>"edit-account", style:"width:100%", "data-dismiss" => "popover" %>
     </div>
-    <div class="row" style="padding:15px; padding-top:0px">
-        <%= link_to "내가 등록한 방", "/hasuk_houses", :class => 'btn btn-warning', :id =>"myroom", style:"width:100%", "data-dismiss" => "popover" %>
-    </div>
+    <% if user_signed_in? %>
+     <% @admin = User.where(id: 2) %>
+         <% if @admin[0].id == current_user.id %> 
+        <div class="row" style="padding:15px; padding-top:0px">
+            <%= link_to "내가 등록한 방", "/hasuk_houses", :class => 'btn btn-warning', :id =>"myroom", style:"width:100%", "data-dismiss" => "popover" %>
+        </div>
+        <% end %>
+    <% end %>
 </div>
 
     <% else %><!--로그인 하지 않은 경우 -->
@@ -225,9 +235,14 @@
         <div class="row" style="padding:15px; padding-top:0px">
             <%= link_to "정보수정", "#edit", "data-toggle" => "modal", :class => 'btn btn-info', :id =>"edit-account", style:"width:100%", "data-dismiss" => "popover" %>
         </div>
-        <div class="row" style="padding:15px; padding-top:0px">
-            <%= link_to "내가 등록한 방", "/hasuk_houses", :class => 'btn btn-warning', :id =>"myroom", style:"width:100%", "data-dismiss" => "popover" %>
-        </div>
+        <% if user_signed_in? %>
+         <% @admin = User.where(id: 2) %>
+             <% if @admin[0].id == current_user.id %> 
+            <div class="row" style="padding:15px; padding-top:0px">
+                <%= link_to "내가 등록한 방", "/hasuk_houses", :class => 'btn btn-warning', :id =>"myroom", style:"width:100%", "data-dismiss" => "popover" %>
+            </div>
+            <% end %>
+        <% end %>
     </div>
     
       <% else %>
