@@ -6,8 +6,6 @@ class HasukHousesController < ApplicationController
   respond_to :js, :html, :json
   def favorite
     @hasuk_house = HasukHouse.find_by_id(params[:id])
-    
-    
     type = params[:type]
     if type == "favorite"
       current_user.favorites << @hasuk_house
@@ -66,7 +64,9 @@ class HasukHousesController < ApplicationController
     
     @user_comment = RatingForHasukHouse.where(avg_rating_score_id: @hasuk_house.id)
     @users_hasuk_img = Attachment.where(hasuk_house_id: @hasuk_house.id);
-    
+    if user_signed_in?
+      @current_user_rate = RatingForHasukHouse.where(avg_rating_score_id: @hasuk_house.id, user_id: current_user.id)
+    end
   end
 
   # GET /hasuk_houses/new
@@ -113,7 +113,6 @@ class HasukHousesController < ApplicationController
   end
 
   private
-    
     # Use callbacks to share common setup or constraints between actions.
     def set_hasuk_house
       @hasuk_house = HasukHouse.find(params[:id])
