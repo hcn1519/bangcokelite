@@ -28,8 +28,10 @@ class RatingController < ApplicationController
     end
     
     def destroy
+        #삭제할 데이터 찾기
         @destroy_rate = RatingForHasukHouse.where(:avg_rating_score_id => params[:hasuk_house_id], :user_id => params[:id])
         
+        #평균 데이터 업데이트
         @destroy_avg = AvgRatingScore.where(hasuk_house_id: params[:hasuk_house_id])
         @destroy_avg[0].how_many_people_did = @destroy_avg[0].how_many_people_did - 1
         @destroy_avg[0].total_meal_score = @destroy_avg[0].total_meal_score - @destroy_rate[0].meal_score
