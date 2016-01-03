@@ -23,8 +23,6 @@ class MapController < ApplicationController
   def from_hasuk
     @place = HasukHouse.all
     @place = HasukHouse.all.sort { |p1, p2| [p1.distance1, p1.trans_distance_time1] <=> [p2.distance1, p2.trans_distance_time1] }
-    
-    
     render json: @place
   end
   
