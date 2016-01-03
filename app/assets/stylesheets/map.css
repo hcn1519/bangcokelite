@@ -23,6 +23,9 @@
 	border-bottom: 1px solid #ccc;
 
 }
+#iw-container {
+    width:300px;
+}
   .gm-style-iw {
   width: 320px !important;
    top: 15px !important;

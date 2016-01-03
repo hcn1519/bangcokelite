@@ -378,7 +378,7 @@
        $.get("/map/from_hasuk", function(data, status){
              for (var i = 0; i < data.length; i++){
 
-           infoWindow = new google.maps.InfoWindow();
+             infoWindow = new google.maps.InfoWindow();
          if (data[i].hasuk_name != null) {
              var name = data[i].hasuk_name;
          } else {
@@ -505,6 +505,7 @@
           
 
         var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);  
+
                     
             //공통 요소 - 여기까지만 따로 놓을 수 있음.
            
@@ -1120,7 +1121,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       })(infoWindow));
  
 
- // 마커에 마우스 대면 리스트박스 이동
+ // 마커에 마우스 대면 ���스트박스 이동
                      google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
                       return function() {
                          var result_id = "#" + "a" + str_id;
@@ -1257,7 +1258,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
  google.maps.event.addListener(marker, 'click', function() {
         var markerUrl = this.url;
         window.open(markerUrl, "_blank");
-    });                    
+    });
 //말풍선 출력 
                     google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
                           return function() {
@@ -1299,7 +1300,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
                        $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
                        });
-
                       };
 
                      })(str_id));
@@ -1330,6 +1330,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
                       };
 
+                     })(str_id));
+                     
 //말풍선 디자인 시작//
 google.maps.event.addListener(infoWindow, 'domready', function() {
 
@@ -1357,9 +1359,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
    iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
   });
 //말풍선 디자인 끝//
-
-                     })(str_id));
                     marker.setMap(map);
+              
               
                 
               }//거리 범위 지정
@@ -1468,7 +1469,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
                        $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
                        });
-
                       };
 
                      })(str_id));
@@ -1500,8 +1500,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       };
 
                      })(str_id));
-                    marker.setMap(map);
-
+                     
 //말풍선 디자인 시작//
 google.maps.event.addListener(infoWindow, 'domready', function() {
 
@@ -1529,8 +1528,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
    iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
   });
 //말풍선 디자인 끝//
-              
-                
+                    marker.setMap(map);
+  
               }//거리 범위 지정
               //가격 범위 지정
               }//성별 종류 끝  
@@ -1634,10 +1633,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                        //console.log(result_id);
 
                        $(document).ready(function() {
-                       //  $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
                        $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
                        });
-
                       };
 
                      })(str_id));
@@ -1666,6 +1664,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         $(result_id).css("background-color","transparent");
                         });
 
+                      };
+
+                     })(str_id));
+                     
 //말풍선 디자인 시작//
 google.maps.event.addListener(infoWindow, 'domready', function() {
 
@@ -1693,12 +1695,8 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
    iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
   });
 //말풍선 디자인 끝//
-
-                      };
-
-                     })(str_id));
                     marker.setMap(map);
-
+              
               
                 
               }//거리 범위 지정
@@ -3577,6 +3575,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
   </div><!--방 리스트 박스 끝--> 
   
   </div><!--오른쪽 박스 끝 -->
+  <%= javascript_include_tag 'waterfall-light', 'data-turbolinks-track' => true %>
  <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
  
  <!--지도 디자인 관련 js -->
@@ -3888,5 +3887,31 @@ $(document).ready(function(){
 
 
   </script>
+<script>
+    $('.roomList').waterfall({
+        gridWidth : [0,200,400,1400,1800],
+        gap: 0,
+        checkImagesLoaded: true,
+        scrollbottom : true
+    });
+    //$(".roomList").waterfall('sort');
+$(window).load(function() {
+  $.ajax({
+        url:'/map/mappage',
+        success:function(){
+            $.get("/map/from_hasuk", function(data, status){
+                for (var i = 0; i < data.length; i++){
+                    if(data) {
+                        $(".roomList").waterfall('sort');
+                    }
+                      else {
+                        $(".roomList").waterfall('end');
+                    }
+                }
+            });
+        }
+    });
+});
 
+</script>
 </body>

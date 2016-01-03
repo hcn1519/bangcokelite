@@ -60,6 +60,9 @@
 @media (min-width: 768px) {
   .bx-wrapper, .bx-viewport, .bx-wrapper { height: 478px !important;}
 }
+@media (min-width: 769px) {
+  .bx-wrapper, .bx-viewport, .bx-wrapper { height: 491px !important;}
+}
 /*사진 크기 셋팅*/
 
 
