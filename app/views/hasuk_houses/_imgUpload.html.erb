@@ -5,12 +5,17 @@
     height:auto;
     border:1px solid #262626;
     border-radius: 5px;
+    overflow: auto;
   }
-  .gallery img {
-    width:25%;
-    height:auto;
-    display:inline-block;
+  #pic_div {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left:5px;
+    padding-right:5px;
+    text-align: center;
+    min-height: 140px;
   }
+  
 .fileupload {
     position: relative;
     overflow: hidden;
@@ -59,23 +64,21 @@
   $(function() {
     // Multiple images preview in browser
     var imagesPreview = function(input, placeToInsertImagePreview) {
-
         if (input.files) {
-            var filesAmount = input.files.length;
-
-            for (i = 0; i < filesAmount; i++) {
-                var reader = new FileReader();
-
-                reader.onload = function(event) {
-                    $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
-                }
-
-                reader.readAsDataURL(input.files[i]);
-            }
+          var filesAmount = input.files.length;
+          
+          for (i = 0; i < filesAmount; i++) {
+              var reader = new FileReader();
+              reader.onload = function(event) {
+                var each_pic= '<img src="' + event.target.result + '"/>'; 
+                //$($.parseHTML('<img>')).attr('src', event.target.result);
+                var pic_div = '<div class="col-md-3 col-lg-3 col-xs-3" id="pic_div">'+ each_pic + '</div>';
+                $(".gallery").append(pic_div);
+              }
+              reader.readAsDataURL(input.files[i]);
+          }
         }
-
     };
-
     $('.pictures').on('change', function() {
         imagesPreview(this, 'div.gallery');
     });
