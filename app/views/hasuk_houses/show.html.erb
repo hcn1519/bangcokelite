@@ -1129,28 +1129,17 @@ td {
         </div>
         <div class="col-xs-6" style="color:#2ecc71; text-align:right;">
         
-        <% if i.all_score.nil? %>
-        <% else %>
-          <% if i.all_score >= 4.3 %>
-            A+
-          <% elsif i.all_score >= 4 %>
-            A
-          <% elsif i.all_score >= 3.7 %>
-            A-
-          <% elsif i.all_score >= 3.3 %>
-            B+
-          <% elsif i.all_score >= 3 %>
-            B  
-          <% elsif i.all_score >= 2.7 %>
-            B-
-          <% elsif i.all_score >= 2.3 %>
-            C+   
-          <% elsif i.all_score >= 2 %>
-            C
-          <% elsif i.all_score >= 1 %>
-            D   
-          <% else %>
-            F
+        <% unless i.all_score.nil? %>
+          <% if i.all_score >= 4.3 %>A+
+          <% elsif i.all_score >= 4 %>A
+          <% elsif i.all_score >= 3.7 %>A-
+          <% elsif i.all_score >= 3.3 %>B+
+          <% elsif i.all_score >= 3 %>B  
+          <% elsif i.all_score >= 2.7 %>B-
+          <% elsif i.all_score >= 2.3 %>C+   
+          <% elsif i.all_score >= 2 %>C
+          <% elsif i.all_score >= 1 %>D
+          <% else %>F
           <% end %>
         <% end %>  
         </div>
