@@ -220,6 +220,7 @@ td {
 .container {
   background-color:#f5f5f5;
   padding-top:10px;
+  margin-bottom: 30px;
 }
 #pictab1{
   display:inline-block;
@@ -566,12 +567,12 @@ td {
                 <ul id="bxslider">
   
                   <!--우리가 올리는 사진-->
-                  <li><img src="<%= @hasuk_house.main_img %>" alt="" title="" /> </li>
+                  <li><img src="<%= @hasuk_house.main_img.detail %>" alt="" title="" /> </li>
                   
                   <!--사람들이 올리는 사진-->
                   
                   <% @users_hasuk_img.each do |i| %>
-                    <li><img src="<%= i.img %>"/> </li>
+                    <li><img src="<%= i.img.detail %>"/> </li>
                   <% end %>
                 </ul>
 
@@ -1117,6 +1118,14 @@ td {
     </div>
     
     <div class="comment_section">
+      
+    <% if @user_comment[0].nil? %>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-sm-12" style="background-color:#f5f5f5; color:#666666; font-size:15px; padding-top:10px; padding-bottom:10px;">
+         <center>이 하숙집의 첫번째 리뷰를 남겨주세요!</center>
+        </div>
+      </div>
+    <% else %>  
     <% @anonymous = 1 %>
     <% @user_comment.each do |i| %>
     <% @user = User.where(id: i.user_id) %>
@@ -1141,7 +1150,7 @@ td {
           <% elsif i.all_score >= 1 %>D
           <% else %>F
           <% end %>
-        <% end %>  
+        <% end %>
         </div>
       </div>
       <div class="row">
@@ -1164,6 +1173,7 @@ td {
       
       <% @anonymous +=1 %>
     <% end %>
+           <% end %> 
    </div> 
 </div>    
 

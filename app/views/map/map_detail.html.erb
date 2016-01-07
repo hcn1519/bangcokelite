@@ -429,7 +429,7 @@
        '<div class="row" style="margin:0px">'+
        
          '<div class="col-md-4 col-sm-4 col-lg-4" style="padding:5px">' +
-           '<img src="'+ data[i].main_img.url + '"style="width:100px; height:75px;" />' +
+           '<img src="'+ data[i].main_img.main.url + '"style="width:100px; height:75px;" />' +
            '</div>'+
         //이미지 부분
         
@@ -468,7 +468,7 @@
                '<div class="row" style="margin:0px">'+
 
                  '<div class="col-md-4 col-sm-4 col-xs-4" style="padding:5px; padding-right:20px">' +
-                     '<img src="'+ data[i].main_img.url + '"style="width:100px; height:75px;" />' +
+                     '<img src="'+ data[i].main_img.main.url + '"style="width:100px; height:75px;" />' +
                    '</div>'+
                    
                  '<div class="col-md-8 col-sm-8 col-xs-8" style="padding:0px; padding-left: 8px; padding-top:5px;">' +
@@ -2583,7 +2583,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <%# end %>
                         -->
                       </div>
-                      <%#= c.main_img.url %><img src="<%= c.main_img %>" alt="이미지 없음" class="image-size">
+                      <img src="<%= c.main_img.main %>" alt="이미지 없음" class="image-size">
                       
                     </div>
                   
@@ -2796,7 +2796,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <%# end %>
                         -->
                       </div>
-                      <%#= c.main_img.url %><img src="<%= c.main_img %>" alt="이미지 없음" class="image-size">
+                      <img src="<%= c.main_img.main %>" alt="이미지 없음" class="image-size">
                       
                     </div>
                   
@@ -3008,7 +3008,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <%# end %>
                         -->
                       </div>
-                      <%#= c.main_img.url %><img src="<%= c.main_img %>" alt="이미지 없음" class="image-size">
+                      <img src="<%= c.main_img.main %>" alt="이미지 없음" class="image-size">
                       
                     </div>
                   
@@ -3220,7 +3220,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <%# end %>
                         -->
                       </div>
-                      <%#= c.main_img.url %><img src="<%= c.main_img %>" alt="이미지 없음" class="image-size">
+                      <img src="<%= c.main_img.main %>" alt="이미지 없음" class="image-size">
                       
                     </div>
                   
@@ -3432,7 +3432,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                             <%# end %>
                         -->
                       </div>
-                      <%#= c.main_img.url %><img src="<%= c.main_img %>" alt="이미지 없음" class="image-size">
+                      <img src="<%= c.main_img.main %>" alt="이미지 없음" class="image-size">
                       
                     </div>
                   
