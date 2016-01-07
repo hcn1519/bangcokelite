@@ -22,11 +22,13 @@ class User < ActiveRecord::Base
     end
   end
   
+  # Only allow letter, number, underscore and punctuation.
+  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+
   def email_required?
     false
   end
-  
-  attr_accessor :login
+
   
   def login=(login)
     @login = login
@@ -36,6 +38,7 @@ class User < ActiveRecord::Base
     @login || self.username || self.email
   end
   
+  #이메일 없이 로그인할 수 있게 해주는 부분
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -45,6 +48,7 @@ class User < ActiveRecord::Base
     end
   end
   
+  #페이스북 로그인
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
