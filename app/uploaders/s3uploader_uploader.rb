@@ -21,8 +21,8 @@ class S3uploaderUploader < CarrierWave::Uploader::Base
     end
     version :main, :if => :image?  do
         process :quality => 80
-        process :resize_to_fit => [240, 180] ,:if => :horizontal?
-        process :resize_to_fit => [240, 320]  ,:if => :vertical?
+        process :resize_to_fill => [240, 180] ,:if => :horizontal?
+        process :resize_to_fill => [240, 320]  ,:if => :vertical?
     end
 
 def image?(new_file)
