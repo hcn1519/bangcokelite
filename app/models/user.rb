@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
          :validatable, :authentication_keys => [:login]
   devise :omniauthable, :omniauth_providers => [:facebook]
   
-  validates :email, uniqueness: true
+ #validates :email, uniqueness: true
   
   validate :validate_username
   
