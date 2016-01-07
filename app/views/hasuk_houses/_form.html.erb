@@ -628,7 +628,7 @@
         <td id="column" rowspan="2"><center><%= f.label :celPhone, "연락처" %></center></td>
         <td>
           <div class="celPhone col-xs-12 col-lg-6 col-md-6 col-sm-6" style="margin:0; padding:0">
-            <%= f.text_field :celPhone, class:"form-control", placeholder:"H.P(휴대폰)", :required => true  %>
+            <%= f.text_field :celPhone, class:"form-control", placeholder:"H.P(휴대폰)" %>
           </div>
           <div class="telPhone col-xs-12 col-lg-6 col-md-6 col-sm-6">
             <%= f.text_field :telPhone, class:"form-control", placeholder:"Tel" %>
@@ -1021,9 +1021,9 @@
         <div class="col-md-6 col-sm-6 col-xs-12" style="margin:0px; padding:0px;">    
           <div id="map-canvas"></div>
         </div>
-          <%= f.text_field :division, class:"form-control", placeholder:"구역 설정" %>
-          <%= f.number_field :lat, class:"form-control", placeholder:"위도", :step => 'any' %>
-          <%= f.number_field :lng, class:"form-control", placeholder:"경도", :step => 'any' %>
+          <%= f.text_field :division, class:"form-control", placeholder:"구역 설정", :required => true %>
+          <%= f.number_field :lat, class:"form-control", placeholder:"위도", :step => 'any', :required => true %>
+          <%= f.number_field :lng, class:"form-control", placeholder:"경도", :step => 'any', :required => true %>
         
         </td>
         
@@ -1486,17 +1486,17 @@
   </div>
   </div>
   </div>
-    <%= f.text_field :univ1, class:"form-control", placeholder:"학교1", style:"display:none" %>
-    <%= f.text_field :gate1, class:"form-control", placeholder:"교문1", style:"display:none" %>
+    <%= f.text_field :univ1, class:"form-control", placeholder:"학교1", :required => true %>
+    <%= f.text_field :gate1, class:"form-control", placeholder:"교문1", :required => true %>
 
-    <%= f.text_field :univ2, class:"form-control", placeholder:"학교2", style:"display:none" %>
-    <%= f.text_field :gate2, class:"form-control", placeholder:"교문2", style:"display:none" %>
+    <%= f.text_field :univ2, class:"form-control", placeholder:"학교2" %>
+    <%= f.text_field :gate2, class:"form-control", placeholder:"교문2" %>
     
-    <%= f.text_field :trans_kind1, class:"form-control", placeholder:"교통수단1", style:"display:none"%>
-    <%= f.text_field :station1, class:"form-control", placeholder:"역1", style:"display:none" %>
+    <%= f.text_field :trans_kind1, class:"form-control", placeholder:"교통수단1", :required => true%>
+    <%= f.text_field :station1, class:"form-control", placeholder:"역1", :required => true %>
     
-    <%= f.text_field :trans_kind2, class:"form-control", placeholder:"교통수단2", style:"display:none" %>
-    <%= f.text_field :station2, class:"form-control", placeholder:"역2", style:"display:none" %>
+    <%= f.text_field :trans_kind2, class:"form-control", placeholder:"교통수단2" %>
+    <%= f.text_field :station2, class:"form-control", placeholder:"역2" %>
   </div>
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px; margin-bottom:10px;">
