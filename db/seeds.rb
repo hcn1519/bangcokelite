@@ -22,7 +22,7 @@ user2.save!
 
 
 #서강대 씨드
-
+=begin
 distance_kind = [250, 300, 350, 400, 450, 500, 1000, 1050, 1100, 1150, 50, 100, 55]
 distance_time_kind = [3,4,5,6,7,8,9,10,11,12,13,14]
 
@@ -1883,3 +1883,4 @@ HasukHouse.create(
      :main_img => File.open(File.join(Rails.root, "public/images/bangs/ha40.jpg"))
      
     )
+=end
