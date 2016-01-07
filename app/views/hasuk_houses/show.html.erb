@@ -702,15 +702,18 @@ td {
                 <div class="row">
                     <div class="info_list col-xs-2">전화</div>
                     <div class="info_content col-xs-10">
-                      <% if @hasuk_house.celPhone != nil %>
-                          <div class="row"><%= @hasuk_house.celPhone %></div>
+                      <% if @hasuk_house.celPhone != nil && @hasuk_house.telPhone != nil %>
+                          <div class="row"><%= @hasuk_house.celPhone %>&nbsp;/&nbsp;<%= @hasuk_house.telPhone %></div>
+
+                      <% elsif @hasuk_house.celPhone != nil && @hasuk_house.telPhone == nil %>
+			  <div class="row"><%= @hasuk_house.celPhone %></div>
+
+                      <% elsif @hasuk_house.celPhone == nil && @hasuk_house.telPhone != nil %>
+			  <div class="row"><%= @hasuk_house.telPhone %></div>
                       <% else %>
-                        <% if @hasuk_house.telPhone != nil %>
-                            <div class="row"><%= @hasuk_house.telPhone %></div>
-                        <% else %>
                           -
-                        <% end %>
                       <% end %>
+                      
                     </div>
                 </div>
                 <div class="row">
