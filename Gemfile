@@ -8,8 +8,10 @@ gem 'omniauth-facebook'
 gem 'omniauth-kakao'
 gem 'omniauth-naver'
 gem 'bxslider-rails'
+
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem "fog-aws"
+gem 'mini_magick'
 
 gem 'rails', '4.2.4'
 gem 'sqlite3'

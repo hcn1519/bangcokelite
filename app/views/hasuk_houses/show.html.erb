@@ -567,12 +567,12 @@ td {
                 <ul id="bxslider">
   
                   <!--우리가 올리는 사진-->
-                  <li><img src="<%= @hasuk_house.main_img %>" alt="" title="" /> </li>
+                  <li><img src="<%= @hasuk_house.main_img.detail %>" alt="" title="" /> </li>
                   
                   <!--사람들이 올리는 사진-->
                   
                   <% @users_hasuk_img.each do |i| %>
-                    <li><img src="<%= i.img %>"/> </li>
+                    <li><img src="<%= i.img.detail %>"/> </li>
                   <% end %>
                 </ul>
 
