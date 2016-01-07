@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
-
+  before_filter :configure_permitted_parameters
   # GET /resource/sign_up
   # def new
   #   super
@@ -15,6 +15,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   def edit
      super
+  end
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up).push(:name, :username, :email, :password, :password_confirmation, :current_password)
+    devise_parameter_sanitizer.for(:account_update).push(:name, :username, :email, :password, :password_confirmation, :current_password)
   end
 
   # PUT /resource
@@ -48,13 +54,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.for(:account_update) << :attribute
   # end
   protected
-  
+
    def after_sign_up_path_for(resource)
      session[:previous_url] || root_path(resource)
    end
-  
-   
+
+
    def after_inactive_sign_up_path_for(resource)
     session[:previous_url] || root_path(resource)
    end
 end
+

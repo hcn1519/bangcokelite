@@ -1,5 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
+  before_filter :configure_permitted_parameters
   # GET /resource/sign_in
   # def new
   #   super
@@ -9,8 +10,8 @@ class Users::SessionsController < Devise::SessionsController
   # def create
   #   super
   # end
- 
-  
+
+
   # DELETE /resource/sign_out
   # def destroy
   #   super
@@ -22,4 +23,10 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.for(:sign_in) << :attribute
   # end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_in).push(:name, :login, :username, :email, :password, :remember_me)
+  end
+
 end
+
