@@ -3,7 +3,7 @@
  <%= stylesheet_link_tag 'jquery.bxslider.css', media: 'all', 'data-turbolinks-track' => true %>
  <%= stylesheet_link_tag 'bars-1to10', media: 'all', 'data-turbolinks-track' => true %>
  <%= javascript_include_tag 'jquery.bxslider.min', 'data-turbolinks-track' => true %>
- <%= javascript_include_tag 'jquery.barrating.min', 'data-turbolinks-track' => true %>
+ <%= javascript_include_tag 'jquery.barrating.min', 'data-turbolinks-track' => true %> 
  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick", 'data-turbolinks-track' => true %>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <style>
@@ -527,7 +527,31 @@ td {
 
 
 </style>
+<script>
+/*
+$(document).ready(function() {
+  var $jj = jQuery.noConflict();
 
+  $('#slide-counter').prepend('<span class="current-index"></span>/');
+
+  var realSlider= $("ul#bxslider").bxSlider({
+        speed:1000,
+        pager:false,
+        controls: true,
+        infiniteLoop:false,
+        onSliderLoad: function (currentIndex){
+        $('#slide-counter .current-index').text(currentIndex + 1);
+        },
+        onSlideBefore:function($slideElement, oldIndex, newIndex){
+          //changeRealThumb(realThumbSlider,newIndex);
+          $('#slide-counter .current-index').text(newIndex + 1);
+        }
+
+      });
+  $('#slide-counter').append(realSlider.getSlideCount());
+});
+*/
+</script>
 </head>
 <body>
   <%= render 'hasuk_houses/ratingform' %>
@@ -818,7 +842,8 @@ td {
                 <div class="row" style="margin-bottom:5px;">
                     <div class="info_list col-xs-2">통학</div>
                     <div class="info_content col-xs-10">
-                      <% if @hasuk_house.univ1 != nil %>
+                      
+		      <% if @hasuk_house.univ1 != nil && @hasuk_house.univ1 != "" %>
                         <% if @hasuk_house.univ1 == "이화" %>
                           <div class="row"><%= @hasuk_house.univ1 %>여대 <%= @hasuk_house.gate1 %> <%= @hasuk_house.distance_time1 %></span><span class="manwon">분</span>(<%= @hasuk_house.distance1 %>m)</div>
                         <% else %>
@@ -827,7 +852,8 @@ td {
                       <% else %>
                         <div class="row">-</div>
                       <% end %>
-                      <% if @hasuk_house.univ2 != nil %>
+
+                      <% if @hasuk_house.univ2 != nil && @hasuk_house.univ2 != "" %>
                         <% if @hasuk_house.univ2 == "이화" %>
                           <div class="row"><%= @hasuk_house.univ2 %>여대 <%= @hasuk_house.gate2 %> <%= @hasuk_house.distance_time2 %></span><span class="manwon">분</span>(<%= @hasuk_house.distance2 %>m)</div>  
                         <% else %>
@@ -860,7 +886,7 @@ td {
                       
                        <% else %>
                       
-                        <span id="subway"> 신촌기차역 21분(1103m)</span>
+                        <span id="subway">-</span>
                       
                        <% end %>  
                       </div>  
@@ -883,7 +909,7 @@ td {
                       
                        <% else %>
                       
-                        <span id="subway"> 신촌기차역 21분(1103m)</span>
+                        <span id="subway">-</span>
                       
                        <% end %>  
                       </div>
@@ -1252,10 +1278,12 @@ $('#pictab3 a').click(function (e) {
   $("#pictab1 a").tab("hide");
   $("#pictab3 a").tab("hide");
 });
-
-$(window).load(function() { 
+</script>
+<script>
+/*
+$(document).ready(function() {
   var $jj = jQuery.noConflict();
-  
+
   $('#slide-counter').prepend('<span class="current-index"></span>/');
   
   var realSlider= $("ul#bxslider").bxSlider({
@@ -1273,55 +1301,10 @@ $(window).load(function() {
         
       });
   $('#slide-counter').append(realSlider.getSlideCount());
- });
- /* 
-// sincronizza sliders realizzazioni
-  function linkRealSliders(bigS,thumbS){
-    
-    $("ul#bxslider-pager").on("click","a",function(event){
-      event.preventDefault();
-      var newIndex=$(this).parent().attr("data-slideIndex");
-          bigS.goToSlide(newIndex);
-    });
-  }
-
-
-      var realThumbSlider=$("ul#bxslider-pager").bxSlider({
-        minSlides: 6,
-        maxSlides: 6,
-        slideWidth: 100,
-        slideMargin: 12,
-        moveSlides: 1,
-        pager:false,
-        speed:1000,
-        controls: true,
-        infiniteLoop:true,
-        hideControlOnEnd:true,
-
-      });
-      
-      linkRealSliders(realSlider,realThumbSlider);
-     
-      if($("#bxslider-pager li").length<5){
-        $("#bxslider-pager .bx-next").hide();
-      }
-
-
-
-//slider!=$thumbSlider. slider is the realslider
-  function changeRealThumb(slider,newIndex){
-    
-    var $thumbS=$("#bxslider-pager");
-    $thumbS.find('.active').removeClass("active");
-    $thumbS.find('li[data-slideIndex="'+newIndex+'"]').addClass("active");
-    
-    if(slider.getSlideCount()-newIndex>=4)slider.goToSlide(newIndex);
-    else slider.goToSlide(slider.getSlideCount()-4);
-  
-  }
-  */ 
+});
+*/
 </script>
-
+ <%= javascript_include_tag 'mybxslider', 'data-turbolinks-track' => true %>
 </body>
 
 
