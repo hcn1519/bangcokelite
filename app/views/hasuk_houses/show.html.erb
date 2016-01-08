@@ -1252,8 +1252,9 @@ $('#pictab3 a').click(function (e) {
   $("#pictab1 a").tab("hide");
   $("#pictab3 a").tab("hide");
 });
- 
- var $jj = jQuery.noConflict();
+
+$(window).load(function() { 
+  var $jj = jQuery.noConflict();
   
   $('#slide-counter').prepend('<span class="current-index"></span>/');
   
@@ -1272,7 +1273,7 @@ $('#pictab3 a').click(function (e) {
         
       });
   $('#slide-counter').append(realSlider.getSlideCount());
- 
+ });
  /* 
 // sincronizza sliders realizzazioni
   function linkRealSliders(bigS,thumbS){
