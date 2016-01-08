@@ -19,5 +19,4 @@
 //= require jquery.barrating.min
 //= require chartkick
 //= require waterfall-light
-
 //= require_tree .
