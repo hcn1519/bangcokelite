@@ -1255,8 +1255,9 @@ $('#pictab3 a').click(function (e) {
 });
 </script>
 <script>
-  var $jj = jQuery.noConflict();
 
+  var $jj = jQuery.noConflict();
+jQuery(window).load(function(){
   $('#slide-counter').prepend('<span class="current-index"></span>/');
   
   var realSlider= $("ul#bxslider").bxSlider({
@@ -1274,18 +1275,6 @@ $('#pictab3 a').click(function (e) {
         
       });
   $('#slide-counter').append(realSlider.getSlideCount());
+});
 </script>
-
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
