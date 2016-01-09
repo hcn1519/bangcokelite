@@ -46,7 +46,6 @@
 .bx-viewport, #bxslider li {
 	display: table-cell;
     vertical-align: middle;
-	float: none !important;
 }
 /*사진 가운데 정렬 */
 /*사진 크기 셋팅*/
