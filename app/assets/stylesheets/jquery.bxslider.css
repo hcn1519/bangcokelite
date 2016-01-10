@@ -34,9 +34,7 @@
 	max-height: 100%;
 	display:block;
 	background-color: #555555;
- 	margin-left:0;
- 	margin-right:0;
- 	margin:auto;
+ 	margin: 0 auto;
  	float: none !important;
 }
 
@@ -45,21 +43,22 @@
 /*사진 가운데 정렬 */
 .bx-viewport, #bxslider li {
 	display: table-cell;
-    vertical-align: middle;
+  vertical-align: middle;
+  float: none !important;
 }
 /*사진 가운데 정렬 */
 /*사진 크기 셋팅*/
 @media (max-width: 359px) {
-  .bx-wrapper, .bx-viewport, .bx-wrapper { height: 450px !important;}
+  .bx-wrapper, .bx-viewport, .bx-wrapper, img { max-height: 450px !important;}
 }
 @media (min-width: 360px) {
-  .bx-wrapper, .bx-viewport, .bx-wrapper { height: 450px !important;}	
+  .bx-wrapper, .bx-viewport, .bx-wrapper, img { max-height: 450px !important;}	
 }
 @media (min-width: 768px) {
-  .bx-wrapper, .bx-viewport, .bx-wrapper { height: 478px !important;}
+  .bx-wrapper, .bx-viewport, .bx-wrapper, img { max-height: 478px !important;}
 }
 @media (min-width: 769px) {
-  .bx-wrapper, .bx-viewport, .bx-wrapper { height: 491px !important;}
+  .bx-wrapper, .bx-viewport, .bx-wrapper, img { max-height: 491px !important;}
 }
 /*사진 크기 셋팅*/
 .bx-wrapper .bx-viewport {
