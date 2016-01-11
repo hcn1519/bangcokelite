@@ -450,7 +450,7 @@
     }
     @media (min-width: 481px) {
 .room {
-    padding: 5px;
+    padding: 0px;
 }
     .modal-dialog {
         position: relative;
@@ -563,8 +563,7 @@
     
     @media (min-width: 768px) {
 .room {
-    padding-left: 0px;
-    padding-right:0px;
+    padding: 0px;
 }
 
     .thumbnail-text {
