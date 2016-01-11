@@ -49,8 +49,7 @@
    
     @media (max-width: 359px) {
 .room {
-    padding-left: 5px;
-    padding-right:5px;
+    padding: 0px
 }
     .modal-dialog {
       margin:0;
@@ -69,7 +68,7 @@
     
     .thumbnail {
         padding: 0px;
-        margin-bottom: 15px;
+        margin: 5px;
         line-height: 1.1;
         border: none;
     }
@@ -184,8 +183,7 @@
     
     @media (min-width: 360px) {
 .room {
-    padding-left: 5px;
-    padding-right:5px;
+	padding: 0px;
 }
     .thumbnail-text {
        padding-bottom:8px;
@@ -204,7 +202,7 @@
      }
     .thumbnail {
         padding: 0px;
-        margin-bottom: 15px;
+        margin: 5px;
         line-height: 1.1;
         border: none;
     }
@@ -318,8 +316,7 @@
     @media only screen and (min-device-width : 375px)  {
    /*아이폰 6 셋팅 */
 .room {
-    padding-left: 5px;
-    padding-right:5px;
+	padding: 0px;
 }
        .listbox {
         width:100%;
@@ -341,8 +338,7 @@
     }
      @media (min-width: 400px) {
 .room {
-    padding-left: 5px;
-    padding-right:5px;
+    padding: 5px;
 }
     .modal-dialog {
       margin:0;
@@ -454,8 +450,7 @@
     }
     @media (min-width: 481px) {
 .room {
-    padding-left: 5px;
-    padding-right:5px;
+    padding: 5px;
 }
     .modal-dialog {
         position: relative;
@@ -465,7 +460,7 @@
 
     .thumbnail {
         padding: 0px;
-        margin-bottom: 15px;
+        margin: 5px;
         line-height: 1.2;
         border: none;
     }

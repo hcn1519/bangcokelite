@@ -49,16 +49,23 @@
 /*사진 가운데 정렬 */
 /*사진 크기 셋팅*/
 @media (max-width: 359px) {
-  .bx-wrapper, .bx-viewport, .bx-wrapper, img { max-height: 450px !important;}
+  .bx-wrapper, .bx-viewport, .bx-wrapper { height: 450px !important;}
+  img {max-height: 450px !important;}
 }
 @media (min-width: 360px) {
-  .bx-wrapper, .bx-viewport, .bx-wrapper, img { max-height: 450px !important;}	
+  .bx-wrapper, .bx-viewport, .bx-wrapper { height: 450px !important;}	
+	img {max-height: 450px !important;}
+
 }
 @media (min-width: 768px) {
-  .bx-wrapper, .bx-viewport, .bx-wrapper, img { max-height: 478px !important;}
+  .bx-wrapper, .bx-viewport, .bx-wrapper { height: 478px !important;}
+	img {max-height: 478px !important;}
+
 }
 @media (min-width: 769px) {
-  .bx-wrapper, .bx-viewport, .bx-wrapper, img { max-height: 491px !important;}
+  .bx-wrapper, .bx-viewport, .bx-wrapper { height: 491px !important;}
+	img {max-height: 491px !important;}
+
 }
 /*사진 크기 셋팅*/
 .bx-wrapper .bx-viewport {
