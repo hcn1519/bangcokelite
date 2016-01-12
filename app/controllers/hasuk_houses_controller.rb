@@ -4,6 +4,9 @@ class HasukHousesController < ApplicationController
   # GET /hasuk_houses
   # GET /hasuk_houses.json
   respond_to :js, :html, :json
+  
+  impressionist :actions=>[:show]
+  
   def favorite
     @hasuk_house = HasukHouse.find_by_id(params[:id])
     type = params[:type]
@@ -33,18 +36,8 @@ class HasukHousesController < ApplicationController
   # GET /hasuk_houses/1.json
   def show
     @hasuk_house = HasukHouse.find(params[:id])
-    
-    @mark = ViewCount.new
-    @mark.ip_address = request.remote_ip
-    @mark.save
-    
-    @ip_arr = Array.new
-    ViewCount.all.each do |c|
-      @ip_arr << c.ip_address
-    end
-    
-    @page_view_count = @ip_arr.uniq.count
-    
+    impressionist(@hasuk_house)
+
     @avg_score = AvgRatingScore.where(hasuk_house_id: @hasuk_house.id)
     
     if @avg_score[0].nil?

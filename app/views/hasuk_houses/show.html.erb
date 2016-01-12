@@ -1058,7 +1058,7 @@ td {
                 <div class="info_hr"><hr></div>
                 <div class="row" style="margin-top:10px; margin-bottom:15px; padding-right:15px; padding-left:15px;">
                     <div class="col-xs-6 kok">
-                        조회수 <%= @page_view_count %>&nbsp;
+                        조회수 <%= @hasuk_house.impressionist_count(:filter=>:session_hash) %>&nbsp;
                         <% if user_signed_in? %> 
                           <% if current_user.favorites.include?(@hasuk_house) != true %>
                             <span class="glyphicon glyphicon-heart" style="color:none;" aria-hidden="true"></span>

@@ -1,4 +1,6 @@
 class HasukHouse < ActiveRecord::Base
+    is_impressionable
+    
     has_one :avg_rating_score
     
     belongs_to :user

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'impressionist'
 gem 'chartkick'
 gem 'figaro'
 gem 'therubyracer', platform: :ruby
