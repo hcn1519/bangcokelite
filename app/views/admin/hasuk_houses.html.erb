@@ -5,8 +5,7 @@
 <div class="container">
 <h4>등록된 방 관리</h4>
 <p>총 <%= @hasuk_houses.length %>개</p>
-	<% @hasuk_houses.each do |house| %>
-  <div class="row">
+<div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">  
     	<div class="table-responsive">
 				<table class="table">
@@ -17,6 +16,7 @@
 						<th>수정</th>
 						<th>삭제</th>
 					</tr>
+	<% @hasuk_houses.each do |house| %>
 					<tr>
 						<td><%= house.id %></td>
 						<td><%= house.hasuk_name %></td>
@@ -24,9 +24,10 @@
 						<td><%= link_to '수정하기', edit_hasuk_house_path(house), 'data-no-turbolink' => true %></td>
 						<td><%= link_to '삭제하기', house, method: :delete, data: { confirm: '리얼리?' } %></td>
 					</tr>
+	<% end %>				
 				</table>
 			</div>
 		</div>
 	</div>
-	<% end %>
+	
 </div><!--콘테이너-->

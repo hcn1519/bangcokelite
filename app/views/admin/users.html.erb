@@ -5,7 +5,7 @@
 <div class="container">
 <h4>회원 관리</h4>
 <p>총 <%= @users.length %>명</p>
-	<% @users.each do |user| %>
+	
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">  
     	<div class="table-responsive">
@@ -16,15 +16,17 @@
 						<th>휴대폰 번호</th>
 						<th>이메일</th>
 					</tr>
+	<% @users.each do |user| %>
 					<tr>
 						<td><%= user.id %></td>
 						<td><%= user.name %></td>
 						<td><%= user.username %></td>
 						<td><%= user.email %></td>
 					</tr>
+	<% end %>
 				</table>
 			</div>
 		</div>
 	</div>
-	<% end %>
+	
 </div><!--콘테이너-->

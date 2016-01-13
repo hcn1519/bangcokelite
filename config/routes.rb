@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'admin/index'
   get 'admin/hasuk_houses'
 
   get 'admin/users'
