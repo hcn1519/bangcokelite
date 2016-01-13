@@ -1,5 +1,10 @@
+<style type="text/css">
+    th {text-align: center;}
+    td {text-align: center;}
+</style>
 <div class="container">
-<h4>등록된 방 관리</h4> 
+<h4>등록된 방 관리</h4>
+<p>총 <%= @hasuk_houses.length %>개</p>
 	<% @hasuk_houses.each do |house| %>
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">  

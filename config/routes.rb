@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'admin/hasuk_houses'
+
+  get 'admin/users'
+
   root to: 'visitors#index'
   
   post 'img_upload/create'
