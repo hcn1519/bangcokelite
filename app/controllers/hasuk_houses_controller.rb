@@ -57,10 +57,10 @@ class HasukHousesController < ApplicationController
     
     @user_comment = RatingForHasukHouse.where(avg_rating_score_id: @hasuk_house.id)
     @users_hasuk_img = Attachment.where(hasuk_house_id: @hasuk_house.id);
-    if user_signed_in?
-      @current_user_rate = RatingForHasukHouse.where(avg_rating_score_id: @hasuk_house.id, user_id: current_user.id)
-    end
-  end
+	if user_signed_in?
+    @current_user_rate = RatingForHasukHouse.where(avg_rating_score_id: @hasuk_house.id, user_id: current_user.id)
+	end  
+end
 
   # GET /hasuk_houses/new
   def new
