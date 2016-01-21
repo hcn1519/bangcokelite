@@ -513,40 +513,17 @@
 
         <% if @univ == "서강" %>
             if (data[i].division == "남문(대흥역)"){
-           
-                            /*var labelKind = ["label1","label2" ,"label3"];
-                 labelKind = shuffle(labelKind);
-                 var markerLabel = labelKind[0];
-                   
-                    var marker = new MarkerWithLabel({  
-                         position: latlng,
-                         map: map,
-                         <%# if 'data[i].price_from' != 'data[i].price_to' %>
-                            //labelContent: data[i].price_from+'~'+data[i].price_to,
-                         <%# else %>
-                            //labelContent: data[i].price_from,
-                         <%# end %>    
-                         labelAnchor: new google.maps.Point(10, 0),
-                         
-                         labelClass: markerLabel,
-                         icon: d_marker,
-                         url: "/hasuk_houses/" +  data[i].id
-                     });
-            */
-            
+
               var marker = new google.maps.Marker({
                 position: latlng,
                 map: map,
                 icon: d_marker,
                 url: "/hasuk_houses/" +  data[i].id
               });
-                    marker.setValues({type: "point", id: i});
-                    var data_id = data[i].id;
-                    var str_id = data_id.toString();
-                    //console.log(str_id);
-                     var hash_id = "a" +str_id;
-                     markerObj = document.getElementById(hash_id);
-
+            var str_id = data[i].id.toString();
+            //console.log(str_id);
+             var hash_id = "a" +str_id;
+             markerObj = document.getElementById(hash_id);
 
 //event 구간
 var listener1 = google.maps.event.addListener(marker, 'click', function() {
@@ -657,11 +634,6 @@ var listener9 = google.maps.event.addListener(infoWindow, 'domready', function()
    iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
   });
 
-/* google.maps.event.addListenerOnce(map, 'idle', function() {
-   google.maps.event.trigger(map, 'resize');
-});*/  
-   
-//google.maps.event.addDomListener(document.getElementById('sortByPrice'), 'click', initialize);
   marker.setMap(map);
   
                 } //division 괄호
@@ -669,27 +641,6 @@ var listener9 = google.maps.event.addListener(infoWindow, 'domready', function()
           
               <% elsif @univ == "연세" %>
                 if (data[i].division == "정문(신촌역)" || data[i].division == "연대서문" || data[i].division == "연대남문" || data[i].division == "신촌기차역" || data[i].division == "이대후문"){
-           
-                 
-                                     /*var labelKind = ["label1","label2" ,"label3"];
-                 labelKind = shuffle(labelKind);
-                 var markerLabel = labelKind[0];
-                   
-                    var marker = new MarkerWithLabel({  
-                         position: latlng,
-                         map: map,
-                         <%# if 'data[i].price_from' != 'data[i].price_to' %>
-                            //labelContent: data[i].price_from+'~'+data[i].price_to,
-                         <%# else %>
-                            //labelContent: data[i].price_from,
-                         <%# end %>    
-                         labelAnchor: new google.maps.Point(10, 0),
-                         
-                         labelClass: markerLabel,
-                         icon: d_marker,
-                         url: "/hasuk_houses/" +  data[i].id
-                     });
-            */
             
               var marker = new google.maps.Marker({
                 position: latlng,
@@ -697,12 +648,10 @@ var listener9 = google.maps.event.addListener(infoWindow, 'domready', function()
                 icon: d_marker,
                 url: "/hasuk_houses/" +  data[i].id
               });
-                    marker.setValues({type: "point", id: i});
-                    var data_id = data[i].id;
-                    var str_id = data_id.toString();
-                    //console.log(str_id);
-                     var hash_id = "a" +str_id;
-                     markerObj = document.getElementById(hash_id);
+        
+            var str_id = data[i].id.toString();
+            var hash_id = "a" +str_id;
+            markerObj = document.getElementById(hash_id);
 
 
 //event 구간
@@ -822,29 +771,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
              //univ 연세 걸리는 괄호
              
-             
              <% elsif @univ == "이화" %>
                if (data[i].division == "정문(이대역)" || data[i].division == "신촌기차역" || data[i].division == "이대후문"){
             
-                                  /*var labelKind = ["label1","label2" ,"label3"];
-                 labelKind = shuffle(labelKind);
-                 var markerLabel = labelKind[0];
-                   
-                    var marker = new MarkerWithLabel({  
-                         position: latlng,
-                         map: map,
-                         <%# if 'data[i].price_from' != 'data[i].price_to' %>
-                            //labelContent: data[i].price_from+'~'+data[i].price_to,
-                         <%# else %>
-                            //labelContent: data[i].price_from,
-                         <%# end %>    
-                         labelAnchor: new google.maps.Point(10, 0),
-                         
-                         labelClass: markerLabel,
-                         icon: d_marker,
-                         url: "/hasuk_houses/" +  data[i].id
-                     });
-            */
             
               var marker = new google.maps.Marker({
                 position: latlng,
@@ -852,12 +781,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 icon: d_marker,
                 url: "/hasuk_houses/" +  data[i].id
               });
-                    marker.setValues({type: "point", id: i});
-                    var data_id = data[i].id;
-                    var str_id = data_id.toString();
-                    //console.log(str_id);
-                     var hash_id = "a" +str_id;
-                     markerObj = document.getElementById(hash_id);
+              
+            var str_id = data[i].id.toString();
+            var hash_id = "a" +str_id;
+            markerObj = document.getElementById(hash_id);
 
 
 //event 구간
@@ -976,42 +903,17 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                  marker.setMap(map);
                 }//univ 이화 걸리는 괄호
               
-            
-             
              <% else  %> 
               
-                                     /*var labelKind = ["label1","label2" ,"label3"];
-                 labelKind = shuffle(labelKind);
-                 var markerLabel = labelKind[0];
-                   
-                    var marker = new MarkerWithLabel({  
-                         position: latlng,
-                         map: map,
-                         <%# if 'data[i].price_from' != 'data[i].price_to' %>
-                            //labelContent: data[i].price_from+'~'+data[i].price_to,
-                         <%# else %>
-                            //labelContent: data[i].price_from,
-                         <%# end %>    
-                         labelAnchor: new google.maps.Point(10, 0),
-                         
-                         labelClass: markerLabel,
-                         icon: d_marker,
-                         url: "/hasuk_houses/" +  data[i].id
-                     });
-            */
-            
               var marker = new google.maps.Marker({
                 position: latlng,
                 map: map,
                 icon: d_marker,
                 url: "/hasuk_houses/" +  data[i].id
               });
-                      marker.setValues({type: "point", id: i});
-                      var data_id = data[i].id;
-                      var str_id = data_id.toString();
-                      //console.log(str_id);
-                       var hash_id = "a" +str_id;
-                       markerObj = document.getElementById(hash_id);
+              var str_id = data[i].id.toString();
+              var hash_id = "a" +str_id;
+              markerObj = document.getElementById(hash_id);
       
       
 //event 구간

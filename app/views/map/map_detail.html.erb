@@ -532,26 +532,7 @@
                 <% @distance = 0 %>
               <% end %>
               if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) {  
-                /*var labelKind = ["label1","label2" ,"label3"];
-                 labelKind = shuffle(labelKind);
-                 var markerLabel = labelKind[0];
-                   
-                    var marker = new MarkerWithLabel({  
-                         position: latlng,
-                         map: map,
-                         <%# if 'data[i].price_from' != 'data[i].price_to' %>
-                            //labelContent: data[i].price_from+'~'+data[i].price_to,
-                         <%# else %>
-                            //labelContent: data[i].price_from,
-                         <%# end %>    
-                         labelAnchor: new google.maps.Point(10, 0),
-                         
-                         labelClass: markerLabel,
-                         icon: d_marker,
-                         url: "/hasuk_houses/" +  data[i].id
-                     });
-            */
-            
+              
               var marker = new google.maps.Marker({
                 position: latlng,
                 map: map,
@@ -559,12 +540,9 @@
                 url: "/hasuk_houses/" +  data[i].id
               });
               
-              marker.setValues({type: "point", id: i});
-              var data_id = data[i].id;
-              var str_id = data_id.toString();
-  
-               var hash_id = "a" +str_id;
-               markerObj = document.getElementById(hash_id);      
+              var str_id = data[i].id.toString();
+              var hash_id = "a" +str_id;
+              markerObj = document.getElementById(hash_id);
 //event 구간
 //클릭하면 상세페이지 오픈
  google.maps.event.addListener(marker, 'click', function() {
@@ -701,25 +679,6 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                   <% @distance = 0 %>
                 <% end %>
                 if (<%= @distance %> >= data[i].distance_time1 || <%= @distance %> == 0 ) { 
-                          /*var labelKind = ["label1","label2" ,"label3"];
-                 labelKind = shuffle(labelKind);
-                 var markerLabel = labelKind[0];
-                   
-                    var marker = new MarkerWithLabel({  
-                         position: latlng,
-                         map: map,
-                         <%# if 'data[i].price_from' != 'data[i].price_to' %>
-                            //labelContent: data[i].price_from+'~'+data[i].price_to,
-                         <%# else %>
-                            //labelContent: data[i].price_from,
-                         <%# end %>    
-                         labelAnchor: new google.maps.Point(10, 0),
-                         
-                         labelClass: markerLabel,
-                         icon: d_marker,
-                         url: "/hasuk_houses/" +  data[i].id
-                     });
-            */
             
               var marker = new google.maps.Marker({
                 position: latlng,
@@ -727,13 +686,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 icon: d_marker,
                 url: "/hasuk_houses/" +  data[i].id
               });
-                marker.setValues({type: "point", id: i});
-                
-                var data_id = data[i].id;
-                var str_id = data_id.toString();
-                var hash_id = "a" +str_id;
-                
-                markerObj = document.getElementById(hash_id);      
+              
+              var str_id = data[i].id.toString();
+              var hash_id = "a" +str_id;
+              markerObj = document.getElementById(hash_id);
                     
 //event 구간
 //클릭하면 상세페이지 오픈
@@ -902,13 +858,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 icon: d_marker,
                 url: "/hasuk_houses/" +  data[i].id
               });
-                marker.setValues({type: "point", id: i});
-                
-                var data_id = data[i].id;
-                var str_id = data_id.toString();
-                var hash_id = "a" +str_id;
-                
-                markerObj = document.getElementById(hash_id);      
+              
+              var str_id = data[i].id.toString();
+              var hash_id = "a" +str_id;
+              markerObj = document.getElementById(hash_id);
                     
  //event 구간
  //클릭하면 상세페이지 오픈
@@ -1075,13 +1028,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 icon: d_marker,
                 url: "/hasuk_houses/" +  data[i].id
               });
-                marker.setValues({type: "point", id: i});
-                
-                var data_id = data[i].id;
-                var str_id = data_id.toString();
-                var hash_id = "a" +str_id;
-                
-                markerObj = document.getElementById(hash_id);      
+              var str_id = data[i].id.toString();
+              var hash_id = "a" +str_id;
+              markerObj = document.getElementById(hash_id);
                     
 //event 구간
 //클릭하면 상세페이지 오픈
@@ -1246,13 +1195,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 icon: d_marker,
                 url: "/hasuk_houses/" +  data[i].id
               });
-                
-              marker.setValues({type: "point", id: i});
-              var data_id = data[i].id;
-              var str_id = data_id.toString();
-  
-               var hash_id = "a" +str_id;
-               markerObj = document.getElementById(hash_id);      
+            var str_id = data[i].id.toString();
+            var hash_id = "a" +str_id;
+            markerObj = document.getElementById(hash_id);
+            
 //event 구간
 //클릭하면 상세페이지 오픈
  google.maps.event.addListener(marker, 'click', function() {
@@ -1416,12 +1362,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 url: "/hasuk_houses/" +  data[i].id
               });
                 
-              marker.setValues({type: "point", id: i});
-              var data_id = data[i].id;
-              var str_id = data_id.toString();
-  
-               var hash_id = "a" +str_id;
-               markerObj = document.getElementById(hash_id);      
+              var str_id = data[i].id.toString();
+              var hash_id = "a" +str_id;
+              markerObj = document.getElementById(hash_id);
+              
 //event 구간
 //클릭하면 상세페이지 오픈
  google.maps.event.addListener(marker, 'click', function() {
@@ -1583,12 +1527,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 url: "/hasuk_houses/" +  data[i].id
               });
                 
-              marker.setValues({type: "point", id: i});
-              var data_id = data[i].id;
-              var str_id = data_id.toString();
-  
-               var hash_id = "a" +str_id;
-               markerObj = document.getElementById(hash_id);      
+              var str_id = data[i].id.toString();
+              var hash_id = "a" +str_id;
+              markerObj = document.getElementById(hash_id);
+              
 //event 구간
 //클릭하면 상세페이지 오픈
  google.maps.event.addListener(marker, 'click', function() {
@@ -1757,12 +1699,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 url: "/hasuk_houses/" +  data[i].id
               });
                 
-              marker.setValues({type: "point", id: i});
-              var data_id = data[i].id;
-              var str_id = data_id.toString();
-  
-               var hash_id = "a" +str_id;
-               markerObj = document.getElementById(hash_id);      
+              var str_id = data[i].id.toString();
+              var hash_id = "a" +str_id;
+              markerObj = document.getElementById(hash_id);
+              
 //event 구간
 //클릭하면 상세페이지 오픈
  google.maps.event.addListener(marker, 'click', function() {
@@ -1929,12 +1869,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 url: "/hasuk_houses/" +  data[i].id
               });
                 
-              marker.setValues({type: "point", id: i});
-              var data_id = data[i].id;
-              var str_id = data_id.toString();
-  
-               var hash_id = "a" +str_id;
-               markerObj = document.getElementById(hash_id);      
+              var str_id = data[i].id.toString();
+              var hash_id = "a" +str_id;
+              markerObj = document.getElementById(hash_id);
+              
 //event 구간
 //클릭하면 상세페이지 오픈
  google.maps.event.addListener(marker, 'click', function() {
@@ -2100,12 +2038,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 url: "/hasuk_houses/" +  data[i].id
               });
                 
-              marker.setValues({type: "point", id: i});
-              var data_id = data[i].id;
-              var str_id = data_id.toString();
-  
-               var hash_id = "a" +str_id;
-               markerObj = document.getElementById(hash_id);      
+              var str_id = data[i].id.toString();
+              var hash_id = "a" +str_id;
+              markerObj = document.getElementById(hash_id);
+              
 //event 구간
 //클릭하면 상세페이지 오픈
  google.maps.event.addListener(marker, 'click', function() {
@@ -2271,12 +2207,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                 url: "/hasuk_houses/" +  data[i].id
               });
                 
-              marker.setValues({type: "point", id: i});
-              var data_id = data[i].id;
-              var str_id = data_id.toString();
-  
-               var hash_id = "a" +str_id;
-               markerObj = document.getElementById(hash_id);      
+              var str_id = data[i].id.toString();
+              var hash_id = "a" +str_id;
+              markerObj = document.getElementById(hash_id);
+              
 //event 구간
 //클릭하면 상세페이지 오픈
  google.maps.event.addListener(marker, 'click', function() {
