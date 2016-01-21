@@ -1,0 +1,45 @@
+<style type="text/css">
+    th {text-align: center;}
+    td {text-align: center;}
+</style>
+<div class="container">
+<h4>리뷰 관리</h4>
+<p>총 <%= @reviews.length %>개</p>
+	
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">  
+    	<div class="table-responsive">
+				<table class="table">
+					<tr>
+						<th>유저</th>
+						<th>하숙집</th>
+						<th>음식 점수</th>
+						<th>청소 점수</th>
+						<th>난방 점수</th>
+						<th>보안 점수</th>
+						<th>가격 점수</th>
+						<th>총점</th>
+						<th>평가</th>
+						<th>평가 보기</th>
+					</tr>
+	<% @reviews.each do |review| %>
+					<tr>
+						<td><%= review.user_id %></td>
+						<td><%= review.avg_rating_score_id %></td>
+						<td><%= review.meal_score %></td>
+						<td><%= review.clean_score %></td>
+						<td><%= review.meal_score %></td>
+						<td><%= review.aircondition_score %></td>
+						<td><%= review.cctv_score %></td>
+						<td><%= review.total_score %></td>
+						<td><%= review.all_score %></td>
+						<td><%= review.comment.split(//).first(10).join %></td>
+						<td><%= link_to "평가보기", "/hasuk_houses/#{review.avg_rating_score_id}", 'data-no-turbolink' => true %></td></td>
+					</tr>
+	<% end %>
+				</table>
+			</div>
+		</div>
+	</div>
+      
+</div><!--콘테이너-->

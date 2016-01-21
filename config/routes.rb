@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   
   get 'admin/index'
   get 'admin/hasuk_houses'
-
+  get 'admin/reviews'
+  
   get 'admin/users'
 
   root to: 'visitors#index'
