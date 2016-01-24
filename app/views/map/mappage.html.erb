@@ -2389,10 +2389,9 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
           
       <% elsif @univ == "연세" %>
           <% unless @section == nil || @section == "" %>
-              <% if @section == "정문(신촌역)" %>
+              <% elsif @section == "정문(신촌역)" %>
                 <% if c.division == "정문(신촌역)" %>
-                                  <!--개별 방 박스 1 시작-->
-              
+                <!--개별 방 박스 1 시작-->
                 <div class="room col-lg-12 col-md-12 col-sm-12 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>'>
                   <% @position_counter += 1 %>
                   <a style="color:#7F8C8D" href="/hasuk_houses/<%= c.id %>" target="_blank">
