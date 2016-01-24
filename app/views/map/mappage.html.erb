@@ -2389,7 +2389,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
           
       <% elsif @univ == "연세" %>
           <% unless @section == nil || @section == "" %>
-              <% elsif @section == "정문(신촌역)" %>
+              <% if @section == "정문(신촌역)" %>
                 <% if c.division == "정문(신촌역)" %>
                 <!--개별 방 박스 1 시작-->
                 <div class="room col-lg-12 col-md-12 col-sm-12 col-xs-12 position<%= @position_counter %>" id='a<%=c.id %>'>
