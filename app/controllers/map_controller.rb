@@ -11,7 +11,9 @@ class MapController < ApplicationController
   end
 
   def map_detail
-    @hasuk = HasukHouse.all.sort { |p1, p2| [p1.distance1, p1.trans_distance_time1] <=> [p2.distance1, p2.trans_distance_time1] }
+    @hasuk = HasukHouse.all.sort { |p1, p2| 
+      p1.avg_rating_score.all_score && p2.avg_rating_score.all_score ? [p2.avg_rating_score.all_score, p1.distance1, p1.trans_distance_time1] <=> [p1.avg_rating_score.all_score, p2.distance1, p2.trans_distance_time1] : p1.id ? -1 : 1 
+    }
     
     @univ = params[:univ]
     @hasuk_kind = params[:hasuk_kind]
