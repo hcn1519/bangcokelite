@@ -1,7 +1,8 @@
 class MapController < ApplicationController
   def mappage
     @univ = params[:univ]
-
+    @section = params[:section]
+    
     @hasuk = HasukHouse.all()
     @hasuk = HasukHouse.all.sort { |p1, p2| [p1.distance1, p1.trans_distance_time1] <=> [p2.distance1, p2.trans_distance_time1] }
     

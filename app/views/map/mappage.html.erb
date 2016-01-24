@@ -1031,11 +1031,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
            }//for loop
              
          }); //학교별 마커 띄우기 끝
-   function shuffle(o){
-      for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-      return o;
-    }
- 
+
   } //구글맵 기본 설정 끝
   
       google.maps.event.addDomListener(window, 'load', initialize);

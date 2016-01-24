@@ -13,53 +13,124 @@ main {
     background:none;
     color:#e5e9ea;
 }
-
- @media (max-width: 991px) {
-    .navbar-default {
-        background:#e5e9ea;
-        border-bottom:1px solid #BDC3C7;
-    }
-    .navbar-default .navbar-toggle:before {
-        color:#7F8C8D;
-    }
-    .navbar-default .navbar-nav > li > a {
-        color:#fff;
-    }
-    
-    .navbar-default .navbar-brand {
-    color:#fff;
-    }
- }
- @media (min-width: 992px) {
-.navbar-default .navbar-nav > li > a {
-    color:#fff;
+#univ_btn {
+  font-family:source-han-sans-korean; 
+  border-radius:8px; 
+  background: #ffffff; 
+  color: #999999; 
+  border: 2px solid #999999;
 }
-.navbar-nav .navbar-right > li > a {
-    color:#fff;
+#section_btn {
+  font-family:source-han-sans-korean; 
+  border-radius:8px; 
+  background: #ffffff;
+  color: #999999; 
+  border: 2px solid #999999;
 }
-.navbar-default .navbar-brand {
-    color:#fff;
+#submit_btn {
+  border: 2px solid #2ecc71; 
+  border-radius: 8px; 
+  margin-left: 5px; 
+  font-family:source-han-sans-korean;
 }
-.navbar-default .navbar-toggle {
-    background-color:#fff;
-}
+footer {
+    background-color: #2c3341;
+    padding: 0;
+    padding-top: 10px;
 }
 
+#darkblue-box {
+    background-color: #2c3341;
+}
+
+
+#dark-box {
+    background-color: #000000;
+}
+
+.white-text {
+    color: #ffffff;
+}
+
+.btn-info {
+    background: none;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ff8773;
+    color: #ff8773;
+    font-size: 16px;
+}
+
+.btn-info:hover,
+.btn-info.hover,
+.btn-info:focus,
+.btn-info:active,
+.btn-info.active,
+.open > .dropdown-toggle.btn-info {
+  color: #ffffff;
+  background-color: #ff8773;
+  border-color: #ff8773;
+}
+
+.pink {
+    color: #ff8773;
+}
+
+.darkblue-text {
+    color: #2c3341;
+}
+
+
+#info_button {
+    background: url(/images/index-images/background.jpg); 
+}
+
+.point2 {
+    color: #2ecc71; 
+}
+
+p {
+    display: block;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+
+.col-sm-7, .col-lg-7, .col-md-7 > .feature-title {
+    margin-bottom: 0;    
+}
+
+.btn-group > .btn, .btn-group > .submit, .authform .btn-group > .button, .btn-group > .button-xs, .btn-group-vertical > .btn, .btn-group-vertical > .submit, .authform .btn-group-vertical > .button, .btn-group-vertical > .button-xs {
+    position: relative;
+    float: none;
+}
 body {
     background-color: #ffffff;
     color: #666666;
 }
-
 .row {
     margin: 0;
-    
 }
-    
-
 .content-section {
     padding-top: 75px;
     padding-bottom: 75px;
 }
+.navbar-default {
+    background:#e5e9ea;
+    border-bottom:1px solid #BDC3C7;
+}
+.navbar-default .navbar-toggle:before {
+    color:#7F8C8D;
+}
+.navbar-default .navbar-nav > li > a {
+    color:#fff;
+}
+
+.navbar-default .navbar-brand {
+color:#fff;
+}
+/*여기까지 기본 */
+
 
 @media (max-width: 767px) {
   
@@ -77,17 +148,20 @@ body {
 }
 
 #univ_btn {
-  width: 65%;
+  width: 100%;
+  margin-bottom: 10px;
 }
-
+#section_btn {
+    width: 100%;
+}
 #submit_btn {
-  width: 25%;
+  width: 100%;
 }
 .btn-group {
   width: 100%;
-   border-top: 17px solid #333f50; border-bottom: 17px solid #333f50; 
    border-radius: 15px;
    background-color: #333f50;
+   padding:15px;
 }
 
 .text-control {
@@ -184,24 +258,27 @@ body {
 }
 
 }
+
 @media(min-width:768px) {
     .intro {
     background: url(/images/index-images/ipadback.jpg);
 }
 
 .btn-group {
-   border-top: 17px solid #333f50; border-bottom: 17px solid #333f50; 
    border-radius: 20px;
    background-color: #333f50;
-   width: 470px;
+   padding: 15px;
 }
 
 #univ_btn {
-  width: 300px;
+  width: 100%;
+  margin-bottom:10px;
 }
-
+#section_btn {
+  width: 100%;    
+}
 #submit_btn {
-  width: 120px;
+  width: 100%;
 }
 
 .text-control {
@@ -289,328 +366,333 @@ body {
 }
 }
 
-@media(min-width:769px) and (max-width: 1199px) {
 
-.intro {
-    background: url(/images/index-images/back8.jpg);
-}
-
-.btn-group {
-   border-top: 17px solid #333f50; border-bottom: 17px solid #333f50; 
-   border-radius: 20px;
-   background-color: #333f50;
-   width: 470px;
-}
-
-#univ_btn {
-  width: 300px;
-}
-
-#submit_btn {
-  width: 120px;
-}
-
-.text-control {
-    text-align: left;
-}    
-
-    h2 {
-        font-size: 40px;
-    }
+@media(min-width:769px) and (max-width: 991px) {
     
-    h5 {
-        font-size: 20px;
-    }
-    
-.nav-container {
-    padding-right: 30px;
-    padding-left: 15px;
-}
-
-    .content-section {
-        padding-top: 70px;
-    }
-
-    .download-section {
-        padding: 100px 0;
-    }
-    
-    
-    .intro-title, .intro-content {
-        margin-top: 0px;
-        margin-bottom: 35px;
-    }
-
-.inform-text {
-    font-size: 24px;  
-}
-    
-.col-sm-12 {
-    text-align: center;
-}
-
-.target-img {
-    height: 179px;
-    margin: auto;
-    padding-top: 3px;
-}
-
-.detail-feature .col-sm-4 {
-    padding-top: 30px;
-    padding-right: 10px;
-    padding-left: 10px;
-    text-align: center;
-}
-
-.tab-hidden {
-    display: none;   
-}
-
-.feature {
-    font-size: 26px;
-}
-
-.feature-title {
-    font-size:20px;
-}
-
-
-.feature-text {
-    font-size: 16px;
-    margin-bottom: 0;
-}
-
-.title-3 {
-    text-shadow: 1px 1px #000000; 
-    line-height: 1.3; 
-    font-size:32px; 
-    margin-top: 30px; 
-    margin-bottom: 30px;
-}
-
-.target-title {
-    font-size: 26px;
-    margin: 0;
-}
-
-#main-img {
-    width: 80%;
-    padding-bottom: 60px;
-}
-
-}
-
-@media(min-width: 992px) {
-
-#univ_btn {
-  width: 300px;
-}
-
-#submit_btn {
-  width: 120px;
-}
-
-.col-md-12{
-    padding-left: 0;
-    padding-right: 0;
-}
-
-#main-img {
+  #main-img {
+      width: 80%;
+      padding-bottom: 60px;
+  }
+  .intro {
+      background: url(/images/index-images/back8.jpg);
+  }
+  .btn-group {
+     padding: 15px;
+     border-radius: 20px;
+     background-color: #333f50;
+  }
+  #univ_btn {
     width: 100%;
-    padding-bottom: 60px;
+    margin-bottom:10px;
+  }
+  #section_btn {
+    width: 100%;
+  }
+  #submit_btn {
+    width: 100%;
+  }
+  
+  .text-control {
+      text-align: left;
+  }    
+  
+  h2 {
+      font-size: 40px;
+  }
+  
+  h5 {
+      font-size: 20px;
+  }
+      
+  .nav-container {
+      padding-right: 30px;
+      padding-left: 15px;
+  }
+  .content-section {
+      padding-top: 70px;
+  }
+  
+  .download-section {
+      padding: 100px 0;
+  }
+  
+  
+  .intro-title, .intro-content {
+      margin-top: 0px;
+      margin-bottom: 35px;
+  }
+  
+  .inform-text {
+      font-size: 24px;  
+  }
+      
+  .col-sm-12 {
+      text-align: center;
+  }
+  
+  .target-img {
+      height: 179px;
+      margin: auto;
+      padding-top: 3px;
+  }
+  
+  .detail-feature .col-sm-4 {
+      padding-top: 30px;
+      padding-right: 10px;
+      padding-left: 10px;
+      text-align: center;
+  }
+  
+  .tab-hidden {
+      display: none;   
+  }
+  
+  .feature {
+      font-size: 26px;
+  }
+  
+  .feature-title {
+      font-size:20px;
+  }
+  
+  
+  .feature-text {
+      font-size: 16px;
+      margin-bottom: 0;
+  }
+  
+  .title-3 {
+      text-shadow: 1px 1px #000000; 
+      line-height: 1.3; 
+      font-size:32px; 
+      margin-top: 30px; 
+      margin-bottom: 30px;
+  }
+  
+  .target-title {
+      font-size: 26px;
+      margin: 0;
+  }
+
+
 }
 
-.target-img {
-    margin-right: 0px;
-    padding-right: 15px;
-}
-
+@media(min-width:992px) and (max-width: 1199px) {
+  #main-img {
+      width: 100%;
+      padding-bottom: 60px;
+  }
+  .intro {
+      background: url(/images/index-images/back8.jpg);
+  }
+  
+  .btn-group {
+     padding: 15px;
+     border-radius: 20px;
+     background-color: #333f50;
+  }
+  #univ_btn {
+    width: 250px;
+    margin-bottom:0px;
+  }
+  #section_btn {
+    width: 250px;
+  }
+  #submit_btn {
+    width: 100px;
+  }
+  
+  .navbar-default .navbar-nav > li > a {
+      color:#fff;
+  }
+  .navbar-nav .navbar-right > li > a {
+      color:#fff;
+  }
+  .navbar-default .navbar-brand {
+      color:#fff;
+  }
+  .navbar-default .navbar-toggle {
+      background-color:#fff;
+  }
+  .col-md-12{
+      padding-left: 0;
+      padding-right: 0;
+  }
+  .text-control {
+      text-align: left;
+  }    
+  
+  h2 {
+      font-size: 40px;
+  }
+  
+  h5 {
+      font-size: 20px;
+  }
+      
+  .nav-container {
+      padding-right: 30px;
+      padding-left: 15px;
+  }
+  
+  .content-section {
+      padding-top: 70px;
+  }
+  
+  .download-section {
+      padding: 100px 0;
+  }
+  
+  
+  .intro-title, .intro-content {
+      margin-top: 0px;
+      margin-bottom: 35px;
+  }
+  
+  .inform-text {
+      font-size: 24px;  
+  }
+      
+  .col-sm-12 {
+      text-align: center;
+  }
+  
+  .target-img {
+      height: 179px;
+      margin: auto;
+      padding-top: 3px;
+      margin-right: 0px;
+      padding-right: 15px;
+  }
+  
+  .detail-feature .col-sm-4 {
+      padding-top: 30px;
+      padding-right: 10px;
+      padding-left: 10px;
+      text-align: center;
+  }
+  
+  .tab-hidden {
+      display: none;   
+  }
+  
+  .feature {
+      font-size: 26px;
+  }
+  
+  .feature-title {
+      font-size:20px;
+  }
+  
+  
+  .feature-text {
+      font-size: 16px;
+      margin-bottom: 0;
+  }
+  
+  .title-3 {
+      text-shadow: 1px 1px #000000; 
+      line-height: 1.3; 
+      font-size:32px; 
+      margin-top: 30px; 
+      margin-bottom: 30px;
+  }
+  
+  .target-title {
+      font-size: 26px;
+      margin: 0;
+  }
 }
 
 @media(min-width: 1200px) {
 
-.btn-group {
-   border-top: 17px solid #333f50; border-bottom: 17px solid #333f50; 
-   border-radius: 20px;
-   background-color: #333f50;
-   width: 470px;
-}
-
-.intro {
-    background: url(/images/index-images/1440back.jpg);
-
-}
-
-#univ_btn {
-  width: 300px;
-}
-
-#submit_btn {
-  width: 120px;
-}
-
-
-.text-control {
-    text-align: left;
-}    
-
-.nav-container {
-    padding-right: 30px;
-    padding-left: 15px;
-}
-
-.intro-body .container {
-    padding-top: 100px;
-    padding-bottom: 30px;
-}
-    
-.container {
-    width: 980px;
-}
+  .btn-group {
+     padding: 15px;
+     border-radius: 20px;
+     background-color: #333f50;
+  }
   
-    .intro {
-        height: 100%;
-    }
-
-.intro-title, .intro-content{
-    margin-top:0;
-    margin-bottom: 50px;
-}
-
-.detail-feature .col-lg-4 {
-    padding-top: 40px;
-    text-align: center;
-    padding: 0;
-}    
-
-.inform-text {
-    font-size: 24px;  
-}
-
-
-.feature {
-    font-size: 28px;
-    padding-bottom: 30px;
-}
-
-
-.pc-hidden {
-    display: none;
-}
-
-.target-img {
-    padding-top: 3px;
-}
-
-.feature-title {
-    font-size:20px; 
-}
-
-.feature-text {
-    font-size: 16px;
-    margin-bottom: 0;
-}
-
-.target-title {
-    font-size: 28px;
-    margin: 0;
-}
-
-.title-3 {
-    text-shadow: 1px 1px #000000; 
-    line-height: 1.3; 
-    font-size:32px; 
-    margin-top: 30px; 
-    margin-bottom: 30px;
-}
-
-#main-img {
-    width: 100%;
-    padding-bottom: 60px;
-}
-
-.target-img {
-    height: 179px;
-    margin-right: 0;
+  .intro {
+    background: url(/images/index-images/1440back.jpg);
+    height: 100%;
+  }
+  
+  #univ_btn {
     width: 300px;
-    
+    margin-bottom:0px;
+  }
+  #section_btn {
+    width: 300px;
+  }
+  #submit_btn {
+    width: 120px;
+  }
+  
+  .text-control {
+      text-align: left;
+  }    
+  .nav-container {
+      padding-right: 30px;
+      padding-left: 15px;
+  }
+  .intro-body .container {
+      padding-top: 100px;
+      padding-bottom: 30px;
+  }
+  .container {
+      width: 980px;
+  }
+
+  .intro-title, .intro-content{
+      margin-top:0;
+      margin-bottom: 50px;
+  }
+  .detail-feature .col-lg-4 {
+      padding-top: 40px;
+      text-align: center;
+      padding: 0;
+  }    
+  .inform-text {
+      font-size: 24px;  
+  }
+  .feature {
+      font-size: 28px;
+      padding-bottom: 30px;
+  }
+  .pc-hidden {
+      display: none;
+  }
+  .target-img {
+      padding-top: 3px;
+  }
+  .feature-title {
+      font-size:20px; 
+  }
+  .feature-text {
+      font-size: 16px;
+      margin-bottom: 0;
+  }
+  .target-title {
+      font-size: 28px;
+      margin: 0;
+  }
+  .title-3 {
+      text-shadow: 1px 1px #000000; 
+      line-height: 1.3; 
+      font-size:32px; 
+      margin-top: 30px; 
+      margin-bottom: 30px;
+  }
+  #main-img {
+      width: 100%;
+      padding-bottom: 60px;
+  }
+  .target-img {
+      height: 179px;
+      margin-right: 0;
+      width: 300px;
+  }
 }
-
-}
-
-footer {
-    background-color: #2c3341;
-    padding: 0;
-    padding-top: 10px;
-}
-
-#darkblue-box {
-    background-color: #2c3341;
-}
-
-
-#dark-box {
-    background-color: #000000;
-}
-
-.white-text {
-    color: #ffffff;
-}
-
-.btn-info {
-    background: none;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #ff8773;
-    color: #ff8773;
-    font-size: 16px;
-}
-
-.btn-info:hover,
-.btn-info.hover,
-.btn-info:focus,
-.btn-info:active,
-.btn-info.active,
-.open > .dropdown-toggle.btn-info {
-  color: #ffffff;
-  background-color: #ff8773;
-  border-color: #ff8773;
-}
-
-.pink {
-    color: #ff8773;
-}
-
-.darkblue-text {
-    color: #2c3341;
-}
-
-
-#info_button {
-    background: url(/images/index-images/background.jpg); 
-}
-
-.point2 {
-    color: #2ecc71; 
-}
-
-p {
-    display: block;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-}
-
-
-.col-sm-7, .col-lg-7, .col-md-7 > .feature-title {
-    margin-bottom: 0;    
-}
-
-.btn-group > .btn, .btn-group > .submit, .authform .btn-group > .button, .btn-group > .button-xs, .btn-group-vertical > .btn, .btn-group-vertical > .submit, .authform .btn-group-vertical > .button, .btn-group-vertical > .button-xs {
-    position: relative;
-    float: none;
-}
-
-
 </style>
 
 </head>
@@ -628,11 +710,17 @@ p {
                 <div class="row col-md-12 col-xs-12 col-sm-12">
                     <form action="/map/mappage" method="GET">
                       <div class="btn-group" role="group">
-                        
-                        <%= select_tag "univ", "<option selected>학교 선택</option><option value='서강'>서강대학교</option><option value='연세'>연세대학교</option><option value='이화'>이화여자대학교</option>".html_safe,class:"btn btn-default btn-lg dropdown-toggle", id:"univ_btn", style: "font-family:source-han-sans-korean; border-radius:8px; background: #ffffff; color: #999999; border: 2px solid #999999;" %>
-                        <%= button_tag(type: "submit",class:"btn btn-success btn-lg", id:"submit_btn", remote: true, style: "border: 2px solid #2ecc71; border-radius: 8px; margin-left: 5px; font-family:source-han-sans-korean;") do %>
+                        <div class="col-xs-12 col-sm-12 col-lg-5 col-md-5" style="padding:0px">
+                            <%= select_tag "univ", "<option selected>학교 선택</option><option value='서강'>서강대학교</option><option value='연세'>연세대학교</option><option value='이화'>이화여자대학교</option>".html_safe,class:"btn btn-default btn-lg dropdown-toggle", id:"univ_btn" %>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-lg-5 col-md-5" style="padding:0px">
+                        <%= select_tag "section", "<option selected>구역 선택</option><option value=''>구역을 선택하세요</option>".html_safe,class:"btn btn-default btn-lg dropdown-toggle", id:"section_btn" %>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="padding:0px">
+                        <%= button_tag(type: "submit",class:"btn btn-success btn-lg", id:"submit_btn", remote: true) do %>
                           <span class="fui-search"></span>
                         <% end %>
+                        </div>
                       </div>
                     </form>
                     
@@ -839,6 +927,56 @@ $(window).scroll(function() {
        alert("준비중인 서비스입니다."); 
     });
 });
+var sogang_option = {
+  "": "구역 선택",
+  "남문(대흥역)": "남문(대흥역)",
+};
+var yonsei_option = {
+  "": "구역 선택",
+  "정문(신촌역)": "정문(신촌역)",
+  "서문": "서문",
+  "남문": "남문",
+  "동문": "동문",
+  "신촌기차역": "신촌기차역"
+};
+var ewha_option = {
+  "": "구역 선택",
+  "정문(이대역)": "정문(이대역)",
+  "신촌기차역": "신촌기차역",
+  "후문": "후문"
+};
 
+$("#univ_btn").change(function(){
+   var optionSelected = $("option:selected", this);
+   var valueSelected = this.value;
+   
+   if (valueSelected == "서강") {
+       var $el = $("#section_btn");
+        $el.empty(); // remove old options
+        
+        $.each(sogang_option, function(value,key) {
+          $el.append($("<option></option>")
+             .attr("value", value).text(key));
+        });
+        
+   } else if (valueSelected == "연세") {
+       var $el = $("#section_btn");
+        $el.empty(); // remove old options
+        
+        $.each(yonsei_option, function(value,key) {
+          $el.append($("<option></option>")
+             .attr("value", value).text(key));
+        });
+       
+   } else if (valueSelected == "이화") {
+       var $el = $("#section_btn");
+        $el.empty(); // remove old options
+        
+        $.each(ewha_option, function(value,key) {
+          $el.append($("<option></option>")
+             .attr("value", value).text(key));
+        });
+   }
+});
 </script>
 </body>
