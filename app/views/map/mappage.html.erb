@@ -512,7 +512,8 @@
         var latlng = new google.maps.LatLng(data[i].lat, data[i].lng);  
 
         <% if @univ == "서강" %>
-            if (data[i].division == "남문(대흥역)"){
+
+                if (data[i].division == "남문(대흥역)"){
 
               var marker = new google.maps.Marker({
                 position: latlng,
@@ -637,10 +638,15 @@ var listener9 = google.maps.event.addListener(infoWindow, 'domready', function()
   marker.setMap(map);
   
                 } //division 괄호
-             //univ 서강 걸리는 괄호
-          
-              <% elsif @univ == "연세" %>
-                if (data[i].division == "정문(신촌역)" || data[i].division == "연대서문" || data[i].division == "연대남문" || data[i].division == "신촌기차역" || data[i].division == "이대후문"){
+             
+        <% elsif @univ == "연세" %>
+                  
+            <% unless @section == nil || @section == "" %> //섹션 유무 나누기
+              <% if @section == "정문(신촌역)" %> //섹션별 검색결과 나누기
+                map.setCenter({lat: 37.557464, lng: 126.936306}, true);
+                map.setZoom(17);
+                
+                if (data[i].division == "정문(신촌역)"){
             
               var marker = new google.maps.Marker({
                 position: latlng,
@@ -768,11 +774,1078 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 
                  marker.setMap(map);
                }//division 괄호
+               
+              <% elsif @section == "연대서문" %>
+                map.setCenter({lat: 37.565672, lng: 126.932181}, true);
+                map.setZoom(17);
+                
+                if(data[i].division == "연대서문"){
+            
+              var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                icon: d_marker,
+                url: "/hasuk_houses/" +  data[i].id
+              });
+        
+            var str_id = data[i].id.toString();
+            var hash_id = "a" +str_id;
+            markerObj = document.getElementById(hash_id);
+
+
+//event 구간
+google.maps.event.addListener(marker, 'click', function() {
+              var markerUrl = this.url;
+              window.open(markerUrl, "_blank");
+          });
+//1.말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+//2.말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+
+// 마커에 마우스 대면 리스트박스 이동
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
+                       });
+
+                      };
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
+                        
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+                     
+//4. listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","transparent");
+                        });
+
+                      };
+
+                     })(str_id));
+
+
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
+
+
+                 marker.setMap(map);
+               }//division 괄호
+               
+              <% elsif @section == "연대남문" %>
+                map.setCenter({lat: 37.561214, lng: 126.930489}, true);
+                map.setZoom(17);
+                
+                if(data[i].division =="연대남문"){
+            
+              var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                icon: d_marker,
+                url: "/hasuk_houses/" +  data[i].id
+              });
+        
+            var str_id = data[i].id.toString();
+            var hash_id = "a" +str_id;
+            markerObj = document.getElementById(hash_id);
+
+
+//event 구간
+google.maps.event.addListener(marker, 'click', function() {
+              var markerUrl = this.url;
+              window.open(markerUrl, "_blank");
+          });
+//1.말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+//2.말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+
+// 마커에 마우스 대면 리스트박스 이동
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
+                       });
+
+                      };
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
+                        
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+                     
+//4. listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","transparent");
+                        });
+
+                      };
+
+                     })(str_id));
+
+
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
+
+
+                 marker.setMap(map);
+               }//division 괄호
+               
+              <% elsif @section == "신촌기차역" %>
+                map.setCenter({lat: 37.557458, lng: 126.940234}, true);
+                map.setZoom(17);
+            
+                if(data[i].division =="신촌기차역"){
+            
+              var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                icon: d_marker,
+                url: "/hasuk_houses/" +  data[i].id
+              });
+        
+            var str_id = data[i].id.toString();
+            var hash_id = "a" +str_id;
+            markerObj = document.getElementById(hash_id);
+
+
+//event 구간
+google.maps.event.addListener(marker, 'click', function() {
+              var markerUrl = this.url;
+              window.open(markerUrl, "_blank");
+          });
+//1.말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+//2.말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+
+// 마커에 마우스 대면 리스트박스 이동
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
+                       });
+
+                      };
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
+                        
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+                     
+//4. listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","transparent");
+                        });
+
+                      };
+
+                     })(str_id));
+
+
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
+
+
+                 marker.setMap(map);
+               }//division 괄호
+               
+              <% elsif @section == "연대동문" %>
+                map.setCenter({lat: 37.567704, lng: 126.946683}, true);
+                map.setZoom(17);
+               
+               if(data[i].division =="이대후문"){
+            
+              var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                icon: d_marker,
+                url: "/hasuk_houses/" +  data[i].id
+              });
+        
+            var str_id = data[i].id.toString();
+            var hash_id = "a" +str_id;
+            markerObj = document.getElementById(hash_id);
+
+
+//event 구간
+google.maps.event.addListener(marker, 'click', function() {
+              var markerUrl = this.url;
+              window.open(markerUrl, "_blank");
+          });
+//1.말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+//2.말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+
+// 마커에 마우스 대면 리스트박스 이동
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
+                       });
+
+                      };
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
+                        
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+                     
+//4. listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","transparent");
+                        });
+
+                      };
+
+                     })(str_id));
+
+
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
+
+
+                 marker.setMap(map);
+               }//division 괄호
+               
+              <% end %> //섹션별 검색결과 나누기 끝
+            <% else %>
+               
+               if (data[i].division == "정문(신촌역)" || data[i].division == "연대서문" || data[i].division == "연대남문" || data[i].division == "신촌기차역" || data[i].division == "이대후문"){
+            
+              var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                icon: d_marker,
+                url: "/hasuk_houses/" +  data[i].id
+              });
+        
+            var str_id = data[i].id.toString();
+            var hash_id = "a" +str_id;
+            markerObj = document.getElementById(hash_id);
+
+
+//event 구간
+google.maps.event.addListener(marker, 'click', function() {
+              var markerUrl = this.url;
+              window.open(markerUrl, "_blank");
+          });
+//1.말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+//2.말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+
+// 마커에 마우스 대면 리스트박스 이동
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
+                       });
+
+                      };
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
+                        
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+                     
+//4. listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","transparent");
+                        });
+
+                      };
+
+                     })(str_id));
+
+
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
+
+
+                 marker.setMap(map);
+               }//division 괄호
+            <% end %>  //섹션 유무 나누기 끝
+                
 
              //univ 연세 걸리는 괄호
              
-             <% elsif @univ == "이화" %>
-               if (data[i].division == "정문(이대역)" || data[i].division == "신촌기차역" || data[i].division == "이대후문"){
+        <% elsif @univ == "이화" %>
+            <% unless @section == nil || @section == "" %> //섹션 유무 나누기
+                <% if @section == "정문(이대역)" %> //섹션별 검색결과 나누기
+                  map.setCenter({lat: 37.557917, lng: 126.944804}, true);
+                  map.setZoom(17);
+                
+                  if(data[i].division =="정문(이대역)"){
+                      
+              var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                icon: d_marker,
+                url: "/hasuk_houses/" +  data[i].id
+              });
+              
+            var str_id = data[i].id.toString();
+            var hash_id = "a" +str_id;
+            markerObj = document.getElementById(hash_id);
+
+
+//event 구간
+
+//클릭하면 상세페이지 오픈
+ google.maps.event.addListener(marker, 'click', function() {
+        var markerUrl = this.url;
+        window.open(markerUrl, "_blank");
+    });
+//말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+//말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+
+// 마커에 마우스 대면 리스트박스 이동
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
+                       });
+                       
+                      };
+
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
+                        
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+                     
+// listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","transparent");
+                        });
+
+                      };
+
+                     })(str_id));
+
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
+
+                 marker.setMap(map);
+                }//division 걸리는 괄호  
+                <% elsif @section == "신촌기차역" %>
+                  map.setCenter({lat: 37.557458, lng: 126.940234}, true);
+                  map.setZoom(17);
+            
+                  if(data[i].division =="신촌기차역"){
+            
+              var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                icon: d_marker,
+                url: "/hasuk_houses/" +  data[i].id
+              });
+              
+            var str_id = data[i].id.toString();
+            var hash_id = "a" +str_id;
+            markerObj = document.getElementById(hash_id);
+
+
+//event 구간
+
+//클릭하면 상세페이지 오픈
+ google.maps.event.addListener(marker, 'click', function() {
+        var markerUrl = this.url;
+        window.open(markerUrl, "_blank");
+    });
+//말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+//말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+
+// 마커에 마우스 대면 리스트박스 이동
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
+                       });
+                       
+                      };
+
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
+                        
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+                     
+// listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","transparent");
+                        });
+
+                      };
+
+                     })(str_id));
+
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
+
+                 marker.setMap(map);
+                }//division 걸리는 괄호
+                <% elsif @section == "이대후문" %>
+                  map.setCenter({lat: 37.567704, lng: 126.946683}, true);
+                  map.setZoom(17);
+                  if(data[i].division =="이대후문"){
+
+              var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                icon: d_marker,
+                url: "/hasuk_houses/" +  data[i].id
+              });
+              
+            var str_id = data[i].id.toString();
+            var hash_id = "a" +str_id;
+            markerObj = document.getElementById(hash_id);
+
+
+//event 구간
+
+//클릭하면 상세페이지 오픈
+ google.maps.event.addListener(marker, 'click', function() {
+        var markerUrl = this.url;
+        window.open(markerUrl, "_blank");
+    });
+//말풍선 출력 
+                    google.maps.event.addListener(marker,'mouseover', (function(marker,contentString,infoWindow){ 
+                          return function() {
+                            infoWindow.setContent(contentString);
+                            infoWindow.open(map,marker);
+
+                           }; // function end
+                      })(marker,contentString,infoWindow));
+
+//말풍선 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(infoWindow) {
+                       return function()  {
+                        infoWindow.close();
+                        };
+                     })(infoWindow));
+
+ // listbox로 말풍선 띄우기
+                     google.maps.event.addDomListener(markerObj, 'mouseover', (function(marker, contentString, infoWindow) {
+                       return function() {
+                         infoWindow.setContent(contentString);
+                         infoWindow.open(map,marker);
+                       }; // function end
+                     })(marker,contentString,infoWindow));
+
+ // listbox로 말풍선 띄운 것 지우기
+                      google.maps.event.addDomListener(markerObj, 'mouseout', (function(infoWindow) {
+                        return function() {
+                          infoWindow.close();
+                        }; // function end
+                      })(infoWindow));
+ 
+
+// 마커에 마우스 대면 리스트박스 이동
+                     google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        // $(".roomList").animate({ scrollTop: $(".roomList").scrollTop() + $(result_id).position().top },500);
+                       $('.listbox').animate({scrollTop:$(result_id).position().top}, 300);
+                       });
+                       
+                      };
+
+
+                     })(str_id));
+
+// listbox 색 입히기
+                    google.maps.event.addListener(marker, 'mouseover', (function(str_id) {
+                     return function() { 
+                        var result_id = "#" + "a" + str_id;
+                      //console.log(result_id); 
+
+                      $(document).ready(function() {
+                        $(result_id).css("background-color","rgba(45, 205, 113, 0.5)");
+                        
+                      });
+ 
+                     };
+
+                    })(str_id));
+
+                     
+// listbox 색 지우기
+                     google.maps.event.addListener(marker, 'mouseout', (function(str_id) {
+                      return function() {
+                         var result_id = "#" + "a" + str_id;
+                       //console.log(result_id);
+
+                       $(document).ready(function() {
+                        $(result_id).css("background-color","transparent");
+                        });
+
+                      };
+
+                     })(str_id));
+
+//말풍선 디자인 시작//
+google.maps.event.addListener(infoWindow, 'domready', function() {
+
+    // Reference to the DIV that wraps the bottom of infowindow
+    var iwOuter = $('.gm-style-iw');
+
+    /* Since this div is in a position prior to .gm-div style-iw.
+     * We use jQuery and create a iwBackground variable,
+     * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+    */
+    var iwBackground = iwOuter.prev();
+
+      var iwBackground = iwOuter.prev();
+
+   // Remove the background shadow DIV
+   iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+   // Remove the white background DIV
+   iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+   
+   var iwCloseBtn = iwOuter.next();
+   iwCloseBtn.css({'display': 'none'});
+   
+   
+   iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow' : 'none', 'border': '1px solid #ECF0F1', 'border-top' : 'transparent', 'z-index' : '1'});
+  });
+//말풍선 디자인 끝//
+
+                 marker.setMap(map);
+                }//division 걸리는 괄호
+                <% end %> //섹션별 검색결과 나누기 끝
+            <% else %>
+                if (data[i].division == "정문(이대역)" || data[i].division == "신촌기차역" || data[i].division == "이대후문"){
             
             
               var marker = new google.maps.Marker({
@@ -901,9 +1974,12 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
 //말풍선 디자인 끝//
 
                  marker.setMap(map);
-                }//univ 이화 걸리는 괄호
+                }//division 걸리는 괄호
+            <% end %>  //섹션 유무 나누기 끝
+             
+               
               
-             <% else  %> 
+        <% else  %> 
               
               var marker = new google.maps.Marker({
                 position: latlng,
