@@ -1132,7 +1132,7 @@ td {
       </div>
     <% else %>  
     <% @anonymous = 1 %>
-    <% @user_comment.each do |i| %>
+    <% @user_comment.reverse.each do |i| %>
     <% @user = User.where(id: i.user_id) %>
     
     <div class="row">
@@ -1159,7 +1159,10 @@ td {
         </div>
       </div>
       <div class="row">
-        <%= i.comment %>  
+        <% comment = i.comment.split("\n") %>
+        <% comment.each do |k| %>
+          <p style="font-size: 15px"><%= k %></p>
+        <%end %>
       </div>
       <div class="row" style="font-size:13px; color: #82888a;">
         <div class="col-xs-6">
