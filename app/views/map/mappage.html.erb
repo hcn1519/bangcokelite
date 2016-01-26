@@ -2239,11 +2239,15 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         <% end %>
                     <% end %>
                   <% end %>
-                  <div class="rating_score">
-                      <% unless c.avg_rating_score.all_score.nil? && c.avg_rating_score.all_score != 0.0 %>
-                        <span style="color:#fff"><%= c.avg_rating_score.all_score %></span>
+                  
+                      <% unless c.avg_rating_score.all_score.nil? %>
+                        <% if c.avg_rating_score.all_score != 0.0 %>
+                          <div class="rating_score">
+                            <span style="color:#fff"><%= c.avg_rating_score.all_score %></span>
+                          </div>
+                        <% end %>
                       <% end %>
-                  </div>
+                  
                       <div class="description">
 
                         <% unless c.address.nil? %>  
