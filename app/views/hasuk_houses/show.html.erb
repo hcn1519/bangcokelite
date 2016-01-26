@@ -926,13 +926,13 @@ td {
           google.setOnLoadCallback(drawChart);
           function drawChart() {
             var score = [
-              <%= @avg_score[0].total_meal_score %>, 
-              <%= @avg_score[0].total_clean_score %>,
-              <%= @avg_score[0].total_silence_score %>,
-              <%= @avg_score[0].total_aircondition_score %>,
-              <%= @avg_score[0].total_cctv_score %>,
-              <%= @avg_score[0].total_score %>,
-              <%= @avg_score[0].all_score %>
+              <%= @avg_score[0].total_meal_score/@avg_score[0].how_many_people_did %>, 
+              <%= @avg_score[0].total_clean_score/@avg_score[0].how_many_people_did %>,
+              <%= @avg_score[0].total_silence_score/@avg_score[0].how_many_people_did %>,
+              <%= @avg_score[0].total_aircondition_score/@avg_score[0].how_many_people_did %>,
+              <%= @avg_score[0].total_cctv_score/@avg_score[0].how_many_people_did %>,
+              <%= @avg_score[0].total_score/@avg_score[0].how_many_people_did %>,
+              <%= @avg_score[0].all_score/@avg_score[0].how_many_people_did %>
               ];
             var colorset = [];
             
@@ -949,13 +949,13 @@ td {
             }
             var data = google.visualization.arrayToDataTable([
               ["Element", "평점", {role: "style"}],
-              ["식사", <%= @avg_score[0].total_meal_score %>, colorset[0]],
-              ["위생", <%= @avg_score[0].total_clean_score %>, colorset[1]],
-              ["방음", <%= @avg_score[0].total_silence_score %>, colorset[2]],
-              ["난방", <%= @avg_score[0].total_aircondition_score %>, colorset[3]],
-              ["보안", <%= @avg_score[0].total_cctv_score %>, colorset[4]],
-              ["가격", <%= @avg_score[0].total_score %>, colorset[5]],
-              ["총점", <%= @avg_score[0].all_score %>, colorset[6]]
+              ["식사", score[0], colorset[0]],
+              ["위생", score[1], colorset[1]],
+              ["방음", score[2], colorset[2]],
+              ["난방", score[3], colorset[3]],
+              ["보안", score[4], colorset[4]],
+              ["가격", score[5], colorset[5]],
+              ["총점", score[6], colorset[6]]
             ]);
       
             var view = new google.visualization.DataView(data);
