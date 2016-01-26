@@ -937,11 +937,11 @@ td {
             var colorset = [];
             
             for(var k=0; k<=6; k++){
-              if(score[k] >= 3.7){
+              if(Math.round(score[k] * 100)/100 >= 3.7){
                 colorset[k] = '#79b5e6';
-              } else if (score[k] >= 2.7 && score[k] < 3.7) {
+              } else if ( Math.round(score[k] * 100)/100 >= 2.7 && Math.round(score[k] * 100)/100 < 3.7) {
                 colorset[k] = '#86cd65';
-              } else if (score[k] >= 2.0 && score[k] < 2.7) {
+              } else if (Math.round(score[k] * 100)/100 >= 2.0 && score[k] < 2.7) {
                 colorset[k] = '#ffc221';
               } else {
                 colorset[k] = '#ff685f';
