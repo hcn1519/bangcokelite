@@ -2239,7 +2239,19 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         <% end %>
                     <% end %>
                   <% end %>
-                  
+                  <div class="rating_score">
+                      <% unless c.avg_rating_score.all_score.nil? && c.avg_rating_score.all_score == 0 %>
+                          <% if c.avg_rating_score.all_score >= 3.7 %>
+                            <span style="color:#2980B9"><%= c.avg_rating_score.all_score %></span>
+                          <% elsif c.avg_rating_score.all_score <= 3.7 && c.avg_rating_score.all_score >=2.7 %>
+                            <span style="color:#27AE60"><%= c.avg_rating_score.all_score %></span>
+                          <% elsif c.avg_rating_score.all_score >= 2.7 && c.avg_rating_score.all_score >=2.0 %>
+                            <span style="color:#F39C12"><%= c.avg_rating_score.all_score %></span>
+                          <% else %>
+                            <span style="color:#C0392B"><%= c.avg_rating_score.all_score %></span>
+                          <% end %>
+                      <% end %>
+                  </div>
                       <div class="description">
 
                         <% unless c.address.nil? %>  

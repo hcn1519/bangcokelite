@@ -1,12 +1,15 @@
    .col-md-9,.col-lg-9,.col-sm-9,.col-xs-9 {
   padding-left: 0;
 }
-
-/*
-.room #description, .room #nameOfhasuk, .room #nameOfhasukWoman, .room #sleeping_only, .room p {
-    display:inline-block;
+.rating_score {
+    position:absolute;
+    z-index:5;
+    right: 5%;
+    top: 5%;
+    background:rgba(51,51,51, 0.2);
+    border-radius: 5px;
+    padding: 2px;
 }
-*/
 .roomList{
     background: #ededed;
 }
