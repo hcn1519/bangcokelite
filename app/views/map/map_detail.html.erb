@@ -3339,7 +3339,14 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                         <% end %>
                     <% end %>
                   <% end %>
-                  
+                      <% unless c.avg_rating_score.all_score.nil? %>
+                        <% if c.avg_rating_score.all_score != 0.0 %>
+                          <div class="rating_score">
+                            <span style="color:#fff"><%= (c.avg_rating_score.all_score/c.avg_rating_score.how_many_people_did).round(2) %></span>
+                          </div>
+                        <% end %>
+                      <% end %>
+                      
                       <div class="description">
                         <% unless c.address.nil? %>  
               
