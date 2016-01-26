@@ -2240,7 +2240,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                     <% end %>
                   <% end %>
                   <div class="rating_score">
-                      <% unless c.avg_rating_score.all_score.nil? && c.avg_rating_score.all_score != 0 %>
+                      <% unless c.avg_rating_score.all_score.nil? && c.avg_rating_score.all_score != 0.0 %>
                         <span style="color:#fff"><%= c.avg_rating_score.all_score %></span>
                       <% end %>
                   </div>
