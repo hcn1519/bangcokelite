@@ -947,15 +947,16 @@ td {
                 colorset[k] = '#ff685f';
               }
             }
+
             var data = google.visualization.arrayToDataTable([
               ["Element", "평점", {role: "style"}],
-              ["식사", score[0], colorset[0]],
-              ["위생", score[1], colorset[1]],
-              ["방음", score[2], colorset[2]],
-              ["난방", score[3], colorset[3]],
-              ["보안", score[4], colorset[4]],
-              ["가격", score[5], colorset[5]],
-              ["총점", score[6], colorset[6]]
+              ["식사", Math.round(score[0] * 100)/ 100, colorset[0]],
+              ["위생", Math.round(score[1] * 100)/ 100, colorset[1]],
+              ["방음", Math.round(score[2] * 100)/ 100, colorset[2]],
+              ["난방", Math.round(score[3] * 100)/ 100, colorset[3]],
+              ["보안", Math.round(score[4] * 100)/ 100, colorset[4]],
+              ["가격", Math.round(score[5] * 100)/ 100, colorset[5]],
+              ["총점", Math.round(score[6] * 100)/ 100, colorset[6]]
             ]);
       
             var view = new google.visualization.DataView(data);
