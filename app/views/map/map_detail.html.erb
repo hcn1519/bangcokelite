@@ -3342,7 +3342,10 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       <% unless c.avg_rating_score.all_score.nil? %>
                         <% if c.avg_rating_score.all_score != 0.0 %>
                           <div class="rating_score">
-                            <span style="color:#fff"><%= (c.avg_rating_score.all_score/c.avg_rating_score.how_many_people_did).round(2) %></span>
+                            <span style="color:#fff">
+                                <% rating = c.avg_rating_score.all_score/c.avg_rating_score.how_many_people_did %>
+                                <%= rating.round(2) %>
+                                </span>
                           </div>
                         <% end %>
                       <% end %>
