@@ -24,7 +24,7 @@ main {
         <div class="intro-body" style="margin:0">
             <div class="container text-center">
                 <div class="col-md-6 col-md-offset-3">
-                   	<img id="main-img" class="img-responsive">
+                   	<img id="main-img" class="img-responsive" src="" />
                 </div> 
                 <div class="row col-md-12 col-xs-12 col-sm-12">
                     <form action="/map/mappage" method="GET">
@@ -240,6 +240,15 @@ $(window).scroll(function() {
     $(".ready").click(function(){
        alert("준비중인 서비스입니다."); 
     });
+    
+    if ($(window).width() >= 768 ) {
+      $("#main-img").attr("src", "/images/index-images/title.gif");  
+    }
+    else {
+      $("#main-img").attr("src", "/images/index-images/title-mobile.gif");
+    }
+    
 });
 </script>
 </body>
+      

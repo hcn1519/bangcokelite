@@ -129,12 +129,10 @@ color:#fff;
 }
 
 #main-img {
-    padding-bottom: 30px;
-    width: 75%;
-    margin: auto;
-    content:url("/images/index-images/title-mobile.gif")
+  padding-bottom: 30px;
+  width: 75%;
+  margin: auto;
 }
-
 #univ_btn {
   width: 100%;
   margin-bottom: 10px;
@@ -346,14 +344,14 @@ color:#fff;
 #main-img {
     width: 80%;
     padding-bottom: 60px;
-    content:url("/images/index-images/title.gif")
 }
+
 }
 
 
 @media(min-width:769px) and (max-width: 991px) {
     
-  #main-img {
+  #main-img:after {
       width: 80%;
       padding-bottom: 60px;
   }
