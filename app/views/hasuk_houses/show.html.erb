@@ -553,7 +553,7 @@ td {
         <div class="col-sm-6 col-xs-12">
             <div class="photo">
                 <div class="photo-zone"> 
-              <ul id="myTabs" class="btn-group nav nav-tabs nav-pills nav-justified" style="" role="tablist">
+              <ul id="myTabs" class="btn-group1 nav nav-tabs nav-pills nav-justified" style="" role="tablist">
                   <li id="pictab1" role="presentation" class="active"><a href="#photo" aria-controls="photo" role="tab" data-toggle="tab">사진</a></li>
                   <li id="pictab2" role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab" onclick="setBounds()">교통지도보기</a></li>
                   <li id="pictab3" role="presentation"><a href="#roadviewcon" aria-controls="roadviewcon" role="tab" data-toggle="tab">로드뷰</a></li>
@@ -1080,9 +1080,9 @@ td {
                         
                     <% if user_signed_in? %> 
                       <% if current_user.favorites.include?(@hasuk_house) != true %>
-                        <%= link_to "♡ 콕하기", favorite_hasuk_house_path(@hasuk_house, type: "favorite"),:class => "vote btn btn-danger2 btn-sm", :style=>"border: 1px solid #ec7063; border-radius: 20px; display:block; font-size: 14x; float: right;", method: :put, :remote => true, data: { toggle_text: '콕했어요!', toggle_href: favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), id: @hasuk_house.id } %>
+                        <%= link_to "♡ 콕하기", favorite_hasuk_house_path(@hasuk_house, type: "favorite"),:class => "vote btn btn-danger2 btn-sm", :style =>"border: 1px solid #ec7063; border-radius: 20px; display:block; font-size: 14x; float: right;", method: :put, :remote => true, data: { toggle_text: '콕했어요!', toggle_href: favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), id: @hasuk_house.id } %>
                       <% else %>
-                        <%= link_to "콕했어요!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), :class => "vote btn btn-danger btn-sm",:style=>"border: 1px solid #E74C3C; border-radius:20px; display:block; font-size: 14px; float: right;", method: :put, :remote => true, data: { toggle_text: '♡ 콕하기', toggle_href: favorite_hasuk_house_path(@hasuk_house, type: "favorite"), id: @hasuk_house.id } %>
+                        <%= link_to "콕했어요!", favorite_hasuk_house_path(@hasuk_house, type: "unfavorite"), :class => "vote btn btn-danger btn-sm",:style =>"border: 1px solid #E74C3C; border-radius:20px; display:block; font-size: 14px; float: right;", method: :put, :remote => true, data: { toggle_text: '♡ 콕하기', toggle_href: favorite_hasuk_house_path(@hasuk_house, type: "favorite"), id: @hasuk_house.id } %>
                       <% end %>
                       
                     <% else %>
