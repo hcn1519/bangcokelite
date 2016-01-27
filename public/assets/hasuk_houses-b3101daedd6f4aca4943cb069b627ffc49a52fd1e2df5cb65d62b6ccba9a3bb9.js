@@ -1,1 +1,0 @@
-(function(){$(document).on("ajax:success","a.vote",function(e,t,n){$("#sizeoflike[data-id="+t.id+"]").text(t.count),$("a.vote[data-id="+t.id+"]").each(function(){var e,t,n;e=$(this),t=e.attr("href"),n=e.text(),e.text(e.data("toggle-text")).attr("href",e.data("toggle-href")),e.data("toggle-text",n).data("toggle-href",t)})})}).call(this);
