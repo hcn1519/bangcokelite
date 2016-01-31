@@ -17,32 +17,11 @@
       ga('send', 'pageview');
     
     </script>
-    <!--flat ui 셋팅-->
-    <link href="/Flat-UI-2.2.2/dist/css/flat-ui.min.css" rel="stylesheet">
-    <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
-    <!--flat ui 셋팅-->
-    <style type="text/css">
-      @font-face {
-        font-family: 'BMJUA';
-        src: url('/fonts/BMJUA_ttf.ttf');
-      }
-      @font-face {
-        font-family: 'source-han-sans-korean';
-        src: url('/fonts/SourceHanSansKR-Regular.otf');
-      }
-      html, body {
-        font-family:source-han-sans-korean;
-      }
-      .form-control {
-        font-family:source-han-sans-korean;
-      }
-      .btn {
-        font-family:source-han-sans-korean;
-      }
-      
-    </style>
+    <%= stylesheet_link_tag "framework_and_overrides", :media => "all" %>
+    <link href="/Flat-UI-2.2.2/dist/css/flat-ui.min.css" rel="stylesheet"> 
+  
   </head>
-  <body class="<%= controller_name %> <%= action_name %>">
+  <body>
     <header>
       <%= render 'layouts/loading' %>
       <%= render 'layouts/navigation' %>
@@ -57,6 +36,7 @@
        <%= yield %>
     </main>
     
+    <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
   </body>
   
 </html>

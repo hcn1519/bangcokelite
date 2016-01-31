@@ -117,11 +117,11 @@
                         <span id="select-title" readonly style="font-size:15px; font-weight:bold;">종류</span>
                         
                        
-                        <div class="btn-group btn-group-justified" data-toggle="buttons" style="margin-bottom:10px;">
-                          <label id="small-device" class="btn btn-default" style="border-left:1px solid #a1a6a9; margin-top:10px">
+                        <div class="btn-group1 btn-group-justified" data-toggle="buttons" style="margin-bottom:10px;">
+                          <label id="small-device" class="btn btn-default" style="border-left:1px solid #a1a6a9; margin-top:10px; border-radius:0px;">
                               <input type="radio" id="bt1" name="hasuk_kind" value="일반하숙" />일반하숙
                           </label>
-                          <label id="small-device" class="btn btn-default" style="margin-top:10px">
+                          <label id="small-device" class="btn btn-default" style="margin-top:10px; border-radius:0px;">
                               <input type="radio" id="bt2" name="hasuk_kind" value="잠만 자는 방" />잠만 자는 방
                           </label>
                          <!--<label id="small-device"class="btn btn-default" style="margin-top:10px">
@@ -136,15 +136,15 @@
                       <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <span id="select-title" readonly style="font-size:15px; font-weight:bold;">성별</span>
                         
-                        <div class="btn-group btn-group-justified" data-toggle="buttons" style="margin-bottom:10px;">
+                        <div class="btn-group1 btn-group-justified" data-toggle="buttons" style="margin-bottom:10px;">
                           
-                          <label id="small-device" class="btn btn-default" style="border-left:1px solid #a1a6a9; margin-top:10px">
+                          <label id="small-device" class="btn btn-default" style="border-left:1px solid #a1a6a9; margin-top:10px; border-radius:0px;">
                               <input type="radio" id="bt5" name="gender" value="남녀공용" />남녀공용
                           </label> 
                          <!-- <label id="small-device" class="btn btn-default" style="margin-top:10px" >
                               <input type="radio"  id="bt6" name="gender" value="남녀층 분리" />남녀층 분리
                           </label>-->
-                          <label id="small-device" class="btn btn-default" style="margin-top:10px">
+                          <label id="small-device" class="btn btn-default" style="margin-top:10px; border-radius:0px;">
                               <input type="radio"  id="bt7" name="gender" value="여성전용" />여성전용
                           </label> 
                           <!--<label id="small-device" class="btn btn-default" style="margin-top:10px">
@@ -167,37 +167,37 @@
                       -->
                       <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <span id="select-title" readonly style="font-size:15px; font-weight:bold;">구역</span>
-                        <div class="btn-group btn-group-justified" data-toggle="buttons" style="margin-bottom:10px;">
+                        <div class="btn-group1 btn-group-justified" data-toggle="buttons" style="margin-bottom:10px;">
                           <% if @univ == "서강" %>
-                          <label id="small-device" class="btn btn-default" style="border-left:1px solid #a1a6a9; margin-top: 10px;">
+                          <label id="small-device" class="btn btn-default" style="border-left:1px solid #a1a6a9; margin-top: 10px; border-radius:0px;">
                               <input type="radio" id="bt9" name="section" value="남문(대흥역)" /> 남문(대흥역)
                           </label> 
                           
                           <% elsif @univ == "연세" %>
-                          <label id="small-device" class="btn btn-default" style="width:26%; border-left:1px solid #a1a6a9; margin-top: 10px;">
+                          <label id="small-device" class="btn btn-default" style="width:26%; border-left:1px solid #a1a6a9; margin-top: 10px; border-radius:0px;">
                               <input type="radio" id="bt9 section_width1" name="section" value="정문(신촌역)" /> 정문(신촌역)
                           </label> 
-                          <label id="small-device" class="btn btn-default" style="width:16%;margin-top: 10px;">
+                          <label id="small-device" class="btn btn-default" style="width:16%;margin-top: 10px; border-radius:0px;">
                               <input type="radio" id="bt10 section_width2" name="section" value="연대서문" /> 서문
                           </label> 
-                          <label id="small-device" class="btn btn-default" style="width:16%;margin-top: 10px;">
+                          <label id="small-device" class="btn btn-default" style="width:16%;margin-top: 10px; border-radius:0px;">
                               <input type="radio" id="bt11 section_width2" name="section" value="연대남문" /> 남문
                           </label> 
-                          <label id="small-device" class="btn btn-default" style="width:16%; margin-top: 10px;">
+                          <label id="small-device" class="btn btn-default" style="width:16%; margin-top: 10px; border-radius:0px;">
                               <input type="radio" id="bt12 section_width2" name="section" value="이대후문" /> 동문
                           </label>
-                          <label id="small-device" class="btn btn-default" style="width:26%;margin-top: 10px;">
+                          <label id="small-device" class="btn btn-default" style="width:26%;margin-top: 10px; border-radius:0px;">
                               <input type="radio" id="bt13 section_width1" name="section" value="신촌기차역" /> 신촌기차역
                           </label>
             
                           <% elsif @univ == "이화" %>
-                          <label id="small-device" class="btn btn-default" style="border-left:1px solid #a1a6a9; margin-top: 10px;">
+                          <label id="small-device" class="btn btn-default" style="border-left:1px solid #a1a6a9; margin-top: 10px; border-radius:0px;">
                               <input type="radio" id="bt9" name="section" value="정문(이대역)" /> 정문(이대역)
                           </label> 
-                          <label id="small-device" class="btn btn-default" style="margin-top: 10px;">
+                          <label id="small-device" class="btn btn-default" style="margin-top: 10px; border-radius:0px;">
                               <input type="radio" id="bt10" name="section" value="신촌기차역" /> 신촌기차역
                           </label> 
-                          <label id="small-device" class="btn btn-default" style="margin-top: 10px;">
+                          <label id="small-device" class="btn btn-default" style="margin-top: 10px; border-radius:0px;">
                               <input type="radio" id="bt11" name="section" value="이대후문" /> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp후문&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                           </label> 
                           
@@ -206,17 +206,17 @@
                       </div>
                       <div id="typebox" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <span id="select-title" readonly style="font-size:15px; font-weight:bold;">학교까지 걸어서</span>
-                        <div class="btn-group btn-group-justified" data-toggle="buttons" style="margin-bottom:10px; padding-left:0px;padding-right: 0px;">
-                          <label id="small-device" class="btn btn-default" style="border-left:1px solid #a1a6a9; margin-top: 10px;">
+                        <div class="btn-group1 btn-group-justified" data-toggle="buttons" style="margin-bottom:10px; padding-left:0px;padding-right: 0px;">
+                          <label id="small-device" class="btn btn-default" style="border-left:1px solid #a1a6a9; margin-top: 10px; border-radius:0px;">
                               <input class="btn btn-default" type="radio" id="bt14" name="distance" value=5 /> 5분 이내
                            </label>
-                          <label id="small-device" class="btn btn-default" style="margin-top: 10px;">
+                          <label id="small-device" class="btn btn-default" style="margin-top: 10px; border-radius:0px;">
                               <input type="radio" id="bt15" name="distance" value=10 /> 10분 이내
                           </label> 
-                          <label id="small-device" class="btn btn-default" style="margin-top: 10px;">
+                          <label id="small-device" class="btn btn-default" style="margin-top: 10px; border-radius:0px;">
                               <input type="radio" id="bt16" name="distance" value=15 /> 15분 이내
                           </label>   
-                          <label id="small-device" class="btn btn-default" style="margin-top: 10px;">
+                          <label id="small-device" class="btn btn-default" style="margin-top: 10px; border-radius:0px;">
                               <input type="radio" id="bt17" name="distance" value=20 /> 20분 이내
                           </label>   
                         </div>

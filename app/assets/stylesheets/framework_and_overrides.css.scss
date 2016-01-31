@@ -2,6 +2,24 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@font-face {
+  font-family: 'BMJUA';
+  src: url('/fonts/BMJUA_ttf.ttf');
+}
+@font-face {
+  font-family: 'source-han-sans-korean';
+  src: url('/fonts/SourceHanSansKR-Regular.otf');
+}
+html, body {
+  font-family:source-han-sans-korean;
+}
+.form-control {
+  font-family:source-han-sans-korean;
+}
+.btn {
+  font-family:source-han-sans-korean;
+}
+      
 // make all images responsive by default
 img {
   @extend .img-responsive;

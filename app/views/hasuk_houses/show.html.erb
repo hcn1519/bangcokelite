@@ -1,9 +1,11 @@
 <head>
- <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=db900969ca97b093efb0ddf86d45f9e5"></script>
- <%= stylesheet_link_tag 'jquery.bxslider.css', media: 'all', 'data-turbolinks-track' => true %>
- <%= stylesheet_link_tag 'bars-1to10', media: 'all', 'data-turbolinks-track' => true %>
+
+ <%= stylesheet_link_tag 'jquery.bxslider', params[:hasuk_houses], media: 'all', 'data-turbolinks-track' => true %>
+ <%= stylesheet_link_tag 'bars-1to10', params[:hasuk_houses], media: 'all', 'data-turbolinks-track' => true %>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
- <%= javascript_include_tag "//www.google.com/jsapi", "chartkick", 'data-turbolinks-track' => true %>
+ 
+ 
+ <%= javascript_include_tag 'jquery.barrating.min', 'data-turbolinks-track' => true %> 
  
 <style>
 
@@ -528,6 +530,7 @@ td {
 </style>
 </head>
 <body>
+  
   <%= render 'hasuk_houses/ratingform' %>
   <%= render 'hasuk_houses/imgUpload' %>
 <div class="container">
@@ -593,6 +596,7 @@ td {
             
             <div id="address" style="width:100%;" role="tanpanel" class="tab-pane">
               <div id="map" style="width:100%; height:490px; max-height:500px"></div>    
+                   <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=db900969ca97b093efb0ddf86d45f9e5"></script>
                   <script>
                     var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
               
@@ -918,6 +922,8 @@ td {
         <!--<div class="inline green" style="display:inline-block; width:7px; height:22px; background-color:#2ECC71; margin-bottom:-2px;"></div><div class="hasuk_name" style="display:inline-block">&nbsp;리뷰<span style="font-size:15px">(참여: <%#= @avg_arr[0]%>명)</span></div>
         -->
         <!-- 평점 나오는 구간-->
+        <%= javascript_include_tag "//www.google.com/jsapi", "chartkick", params[:hasuk_houses], 'data-turbolinks-track' => true %>
+        
         <% unless @avg_score[0].how_many_people_did == 0 %>
         
         <script type="text/javascript">
@@ -1204,8 +1210,7 @@ td {
   </div>
 </div>
 -->
-<%= javascript_include_tag 'jquery.bxslider.min', 'data-turbolinks-track' => true %>
-<%= javascript_include_tag 'jquery.barrating.min', 'data-turbolinks-track' => true %> 
+
 
 <script>
 <% if user_signed_in? %>
@@ -1224,64 +1229,6 @@ td {
   //로그인 안 한 경우
 <% end %>
 </script>
-
-<script>
-  $(".vote").click(function(){
-      if($(this).hasClass("btn-danger2") == true) {
-        $(this).removeClass("btn-danger2");
-        $(this).addClass("btn-danger");
-        $(".glyphicon-heart").css("color", "#e74c4c");
-        $("#sizeoflike").css("color", "#e74c4c");
-      } else if ($(this).hasClass("btn-danger") == true){
-        $(this).removeClass("btn-danger");
-        $(this).addClass("btn-danger2");
-        $(".glyphicon-heart").css("color", "#888888");
-        $("#sizeoflike").css("color", "#888888");
-      }
-     });
-</script>
-
-<script>
-$('#pictab1 a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show');
-  $("#pictab2 a").tab("hide");
-  $("#pictab3 a").tab("hide");
-});
-$('#pictab2 a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show');
-  $("#pictab1 a").tab("hide");
-  $("#pictab2 a").tab("hide");
-});
-$('#pictab3 a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show');
-  $("#pictab1 a").tab("hide");
-  $("#pictab3 a").tab("hide");
-});
-</script>
-<script>
-
-  var $jj = jQuery.noConflict();
-jQuery(window).load(function(){
-  $('#slide-counter').prepend('<span class="current-index"></span>/');
-  
-  var realSlider= $("ul#bxslider").bxSlider({
-        speed:1000,
-        pager:false,
-        controls: true,
-        infiniteLoop:false,
-        onSliderLoad: function (currentIndex){
-        $('#slide-counter .current-index').text(currentIndex + 1);
-        },
-        onSlideBefore:function($slideElement, oldIndex, newIndex){
-          //changeRealThumb(realThumbSlider,newIndex);
-          $('#slide-counter .current-index').text(newIndex + 1);
-        }
-        
-      });
-  $('#slide-counter').append(realSlider.getSlideCount());
-});
-</script>
+<%= javascript_include_tag 'jquery.bxslider.min', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'show', 'data-turbolinks-track' => true %>
 </body>

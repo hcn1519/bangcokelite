@@ -13,10 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bxslider
-//= require jquery.easing.min
-//= require index_effect
-//= require jquery.barrating.min
-//= require chartkick
-//= require waterfall-light
-//= require_tree .
+//= require hasuk_houses
