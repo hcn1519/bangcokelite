@@ -2,10 +2,9 @@
  <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=db900969ca97b093efb0ddf86d45f9e5"></script>
  <%= stylesheet_link_tag 'jquery.bxslider.css', media: 'all', 'data-turbolinks-track' => true %>
  <%= stylesheet_link_tag 'bars-1to10', media: 'all', 'data-turbolinks-track' => true %>
- <%= javascript_include_tag 'jquery.bxslider.min', 'data-turbolinks-track' => true %>
- <%= javascript_include_tag 'jquery.barrating.min', 'data-turbolinks-track' => true %> 
- <%= javascript_include_tag "//www.google.com/jsapi", "chartkick", 'data-turbolinks-track' => true %>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+ <%= javascript_include_tag "//www.google.com/jsapi", "chartkick", 'data-turbolinks-track' => true %>
+ 
 <style>
 
 .nav-justified > li > a, .nav-tabs.nav-justified > li > a {
@@ -618,7 +617,7 @@ td {
                     var bounds = new daum.maps.LatLngBounds();
                     bounds.extend(hasukLatLng);
    
-                    var imageSrc = '/images/icons/bus.jpg', // 마커이미지의 주소입니다    
+                    var imageSrc = '<%= asset_path('bus.jpg') %>', // 마커이미지의 주소입니다    
                         imageSize = new daum.maps.Size(25, 25), // 마커이미지의 크기입니다
                         imageOption = {offset: new daum.maps.Point(12.5, 13)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
                     var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
@@ -1205,6 +1204,8 @@ td {
   </div>
 </div>
 -->
+<%= javascript_include_tag 'jquery.bxslider.min', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'jquery.barrating.min', 'data-turbolinks-track' => true %> 
 
 <script>
 <% if user_signed_in? %>

@@ -5,7 +5,6 @@
  * This source code is licensed under the Apache license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
 (function($){
 
 	// waterfall option of every elements
@@ -204,4 +203,3 @@
 	};
 
 })(jQuery);
-

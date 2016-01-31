@@ -79,20 +79,20 @@ main {
 		<!--특징 3개-->
 		<div class="row mt detail-feature">
 			<div class="col-lg-4 col-md-4 col-sm-4">
-				<img src="/images/index-images/feature1-2.png" style="width:107px; margin-bottom: 15px" alt="">
+				<%= image_tag("feature1-2.png", :style => "width:107px; margin-bottom:15px") %>
 			    <p class="feature-title darkblue-text">대학별 하숙 지도</p>
 				<p class="feature-text">학교를 선택하면 학교근처 하숙집을<br>지도에서 모두 볼 수 있습니다.</p>
 			</div>
 			        <!--/col-lg-4 -->
 
 		    <div class="col-lg-4 col-md-4 col-sm-4">
-			    <img src="/images/index-images/feature2.png"  style="width:140px; margin-bottom: 15px" alt="">
+			    <%= image_tag("feature2.png", :style => "width:140px; margin-bottom:15px") %>
 			    <p class="feature-title darkblue-text">간편한 하숙집 검색</p>
 				<p class="feature-text">조건검색과 이름검색으로<br>원하는 집만 찾아볼 수 있습니다.</p>
 			</div><!--/col-lg-4 -->
 
 			<div class="col-lg-4 col-md-4 col-sm-4">
-			    <img src="/images/index-images/feature3.png" style="width:140px; margin-bottom: 15px" alt="">
+			  <%= image_tag("feature3.png", :style => "width:140px; margin-bottom:15px") %>
 				<p class="feature-title darkblue-text">제 점수는요...</p>
 				<p class="feature-text">직접 살아본 학생들이 작성해<br>믿을 수 있는 하숙집 리뷰!</p>
 			</div><!--/col-lg-4 -->
@@ -124,7 +124,7 @@ main {
       </div>
       <div class="row text-control"> 
         <div class="col-lg-5 col-md-5 col-sm-4 target-img">
-	        <img class="img-responsive target-img" src="/images/index-images/pamplet.jpg" alt="">
+	        <%= image_tag("pamplet.jpg", :class => "img-responsive target-img") %>
 	    </div><!-- /col-lg-4 -->
 	    <div class="col-lg-7 col-md-7 col-sm-8">
             <p class="feature-title darkblue-text">새로 하숙집을 구하는 대학생</p> 
@@ -148,7 +148,7 @@ main {
     </div>
     <!-- 밑마닥 -->
     
- <div style="height:50px; background-image:url('/images/index-images/navimg5.png'); border-bottom:1px solid #BDC3C7"></div>
+ <div style="height:50px; background-image:url('<%= asset_path 'navimg5.png' %>'); border-bottom:1px solid #BDC3C7"></div>
 
     
 
@@ -242,10 +242,11 @@ $(window).scroll(function() {
     });
     
     if ($(window).width() >= 768 ) {
-      $("#main-img").attr("src", "/images/index-images/title.gif");  
+      $("#main-img").attr({ src: "<%= asset_path('title.gif') %>" });  
+      
     }
     else {
-      $("#main-img").attr("src", "/images/index-images/title-mobile.gif");
+      $("#main-img").attr({ src: "<%= asset_path('title-mobile.gif') %>" });
     }
     
 });

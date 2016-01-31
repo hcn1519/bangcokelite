@@ -47,21 +47,21 @@
       //학교별 문 이미지 삽입
       //서강대 정문 이미지
         var s_jung = {
-        url: '/images/icons/s_jung.png',
+        url: '<%= asset_path('s_jung.png') %>',
         size: new google.maps.Size(50, 24),
         
         };
       
       //서강대 후문 이미지
         var s_who = {
-        url: '/images/icons/s_who.png',
+        url: '<%= asset_path('s_who.png') %>',
         size: new google.maps.Size(50, 24),
         
         };
         
         //서강대 남문 이미지
         var s_nam = {
-        url: '/images/icons/s_nam.png',
+        url: '<%= asset_path('s_nam.png') %>',
         size: new google.maps.Size(50, 24),
         
         };
@@ -69,51 +69,51 @@
         
         //이대 정문 이미지
         var e_jung = {
-        url: '/images/icons/e_jung.png',
+        url: '<%= asset_path('e_jung.png') %>',
         size: new google.maps.Size(50, 24),
         
         };
         
         //이대 후문 이미지
         var e_who = {
-        url: '/images/icons/e_who.png',
+        url: '<%= asset_path('e_who.png') %>',
         size: new google.maps.Size(50, 24),
         };
 
         //이대 서문 이미지
         var e_seo = {
-        url: '/images/icons/e_seo.png',
+        url: '<%= asset_path('e_seo.png') %>',
         size: new google.maps.Size(50, 24),
         
         };
         
         //이대 북문 이미지
         var e_book = {
-        url: '/images/icons/e_book.png',
+        url: '<%= asset_path('e_book.png') %>',
         size: new google.maps.Size(50, 24),
         };        
         
         //연대 정문 이미지
         var y_jung = {
-        url: '/images/icons/y_jung.png',
+        url: '<%= asset_path('y_jung.png') %>',
         size: new google.maps.Size(50, 24),
         };
         
         //연대 서문 이미지
         var y_seo = {
-        url: '/images/icons/y_seo.png',
+        url: '<%= asset_path('y_seo.png') %>',
         size: new google.maps.Size(50, 24),
         };
         
         //연대 남문 이미지
         var y_nam = {
-        url: '/images/icons/y_nam.png',
+        url: '<%= asset_path('y_nam.png') %>',
         size: new google.maps.Size(50, 24),
         };
         
         //연대 동문 이미지
         var y_dong = {
-        url: '/images/icons/y_dong.png',
+        url: '<%= asset_path('y_dong.png') %>',
         size: new google.maps.Size(50, 24),
         };
         
@@ -209,7 +209,7 @@
 
         
       var d_marker = {
-        url: '/images/icons/marker.png',
+        url: '<%= asset_path('marker.png') %>',
         size: new google.maps.Size(20, 37),
       }; 
 
@@ -2337,7 +2337,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                          <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                           <img id="school_img" src="/images/icons/school.gif"/>
+                           <%= image_tag("school.gif", :id =>"school_img") %>
                          </div>
 
                          <div id="school-distance" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -2359,7 +2359,7 @@ google.maps.event.addListener(infoWindow, 'domready', function() {
                       
                       <div class="row" style="width: 100%; margin-right: 0px; margin-left: 0px;">
                         <div id="price-icon" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                          <img id="trans_img" src="/images/icons/trans.gif"/>
+                          <%= image_tag("trans.gif", :id =>"trans_img") %>
                         </div>
 
                         <div id="trans-distance" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
