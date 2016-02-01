@@ -1,5 +1,4 @@
 // jQuery for page scrolling feature - requires jQuery Easing plugin
-$(".visitors.index").ready(function(){
 
     $(function() {
         $('a.page-scroll').bind('click', function(event) {
@@ -9,11 +8,6 @@ $(".visitors.index").ready(function(){
             }, 1500, 'easeInOutExpo');
             event.preventDefault();
         });
-    });
-    $(document).ready(function() {
-      $(".navbar-nav li a.btn").click(function(event) {
-        $(".navbar-collapse").collapse('hide');
-      });
     });
     
     var sogang_option = {
@@ -67,6 +61,3 @@ $(".visitors.index").ready(function(){
             });
        }
     });
-    
-    
-});

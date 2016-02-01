@@ -9,6 +9,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-kakao'
 gem 'omniauth-naver'
 gem 'bxslider-rails'
+gem 'jquery-turbolinks'
 
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem "fog-aws"

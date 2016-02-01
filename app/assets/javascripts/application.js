@@ -11,6 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
+
 //= require jquery_ujs
-//= require turbolinks
+
 //= require hasuk_houses
+//= require turbolinks

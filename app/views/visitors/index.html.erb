@@ -3,19 +3,9 @@
     <%= stylesheet_link_tag "grayscale", params[:visitors], :media => "all" %>
     <%= stylesheet_link_tag 'font-awesome.min', params[:visitors], media: 'all', 'data-turbolinks-track' => true %>
     <%= stylesheet_link_tag 'index', params[:visitors], media: 'all', 'data-turbolinks-track' => true %>
-<style type="text/css">
-main {
-  margin-top:0px;
-}
-.col-sm-12 {
-    text-align: center;
-}
-</style>
-
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
 
     <!-- 1. 하숙집 찾으시나요? -->
     <header class="intro">
@@ -160,9 +150,7 @@ main {
     <script src="/js/.js"></script>
     <script src="/js/index_effect.js"></script>-->
 <!--스크롤바 부드럽게 내려가는 효과 -->
-   
-    <script src="/Flat-UI-2.2.2/dist/js/vendor/jquery.min.js"></script>
-    <script src="/Flat-UI-2.2.2/dist/js/flat-ui.min.js"></script>
+
 <script> 
 $(window).scroll(function() {
     if ($(window).width() >= 992 & $(".navbar").offset().top > 50) {
@@ -205,14 +193,12 @@ $(window).scroll(function() {
     }
 });
 
-
     $(document).ready(function(){
       if( $("navbar-collapse collapse").hasClass("in") ==true ) {
         //열린 상태
         $(".navbar-default .navbar-toggle").click(function(){
-            $(this).collapse(hide);
+            
         });
-        
       } else {
         //닫힌 상태
         $(".navbar-default .navbar-toggle").click(function(){
@@ -241,12 +227,10 @@ $(window).scroll(function() {
     
     if ($(window).width() >= 768 ) {
       $("#main-img").attr({ src: "<%= asset_path('title.gif') %>" });  
-      
     }
     else {
       $("#main-img").attr({ src: "<%= asset_path('title-mobile.gif') %>" });
     }
-    
 });
 </script>
 </body>
