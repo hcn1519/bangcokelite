@@ -29,4 +29,8 @@ class Users::PasswordsController < Devise::PasswordsController
   # def after_sending_reset_password_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
+  protected
+    def after_resetting_password_path_for(resource)
+      signed_in_root_path(resource)
+    end
 end
