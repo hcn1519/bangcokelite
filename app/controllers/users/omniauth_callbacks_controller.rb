@@ -30,7 +30,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def failure
     redirect_to root_path
   end
-  
+  def after_sign_in_path_for(resource)
+    request.env['omniauth.origin'] || session[:previous_url] || root_path
+  end
   #def kakao
   #  @user = User.from_omniauth(request.env["omniauth.auth"])
 
