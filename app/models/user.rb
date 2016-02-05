@@ -14,8 +14,6 @@ class User < ActiveRecord::Base
   
  #validates :email, uniqueness: true
   
-  validate :validate_username
-  
   def validate_username
     if User.where(email: username).exists?
       errors.add(:username, :invalid)

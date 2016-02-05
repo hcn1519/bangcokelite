@@ -1,0 +1,1250 @@
+   .col-md-9,.col-lg-9,.col-sm-9,.col-xs-9 {
+  padding-left: 0;
+}
+.rating_score {
+    position:absolute;
+    z-index:5;
+    right: 5%;
+    bottom: 3%;
+    background:rgba(0,0,0, 0.7);
+    border-radius: 5px;
+    padding: 3px;
+}
+.roomList{
+    background: #ededed;
+}
+.room {
+    width:32.9%;
+}
+
+ .image-size {
+    width:100%;
+    height:auto;
+ }
+.room img {
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+
+}
+#iw-container {
+    width:310px;
+}
+  .gm-style-iw {
+  width: 320px !important;
+   top: 15px !important;
+   left: 30px !important;
+   right: 0 !important;
+   background-color: #fff;
+   border: 1px solid #ECF0F1;
+   border-radius: 5px;
+}
+    #hasuk_kind_sleep {
+    font-size:12px; color:#D35400; border:1px solid #D35400; padding:1px; border-radius:5px; display:inline-block; font-family: source-han-sans-korean;
+    }/*잠만 자는 */
+    #hasuk_gender_woman {
+    font-size:12px; color:#D4009C; border:1px solid #D4009C; padding:1px; border-radius:5px; display:inline-block; font-family: source-han-sans-korean;
+    }/*여성 전용 */
+  .modal-body {
+    padding-bottom: 30px;
+  }
+
+    /*사이즈별 화면 조정 */
+   
+    @media (max-width: 359px) {
+    #map-canvas{
+        display:none;
+    }
+    .room {
+        padding: 0px
+    }
+    .modal-dialog {
+      margin:0;
+    }
+
+    div.description{  
+    padding-top:0px;
+    padding-bottom:5px;
+    }
+    
+    .thumbnail .caption {
+    border-bottom: 1px solid #c9c9c9;
+    font-size: 13px;
+    line-height: 1.5;
+    }
+    
+    .thumbnail {
+        padding: 0px;
+        margin: 5px;
+        line-height: 1.1;
+        border: none;
+    }
+    
+    .thumbnail-text {
+       padding-bottom:5px;
+    }        
+      .modal-content#modal-size1{
+       width:300px;
+       left:0%;
+       padding:0px;
+      }
+      #signbutton {
+        padding-left:0px;
+      }
+      /*아이폰4 크기 */
+
+      
+     #modal-price {
+         height:30px;
+     }
+     #small-device{
+       padding:0.4em;
+    font-size:0.7em;
+     }
+     .small-device{
+       padding:0.4em;
+        font-size:0.7em;
+     }
+   .listbox {
+      width:100%;
+      overflow-y:scroll;
+      height:100%;
+    }
+    
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+     
+     
+     .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+    
+     #price-icon {
+        padding:0px;
+        margin:0px;
+        font-size:1em;
+        margin-top:3px;
+     }
+
+     #school_img{
+       border: transparent;
+       width:22px;
+       height:15px;
+       margin-right:0;
+       margin-top:3px;
+       margin-left: 0px;
+     }
+     #trans_img {
+       width: 12px;
+       height: 16px;
+       margin-left: 5px;
+       margin-top: 4px; 
+    }
+    #condition {
+      margin-top:3px;
+      color: #82888a;
+    }
+    
+    #price-content {
+        padding:0;
+    }
+    #room_title {
+         font-size:10px;
+     }
+    #room_kind {
+        font-size:11px;
+    }
+    #price {
+        font-size:19px;
+        color:#2ECC71;
+    }
+    #school-distance {
+        margin-top:4px;
+        padding:0;
+    }
+    #school-distance span {
+        font-size:12px;
+    }
+    #trans-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #trans-distance span {
+        font-size:12px;
+    }
+    
+
+     .image {
+       margin:0px;
+       padding:0px;
+     }
+
+     }
+    
+    @media (min-width: 360px) {
+    #map-canvas{
+        display:none;
+    }
+    .room {
+    	padding: 0px;
+    }
+    .thumbnail-text {
+       padding-bottom:8px;
+    }
+
+    .modal-dialog {
+      margin:0;
+    }  
+
+    div.description{  
+        padding-top:0px;
+        padding-bottom:5px;
+    }
+     #room_title {
+         font-size:12px;
+     }
+    .thumbnail {
+        padding: 0px;
+        margin: 5px;
+        line-height: 1.1;
+        border: none;
+    }
+      .modal-content#modal-size1{
+       width:300px;
+       left:0%;
+       padding:0px;
+      }
+      #signbutton {
+        padding-left:0px;
+      }
+
+     #modal-price {
+         height:30px;
+     }
+     
+     #small-device{
+       padding:0.4em;
+      /*font-size:0.7em;*/
+      font-size: 0.8em;
+     }
+     .small-device{
+       padding:0.4em;
+        font-size:0.7em;
+     }
+    .listbox {
+      width:100%;
+      overflow-y:scroll;
+      height:100%;
+    }
+
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+     
+     
+     .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+    #main_price {
+        font-size:25px;
+        font-weight:bold;
+    }
+    
+    #price-icon {
+        padding:0px;
+        margin:0px;
+        font-size:1em;
+        margin-top:3px;
+     }
+    #school_img{
+       border: transparent;
+       width:22px;
+       height:15px;
+       margin-right:0;
+       margin-top:3px;
+       margin-left: 0px;
+     }
+     #trans_img {
+       width: 12px;
+       height: 16px;
+       margin-left: 5px;
+       margin-top: 4px; 
+    }
+      #condition span {
+      margin-left:8px;
+      font-size:13px;
+    }
+    #condition {
+      margin-top:2.5px;
+    }
+    
+     #price-content {
+        padding:0;
+    }
+    #room_kind {
+        font-size:15px;
+    }
+    #price {
+        font-size:20px;
+        color:#2ECC71;
+    }
+    #school-distance {
+        margin-top:2px;
+        padding:0;
+    }
+    #school-distance span {
+        font-size:12px;
+    }
+    #trans-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #trans-distance span {
+        font-size:12px;
+    }
+
+   
+     .image {
+       margin:0px;  margin-bottom:8px;
+       padding:0px;
+     }
+
+}
+    @media only screen and (min-device-width : 375px)  {
+   /*아이폰 6 셋팅 */
+    #map-canvas{
+        display:none;
+    }
+    .room {
+    	padding: 0px;
+    }
+       .listbox {
+        width:100%;
+        overflow-y:scroll;
+        height:100%;
+    }
+     #condition span {
+      margin-left:8px;
+      font-size:13px;
+    }
+    #main_price {
+        font-size:25px;
+        font-weight:bold;
+    }
+    #room_title {
+         font-size:12px;
+     }
+
+    }
+     @media (min-width: 400px) {
+    #map-canvas{
+        display:none;
+    }
+    .room {
+        padding: 5px;
+    }
+    .modal-dialog {
+      margin:0;
+    }
+
+    .modal-content#modal-size1{
+       width:300px;
+       left:0%;
+       padding:0px;
+      }
+      #signbutton {
+        padding-left:0px;
+      }
+      /*조금 큰 스마트폰 크기 */
+     
+    #small-device{
+       padding:0.4em;
+       /*font-size:0.65em;*/
+       font-size: 0.85em;
+     }
+     .small-device{
+       padding:0.4em;
+      font-size:0.65em;
+     }
+     #modal-price {
+         height:30px;
+     }
+     #small-device{
+       padding:0.6em;
+     }
+     .small-device{
+       padding:0.6em;
+     }
+     
+      .listbox {
+        width:100%;
+        overflow-y:scroll;
+        height:100%;
+    }
+    
+
+    
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+     
+     .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+     #condition span {
+      margin-left:8px;
+      font-size:13px;
+    }
+    #main_price {
+        font-size:25px;
+        font-weight:bold;
+    }
+    #room_title {
+         font-size:15px;
+     }
+   #price-icon {
+        padding:0px;
+        margin:0px;
+        font-size:1em;
+        margin-top:3px;
+     }
+
+    #condition {
+      margin-top:5px;
+    }
+    
+    #price-content {
+        padding:0;
+    }
+    #room_kind {
+        font-size:13px;
+    }
+    #price {
+        font-size:19px;
+        color:#2ECC71;
+    }
+
+    #school-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #school-distance span {
+        font-size:13px;
+    }
+    #trans-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #trans-distance span {
+        font-size:13px;
+    }
+
+ 
+     .image {
+       margin:0px;  margin-bottom:5px;
+       padding:0px;
+     }
+    }
+    @media (min-width: 481px) {
+    #map-canvas{
+        display:none;
+    }
+    .room {
+        padding: 0px;
+    }
+    .modal-dialog {
+        position: relative;
+        width: auto;
+        margin: auto;
+    }
+
+    .thumbnail {
+        padding: 0px;
+        margin: 5px;
+        line-height: 1.2;
+        border: none;
+    }
+    
+    .thumbnail .caption {
+    border-bottom: 1px solid #c9c9c9;
+    font-size: 13px;
+    line-height: 1.5;
+    }
+    
+     #condition span {
+      margin-left:8px;
+      font-size:13px;
+    }
+     
+     #small-device {
+       padding:0.63em;
+       font-size:0.7em;
+     }
+     .small-device{
+       padding:0.63em;
+       font-size:0.7em;
+     }
+
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+     
+     /*패블릿 스마트폰 */
+
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+     
+      .listbox {
+        width:100%;
+        overflow-y:scroll;
+        height:100%;
+    }
+    
+
+     
+     .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+     
+     
+     #price-icon {
+        padding:0px;
+        margin:0px;
+        font-size:1em;
+        margin-top:3px;
+     }
+
+    #condition {
+      margin-top:5px;
+    }
+    
+    #price-content {
+        padding:0;
+    }
+    #room_kind {
+        font-size:13px;
+    }
+    #price {
+        font-size:19px;
+        color:#2ECC71;
+    }
+    
+    #school-distance {
+        margin-top:5px;
+        padding:0;
+    }
+   #school-distance span {
+        font-size:13px;
+    }
+    #trans-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #trans-distance span {
+        font-size:13px;
+    }
+
+     .image {
+       margin:0px;  margin-bottom:5px;
+       padding:0px;
+     }
+
+    }
+    
+    @media (min-width: 768px) {
+.room {
+    padding: 0px;
+}
+    #map-canvas{
+        display:block;
+    }
+    .thumbnail-text {
+       padding-bottom:3px;
+    }
+    div.description {
+        font-size:11px;
+        padding-top:2px;
+        padding-bottom:5px;
+    }
+    .modal-dialog {
+      position: relative;
+      width: auto;
+      margin: auto;
+    }
+    
+    .thumbnail {
+      line-height:1.2;
+      margin:5px; 
+      border-radius:0px;
+    }
+    
+     .modal-content#modal-size2{
+        width:450px;
+        left:13%;
+     }
+     #modal-price {
+         height:30px;
+     }
+     #small-device{
+       padding:0.8em;
+       font-size:0.9em;
+     }
+     .small-device{
+       padding:0.8em;
+       font-size:0.9em;
+     }
+     #select-title{
+        margin-right:5px;
+     }
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+     #school_img{
+       border: transparent;
+       width:22px;
+       height:15px;
+       margin-right:0;
+       margin-top:3px;
+       margin-left: 0px;
+     }
+     #trans_img {
+       width: 12px;
+       height: 16px;
+       margin-left: 5px;
+       margin-top: 4px; 
+    }
+      .listbox {
+        width:100%;
+        overflow-y:scroll;
+        height:100%;
+    }
+
+     
+      html, body { 
+      height: 97.5%; 
+      margin: 0; 
+      padding: 0; 
+    }
+    .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 46.5%;
+      margin-top: 0.1em;
+    }
+    #main_price {
+        font-size:19px;
+        font-weight:bold;
+    }
+    #room_title {
+         font-size:10px;
+     }
+    #price-icon {
+        padding:0px;
+        margin:0px;
+        font-size:1em;
+        margin-top:3px;
+     }
+
+    #condition {
+      margin-top:4px;
+    }
+    #condition span {
+      margin-left:8px;
+      font-size:11px;
+    }
+    
+    #price-content {
+        padding:0;
+    }
+    #room_kind {
+        font-size:11px;
+    }
+    #price {
+        font-size:16px;
+        color:#2ECC71;
+    }
+
+    #school-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #school-distance span {
+        font-size:12px;
+    }
+    #trans-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #trans-distance span {
+        font-size:12px;
+    }
+
+     .image {
+       margin:0px;
+       padding:0px;
+
+    }
+
+    }
+    
+   
+    @media (min-width: 960px) {
+ 
+    .thumbnail {
+      line-height:1.2;
+      margin:5px; 
+      border-radius:0px;
+    }
+      .modal-content#modal-size1{
+       width:400px;
+       left:0%;
+       padding:0px;
+     }
+      .modal-content#modal-size2{
+        width:450px;
+        left:50%;
+     }
+    #modal-price {
+         height:30px;
+     }
+    #select-title{
+         margin-right:5px;
+     }
+    #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+    }
+    #small-device{
+       padding:0.8em;
+       font-size:0.9em;
+     }
+     .small-device{
+       padding:0.8em;
+       font-size:0.9em;
+     } 
+   
+    .listbox {
+        width:97%;
+        overflow-y:scroll;
+        height:100%;
+    }
+
+   #condition span {
+      margin-left:8px;
+      font-size:13px;
+    }
+    .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+     .listbox {
+        width:97%;
+        overflow-y:scroll;
+        height:100%;
+    }
+
+     #main_price {
+        font-size:23px;
+        font-weight:bold;
+    }
+     #room_title {
+         font-size:11px;
+     }
+    #price-icon {
+        padding:0px;
+        margin:0px;
+        font-size:1em;
+        margin-top:3px;
+     }
+
+    #condition {
+      margin-top:6px;
+    }
+    
+    #price-content {
+        padding:0;
+    }
+    #room_kind {
+        font-size:13px;
+    }
+    #price {
+        font-size:19px;
+        color:#2ECC71;
+    }
+    #school_img{
+       border: transparent;
+       width:22px;
+       height:15px;
+       margin-right:0;
+       margin-top:3px;
+       margin-left: 0px;
+     }
+     #trans_img {
+       width: 12px;
+       height: 16px;
+       margin-left: 5px;
+       margin-top: 4px; 
+    }
+   #school-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #school-distance span {
+        font-size:12px;
+    }
+    #trans-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #trans-distance span {
+        font-size:12px;
+    }
+    
+     #distance-size span{
+         font-size:0.7em;
+     }
+
+     .image {
+       margin:0px;  
+       padding:0px;
+  
+     }
+
+    } 
+    @media (min-width: 1050px){
+  
+    .thumbnail {
+      line-height:1.2;
+      margin:5px; 
+      border-radius:0px;
+      border: 1px solid #bdc3c7;
+    }
+     .listbox {
+        width:97%;
+        overflow-y:scroll;
+        height:100%;
+    }
+    #school_img{
+       border: transparent;
+       width:22px;
+       height:15px;
+       margin-right:0;
+       margin-top:3px;
+       margin-left: 0px;
+     }
+     #trans_img {
+       width: 12px;
+       height: 16px;
+       margin-left: 5px;
+       margin-top: 4px; 
+    }
+     .modal-content#modal-size2{
+        width:500px;
+        left:55%;
+     }
+     #modal-price {
+         height:30px;
+         margin-bottom:0px;
+     }
+     #slider3{
+       margin-top:0px;
+     }
+
+     #typebox{
+         padding:0px;
+         margin:0px;
+         padding-left:5px;
+         padding-right:5px;
+     }
+
+    .map_container {
+      padding-left:0px; 
+      padding-right:0px;
+      height: 100%;
+      margin-top: 0.1em;
+    }
+    #condition span {
+      margin-left:8px;
+      font-size:13px;
+    }
+    
+     #small-device{
+       padding:0.8em;
+       font-size:0.9em;
+     }
+     .small-device{
+       padding:0.7em;
+     }
+     #main_price {
+        font-size:23px;
+        font-weight:bold;
+    }
+     #room_title {
+         font-size:11px;
+     }
+     #price-icon {
+        padding:0px;
+        margin:0px;
+        font-size:1em;
+        margin-top:3px;
+     }
+
+    #condition {
+      margin-top:6px;
+    }
+    
+     #price-content {
+        padding:0;
+    }
+    #room_kind {
+        font-size:13px;
+    }
+    #price {
+        font-size:19px;
+        color:#2ECC71;
+    }
+
+    #school-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #school-distance span {
+        font-size:13px;
+    }
+    #trans-distance {
+        margin-top:5px;
+        padding:0;
+    }
+    #trans-distance span {
+        font-size:13px;
+    }
+
+     .image {
+       margin:0px;
+       padding:0px;
+
+     }
+     /*노트북 크기 */
+     
+    }
+    @media (min-width: 1135px){
+
+     /*노트북 크기 */
+     .listbox {
+        width:97%;
+        overflow-y:scroll;
+        height:100%;
+    }
+
+    }
+
+    /*사이즈별 모달 조정 끝*/
+        #search.btn-info{
+      color:#3498db;
+      background-color:#fff;
+      border:1px solid #3498db;
+    }
+    #search.btn-info:hover {
+      color:#fff;
+      background-color:#31b0d5;
+      border:1px solid #31b0d5;
+    }
+    #out.btn-danger {
+      color:#E74C3C;
+      background-color:#fff;
+      border:1px solid #E74C3C;
+    }
+    #out.btn-danger:hover {
+      color:#fff;
+      background-color:#E74C3C;
+      border:1px solid #E74C3C;
+    }
+    #myroom.btn-warning {
+      color:#f1c40f;
+      background-color:#fff;
+      border:1px solid #f1c40f;
+    }
+    #myroom.btn-warning:hover {
+      color:#fff;
+      background-color:#f1c40f;
+      border:1px solid #f1c40f;
+    }
+
+    a:hover{
+      background-color:#dddddd;
+      color:blue;
+    }
+    
+
+    /*하숙방 이름 css */
+    #nameOfhasuk { 
+       position: absolute; 
+       top: 10px;
+       left: 5px; 
+    }
+    #nameOfhasuk p {
+       font-size: 10px;
+       color:#ECF0F1;
+       padding: 3px;
+       border-radius:5px;
+       background: rgba(0, 0, 0, 0.7);
+       margin-bottom: 0px;
+    }
+    #sleeping_only { 
+       position: absolute; 
+       top: 10px;
+       left: 5px; 
+    }
+    #sleeping_only p {
+       font-size: 0.6em;
+       color:#ECF0F1;
+       padding: 3px;
+       border-radius:5px;
+       background: rgba(13, 46, 80, 0.7);
+       margin-bottom: 0px;
+    }
+    #nameOfhasukWoman { 
+       position: absolute; 
+       top: 10px;
+       left: 5px; 
+    }
+    #nameOfhasukWoman p {
+       font-size: 10px;
+       color:#ECF0F1;
+       padding: 3px;
+       border-radius:5px;
+       background: rgba(231, 76, 60, 0.7);
+       margin-bottom: 0px;
+    }
+     /*하숙방 이름 css */
+   
+    /*하숙 종류 css */
+    #hasuk_kind_color1 {
+    color:#27AE60; border:1px solid #27AE60; padding:2px; border-radius:5px;
+    }/*일반 */
+    
+    #hasuk_kind_color2 {
+    color:#D35400; border:1px solid #D35400; padding:2px; border-radius:5px;
+    }/*잠만 자는 */
+    
+    
+    body.modal-open {
+        overflow: hidden;
+        position:fixed;
+        width: 100%;
+    }
+    #myModal .modal-dialog  {
+      width:30%;
+     
+    }
+    #myModal2 .modal-dialog {
+     
+      left:30%;
+      outline: none;
+      width:35%;
+    }
+    
+    .modal-backdrop.in {
+      opacity:0.1;
+    }
+    
+    /*지도 레이아웃 설정 */
+    html, body { 
+      height: 95.5%; 
+      margin: 0; 
+      padding: 0; 
+    }
+    #map-canvas{
+        height:100%;
+        width:100%;
+    }
+    .mainbox {
+      height:100%;
+      margin: 0;
+      padding: 0;
+    }
+    .folderbox {
+      padding:0px;
+    }
+
+       
+/*마커 디자인 */
+    .label1 {
+     color: #ffffff;
+     width: 60px;
+     border: 2px solid #e9e9e2;
+     border-radius: 8px;
+     font-size: 13px;
+     text-align: center;
+     white-space: nowrap;
+     background-color:#6f4e35;
+   }
+   .label2 {
+     color: #ffffff;
+     width: 60px;
+     border: 2px solid #e9e9e2;
+     border-radius: 8px;
+     font-size: 13px;
+     text-align: center;
+     white-space: nowrap;
+     background-color:#993a18;
+   }
+   .label3 {
+     color: #ffffff;
+     width: 60px;
+     border: 2px solid #e9e9e2;
+     border-radius: 8px;
+     font-size: 13px;
+     text-align: center;
+     white-space: nowrap;
+     background-color:#95582b;
+   }
+  /*마커 디자인 */ 
+   
+   .sub_circle {
+    border-radius: 40%;
+    padding-left: 3px;
+    padding-right: 3px;
+    color: #ffffff;
+    text-align: center;
+    display: inline-block;
+    line-height: 1;
+}
+    .line_number_2 {
+        background: #29c531;
+    }
+    
+    .line_number_6 {
+        background: #cd7c2b;
+    }
+    
+    .line_number_kj {
+        background: #7bc2a3;
+        border-radius: 15%;
+        padding-left: 2px;
+        padding-right: 2px;
+        color: #ffffff;
+        text-align: center;
+        font-size: 8px;
+        display: inline-block;
+    }
+    
+    .line_number_bus {
+        background: #3498DB;
+        border-radius: 15%;
+        padding:1.5px;
+        color: #ffffff;
+        text-align: center;
+        font-size: 8px;
+        display: inline-block;
+    }
+    
+    .bus_circle {
+        border-radius: 20%;
+        padding-left: 2px;
+        padding-right: 2px;
+        color: #ffffff;
+        text-align: center;
+        display: inline-block;
+        
+    }
+    
+    .panel-default > .panel-heading {
+    color: #ffffff;
+    border: none;
+    background-color: #333f50;
+    border-radius: 0;
+    }
+   
+    .thumbnail {
+      border-radius: 0;
+    }
+    
+    .panel {
+      border: none;
+    }
+    #loadingImage {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index:100;
+      display:none;
+      width:50px; 
+      height:50px;
+      opacity:1;
+    }
+   
+    .btn-sm {
+      padding: 5px 10px;
+      line-height:1;
+      border-radius:15px;
+    }
+    div.description{  
+    position:absolute; /* absolute position (so we can position it where we want)*/  
+    bottom:0px; /* position will be on bottom */  
+    left:0px;  
+    width:100%;  
+    /* styling bellow */  
+    
+    background-color:black;  
+    color:white;  
+    opacity:0.75; /* transparency */  
+    padding-left:10px;
+    padding-right:10px;
+    } 
+#condition {
+    color: #82888a;
+    padding-left:5px;
+}
+
+#price {
+    font-weight:600;
+}
+
+.btn-default3:hover, .btn-default3.hover, .btn-default3:focus, .btn-default3:active, .btn-default3.active, .open > .dropdown-toggle.btn-default3 {
+color: #e74c3c;
+background-color: #f5f5f5;
+border-color: #ffffff;
+}
+
+.btn-default3 {
+background-color: transparent;
+color: #ffffff;
+border: 1px solid #ffffff;
+}  
+
